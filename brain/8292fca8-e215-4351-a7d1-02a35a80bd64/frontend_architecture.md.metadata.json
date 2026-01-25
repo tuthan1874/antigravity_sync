@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Complete frontend architecture design for Task Management React app including:\n- Folder structure with feature-based organization\n- State management strategy using Zustand with slices\n- Data fetching with TanStack Query + Supabase client\n- Realtime subscription patterns\n- Role-based access control implementation\n- Type generation and API layer design",
+  "updatedAt": "2026-01-14T14:19:16.392877100Z"
+}

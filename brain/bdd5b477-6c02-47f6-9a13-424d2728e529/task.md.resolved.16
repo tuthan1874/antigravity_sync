@@ -1,0 +1,11 @@
+- [x] Install dependencies
+- [x] Run dev server
+- [x] Verify application accessibility
+- [x] Fix startup issues if any
+- [x] Update card UI (Disable, Dim, Coming Soon)
+- [x] Add social media links and contact info to footer
+- [x] Replace footer icons with custom SVGs
+- [x] Fix syntax error in Footer.tsx
+- [x] Refine footer: Resize icons, update text/colors for contacts
+- [x] Fine-tune footer: Scale down FB/AS icons, scale up website text
+- [x] Refine footer: Reduce FB/AS icons by another 15%

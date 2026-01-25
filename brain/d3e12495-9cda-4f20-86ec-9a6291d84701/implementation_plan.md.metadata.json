@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan for the Spine Animation Portfolio. Details the tech stack (React, Vite, Tailwind), architecture (IndexedDB for storage), and key components (Upload, Gallery, Viewer).",
+  "updatedAt": "2025-11-23T08:35:52.706756200Z"
+}

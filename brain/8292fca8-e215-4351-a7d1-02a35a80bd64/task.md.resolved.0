@@ -1,0 +1,35 @@
+# Task Management Frontend - Implementation Tasks
+
+## Phase 1: Project Scaffolding
+- [/] Initialize Vite + React + TypeScript project
+- [ ] Install core dependencies
+- [ ] Configure TypeScript strict mode
+- [ ] Set up folder structure
+- [ ] Configure path aliases
+
+## Phase 2: Core Infrastructure
+- [ ] Set up Supabase client
+- [ ] Configure TanStack Query
+- [ ] Create Zustand stores (auth, workspace, filters)
+- [ ] Generate database types from Supabase
+- [ ] Create query key factory
+
+## Phase 3: Shared Components
+- [ ] Set up Shadcn/ui
+- [ ] Create layout components (Shell, Sidebar, Header)
+- [ ] Set up TipTap rich text editor
+- [ ] Configure React Hook Form + Zod
+
+## Phase 4: Feature Modules
+- [ ] Auth feature (login, signup, session)
+- [ ] Workspaces feature
+- [ ] Members feature
+- [ ] Tasks feature (list, detail, form)
+- [ ] Comments feature
+- [ ] Activity feature
+
+## Phase 5: Realtime & Polish
+- [ ] Implement realtime subscriptions
+- [ ] Add permission checks
+- [ ] Error boundaries
+- [ ] Loading states

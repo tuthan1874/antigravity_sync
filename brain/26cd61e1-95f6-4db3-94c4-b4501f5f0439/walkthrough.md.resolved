@@ -1,0 +1,330 @@
+# Walkthrough: Apify LinkedIn Search Workflow
+
+## 📝 Tổng quan
+
+Đã hoàn thành xây dựng quy trình tự động hóa n8n để kết nối với Apify API, sử dụng Actor `google-search-scraper` để cào dữ liệu LinkedIn profiles.
+
+## 📦 Files đã tạo
+
+### Workflow Files
+
+#### 1. [apify-linkedin-search-simple.json](file:///e:/TDC_App/n8n-skills/apify-linkedin-search-simple.json) ⭐
+
+**Workflow đơn giản - Khuyến nghị sử dụng**
+
+- **6 nodes**: Form Trigger → Prepare Input → Run Actor (Sync) → Format Results → Aggregate → Final Output
+- **Synchronous execution**: Chờ kết quả ngay lập tức (timeout 120s)
+- **Dễ setup**: Chỉ cần cấu hình API token ở 1 node
+- **Phù hợp**: Hầu hết use cases với <50 results
+
+**Kiến trúc:**
+```
+Form Trigger
+    ↓
+Prepare Apify Input (Code)
+    ↓
+Run Apify Actor (Sync) ← HTTP POST với timeout 120s
+    ↓
+Format LinkedIn Results (Code)
+    ↓
+Aggregate Results
+    ↓
+Create Final Output (Code)
+```
+
+#### 2. [apify-linkedin-search-workflow.json](file:///e:/TDC_App/n8n-skills/apify-linkedin-search-workflow.json)
+
+**Workflow đầy đủ với polling mechanism**
+
+- **12 nodes**: Bao gồm async execution, polling, và retry logic
+- **Asynchronous execution**: Không giới hạn timeout
+- **Advanced error handling**: Retry khi Actor chưa hoàn thành
+- **Phù hợp**: Scraping lớn (>50 results) hoặc cần control chi tiết
+
+**Kiến trúc:**
+```
+Form Trigger
+    ↓
+Prepare Apify Input (Code)
+    ↓
+Run Apify Actor ← HTTP POST async
+    ↓
+Extract Run ID (Code)
+    ↓
+    ┌─────────────────┐
+    ↓                 ↑
+Wait 5 Seconds       │
+    ↓                 │
+Check Actor Status   │
+    ↓                 │
+Is Completed? ───No──┘
+    ↓ Yes
+Get Actor Results
+    ↓
+Format LinkedIn Results (Code)
+    ↓
+Aggregate Results
+    ↓
+Create Final Output (Code)
+```
+
+---
+
+### Documentation
+
+#### 3. [docs/apify-linkedin-workflow-guide.md](file:///e:/TDC_App/n8n-skills/docs/apify-linkedin-workflow-guide.md)
+
+Hướng dẫn chi tiết bao gồm:
+
+- ✅ **Setup Instructions**: Cách lấy Apify API token, import workflow, cấu hình
+- ✅ **Usage Guide**: Cách sử dụng form trigger và test workflow
+- ✅ **Output Format**: Cấu trúc JSON kết quả trả về
+- ✅ **Comparison Table**: So sánh 2 phiên bản workflow
+- ✅ **Pricing Info**: Chi phí Apify và free tier limits
+- ✅ **Troubleshooting**: Giải quyết các lỗi thường gặp
+- ✅ **Advanced Customization**: Cách tùy chỉnh search query và filters
+- ✅ **Use Cases**: Ví dụ thực tế (recruitment, sales, research)
+
+#### 4. [README.md](file:///e:/TDC_App/n8n-skills/README.md)
+
+README cập nhật với:
+- Quick start guide
+- Overview của 3 workflows (2 Apify + 1 Google Custom Search)
+- Links đến documentation chi tiết
+- Cost breakdown
+- Sample output
+
+---
+
+## 🎯 Tính năng chính
+
+### Input Parameters
+
+Cả 2 workflows đều nhận 3 parameters qua Form Trigger:
+
+1. **Job Title** (required): Chức danh cần tìm
+   - Ví dụ: "Software Engineer", "Product Manager", "CEO"
+
+2. **Location** (required): Địa điểm
+   - Ví dụ: "Vietnam", "Ho Chi Minh City", "Hanoi"
+
+3. **Max Results** (optional): Số lượng kết quả tối đa
+   - Mặc định: 10
+   - Có thể tùy chỉnh: 5, 20, 50, 100
+
+### Search Query Generation
+
+Workflow tự động tạo search query tối ưu cho LinkedIn:
+
+```javascript
+const searchQuery = `site:linkedin.com/in/ "${jobTitle}" "${location}"`;
+```
+
+Ví dụ output:
+```
+site:linkedin.com/in/ "Software Engineer" "Vietnam"
+```
+
+### Apify Actor Configuration
+
+Sử dụng Actor `apify/google-search-scraper` với config:
+
+```json
+{
+  "queries": "site:linkedin.com/in/ \"Software Engineer\" \"Vietnam\"",
+  "maxPagesPerQuery": 1,
+  "resultsPerPage": 10,
+  "mobileResults": false,
+  "languageCode": "",
+  "countryCode": ""
+}
+```
+
+### Result Filtering
+
+Code node tự động filter chỉ lấy LinkedIn profile URLs:
+
+```javascript
+if (result.url && result.url.includes('linkedin.com/in/')) {
+  // Chỉ lấy profiles, bỏ qua company pages và posts
+}
+```
+
+### Output Format
+
+JSON structure với metadata đầy đủ:
+
+```json
+{
+  "metadata": {
+    "searchQuery": "site:linkedin.com/in/ \"Software Engineer\" \"Vietnam\"",
+    "jobTitle": "Software Engineer",
+    "location": "Vietnam",
+    "maxResults": 10,
+    "timestamp": "2026-01-03T15:57:36.000Z"
+  },
+  "totalResults": 8,
+  "results": [
+    {
+      "title": "Profile title",
+      "url": "https://www.linkedin.com/in/username",
+      "description": "Profile snippet",
+      "displayedUrl": "Display URL",
+      "emphasizedKeywords": ["keyword1", "keyword2"],
+      "sitelinks": []
+    }
+  ]
+}
+```
+
+---
+
+## 🔧 Setup Requirements
+
+### 1. Apify Account
+
+- ✅ Free tier: $5 credit/tháng
+- ✅ Đăng ký tại: https://apify.com
+- ✅ Lấy API token từ Settings → Integrations
+
+### 2. n8n Instance
+
+- ✅ n8n cloud hoặc self-hosted
+- ✅ Version >= 1.0
+
+### 3. Configuration Steps
+
+**Simple Version** (1 node cần config):
+1. Node "Run Apify Actor (Sync)"
+2. Header "Authorization": `Bearer YOUR_TOKEN`
+
+**Full Version** (3 nodes cần config):
+1. Node "Run Apify Actor"
+2. Node "Check Actor Status"  
+3. Node "Get Actor Results"
+
+---
+
+## 💡 Ưu điểm so với Google Custom Search API
+
+| Feature | Apify | Google Custom Search |
+|---------|-------|---------------------|
+| **Quota** | $5 credit (~2000 searches) | 100 queries/day |
+| **Results per query** | Unlimited | Max 10 |
+| **Data richness** | Full search result data | Basic data |
+| **Rate limiting** | Flexible | Strict |
+| **Cost** | Pay as you go | Free tier limited |
+| **Reliability** | High | Medium |
+
+---
+
+## 📊 Testing Checklist
+
+> [!IMPORTANT]
+> Workflow cần được test với Apify API token thực tế
+
+### Manual Testing Steps
+
+- [ ] Import workflow vào n8n
+- [ ] Cấu hình Apify API token
+- [ ] Activate workflow
+- [ ] Test với sample input:
+  - Job Title: "Software Engineer"
+  - Location: "Vietnam"
+  - Max Results: 10
+- [ ] Verify output format
+- [ ] Check Apify credit usage
+
+### Expected Results
+
+- ✅ Workflow executes successfully
+- ✅ Returns 5-10 LinkedIn profile URLs
+- ✅ Each result has title, url, description
+- ✅ Metadata includes search parameters
+- ✅ Total execution time < 30 seconds (Simple version)
+
+---
+
+## 🚀 Next Steps
+
+### For Users
+
+1. **Lấy Apify API Token**
+   - Đăng ký account tại apify.com
+   - Copy token từ Settings
+
+2. **Import và Configure**
+   - Import [apify-linkedin-search-simple.json](file:///e:/TDC_App/n8n-skills/apify-linkedin-search-simple.json) vào n8n
+   - Thay API token trong node "Run Apify Actor (Sync)"
+
+3. **Test Workflow**
+   - Activate workflow
+   - Mở form URL
+   - Submit với test data
+
+4. **Monitor Usage**
+   - Check Apify dashboard để xem credit usage
+   - Adjust max results nếu cần
+
+### Potential Enhancements
+
+- [ ] Add webhook output để gửi results đến external service
+- [ ] Integrate với Google Sheets để lưu results
+- [ ] Add email notification khi có results mới
+- [ ] Create scheduled trigger để tự động search định kỳ
+- [ ] Add data enrichment (lấy thêm thông tin từ LinkedIn)
+
+---
+
+## 📚 Resources
+
+- **Apify Docs**: https://docs.apify.com/
+- **n8n Docs**: https://docs.n8n.io/
+- **google-search-scraper**: https://apify.com/apify/google-search-scraper
+- **Detailed Guide**: [docs/apify-linkedin-workflow-guide.md](file:///e:/TDC_App/n8n-skills/docs/apify-linkedin-workflow-guide.md)
+
+---
+
+## ✅ Validation
+
+### Files Created
+
+- ✅ [apify-linkedin-search-simple.json](file:///e:/TDC_App/n8n-skills/apify-linkedin-search-simple.json) - 6 nodes, synchronous
+- ✅ [apify-linkedin-search-workflow.json](file:///e:/TDC_App/n8n-skills/apify-linkedin-search-workflow.json) - 12 nodes, async with polling
+- ✅ [docs/apify-linkedin-workflow-guide.md](file:///e:/TDC_App/n8n-skills/docs/apify-linkedin-workflow-guide.md) - Comprehensive guide
+- ✅ [README.md](file:///e:/TDC_App/n8n-skills/README.md) - Updated with Apify workflows
+
+### Code Quality
+
+- ✅ Proper error handling in Code nodes
+- ✅ LinkedIn URL filtering
+- ✅ Metadata tracking
+- ✅ Clean JSON output structure
+- ✅ Configurable parameters
+
+### Documentation Quality
+
+- ✅ Vietnamese language for Vietnamese users
+- ✅ Step-by-step setup instructions
+- ✅ Troubleshooting section
+- ✅ Cost breakdown
+- ✅ Use case examples
+- ✅ Comparison tables
+
+---
+
+## 🎉 Summary
+
+Đã hoàn thành xây dựng 2 n8n workflows để tự động tìm kiếm LinkedIn profiles thông qua Apify API:
+
+1. **Simple Version**: Dễ setup, phù hợp cho hầu hết use cases
+2. **Full Version**: Advanced với polling và retry logic
+
+Cả 2 workflows đều:
+- ✅ Sử dụng Apify Actor `google-search-scraper`
+- ✅ Có Form Trigger để nhập Job Title và Location
+- ✅ Tự động filter chỉ lấy LinkedIn profile URLs
+- ✅ Trả về JSON với metadata đầy đủ
+- ✅ Có documentation chi tiết bằng tiếng Việt
+
+**Khuyến nghị**: Bắt đầu với Simple Version để test, sau đó chuyển sang Full Version nếu cần scrape số lượng lớn.

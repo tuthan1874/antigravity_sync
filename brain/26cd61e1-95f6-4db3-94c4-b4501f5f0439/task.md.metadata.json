@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_TASK",
+  "summary":  "Task checklist for building an n8n workflow that integrates with Apify API using the google-search-scraper Actor to scrape LinkedIn profile data. Includes research, implementation, and verification phases.",
+  "updatedAt":  "2026-01-03T15:57:28.060211Z"
+}

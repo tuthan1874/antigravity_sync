@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Comprehensive implementation plan for HRM application covering tech stack recommendation, database schema design for 5 core modules (Employee, Payroll, Leave/Overtime, Income/Expense, Asset Management), frontend architecture using Next.js 15 + TypeScript + shadcn/ui, security with Row Level Security, and phased verification plan.",
+  "updatedAt": "2026-01-21T15:10:21.957622400Z"
+}

@@ -1,0 +1,35 @@
+# Hướng dẫn Hệ thống Phân quyền Mới
+
+Tôi đã cập nhật hệ thống phân quyền của Planka với các vai trò (roles) mới và logic lọc dữ liệu cho người dùng khách (Guest).
+
+## Các Vai Trò Mới
+
+1. **Admin (`admin`)**: Có toàn quyền điều quản trị hệ thống.
+2. **Member (`member`)**: Vai trò người dùng thông thường, có quyền quản lý các board và dự án mà họ tham gia. (Thay thế cho `projectOwner` và `boardUser` cũ).
+3. **Guest (`guest`)**: Người dùng khách với quyền hạn hạn chế.
+
+## Tính năng Lọc Thẻ cho Guest
+
+Người dùng có role là `guest` sẽ bị giới hạn chỉ nhìn thấy các thẻ (cards/tasks) mà họ được:
+- Giao nhiệm vụ (asigned).
+- Là thành viên của thẻ (member of card).
+
+## Cách Kiểm Tra (Test)
+
+### 1. Phân quyền cho người dùng
+Bạn có thể thay đổi role của người dùng qua giao diện Admin hoặc trực tiếp trong database. Role mới hiện tại là `admin`, `member`, và `guest`.
+
+### 2. Kiểm tra quyền Guest
+- Đăng nhập bằng tài khoản Admin.
+- Tạo một danh sách các thẻ trong một Board.
+- Giao (Assign) 1 thẻ duy nhất cho một người dùng có role `guest`.
+- Đăng nhập bằng tài khoản Guest đó.
+- **Kết quả mong đợi**: Người dùng Guest chỉ thấy duy nhất thẻ đã được giao cho mình trong danh sách, các thẻ khác sẽ bị ẩn.
+
+## Các file đã thay đổi
+
+- [User.js](file:///e:/TDC_App/planka-master/server/api/models/User.js): Định nghĩa lại các Role.
+- [is-admin-or-project-owner.js](file:///e:/TDC_App/planka-master/server/api/helpers/users/is-admin-or-project-owner.js): Cập nhật helper kiểm tra quyền.
+- [make-scoper.js](file:///e:/TDC_App/planka-master/server/api/helpers/users/make-scoper.js): Cập nhật logic phạm vi dữ liệu người dùng.
+- [index.js](file:///e:/TDC_App/planka-master/server/api/controllers/cards/index.js): Thực hiện logic lọc thẻ cho Guest.
+- [Enums.js](file:///e:/TDC_App/planka-master/client/src/constants/Enums.js): Cập nhật hằng số role ở phía giao diện (Client).

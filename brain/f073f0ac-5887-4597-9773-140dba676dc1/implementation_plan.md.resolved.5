@@ -1,0 +1,52 @@
+# Advanced Permission System (ClickUp Business Plus)
+
+## Goal
+Implement a granular permission system similar to ClickUp Business Plus, allowing fine-grained access control at project, board, and card levels.
+
+## Database Schema
+
+### 1. User Table (Existing)
+The `user_account` table already has a `role` column. We will ensure it supports: `admin`, `member`, `guest`.
+
+### 2. New Table: `resource_permission`
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `id` | bigint | Primary key |
+| `user_id` | bigint | FK to `user_account` |
+| `resource_type` | text | `project`, `board`, or `card` |
+| `resource_id` | bigint | ID of the resource |
+| `access_level` | text | `full`, `view_all`, `assigned_only` |
+| `action_permission` | text | `edit`, `comment_only` |
+| `created_at` | timestamp | Created timestamp |
+| `updated_at` | timestamp | Updated timestamp |
+
+**Indexes:**
+- Unique: [(user_id, resource_type, resource_id)](file:///e:/TDC_App/planka-master/server/api/controllers/card-memberships/create.js#108-159)
+- Index: `user_id`, `resource_type`, `resource_id`
+
+---
+
+## Proposed Changes
+
+### [Server] Database Migration
+#### [NEW] [20260120000500_create_resource_permission.js](file:///e:/TDC_App/planka-master/server/db/migrations/20260120000500_create_resource_permission.js)
+- Create `resource_permission` table with columns above.
+
+---
+
+### [Server] Models
+#### [NEW] [ResourcePermission.js](file:///e:/TDC_App/planka-master/server/api/models/ResourcePermission.js)
+- Define Sails model with:
+  - `ResourceTypes`: `PROJECT`, `BOARD`, `CARD`
+  - `AccessLevels`: `FULL`, `VIEW_ALL`, `ASSIGNED_ONLY`
+  - `ActionPermissions`: `EDIT`, `COMMENT_ONLY`
+
+#### [MODIFY] [User.js](file:///e:/TDC_App/planka-master/server/api/models/User.js)
+- Verify `Roles` enum includes: `admin`, `member`, `guest`.
+
+---
+
+## Verification Plan
+1. Run migration: `docker compose exec planka npm run db:migrate`
+2. Verify table exists via SQL query.

@@ -1,0 +1,56 @@
+# Spine 2D Preview App Walkthrough
+
+I have successfully initialized and implemented the Spine 2D Preview Web Application.
+
+## Changes Made
+
+### Project Infrastructure
+- **Scaffolded React + TypeScript + Vite project**: Converted initial Vanilla template to React.
+- **Dependencies**: Installed `@esotericsoftware/spine-webgl`, `jszip`, `react`, `react-dom`.
+- **Configuration**: Updated [vite.config.ts](file:///e:/TDC_App/spine-preview/vite.config.ts) and [tsconfig.json](file:///e:/TDC_App/spine-preview/tsconfig.json) for React support.
+
+### Spine Integration (`src/spine/`)
+- **SpineRuntime.ts**: Implemented a robust wrapper around `spine-webgl` to handle:
+    - Asset loading from Blobs (ZIP extraction).
+    - `TextureAtlas` manual texture assignment for local files.
+    - WebGL rendering loop.
+    - Pan/Zoom controls.
+    - Animation playback control.
+
+### React Application
+- **Custom Hook (`useSpinePlayer`)**: Encapsulates the Spine runtime lifecycle.
+- **UI Components**:
+    - `FileUpload`: Handles ZIP parsing.
+    - `AnimationSelector`: Dynamic dropdown for animations.
+    - `PlaybackControls`: Play/Pause.
+    - `ViewControls`: Zoom In/Out/Reset.
+    - `BackgroundControls`: Color picker.
+- **Styling**: Created `index.css` with a dark theme and responsive layout.
+
+## Verification Results
+
+### Automated Checks
+- `npm run build`: **PASSED**. Validated TypeScript types and bundling.
+
+### Manual Verification Steps
+1. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+![App Preview](file:///C:/Users/dangt/.gemini/antigravity/brain/a99bbfcf-bb51-49e3-968d-cdd4fb6eee02/spine_app_preview_1765900064647.png)
+
+### New Features (Update)
+- **Mouse Controls**: Right-click drag to pan, Scroll to zoom.
+- **Resizable Viewport**: Drag edges of the animation view to resize.
+- **Background Image**: Upload local images as background.
+
+![Updated UI](file:///C:/Users/dangt/.gemini/antigravity/brain/a99bbfcf-bb51-49e3-968d-cdd4fb6eee02/spine_preview_ui_retry_1765902751094.png)
+
+2. Open `http://localhost:5173`.
+3. Upload a ZIP file containing `.json`, `.atlas`, and `.png` Spine exports.
+4. Use the sidebar controls to interact with the animation.
+
+## Next Steps
+- Add support for multiple texture pages (currently assumes single page).
+- Add support for binary `.skel` files.

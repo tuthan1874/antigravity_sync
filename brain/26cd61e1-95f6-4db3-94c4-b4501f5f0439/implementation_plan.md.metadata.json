@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Implementation plan for building an n8n workflow that integrates with Apify API using the google-search-scraper Actor. Includes two workflow variants (full and simplified), documentation requirements, and verification steps. Highlights important considerations about Apify API keys and pricing.",
+  "updatedAt":  "2026-01-03T15:57:28.071984700Z"
+}

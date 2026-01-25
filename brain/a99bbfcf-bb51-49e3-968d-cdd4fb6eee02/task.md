@@ -1,0 +1,28 @@
+# Spine 2D Preview App Implementation
+
+- [x] Initialize React + Vite + TypeScript project <!-- id: 0 -->
+- [x] Install dependencies (`spine-webgl`, `spine-core`, `jszip`, etc.) <!-- id: 1 -->
+- [x] Set up Project Structure as defined in README <!-- id: 2 -->
+- [x] Implement Spine Runtime Core (`spine/`) <!-- id: 3 -->
+    - [x] `SpineRuntime.ts`
+    - [x] `SpineRenderer.ts`
+    - [x] `types.ts`
+- [x] Implement React Hooks (`hooks/useSpinePlayer.ts`) <!-- id: 4 -->
+- [x] Implement UI Components (`components/`) <!-- id: 5 -->
+    - [x] `FileUpload.tsx`
+    - [x] `AnimationSelector.tsx`
+    - [x] `PlaybackControls.tsx`
+    - [x] `ViewControls.tsx`
+    - [x] `BackgroundControls.tsx`
+- [x] Assemble `App.tsx` and `main.tsx` <!-- id: 6 -->
+- [x] Styling and Polish <!-- id: 7 -->
+- [x] Verify functionality <!-- id: 8 -->
+- [x] Debug 'offset cannot be null' error <!-- id: 9 -->
+- [x] Debug Physics (bone dynamics) issue <!-- id: 10 -->
+- [x] Implement Mouse Controls (Right-click pan, Scroll zoom) <!-- id: 11 -->
+- [x] Implement Resizable Viewport <!-- id: 12 -->
+- [x] Implement Background Image Upload <!-- id: 13 -->
+- [x] Debug Background Transparency (fix gray overlay) <!-- id: 14 -->
+- [x] Implement Export Controls (GIF/MP4) <!-- id: 15 -->
+- [x] Implement Explicit Viewport Size Inputs <!-- id: 16 -->
+- [x] Setup GIF.js and Recording Logic <!-- id: 17 -->

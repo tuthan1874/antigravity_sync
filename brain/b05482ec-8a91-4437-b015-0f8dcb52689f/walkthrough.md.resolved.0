@@ -1,0 +1,23 @@
+# Walkthrough: UI UX Pro Max Skill Installation
+
+I have successfully installed the **UI UX Pro Max** skill in your project.
+
+## Changes Made
+
+### Initialization
+- Created [.agent/workflows/ui-ux-pro-max.md](file:///e:/TDC_App/UI%20UX%20max%20skill/.agent/workflows/ui-ux-pro-max.md): This file allows you to trigger the skill using the `/ui-ux-pro-max` command.
+- Created `.shared/ui-ux-pro-max/`: This directory contains the design database (styles, colors, fonts, and guidelines).
+
+## Verification Results
+
+### File Structure Check
+I have verified that the following paths exist and are populated:
+- [x] `e:\TDC_App\UI UX max skill\.agent\workflows\ui-ux-pro-max.md`
+- [x] `e:\TDC_App\UI UX max skill\.shared\ui-ux-pro-max\data`
+- [x] `e:\TDC_App\UI UX max skill\.shared\ui-ux-pro-max\scripts`
+
+### How to use
+You can now start using the skill by typing `/ui-ux-pro-max` followed by your request. For example:
+> `/ui-ux-pro-max Build a landing page for my SaaS product`
+
+The AI will automatically use the design intelligence from the database to provide a professional result.

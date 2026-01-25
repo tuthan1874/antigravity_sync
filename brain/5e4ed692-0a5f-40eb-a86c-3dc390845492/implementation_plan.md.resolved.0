@@ -1,0 +1,23 @@
+# Project Setup and Run Plan
+
+This plan outlines the steps to install dependencies and run the ATS_TDSolutions project locally.
+
+## Proposed Changes
+
+### Environment Setup
+- I will check the root directory for any missing [.env](file:///e:/TDC_App/ATS_TDSolutions-main/.env) variables compared to [server/env.example](file:///e:/TDC_App/ATS_TDSolutions-main/server/env.example).
+- Since there is already a [.env](file:///e:/TDC_App/ATS_TDSolutions-main/.env) file, I will leave it as is unless I encounter issues.
+
+### Dependency Installation
+- Run `npm install` to install all required dependencies listed in [package.json](file:///e:/TDC_App/ATS_TDSolutions-main/package.json).
+
+### Running the Project
+- Run `npm run dev` to start the development server. This will start the Vite server for the frontend and the Express server for the backend simultaneously.
+
+## Verification Plan
+
+### Manual Verification
+1.  Open the browser and navigate to the Vite dev server URL (likely `http://localhost:8085` as per [vite.config.ts](file:///e:/TDC_App/ATS_TDSolutions-main/vite.config.ts)).
+2.  Verify that the application loads and the Sign In page is visible.
+3.  Check the terminal logs to ensure the Express server has started correctly.
+4.  Optionally, test the `/api/ping` endpoint to verify the backend connection.

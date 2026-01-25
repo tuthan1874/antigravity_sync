@@ -1,0 +1,25 @@
+# Plan: Install UI UX Pro Max Skill
+
+This plan outlines the steps to install and configure the **UI UX Pro Max** skill for Antigravity in this project.
+
+## Proposed Changes
+
+### [Component] Installation Script
+
+We will use the official CLI to set up the skill.
+
+1.  **Install CLI**: Run `npm install -g uipro-cli` (or use `npx` if global install is not preferred).
+2.  **Initialize Skill**: Run `uipro init --ai antigravity` in the root directory `e:\TDC_App\UI UX max skill`.
+
+This will create the following structure:
+- `.agent/workflows/ui-ux-pro-max.md`: The main entry point for the skill.
+- `.shared/ui-ux-pro-max/`: The database containing styles, palettes, and guidelines.
+
+## Verification Plan
+
+### Automated Verification
+- Verify that `.agent/workflows/ui-ux-pro-max.md` exists.
+- Verify that `.shared/ui-ux-pro-max/` directory is not empty.
+
+### Manual Verification
+- The user can try invoking the skill using `/ui-ux-pro-max` followed by a design request (e.g., `/ui-ux-pro-max Build a SaaS landing page`).

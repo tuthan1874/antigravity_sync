@@ -1,0 +1,164 @@
+# Neomorphism UI Redesign Implementation Plan
+
+## Overview
+Transform the ATS application to follow the **Neomorphism/Soft UI** design system as specified in [style_guild.md](file:///e:/TDC_App/ATS_TDSolutions-main/style_guild.md). This redesign will create a modern, tactile interface with soft shadows, rounded corners, and a light neutral color palette with orange accents.
+
+## Key Design Changes
+
+### Color Palette
+- **Background**: Light beige (#f6f4ee) for the new login screen
+- **General Background**: Light gray (#E5E5E5) for the rest of the app
+- **Accent**: Orange (#FF9500) instead of blue
+- **Shadows**: Neomorphic dual shadows (dark + light) for the app, soft minimalist shadows for the login screen
+- **Typography**: Inter font family
+
+### Visual Style
+- **Shadows**: Multi-layered soft shadows for depth
+- **Borders**: Minimal use, replaced with shadow-based separation
+- **Radius**: Generous rounding (16px-32px)
+- **Spacing**: More generous padding and margins
+
+## Proposed Changes
+
+### Core Design System
+
+#### [MODIFY] [tailwind.config.ts](file:///e:/TDC_App/ATS_TDSolutions-main/tailwind.config.ts)
+- Add Neomorphism color palette
+- Add custom shadow utilities (raised, pressed, floating, subtle)
+- Add custom border radius values
+- Add Inter font family
+- Add custom animations (fadeInUp, scaleIn, bounce, pulse)
+
+#### [MODIFY] [global.css](file:///e:/TDC_App/ATS_TDSolutions-main/client/global.css)
+- Add CSS custom properties for Neomorphism
+- Define shadow system (--shadow-raised, --shadow-pressed, etc.)
+- Add gradient backgrounds
+- Create utility classes for Neomorphic components
+- Update base styles for light mode focus
+
+---
+
+### Component Library
+
+#### [MODIFY] [Button.tsx](file:///e:/TDC_App/ATS_TDSolutions-main/client/components/ui/button.tsx)
+- Update primary button: Dark (#2D3748) with raised shadow
+- Update secondary button: Light (#E5E5E5) with neomorphic shadow
+- Add hover states with translateY and enhanced shadows
+- Add active states with pressed (inset) shadows
+- Update border radius to 20px (pill-style)
+
+#### [MODIFY] [Input.tsx](file:///e:/TDC_App/ATS_TDSolutions-main/client/components/ui/input.tsx)
+- Change to inset shadow style
+- Update background to #E5E5E5
+- Add focus state with blue glow ring
+- Update border radius to 16px
+- Remove borders, use shadows only
+
+#### [MODIFY] [Card.tsx](file:///e:/TDC_App/ATS_TDSolutions-main/client/components/ui/card.tsx)
+- Update to neomorphic card style
+- Add multi-layered shadows
+- Update border radius to 24px
+- Add hover animation (translateY + enhanced shadow)
+- Remove borders
+
+#### [MODIFY] [Select.tsx](file:///e:/TDC_App/ATS_TDSolutions-main/client/components/ui/select.tsx)
+- Apply raised shadow style
+- Update background to #E5E5E5
+- Update border radius to 16px
+- Add hover state with floating shadow
+
+#### [MODIFY] [Checkbox.tsx](file:///e:/TDC_App/ATS_TDSolutions-main/client/components/ui/checkbox.tsx)
+- Apply inset shadow for unchecked state
+- Dark background (#2D3748) for checked state
+- Update border radius to 8px
+- Add smooth transitions
+
+#### [MODIFY] [Badge.tsx](file:///e:/TDC_App/ATS_TDSolutions-main/client/components/ui/badge.tsx)
+- Create soft variant with subtle shadow
+- Create solid variant with orange (#FF9500)
+- Update border radius to 20px (pill)
+- Add shadow effects
+
+#### [MODIFY] [Avatar.tsx](file:///e:/TDC_App/ATS_TDSolutions-main/client/components/ui/avatar.tsx)
+- Add neomorphic shadow
+- Optional gradient border for premium users
+- Ensure circular with proper shadows
+
+#### [MODIFY] [Tabs.tsx](file:///e:/TDC_App/ATS_TDSolutions-main/client/components/ui/tabs.tsx)
+- Container with inset shadow (#E5E5E5)
+- Active tab with raised shadow (#FFFFFF)
+- Inactive tabs with muted text
+- Update border radius to 16px (container), 12px (tabs)
+
+---
+
+### Layout Components
+
+#### [MODIFY] [Sidebar.tsx](file:///e:/TDC_App/ATS_TDSolutions-main/client/components/Sidebar.tsx)
+- Update background to #E5E5E5
+- Menu items with hover state (subtle shadow)
+- Active menu item with raised shadow and white background
+- Update border radius to 16px for menu items
+- Add subtle shadow to sidebar
+
+#### [MODIFY] [Layout.tsx](file:///e:/TDC_App/ATS_TDSolutions-main/client/components/Layout.tsx)
+- Update main background to #E5E5E5
+- Ensure proper spacing and padding
+- Add subtle background pattern if needed
+
+---
+
+### Page Updates
+
+#### [MODIFY] [SignIn.tsx](file:///e:/TDC_App/ATS_TDSolutions-main/client/pages/SignIn.tsx)
+- Redesign with a large central card (`rounded-[40px]`) on a beige background (#f6f4ee).
+- **Split Layout**: Left side for forms, right side for illustration.
+- **Illustration**: 3D cartoon character on a light cream background (#f1eee4).
+- **Google Login**: Styled as a pill button with a Google icon.
+- **Form Inputs**: Soft borders, rounded-neo-md, subtle focus states.
+- **Submit Button**: Dark/black background with pill shape (`rounded-full`).
+- **Typography**: Use "SignIn" and "Create your account" (inspiration shows "Create your account", but I'll keep "Sign In" title with similar style).
+- **Demo Logins**: Integrated into the soft minimalist style.
+
+#### [MODIFY] [AuthLayout.tsx](file:///e:/TDC_App/ATS_TDSolutions-main/client/components/AuthLayout.tsx)
+- Simplify to a flexible wrapper with the #f6f4ee background.
+- Remove hardcoded blue gradient.
+
+#### [MODIFY] [Home.tsx](file:///e:/TDC_App/ATS_TDSolutions-main/client/pages/Home.tsx)
+- Update KPI cards with neomorphic style
+- Apply new shadows and border radius
+- Update chart containers
+- Ensure consistent spacing
+
+#### Other Pages
+- Apply neomorphic card styles consistently
+- Update all buttons, inputs, and interactive elements
+- Ensure proper spacing and shadows throughout
+
+## Verification Plan
+
+### Visual Testing
+1. Test all component states (default, hover, active, disabled)
+2. Verify shadow consistency across all components
+3. Check border radius consistency
+4. Verify color palette application
+
+### Browser Testing
+1. Open application in browser
+2. Navigate through all major pages
+3. Test interactive elements (buttons, inputs, forms)
+4. Verify responsive behavior
+5. Take screenshots for walkthrough
+
+### Accessibility
+1. Verify color contrast meets WCAG AA standards
+2. Test focus indicators
+3. Ensure shadows don't interfere with usability
+
+## Notes
+
+> [!IMPORTANT]
+> This is a comprehensive visual redesign. The changes are primarily CSS-based and should not affect functionality. However, thorough testing is recommended to ensure all interactive elements work correctly with the new styles.
+
+> [!TIP]
+> The Neomorphism style works best in light mode. Dark mode support can be added later if needed, but the primary focus is on the light theme as specified in the style guide.

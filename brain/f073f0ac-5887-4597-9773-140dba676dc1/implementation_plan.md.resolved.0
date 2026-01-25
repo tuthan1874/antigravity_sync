@@ -1,0 +1,32 @@
+# Plan: Run Planka with Docker Compose
+
+This plan outlines the steps to run the Planka project using Docker Compose to view the original interface.
+
+## Proposed Steps
+
+1. **Prepare Environment Variables**: Create a `.env` file based on the requirements of [docker-compose.yml](file:///e:/TDC_App/planka-master/docker-compose.yml).
+2. **Start Services**: Run `docker-compose up -d` to start the Planka and PostgreSQL containers.
+3. **Verify Access**: Access the application via `http://localhost:3000`.
+4. **Login**: Use the default admin credentials if configured, or register a new account.
+
+## Details
+
+### .env Configuration
+We will use the following values for the `.env` file:
+```env
+BASE_URL=http://localhost:3000
+DATABASE_URL=postgresql://postgres@postgres/planka
+SECRET_KEY=notsecretkey
+DEFAULT_ADMIN_EMAIL=demo@demo.demo
+DEFAULT_ADMIN_PASSWORD=demo
+DEFAULT_ADMIN_NAME=Demo Demo
+DEFAULT_ADMIN_USERNAME=demo
+```
+
+## Verification Plan
+
+### Manual Verification
+- Run `docker compose up -d`.
+- Check if containers are running using `docker compose ps`.
+- Open `http://localhost:3000` in the browser.
+- Login with `demo@demo.demo` / `demo`.

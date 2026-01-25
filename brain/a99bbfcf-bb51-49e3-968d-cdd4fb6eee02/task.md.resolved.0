@@ -1,0 +1,19 @@
+# Spine 2D Preview App Implementation
+
+- [ ] Initialize React + Vite + TypeScript project <!-- id: 0 -->
+- [ ] Install dependencies (`spine-webgl`, `spine-core`, `jszip`, etc.) <!-- id: 1 -->
+- [ ] Set up Project Structure as defined in README <!-- id: 2 -->
+- [ ] Implement Spine Runtime Core (`spine/`) <!-- id: 3 -->
+    - [ ] `SpineRuntime.ts`
+    - [ ] `SpineRenderer.ts`
+    - [ ] `types.ts`
+- [ ] Implement React Hooks (`hooks/useSpinePlayer.ts`) <!-- id: 4 -->
+- [ ] Implement UI Components (`components/`) <!-- id: 5 -->
+    - [ ] `FileUpload.tsx`
+    - [ ] `AnimationSelector.tsx`
+    - [ ] `PlaybackControls.tsx`
+    - [ ] `ViewControls.tsx`
+    - [ ] `BackgroundControls.tsx`
+- [ ] Assemble `App.tsx` and `main.tsx` <!-- id: 6 -->
+- [ ] Styling and Polish <!-- id: 7 -->
+- [ ] Verify functionality <!-- id: 8 -->

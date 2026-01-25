@@ -1,0 +1,31 @@
+# Project Setup Walkthrough
+
+I have successfully set up and started the **ATS_TDSolutions** project.
+
+## Steps Accomplished
+
+1.  **Explored Project Structure**: Identified the project as a Vite-React frontend with an integrated Express backend.
+2.  **Installed Dependencies**: Ran `npm install` to install all required packages.
+3.  **Started Development Server**: Executed `npm run dev`, starting the application on `http://localhost:8085`.
+4.  **Verified Application**: Used a browser subagent to confirm the application loads correctly.
+
+## Verification Results
+
+### Login Page
+The application is accessible at `http://localhost:8085/`. The login page displays correctly with "Sign In" options and a logo.
+
+![Login Page](file:///C:/Users/dangt/.gemini/antigravity/brain/5e4ed692-0a5f-40eb-a86c-3dc390845492/login_page_1768832589171.png)
+
+### Demo Credentials
+Based on the source code in [SignIn.tsx](file:///e:/TDC_App/ATS_TDSolutions-main/client/pages/SignIn.tsx), you can use the following demo credentials to explore the application:
+
+| Role | Email | Password |
+| :--- | :--- | :--- |
+| **Admin** | `admin@tdsolutions.com` | `admin123` |
+| **HR** | `hr@tdsolutions.com` | `hr123` |
+| **Hiring Manager (Eng)** | `hiring@tdsolutions.com` | `hiring123` |
+| **Hiring Manager (Sales)** | `hmsales@tdsolutions.com` | `hiring123` |
+| **Viewer** | `viewer@tdsolutions.com` | `viewer123` |
+
+## Resources
+- [Recording of Verification](file:///C:/Users/dangt/.gemini/antigravity/brain/5e4ed692-0a5f-40eb-a86c-3dc390845492/verify_app_load_1768832508648.webp)

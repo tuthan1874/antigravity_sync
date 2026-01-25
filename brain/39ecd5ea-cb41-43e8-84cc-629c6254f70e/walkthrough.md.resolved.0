@@ -1,0 +1,23 @@
+# Project Setup Walkthrough
+
+I have successfully cloned and started the TD Games Career Portal project.
+
+## Steps Taken
+
+1.  **Cloning**: Cloned the repository from `https://github.com/tdgamesvn/td-games-career-portal.git` into `e:\TDC_App\hiring_tdgames`.
+2.  **Installation**: Installed dependencies using `npm install`.
+3.  **Execution**: Started the development server using `npm run dev`.
+4.  **Verification**: Verified that the application is running at `http://localhost:8080/`.
+
+## Screenshots
+
+![TD Games Career Portal](file:///C:/Users/dangt/.gemini/antigravity/brain/39ecd5ea-cb41-43e8-84cc-629c6254f70e/portal_homepage_1769142822148.png)
+
+## Project Information
+
+- **Technology Stack**: Vite, React, TypeScript, Tailwind CSS, shadcn-ui.
+- **Backend**: The form submissions are handled via an n8n webhook (`https://n8n.tdconsulting.vn/webhook/tdgames-apply`).
+- **Features**: 
+    - Job application form for Full-time, Part-time, and Freelance positions.
+    - Personal info, professional info, portfolio links, and resume upload.
+    - Success modal after submission.

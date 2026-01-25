@@ -1,0 +1,38 @@
+# Hướng dẫn sử dụng Planka qua Docker Compose
+
+Bạn đã khởi động thành công dự án Planka bằng Docker Compose. Dưới đây là các bước để bạn bắt đầu khám phá giao diện gốc của ứng dụng.
+
+## Cách Truy Cập
+
+1. Mở trình duyệt web của bạn.
+2. Truy cập vào địa chỉ: [http://localhost:3000](http://localhost:3000)
+
+## Thông Tin Đăng Nhập Mặc Định
+
+Sử dụng tài khoản quản trị (admin) sau đây để đăng nhập:
+
+- **Email**: `demo@demo.demo`
+- **Mật khẩu**: `demo`
+
+> [!NOTE]
+> Các thông tin này đã được thiết lập tự động trong file [.env](file:///e:/TDC_App/planka-master/.env) mà tôi vừa tạo.
+
+## Kiểm tra trạng thái hệ thống
+
+Nếu bạn muốn kiểm tra xem các dịch vụ có đang chạy ổn định hay không, bạn có thể chạy lệnh sau trong terminal:
+
+```powershell
+docker compose ps
+```
+
+Kết quả mong đợi:
+- `planka-master-planka-1`: trạng thái `Up` (hoặc `healthy`)
+- `planka-master-postgres-1`: trạng thái `Up` (hoặc `healthy`)
+
+## Các tính năng chính để thử nghiệm
+
+- **Kanban Boards**: Tạo board mới và thử kéo thả thẻ.
+- **Markdown**: Thử viết mô tả cho thẻ bằng Markdown.
+- **Real-time**: Thử mở ứng dụng trên hai tab trình duyệt khác nhau để xem sự đồng bộ tức thì.
+
+Chúc bạn có trải nghiệm tốt với Planka!

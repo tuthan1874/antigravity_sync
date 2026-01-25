@@ -1,0 +1,161 @@
+# 🗄️ Database Schema Summary
+
+> Generated based on [plan.md](file:///e:/TDC_App/Task%20Management/plan.md)
+
+---
+
+## Migration Files Created
+
+| # | File | Description |
+|---|------|-------------|
+| 000 | [000_combined_migration.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/000_combined_migration.sql) | **Single-file deployment** (all-in-one) |
+| 001 | [001_uuid_v7_function.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/001_uuid_v7_function.sql) | UUID v7 generator (time-ordered) |
+| 002 | [002_enum_types.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/002_enum_types.sql) | All ENUM types |
+| 003 | [003_tables.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/003_tables.sql) | 10 tables with indexes |
+| 004 | [004_profile_trigger.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/004_profile_trigger.sql) | Auto-create profile on signup |
+| 005 | [005_activity_log_trigger.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/005_activity_log_trigger.sql) | Task audit logging |
+| 006 | [006_updated_at_trigger.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/006_updated_at_trigger.sql) | Auto-update timestamps |
+| 007 | [007_enable_rls.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/007_enable_rls.sql) | Enable RLS on all tables |
+| 008 | [008_rls_profiles.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/008_rls_profiles.sql) | Profiles RLS policies |
+| 009 | [009_rls_workspaces.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/009_rls_workspaces.sql) | Workspaces RLS policies |
+| 010 | [010_rls_members.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/010_rls_members.sql) | Members RLS policies |
+| 011 | [011_rls_tasks.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/011_rls_tasks.sql) | Tasks RLS (Business Plus) |
+| 012 | [012_rls_tags.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/012_rls_tags.sql) | Tags RLS policies |
+| 013 | [013_rls_task_tags.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/013_rls_task_tags.sql) | Task_tags junction RLS |
+| 014 | [014_rls_comments.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/014_rls_comments.sql) | Comments RLS policies |
+| 015 | [015_rls_checklists.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/015_rls_checklists.sql) | Checklists RLS policies |
+| 016 | [016_rls_attachments.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/016_rls_attachments.sql) | Attachments RLS (polymorphic) |
+| 017 | [017_rls_activity_logs.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/017_rls_activity_logs.sql) | Activity logs (immutable) |
+| 018 | [018_workspace_member_trigger.sql](file:///e:/TDC_App/Task%20Management/supabase/migrations/018_workspace_member_trigger.sql) | Auto-add creator as admin |
+
+---
+
+## Tables Overview
+
+```mermaid
+erDiagram
+    auth_users ||--|| profiles : "1:1 trigger"
+    profiles ||--o{ workspaces : "owner_id"
+    profiles ||--o{ members : "user_id"
+    profiles ||--o{ tasks : "assignee/creator"
+    profiles ||--o{ comments : "user_id"
+    profiles ||--o{ attachments : "uploaded_by"
+    profiles ||--o{ activity_logs : "performed_by"
+    
+    workspaces ||--o{ members : "workspace_id"
+    workspaces ||--o{ tasks : "workspace_id"
+    workspaces ||--o{ tags : "workspace_id"
+    workspaces ||--o{ activity_logs : "workspace_id"
+    
+    tasks ||--o{ tasks : "parent_id (subtasks)"
+    tasks ||--o{ task_tags : "task_id"
+    tasks ||--o{ comments : "task_id"
+    tasks ||--o{ checklists : "task_id"
+    tasks ||--o{ attachments : "entity_id"
+    
+    tags ||--o{ task_tags : "tag_id"
+    
+    comments ||--o{ attachments : "entity_id"
+```
+
+---
+
+## RLS Policy Summary
+
+### Business Plus Visibility (Tasks)
+
+| Role | Can See |
+|------|---------|
+| **Admin** | All tasks in workspace |
+| **Manager** | All tasks in workspace |
+| **Member** | Only assigned tasks + created tasks |
+| **Guest** | Only assigned tasks + created tasks |
+
+### Policy Matrix
+
+| Table | SELECT | INSERT | UPDATE | DELETE |
+|-------|--------|--------|--------|--------|
+| `profiles` | Own + workspace members | ❌ Trigger only | Own only | ❌ |
+| `workspaces` | Members only | Auth user (self owner) | Owner/Admin | Owner only |
+| `members` | Same workspace | Self=guest, Admin=any | Admin only | Admin (not owner) |
+| `tasks` | Business Plus rules | Workspace member | Assignee/Creator/Admin | Creator/Admin |
+| `tags` | Workspace member | Admin/Manager | Admin/Manager | Admin/Manager |
+| `task_tags` | Task access | Task access | - | Task access |
+| `comments` | Task access | Task access | Author only | Author/Admin |
+| `checklists` | Task access | Task access | Task access | Task access/Admin |
+| `attachments` | Entity access | Entity access | ❌ Immutable | Uploader/Admin |
+| `activity_logs` | Workspace member | ❌ Trigger only | ❌ Immutable | ❌ Immutable |
+
+---
+
+## Triggers
+
+| Trigger | Table | Event | Action |
+|---------|-------|-------|--------|
+| `on_auth_user_created` | `auth.users` | AFTER INSERT | Create `profiles` row |
+| `on_workspace_created` | `workspaces` | AFTER INSERT | Add creator as `admin` member |
+| `task_audit_insert` | `tasks` | AFTER INSERT | Log to `activity_logs` |
+| `task_audit_update` | `tasks` | AFTER UPDATE | Log to `activity_logs` |
+| `task_audit_delete` | `tasks` | BEFORE DELETE | Log to `activity_logs` |
+| `set_tasks_updated_at` | `tasks` | BEFORE UPDATE | Update `updated_at` |
+
+---
+
+## Helper Functions
+
+| Function | Purpose |
+|----------|---------|
+| `uuid_generate_v7()` | Generate time-ordered UUID v7 |
+| `is_workspace_member(workspace_id)` | Check if user is member |
+| `is_workspace_admin_or_manager(workspace_id)` | Check if user has elevated role |
+| `can_access_task(task_id)` | Check task visibility |
+| `can_access_attachment_entity(type, id)` | Polymorphic entity access |
+| `get_attachment_workspace_id(type, id)` | Get workspace from entity |
+
+---
+
+## Deployment
+
+### Option 1: Single File (Recommended)
+```bash
+# Copy contents of 000_combined_migration.sql to Supabase SQL Editor
+# Or use Supabase CLI:
+supabase db push
+```
+
+### Option 2: Individual Migrations
+```bash
+# Run migrations in order (001 → 018)
+# Each file is self-contained
+```
+
+### Post-Deployment Verification
+```sql
+-- Check all tables exist
+SELECT table_name FROM information_schema.tables 
+WHERE table_schema = 'public';
+
+-- Check RLS is enabled
+SELECT tablename, rowsecurity FROM pg_tables 
+WHERE schemaname = 'public';
+
+-- Check triggers
+SELECT trigger_name, event_object_table FROM information_schema.triggers 
+WHERE trigger_schema = 'public';
+```
+
+---
+
+## Compliance Checklist
+
+| Requirement | Status |
+|-------------|--------|
+| UUID v7 for all PKs | ✅ |
+| Soft delete (workspaces, tasks, comments) | ✅ |
+| TipTap JSON for rich text | ✅ |
+| Profile auto-creation | ✅ |
+| Activity log immutability | ✅ |
+| Business Plus visibility | ✅ |
+| RLS before API exposure | ✅ |
+| No Supabase Storage | ✅ (R2 key only) |
+| Default `deleted_at IS NULL` filter | ✅ |

@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_OTHER",
+  "summary": "Comprehensive system architecture document for Task Management App covering:\n1. Overall system architecture diagram (Frontend/Supabase/n8n/R2)\n2. Detailed data flows with sequence diagrams for Auth, Task CRUD, File Upload, and Activity Logging\n3. Security boundaries with trust zones and RLS policy matrix\n4. Key security invariants and realtime subscription security",
+  "updatedAt": "2026-01-14T13:52:09.650007400Z"
+}

@@ -1,0 +1,162 @@
+# Hướng dẫn chi tiết Self-host Open WebUI trên VPS Ubuntu
+
+Tài liệu này hướng dẫn cài đặt từ con số 0, sử dụng **Docker Compose** để dễ quản lý, kết nối trực tiếp với **OpenRouter** và cấu hình **Nginx + SSL**.
+
+## 1. Chuẩn bị thư mục dự án
+
+Bạn nên tạo một thư mục riêng để lưu trữ cấu hình và dữ liệu của Open WebUI.
+
+```bash
+# Tạo thư mục dự án
+mkdir -p ~/open-webui
+cd ~/open-webui
+```
+
+---
+
+## 2. Cấu hình Docker Compose
+
+Sử dụng `docker-compose.yml` sẽ giúp bạn dễ dàng cập nhật API Key hoặc cấu hình sau này mà không cần gõ lại lệnh dài.
+
+### Bước 1: Tạo file `docker-compose.yml`
+```bash
+nano docker-compose.yml
+```
+
+### Bước 2: Dán nội dung sau vào file:
+*(Lưu ý: Thay `sk-or-v1-xxxxxx` bằng key của bạn)*
+
+```yaml
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    restart: always
+    ports:
+      - "8081:8080" # Dùng port 8081 để tránh xung đột với các app khác
+    environment:
+      - OPENAI_API_BASE_URL=https://openrouter.ai/api/v1
+      - OPENAI_API_KEY=sk-or-v1-xxxxxx
+      - ENABLE_OLLAMA=False # Không dùng Ollama local
+    volumes:
+      - open-webui-data:/app/backend/data
+
+volumes:
+  open-webui-data:
+```
+
+### Bước 3: Khởi chạy container
+```bash
+docker compose up -d
+```
+Kiểm tra trạng thái: `docker ps`. Bạn sẽ thấy container `open-webui` đang chạy trên port `8081`.
+
+---
+
+## 3. Cấu hình Nginx Reverse Proxy
+
+Trỏ domain `chat.tdconsulting.vn` về container đang chạy.
+
+### Bước 1: Tạo file cấu hình Nginx
+```bash
+sudo nano /etc/nginx/sites-available/chat.tdconsulting.vn
+```
+
+### Bước 2: Nội dung file cấu hình:
+```nginx
+server {
+    listen 80;
+    server_name chat.tdconsulting.vn;
+
+    location / {
+        proxy_pass http://127.0.0.1:8081; # Port này phải khớp với docker-compose
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # Cấu hình cho WebSockets
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        
+        proxy_read_timeout 300;
+    }
+}
+```
+
+### Bước 3: Kích hoạt và Restart Nginx
+```bash
+sudo ln -s /etc/nginx/sites-available/chat.tdconsulting.vn /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl restart nginx
+```
+
+---
+
+## 4. Cài đặt SSL (HTTPS) bằng Certbot
+
+```bash
+sudo certbot --nginx -d chat.tdconsulting.vn
+```
+Chọn `2` nếu Certbot hỏi có muốn tự động Redirect từ HTTP sang HTTPS không.
+
+---
+
+## 5. Tích hợp n8n để cập nhật tri thức (Real-time)
+
+Để đẩy dữ liệu từ n8n lên Open WebUI trên VPS, bạn cần sử dụng các API endpoint sau:
+
+### Bước 1: Lấy API Key
+1. Truy cập `https://chat.tdconsulting.vn`.
+2. Vào **Settings > Account** và nhấn **Generate** để lấy API Key.
+
+### Bước 2: Cấu hình n8n HTTP Request
+
+| Thông số | Giá trị |
+| :--- | :--- |
+| **Method** | `POST` |
+| **URL (Upload file)** | `https://chat.tdconsulting.vn/api/v1/files/` |
+| **URL (Thêm vào Knowledge)** | `https://chat.tdconsulting.vn/api/v1/knowledge/<ID>/file/add` |
+| **Headers** | `Authorization: Bearer <YOUR_API_KEY>` |
+
+> [!TIP]
+> Do n8n và Open WebUI cùng nằm trên một VPS, bạn có thể dùng URL mạng nội bộ (Internal) để nhanh hơn và bảo mật hơn: `http://127.0.0.1:8081/api/v1/files/`.
+
+---
+
+## 6. Sử dụng Cloudflare R2 làm Storage (Tùy chọn)
+
+Bạn hoàn toàn có thể dùng Cloudflare R2 để lưu trữ file, ảnh... thay vì dùng ổ cứng VPS.
+
+### Ưu và nhược điểm
+- **Ưu điểm:** Dung lượng vô hạn, không lo đầy ổ cứng VPS, dễ dàng migrate server sau này.
+- **Nhược điểm:** Tốc độ upload/download chậm hơn một chút so với SSD local (do độ trễ mạng), cấu hình phức tạp hơn.
+- **Tác động tốc độ:** R2 **không làm chậm việc chat**, vì tin nhắn chat lưu trong Database (SQLite/Postgres). Nó chỉ ảnh hưởng nhẹ khi bạn upload tài liệu lớn hoặc load ảnh.
+
+### Cấu hình trong `docker-compose.yml`:
+Thêm các biến môi trường sau vào service `open-webui`:
+
+```yaml
+    environment:
+      # ... các biến cũ ...
+      - STORAGE_PROVIDER=s3
+      - S3_ENDPOINT_URL=https://<YOUR_ACCOUNT_ID>.r2.cloudflarestorage.com
+      - S3_ACCESS_KEY_ID=<YOUR_R2_ACCESS_KEY>
+      - S3_SECRET_ACCESS_KEY=<YOUR_R2_SECRET_KEY>
+      - S3_BUCKET_NAME=<YOUR_BUCKET_NAME>
+      - S3_REGION_NAME=auto
+      - S3_USE_ACCELERATE_ENDPOINT=False # Quan trọng: R2 không hỗ trợ tagging
+```
+
+---
+
+## 7. Tổng kết các thông số VPS hiện tại
+Dựa trên danh sách Docker của bạn, hệ thống sẽ như sau:
+- **n8n**: Port 5678
+- **NocoDB**: Port 8089
+- **Qdrant**: Port 6333
+- **Matcher App**: Port 8000
+- **Open WebUI**: Port 8081 (Nội bộ) -> **https://chat.tdconsulting.vn** (Công khai)
+
+Bây giờ bạn đã có một hệ thống AI hoàn chỉnh có thể tự động cập nhật kiến thức từ n8n!

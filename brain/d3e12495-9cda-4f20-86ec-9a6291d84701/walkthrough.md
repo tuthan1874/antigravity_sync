@@ -1,0 +1,45 @@
+# Walkthrough - Spine Animation Portfolio
+
+I have successfully built the Portfolio Animation Spine Website. The application allows you to upload Spine exports (.zip), organizes them in a gallery, and lets you view the animations using the official Spine Web Player.
+
+## Features Implemented
+
+### 1. Project Initialization
+- **Stack**: React, Vite, TypeScript, Tailwind CSS.
+- **Architecture**: Client-side only, using IndexedDB for storage.
+
+### 2. Storage Layer
+- **IndexedDB**: Used `idb-keyval` to store large blobs (images, atlases, JSONs).
+- **Service**: `storageService` handles saving, retrieving, and listing projects.
+- **Hooks**: `useProjects` hook manages the state and loading of projects.
+
+### 3. Upload & Parsing
+- **ZIP Parser**: `parserService` extracts `.json` (or `.skel`), `.atlas`, and `.png` files from uploaded ZIPs.
+- **Validation**: Ensures all required files are present before saving.
+- **UI**: Drag & Drop zone with visual feedback.
+
+### 4. Gallery & Viewer
+- **Gallery**: Grid layout displaying uploaded projects.
+- **Viewer**: integrated `@esotericsoftware/spine-player` to render animations.
+- **Asset Handling**: Dynamically creates Blob URLs for the Spine Player to load assets from IndexedDB.
+
+## How to Verify
+
+1. **Start the App**:
+   ```bash
+   npm run dev
+   ```
+2. **Open Browser**: Go to `http://localhost:5173`.
+3. **Upload**:
+   - Prepare a ZIP file containing a Spine export (e.g., `hero.json`, `hero.atlas`, `hero.png`).
+   - Drag and drop it into the upload zone.
+4. **View**:
+   - Click "View" on the project card.
+   - The Spine Player should load and play the animation.
+5. **Persistence**:
+   - Refresh the page. The project should still be there.
+
+## Next Steps
+- Add thumbnail generation (currently uses a placeholder or requires manual implementation).
+- Add more robust error handling for complex Spine versions.
+- Implement "Delete" confirmation.

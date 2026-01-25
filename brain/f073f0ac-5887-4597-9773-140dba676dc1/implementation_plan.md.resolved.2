@@ -1,0 +1,41 @@
+# Plan: Upgrade Permission System (ClickUp Business Plus)
+
+This plan outlines the steps to upgrade the permission system by refining User roles and introducing permission levels for Card Memberships.
+
+## Proposed Changes
+
+### [Server] Database Migration
+#### [NEW] [Migration File](file:///e:/TDC_App/planka-master/server/db/migrations/YYYYMMDDHHMMSS_add_permission_level_to_card_membership.js)
+- Update `user_account` table:
+  - Ensure `role` allows 'admin', 'member', 'guest'.
+  - Set default value of `role` to 'member'.
+- Update `card_membership` table:
+  - Add `permission_level` column with type `text`.
+  - Set default value to 'edit'.
+
+### [Server] Models
+#### [MODIFY] [User.js](file:///e:/TDC_App/planka-master/server/api/models/User.js)
+- Ensure `role` attribute has `defaultsTo: User.Roles.MEMBER`.
+
+#### [MODIFY] [CardMembership.js](file:///e:/TDC_App/planka-master/server/api/models/CardMembership.js)
+- Add `Roles` constant: `EDIT: 'edit'`, `COMMENT_ONLY: 'commentOnly'`.
+- Add `permissionLevel` attribute:
+  - Type: `string`
+  - Enum: `['edit', 'commentOnly']`
+  - Default: `edit`
+
+### [Server] Controllers
+#### [MODIFY] [create.js](file:///e:/TDC_App/planka-master/server/api/controllers/card-memberships/create.js)
+- Allow accepting `permissionLevel` in inputs.
+
+#### [NEW] [update.js](file:///e:/TDC_App/planka-master/server/api/controllers/card-memberships/update.js)
+- Create controller to update `permissionLevel` of a card membership.
+
+## Verification Plan
+
+### Manual Verification
+1. **User Role Default**: Register a new user and verify their role is 'member' by default.
+2. **Card Membership Permission**:
+   - Add a user to a card with 'edit' permission.
+   - Add a user to a card with 'commentOnly' permission.
+   - Check database to see `permission_level` values.

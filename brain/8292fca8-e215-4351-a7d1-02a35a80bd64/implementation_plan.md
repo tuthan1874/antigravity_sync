@@ -1,0 +1,235 @@
+# Task Manager UI Design - Implementation Plan
+
+Internal productivity-focused task management app with dense, readable UI.
+
+## Design System
+
+### Color Palette (SaaS Standard)
+
+| Role | Hex | Usage |
+|------|-----|-------|
+| Primary | `#2563EB` | Buttons, links, focus rings |
+| Primary Hover | `#1D4ED8` | Button hover states |
+| CTA/Urgent | `#F97316` | Urgent tasks, CTA buttons |
+| Background | `#F8FAFC` | Page background |
+| Surface | `#FFFFFF` | Cards, panels |
+| Sidebar | `#0F172A` | Dark sidebar background |
+| Text | `#1E293B` | Primary text |
+| Muted | `#64748B` | Secondary text |
+| Border | `#E2E8F0` | Dividers, borders |
+| Success | `#22C55E` | Done status |
+| Warning | `#EAB308` | In progress |
+| Error | `#EF4444` | Overdue, errors |
+
+### Typography
+
+- **Font**: Inter (system-ui fallback)
+- **Scale**: 12px (xs), 13px (sm), 14px (base), 16px (lg), 20px (xl)
+- **Dense mode**: Use `text-sm` as default body text
+
+---
+
+## 1. App Shell
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ ┌──────────┐ ┌─────────────────────────────────────────────┐│
+│ │ Sidebar  │ │ Topbar                                      ││
+│ │          │ ├─────────────────────────────────────────────┤│
+│ │ - Logo   │ │                                             ││
+│ │ - Nav    │ │           Content Area                      ││
+│ │ - Quick  │ │                                             ││
+│ │   Action │ │                                             ││
+│ │          │ │                                             ││
+│ └──────────┘ └─────────────────────────────────────────────┘│
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Sidebar (240px, collapsed 64px)
+- Dark background (`#0F172A`)
+- Logo + workspace name (top)
+- Navigation links with icons (Lucide)
+- Collapsible to icon-only mode
+- Quick action button (+ New Task)
+
+### Topbar (48px height)
+- Breadcrumb navigation (left)
+- Global search (center-left)
+- User menu + notifications (right)
+- Dense: No unnecessary spacing
+
+---
+
+## 2. Task List (Table + Filters)
+
+### Layout
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ Filters Bar                                        [+ Task] │
+│ ┌──────┐ ┌────────┐ ┌──────────┐ ┌─────────────────────────┐│
+│ │Status│ │Priority│ │Assignee ▾│ │🔍 Search tasks...       ││
+│ └──────┘ └────────┘ └──────────┘ └─────────────────────────┘│
+├─────────────────────────────────────────────────────────────┤
+│ [✓] Title                 Status   Priority  Assignee  Due  │
+├─────────────────────────────────────────────────────────────┤
+│ [ ] Design homepage       Todo     High      @Alice    2d   │
+│ [ ] API integration       Progress Medium    @Bob      5d   │
+│ [✓] Setup database        Done     Low       @Alice    —    │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Components
+
+| Component | Description |
+|-----------|-------------|
+| `TaskTable` | Main data table with sortable columns |
+| `TaskRow` | Clickable row, opens detail panel |
+| `FilterBar` | Status/Priority/Assignee dropdowns + search |
+| `StatusBadge` | Pill with color (Todo=gray, Progress=yellow, Done=green) |
+| `PriorityBadge` | Colored text (Low=gray, Medium=blue, High=orange, Urgent=red) |
+| `AvatarGroup` | Stacked avatars for assignee |
+| `BulkActions` | Selected tasks actions (hidden until selection) |
+
+### Dense Table Design
+- Row height: 40px
+- Font size: 13px (`text-sm`)
+- Padding: `py-2 px-3`
+- Hover: `bg-slate-50`
+- Border: Bottom only (`border-b border-slate-200`)
+
+---
+
+## 3. Task Detail (Slide-over Panel)
+
+Opens from right side, 480px width.
+
+```
+┌────────────────────────────────────────────────┐
+│ [←] Task Detail                          [···] │
+├────────────────────────────────────────────────┤
+│ ┌────────────────────────────────────────────┐ │
+│ │ Design homepage for v2 launch              │ │
+│ └────────────────────────────────────────────┘ │
+│                                                │
+│ Status: [Todo ▾]     Priority: [High ▾]       │
+│ Assignee: [@Alice ▾]  Due: [Jan 20 📅]        │
+│                                                │
+│ ─────────────────────────────────────────────  │
+│ Description                                    │
+│ ┌────────────────────────────────────────────┐ │
+│ │ Rich text editor (TipTap)                  │ │
+│ └────────────────────────────────────────────┘ │
+│                                                │
+│ ─────────────────────────────────────────────  │
+│ Subtasks (2/5)                         [+ Add] │
+│ ☐ Create wireframes                            │
+│ ☐ Design mockups                               │
+│ ☑ Get approval                                 │
+│                                                │
+│ ─────────────────────────────────────────────  │
+│ Comments                                       │
+│ ┌────────────────────────────────────────────┐ │
+│ │ @Bob: Looking good! · 2h ago               │ │
+│ └────────────────────────────────────────────┘ │
+│ ┌────────────────────────────────────────────┐ │
+│ │ Write a comment...                    [→]  │ │
+│ └────────────────────────────────────────────┘ │
+└────────────────────────────────────────────────┘
+```
+
+### Components
+
+| Component | Description |
+|-----------|-------------|
+| `TaskPanel` | Slide-over container with backdrop |
+| `TaskHeader` | Title (editable), close button, menu |
+| `TaskProperties` | Grid of status, priority, assignee, dates |
+| `TaskDescription` | TipTap rich text (view/edit) |
+| `ChecklistSection` | Subtask list with progress |
+| `CommentsSection` | Comment list + composer |
+| `ActivityTimeline` | Recent changes (optional) |
+
+---
+
+## 4. Activity Log View
+
+Dedicated page for workspace activity.
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ Activity Log                               [Filter ▾] 🔍    │
+├─────────────────────────────────────────────────────────────┤
+│ Today                                                       │
+│ ├─ 🔵 Alice created "Design homepage" · 2h ago             │
+│ ├─ 🟢 Bob completed "API integration" · 3h ago             │
+│ └─ 🟡 Alice changed status of "Setup" to In Progress · 4h  │
+│                                                             │
+│ Yesterday                                                   │
+│ ├─ 💬 Bob commented on "Design homepage" · 1d ago          │
+│ └─ 👤 Charlie joined the workspace · 1d ago                │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Components
+
+| Component | Description |
+|-----------|-------------|
+| `ActivityFeed` | Grouped timeline by day |
+| `ActivityItem` | Icon + text + timestamp |
+| `ActivityFilter` | Type/User/Date range |
+
+---
+
+## Proposed Changes
+
+### [MODIFY] [globals.css](file:///e:/TDC_App/Task%20Management/web/src/styles/globals.css)
+- Update CSS variables with new color palette
+- Add Inter font import
+- Add utility classes for dense mode
+
+### [NEW] [AppShell.tsx](file:///e:/TDC_App/Task%20Management/web/src/shared/components/layout/AppShell.tsx)
+- New flexible shell with collapsible sidebar
+
+### [MODIFY] [Sidebar.tsx](file:///e:/TDC_App/Task%20Management/web/src/shared/components/layout/Sidebar.tsx)
+- Dark theme, collapse logic, improved navigation
+
+### [MODIFY] [Header.tsx](file:///e:/TDC_App/Task%20Management/web/src/shared/components/layout/Header.tsx)
+- Compact topbar with breadcrumbs
+
+### [NEW] Task UI Components
+- `TaskTable.tsx` - Data table with sorting
+- `TaskRow.tsx` - Table row component
+- `FilterBar.tsx` - Filter controls
+- `StatusBadge.tsx`, `PriorityBadge.tsx` - Status indicators
+- `TaskPanel.tsx` - Slide-over detail view
+- `ChecklistSection.tsx` - Subtasks UI
+- `CommentsSection.tsx` - Comments UI
+
+### [NEW] Activity Components
+- `ActivityFeed.tsx` - Timeline container
+- `ActivityItem.tsx` - Single activity entry
+- `ActivityPage.tsx` - Full page view
+
+---
+
+## Verification Plan
+
+### Browser Testing
+1. Run `npm run dev` in `e:\TDC_App\Task Management\web`
+2. Navigate to `http://localhost:3000/`
+3. Login and navigate to a workspace
+4. Verify:
+   - Sidebar collapses on click
+   - Task table displays with all columns
+   - Clicking row opens slide-over panel
+   - Filters update table content
+   - Activity page shows timeline
+
+### Visual Checklist
+- [ ] Dark sidebar with sufficient contrast
+- [ ] Dense table is readable (40px rows)
+- [ ] Status/priority badges are color-coded
+- [ ] Panel slides from right smoothly
+- [ ] All interactive elements have `cursor-pointer`
+- [ ] Transitions are 150-300ms

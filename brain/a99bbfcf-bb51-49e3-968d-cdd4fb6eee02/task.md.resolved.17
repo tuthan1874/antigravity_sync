@@ -1,0 +1,28 @@
+# Spine 2D Preview App Implementation
+
+- [x] Initialize React + Vite + TypeScript project <!-- id: 0 -->
+- [x] Install dependencies (`spine-webgl`, `spine-core`, `jszip`, etc.) <!-- id: 1 -->
+- [x] Set up Project Structure as defined in README <!-- id: 2 -->
+- [x] Implement Spine Runtime Core (`spine/`) <!-- id: 3 -->
+    - [x] [SpineRuntime.ts](file:///e:/TDC_App/spine-preview/src/spine/SpineRuntime.ts)
+    - [x] `SpineRenderer.ts`
+    - [x] [types.ts](file:///e:/TDC_App/spine-preview/src/spine/types.ts)
+- [x] Implement React Hooks ([hooks/useSpinePlayer.ts](file:///e:/TDC_App/spine-preview/src/hooks/useSpinePlayer.ts)) <!-- id: 4 -->
+- [x] Implement UI Components (`components/`) <!-- id: 5 -->
+    - [x] [FileUpload.tsx](file:///e:/TDC_App/spine-preview/src/components/FileUpload.tsx)
+    - [x] [AnimationSelector.tsx](file:///e:/TDC_App/spine-preview/src/components/AnimationSelector.tsx)
+    - [x] [PlaybackControls.tsx](file:///e:/TDC_App/spine-preview/src/components/PlaybackControls.tsx)
+    - [x] [ViewControls.tsx](file:///e:/TDC_App/spine-preview/src/components/ViewControls.tsx)
+    - [x] [BackgroundControls.tsx](file:///e:/TDC_App/spine-preview/src/components/BackgroundControls.tsx)
+- [x] Assemble [App.tsx](file:///e:/TDC_App/spine-preview/src/App.tsx) and [main.tsx](file:///e:/TDC_App/spine-preview/src/main.tsx) <!-- id: 6 -->
+- [x] Styling and Polish <!-- id: 7 -->
+- [x] Verify functionality <!-- id: 8 -->
+- [x] Debug 'offset cannot be null' error <!-- id: 9 -->
+- [x] Debug Physics (bone dynamics) issue <!-- id: 10 -->
+- [x] Implement Mouse Controls (Right-click pan, Scroll zoom) <!-- id: 11 -->
+- [x] Implement Resizable Viewport <!-- id: 12 -->
+- [x] Implement Background Image Upload <!-- id: 13 -->
+- [x] Debug Background Transparency (fix gray overlay) <!-- id: 14 -->
+- [ ] Implement Export Controls (GIF/MP4) <!-- id: 15 -->
+- [ ] Implement Explicit Viewport Size Inputs <!-- id: 16 -->
+- [ ] Setup GIF.js and Recording Logic <!-- id: 17 -->

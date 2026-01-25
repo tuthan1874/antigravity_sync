@@ -1,0 +1,12 @@
+# Nhiệm vụ: Thiết kế Website Tuyển dụng Nhân sự
+
+## Yêu cầu
+- **Lĩnh vực**: Tuyển dụng nhân sự (HR/Recruitment)
+- **Phong cách**: Chuyên nghiệp, mềm mại
+- **Tông màu**: Hồng + Trắng
+
+## Tiến độ
+- [x] Nghiên cứu phong cách thiết kế từ UI UX Pro Max
+- [x] Lập kế hoạch thiết kế
+- [x] Triển khai giao diện
+- [x] Xác minh và hoàn thiện

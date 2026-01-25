@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Plan to integrate NocoDB API to fetch job positions dynamically and display job descriptions when a position is selected.",
+  "updatedAt": "2026-01-23T04:44:10.455482700Z"
+}

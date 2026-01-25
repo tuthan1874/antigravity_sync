@@ -1,0 +1,47 @@
+# Hướng dẫn Hệ thống Phân quyền Nâng cao (ClickUp-like)
+
+Hệ thống phân quyền đã được nâng cấp để hỗ trợ mô hình tương tự ClickUp Business Plus.
+
+## 1. Cấp độ Người dùng (User Roles)
+
+Các role của người dùng được định nghĩa như sau:
+
+- **Admin (`admin`)**: Quản trị viên toàn quyền.
+- **Member (`member`)**: Thành viên chính thức (Mặc định khi tạo mới).
+- **Guest (`guest`)**: Khách, quyền hạn hạn chế, chỉ thấy thẻ được giao.
+
+## 2. Cấp độ Quyền trong Thẻ (Card Permission Levels)
+
+Khi thêm một thành viên vào thẻ (Card Membership), bạn có thể thiết lập mức độ quyền hạn:
+
+- **Edit (`edit`)**: Có quyền chỉnh sửa đầy đủ nội dung thẻ (Mặc định).
+- **Comment Only (`commentOnly`)**: Chỉ có quyền xem và bình luận, không được chỉnh sửa tiêu đề, mô tả hay deadline.
+
+> [!NOTE]
+> Hiện tại, hệ thống đã hỗ trợ lưu trữ và xử lý API cho `permission_level`. Giao diện người dùng (Frontend) cần được cập nhật thêm để hiển thị menu chọn quyền này khi thêm thành viên.
+
+## Cách Kiểm Tra (Database Level)
+
+Do chưa có UI để chọn `commentOnly`, bạn có thể kiểm tra bằng cách gọi API trực tiếp hoặc kiểm tra trong Database:
+
+1. **User Role Mặc định**: Đăng ký một user mới, kiểm tra trong bảng `user_account`, cột `role` sẽ là `member`.
+2. **Permission Level**:
+   - Thêm user vào thẻ.
+   - Kiểm tra bảng `card_membership`, cột `permission_level` sẽ có giá trị mặc định là `edit`.
+   - Bạn có thể manually update giá trị này thành `commentOnly` để test logic sau này.
+
+## Các file quan trọng
+
+- [server/db/migrations/20260119233721_add_permission_level_to_card_membership.js](file:///e:/TDC_App/planka-master/server/db/migrations/20260119233721_add_permission_level_to_card_membership.js): Migration thêm cột quyền.
+- [server/api/models/CardMembership.js](file:///e:/TDC_App/planka-master/server/api/models/CardMembership.js): Định nghĩa mức quyền `edit` và `commentOnly`.
+- [server/api/controllers/card-memberships/update.js](file:///e:/TDC_App/planka-master/server/api/controllers/card-memberships/update.js): API mới để cập nhật quyền của thành viên trong thẻ.
+- [client/src/locales/en-US/core.js](file:///e:/TDC_App/planka-master/client/src/locales/en-US/core.js): Cập nhật từ ngữ giao diện.
+
+## Kiểm tra Giao diện (UI Verification)
+
+Sau khi refresh lại trang, bạn sẽ thấy:
+1. **Menu chọn Role**: Khi edit role của user, sẽ hiện danh sách **Admin**, **Member**, **Guest** với icon tương ứng.
+2. **Icons**:
+   - Admin: Icon `user secret` (hình người mặc áo choàng/kính râm).
+   - Member: Icon `user` (hình người bình thường).
+   - Guest: Icon `eye` (con mắt - biểu thị quyền xem).

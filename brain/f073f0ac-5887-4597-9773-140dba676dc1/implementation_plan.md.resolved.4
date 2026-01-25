@@ -1,0 +1,71 @@
+# Plan: Upgrade Permission System (ClickUp Business Plus)
+
+This plan outlines the steps to upgrade the permission system by refining User roles and introducing permission levels for Card Memberships.
+
+## Proposed Changes
+
+### [Server] Database Migration
+#### [NEW] [Migration File](file:///e:/TDC_App/planka-master/server/db/migrations/YYYYMMDDHHMMSS_add_permission_level_to_card_membership.js)
+- Update `user_account` table:
+  - Ensure `role` allows 'admin', 'member', 'guest'.
+  - Set default value of `role` to 'member'.
+- Update `card_membership` table:
+  - Add `permission_level` column with type `text`.
+  - Set default value to 'edit'.
+
+### [Server] Models
+#### [MODIFY] [User.js](file:///e:/TDC_App/planka-master/server/api/models/User.js)
+- Ensure `role` attribute has `defaultsTo: User.Roles.MEMBER`.
+
+#### [MODIFY] [CardMembership.js](file:///e:/TDC_App/planka-master/server/api/models/CardMembership.js)
+- Add `Roles` constant: `EDIT: 'edit'`, `COMMENT_ONLY: 'commentOnly'`.
+- Add `permissionLevel` attribute:
+  - Type: `string`
+  - Enum: `['edit', 'commentOnly']`
+  - Default: `edit`
+
+### [Server] Controllers
+#### [MODIFY] [create.js](file:///e:/TDC_App/planka-master/server/api/controllers/card-memberships/create.js)
+- Allow accepting `permissionLevel` in inputs.
+
+#### [NEW] [update.js](file:///e:/TDC_App/planka-master/server/api/controllers/card-memberships/update.js)
+- Create controller to update `permissionLevel` of a card membership.
+
+## Verification Plan
+
+### Manual Verification
+1. **User Role Default**: Register a new user and verify their role is 'member' by default.
+2. **Card Membership Permission**:
+   - Add a user to a card with 'edit' permission.
+   - Add a user to a card with 'commentOnly' permission.
+   - Check database to see `permission_level` values.
+
+## Client UI Updates
+### [Client] Localization
+#### [MODIFY] [core.js](file:///e:/TDC_App/planka-master/client/src/locales/en-US/core.js)
+- Add keys: `member`, `guest`.
+- Add description keys: `descriptionMember`, `descriptionGuest`.
+
+### [Client] Constants & Components
+#### [MODIFY] [Icons.js](file:///e:/TDC_App/planka-master/client/src/constants/Icons.js)
+- Update `UserRoleIcons` to use `MEMBER` and `GUEST`.
+
+#### [MODIFY] [SelectRoleStep.jsx](file:///e:/TDC_App/planka-master/client/src/components/common/AdministrationModal/UsersPane/SelectRoleStep.jsx)
+- Update `DESCRIPTION_BY_ROLE` to use `MEMBER` and `GUEST` and new description keys.
+- Update render list to `[ADMIN, MEMBER, GUEST]`.
+
+## Granular Board Permissions
+### [Server] Models & Controllers
+#### [MODIFY] [BoardMembership.js](file:///e:/TDC_App/planka-master/server/api/models/BoardMembership.js)
+- Add `RESTRICTED` role (Assigned Only).
+
+#### [MODIFY] [index.js](file:///e:/TDC_App/planka-master/server/api/controllers/cards/index.js)
+- Remove global Guest check.
+- Add check: If `boardMembership.role === RESTRICTED`, set `inputs.userIds = currentUser.id`.
+
+### [Client] Constants & Localization
+#### [MODIFY] [Enums.js](file:///e:/TDC_App/planka-master/client/src/constants/Enums.js)
+- Update `BoardMembershipRoles` with `RESTRICTED`.
+
+#### [MODIFY] [core.js](file:///e:/TDC_App/planka-master/client/src/locales/en-US/core.js)
+- Add `restricted` role translation.

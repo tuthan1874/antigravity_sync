@@ -1,0 +1,758 @@
+# 🏗️ Frontend Architecture Design
+
+> React + TypeScript SaaS App for Task Management
+
+---
+
+## 1. Folder Structure
+
+```
+src/
+├── app/                          # App shell & routing
+│   ├── App.tsx                   # Root component
+│   ├── Router.tsx                # Route definitions
+│   └── providers/                # Context providers wrapper
+│       └── index.tsx
+│
+├── features/                     # Feature modules (domain-driven)
+│   ├── auth/
+│   │   ├── components/           # Login, Signup, ForgotPassword
+│   │   ├── hooks/                # useAuth, useSession
+│   │   ├── stores/               # authStore.ts
+│   │   └── index.ts              # Public exports
+│   │
+│   ├── workspaces/
+│   │   ├── components/           # WorkspaceList, WorkspaceCard, CreateWorkspace
+│   │   ├── hooks/                # useWorkspaces, useWorkspace
+│   │   ├── stores/               # workspaceStore.ts
+│   │   └── index.ts
+│   │
+│   ├── members/
+│   │   ├── components/           # MemberList, InviteMember, RoleSelector
+│   │   ├── hooks/                # useMembers, useCurrentMember
+│   │   └── index.ts
+│   │
+│   ├── tasks/
+│   │   ├── components/
+│   │   │   ├── TaskList.tsx
+│   │   │   ├── TaskCard.tsx
+│   │   │   ├── TaskDetail.tsx
+│   │   │   ├── TaskForm.tsx
+│   │   │   ├── TaskFilters.tsx
+│   │   │   ├── SubtaskList.tsx
+│   │   │   └── KanbanBoard.tsx
+│   │   ├── hooks/
+│   │   │   ├── useTasks.ts
+│   │   │   ├── useTask.ts
+│   │   │   ├── useTaskMutations.ts
+│   │   │   └── useTaskRealtime.ts
+│   │   ├── stores/
+│   │   │   └── taskFilterStore.ts
+│   │   └── index.ts
+│   │
+│   ├── comments/
+│   │   ├── components/           # CommentList, CommentForm, CommentItem
+│   │   ├── hooks/                # useComments, useCommentMutations
+│   │   └── index.ts
+│   │
+│   ├── tags/
+│   │   ├── components/           # TagPicker, TagBadge, TagManager
+│   │   ├── hooks/                # useTags
+│   │   └── index.ts
+│   │
+│   ├── checklists/
+│   │   ├── components/           # ChecklistPanel, ChecklistItem
+│   │   ├── hooks/                # useChecklists
+│   │   └── index.ts
+│   │
+│   ├── attachments/
+│   │   ├── components/           # AttachmentList, FileUploader, AttachmentPreview
+│   │   ├── hooks/                # useAttachments, useFileUpload
+│   │   └── index.ts
+│   │
+│   └── activity/
+│       ├── components/           # ActivityFeed, ActivityItem
+│       ├── hooks/                # useActivityLogs
+│       └── index.ts
+│
+├── shared/                       # Shared utilities & components
+│   ├── components/
+│   │   ├── ui/                   # Base UI primitives (Button, Input, Modal, etc.)
+│   │   ├── layout/               # Shell, Sidebar, Header, PageContainer
+│   │   └── common/               # Avatar, RichTextEditor, DatePicker, etc.
+│   ├── hooks/
+│   │   ├── useDebounce.ts
+│   │   ├── useLocalStorage.ts
+│   │   └── useMediaQuery.ts
+│   └── utils/
+│       ├── date.ts
+│       ├── format.ts
+│       └── validation.ts
+│
+├── lib/                          # External integrations
+│   ├── supabase/
+│   │   ├── client.ts             # Supabase client instance
+│   │   ├── auth.ts               # Auth helpers
+│   │   ├── realtime.ts           # Realtime subscription helpers
+│   │   └── storage.ts            # R2 presigned URL handling
+│   └── query/
+│       └── client.ts             # TanStack Query client config
+│
+├── types/                        # TypeScript types
+│   ├── database.ts               # Generated from Supabase
+│   ├── api.ts                    # API response types
+│   └── common.ts                 # Shared types
+│
+├── constants/
+│   ├── routes.ts
+│   ├── queryKeys.ts              # TanStack Query key factory
+│   └── permissions.ts            # Role permission matrix
+│
+└── styles/
+    └── globals.css
+```
+
+---
+
+## 2. State Management Strategy
+
+### 2.1 State Categories
+
+| Category | Solution | Examples |
+|----------|----------|----------|
+| **Server State** | TanStack Query | Tasks, members, comments, activity logs |
+| **Client State** | Zustand | Current workspace, UI preferences, filters |
+| **Auth State** | Zustand + Supabase | Session, user profile, current role |
+| **Form State** | React Hook Form | Task creation, profile editing |
+| **URL State** | React Router | Active task ID, view mode, search params |
+
+### 2.2 Zustand Store Design
+
+```typescript
+// stores/authStore.ts
+interface AuthState {
+  session: Session | null;
+  profile: Profile | null;
+  isLoading: boolean;
+  
+  // Actions
+  setSession: (session: Session | null) => void;
+  setProfile: (profile: Profile | null) => void;
+  signOut: () => Promise<void>;
+}
+
+// stores/workspaceStore.ts
+interface WorkspaceState {
+  currentWorkspaceId: string | null;
+  currentMemberRole: MemberRole | null;
+  
+  // Derived
+  isAdmin: boolean;
+  isManager: boolean;
+  canManageTasks: boolean;
+  
+  // Actions
+  setCurrentWorkspace: (id: string, role: MemberRole) => void;
+  clearWorkspace: () => void;
+}
+
+// stores/taskFilterStore.ts
+interface TaskFilterState {
+  status: TaskStatus[];
+  priority: TaskPriority[];
+  assigneeId: string | null;
+  search: string;
+  view: 'list' | 'board';
+  
+  // Actions
+  setFilter: <K extends keyof TaskFilterState>(key: K, value: TaskFilterState[K]) => void;
+  resetFilters: () => void;
+}
+```
+
+### 2.3 Store Initialization Pattern
+
+```typescript
+// lib/stores/index.ts
+import { create } from 'zustand';
+import { devtools, persist } from 'zustand/middleware';
+
+export const useAuthStore = create<AuthState>()(
+  devtools(
+    persist(
+      (set) => ({
+        session: null,
+        profile: null,
+        isLoading: true,
+        setSession: (session) => set({ session }),
+        setProfile: (profile) => set({ profile }),
+        signOut: async () => {
+          await supabase.auth.signOut();
+          set({ session: null, profile: null });
+        },
+      }),
+      { name: 'auth-store', partialize: (state) => ({ /* exclude sensitive */ }) }
+    )
+  )
+);
+```
+
+---
+
+## 3. Data Fetching Approach
+
+### 3.1 TanStack Query Configuration
+
+```typescript
+// lib/query/client.ts
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5,      // 5 minutes
+      gcTime: 1000 * 60 * 30,        // 30 minutes (formerly cacheTime)
+      retry: 1,
+      refetchOnWindowFocus: false,   // Realtime handles this
+    },
+    mutations: {
+      onError: (error) => {
+        // Global error handling
+        toast.error(error.message);
+      },
+    },
+  },
+});
+```
+
+### 3.2 Query Key Factory
+
+```typescript
+// constants/queryKeys.ts
+export const queryKeys = {
+  // Workspaces
+  workspaces: {
+    all: ['workspaces'] as const,
+    detail: (id: string) => ['workspaces', id] as const,
+    members: (id: string) => ['workspaces', id, 'members'] as const,
+  },
+  
+  // Tasks
+  tasks: {
+    all: (workspaceId: string) => ['tasks', { workspaceId }] as const,
+    list: (workspaceId: string, filters: TaskFilters) => 
+      ['tasks', { workspaceId, ...filters }] as const,
+    detail: (id: string) => ['tasks', 'detail', id] as const,
+    subtasks: (parentId: string) => ['tasks', 'subtasks', parentId] as const,
+  },
+  
+  // Comments
+  comments: {
+    byTask: (taskId: string) => ['comments', { taskId }] as const,
+  },
+  
+  // Tags
+  tags: {
+    byWorkspace: (workspaceId: string) => ['tags', { workspaceId }] as const,
+  },
+  
+  // Activity
+  activity: {
+    byWorkspace: (workspaceId: string) => ['activity', { workspaceId }] as const,
+    byTask: (taskId: string) => ['activity', { taskId }] as const,
+  },
+};
+```
+
+### 3.3 Custom Hook Pattern
+
+```typescript
+// features/tasks/hooks/useTasks.ts
+export function useTasks(workspaceId: string) {
+  const filters = useTaskFilterStore();
+  
+  return useQuery({
+    queryKey: queryKeys.tasks.list(workspaceId, filters),
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('tasks')
+        .select(`
+          *,
+          assignee:profiles!assignee_id(id, full_name, avatar_url),
+          creator:profiles!created_by(id, full_name),
+          tags:task_tags(tag:tags(*)),
+          _count:checklists(count)
+        `)
+        .eq('workspace_id', workspaceId)
+        .is('deleted_at', null)
+        .in('status', filters.status.length ? filters.status : ['todo', 'in_progress', 'done'])
+        .order('created_at', { ascending: false });
+      
+      if (error) throw error;
+      return data;
+    },
+    enabled: !!workspaceId,
+  });
+}
+
+// features/tasks/hooks/useTaskMutations.ts
+export function useTaskMutations(workspaceId: string) {
+  const queryClient = useQueryClient();
+  
+  const createTask = useMutation({
+    mutationFn: async (task: CreateTaskInput) => {
+      const { data, error } = await supabase
+        .from('tasks')
+        .insert(task)
+        .select()
+        .single();
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.tasks.all(workspaceId) });
+    },
+  });
+  
+  const updateTask = useMutation({
+    mutationFn: async ({ id, ...updates }: UpdateTaskInput) => {
+      const { data, error } = await supabase
+        .from('tasks')
+        .update(updates)
+        .eq('id', id)
+        .select()
+        .single();
+      if (error) throw error;
+      return data;
+    },
+    onMutate: async (updatedTask) => {
+      // Optimistic update
+      await queryClient.cancelQueries({ queryKey: queryKeys.tasks.detail(updatedTask.id) });
+      const previous = queryClient.getQueryData(queryKeys.tasks.detail(updatedTask.id));
+      queryClient.setQueryData(queryKeys.tasks.detail(updatedTask.id), (old) => ({
+        ...old,
+        ...updatedTask,
+      }));
+      return { previous };
+    },
+    onError: (err, variables, context) => {
+      // Rollback
+      if (context?.previous) {
+        queryClient.setQueryData(queryKeys.tasks.detail(variables.id), context.previous);
+      }
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.tasks.all(workspaceId) });
+    },
+  });
+  
+  return { createTask, updateTask };
+}
+```
+
+---
+
+## 4. Realtime Subscription Strategy
+
+### 4.1 Subscription Manager
+
+```typescript
+// lib/supabase/realtime.ts
+type SubscriptionConfig = {
+  table: string;
+  schema?: string;
+  filter?: string;
+  event?: 'INSERT' | 'UPDATE' | 'DELETE' | '*';
+};
+
+export function useRealtimeSubscription<T>(
+  config: SubscriptionConfig,
+  callbacks: {
+    onInsert?: (payload: T) => void;
+    onUpdate?: (payload: T) => void;
+    onDelete?: (payload: { old: T }) => void;
+  }
+) {
+  const channelRef = useRef<RealtimeChannel | null>(null);
+
+  useEffect(() => {
+    const channel = supabase
+      .channel(`${config.table}-changes`)
+      .on<T>(
+        'postgres_changes',
+        {
+          event: config.event || '*',
+          schema: config.schema || 'public',
+          table: config.table,
+          filter: config.filter,
+        },
+        (payload) => {
+          if (payload.eventType === 'INSERT' && callbacks.onInsert) {
+            callbacks.onInsert(payload.new as T);
+          } else if (payload.eventType === 'UPDATE' && callbacks.onUpdate) {
+            callbacks.onUpdate(payload.new as T);
+          } else if (payload.eventType === 'DELETE' && callbacks.onDelete) {
+            callbacks.onDelete({ old: payload.old as T });
+          }
+        }
+      )
+      .subscribe();
+
+    channelRef.current = channel;
+
+    return () => {
+      channel.unsubscribe();
+    };
+  }, [config.table, config.filter]);
+
+  return channelRef;
+}
+```
+
+### 4.2 Feature-Level Realtime Hook
+
+```typescript
+// features/tasks/hooks/useTaskRealtime.ts
+export function useTaskRealtime(workspaceId: string) {
+  const queryClient = useQueryClient();
+
+  useRealtimeSubscription<Task>(
+    {
+      table: 'tasks',
+      filter: `workspace_id=eq.${workspaceId}`,
+    },
+    {
+      onInsert: (newTask) => {
+        queryClient.invalidateQueries({ queryKey: queryKeys.tasks.all(workspaceId) });
+        toast.info(`New task: ${newTask.title}`);
+      },
+      onUpdate: (updatedTask) => {
+        // Update cache directly for instant UI update
+        queryClient.setQueryData(
+          queryKeys.tasks.detail(updatedTask.id),
+          updatedTask
+        );
+        // Also invalidate list queries
+        queryClient.invalidateQueries({ 
+          queryKey: queryKeys.tasks.all(workspaceId),
+          exact: false 
+        });
+      },
+      onDelete: ({ old: deletedTask }) => {
+        queryClient.removeQueries({ queryKey: queryKeys.tasks.detail(deletedTask.id) });
+        queryClient.invalidateQueries({ queryKey: queryKeys.tasks.all(workspaceId) });
+      },
+    }
+  );
+}
+
+// Usage in component
+function TaskListPage() {
+  const { currentWorkspaceId } = useWorkspaceStore();
+  
+  // Enable realtime updates
+  useTaskRealtime(currentWorkspaceId);
+  
+  // Regular data fetching
+  const { data: tasks } = useTasks(currentWorkspaceId);
+  
+  return <TaskList tasks={tasks} />;
+}
+```
+
+### 4.3 Subscription Scope by Role
+
+```typescript
+// features/tasks/hooks/useTaskRealtime.ts
+export function useTaskRealtime(workspaceId: string) {
+  const { currentMemberRole, profile } = useAuthStore();
+  const queryClient = useQueryClient();
+
+  // Build filter based on role
+  const filter = useMemo(() => {
+    const baseFilter = `workspace_id=eq.${workspaceId}`;
+    
+    // Admin/Manager see all tasks
+    if (currentMemberRole === 'admin' || currentMemberRole === 'manager') {
+      return baseFilter;
+    }
+    
+    // Member/Guest only see assigned tasks
+    // Note: Supabase Realtime respects RLS, so this is defense-in-depth
+    return `${baseFilter},assignee_id=eq.${profile?.id}`;
+  }, [workspaceId, currentMemberRole, profile?.id]);
+
+  useRealtimeSubscription<Task>(
+    { table: 'tasks', filter },
+    { /* callbacks */ }
+  );
+}
+```
+
+---
+
+## 5. Role-Based Access Control
+
+### 5.1 Permission Matrix
+
+```typescript
+// constants/permissions.ts
+export const PERMISSIONS = {
+  // Workspace
+  'workspace:update': ['admin'],
+  'workspace:delete': ['admin'],
+  'workspace:invite': ['admin', 'manager'],
+  
+  // Members
+  'member:update_role': ['admin'],
+  'member:remove': ['admin'],
+  
+  // Tasks
+  'task:view_all': ['admin', 'manager'],
+  'task:create': ['admin', 'manager', 'member', 'guest'],
+  'task:update_any': ['admin', 'manager'],
+  'task:delete_any': ['admin', 'manager'],
+  
+  // Tags
+  'tag:create': ['admin', 'manager'],
+  'tag:delete': ['admin', 'manager'],
+} as const;
+
+export type Permission = keyof typeof PERMISSIONS;
+export type MemberRole = 'admin' | 'manager' | 'member' | 'guest';
+```
+
+### 5.2 Permission Hook
+
+```typescript
+// shared/hooks/usePermission.ts
+export function usePermission() {
+  const { currentMemberRole } = useWorkspaceStore();
+
+  const can = useCallback(
+    (permission: Permission): boolean => {
+      if (!currentMemberRole) return false;
+      return PERMISSIONS[permission]?.includes(currentMemberRole) ?? false;
+    },
+    [currentMemberRole]
+  );
+
+  const canAny = useCallback(
+    (permissions: Permission[]): boolean => {
+      return permissions.some(can);
+    },
+    [can]
+  );
+
+  const canAll = useCallback(
+    (permissions: Permission[]): boolean => {
+      return permissions.every(can);
+    },
+    [can]
+  );
+
+  return { can, canAny, canAll, role: currentMemberRole };
+}
+
+// Usage
+function TaskActions({ task }: { task: Task }) {
+  const { can } = usePermission();
+  const { profile } = useAuthStore();
+  
+  const canEdit = can('task:update_any') || task.assignee_id === profile?.id;
+  const canDelete = can('task:delete_any') || task.created_by === profile?.id;
+  
+  return (
+    <>
+      {canEdit && <Button onClick={handleEdit}>Edit</Button>}
+      {canDelete && <Button onClick={handleDelete}>Delete</Button>}
+    </>
+  );
+}
+```
+
+### 5.3 Protected Route Component
+
+```typescript
+// shared/components/ProtectedRoute.tsx
+interface ProtectedRouteProps {
+  permission?: Permission;
+  permissions?: Permission[];
+  requireAll?: boolean;
+  fallback?: React.ReactNode;
+  children: React.ReactNode;
+}
+
+export function ProtectedRoute({
+  permission,
+  permissions,
+  requireAll = false,
+  fallback = <Navigate to="/unauthorized" />,
+  children,
+}: ProtectedRouteProps) {
+  const { can, canAny, canAll } = usePermission();
+  
+  let hasAccess = true;
+  
+  if (permission) {
+    hasAccess = can(permission);
+  } else if (permissions) {
+    hasAccess = requireAll ? canAll(permissions) : canAny(permissions);
+  }
+  
+  return hasAccess ? <>{children}</> : <>{fallback}</>;
+}
+```
+
+---
+
+## 6. Type Generation
+
+### 6.1 Supabase Type Generation
+
+```bash
+# Generate types from Supabase
+npx supabase gen types typescript \
+  --project-id pywshlswiqrsbzubeepu \
+  --schema public \
+  > src/types/database.ts
+```
+
+### 6.2 Derived Types
+
+```typescript
+// types/api.ts
+import { Database } from './database';
+
+// Table row types
+export type Profile = Database['public']['Tables']['profiles']['Row'];
+export type Workspace = Database['public']['Tables']['workspaces']['Row'];
+export type Member = Database['public']['Tables']['members']['Row'];
+export type Task = Database['public']['Tables']['tasks']['Row'];
+export type Comment = Database['public']['Tables']['comments']['Row'];
+export type Tag = Database['public']['Tables']['tags']['Row'];
+export type Checklist = Database['public']['Tables']['checklists']['Row'];
+export type Attachment = Database['public']['Tables']['attachments']['Row'];
+export type ActivityLog = Database['public']['Tables']['activity_logs']['Row'];
+
+// Insert types
+export type CreateTask = Database['public']['Tables']['tasks']['Insert'];
+export type UpdateTask = Database['public']['Tables']['tasks']['Update'];
+
+// Enum types
+export type MemberRole = Database['public']['Enums']['member_role'];
+export type TaskPriority = Database['public']['Enums']['task_priority'];
+export type TaskStatus = Database['public']['Enums']['task_status'];
+
+// Extended types with relations
+export type TaskWithRelations = Task & {
+  assignee: Pick<Profile, 'id' | 'full_name' | 'avatar_url'> | null;
+  creator: Pick<Profile, 'id' | 'full_name'>;
+  tags: Array<{ tag: Tag }>;
+  subtasks?: Task[];
+  comments_count?: number;
+  checklists_count?: number;
+};
+```
+
+---
+
+## 7. API Layer Abstraction
+
+```typescript
+// lib/supabase/api.ts
+export const api = {
+  tasks: {
+    list: async (workspaceId: string, filters?: TaskFilters) => {
+      let query = supabase
+        .from('tasks')
+        .select(`
+          *,
+          assignee:profiles!assignee_id(id, full_name, avatar_url),
+          creator:profiles!created_by(id, full_name),
+          tags:task_tags(tag:tags(*))
+        `)
+        .eq('workspace_id', workspaceId)
+        .is('deleted_at', null);
+      
+      if (filters?.status?.length) {
+        query = query.in('status', filters.status);
+      }
+      if (filters?.priority?.length) {
+        query = query.in('priority', filters.priority);
+      }
+      if (filters?.assigneeId) {
+        query = query.eq('assignee_id', filters.assigneeId);
+      }
+      if (filters?.search) {
+        query = query.ilike('title', `%${filters.search}%`);
+      }
+      
+      const { data, error } = await query.order('created_at', { ascending: false });
+      if (error) throw error;
+      return data;
+    },
+    
+    get: async (id: string) => {
+      const { data, error } = await supabase
+        .from('tasks')
+        .select(`
+          *,
+          assignee:profiles!assignee_id(*),
+          creator:profiles!created_by(*),
+          tags:task_tags(tag:tags(*)),
+          checklists(*),
+          subtasks:tasks!parent_id(*)
+        `)
+        .eq('id', id)
+        .single();
+      if (error) throw error;
+      return data;
+    },
+    
+    create: async (task: CreateTask) => {
+      const { data, error } = await supabase
+        .from('tasks')
+        .insert(task)
+        .select()
+        .single();
+      if (error) throw error;
+      return data;
+    },
+    
+    update: async (id: string, updates: UpdateTask) => {
+      const { data, error } = await supabase
+        .from('tasks')
+        .update(updates)
+        .eq('id', id)
+        .select()
+        .single();
+      if (error) throw error;
+      return data;
+    },
+    
+    delete: async (id: string) => {
+      // Soft delete
+      const { error } = await supabase
+        .from('tasks')
+        .update({ deleted_at: new Date().toISOString() })
+        .eq('id', id);
+      if (error) throw error;
+    },
+  },
+  
+  // Similar patterns for workspaces, members, comments, etc.
+};
+```
+
+---
+
+## 8. Summary
+
+| Concern | Solution |
+|---------|----------|
+| **Folder Structure** | Feature-based with shared components |
+| **Server State** | TanStack Query with query key factory |
+| **Client State** | Zustand with slices (auth, workspace, filters) |
+| **Realtime** | Supabase Realtime + Query cache invalidation |
+| **Type Safety** | Generated types from Supabase + derived types |
+| **Permissions** | Permission matrix + usePermission hook |
+| **API Layer** | Abstracted Supabase queries with filters |

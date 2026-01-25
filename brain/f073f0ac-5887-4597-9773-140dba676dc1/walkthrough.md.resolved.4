@@ -1,0 +1,42 @@
+# Hướng dẫn Hệ thống Phân quyền
+
+## 1. Cấp độ Người dùng (System Roles)
+- **Admin**: Quản trị viên hệ thống.
+- **Member**: Thành viên công ty/nhóm (Có thể tạo dự án).
+- **Guest**: Khách mời (Chỉ xem những gì được chia sẻ).
+
+---
+
+## 2. Cấp độ Dự án (Board Permissions)
+Khi mời thành viên vào Board, bạn có thể chọn các quyền sau:
+
+1. **Editor**: 
+   - Có toàn quyền chỉnh sửa Board.
+   - Thêm/Xóa danh sách, thẻ.
+   
+2. **Viewer**:
+   - Chỉ xem nội dung Board.
+   - Có thể bật tùy chọn **"Can Comment"** để cho phép bình luận.
+
+3. **Restricted (Assigned Only)**:
+   - **Chỉ nhìn thấy** các thẻ (Cards) mà mình được giao (Assign).
+   - Không nhìn thấy các thẻ khác trong Board.
+   - Không thể chỉnh sửa, chỉ có thể tương tác trên thẻ của mình.
+
+---
+
+## 3. Cấp độ Thẻ (Card Permissions)
+Khi add member vào thẻ:
+- **Editor**: Sửa tiêu đề, mô tả, deadline...
+- **Comment Only**: Chỉ xem và bình luận.
+
+## Cách sử dụng
+
+### Thiết lập cho Guest chỉ thấy task được giao
+1. Mời User vào Board với role là **Restricted**.
+2. Assign user đó vào các thẻ cụ thể.
+3. Khi User đó đăng nhập, họ sẽ chỉ thấy các thẻ đó.
+
+### Thiết lập cho Guest xem hết và comment
+1. Mời User vào Board với role là **Viewer**.
+2. Bật tùy chọn **Can Comment**.

@@ -1,0 +1,109 @@
+# HRM Application - Development Walkthrough
+
+## ✅ Completed Work
+
+### 1. Database Schema (Supabase)
+
+Created **23 tables** with comprehensive Row Level Security (RLS) policies:
+
+| Module | Tables |
+|--------|--------|
+| **Core** | `roles`, `user_roles`, `departments`, `positions` |
+| **Employees** | `employees`, `employee_documents` |
+| **Attendance** | `attendance`, `work_schedules` |
+| **Payroll** | `payroll`, `payroll_periods`, `salary_components` |
+| **Leave** | `leave_types`, `leave_balances`, `leave_requests` |
+| **Overtime** | `overtime_requests` |
+| **Finance** | `transaction_categories`, `transactions`, `transaction_approvals`, `approval_workflows` |
+| **Assets** | `asset_categories`, `assets`, `asset_assignments`, `asset_maintenance` |
+
+**Helper Functions:**
+- `generate_employee_code()` - Tự động tạo mã NV (NV00001, NV00002...)
+- `generate_transaction_code()` - Tạo mã phiếu thu/chi (PT2601xxxx, PC2601xxxx)
+- `generate_asset_code()` - Tạo mã tài sản theo danh mục
+- `calculate_work_hours()` - Tính số giờ làm việc
+- `has_role()` - Kiểm tra quyền user
+
+---
+
+### 2. Frontend Application
+
+**Tech Stack:**
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS v4
+- shadcn/ui (28 components)
+- TanStack Query
+- React Hook Form + Zod
+
+**Project Location:** `e:\TDC_App\Landing_Pages\hrm-app`
+
+---
+
+### 3. Authentication System
+
+| Feature | Status |
+|---------|--------|
+| Login page | ✅ Complete |
+| Register page | ✅ Complete |
+| Supabase Auth integration | ✅ Complete |
+| Route protection middleware | ✅ Complete |
+| Session management | ✅ Complete |
+
+**Login Page Screenshot:**
+
+![Login Page](file:///C:/Users/dangt/.gemini/antigravity/brain/295c5a63-c52c-4246-b493-aa1942c3fdcf/hrm_login_test_1769009673357.webp)
+
+---
+
+### 4. Dashboard & Layout
+
+- ✅ Responsive sidebar với navigation menu
+- ✅ User dropdown menu với logout
+- ✅ Dashboard page với KPI cards
+- ✅ Mobile-friendly với sheet navigation
+
+---
+
+### 5. Employee Module
+
+| Feature | Status |
+|---------|--------|
+| Employees list page | ✅ Complete |
+| Search & filter | ✅ Complete |
+| New employee form (tabbed) | ✅ Complete |
+| Employee detail view | 🔄 Pending |
+
+---
+
+## 🔄 Remaining Modules
+
+| Module | Priority | Status |
+|--------|----------|--------|
+| Attendance tracking | High | Not started |
+| Payroll & Payslips | High | Not started |
+| Leave management | Medium | Not started |
+| Overtime requests | Medium | Not started |
+| Income/Expense | Medium | Not started |
+| Asset management | Low | Not started |
+
+---
+
+## 🚀 How to Run
+
+```bash
+cd e:\TDC_App\Landing_Pages\hrm-app
+npm run dev
+```
+
+**Access:** http://localhost:3000
+
+---
+
+## 📋 Supabase Project Info
+
+| Property | Value |
+|----------|-------|
+| Project ID | `oaxtvlykkwvorbsqotmw` |
+| API URL | https://oaxtvlykkwvorbsqotmw.supabase.co |
+| Region | ap-south-1 |

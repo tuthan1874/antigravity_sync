@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Complete database schema documentation including:\n- List of 19 migration files with links\n- Mermaid ER diagram showing relationships\n- RLS policy matrix for all 10 tables\n- Trigger documentation\n- Helper function reference\n- Deployment instructions\n- Compliance checklist against plan.md requirements",
+  "updatedAt": "2026-01-14T13:58:52.861016200Z"
+}

@@ -1,0 +1,13 @@
+# Project Walkthrough
+
+The project `hiring_app` has been successfully set up and is running locally.
+
+## Setup Steps
+1.  **Dependencies**: Installed via `npm install`.
+2.  **Dev Server**: Started via `npm run dev`.
+3.  **Local URL**: [http://localhost:8080/](http://localhost:8080/)
+
+## Verification
+The application loads correctly in the browser.
+
+![Home Page](/hiring_app_home_1769161798620.png)

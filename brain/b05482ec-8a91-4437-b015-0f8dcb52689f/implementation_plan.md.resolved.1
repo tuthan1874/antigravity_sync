@@ -1,0 +1,25 @@
+# Kế hoạch: Cài đặt Skill UI UX Pro Max
+
+Kế hoạch này phác thảo các bước để cài đặt và cấu hình skill **UI UX Pro Max** cho Antigravity trong dự án này.
+
+## Các thay đổi đề xuất
+
+### [Thành phần] Script cài đặt
+
+Chúng tôi sẽ sử dụng CLI chính thức để thiết lập skill.
+
+1.  **Cài đặt CLI**: Chạy `npm install -g uipro-cli` (hoặc dùng `npx` nếu không muốn cài global).
+2.  **Khởi tạo Skill**: Chạy `uipro init --ai antigravity` tại thư mục gốc `e:\TDC_App\UI UX max skill`.
+
+Việc này sẽ tạo ra cấu trúc sau:
+- [.agent/workflows/ui-ux-pro-max.md](file:///e:/TDC_App/UI%20UX%20max%20skill/.agent/workflows/ui-ux-pro-max.md): Điểm truy cập chính cho skill.
+- `.shared/ui-ux-pro-max/`: Cơ sở dữ liệu chứa các style, bảng màu và hướng dẫn.
+
+## Kế hoạch xác minh
+
+### Xác minh tự động
+- Kiểm tra file `.agent/workflows/ui-ux-pro-max.md` có tồn tại không.
+- Kiểm tra thư mục `.shared/ui-ux-pro-max/` không bị trống.
+
+### Xác minh thủ công
+- Người dùng có thể thử gọi skill bằng lệnh `/ui-ux-pro-max` kèm theo yêu cầu thiết kế (ví dụ: `/ui-ux-pro-max Build a SaaS landing page`).

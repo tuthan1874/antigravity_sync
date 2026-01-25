@@ -1,0 +1,53 @@
+# NocoDB Job Positions Integration Walkthrough
+
+## Overview
+
+I have successfully integrated the TD Games Career Portal with your self-hosted NocoDB instance to dynamically fetch job positions and display job descriptions.
+
+## Changes Made
+
+### New Files Created
+
+#### [useJobs.ts](file:///e:/TDC_App/hiring_tdgames/src/hooks/useJobs.ts)
+A React Query hook that fetches job data from NocoDB:
+- Connects to `https://nocodb.tdconsulting.vn`
+- Uses table ID `mh36y68rb3lserw` from base `pcrawiz8s9i03rk`
+- Returns job titles (`job_tittle`) and descriptions (`description`)
+
+#### [JobDescriptionPanel.tsx](file:///e:/TDC_App/hiring_tdgames/src/components/JobDescriptionPanel.tsx)
+A new component that displays job description in a styled panel:
+- Shows placeholder when no job is selected
+- Displays job title and description with glassmorphism styling
+
+### Modified Files
+
+#### [ApplicationForm.tsx](file:///e:/TDC_App/hiring_tdgames/src/components/ApplicationForm.tsx)
+- Added [useJobs](file:///e:/TDC_App/hiring_tdgames/src/hooks/useJobs.ts#52-60) hook integration
+- Position dropdown now dynamically populates from NocoDB
+- Added `onJobSelect` callback to notify parent of selected job
+- Falls back to static positions if NocoDB is unavailable
+
+#### [Index.tsx](file:///e:/TDC_App/hiring_tdgames/src/pages/Index.tsx)
+- Updated layout to two-column grid on desktop
+- Form on left, job description panel on right
+- Job description panel is sticky for easy reference
+
+## Screenshots
+
+### Initial Page Load
+![Initial page with two-column layout](file:///C:/Users/dangt/.gemini/antigravity/brain/39ecd5ea-cb41-43e8-84cc-629c6254f70e/initial_load_page_1769143708948.png)
+
+### After Selecting a Position
+![Job description showing after position selection](file:///C:/Users/dangt/.gemini/antigravity/brain/39ecd5ea-cb41-43e8-84cc-629c6254f70e/position_selected_page_1769143741062.png)
+
+## Demo Recording
+
+![NocoDB integration verification](file:///C:/Users/dangt/.gemini/antigravity/brain/39ecd5ea-cb41-43e8-84cc-629c6254f70e/verify_nocodb_integration_1769143703305.webp)
+
+## Verification Results
+
+- ✅ Jobs load successfully from NocoDB
+- ✅ Position dropdown shows dynamic job titles
+- ✅ Job description panel updates when position is selected
+- ✅ Both Full-time and Freelancer forms work correctly
+- ✅ Two-column responsive layout working as expected

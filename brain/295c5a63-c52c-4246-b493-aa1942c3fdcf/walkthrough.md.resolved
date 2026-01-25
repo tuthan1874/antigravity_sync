@@ -1,0 +1,45 @@
+# HRM Application - Debug & Enhancement Walkthrough
+
+## Issues Resolved
+
+### 1. Infinite Recursion in RLS Policies
+**Problem**: Employee data fetching failed with "infinite recursion detected in policy for relation employees".
+
+**Root Cause**: The policy "Dept managers can view their department employees" contained a self-referencing subquery that joined the `employees` table within a policy on the same table.
+
+**Solution**: Removed the recursive policy and created a safe `has_role()` security definer function to check user roles without triggering RLS recursion.
+
+---
+
+### 2. Missing Employee Detail Page
+**Problem**: Clicking on an employee name resulted in a 404 error.
+
+**Solution**: Created [page.tsx](file:///e:/TDC_App/Landing_Pages/hrm-app/src/app/dashboard/employees/%5Bid%5D/page.tsx) at `src/app/dashboard/employees/[id]/page.tsx` with:
+- Personal information section (DOB, gender, contact info)
+- Work information section (department, position, dates)
+- Salary & bank information section
+
+---
+
+### 3. Debug Code Cleanup
+Removed all temporary debug code:
+- Debug UI box from employee list page
+- Console.log and alert statements
+- Debug logging from Supabase client
+
+---
+
+## Database Migrations Applied
+
+| Migration | Description |
+|-----------|-------------|
+| `fix_recursive_rls_v2` | Created `has_role()` function and updated policies |
+| `drop_recursive_dept_manager_policy` | Removed the recursive department manager policy |
+
+---
+
+## Files Modified
+
+- [employees/page.tsx](file:///e:/TDC_App/Landing_Pages/hrm-app/src/app/dashboard/employees/page.tsx) - Cleaned up debug code
+- [employees/[id]/page.tsx](file:///e:/TDC_App/Landing_Pages/hrm-app/src/app/dashboard/employees/%5Bid%5D/page.tsx) - **NEW** Employee detail view
+- [supabase/client.ts](file:///e:/TDC_App/Landing_Pages/hrm-app/src/lib/supabase/client.ts) - Removed debug logging

@@ -1,0 +1,77 @@
+# n8n Node Configuration for Open WebUI
+
+You can copy-paste these configurations into your n8n workflow.
+
+## Node 1: Upload File to Open WebUI
+This node takes a binary file from a previous node and uploads it.
+
+**Type**: HTTP Request
+**Parameters**:
+- **Method**: `POST`
+- **URL**: `http://localhost:3000/api/v1/files/`
+- **Authentication**: `Predefined Credential Type` -> `Header Auth`
+  - **Name**: `Authorization`
+  - **Value**: `Bearer YOUR_OPEN_WEBUI_API_KEY`
+- **Send Binary Data**: `true`
+- **Binary Property**: `data` (tên của thuộc tính chứa file từ node trước)
+
+---
+
+## Node 2: Add to Knowledge Collection
+This node adds the uploaded file to a specific collection.
+
+**Type**: HTTP Request
+**Parameters**:
+- **Method**: `POST`
+- **URL**: `http://localhost:3000/api/v1/knowledge/<KNOWLEDGE_ID>/file/add`
+- **Authentication**: (Sử dụng Header Auth tương tự như trên)
+- **Send Body**: `true`
+- **Body Content Type**: `JSON`
+- **JSON Body**:
+```json
+{
+  "file_id": "{{ $node["Upload File"].json["id"] }}"
+}
+```
+
+---
+
+## Tip: How to get KNOWLEDGE_ID
+1. Mở Open WebUI.
+2. Vào phần **Workspace > Knowledge**.
+3. Nhấp vào Bộ sưu tập của bạn.
+4. ID sẽ nằm trên thanh URL của trình duyệt, ví dụ: `http://localhost:3000/knowledge/4a5b6c...` -> ID là `4a5b6c...`
+
+---
+
+## n8n Workflow JSON (Example)
+Bạn có thể copy đoạn này và dán trực tiếp vào n8n:
+
+```json
+{
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:3000/api/v1/files/",
+        "sendBinaryData": true,
+        "binaryPropertyName": "data",
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "Authorization",
+              "value": "Bearer YOUR_API_KEY"
+            }
+          ]
+        }
+      },
+      "id": "upload-node",
+      "name": "Upload to Open WebUI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [250, 300]
+    }
+  ],
+  "connections": {}
+}
+```

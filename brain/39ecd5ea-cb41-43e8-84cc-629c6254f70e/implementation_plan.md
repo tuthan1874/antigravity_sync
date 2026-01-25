@@ -1,0 +1,56 @@
+# NocoDB Job Positions Integration
+
+## Goal
+Integrate NocoDB to dynamically fetch job positions for the "Position Applying For" dropdown, and display the corresponding job description when a position is selected.
+
+## NocoDB Configuration
+- **URL**: `https://nocodb.tdconsulting.vn`
+- **Base ID**: `pcrawiz8s9i03rk`
+- **Table ID**: `mh36y68rb3lserw`
+- **API Token**: `crlf2AYHZcpmSdS3RO_yH0R7ME0McMAhuezVX7Tp`
+- **Columns**: 
+  - `job_tittle` - Job title for position dropdown
+  - `description` - Job description to display
+
+## Proposed Changes
+
+### API Layer
+
+#### [NEW] [useJobs.ts](file:///e:/TDC_App/hiring_tdgames/src/hooks/useJobs.ts)
+Create a custom React Query hook to fetch jobs from NocoDB:
+- Fetch all records from NocoDB table
+- Return job titles and descriptions
+- Handle loading and error states
+
+---
+
+### Components
+
+#### [MODIFY] [ApplicationForm.tsx](file:///e:/TDC_App/hiring_tdgames/src/components/ApplicationForm.tsx)
+- Import and use the `useJobs` hook
+- Replace static `POSITIONS` array with dynamic job data
+- Pass selected job info to display description
+- Add `selectedJob` state to track the currently selected position
+
+#### [NEW] [JobDescriptionPanel.tsx](file:///e:/TDC_App/hiring_tdgames/src/components/JobDescriptionPanel.tsx)
+Create a panel component to display job description:
+- Show job title and description
+- Styled with glassmorphism to match the existing design
+- Responsive layout (side panel on desktop, below form on mobile)
+
+---
+
+### Page Layout
+
+#### [MODIFY] [Index.tsx](file:///e:/TDC_App/hiring_tdgames/src/pages/Index.tsx)
+- Update layout to accommodate job description panel on the right
+- Use a two-column layout on larger screens
+
+## Verification Plan
+
+### Manual Verification
+1. Start the development server with `npm run dev`
+2. Open `http://localhost:8080/`
+3. Verify the Position dropdown shows jobs from NocoDB
+4. Select different positions and verify description updates on the right panel
+5. Test responsive layout on mobile viewport

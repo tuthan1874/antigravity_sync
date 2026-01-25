@@ -1,0 +1,40 @@
+# Plan: Implement Permission System (Admin, Member, Guest)
+
+This plan outlines the steps to add a role-based permission system to Planka, replacing/extending the existing roles with 'admin', 'member', and 'guest', and enforcing a restriction for guests to see only their assigned cards.
+
+## Proposed Changes
+
+### [Server] User Model
+#### [MODIFY] [User.js](file:///e:/TDC_App/planka-master/server/api/models/User.js)
+- Update `Roles` constant to include: `ADMIN: 'admin'`, `MEMBER: 'member'`, `GUEST: 'guest'`.
+- Update `attributes.role` validation (`isIn`) to use the new roles.
+- Update Swagger documentation for the [User](file:///e:/TDC_App/planka-master/server/api/helpers/users/make-scoper.js#27-52) schema.
+
+### [Server] Card Controller
+#### [MODIFY] [index.js](file:///e:/TDC_App/planka-master/server/api/controllers/cards/index.js)
+- Update [fn](file:///e:/TDC_App/planka-master/server/api/helpers/users/present-one.js#19-90) to check if `currentUser.role` is `GUEST`.
+- If it is, force the `userIds` filter to only include `currentUser.id`. This ensures that `Card.qm.getByEndlessListId` only returns cards where the user is a member or an assignee.
+
+### [Server] Helpers & Policies
+#### [MODIFY] [is-admin-or-project-owner.js](file:///e:/TDC_App/planka-master/server/api/helpers/users/is-admin-or-project-owner.js)
+- Update to check for `MEMBER` instead of `PROJECT_OWNER`.
+#### [MODIFY] [make-scoper.js](file:///e:/TDC_App/planka-master/server/api/helpers/users/make-scoper.js)
+- Update code that uses `PROJECT_OWNER` or `BOARD_USER` to use `MEMBER` or `GUEST`, or include them in the logic.
+
+### [Client] Constants
+#### [MODIFY] [Enums.js](file:///e:/TDC_App/planka-master/client/src/constants/Enums.js)
+- Update `UserRoles` to: `ADMIN`, `MEMBER`, `GUEST`.
+
+## Verification Plan
+
+### Automated Verification
+- Run server-side tests if available.
+
+### Manual Verification
+1. **Change user role**: Create three users with roles 'admin', 'member', and 'guest' (or update existing ones via database/admin UI).
+2. **Test Admin**: Verify admin can see all cards in a list.
+3. **Test Member**: Verify member can see cards (dependent on board membership).
+4. **Test Guest**: 
+   - Assign a card to the Guest user.
+   - Login as Guest.
+   - Verify that in the list, ONLY the assigned card is visible.

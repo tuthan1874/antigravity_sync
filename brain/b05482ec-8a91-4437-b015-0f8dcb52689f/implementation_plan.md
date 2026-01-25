@@ -1,0 +1,78 @@
+# Kế hoạch: Thiết kế Website Tuyển dụng Nhân sự
+
+## Tổng quan
+Thiết kế website cho công ty tuyển dụng nhân sự với phong cách **chuyên nghiệp, mềm mại** sử dụng tông màu **hồng + trắng**.
+
+## Design System
+
+### Bảng màu (Color Palette)
+| Vai trò | Màu | Hex |
+|---------|-----|-----|
+| Primary | Rose Pink | `#E91E63` |
+| Primary Light | Soft Pink | `#FCE4EC` |
+| Secondary | Deep Rose | `#C2185B` |
+| Background | White | `#FFFFFF` |
+| Surface | Soft Gray | `#F8F9FA` |
+| Text Primary | Dark Slate | `#1E293B` |
+| Text Secondary | Slate | `#64748B` |
+| Accent | Coral | `#FF6B9D` |
+
+### Typography
+- **Heading**: Inter (Google Fonts) - Bold, clean, professional
+- **Body**: Inter - Regular/Medium
+- **Import**: `@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');`
+
+### Phong cách
+- **Minimalism + Soft UI**: Clean, spacious, rounded corners
+- **Micro-animations**: Subtle hover effects, smooth transitions
+- **Glassmorphism nhẹ**: Cho các card và navigation
+
+---
+
+## Cấu trúc trang
+
+### 1. Header/Navigation
+- Logo + Menu links (Trang chủ, Việc làm, Về chúng tôi, Liên hệ)
+- CTA Button: "Đăng tuyển ngay"
+- Floating navbar với glassmorphism
+
+### 2. Hero Section  
+- Headline: "Kết nối nhân tài với cơ hội nghề nghiệp"
+- Subheadline: Mô tả ngắn về dịch vụ
+- Search box tìm việc làm
+- Illustration/Image
+
+### 3. Stats Section
+- Số ứng viên, số việc làm, số công ty đối tác
+
+### 4. Services Section
+- Các dịch vụ: Tuyển dụng, Headhunting, HR Consulting
+
+### 5. Featured Jobs
+- Danh sách việc làm nổi bật
+
+### 6. Testimonials
+- Đánh giá từ khách hàng và ứng viên
+
+### 7. CTA Section
+- Kêu gọi đăng ký hoặc liên hệ
+
+### 8. Footer
+- Thông tin liên hệ, social links, sitemap
+
+---
+
+## Proposed Changes
+
+### [NEW] [index.html](file:///e:/TDC_App/UI%20UX%20max%20skill/index.html)
+Trang HTML chính với cấu trúc semantic
+
+### [NEW] [styles.css](file:///e:/TDC_App/UI%20UX%20max%20skill/styles.css)
+CSS với Tailwind CDN + custom styles
+
+---
+
+## Verification Plan
+- Kiểm tra responsive trên mobile, tablet, desktop
+- Xác minh contrast ratio cho accessibility (WCAG AA)
+- Test hover effects và animations

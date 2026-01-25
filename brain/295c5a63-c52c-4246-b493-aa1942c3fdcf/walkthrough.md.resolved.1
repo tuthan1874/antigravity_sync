@@ -1,0 +1,108 @@
+# HRM Application - Development Walkthrough
+
+## ✅ All Core Modules Complete
+
+### Database Schema (23 Tables)
+| Module | Tables |
+|--------|--------|
+| **Core** | `roles`, `user_roles`, `departments`, `positions` |
+| **Employees** | `employees`, `employee_documents` |
+| **Attendance** | `attendance`, `work_schedules` |
+| **Payroll** | `payroll`, `payroll_periods`, `salary_components` |
+| **Leave** | `leave_types`, `leave_balances`, `leave_requests` |
+| **Overtime** | `overtime_requests` |
+| **Finance** | `transaction_categories`, `transactions`, `transaction_approvals`, `approval_workflows` |
+| **Assets** | `asset_categories`, `assets`, `asset_assignments`, `asset_maintenance` |
+
+---
+
+## Frontend Modules
+
+### 1. Authentication ✅
+- Login/Register pages với glassmorphism UI
+- Supabase Auth integration
+- Route protection middleware
+
+![Login Page](file:///C:/Users/dangt/.gemini/antigravity/brain/295c5a63-c52c-4246-b493-aa1942c3fdcf/hrm_login_test_1769009673357.webp)
+
+### 2. Employee Management ✅
+| Feature | File |
+|---------|------|
+| List với search/filter | [page.tsx](file:///e:/TDC_App/Landing_Pages/hrm-app/src/app/dashboard/employees/page.tsx) |
+| Create form (tabbed) | [new/page.tsx](file:///e:/TDC_App/Landing_Pages/hrm-app/src/app/dashboard/employees/new/page.tsx) |
+
+### 3. Payroll Module ✅
+| Feature | File |
+|---------|------|
+| Periods list | [page.tsx](file:///e:/TDC_App/Landing_Pages/hrm-app/src/app/dashboard/payroll/page.tsx) |
+| Detail với decimal work days (18.25) | [[id]/page.tsx](file:///e:/TDC_App/Landing_Pages/hrm-app/src/app/dashboard/payroll/%5Bid%5D/page.tsx) |
+| Auto-calculate PIT, BHXH, BHYT, BHTN | ✅ |
+
+### 4. Leave & Overtime ✅
+| Page | Features |
+|------|----------|
+| [leave/page.tsx](file:///e:/TDC_App/Landing_Pages/hrm-app/src/app/dashboard/leave/page.tsx) | Create, approve/reject requests |
+| [overtime/page.tsx](file:///e:/TDC_App/Landing_Pages/hrm-app/src/app/dashboard/overtime/page.tsx) | Weekday/weekend/holiday multipliers |
+
+### 5. Finance Module ✅
+| Feature | Status |
+|---------|--------|
+| Income/expense tracking | ✅ |
+| Category filtering | ✅ |
+| Approval workflow | ✅ |
+| [finance/page.tsx](file:///e:/TDC_App/Landing_Pages/hrm-app/src/app/dashboard/finance/page.tsx) | ✅ |
+
+### 6. Asset Management ✅
+| Feature | Status |
+|---------|--------|
+| Asset CRUD | ✅ |
+| Assign to employee | ✅ |
+| Return/reclaim | ✅ |
+| [assets/page.tsx](file:///e:/TDC_App/Landing_Pages/hrm-app/src/app/dashboard/assets/page.tsx) | ✅ |
+
+---
+
+## Integrations
+
+### Resend Email
+```typescript
+// src/lib/email.ts
+- sendEmail() function
+- Vietnamese email templates for notifications
+```
+
+### n8n Webhook
+```typescript
+// src/app/api/webhooks/n8n/route.ts
+- POST endpoint for automation events
+- Supports: employee.sync, attendance.import, payroll.trigger
+```
+
+---
+
+## 🚀 How to Run
+
+```bash
+cd e:\TDC_App\Landing_Pages\hrm-app
+npm run dev
+```
+
+**Access:** http://localhost:3000
+
+---
+
+## 📋 Project Info
+
+| Property | Value |
+|----------|-------|
+| Project ID | `oaxtvlykkwvorbsqotmw` |
+| API URL | https://oaxtvlykkwvorbsqotmw.supabase.co |
+| Framework | Next.js 15 + TypeScript |
+| UI | shadcn/ui + Tailwind CSS |
+
+---
+
+## Pending for Deployment
+- [ ] Configure Resend API key
+- [ ] Set up n8n webhook URL
+- [ ] Deploy to VPS Ubuntu

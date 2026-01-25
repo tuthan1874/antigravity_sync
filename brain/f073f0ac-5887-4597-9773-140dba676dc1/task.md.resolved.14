@@ -1,0 +1,5 @@
+- [/] Advanced Permission System (ClickUp Business Plus)
+  - [ ] Create migration for `resource_permission` table
+  - [ ] Create `ResourcePermission` model
+  - [ ] Verify User model roles
+  - [ ] Run migration and verify
