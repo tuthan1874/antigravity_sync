@@ -1,0 +1,8 @@
+# Clawdbot Installation
+
+## Installation Steps
+- [x] Install Clawdbot globally via npm
+- [/] Run onboarding wizard
+- [ ] Configure AI model (Anthropic/OpenAI)
+- [ ] Set up messaging channels (optional)
+- [ ] Verify installation with `clawdbot doctor`
