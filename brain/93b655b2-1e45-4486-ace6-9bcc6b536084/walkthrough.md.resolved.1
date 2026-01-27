@@ -1,0 +1,26 @@
+# Walkthrough: UI Color Scheme and Logo Update
+
+## Changes Made
+
+### 1. Color Scheme Update
+Updated [index.css](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/index.css) to use pink (#de0a67) as the primary color:
+
+```diff
+-    --primary: 35 100% 50%;    /* Orange */
++    --primary: 336 92% 45%;    /* Pink #de0a67 */
+```
+
+All related color variables were updated:
+- `--primary`, `--accent` → Pink
+- `--border`, `--ring` → Pink-based
+- `pulse-glow` animation → Pink glow
+
+### 2. Logo Replacement
+- Added new logo: [tdconsulting-logo.png](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/assets/tdconsulting-logo.png)
+- Updated [Index.tsx](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/pages/Index.tsx) to use new logo with pink drop-shadow
+
+### 3. SEO Updates
+Updated page title and meta description from "TD GAMES" to "TD CONSULTING".
+
+## Verification
+The application is running at http://localhost:8080. Refresh the page to see the changes.
