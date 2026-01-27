@@ -4,8 +4,8 @@
 - [x] Update SOFTWARE_OPTIONS for recruitment tools
 - [x] Add SKILLS_OPTIONS for HR skills
 - [x] Add EXPERTISE_OPTIONS dropdown
-- [x] Add LANGUAGES section with proficiency
+- [/] Add LANGUAGES section with proficiency
 - [x] Change Portfolio URL → LinkedIn Profile URL
 - [x] Update Expected Salary with Gross/Net option
 - [x] Update placeholders
-- [x] Verify changes
+- [ ] Verify changes

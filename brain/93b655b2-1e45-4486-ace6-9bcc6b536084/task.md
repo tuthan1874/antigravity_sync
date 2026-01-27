@@ -1,9 +1,11 @@
-# Task: Rebrand to TD CONSULTING
+# Task: Enhance Form for Recruitment Industry
 
-- [x] Search for TD Games references
-- [x] Create implementation plan
-- [x] Replace TD GAMES → TD CONSULTING in all files
-- [x] Update FALLBACK_POSITIONS for recruitment
-- [x] Update SOFTWARE_OPTIONS for business tools
-- [x] Update index.html meta tags
+- [x] Plan changes
+- [x] Update SOFTWARE_OPTIONS for recruitment tools
+- [x] Add SKILLS_OPTIONS for HR skills
+- [x] Add EXPERTISE_OPTIONS dropdown
+- [x] Add LANGUAGES section with proficiency
+- [x] Change Portfolio URL → LinkedIn Profile URL
+- [x] Update Expected Salary with Gross/Net option
+- [x] Update placeholders
 - [x] Verify changes

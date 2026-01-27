@@ -1,37 +1,51 @@
-# Walkthrough: TD CONSULTING Rebrand
+# Walkthrough: Form Enhancements for Recruitment Industry
 
 ## Summary
-Rebranded the hiring portal from **TD GAMES** (game art studio) to **TD CONSULTING** (recruitment company).
+Enhanced the TD CONSULTING hiring portal form with HR/recruitment-specific fields and Vietnamese localization.
 
 ## Changes Made
 
-### 1. Text Replacements
-All "TD GAMES" references replaced with "TD CONSULTING" in:
-- [ApplicationForm.tsx](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/components/ApplicationForm.tsx)
-- [SuccessModal.tsx](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/components/SuccessModal.tsx)
-- [Footer.tsx](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/components/Footer.tsx)
-- [index.html](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/index.html)
+### 1. Skills Section (Kỹ năng)
+**Before:** Free-text textarea for art skills
+**After:** Checkbox selection with HR-focused options:
+- Kỹ năng phỏng vấn
+- Tìm kiếm ứng viên (Sourcing)
+- Đàm phán lương
+- Quản lý quan hệ khách hàng (CRM)
+- Chạy Ads tuyển dụng
+- Quản lý nhân sự
+- Tư vấn tuyển dụng
 
-### 2. Slogan Update
-- Old: "Premium Game Art Studio"
-- New: **"A Trusted Recruitment Partner"**
+---
 
-### 3. Form Fields Updated
+### 2. Software Proficiency (Phần mềm thành thạo)
+**Updated to recruitment tools:**
+- Microsoft Office, LinkedIn Recruiter, Slack, Trello, Notion
+- Misa (Accounting), Jira, GitHub (Dev)
+- HubSpot, Pipedrive (BD/Sales)
+- Canva, Figma (Design)
 
-**Positions** (for a recruitment company):
-- Headhunter, Business Development, HR Manager, HR Executive, Recruiter
-- Accountant, Software Developer, Marketing Executive, Graphic Designer
-- Administrative, Sales Executive, Other
+---
 
-**Software/Tools** (business-focused):
-- Microsoft Office, LinkedIn Recruiter, Google Workspace, Canva
-- Facebook Ads, Google Ads, Excel Advanced, Power BI
-- SAP, Slack, Trello, Notion
+### 3. New Fields Added
 
-### 4. Visual Updates
-- Confetti colors changed to pink theme
-- Homepage link → tdconsulting.vn
-- Theme color → #de0a67
+| Field | Description |
+|-------|-------------|
+| **LinkedIn Profile URL** | Replaced Portfolio URL |
+| **Chuyên môn chính (Expertise)** | Dropdown: IT Recruitment, Mass Recruitment, Headhunting, C&B, Accountant, BD, Marketing, Dev, Design |
+| **Ngôn ngữ (Languages)** | Checkbox + proficiency level (Cơ bản → Bản ngữ) for: Tiếng Anh, Tiếng Nhật, Tiếng Trung, Tiếng Hàn |
+| **Loại lương (Salary Type)** | Dropdown: Gross, Net, Lương cứng + Hoa hồng |
+
+---
+
+### 4. Placeholder Updates
+**Additional Message:**
+> "Hãy chia sẻ về một thành tích nổi bật nhất của bạn (ví dụ: số lượng deal thành công, quy mô team đã quản lý, hoặc dự án dev/design bạn tâm đắc nhất)..."
+
+---
+
+## Files Modified
+- [ApplicationForm.tsx](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/components/ApplicationForm.tsx) - Main form component with all enhancements
 
 ## Verification
-Refresh http://localhost:8080 to see all changes.
+Refresh http://localhost:8080 to see all updates.
