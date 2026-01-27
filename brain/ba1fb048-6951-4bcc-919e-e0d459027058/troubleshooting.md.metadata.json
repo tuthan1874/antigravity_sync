@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_OTHER",
+  "summary": "Quick reference guide giải quyết vấn đề Clawdbot agent không chạy, bao gồm: nguyên nhân (thiếu --agent flag, API key chưa cấu hình), lệnh đúng, cách cấu hình OpenRouter API key qua `clawdbot config`, kiểm tra cấu hình, và alternatives (dùng dashboard web, chọn provider khác).",
+  "updatedAt": "2026-01-26T16:32:23.387248200Z"
+}

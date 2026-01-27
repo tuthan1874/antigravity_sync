@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Tóm tắt kết quả cài đặt Clawdbot thành công, bao gồm: trạng thái hoàn thành các bước (cài đặt, onboarding, cấu hình OpenRouter, Gateway khởi động), thông tin Gateway (port 18789, canvas, browser control, log file), lưu ý về quyền admin và Discord error, hướng dẫn sử dụng ngay (kiểm tra Gateway, gửi message, truy cập dashboard, cấu hình channels), troubleshooting (restart gateway, cài service với admin), danh sách 6 skills sẵn dùng, và tài liệu tham khảo.",
+  "updatedAt": "2026-01-26T16:25:56.903121500Z"
+}

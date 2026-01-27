@@ -1,0 +1,191 @@
+# Hướng Dẫn Sử Dụng Clawdbot 🦞
+
+## Tổng Quan
+Clawdbot là personal AI assistant chạy trên thiết bị của bạn, kết nối với các nền tảng chat như WhatsApp, Telegram, Discord, Slack, Signal, iMessage, Microsoft Teams.
+
+## Bước 1: Hoàn Thành Cài Đặt
+
+### Đang chạy Onboarding Wizard
+Terminal hiện đang yêu cầu bạn nhập **OpenRouter API key**. Bạn có các lựa chọn:
+
+**Option A: Dùng OpenRouter (Khuyến nghị)**
+1. Truy cập https://openrouter.ai/
+2. Đăng ký tài khoản
+3. Vào Settings → Keys → Create Key
+4. Copy API key và paste vào terminal
+
+**Option B: Chọn Provider Khác**
+- Nhấn **Ctrl+C** để thoát wizard
+- Chạy lại: `clawdbot onboard --install-daemon`
+- Dùng phím mũi tên để chọn provider khác:
+  - **Anthropic** (Claude - rất mạnh, khuyến nghị)
+  - **OpenAI** (ChatGPT/GPT-4)
+  - **Google** (Gemini)
+  - Hoặc **Skip for now** nếu muốn cấu hình sau
+
+**Option C: Bỏ Qua (Cấu hình sau)**
+- Dùng phím mũi tên quay lại và chọn **"Skip for now"**
+- Có thể cấu hình model sau bằng: `clawdbot config`
+
+---
+
+## Bước 2: Khởi Động Gateway
+
+Sau khi hoàn thành wizard, khởi động Clawdbot Gateway:
+
+```bash
+clawdbot gateway --port 18789 --verbose
+```
+
+Gateway sẽ chạy ở background và lắng nghe các kết nối từ messaging channels.
+
+---
+
+## Bước 3: Sử Dụng Clawdbot
+
+### 3.1 Gửi Message Trực Tiếp (CLI)
+
+```bash
+# Gửi message đơn giản
+clawdbot message send --to +1234567890 --message "Hello from Clawdbot"
+
+# Hỏi AI assistant
+clawdbot agent --message "Ship checklist" --thinking high
+```
+
+### 3.2 Kết Nối Messaging Channels
+
+Clawdbot hỗ trợ nhiều nền tảng:
+- WhatsApp
+- Telegram
+- Discord
+- Slack
+- Signal
+- iMessage (macOS/iOS)
+- Microsoft Teams
+- Google Chat
+
+**Cấu hình channels:**
+```bash
+clawdbot config channels
+```
+
+Hoặc xem docs chi tiết tại: https://docs.clawd.bot/channels/
+
+### 3.3 Dashboard Web
+
+Có thể truy cập dashboard qua browser:
+```
+http://localhost:18789
+```
+
+---
+
+## Các Lệnh Thường Dùng
+
+### Kiểm Tra Trạng Thái
+```bash
+clawdbot doctor
+```
+
+### Cập Nhật Clawdbot
+```bash
+clawdbot update
+# hoặc cập nhật lên phiên bản mới nhất
+npm update -g clawdbot@latest
+```
+
+### Quản Lý Pairing (Bảo mật DM)
+```bash
+# Xem danh sách pairing requests
+clawdbot pairing list
+
+# Approve một pairing request
+clawdbot pairing approve <channel> <code>
+```
+
+### Xem Logs
+```bash
+clawdbot logs
+```
+
+### Cấu Hình
+```bash
+# Mở file cấu hình
+clawdbot config
+
+# Xem cấu hình hiện tại
+clawdbot config show
+```
+
+---
+
+## Ví Dụ Sử Dụng
+
+### Tương Tác Qua Telegram
+1. Cấu hình Telegram bot token
+2. Start Gateway: `clawdbot gateway`
+3. Gửi message từ Telegram → Bot sẽ trả lời
+4. Bot có thể thực hiện tasks, trả lời câu hỏi, automation
+
+### Tích Hợp Skills
+Clawdbot hỗ trợ "skills" - các extensions để mở rộng chức năng:
+
+```bash
+# Xem skills có sẵn
+clawdbot skills list
+
+# Cài đặt skill
+clawdbot skills install <skill-name>
+```
+
+Tham khảo ClawdHub: https://docs.clawd.bot/
+
+---
+
+## Bảo Mật
+
+⚠️ **Quan trọng:** Clawdbot kết nối với messaging platforms thật. Mặc định:
+- DM từ người lạ cần pairing code
+- Không tự động accept
+
+Để cho phép DM public (không khuyến nghị):
+```bash
+clawdbot config set dmPolicy open
+```
+
+---
+
+## Tài Liệu & Hỗ Trợ
+
+- **Website:** https://clawdbot.com
+- **Docs:** https://docs.clawd.bot
+- **Getting Started:** https://docs.clawd.bot/start/getting-started
+- **FAQ:** https://docs.clawd.bot/start/faq
+- **Discord:** https://discord.gg/clawd
+
+---
+
+## Troubleshooting
+
+### Lỗi Connection
+```bash
+# Kiểm tra gateway có đang chạy không
+clawdbot gateway status
+
+# Restart gateway
+clawdbot gateway restart
+```
+
+### Lỗi Model/API
+```bash
+# Kiểm tra cấu hình model
+clawdbot config show models
+
+# Cấu hình lại
+clawdbot config models
+```
+
+### Gateway Không Start
+- Kiểm tra port 18789 có bị chiếm không
+- Thử port khác: `clawdbot gateway --port 18790`

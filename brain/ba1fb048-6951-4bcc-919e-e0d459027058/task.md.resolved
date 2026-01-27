@@ -3,6 +3,8 @@
 ## Installation Steps
 - [x] Install Clawdbot globally via npm
 - [x] Run onboarding wizard
-- [/] Configure AI model (Anthropic/OpenAI/OpenRouter)
+- [x] Configure AI model (Anthropic/OpenAI/OpenRouter)
+- [x] Start Gateway server
+- [/] Test basic functionality
 - [ ] Set up messaging channels (optional)
-- [ ] Verify installation with `clawdbot doctor`
+- [x] Verify installation with `clawdbot doctor`

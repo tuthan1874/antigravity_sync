@@ -1,0 +1,30 @@
+# Walkthrough: Project Setup and Running
+
+I have successfully read the project and started it locally.
+
+## Steps Taken
+
+1.  **Exploration**: Identified the project as a Vite-based React application with Tailwind CSS and shadcn/ui.
+2.  **Environment Setup**: Copied `.env.example` to `.env`.
+3.  **Dependency Installation**: Ran `npm install` to install all necessary packages.
+4.  **Running the Project**: Started the development server using `npm run dev`.
+
+## Current Status
+
+The application is running locally at:
+**Local**: [http://localhost:8080/](http://localhost:8080/)
+**Network**: [http://192.168.1.7:8080/](http://192.168.1.7:8080/)
+
+> [!NOTE]
+> The browser subagent encountered an environment issue with Playwright, but the command line output confirms the Vite server is ready and serving the application.
+
+## Verification
+
+The terminal output shows:
+```sh
+  VITE v5.4.19  ready in 563 ms
+
+  ➜  Local:   http://localhost:8080/
+  ➜  Network: http://192.168.1.7:8080/
+  ➜  press h + enter to show help
+```

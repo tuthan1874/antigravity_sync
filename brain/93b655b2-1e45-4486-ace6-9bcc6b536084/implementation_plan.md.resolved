@@ -1,0 +1,16 @@
+# Plan: Run Project Locally
+
+This plan outlines the steps to install dependencies and start the development server for the `hiring_tdconsulting` project.
+
+## Proposed Changes
+
+### Environment Setup
+- Copy [.env.example](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/.env.example) to `.env` to ensure the application has the necessary environment variables defined (even if values are placeholders).
+
+## Verification Plan
+
+### Automated Tests
+- `npm run dev`: Verify that the Vite development server starts without errors and provides a local URL.
+
+### Manual Verification
+- Access the application via the local URL (typically http://localhost:5173 or similar) and verify that the homepage loads correctly.

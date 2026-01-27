@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Hướng dẫn chi tiết cách sử dụng Clawdbot bằng tiếng Việt, bao gồm: hoàn thành cài đặt với onboarding wizard, các options để chọn AI provider (OpenRouter, Anthropic, OpenAI), khởi động Gateway, gửi messages qua CLI, kết nối messaging channels (WhatsApp, Telegram, Discord...), các lệnh thường dùng (doctor, update, pairing, logs, config), ví dụ tích hợp Telegram, quản lý skills, cấu hình bảo mật, và troubleshooting các lỗi thường gặp.",
+  "updatedAt": "2026-01-26T16:18:27.083300100Z"
+}
