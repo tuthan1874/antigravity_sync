@@ -1,24 +1,37 @@
-# Walkthrough: Animated Background Implementation
+# Walkthrough: TD CONSULTING Rebrand
+
+## Summary
+Rebranded the hiring portal from **TD GAMES** (game art studio) to **TD CONSULTING** (recruitment company).
 
 ## Changes Made
 
-### 1. CSS Animation Styles
-Added to [index.css](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/index.css):
-- `.animated-background`: Gradient animation using pink (#de0a67), purple (#591BC5), and dark (#212335)
-- `.cube`: Floating cube elements with rotation animation
-- `@keyframes Gradient`: 15s gradient position animation
-- `@keyframes cube`: 12s scale/rotate animation for cubes
+### 1. Text Replacements
+All "TD GAMES" references replaced with "TD CONSULTING" in:
+- [ApplicationForm.tsx](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/components/ApplicationForm.tsx)
+- [SuccessModal.tsx](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/components/SuccessModal.tsx)
+- [Footer.tsx](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/components/Footer.tsx)
+- [index.html](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/index.html)
 
-### 2. HTML Structure Update
-Updated [Index.tsx](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/pages/Index.tsx):
+### 2. Slogan Update
+- Old: "Premium Game Art Studio"
+- New: **"A Trusted Recruitment Partner"**
 
-```diff
--  <video autoPlay loop muted playsInline>...</video>
--  <div className="bg-background/70" />
-+  <div className="animated-background">
-+    <div className="cube"></div> <!-- 6 cubes -->
-+  </div>
-```
+### 3. Form Fields Updated
+
+**Positions** (for a recruitment company):
+- Headhunter, Business Development, HR Manager, HR Executive, Recruiter
+- Accountant, Software Developer, Marketing Executive, Graphic Designer
+- Administrative, Sales Executive, Other
+
+**Software/Tools** (business-focused):
+- Microsoft Office, LinkedIn Recruiter, Google Workspace, Canva
+- Facebook Ads, Google Ads, Excel Advanced, Power BI
+- SAP, Slack, Trello, Notion
+
+### 4. Visual Updates
+- Confetti colors changed to pink theme
+- Homepage link → tdconsulting.vn
+- Theme color → #de0a67
 
 ## Verification
-Refresh http://localhost:8080 to see the animated gradient background with floating cubes.
+Refresh http://localhost:8080 to see all changes.

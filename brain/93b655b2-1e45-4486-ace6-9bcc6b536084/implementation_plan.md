@@ -1,48 +1,45 @@
-# Plan: Update UI Color Scheme and Logo
+# Plan: Rebrand to TD CONSULTING
 
-Change the primary color from orange to pink (#de0a67) and update the overall theme to be pink/white. Replace the header logo with the new TD CONSULTING logo.
+## Summary
+Transform the application from a game art studio hiring portal to a recruitment company hiring portal.
+
+**Company Info:**
+- Name: TD CONSULTING
+- Slogan: "a trusted Recruitment partner"
+- Industry: Recruitment/HR Services
 
 ## Proposed Changes
 
-### Styling
+### Text Replacements
 
-#### [MODIFY] [index.css](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/index.css)
-
-Update CSS variables in `:root` and `.dark` to use pink (#de0a67) as the primary color:
-- `--primary`: Change from `35 100% 50%` (orange) to `336 92% 45%` (pink #de0a67)
-- `--accent`: Change to match the new primary color
-- `--border`: Update to use new primary color
-- `--ring`: Update to use new primary color
-- Update `pulse-glow` animation to use pink color
+| File | Old Text | New Text |
+|------|----------|----------|
+| `SuccessModal.tsx` | TD GAMES | TD CONSULTING |
+| `Footer.tsx` | TD GAMES | TD CONSULTING |
+| `ApplicationForm.tsx` | TD Games/TD GAMES | TD CONSULTING |
+| `index.html` | TD GAMES, Premium Game Art Studio | TD CONSULTING, Trusted Recruitment Partner |
 
 ---
 
-### Logo
+### Form Field Updates
 
-#### [DELETE] [tdgames-logo.png](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/assets/tdgames-logo.png)
+#### [MODIFY] [ApplicationForm.tsx](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/components/ApplicationForm.tsx)
 
-Remove the old TD GAMES logo.
+**FALLBACK_POSITIONS** - Change from art positions to recruitment positions:
+- Headhunter, Business Development, HR Manager, HR Executive, Accountant, Software Developer, Marketing, Graphic Designer, Administrative, Recruiter, Other
 
-#### [NEW] [tdconsulting-logo.png](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/assets/tdconsulting-logo.png)
+**SOFTWARE_OPTIONS** - Change to business/recruitment tools:
+- Microsoft Office, LinkedIn Recruiter, Google Workspace, Canva, Facebook Ads, Google Ads, Excel Advanced, Power BI, SAP, Slack, Trello, Notion
 
-Add the new TD CONSULTING logo from the uploaded image.
-
-#### [MODIFY] [Index.tsx](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/pages/Index.tsx)
-
-- Update the import statement to use the new logo file
-- Update the `alt` text and `drop-shadow` style to use pink color
+**Portfolio field** - Change label to "LinkedIn / CV Link"
 
 ---
 
 ### SEO/Meta Updates
 
-#### [MODIFY] [Index.tsx](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/pages/Index.tsx)
+#### [MODIFY] [index.html](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/index.html)
 
-Update page title and meta description to reference TD CONSULTING instead of TD GAMES.
+Update all meta tags to reference TD CONSULTING as a recruitment company.
 
-## Verification Plan
-
-### Manual Verification
-- View the application at http://localhost:8080
-- Verify the new pink color scheme is applied throughout
-- Verify the new logo is displayed correctly in the header
+## Verification
+Refresh http://localhost:8080 and verify all text shows TD CONSULTING.
