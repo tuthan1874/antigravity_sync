@@ -1,51 +1,36 @@
-# Walkthrough: Form Enhancements for Recruitment Industry
+# Walkthrough: TD CONSULTING Form Enhancements
 
 ## Summary
-Enhanced the TD CONSULTING hiring portal form with HR/recruitment-specific fields and Vietnamese localization.
+Enhanced the TD CONSULTING hiring portal with HR/recruitment-specific fields, all in English.
 
 ## Changes Made
 
-### 1. Skills Section (Kỹ năng)
-**Before:** Free-text textarea for art skills
-**After:** Checkbox selection with HR-focused options:
-- Kỹ năng phỏng vấn
-- Tìm kiếm ứng viên (Sourcing)
-- Đàm phán lương
-- Quản lý quan hệ khách hàng (CRM)
-- Chạy Ads tuyển dụng
-- Quản lý nhân sự
-- Tư vấn tuyển dụng
+### 1. Skills Section
+Checkbox selection with HR-focused options:
+- Interviewing, Candidate Sourcing, Salary Negotiation
+- Customer Relationship Management (CRM), Recruitment Ads
+- HR Management, Recruitment Consulting
 
----
-
-### 2. Software Proficiency (Phần mềm thành thạo)
-**Updated to recruitment tools:**
+### 2. Software Proficiency
+Updated to recruitment tools:
 - Microsoft Office, LinkedIn Recruiter, Slack, Trello, Notion
 - Misa (Accounting), Jira, GitHub (Dev)
-- HubSpot, Pipedrive (BD/Sales)
-- Canva, Figma (Design)
+- HubSpot, Pipedrive (BD/Sales), Canva, Figma (Design)
 
----
-
-### 3. New Fields Added
+### 3. New Fields
 
 | Field | Description |
 |-------|-------------|
 | **LinkedIn Profile URL** | Replaced Portfolio URL |
-| **Chuyên môn chính (Expertise)** | Dropdown: IT Recruitment, Mass Recruitment, Headhunting, C&B, Accountant, BD, Marketing, Dev, Design |
-| **Ngôn ngữ (Languages)** | Checkbox + proficiency level (Cơ bản → Bản ngữ) for: Tiếng Anh, Tiếng Nhật, Tiếng Trung, Tiếng Hàn |
-| **Loại lương (Salary Type)** | Dropdown: Gross, Net, Lương cứng + Hoa hồng |
+| **Main Expertise** | IT Recruitment, Headhunting, C&B, Accountant, BD, Marketing, Dev, etc. |
+| **Languages** | English, Japanese, Chinese, Korean with proficiency levels (Basic → Native) |
+| **Salary Type** | Gross, Net, Base + Commission |
 
----
-
-### 4. Placeholder Updates
-**Additional Message:**
-> "Hãy chia sẻ về một thành tích nổi bật nhất của bạn (ví dụ: số lượng deal thành công, quy mô team đã quản lý, hoặc dự án dev/design bạn tâm đắc nhất)..."
-
----
+### 4. Updated Placeholder
+Additional Message: Focus on achievements (deals closed, team managed, projects completed).
 
 ## Files Modified
-- [ApplicationForm.tsx](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/components/ApplicationForm.tsx) - Main form component with all enhancements
+- [ApplicationForm.tsx](file:///e:/TDC_App/TD_Consulting_App/hiring_tdconsulting/src/components/ApplicationForm.tsx)
 
 ## Verification
-Refresh http://localhost:8080 to see all updates.
+Refresh http://localhost:8080 to see updates.

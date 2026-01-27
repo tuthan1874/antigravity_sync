@@ -1,0 +1,11 @@
+# Task: Remove Expertise & Translate to English
+
+- [x] Remove "Chuyên môn chính" (Expertise) section from UI
+- [x] Remove expertise from schema
+- [x] Remove expertise from progress calculation
+- [x] Translate Skills label/text to English
+- [x] Translate Software Proficiency label/text to English  
+- [x] Translate Languages label/text to English
+- [x] Translate Expected Salary label/text to English
+- [x] Translate Additional Message label/placeholder to English
+- [x] Translate submission summary to English

@@ -1,11 +1,11 @@
-# Task: Enhance Form for Recruitment Industry
+# Task: Remove Expertise & Translate to English
 
-- [x] Plan changes
-- [x] Update SOFTWARE_OPTIONS for recruitment tools
-- [x] Add SKILLS_OPTIONS for HR skills
-- [x] Add EXPERTISE_OPTIONS dropdown
-- [x] Add LANGUAGES section with proficiency
-- [x] Change Portfolio URL → LinkedIn Profile URL
-- [x] Update Expected Salary with Gross/Net option
-- [x] Update placeholders
-- [x] Verify changes
+- [x] Remove "Chuyên môn chính" (Expertise) section from UI
+- [x] Remove expertise from schema
+- [x] Remove expertise from progress calculation
+- [x] Translate Skills label/text to English
+- [x] Translate Software Proficiency label/text to English  
+- [x] Translate Languages label/text to English
+- [x] Translate Expected Salary label/text to English
+- [x] Translate Additional Message label/placeholder to English
+- [x] Translate submission summary to English

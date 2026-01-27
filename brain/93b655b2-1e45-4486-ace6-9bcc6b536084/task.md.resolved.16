@@ -1,0 +1,8 @@
+# Task: Convert Vietnamese Text to English
+
+- [x] Update SKILLS_OPTIONS to English
+- [x] Update LANGUAGES to English
+- [x] Update LANGUAGE_LEVELS to English
+- [x] Update SALARY_TYPES to English
+- [x] Update schema validation messages to English
+- [x] Verify no Vietnamese text remains
