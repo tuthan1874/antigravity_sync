@@ -1,0 +1,11 @@
+# Task: Read and Run Project
+
+- [/] Survey Project Structure <!-- id: 0 -->
+    - [x] List root directory files <!-- id: 1 -->
+    - [ ] Identify tech stack (Frontend, Backend) <!-- id: 2 -->
+    - [ ] Read configuration files (package.json, supabase config) <!-- id: 3 -->
+- [ ] Setup and Run <!-- id: 4 -->
+    - [ ] Install dependencies <!-- id: 5 -->
+    - [ ] Start Backend (Supabase) <!-- id: 6 -->
+    - [ ] Start Frontend <!-- id: 7 -->
+    - [ ] Verify accessibility <!-- id: 8 -->
