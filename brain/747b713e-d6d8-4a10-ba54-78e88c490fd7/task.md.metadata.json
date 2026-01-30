@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_TASK",
-  "summary": "Mark all tasks as done",
-  "updatedAt": "2026-01-30T15:46:35.002254900Z",
-  "version": "14"
+  "summary": "Update task status for diagnosing Nginx error",
+  "updatedAt": "2026-01-30T16:14:15.503739800Z",
+  "version": "20"
 }
