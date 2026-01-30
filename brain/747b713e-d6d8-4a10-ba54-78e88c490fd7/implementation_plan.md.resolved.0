@@ -1,0 +1,29 @@
+# Removing Lovable & Updating Branding
+
+This plan outlines the steps to remove all Lovable references from the codebase and replace the project thumbnail with the TDGames logo.
+
+## Proposed Changes
+
+### Configuration
+#### [MODIFY] [vite.config.ts](file:///e:/TDC_App/TDGAMES_App/hiring_app/vite.config.ts)
+- Remove `componentTagger` import from `lovable-tagger`.
+- Remove `componentTagger()` plugin usage.
+
+#### [MODIFY] [package.json](file:///e:/TDC_App/TDGAMES_App/hiring_app/package.json)
+- Remove `lovable-tagger` from `devDependencies`.
+
+### Public Assets & Metadata
+#### [MODIFY] [index.html](file:///e:/TDC_App/TDGAMES_App/hiring_app/index.html)
+- Replace `og:image` content with TDGames logo URL.
+- Replace `twitter:image` content with TDGames logo URL.
+- Link: `https://storage.googleapis.com/gpt-engineer-file-uploads/9zQAQs3M7rWuAkwqvSdAHPGge2z1/uploads/1766500107714-logo_td - Copy.png`
+
+## Verification Plan
+
+### Automated Tests
+- Run `npm run dev` to ensure the build configuration is still valid and the app starts without errors.
+- Check browser console for any errors related to missing modules.
+
+### Manual Verification
+- Inspect [index.html](file:///e:/TDC_App/TDGAMES_App/hiring_app/index.html) source in the browser to verify meta tags.
+- Verify that the app still loads correctly without the `lovable-tagger` plugin.
