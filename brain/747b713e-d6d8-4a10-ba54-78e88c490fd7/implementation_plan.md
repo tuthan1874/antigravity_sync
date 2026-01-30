@@ -1,29 +1,61 @@
-# Removing Lovable & Updating Branding
+# Update README.md
 
-This plan outlines the steps to remove all Lovable references from the codebase and replace the project thumbnail with the TDGames logo.
+The current `README.md` serves as a template for Lovable projects. We need to replace it with a proper documentation file for the TDGames Hiring App.
 
 ## Proposed Changes
 
-### Configuration
-#### [MODIFY] [vite.config.ts](file:///e:/TDC_App/TDGAMES_App/hiring_app/vite.config.ts)
-- Remove `componentTagger` import from `lovable-tagger`.
-- Remove `componentTagger()` plugin usage.
+### [MODIFY] [README.md](file:///e:/TDC_App/TDGAMES_App/hiring_app/README.md)
+- **Title**: Change to "TDGames Hiring App" or similar.
+- **Project Info**: Remove Lovable project URL.
+- **Instructions**:
+    - Remove "How can I edit this code?" Lovable specific sections.
+    - Keep standard "Use your preferred IDE" instructions but simplified.
+    - Remove "Use Lovable" and "Deploy" sections related to Lovable.
+- **Tech Stack**: Keep the existing list but clean up context.
 
-#### [MODIFY] [package.json](file:///e:/TDC_App/TDGAMES_App/hiring_app/package.json)
-- Remove `lovable-tagger` from `devDependencies`.
+## New Content Structure
 
-### Public Assets & Metadata
-#### [MODIFY] [index.html](file:///e:/TDC_App/TDGAMES_App/hiring_app/index.html)
-- Replace `og:image` content with TDGames logo URL.
-- Replace `twitter:image` content with TDGames logo URL.
-- Link: `https://storage.googleapis.com/gpt-engineer-file-uploads/9zQAQs3M7rWuAkwqvSdAHPGge2z1/uploads/1766500107714-logo_td - Copy.png`
+```markdown
+# TDGames Hiring App
+
+A premium game art studio hiring application built with React, Vite, and Tailwind CSS.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js & npm installed
+
+### Installation
+
+1. Clone the repository:
+   ```sh
+   git clone <YOUR_GIT_URL>
+   cd hiring_app
+   ```
+
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+
+3. Start the development server:
+   ```sh
+   npm run dev
+   ```
+
+## Technologies
+
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
+- React Router DOM
+- TanStack Query
+```
 
 ## Verification Plan
 
-### Automated Tests
-- Run `npm run dev` to ensure the build configuration is still valid and the app starts without errors.
-- Check browser console for any errors related to missing modules.
-
 ### Manual Verification
-- Inspect `index.html` source in the browser to verify meta tags.
-- Verify that the app still loads correctly without the `lovable-tagger` plugin.
+- View `README.md` in preview to ensure markdown renders correctly.

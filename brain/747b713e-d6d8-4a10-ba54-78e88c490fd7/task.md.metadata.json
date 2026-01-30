@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_TASK",
-  "summary": "Add commit task",
-  "updatedAt": "2026-01-30T15:38:05.187298900Z",
-  "version": "9"
+  "summary": "Mark all tasks as done",
+  "updatedAt": "2026-01-30T15:46:35.002254900Z",
+  "version": "14"
 }
