@@ -9,6 +9,15 @@
         "sbp_2a1791885255c26feb766a02aa5e9aa71e041efc"
       ],
       "env": {}
+    },
+    "NocoDB__HRM_Manager": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://nocodb.tdconsulting.vn/mcp/nc4srd5a6c0rc1g8",
+        "--header",
+        "xc-mcp-token: 1yyq9EPiheGbQXtW3x41gSyM9QVzSQ14HyShqKEN"
+      ]
     }
   }
 }

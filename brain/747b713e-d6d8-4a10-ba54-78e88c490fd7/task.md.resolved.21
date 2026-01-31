@@ -13,6 +13,4 @@
 - [x] Debug missing video on VPS <!-- id: 9 -->
 - [x] Commit and push opacity fix <!-- id: 10 -->
 - [x] Investigate 500 Internal Server Error <!-- id: 11 -->
-- [x] Adjust video opacity to 25% <!-- id: 12 -->
-- [x] Fix background video responsiveness (fixed position) <!-- id: 13 -->
-- [x] Commit and push background fixes <!-- id: 14 -->
+- [ ] Adjust video opacity to 25% <!-- id: 12 -->
