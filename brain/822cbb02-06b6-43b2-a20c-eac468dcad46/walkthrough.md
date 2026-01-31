@@ -36,6 +36,7 @@ This walkthrough documents the successful optimization of the HRM Dashboard (`ap
 - **Syntax Check**: All syntax errors resolved.
 - **Type Safety**: Critical type errors resolved; remaining `any` types are non-blocking.
 - **Render Logic**: Verified that data structures returned by SWR match the component's rendering requirements (e.g., `attendanceData` for charts, `notifications` list).
+- **Browser Verification**: Failed to launch automated browser environment. User verification required on `localhost:3000`.
 
 ## Next Steps
 - Monitor dashboard performance in production.
