@@ -1,0 +1,34 @@
+# Database Optimization Walkthrough
+
+## Summary of Changes
+I have analyzed the database schema and identified that many Foreign Key columns were missing indexes, which can lead to slow performance in `JOIN` queries.
+
+I have created a new SQL migration file that adds these missing indexes.
+
+## Created Files
+*   [optimize_indexes.sql](file:///e:/TDC_App/TDGAMES_App/HRM/source/database/optimize_indexes.sql)
+
+## Added Indexes
+Indexes have been added for the following tables and columns:
+
+| Table | Columns Indexed |
+| :--- | :--- |
+| `employees` | `department_id`, `position_id`, `lead_id`, `auth_user_id` |
+| `attendance_records` | `employee_id`, `created_by` |
+| `budget_allocations` | `budget_id`, `category_id` |
+| `budgets` | `created_by` |
+| `employee_dependents` | `employee_id` |
+| `expense_requests` | `employee_id`, `approved_by`, `rejected_by` |
+| `financial_targets` | `assigned_to_id`, `created_by` |
+| `financial_transactions` | `category_id`, `created_by`, `approved_by`, `rejected_by` |
+| `journal_entries` | `transaction_id`, `account_id` |
+| `leave_balances` | `employee_id` |
+| `leave_requests` | `employee_id` |
+
+## Next Steps
+To apply these optimizations, please run the SQL commands in `optimize_indexes.sql` against your Supabase database. You can do this via the Supabase Dashboard (SQL Editor) or using the Supabase CLI if configured.
+
+```bash
+# Example if using psql directly
+psql -h <host> -d <dbname> -U <user> -f source/database/optimize_indexes.sql
+```

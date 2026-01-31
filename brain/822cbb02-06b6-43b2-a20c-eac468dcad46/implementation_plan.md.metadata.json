@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Plan to add missing indexes to foreign keys to optimize database performance.",
+  "updatedAt": "2026-01-31T13:16:54.126725200Z"
+}

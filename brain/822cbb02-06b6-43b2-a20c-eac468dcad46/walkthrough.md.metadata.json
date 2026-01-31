@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Walkthrough of the database optimization changes, including the list of new indexes and instructions for applying the migration.",
+  "updatedAt": "2026-01-31T13:17:30.271767700Z"
+}

@@ -1,0 +1,8 @@
+# Task: Database Optimization Analysis and Skill Search
+
+- [ ] Search for available skills in `.agent/skills` or similar locations <!-- id: 0 -->
+- [ ] Locate database schema definitions (e.g., `supabase/migrations`) <!-- id: 1 -->
+- [ ] Analyze table columns for optimization opportunities <!-- id: 2 -->
+    - [ ] Check data types <!-- id: 3 -->
+    - [ ] Check for missing indexes on foreign keys and frequently queried columns <!-- id: 4 -->
+- [ ] Report findings to user <!-- id: 5 -->

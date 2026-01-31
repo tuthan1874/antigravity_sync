@@ -1,0 +1,51 @@
+# Database Analysis Report
+
+## 1. Skill Library Reference
+Based on your request, I searched the `temp_skill_repo` and found several highly relevant skills that can be used for reference:
+
+*   **`database-design`**: Principles for schema design, indexing strategy, and decision making.
+*   **`postgres-best-practices`**: Specific optimizations for Postgres, including performance tuning and schema design.
+*   **`postgresql`**: Deep dive into Postgres-specific schema design, data types, and advanced features.
+*   **`sql-optimization-patterns`**: Techniques for optimizing queries and indexing.
+*   **`database-optimizer`**: Advanced tuning and N+1 resolution.
+
+These skills suggest that a well-optimized database should have appropriate indexing, especially on foreign keys, and use correct data types.
+
+## 2. Schema Analysis Findings
+I analyzed the `schema_dump_pooler_backup.sql` file which contains the current database structure.
+
+### 🟢 Good Practices Found
+*   **Data Types**: usage of `numeric(15,2)` for financial fields (`amount`, `salary`) is correct (avoids floating point errors).
+*   **IDs**: Consistent use of `uuid` for primary keys.
+*   **Timestamps**: `timestamp with time zone` is used correctly.
+*   **JSONB**: Used in `auth` tables for flexibility.
+
+### 🔴 Critical Issues (Optimization Opportunities)
+**Missing Indexes on Foreign Keys**:
+PostgreSQL **does not** automatically create indexes on Foreign Key columns. This is a common performance bottleneck, especially for `JOIN` operations (e.g., getting all expenses for an employee).
+
+I found that **almost all** foreign keys in the `public` schema are missing indexes.
+
+**Examples of Missing Indexes:**
+*   `public.employees`:
+    *   `department_id`
+    *   `position_id`
+    *   `lead_id`
+    *   `auth_user_id` (Critical for RLS and user lookups)
+*   `public.budget_allocations`:
+    *   `budget_id`
+    *   `category_id`
+*   `public.financial_transactions`:
+    *   `category_id`
+    *   `created_by`
+    *   `approved_by`
+*   `public.attendance_records`:
+    *   `employee_id`
+
+### 🟡 Minor Improvements
+*   **Text vs Varchar**: Many columns use `character varying(255)`. In PostgreSQL, there is no performance benefit to `varchar(n)` over `text`. Using `text` is generally recommended for flexibility unless there is a strict business rule to limit length.
+*   **Enum Types**: You are using many ENUMs (`user_role`, `employee_status`, etc.). This is generally fine but can be harder to migrate if values change frequently compared to reference tables.
+
+## 3. Recommendations
+1.  **Immediate Action**: Create a migration to add indexes to all Foreign Key columns. This will significantly improve query performance for joins and filters.
+2.  **Review**: Consider if `varchar(255)` limits are necessary.
