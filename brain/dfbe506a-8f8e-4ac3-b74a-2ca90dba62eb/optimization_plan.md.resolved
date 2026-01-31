@@ -1,0 +1,56 @@
+# Optimization Plan for TDC_HRM Backend
+
+This document outlines the analysis of the current Supabase backend for `TDC_HRM` and proposes a plan to optimize security, performance, and maintainability.
+
+## 1. Current Status Analysis (Issues Found)
+
+### 🔴 Critical Performance Bottlenecks (RLS)
+The current Row Level Security (RLS) policies rely heavily on **Database Lookups** (Subqueries) to verify user roles.
+*   **Example**: `(SELECT employees.role FROM employees WHERE employees.auth_user_id = auth.uid()) = 'admin'`
+*   **Impact**: Every time you query a table (e.g., fetching 100 notifications), Postgres has to execute a *separate* subquery to the `employees` table for *every single row* to check permissions. This effectively doubles or triples the database load (N+1 query problem).
+
+### ⚠️ Security Risks
+*   **Open Policies**: Some tables like `budget_allocations` have policies with `using (true)`. While this might be intentional for "public read", it often exposes data to all authenticated users without restriction.
+*   **Hardcoded Role Strings**: Logic relies on string matching `'admin'`, `'hr'`. If a role name changes or a typo occurs, security breaks.
+
+### 🔌 Database Structure & Indexing
+*   **Foreign Key Indexes**: Several Foreign Keys appear to lack explicit B-Tree indexes (based on sampled data). This slows down `JOIN` operations (e.g., joining `employees` with `attendance_records`).
+*   **JSONB Usage**: `employee_requests` uses `jsonb` for `request_data`. While flexible, if high-volume queries filter by fields *inside* this JSON, it will be slow without specific GIN indexes.
+
+---
+
+## 2. Optimization Plan
+
+### Phase 1: Performance - Switch to JWT Claims (Custom Claims)
+Instead of querying the `employees` table on every request, we will embed the user's `role` and `employee_id` directly into their **Auth Token (JWT)** when they log in.
+
+*   **Action**: Create a Database Function (Hook) that runs on login to inject claims:
+    ```json
+    {
+      "app_metadata": {
+        "role": "admin",
+        "employee_id": "uuid-..."
+      }
+    }
+    ```
+*   **Benefit**: RLS policies become instant memory checks:
+    *   **Old**: `(SELECT role FROM employees...) = 'admin'` (Slow Disk I/O)
+    *   **New**: `(auth.jwt() ->> 'role') = 'admin'` (Instant Memory)
+
+### Phase 2: Indexing & Integrity
+*   **Add Missing Indexes**: Scan all foreign keys and ensure they have corresponding indexes.
+    *   *Target Tables*: `attendance_records`, `journal_entries`, `payroll_records`.
+*   **Composite Indexes**: For tables queried by multiple columns often (e.g., `attendance_records` queried by `employee_id` AND `date`), add Composite Indexes.
+
+### Phase 3: Security Hardening
+*   **Refactor RLS**: Rewrite all policies to use the new JWT Claims.
+*   **Review "True" Policies**: Audit `budget_allocations` and other open tables to strict role-based access.
+
+---
+
+## 3. Execution Steps (Roadmap)
+
+1.  **Create Custom Claims Function**: Write a PL/pgSQL function to sync `employees.role` to `auth.users.raw_app_meta_data`.
+2.  **Migrate RLS Policies**: Update policies to check `auth.jwt()` instead of `employees` table.
+3.  **Audit Indexes**: Run the "Missing Index" script and apply `CREATE INDEX` statements.
+4.  **Verification**: benchmarks before/after (Query Plan analysis).

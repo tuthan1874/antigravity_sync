@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Comprehensive analysis and optimization plan for the HRM Supabase backend. Focuses on RLS performance (Claims vs Lookups), Indexing, and Security hardening.",
+  "updatedAt": "2026-01-31T11:47:08.282272100Z"
+}
