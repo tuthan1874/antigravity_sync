@@ -2,6 +2,6 @@
 
 - [x] Clone repository
 - [x] Install dependencies
-- [/] Configure environment variables
-- [ ] Restart development server
-- [ ] Verify application running
+- [x] Configure environment variables
+- [x] Restart development server
+- [x] Verify application running
