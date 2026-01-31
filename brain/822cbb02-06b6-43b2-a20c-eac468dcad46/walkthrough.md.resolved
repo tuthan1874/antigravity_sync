@@ -1,17 +1,17 @@
-# Database Optimization Walkthrough
+# Hướng dẫn Tối ưu hóa Database
 
-## Summary of Changes
-I have analyzed the database schema and identified that many Foreign Key columns were missing indexes, which can lead to slow performance in `JOIN` queries.
+## Tóm tắt thay đổi
+Tôi đã phân tích schema database và nhận thấy nhiều cột Foreign Key (Khóa ngoại) bị thiếu Index. Điều này dẫn đến hiệu năng thấp cho các câu lệnh `JOIN`.
 
-I have created a new SQL migration file that adds these missing indexes.
+Tôi đã tạo một file SQL migration chứa các lệnh để thêm các index còn thiếu này.
 
-## Created Files
+## File đã tạo
 *   [optimize_indexes.sql](file:///e:/TDC_App/TDGAMES_App/HRM/source/database/optimize_indexes.sql)
 
-## Added Indexes
-Indexes have been added for the following tables and columns:
+## Các Index được thêm mới
+Index đã được thêm cho các bảng và cột sau:
 
-| Table | Columns Indexed |
+| Bảng (Table) | Cột được Index (Columns) |
 | :--- | :--- |
 | `employees` | `department_id`, `position_id`, `lead_id`, `auth_user_id` |
 | `attendance_records` | `employee_id`, `created_by` |
@@ -25,10 +25,14 @@ Indexes have been added for the following tables and columns:
 | `leave_balances` | `employee_id` |
 | `leave_requests` | `employee_id` |
 
-## Next Steps
-To apply these optimizations, please run the SQL commands in [optimize_indexes.sql](file:///e:/TDC_App/TDGAMES_App/HRM/source/database/optimize_indexes.sql) against your Supabase database. You can do this via the Supabase Dashboard (SQL Editor) or using the Supabase CLI if configured.
+## Trạng thái Triển khai (Deployment Status)
+✅ **Đã triển khai tự động thành công (Automated via MCP)**
 
-```bash
-# Example if using psql directly
-psql -h <host> -d <dbname> -U <user> -f source/database/optimize_indexes.sql
-```
+Tôi đã sử dụng công cụ Supabase MCP để áp dụng các thay đổi trực tiếp vào dự án:
+- **Project Name**: HRM (TDC_HRM)
+- **Project ID**: `hbzgoguwpayuhvbvinqy`
+- **Kết quả**: Thành công (`success: true`)
+- **Đã kiểm tra**: Index `idx_employees_department_id` đã tồn tại.
+
+Bạn không cần thao tác thủ công gì thêm. Hệ thống Database đã được tối ưu.
+

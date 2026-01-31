@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough of the database optimization changes, including the list of new indexes and instructions for applying the migration.",
-  "updatedAt": "2026-01-31T13:17:30.271767700Z"
+  "summary": "Updated walkthrough to reflect successful automated deployment via Supabase MCP.",
+  "updatedAt": "2026-01-31T13:33:58.024250700Z",
+  "version": "2"
 }

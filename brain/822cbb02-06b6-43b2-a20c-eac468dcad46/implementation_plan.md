@@ -1,4 +1,14 @@
-# Implementation Plan - Database Optimization
+# Optimization Plan - Database Indexes
+
+## What are we optimizing?
+We are strictly focusing on **Database Query Performance**, specifically targeting **Foreign Key Lookups** and **JOIN Operations**.
+
+Currently, the database tables have relationships (Foreign Keys) but lack the corresponding indexes. This means:
+1.  **Slow Joins**: When you fetch an Employee and want their Department, the database has to scan the entire table.
+2.  **Slow Filtering**: Queries like "Get all expenses for Employee X" do a full table scan.
+
+**The Solution:**
+We are adding B-Tree indexes to all Foreign Key columns. This changes lookups from $O(N)$ (scanning everything) to $O(\log N)$ (instant lookup), which is the standard best practice for PostgreSQL.
 
 ## Goal Description
 Optimize the HRM database by adding missing indexes to Foreign Key columns. This will improve the performance of `JOIN` queries and data retrieval, especially for relationships between employees, departments, and financial transactions.

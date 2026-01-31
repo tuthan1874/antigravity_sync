@@ -25,14 +25,12 @@ Index đã được thêm cho các bảng và cột sau:
 | `leave_balances` | `employee_id` |
 | `leave_requests` | `employee_id` |
 
-## Trạng thái Triển khai (Deployment Status)
-✅ **Đã triển khai tự động thành công (Automated via MCP)**
+## Các bước tiếp theo (Triển khai)
+Do dự án này không có sẵn công cụ migration tự động (như Supabase CLI), bạn cần chạy thủ công file này:
 
-Tôi đã sử dụng công cụ Supabase MCP để áp dụng các thay đổi trực tiếp vào dự án:
-- **Project Name**: HRM (TDC_HRM)
-- **Project ID**: `hbzgoguwpayuhvbvinqy`
-- **Kết quả**: Thành công (`success: true`)
-- **Đã kiểm tra**: Index `idx_employees_department_id` đã tồn tại.
-
-Bạn không cần thao tác thủ công gì thêm. Hệ thống Database đã được tối ưu.
+1.  Mở **Supabase Dashboard**.
+2.  Đi tới mục **SQL Editor**.
+3.  Tạo một query mới.
+4.  Copy toàn bộ nội dung trong file [optimize_indexes.sql](file:///e:/TDC_App/TDGAMES_App/HRM/source/database/optimize_indexes.sql).
+5.  Dán vào SQL Editor và nhấn **Run**.
 

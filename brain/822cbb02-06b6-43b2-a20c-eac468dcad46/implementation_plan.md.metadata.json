@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Plan to add missing indexes to foreign keys to optimize database performance.",
-  "updatedAt": "2026-01-31T13:16:54.126725200Z"
+  "summary": "Updated the plan to explicitly detail the optimization scope (Foreign Key Indexing) and its expected impact on query performance.",
+  "updatedAt": "2026-01-31T13:27:59.619848900Z",
+  "version": "1"
 }

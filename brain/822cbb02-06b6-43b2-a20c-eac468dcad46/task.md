@@ -7,3 +7,4 @@
     - [x] Check for missing indexes on foreign keys and frequently queried columns <!-- id: 4 -->
 - [x] Report findings to user <!-- id: 5 -->
 - [x] Create `source/database/optimize_indexes.sql` with missing indexes <!-- id: 6 -->
+- [x] Deploy optimizations to Supabase project 'HRM' via MCP <!-- id: 7 -->
