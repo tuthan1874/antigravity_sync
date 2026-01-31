@@ -1,42 +1,37 @@
-# Optimization Plan - Database Indexes
+# Optimization Implementation Plan: SWR & Query Tuning
 
-## What are we optimizing?
-We are strictly focusing on **Database Query Performance**, specifically targeting **Foreign Key Lookups** and **JOIN Operations**.
-
-Currently, the database tables have relationships (Foreign Keys) but lack the corresponding indexes. This means:
-1.  **Slow Joins**: When you fetch an Employee and want their Department, the database has to scan the entire table.
-2.  **Slow Filtering**: Queries like "Get all expenses for Employee X" do a full table scan.
-
-**The Solution:**
-We are adding B-Tree indexes to all Foreign Key columns. This changes lookups from $O(N)$ (scanning everything) to $O(\log N)$ (instant lookup), which is the standard best practice for PostgreSQL.
-
-## Goal Description
-Optimize the HRM database by adding missing indexes to Foreign Key columns. This will improve the performance of `JOIN` queries and data retrieval, especially for relationships between employees, departments, and financial transactions.
+## Goal
+Improve dashboard performance and UX by eliminating loading states on tab switching and reducing data payload size.
+1.  **Client-side Caching (SWR)**: Use `swr` to cache dashboard data. When switching tabs, data appears instantly from cache while revalidating in the background.
+2.  **Query Optimization**: Create specific API endpoints or modify service calls to select only necessary columns (e.g., `select('id, name')` instead of `select('*')`).
 
 ## User Review Required
-> [!IMPORTANT]
-> This change involves creating a new migration file. Please confirm if you want me to generate this migration file in `source/supabase/migrations` (or equivalent location).
+> [!NOTE]
+> This change introduces a new dependency: `swr`.
+> It refactors the current `useEffect` data fetching in `app/page.tsx` to use `useSWR`.
 
 ## Proposed Changes
 
-### Database Migrations
-#### [NEW] `source/database/optimize_indexes.sql` (or similar path)
-Create a new SQL file to add indexes for the following tables/columns:
+### Dependencies
+- Install `swr` (Started)
 
-*   **public.employees**: `department_id`, `position_id`, `lead_id`, `auth_user_id`
-*   **public.attendance_records**: `employee_id`, `created_by`
-*   **public.budget_allocations**: `budget_id`, `category_id`
-*   **public.budgets**: `created_by`
-*   **public.employee_dependents**: `employee_id`
-*   **public.expense_requests**: `employee_id`, `approved_by`, `rejected_by`
-*   **public.financial_targets**: `assigned_to_id`, `created_by`
-*   **public.financial_transactions**: `category_id`, `created_by`, `approved_by`, `rejected_by`
-*   **public.journal_entries**: `transaction_id`, `account_id`
-*   **public.leave_balances**: `employee_id`
-*   **public.leave_requests**: `employee_id`
+### [Optimization Layer]
+#### [NEW] [swr-provider.tsx](file:///e:/TDC_App/TDGAMES_App/HRM/source/components/providers/swr-provider.tsx)
+- Create a reusable SWR config wrapper (optional but good practice) or just fetcher utility.
+
+#### [MODIFY] [page.tsx](file:///e:/TDC_App/TDGAMES_App/HRM/source/app/page.tsx)
+-   Replace `useEffect` state loading with `useSWR`.
+-   Implement `useDashboardData` custom hook inside the file or separate file to manage the fetching logic.
+-   Refactor component to render based on `data` from SWR.
+-   **Query Tuning**: In the fetcher function, ensure we are calling optimized endpoints or services.
+
+#### [MODIFY] [employee.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/lib/services/employee.ts) (and other services)
+-   Modify `getEmployees` or add `getEmployeeStats` to fetch only specific columns if possible, or handle optimization in the API route if used. _However, since the dashboard uses client-side services directly via Supabase client mostly, we will optimize the `select` clause in the service calls._
 
 ## Verification Plan
-
 ### Manual Verification
-1.  **Check generated SQL**: Verify that the generated SQL contains valid `CREATE INDEX IF NOT EXISTS` statements.
-2.  **Run Migration (if environment available)**: If you have a local Supabase running, we can apply the migration and check `pg_stat_user_indexes` or essentially just check the schema again. Since I don't see a running Supabase in the context, I will provide the SQL file for you to apply.
+-   Load Dashboard -> Wait for data.
+-   Switch to "Employees" tab.
+-   Switch back to "Dashboard".
+-   **Expectation**: Data appears **instantly**. No skeleton screen (or very brief flash only if cache expired).
+-   Check Network tab: Payload size should be smaller (due to optimized select).

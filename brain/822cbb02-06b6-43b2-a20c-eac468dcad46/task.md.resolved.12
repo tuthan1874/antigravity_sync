@@ -1,0 +1,29 @@
+# Task: Database Optimization Analysis and Skill Search
+
+- [x] Search for available skills in `temp_skill_repo` <!-- id: 0 -->
+- [x] Locate database schema definitions (e.g., `source/supabase/migrations` or similar) <!-- id: 1 -->
+- [/] Analyze table columns for optimization opportunities <!-- id: 2 -->
+    - [x] Check data types <!-- id: 3 -->
+    - [x] Check for missing indexes on foreign keys and frequently queried columns <!-- id: 4 -->
+- [x] Report findings to user <!-- id: 5 -->
+- [x] Create [source/database/optimize_indexes.sql](file:///e:/TDC_App/TDGAMES_App/HRM/source/database/optimize_indexes.sql) with missing indexes <!-- id: 6 -->
+- [x] Deploy optimizations to Supabase project 'HRM' via MCP <!-- id: 7 -->
+- [x] Debug password reset and login flow <!-- id: 8 -->
+- [x] Complete admin profile with dummy data <!-- id: 9 -->
+
+
+# Task: UI/UX Redesign (Professional Corporate) <!-- id: 10 -->
+
+- [x] Phase 1: Global Design System <!-- id: 11 -->
+    - [x] Update [globals.css](file:///e:/TDC_App/TDGAMES_App/HRM/source/app/globals.css) with semantic color variables <!-- id: 12 -->
+    - [x] Configure [tailwind.config.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/tailwind.config.ts) with new tokens <!-- id: 13 -->
+- [/] Phase 2: Authentication UI <!-- id: 14 -->
+- [x] Phase 2: Authentication UI <!-- id: 14 -->
+    - [x] Implement Split Layout in [AuthGuard](file:///e:/TDC_App/TDGAMES_App/HRM/source/components/auth-guard.tsx#18-130) <!-- id: 15 -->
+    - [x] Redesign [LoginForm](file:///e:/TDC_App/TDGAMES_App/HRM/source/components/login-form.tsx#12-192) component with glassmorphism <!-- id: 16 -->
+- [x] Phase 3: Layout & Navigation <!-- id: 17 -->
+    - [x] Redesign Sidebar (Dark mode/Contrast) <!-- id: 18 -->
+    - [x] Update Header (Minimalist) <!-- id: 19 -->
+- [x] Phase 4: Dashboard & Cards <!-- id: 20 -->
+    - [x] Update Dashboard Overview cards <!-- id: 21 -->
+    - [x] Enhance Recent Activity styling <!-- id: 22 -->

@@ -1,0 +1,50 @@
+# UI/UX Redesign Plan - TDC HRM
+
+## Goal Description
+Overhaul the entire application's UI/UX to match "Modern Professional Corporate" standards, using the `ui-ux-pro-max` skill guidelines. The goal is to create a clean, trustworthy, and efficient interface suitable for an HR system.
+
+## User Review Required
+> [!IMPORTANT]
+> This redesign will modify global CSS variables and base component styles. Visual inconsistencies may occur briefly during the transition.
+
+## Proposed Changes
+
+### 1. Global Design System
+#### [MODIFY] [globals.css](file:///e:/TDC_App/TDGAMES_App/HRM/source/app/globals.css)
+- **Color Palette update**: Function-based semantic colors.
+  - Primary: `blue-600` (Main actions)
+  - Surface: `slate-50` (Backgrounds)
+  - Text: `slate-900` (Headings), `slate-500` (Body)
+- **Typography**: Ensure `Inter` is universally applied with proper line-height (1.5).
+- **Radius**: Standardize to `0.5rem` (8px).
+
+#### [MODIFY] [tailwind.config.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/tailwind.config.ts)
+- Extend theme with new color tokens if needed.
+- Add standard animations (fade-in, slide-up).
+
+### 2. Authentication UI (Login)
+#### [MODIFY] [login-form.tsx](file:///e:/TDC_App/TDGAMES_App/HRM/source/components/auth/login-form.tsx)
+#### [MODIFY] [page.tsx](file:///e:/TDC_App/TDGAMES_App/HRM/source/app/login/page.tsx)
+- Implementation of "Split Layout": Left side branding/hero image, Right side clean login form.
+- Add glassmorphism effects to the card.
+- Improve input field states (focus rings, error messages).
+
+### 3. Layout & Navigation
+#### [MODIFY] [sidebar.tsx](file:///e:/TDC_App/TDGAMES_App/HRM/source/components/layout/sidebar.tsx)
+#### [MODIFY] [header.tsx](file:///e:/TDC_App/TDGAMES_App/HRM/source/components/layout/header.tsx)
+- **Sidebar**: Dark mode inspired or clean slate-900 sidebar for contrast.
+- **Active States**: clear visual indicators (bg-blue-50 text-blue-600).
+- **Header**: Minimalist, sticky, with subtle border-bottom.
+
+### 4. Dashboard & Cards
+#### [MODIFY] [overview.tsx](file:///e:/TDC_App/TDGAMES_App/HRM/source/components/dashboard/overview.tsx)
+#### [MODIFY] [recent-activity.tsx](file:///e:/TDC_App/TDGAMES_App/HRM/source/components/dashboard/recent-activity.tsx)
+- **Cards**: Add consistent shadow (`shadow-sm` hover `shadow-md`), transition effects.
+- **Stats**: Big numbers, clear labels, trend indicators (green/red tiny badges).
+
+## Verification Plan
+
+### Manual Verification
+- **Login Page**: Verify visual appeal, responsiveness (mobile/desktop).
+- **Dashboard**: Check contrast, spacing, and interaction states (hover/focus).
+- **Navigation**: Verify active link highlighting and collapse behavior.

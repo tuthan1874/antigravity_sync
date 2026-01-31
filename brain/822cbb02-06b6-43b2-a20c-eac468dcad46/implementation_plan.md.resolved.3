@@ -1,0 +1,37 @@
+# Optimization Implementation Plan: SWR & Query Tuning
+
+## Goal
+Improve dashboard performance and UX by eliminating loading states on tab switching and reducing data payload size.
+1.  **Client-side Caching (SWR)**: Use `swr` to cache dashboard data. When switching tabs, data appears instantly from cache while revalidating in the background.
+2.  **Query Optimization**: Create specific API endpoints or modify service calls to select only necessary columns (e.g., `select('id, name')` instead of `select('*')`).
+
+## User Review Required
+> [!NOTE]
+> This change introduces a new dependency: `swr`.
+> It refactors the current `useEffect` data fetching in [app/page.tsx](file:///e:/TDC_App/TDGAMES_App/HRM/source/app/page.tsx) to use `useSWR`.
+
+## Proposed Changes
+
+### Dependencies
+- Install `swr` (Started)
+
+### [Optimization Layer]
+#### [NEW] [swr-provider.tsx](file:///e:/TDC_App/TDGAMES_App/HRM/source/components/providers/swr-provider.tsx)
+- Create a reusable SWR config wrapper (optional but good practice) or just fetcher utility.
+
+#### [MODIFY] [page.tsx](file:///e:/TDC_App/TDGAMES_App/HRM/source/app/page.tsx)
+-   Replace `useEffect` state loading with `useSWR`.
+-   Implement `useDashboardData` custom hook inside the file or separate file to manage the fetching logic.
+-   Refactor component to render based on `data` from SWR.
+-   **Query Tuning**: In the fetcher function, ensure we are calling optimized endpoints or services.
+
+#### [MODIFY] [employee.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/lib/services/employee.ts) (and other services)
+-   Modify `getEmployees` or add `getEmployeeStats` to fetch only specific columns if possible, or handle optimization in the API route if used. _However, since the dashboard uses client-side services directly via Supabase client mostly, we will optimize the `select` clause in the service calls._
+
+## Verification Plan
+### Manual Verification
+-   Load Dashboard -> Wait for data.
+-   Switch to "Employees" tab.
+-   Switch back to "Dashboard".
+-   **Expectation**: Data appears **instantly**. No skeleton screen (or very brief flash only if cache expired).
+-   Check Network tab: Payload size should be smaller (due to optimized select).

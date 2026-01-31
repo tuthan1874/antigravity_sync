@@ -8,3 +8,22 @@
 - [x] Report findings to user <!-- id: 5 -->
 - [x] Create `source/database/optimize_indexes.sql` with missing indexes <!-- id: 6 -->
 - [x] Deploy optimizations to Supabase project 'HRM' via MCP <!-- id: 7 -->
+- [x] Debug password reset and login flow <!-- id: 8 -->
+- [x] Complete admin profile with dummy data <!-- id: 9 -->
+
+
+# Task: UI/UX Redesign (Professional Corporate) <!-- id: 10 -->
+
+- [x] Phase 1: Global Design System <!-- id: 11 -->
+    - [x] Update `globals.css` with semantic color variables <!-- id: 12 -->
+    - [x] Configure `tailwind.config.ts` with new tokens <!-- id: 13 -->
+- [/] Phase 2: Authentication UI <!-- id: 14 -->
+- [x] Phase 2: Authentication UI <!-- id: 14 -->
+    - [x] Implement Split Layout in `AuthGuard` <!-- id: 15 -->
+    - [x] Redesign `LoginForm` component with glassmorphism <!-- id: 16 -->
+- [x] Phase 3: Layout & Navigation <!-- id: 17 -->
+    - [x] Redesign Sidebar (Dark mode/Contrast) <!-- id: 18 -->
+    - [x] Update Header (Minimalist) <!-- id: 19 -->
+- [x] Phase 4: Dashboard & Cards <!-- id: 20 -->
+    - [x] Update Dashboard Overview cards <!-- id: 21 -->
+    - [x] Enhance Recent Activity styling <!-- id: 22 -->
