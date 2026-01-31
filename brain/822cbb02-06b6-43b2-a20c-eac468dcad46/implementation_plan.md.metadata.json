@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Implement SWR for caching and optimize Supabase queries for performance.",
-  "updatedAt": "2026-01-31T14:19:51.545421600Z",
-  "version": "3"
+  "summary": "Migrate file storage from Supabase to Cloudflare R2.",
+  "updatedAt": "2026-01-31T14:56:48.790173100Z",
+  "version": "4"
 }

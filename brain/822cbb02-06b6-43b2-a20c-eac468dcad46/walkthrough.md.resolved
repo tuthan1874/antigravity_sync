@@ -32,6 +32,23 @@ This walkthrough documents the successful optimization of the HRM Dashboard ([ap
 - Removed unused React hooks (`useState`, `useEffect`).
 - Fixed syntax errors (extra braces) and potential runtime errors (undefined date formatting).
 
+## Storage Migration to Cloudflare R2
+
+### 1. Setup
+- **Dependencies**: `@aws-sdk/client-s3`, `@aws-sdk/s3-request-presigner`.
+- **Implementation**: Created [lib/r2.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/lib/r2.ts) for strictly-typed and secure interaction with R2 (S3-compatible).
+
+### 2. API Routes
+- **Generic Upload**: [app/api/storage/upload/route.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/app/api/storage/upload/route.ts) - Handles generic file uploads (used by avatars).
+- **Generic Delete**: [app/api/storage/delete/route.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/app/api/storage/delete/route.ts) - Handles file deletion.
+- **Expense Upload**: [app/api/expense-requests/upload/route.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/app/api/expense-requests/upload/route.ts) - Updated to use R2.
+- **Employee Documents**: `app/api/employees/[id]/documents/route.ts` - Updated upload, list, and delete logic to use R2.
+- **Signed URLs**: [app/api/storage/sign-url/route.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/app/api/storage/sign-url/route.ts) - Updated to generate R2 presigned URLs.
+
+### 3. Client & Utilities
+- **Avatars**: [lib/avatar-utils.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/lib/avatar-utils.ts) updated to route storage operations through the new API endpoints, keeping R2 credentials secure on the server.
+- **Environment**: Depends on `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, and `NEXT_PUBLIC_R2_PUBLIC_URL`.
+
 ## Verification Results
 - **Syntax Check**: All syntax errors resolved.
 - **Type Safety**: Critical type errors resolved; remaining `any` types are non-blocking.
@@ -41,3 +58,4 @@ This walkthrough documents the successful optimization of the HRM Dashboard ([ap
 ## Next Steps
 - Monitor dashboard performance in production.
 - Consider further backend query optimizations if payload size becomes an issue (e.g., selecting specific columns).
+- **Migration**: Manually migrate existing files from Supabase Storage to R2 bucket if needed (preserving paths).

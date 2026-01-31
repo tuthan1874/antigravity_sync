@@ -1,37 +1,49 @@
-# Optimization Implementation Plan: SWR & Query Tuning
+# Cloudflare R2 Migration Plan
 
 ## Goal
-Improve dashboard performance and UX by eliminating loading states on tab switching and reducing data payload size.
-1.  **Client-side Caching (SWR)**: Use `swr` to cache dashboard data. When switching tabs, data appears instantly from cache while revalidating in the background.
-2.  **Query Optimization**: Create specific API endpoints or modify service calls to select only necessary columns (e.g., `select('id, name')` instead of `select('*')`).
+Replace Supabase Storage with Cloudflare R2 for storing avatars, documents, and attachments. This will likely reduce costs and provide more control over file distribution.
 
 ## User Review Required
-> [!NOTE]
-> This change introduces a new dependency: `swr`.
-> It refactors the current `useEffect` data fetching in `app/page.tsx` to use `useSWR`.
+> [!IMPORTANT]
+> You must provide the following Cloudflare R2 credentials in your `.env.local` file:
+> - `R2_ACCOUNT_ID`: Your Cloudflare Account ID.
+> - `R2_ACCESS_KEY_ID`: R2 Access Key ID.
+> - `R2_SECRET_ACCESS_KEY`: R2 Secret Access Key.
+> - `R2_BUCKET_NAME`: The name of your R2 bucket.
+> - `R2_PUBLIC_URL`: (Optional) The public domain for your bucket (e.g., `https://files.yourdomain.com`), used for public assets like avatars.
 
 ## Proposed Changes
 
-### Dependencies
-- Install `swr` (Started)
+### 1. Dependencies [NEW]
+- Install `@aws-sdk/client-s3` and `@aws-sdk/s3-request-presigner` to interact with R2 (which is S3-compatible).
 
-### [Optimization Layer]
-#### [NEW] [swr-provider.tsx](file:///e:/TDC_App/TDGAMES_App/HRM/source/components/providers/swr-provider.tsx)
-- Create a reusable SWR config wrapper (optional but good practice) or just fetcher utility.
+### 2. Configuration [NEW]
+- Create `lib/r2.ts` to initialize the S3 client using R2 credentials.
+- Implement helper functions:
+  - `uploadFile(key, body, contentType)`
+  - `deleteFile(key)`
+  - `getSignedUrl(key, expiresIn)`
 
-#### [MODIFY] [page.tsx](file:///e:/TDC_App/TDGAMES_App/HRM/source/app/page.tsx)
--   Replace `useEffect` state loading with `useSWR`.
--   Implement `useDashboardData` custom hook inside the file or separate file to manage the fetching logic.
--   Refactor component to render based on `data` from SWR.
--   **Query Tuning**: In the fetcher function, ensure we are calling optimized endpoints or services.
+### 3. Refactoring Integration Points [MODIFY]
 
-#### [MODIFY] [employee.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/lib/services/employee.ts) (and other services)
--   Modify `getEmployees` or add `getEmployeeStats` to fetch only specific columns if possible, or handle optimization in the API route if used. _However, since the dashboard uses client-side services directly via Supabase client mostly, we will optimize the `select` clause in the service calls._
+#### `lib/avatar-utils.ts`
+- **Current**: Uploads to Supabase `avatar` bucket.
+- **New**: Uploads to R2. Returns the R2 key or public URL.
+- **Impact**: Avatar display components may need to handle R2 URLs. `getAvatarUrl` function will simply append the `R2_PUBLIC_URL` if configured, or use presigned URLs if private.
 
-## Verification Plan
-### Manual Verification
--   Load Dashboard -> Wait for data.
--   Switch to "Employees" tab.
--   Switch back to "Dashboard".
--   **Expectation**: Data appears **instantly**. No skeleton screen (or very brief flash only if cache expired).
--   Check Network tab: Payload size should be smaller (due to optimized select).
+#### `app/api/expense-requests/upload/route.ts`
+- **Current**: Uploads to Supabase `expense-attachments` bucket.
+- **New**: Uploads to R2 using `PutObjectCommand`.
+
+#### `app/api/storage/sign-url/route.ts`
+- **Current**: Generates Supabase signed URL.
+- **New**: Generates R2 presigned URL using `getSignedUrl` from `@aws-sdk/s3-request-presigner`.
+
+### 4. Verification Plan
+- **Manual Test**: Upload a new avatar or expense document.
+- **Manual Test**: Verify that the file appears in the R2 bucket (via Cloudflare dashboard or by checking the returned URL).
+- **Manual Test**: Verify that the file can be viewed/downloaded.
+
+## Migration Note
+> [!NOTE]
+> Existing files in Supabase Storage will **NOT** be automatically moved to R2 by this plan. You will need to manually migrate them or keep Supabase as a fallback for old files if critical. This plan focuses on **new** uploads.
