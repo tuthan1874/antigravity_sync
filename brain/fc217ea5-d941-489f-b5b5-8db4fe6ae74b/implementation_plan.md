@@ -1,0 +1,46 @@
+# Implementation Plan - Zustand & Vitest Integration
+
+This plan outlines the steps to integrate **Zustand** for lightweight global state management and **Vitest** for unit testing critical business logic in the HRM system.
+
+## User Review Required
+
+> [!IMPORTANT]
+> This plan introduces new dependencies (`zustand`, `vitest`, etc.). No existing functionality will be broken, but new patterns for state management and testing will be established.
+
+## Proposed Changes
+
+### 1. State Management (Zustand)
+
+Goal: Move global UI state (like Sidebar status, Dialogs) and Session state out of React Context to avoid re-renders.
+
+#### [NEW] [store/ui-store.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/store/ui-store.ts)
+- Create a store to manage UI states (e.g., `isSidebarOpen`, `activeModal`).
+- This will replace ad-hoc Context usage for these simple states.
+
+#### [MODIFY] [package.json](file:///e:/TDC_App/TDGAMES_App/HRM/source/package.json)
+- Add `zustand` dependency.
+
+### 2. Testing Infrastructure (Vitest)
+
+Goal: Ensure correctness of payroll calculations and leave balance logic.
+
+#### [NEW] [vitest.config.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/vitest.config.ts)
+- Configuration file for Vitest to work with Next.js and TypeScript.
+- Set up `jsdom` environment.
+
+#### [MODIFY] [package.json](file:///e:/TDC_App/TDGAMES_App/HRM/source/package.json)
+- Add `vitest`, `@testing-library/react`, `@testing-library/dom`, `@vitejs/plugin-react`, `jsdom` as `devDependencies`.
+- Add `"test": "vitest"` script.
+
+#### [NEW] [tests/payroll.test.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/tests/payroll.test.ts)
+- Create a sample test file to verify payroll calculation logic (e.g., Gross to Net, Tax).
+- *Note: We will extract some calculation logic to pure functions if they are currently embedded in API routes.*
+
+## Verification Plan
+
+### Automated Tests
+- Run `npm run test` to execute the newly created tests.
+- Verify that tests pass for the sample logic.
+
+### Manual Verification
+- **Zustand**: Implement a small demo usage (e.g., a button to toggle a state) or refactor a small piece of state to verify it works without errors.
