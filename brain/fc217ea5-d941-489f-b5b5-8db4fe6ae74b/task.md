@@ -12,6 +12,10 @@
 - [x] UI Updates
     - [x] Employee Form (`components/employee-form.tsx`)
     - [x] Employee Detail (`components/employee-view-sheet.tsx`)
+- [ ] Implement Manual Attendance & Leave Logic <!-- id: 10 -->
+    - [x] Create Leave Summary API (`app/api/leave-requests/monthly-summary/route.ts`)
+    - [x] Update Payroll UI for Manual Entry
+    - [x] Update Payroll Logic for Leave and Manual Data
 - [x] Backend Updates
     - [x] Update API Whitelist (`app/api/employees/[id]/route.ts`)
     - [x] Update Create Validation (`app/api/employees/route.ts`)
