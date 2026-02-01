@@ -9,3 +9,10 @@
     - [x] Install Vitest and dependencies <!-- id: 6 -->
     - [x] Configure vitest.config.ts <!-- id: 7 -->
     - [x] Add unit tests for critical logic <!-- id: 8 -->
+- [x] UI Updates
+    - [x] Employee Form (`components/employee-form.tsx`)
+    - [x] Employee Detail (`components/employee-view-sheet.tsx`)
+- [x] Backend Updates
+    - [x] Update API Whitelist (`app/api/employees/[id]/route.ts`)
+    - [x] Update Create Validation (`app/api/employees/route.ts`)
+    - [x] Add DB Columns (Migration applied to `hbzgoguwpayuhvbvinqy`)
