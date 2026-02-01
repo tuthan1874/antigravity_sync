@@ -3,14 +3,14 @@
 This walkthrough documents the implementation of the new 2026 payroll regulations, including tax updates, insurance calculations, and new allowance handling.
 
 ## 1. Database Updates
-Executed migration `20260201_add_2026_allowances.sql` to:
+Executed migration [20260201_add_2026_allowances.sql](file:///e:/TDC_App/TDGAMES_App/HRM/source/database/migrations/20260201_add_2026_allowances.sql) to:
 - Add `clothing_allowance` and `overtime_allowance` columns to `employees`, `salary_allowances`, and `payroll_records`.
 - Update `salary_regulations` to set 2026 tax defaults:
     - Personal Deduction: **15,500,000 VNĐ**
     - Dependent Deduction: **6,200,000 VNĐ**
 
 ## 2. Logic Implementation
-Updated `app/api/payroll/batch/route.ts` and created `lib/payroll-logic.ts` to implement:
+Updated [app/api/payroll/batch/route.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/app/api/payroll/batch/route.ts) and created [lib/payroll-logic.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/lib/payroll-logic.ts) to implement:
 
 ### 2026 Tax Brackets (5 Levels)
 | Bracket | Rate |
@@ -31,8 +31,7 @@ Updated `app/api/payroll/batch/route.ts` and created `lib/payroll-logic.ts` to i
 
 ## 3. UI Updates
 - **Employee Form**: Added input fields for `Clothing Allowance` and `Overtime Allowance` in the "Salary and Benefits" tab.
-- **Employee View**: Updated detail view sheet to display these new allowance fields.
-- **Data Model**: Updated `Employee` interface to support the new allowance fields.
+- **Data Model**: Updated [Employee](file:///e:/TDC_App/TDGAMES_App/HRM/source/lib/services.ts#5-105) interface to support the new allowance fields.
 
 ## 4. Verification Results
 

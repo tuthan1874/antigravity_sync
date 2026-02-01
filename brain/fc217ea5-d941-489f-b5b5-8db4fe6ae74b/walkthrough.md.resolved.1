@@ -1,0 +1,54 @@
+# Walkthrough - Payroll Logic Update (2026)
+
+This walkthrough documents the implementation of the new 2026 payroll regulations, including tax updates, insurance calculations, and new allowance handling.
+
+## 1. Database Updates
+Executed migration [20260201_add_2026_allowances.sql](file:///e:/TDC_App/TDGAMES_App/HRM/source/database/migrations/20260201_add_2026_allowances.sql) to:
+- Add `clothing_allowance` and `overtime_allowance` columns to `employees`, `salary_allowances`, and `payroll_records`.
+- Update `salary_regulations` to set 2026 tax defaults:
+    - Personal Deduction: **15,500,000 VNĐ**
+    - Dependent Deduction: **6,200,000 VNĐ**
+
+## 2. Logic Implementation
+Updated [app/api/payroll/batch/route.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/app/api/payroll/batch/route.ts) and created [lib/payroll-logic.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/lib/payroll-logic.ts) to implement:
+
+### 2026 Tax Brackets (5 Levels)
+| Bracket | Rate |
+| :--- | :--- |
+| 0 - 10M | 5% |
+| 10 - 30M | 10% |
+| 30 - 60M | 20% |
+| 60 - 100M | 30% |
+| > 100M | 35% |
+
+### Tax Exempt Data
+- **Lunch Allowance**: Unlimited (previously capped at 730k).
+- **Overtime Allowance**: Fixed allowance is now tax exempt.
+
+### Insurance (10.5%)
+- Social (8%) + Health (1.5%) + Unemployment (1%)
+- Capped at salary of **46,800,000 VNĐ**.
+
+## 3. Verification Results
+
+### Unit Tests
+Ran `npm test tests/payroll_2026.test.ts` to verify tax calculation logic.
+
+**Test Results:**
+- ✅ Low Income (<= 10M): Correctly calculated 5% tax.
+- ✅ Level 2 (10-30M): Correctly calculated tax with 2 brackets.
+- ✅ High Income (80M): Correctly calculated tax with 4 brackets (Total 14.5M).
+- ✅ Zero/Negative Income: Returns 0 tax.
+
+### Code Comparison
+```typescript
+// Old Logic (Placeholder)
+income_tax: 0
+
+// New Logic (2026)
+const income_tax = calculateProgressiveTax2026(taxable_income);
+```
+
+## Next Steps
+- Verify the "Split Period" logic when specific data (promotion date) becomes available in the database.
+- Update frontend UI to display the new allowance columns if necessary.

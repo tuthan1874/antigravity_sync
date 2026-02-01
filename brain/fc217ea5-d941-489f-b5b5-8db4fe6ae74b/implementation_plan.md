@@ -1,46 +1,55 @@
-# Implementation Plan - Zustand & Vitest Integration
+# Implementation Plan - Payroll Logic Update (2026)
 
-This plan outlines the steps to integrate **Zustand** for lightweight global state management and **Vitest** for unit testing critical business logic in the HRM system.
+This plan outlines the changes required to update the payroll system to comply with the 2026 regulations as defined in `PAYROLL_LOGIC_2026_UPDATED.md`.
 
 ## User Review Required
 
 > [!IMPORTANT]
-> This plan introduces new dependencies (`zustand`, `vitest`, etc.). No existing functionality will be broken, but new patterns for state management and testing will be established.
+> **Database Changes**: We need to add new columns for `clothing_allowance` and `overtime_allowance` to multiple tables (`employees`, `salary_allowances`, `payroll_records`).
+> **Data Migration**: Existing `salary_regulations` need to be updated with new 2026 constants (Personal Deduction 15.5M, etc.).
 
 ## Proposed Changes
 
-### 1. State Management (Zustand)
+### 1. Database Schema Updates (`supabase-schema.sql` & Migrations)
 
-Goal: Move global UI state (like Sidebar status, Dialogs) and Session state out of React Context to avoid re-renders.
+We need to add new allowance columns to store specific allowance data.
 
-#### [NEW] [store/ui-store.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/store/ui-store.ts)
-- Create a store to manage UI states (e.g., `isSidebarOpen`, `activeModal`).
-- This will replace ad-hoc Context usage for these simple states.
+#### [NEW] [database/migrations/20260201_add_2026_allowances.sql](file:///e:/TDC_App/TDGAMES_App/HRM/source/database/migrations/20260201_add_2026_allowances.sql)
+- Add `clothing_allowance` (Trang phục) and `overtime_allowance` (PC Tăng ca - cố định) to:
+    - `employees`
+    - `salary_allowances`
+    - `payroll_records`
+- Update `salary_regulations` default values:
+    - `personal_deduction` -> 15,500,000
+    - `dependent_deduction` -> 6,200,000
 
-#### [MODIFY] [package.json](file:///e:/TDC_App/TDGAMES_App/HRM/source/package.json)
-- Add `zustand` dependency.
+### 2. Payroll Logic Implementation (`app/api/payroll/batch/route.ts`)
 
-### 2. Testing Infrastructure (Vitest)
+We will rewrite the calculation logic in `handlePayrollCalculation`.
 
-Goal: Ensure correctness of payroll calculations and leave balance logic.
+#### [MODIFY] [app/api/payroll/batch/route.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/app/api/payroll/batch/route.ts)
+- **Update Tax Logic**: Implement `calculateProgressiveTax2026` with 5 brackets.
+- **Update Taxable Income**:
+    - Exclude `meal_allowance` (Unlimited).
+    - Exclude `overtime_allowance` (New).
+- **Implement Split Period Logic**:
+    - Check if employee promoted from Probation to Official in the current month.
+    - If yes, calculate salary in 2 parts (Probation Period + Official Period).
+- **Update Insurance**: Ensure it's calculated on Official Salary for split periods.
 
-#### [NEW] [vitest.config.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/vitest.config.ts)
-- Configuration file for Vitest to work with Next.js and TypeScript.
-- Set up `jsdom` environment.
+### 3. types/index.ts (if applicable)
 
-#### [MODIFY] [package.json](file:///e:/TDC_App/TDGAMES_App/HRM/source/package.json)
-- Add `vitest`, `@testing-library/react`, `@testing-library/dom`, `@vitejs/plugin-react`, `jsdom` as `devDependencies`.
-- Add `"test": "vitest"` script.
-
-#### [NEW] [tests/payroll.test.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/tests/payroll.test.ts)
-- Create a sample test file to verify payroll calculation logic (e.g., Gross to Net, Tax).
-- *Note: We will extract some calculation logic to pure functions if they are currently embedded in API routes.*
+- Update `Employee` and `PayrollRecord` interfaces to include new allowance fields.
 
 ## Verification Plan
 
 ### Automated Tests
-- Run `npm run test` to execute the newly created tests.
-- Verify that tests pass for the sample logic.
+- Create a new test file `tests/payroll_2026.test.ts` using Vitest.
+- Test Cases:
+    - **Tax 2026**: High salary with new deductions and 5 brackets.
+    - **Tax Exempt**: Verify lunch and overtime allowances are not taxed.
+    - **Split Period**: Employee promoted on 15th of the month.
 
 ### Manual Verification
-- **Zustand**: Implement a small demo usage (e.g., a button to toggle a state) or refactor a small piece of state to verify it works without errors.
+- Run the "Calculate Payroll" feature for a specific month.
+- Verify the generated `payroll_records` in Database or UI match the 2026 formulas.
