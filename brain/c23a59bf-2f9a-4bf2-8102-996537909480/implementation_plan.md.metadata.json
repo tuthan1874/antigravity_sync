@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Plan to install agent skills by creating `.agent/skills` and populating it from the cloned repository.",
-  "updatedAt": "2026-02-02T06:10:34.264560900Z"
+  "summary": "Detailed implementation plan for the App Preview & Feedback Platform.",
+  "updatedAt": "2026-02-02T09:49:35.162557700Z",
+  "version": "1"
 }
