@@ -20,15 +20,5 @@
   - [ ] File Upload Component
   - [ ] Admin Login (Supabase Auth)
 - [ ] Guest Access Flow
-  - [x] Share Link
-  - [x] View-only + Feedback
-
-## Folder Structure ✓
-
-- [x] Database Schema
-  - [x] Create `folders` table (Category/Item)
-  - [x] Create `review_tasks` table (Art/Animation/VFX)
-- [x] UI Components
-  - [x] Folder Tree Navigation
-  - [x] Create Folder Modal
-  - [x] Review Task View
+  - [ ] Share Link
+  - [ ] View-only + Feedback

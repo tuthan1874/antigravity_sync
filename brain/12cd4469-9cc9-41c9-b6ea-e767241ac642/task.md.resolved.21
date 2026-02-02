@@ -1,0 +1,15 @@
+# Task: Implement TDGames_App
+
+## Backend ✅ Complete
+
+## Frontend ← Current
+
+- [x] Plan Frontend Architecture
+- [x] Setup Next.js Project
+- [x] Create Core Components
+  - [x] Supabase Client & Layout
+  - [x] File Viewer (PSD/Spine)
+  - [x] Feedback Tools (Draw/Note/Screenshot)
+  - [x] Feedback History Panel
+- [ ] Integrate with Supabase ✓ (done via components)
+- [/] Test & Verify ← Current

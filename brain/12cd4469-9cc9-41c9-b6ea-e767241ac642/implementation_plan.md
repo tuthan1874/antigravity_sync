@@ -1,93 +1,74 @@
-# Implementation Plan - TDGames_App Backend on Supabase
+# Frontend Implementation Plan - Creative Review App
 
-This plan outlines the steps to deploy the backend for **TDGames_App** on Supabase, covering project setup, database design, storage, and security policies to support the "Simple Creative Review App" requirements.
+## Tech Stack
 
-## User Review Required
+| Technology | Purpose |
+|------------|---------|
+| Next.js 14 | Framework (App Router) |
+| TailwindCSS | Styling |
+| Konva.js | Canvas drawing |
+| ag-psd | PSD parsing |
+| @esotericsoftware/spine-player | Spine animations |
+| @supabase/supabase-js | Backend integration |
 
-> [!IMPORTANT]
-> **Project Creation**: A new Supabase project named `TDGames_App` will be created. I will need to know which **Organization** to create this in.
-> **Guest Access**: Guest access will be handled via "Anonymous" or "Public" RLS policies allowing inserts into the `feedback` table without an auth account, identifying users by a `guest_name` field.
+## Project Structure
 
-## Proposed Changes
+```
+src/
+├── app/
+│   ├── page.tsx              # Home (Admin upload, project list)
+│   ├── project/[id]/page.tsx # File viewer + feedback
+│   └── layout.tsx
+├── components/
+│   ├── FileViewer/
+│   │   ├── PSDViewer.tsx
+│   │   └── SpineViewer.tsx
+│   ├── Feedback/
+│   │   ├── DrawingCanvas.tsx
+│   │   ├── NotePin.tsx
+│   │   └── ScreenshotTool.tsx
+│   ├── FeedbackHistory.tsx
+│   └── ui/ (buttons, inputs, etc.)
+├── lib/
+│   ├── supabase.ts
+│   └── r2-upload.ts
+└── types/
+```
 
-### Supabase Project Setup
+## Key Features
 
-#### [NEW] Project: TDGames_App
-- **Name**: `TDGames_App`
-- **Region**: (User's preferred region, likely `ap-southeast-1` based on other projects)
-- **Organization**: User to Select
+### 1. File Viewer
+- Detect file type (PSD/Spine) from `files` table
+- PSD: Parse layers, zoom/pan support
+- Spine: Play/pause, frame-by-frame, animation controls
 
-### Database Schema
+### 2. Feedback Tools
+- **Drawing**: Lines, arrows, circles (Konva.js)
+- **Notes**: Click-to-pin with text input
+- **Screenshot**: Capture canvas + markup editor
 
-I will create the following tables to support the app structure.
+### 3. Guest Access
+- No login required
+- Prompt for guest name on first feedback
+- Store in `feedback.guest_name`
 
-#### [NEW] Table: `projects`
-- `id` (uuid, primary key, default `gen_random_uuid()`)
-- `name` (text, required)
-- `description` (text)
-- `owner_id` (uuid, references `auth.users`, default `auth.uid()`)
-- `created_at` (timestamptz, default `now()`)
+### 4. Realtime Updates
+- Subscribe to `feedback` INSERT events
+- Show new feedback instantly to all viewers
 
-#### [NEW] Table: `files`
-Stores references to uploaded PSD and Spine files.
-- `id` (uuid, primary key, default `gen_random_uuid()`)
-- `project_id` (uuid, references `projects.id` on delete cascade)
-- `name` (text, required)
-- `file_type` (text, enum: `psd`, `spine`, `image`)
-- `storage_path` (text, required - path in Storage bucket)
-- `metadata` (jsonb, for dimensions, spine version, etc.)
-- `uploaded_by` (uuid, references `auth.users`)
-- `created_at` (timestamptz)
+## API Integration
 
-#### [NEW] Table: `feedback`
-Stores comments, drawings, and pins.
-- `id` (uuid, primary key)
-- `file_id` (uuid, references `files.id` on delete cascade)
-- `user_id` (uuid, references `auth.users`, nullable - for Admins)
-- `guest_name` (text, nullable - for Guests)
-- `type` (text, enum: `note`, `drawing`, `screenshot`)
-- `data` (jsonb, stores vector paths, text content, or screenshot URL)
-- `target_frame` (integer, nullable, for Spine animations)
-- `canvas_state` (jsonb, optional context)
-- `created_at` (timestamptz)
+| Action | Endpoint |
+|--------|----------|
+| List projects | `supabase.from('projects').select()` |
+| Get files | `supabase.from('files').select().eq('project_id', id)` |
+| Add feedback | `supabase.from('feedback').insert()` |
+| Upload screenshot | Edge Function `r2-signer` → R2 PUT |
 
-### Storage Buckets
+## Verification
 
-#### [NEW] Bucket: `project_assets`
-- **Public**: true
-- **Content**: PSD files, Spine assets (.json, .atlas, .png)
-- **Policies**:
-    - Read: Public
-    - Write: Authenticated Admins only
-
-#### [NEW] Bucket: `feedback_assets`
-- **Public**: true
-- **Content**: Screenshots captured by users
-- **Policies**:
-    - Read: Public
-    - Write: Public (to allow Guests to upload screenshots)
-
-### Row Level Security (RLS) Policies
-
-#### `projects` & `files`
-- **Enable RLS**
-- **Policy**: "Admins can do everything" (INSERT/UPDATE/DELETE where `auth.uid()` is in a whitelist or owner).
-- **Policy**: "Public Read Access" (SELECT is `true` so guests can view files via app).
-
-#### `feedback`
-- **Enable RLS**
-- **Policy**: "Public Insert" (INSERT is `true` to allow Guests to post feedback).
-- **Policy**: "Public Read" (SELECT is `true` to allow Guests to see history).
-- **Policy**: "Admin Delete" (DELETE only for owners/admins).
-
-## Verification Plan
-
-### Automated Verification
-I will use the `supabase-mcp-server` tools to verify the setup:
-1.  **Check Project**: `get_project` to verify `TDGames_App` is running.
-2.  **Verify Tables**: `list_tables` to confirm `projects`, `files`, `feedback` exist.
-3.  **Verify Buckets**: List storage buckets (if available via SQL or tool) to confirm `project_assets` and `feedback_assets`.
-4.  **Test SQL**: Use `execute_sql` to insert a dummy project and file, then attempt a "guest" feedback insertion.
-
-### Manual Verification
-- Review the created table structure in the Supabase Dashboard (User can do this).
+1. Upload PSD/Spine file as Admin
+2. Open project link as Guest
+3. Add drawing, note, screenshot feedback
+4. Verify feedback appears in history
+5. Verify realtime updates work

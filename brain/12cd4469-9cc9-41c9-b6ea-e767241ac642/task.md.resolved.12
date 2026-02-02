@@ -1,0 +1,11 @@
+# Task: Implement TDGames_App Backend
+
+## Status: Awaiting User Clarification
+
+- [x] Research & Discovery
+- [x] Draft Implementation Plan
+- [ ] **User Review** ← Current
+- [ ] Create Database Schema
+- [ ] Configure Storage (Supabase/R2)
+- [ ] Deploy Edge Functions
+- [ ] Verify Implementation

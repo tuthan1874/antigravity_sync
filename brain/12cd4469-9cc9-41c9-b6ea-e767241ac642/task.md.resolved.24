@@ -23,12 +23,12 @@
   - [x] Share Link
   - [x] View-only + Feedback
 
-## Folder Structure ✓
+## Folder Structure ← Current
 
-- [x] Database Schema
-  - [x] Create `folders` table (Category/Item)
-  - [x] Create `review_tasks` table (Art/Animation/VFX)
-- [x] UI Components
-  - [x] Folder Tree Navigation
-  - [x] Create Folder Modal
-  - [x] Review Task View
+- [/] Database Schema
+  - [ ] Create `folders` table (Category/Item)
+  - [ ] Create `review_tasks` table (Art/Animation/VFX)
+- [ ] UI Components
+  - [ ] Folder Tree Navigation
+  - [ ] Create Folder Modal
+  - [ ] Review Task View

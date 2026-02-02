@@ -1,41 +1,40 @@
-# Walkthrough - TDGames_App Backend Deployment
+# Walkthrough - TDGames Creative Review App
 
-I have successfully deployed the backend for **TDGames_App** on Supabase.
+## ✅ Full Stack Deployment Complete
 
-## Project Details
-- **Project Name**: `TDGames_App`
-- **Organization**: `TDGames_App`
-- **Region**: `ap-southeast-1`
-- **Project ID**: `ldckhfaulfjtxiznrzib`
-- **Status**: `ACTIVE_HEALTHY`
+### Backend (Supabase)
 
-## Database Schema
+| Component | Status |
+|-----------|--------|
+| Project | `TDGames_App` ([Dashboard](https://supabase.com/dashboard/project/ldckhfaulfjtxiznrzib)) |
+| Tables | `projects`, `files`, `feedback` ✓ |
+| RLS | Guest read/insert, Admin full ✓ |
+| Storage | `project_assets` bucket ✓ |
+| Edge Function | `r2-signer` for R2 uploads ✓ |
+| Realtime | `feedback` subscribed ✓ |
 
-I created the following tables with RLS enabled:
+### Frontend (Next.js)
 
-### `projects`
-- Stores project metadata.
-- **RLS**: Public Read, Admin (Authenticated) Full Access.
+| Component | File |
+|-----------|------|
+| Design System | [globals.css](file:///e:/TDC_App/TDGAMES_App/Client_App/Review_Feedback/frontend/src/app/globals.css) |
+| Home Page | [page.tsx](file:///e:/TDC_App/TDGAMES_App/Client_App/Review_Feedback/frontend/src/app/page.tsx) |
+| Project View | [project/[id]/page.tsx](file:///e:/TDC_App/TDGAMES_App/Client_App/Review_Feedback/frontend/src/app/project/[id]/page.tsx) |
+| File Viewer | [FileViewer.tsx](file:///e:/TDC_App/TDGAMES_App/Client_App/Review_Feedback/frontend/src/components/FileViewer.tsx) |
+| Feedback Panel | [FeedbackPanel.tsx](file:///e:/TDC_App/TDGAMES_App/Client_App/Review_Feedback/frontend/src/components/FeedbackPanel.tsx) |
 
-### `files`
-- Stores references to PSD/Spine files and metadata.
-- **RLS**: Public Read, Admin (Authenticated) Full Access.
+**Theme**: Orange (#f97316) + Gray (#1e293b) with white text
 
-### `feedback`
-- Stores user comments, drawings, and screenshots.
-- **RLS**: Public Read/Insert, Admin Delete.
-- **Guest Access**: Enabled via Public Insert policy.
+## Run Locally
 
-## Storage Buckets
-
-Two public buckets were created:
-1.  **`project_assets`**: For admin-uploaded PSD/Spine files.
-    - Public Read.
-    - Authenticated Write/Delete.
-2.  **`feedback_assets`**: For user-uploaded screenshots.
-    - Public Read.
-    - Public Write (for guests).
+```bash
+cd e:\TDC_App\TDGAMES_App\Client_App\Review_Feedback\frontend
+npm run dev
+# Open http://localhost:3000
+```
 
 ## Next Steps
-- Connect your frontend application using the Project ID `ldckhfaulfjtxiznrzib`.
-- Use the `anon` key for public/guest access and `service_role` (backend only) or Auth for admin access.
+
+1. Upload test PSD/Spine files via Supabase Storage
+2. Create a test project via SQL or future admin UI
+3. Test guest feedback flow

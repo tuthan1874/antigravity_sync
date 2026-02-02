@@ -1,0 +1,19 @@
+# Task: Plan Backend for TDGames_App
+
+- [/] Research and Discovery <!-- id: 0 -->
+    - [x] Read `PLAN BASIC.md` <!-- id: 1 -->
+    - [x] Check available skills <!-- id: 2 -->
+    - [x] Check existing Supabase projects <!-- id: 3 -->
+- [ ] Create Implementation Plan <!-- id: 4 -->
+    - [x] Define Database Schema (Tables, RLS) <!-- id: 5 -->
+    - [x] Define Auth Policies (Guest vs Admin) <!-- id: 6 -->
+    - [x] Define Storage Buckets (Supabase + R2) <!-- id: 7 -->
+    - [x] Define Edge Functions for R2 Auth <!-- id: 8 -->
+    - [x] Write [implementation_plan.md](file:///C:/Users/dangt/.gemini/antigravity/brain/12cd4469-9cc9-41c9-b6ea-e767241ac642/implementation_plan.md) <!-- id: 9 -->
+- [ ] Review with User <!-- id: 10 -->
+- [/] Implement Supabase Project <!-- id: 11 -->
+    - [x] Create Project `TDGames_App` (Reusing Existing) <!-- id: 12 -->
+    - [/] Create Tables (`projects`, `files`, `feedback`) <!-- id: 13 -->
+    - [ ] Configure storage buckets (R2 & Supabase) <!-- id: 14 -->
+    - [ ] Configure RLS Policies (Included in Schema) <!-- id: 15 -->
+    - [ ] Deploy Edge Functions <!-- id: 16 -->

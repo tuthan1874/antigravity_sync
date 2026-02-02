@@ -1,0 +1,69 @@
+# Implementation Plan - TDGames_App Backend on Supabase
+
+Backend infrastructure for the **Simple Creative Review App** supporting PSD/Spine file preview and feedback.
+
+## User Review Required
+
+> [!IMPORTANT]
+> Please confirm or clarify the following before I proceed:
+
+1. **Organization**: Which Supabase organization should I use? (e.g., `TDGames_App` org exists)
+2. **Region**: Confirm `ap-southeast-1` is acceptable?
+3. **Storage Strategy**:
+   - `project_assets` (PSD/Spine files): Use **Supabase Storage** or **Cloudflare R2**?
+   - `feedback_assets` (Screenshots): You provided R2 credentials - confirm R2 is the choice here.
+4. **Edge Function**: Should I deploy `r2-signer` for secure R2 uploads, or will frontend handle R2 directly?
+
+---
+
+## Proposed Architecture
+
+### Database Schema
+
+| Table | Purpose | Key Fields |
+|-------|---------|------------|
+| `projects` | Project containers | `id`, `name`, `owner_id` |
+| `files` | PSD/Spine references | `project_id`, `file_type`, `storage_path` |
+| `feedback` | Comments/drawings | `file_id`, `guest_name`, `type`, `data`, `target_frame` |
+
+### RLS Policies
+
+| Table | Guest (Public) | Admin (Authenticated) |
+|-------|----------------|----------------------|
+| `projects` | SELECT | ALL |
+| `files` | SELECT | ALL |
+| `feedback` | SELECT, INSERT | SELECT, INSERT, DELETE |
+
+### Storage
+
+| Bucket | Provider | Access |
+|--------|----------|--------|
+| `project_assets` | TBD (Supabase/R2) | Public Read, Admin Write |
+| `feedback-assets` | Cloudflare R2 | Public Read/Write (via presigned) |
+
+### Edge Functions
+
+| Function | Purpose |
+|----------|---------|
+| `r2-signer` | Generate presigned URLs for R2 uploads |
+
+### Realtime
+
+- Subscribe to `feedback` table `INSERT` events for live updates.
+
+---
+
+## Verification Plan
+
+1. Verify tables exist with RLS enabled
+2. Test guest feedback insertion (should succeed)
+3. Test guest feedback deletion (should fail)
+4. Test Edge Function returns valid presigned URL
+
+---
+
+## Status
+
+> [!NOTE]
+> **Current State**: Project `TDGames_App` exists but is **empty** (reset complete).
+> **Awaiting**: User confirmation on clarification points above.

@@ -1,0 +1,37 @@
+# Walkthrough - TDGames_App Backend
+
+## ✅ Deployment Complete
+
+| Component | Status |
+|-----------|--------|
+| Project | `TDGames_App` (ldckhfaulfjtxiznrzib) |
+| Region | ap-southeast-1 |
+| Tables | `projects`, `files`, `feedback` ✓ |
+| RLS | Enabled on all tables ✓ |
+| Storage | `project_assets` bucket ✓ |
+| Edge Function | `r2-signer` ACTIVE ✓ |
+| Realtime | `feedback` table subscribed ✓ |
+
+## Connection Details
+
+| Key | Value |
+|-----|-------|
+| **URL** | `https://ldckhfaulfjtxiznrzib.supabase.co` |
+| **Anon Key** | `eyJhbGciOiJI...CM-Jg` (see dashboard) |
+| **Publishable Key** | `sb_publishable_CbE00DId...` |
+
+## Next Steps
+
+1. **Set R2 Secrets** in Supabase Dashboard → Project Settings → Edge Functions:
+   - `R2_ACCOUNT_ID`
+   - `R2_ACCESS_KEY_ID`
+   - `R2_SECRET_ACCESS_KEY`
+
+2. **Connect Frontend** using the Supabase JS client with the URL and anon key above.
+
+3. **Test Edge Function**:
+   ```bash
+   curl -X POST https://ldckhfaulfjtxiznrzib.supabase.co/functions/v1/r2-signer \
+     -H "Content-Type: application/json" \
+     -d '{"filename": "test.png", "contentType": "image/png"}'
+   ```

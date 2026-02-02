@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_TASK",
-  "summary": "Task list for Supabase backend implementation planning.",
-  "updatedAt": "2026-02-02T13:44:25.792128100Z"
+  "summary": "Clean task list for backend implementation, pending user approval.",
+  "updatedAt": "2026-02-02T14:03:18.841334900Z",
+  "version": "12"
 }
