@@ -1,0 +1,93 @@
+# Implementation Plan - TDGames_App Backend on Supabase
+
+This plan outlines the steps to deploy the backend for **TDGames_App** on Supabase, covering project setup, database design, storage, and security policies to support the "Simple Creative Review App" requirements.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Project Creation**: A new Supabase project named `TDGames_App` will be created. I will need to know which **Organization** to create this in.
+> **Guest Access**: Guest access will be handled via "Anonymous" or "Public" RLS policies allowing inserts into the `feedback` table without an auth account, identifying users by a `guest_name` field.
+
+## Proposed Changes
+
+### Supabase Project Setup
+
+#### [NEW] Project: TDGames_App
+- **Name**: `TDGames_App`
+- **Region**: (User's preferred region, likely `ap-southeast-1` based on other projects)
+- **Organization**: User to Select
+
+### Database Schema
+
+I will create the following tables to support the app structure.
+
+#### [NEW] Table: `projects`
+- `id` (uuid, primary key, default `gen_random_uuid()`)
+- `name` (text, required)
+- `description` (text)
+- `owner_id` (uuid, references `auth.users`, default `auth.uid()`)
+- `created_at` (timestamptz, default `now()`)
+
+#### [NEW] Table: `files`
+Stores references to uploaded PSD and Spine files.
+- `id` (uuid, primary key, default `gen_random_uuid()`)
+- `project_id` (uuid, references `projects.id` on delete cascade)
+- `name` (text, required)
+- `file_type` (text, enum: `psd`, `spine`, `image`)
+- `storage_path` (text, required - path in Storage bucket)
+- `metadata` (jsonb, for dimensions, spine version, etc.)
+- `uploaded_by` (uuid, references `auth.users`)
+- `created_at` (timestamptz)
+
+#### [NEW] Table: `feedback`
+Stores comments, drawings, and pins.
+- `id` (uuid, primary key)
+- `file_id` (uuid, references `files.id` on delete cascade)
+- `user_id` (uuid, references `auth.users`, nullable - for Admins)
+- `guest_name` (text, nullable - for Guests)
+- `type` (text, enum: `note`, `drawing`, `screenshot`)
+- `data` (jsonb, stores vector paths, text content, or screenshot URL)
+- `target_frame` (integer, nullable, for Spine animations)
+- `canvas_state` (jsonb, optional context)
+- `created_at` (timestamptz)
+
+### Storage Buckets
+
+#### [NEW] Bucket: `project_assets`
+- **Public**: true
+- **Content**: PSD files, Spine assets (.json, .atlas, .png)
+- **Policies**:
+    - Read: Public
+    - Write: Authenticated Admins only
+
+#### [NEW] Bucket: `feedback_assets`
+- **Public**: true
+- **Content**: Screenshots captured by users
+- **Policies**:
+    - Read: Public
+    - Write: Public (to allow Guests to upload screenshots)
+
+### Row Level Security (RLS) Policies
+
+#### `projects` & `files`
+- **Enable RLS**
+- **Policy**: "Admins can do everything" (INSERT/UPDATE/DELETE where `auth.uid()` is in a whitelist or owner).
+- **Policy**: "Public Read Access" (SELECT is `true` so guests can view files via app).
+
+#### `feedback`
+- **Enable RLS**
+- **Policy**: "Public Insert" (INSERT is `true` to allow Guests to post feedback).
+- **Policy**: "Public Read" (SELECT is `true` to allow Guests to see history).
+- **Policy**: "Admin Delete" (DELETE only for owners/admins).
+
+## Verification Plan
+
+### Automated Verification
+I will use the `supabase-mcp-server` tools to verify the setup:
+1.  **Check Project**: `get_project` to verify `TDGames_App` is running.
+2.  **Verify Tables**: `list_tables` to confirm `projects`, `files`, `feedback` exist.
+3.  **Verify Buckets**: List storage buckets (if available via SQL or tool) to confirm `project_assets` and `feedback_assets`.
+4.  **Test SQL**: Use `execute_sql` to insert a dummy project and file, then attempt a "guest" feedback insertion.
+
+### Manual Verification
+- Review the created table structure in the Supabase Dashboard (User can do this).

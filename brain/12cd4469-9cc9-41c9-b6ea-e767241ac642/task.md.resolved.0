@@ -1,0 +1,13 @@
+# Task: Implement Backend for TDGames_App on Supabase
+
+- [/] Research and Discovery <!-- id: 0 -->
+    - [x] Read `PLAN BASIC.md` <!-- id: 1 -->
+    - [x] Check available skills <!-- id: 2 -->
+    - [ ] Check existing Supabase projects <!-- id: 3 -->
+- [ ] Create Implementation Plan <!-- id: 4 -->
+    - [ ] Define Database Schema (Tables, RLS) <!-- id: 5 -->
+    - [ ] Define Auth Policies (Guest vs Admin) <!-- id: 6 -->
+    - [ ] Define Storage Buckets <!-- id: 7 -->
+    - [ ] Define Edge Functions (if needed) <!-- id: 8 -->
+    - [ ] Write `implementation_plan.md` <!-- id: 9 -->
+- [ ] Review with User <!-- id: 10 -->
