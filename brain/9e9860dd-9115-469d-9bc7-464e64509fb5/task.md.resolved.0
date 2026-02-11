@@ -1,0 +1,7 @@
+# Bulk Select & Delete Employees
+
+- [x] Research existing employee page, service, and API route
+- [/] Write implementation plan
+- [ ] Add `deleteEmployees` to [employee-service.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/lib/services/employee-service.ts)
+- [ ] Update [page.tsx](file:///e:/TDC_App/TDGAMES_App/HRM/source/app/employees/page.tsx) with checkbox selection, bulk action bar, and bulk delete dialog
+- [ ] Verify in browser

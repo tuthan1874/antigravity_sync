@@ -1,0 +1,53 @@
+# Bulk Select & Delete Employees
+
+Thêm chức năng chọn nhiều nhân viên và xóa hàng loạt trong trang "Quản lý nhân viên".
+
+## Proposed Changes
+
+### Frontend — Employee Page
+
+#### [MODIFY] [page.tsx](file:///e:/TDC_App/TDGAMES_App/HRM/source/app/employees/page.tsx)
+
+**State changes:**
+- Add `selectedIds: Set<string>` to track selected employee IDs
+
+**Table header:**
+- Add a checkbox column (first column) with "select all" checkbox that toggles all **filtered** employees
+
+**Table rows:**
+- Add a checkbox per row bound to `selectedIds`
+- Highlight selected rows with a subtle background
+
+**Bulk action bar:**
+- When `selectedIds.size > 0`, show a floating action bar above the table displaying:
+  - Count of selected employees (e.g. "Đã chọn 3 nhân viên")  
+  - "Bỏ chọn" button to clear selection
+  - "Xóa đã chọn" button (destructive) that opens a confirmation dialog
+
+**Bulk delete confirmation dialog:**
+- New `AlertDialog` showing "Bạn có chắc chắn muốn xóa {n} nhân viên?"
+- On confirm, call `employeeService.deleteEmployee(id)` sequentially for each selected ID using `Promise.allSettled`
+- Show toast with results (success count / failure count)
+- Clear selection and refresh data after completion
+
+> [!NOTE]
+> Backend does not have a dedicated bulk-delete endpoint. The frontend will call the existing single-delete API (`DELETE /api/employees/[id]`) for each selected employee using `Promise.allSettled` so partial failures don't block the entire operation.
+
+---
+
+### Frontend — Employee Service
+
+#### [MODIFY] [employee-service.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/lib/services/employee-service.ts)
+
+- Add `deleteEmployees(ids: string[])` method that calls `deleteEmployee` for each ID via `Promise.allSettled` and returns a summary `{ succeeded: string[], failed: string[] }`
+
+## Verification Plan
+
+### Manual Verification
+1. Open `http://localhost:3000/employees` (dev server đang chạy)
+2. Verify checkbox xuất hiện ở mỗi dòng và ở header
+3. Click checkbox header → tất cả nhân viên được chọn → hiện thanh action bar
+4. Click "Bỏ chọn" → bỏ chọn tất cả
+5. Chọn vài nhân viên → click "Xóa đã chọn" → hiện dialog xác nhận
+6. Click "Hủy" → không xóa
+7. Chọn lại → click "Xóa đã chọn" → click "Xóa" → xác nhận xóa thành công

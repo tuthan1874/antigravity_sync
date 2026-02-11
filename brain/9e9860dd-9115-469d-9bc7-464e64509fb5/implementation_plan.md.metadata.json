@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan for adding bulk select and delete functionality to the employee management page. Covers frontend state changes, table checkbox UI, bulk action bar, confirmation dialog, and a new `deleteEmployees` service method. Verification is manual via browser.",
+  "updatedAt": "2026-02-11T13:54:48.720782200Z"
+}
