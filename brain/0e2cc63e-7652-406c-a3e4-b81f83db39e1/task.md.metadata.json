@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_TASK",
+  "summary": "Checklist tracking all 3 phases of HRM backend optimization. Phase 1 focuses on JWT Custom Claims migration, Phase 2 on indexing, Phase 3 on security hardening.",
+  "updatedAt": "2026-02-11T04:44:42.443121800Z"
+}

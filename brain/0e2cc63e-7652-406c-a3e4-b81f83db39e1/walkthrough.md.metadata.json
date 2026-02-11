@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Walkthrough documenting the Phase 1 JWT Custom Claims optimization. Covers what was changed, test results, and what manual step remains (enabling the hook on Supabase Dashboard).",
+  "updatedAt": "2026-02-11T04:48:19.256876100Z"
+}

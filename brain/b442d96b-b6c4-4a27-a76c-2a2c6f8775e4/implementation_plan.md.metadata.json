@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Phase 2 optimization plan with 2 parts:\nPart A: Database — optimize ~35 RLS policies (auth_rls_initplan fix) and add missing RLS policies for 4 tables.\nPart B: Project cleanup — delete 11+ unused files, consolidate 17+ root docs into docs/, archive 60+ SQL scripts, delete test/debug routes, and split `lib/services.ts` (742 lines) into domain-specific modules with a barrel re-export.",
+  "updatedAt": "2026-02-11T04:27:35.504566800Z",
+  "version": "2"
+}

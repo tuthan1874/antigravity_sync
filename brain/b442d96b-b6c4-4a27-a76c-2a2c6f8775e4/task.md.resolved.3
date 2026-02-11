@@ -1,0 +1,15 @@
+# HRM Optimization
+
+- [x] Phase 1: Codebase — Next.js config changes
+  - [x] Enable image optimization
+  - [x] Enable static generation
+- [x] Phase 2: Add missing FK indexes (14 total)
+- [x] Phase 3: Remove duplicate/unused indexes (9 removed)
+- [x] Phase 4: Enable RLS on unprotected tables (6 tables)
+- [x] Phase 5: Harden functions — set `search_path` (49 functions)
+- [x] Phase 6: Fix overly permissive RLS policies (2 fixed)
+- [x] Phase 7: Change SECURITY DEFINER views → SECURITY INVOKER (4 views)
+- [x] Verification — Re-run Supabase advisors
+- [x] Fix remaining issues found during verification
+  - [x] Fix `verify_2fa_factor` search_path
+  - [x] Add 6 additional FK indexes found by advisor

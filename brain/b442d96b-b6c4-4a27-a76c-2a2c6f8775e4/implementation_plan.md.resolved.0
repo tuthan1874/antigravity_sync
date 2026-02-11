@@ -1,0 +1,64 @@
+# Optimization Implementation Plan
+
+## Goal
+Optimize the HRM application for better performance, security, and maintainability. This involves tweaking the Next.js configuration and applying significant improvements to the Supabase database schema.
+
+## User Review Required
+> [!IMPORTANT]
+> **Image Optimization**: I am proposing to enable Next.js Image Optimization. This usually requires the `sharp` library when running in standalone mode (VPS). I will add `sharp` to dependencies.
+> **Database Changes**: The plan involves adding multiple indexes and enforcing stricter Row Level Security (RLS). This is generally safe but technically modifies the database schema.
+
+## Proposed Changes
+
+### Codebase
+
+#### [MODIFY] [next.config.mjs](file:///e:/TDC_App/TDGAMES_App/HRM/source/next.config.mjs)
+- **Enable Image Optimization**: Remove `images.unoptimized = true`.
+- **Enable Static Generation**: Remove `staticPageGenerationTimeout: 0`.
+- **Rationale**: `unoptimized: true` serves original full-size images, which hurts performance. `sharp` will be added to handle optimization.
+
+#### [MODIFY] [package.json](file:///e:/TDC_App/TDGAMES_App/HRM/source/package.json)
+- **Add Dependency**: `sharp` (for image optimization in standalone mode).
+
+### Database (Supabase)
+
+I will execute SQL scripts to address the findings from the Performance and Security Advisors.
+
+#### 1. Performance: Add Missing Indexes
+Create indexes for foreign keys that are currently unindexed to improve join performance.
+- `company_settings(updated_by)`
+- `employee_balance_transactions(created_by)`
+- `leave_requests(request_by)`
+- `payroll_records(employee_id)`, `payroll_records(created_by)`
+- `positions(department_id)`
+- `salary_allowances(employee_id)`
+- `salary_deductions(employee_id)`
+- `salary_regulations(department_id)`, `salary_regulations(position_id)`
+- `notifications(user_id)`
+
+#### 2. Security: Enforce Row Level Security (RLS)
+Enable RLS on tables where it is currently disabled to ensure data isolation.
+- `employee_dependents`
+- `financial_categories`
+- `leave_balances`
+- `salary_deductions`
+- `user_2fa_factors` (and related 2fa tables)
+- `budget_categories`
+- `expense_budget_mapping`, `expense_financial_mapping`
+
+I will add basic "Authenticated Users" policies initially, but we may need to refine these based on specific business rules (e.g., "Users can only see their own data").
+
+#### 3. Security: Harden Functions
+- Set `search_path = public` for all identified functions to prevent search_path hijacking attacks.
+
+#### 4. Security: Review Views
+- Inspect `SECURITY DEFINER` views (`monthly_attendance_summary`, etc.) and ensure they are secure, or replace them with standard views if RLS on underlying tables is sufficient.
+
+## Verification Plan
+
+### Automated
+1.  **Build Check**: Run `npm run build` to verify `sharp` integration and config changes.
+2.  **Supabase Advisors**: Re-run `get_advisors` tool after applying SQL changes to confirm the warnings are gone.
+
+### Manual
+1.  **Application Walkthrough**: Briefly navigate the app (Login, Dashboard, Employee List) to ensure data still loads correctly (verifying RLS isn't blocking legitimate access).

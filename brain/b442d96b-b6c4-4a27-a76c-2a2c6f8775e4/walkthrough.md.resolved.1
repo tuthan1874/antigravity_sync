@@ -1,0 +1,65 @@
+# HRM Optimization — Final Walkthrough
+
+## Summary
+
+Applied comprehensive database + codebase optimizations across **2 phases** and **15 database migrations**.
+
+---
+
+## Phase 1 (Previous Session)
+
+| Action | Count |
+|--------|-------|
+| FK indexes added | **14** |
+| Duplicate indexes removed | **9** |
+| Tables with RLS enabled | **6** |
+| Functions hardened (`search_path`) | **49** |
+| Permissive policies fixed | **2** |
+| Views → `SECURITY INVOKER` | **4** |
+
+---
+
+## Phase 2 (This Session)
+
+### Database Optimizations (5 migrations)
+
+**A1. RLS `initplan` optimization** — Wrapped `auth.uid()` and `auth.role()` in [(select ...)](file:///e:/TDC_App/TDGAMES_App/HRM/source/contexts/language-context.tsx#520-523) across **~35 policies** on 18 tables. This prevents re-evaluation per row.
+
+**Bug fix:** `employee_requests` policies were comparing `employees.id = auth.uid()` (wrong — [id](file:///e:/TDC_App/TDGAMES_App/HRM/source/components/app-sidebar.tsx#64-697) is employee UUID, not auth UUID). Fixed to use `employees.auth_user_id = (select auth.uid())`.
+
+**A2. Added RLS policies** for 4 tables that had RLS enabled but no policies:
+- `employee_dependents` — employee can view own, admin/HR manage all
+- `financial_categories` — authenticated read, admin/accountant write
+- `leave_balances` — employee can view own, admin/HR manage all
+- `salary_deductions` — employee can view own, admin/HR/accountant manage all
+
+### Project Cleanup
+
+| Action | Details |
+|--------|---------|
+| Deleted unused files | 11 files (orphaned components, duplicate lock files, 1.5MB log) |
+| Consolidated docs | 20 root [.md](file:///e:/TDC_App/TDGAMES_App/HRM/source/README.md) files → `docs/` |
+| Archived SQL scripts | 66 one-time scripts → `database/archive/` |
+| Deleted test/debug | `app/test/`, `budget-code-demo`, 6 debug/test API routes, `data_import/` |
+| Split [services.ts](file:///e:/TDC_App/TDGAMES_App/HRM/source/lib/services.ts) | 742-line monolith → 8 domain modules in `lib/services/` |
+
+### `lib/services/` Structure
+```
+lib/services/
+├── index.ts                    ← barrel re-export (backward compatible)
+├── types.ts                    ← all shared interfaces
+├── employee-service.ts         ← auth + employee CRUD
+├── department-service.ts       ← department + position CRUD
+├── attendance-service.ts       ← attendance + check-in/out
+├── payroll-service.ts          ← payroll + salary regulations
+├── notification-client-service.ts ← client-side notification calls
+├── financial-service.ts        ← financials, budgets, accounts, allocations
+└── leave-expense-service.ts    ← leave requests, leave balance, expense requests
+```
+
+---
+
+## Verification
+
+- ✅ `npm run build` — exit code 0, all imports resolve correctly
+- ✅ All 15 database migrations applied successfully

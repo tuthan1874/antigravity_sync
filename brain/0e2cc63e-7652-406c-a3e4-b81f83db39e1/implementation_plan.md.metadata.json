@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan for Phase 1 of HRM backend optimization. Creates a Custom Access Token Hook to inject user_role and employee_id into JWT claims. Refactors existing helper functions current_user_role() and current_user_employee_id() to read from JWT instead of querying the employees table. Includes verification steps with SQL tests and manual dashboard configuration.",
+  "updatedAt": "2026-02-11T04:46:40.842070800Z"
+}

@@ -1,0 +1,18 @@
+# HRM Backend Optimization — Phase 1: JWT Custom Claims
+
+- [ ] Research current database state (tables, RLS policies, employees table)
+- [ ] Research Supabase custom claims best practices
+- [ ] Create implementation plan
+- [ ] Create Custom Claims hook function (PL/pgSQL)
+- [ ] Create trigger to sync claims on employee role update
+- [ ] Backfill existing users with current claims
+- [ ] Migrate RLS policies to use `auth.jwt()` claims
+- [ ] Verify changes with query plan analysis
+
+# Phase 2: Indexing & Integrity (Future)
+- [ ] Add missing FK indexes
+- [ ] Add composite indexes
+
+# Phase 3: Security Hardening (Future)
+- [ ] Audit `using(true)` policies
+- [ ] Harden all RLS policies

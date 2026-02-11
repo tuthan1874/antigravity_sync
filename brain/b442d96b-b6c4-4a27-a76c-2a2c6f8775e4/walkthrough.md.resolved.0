@@ -1,0 +1,65 @@
+# HRM Optimization — Walkthrough
+
+## Summary
+
+Applied comprehensive database and codebase optimizations to the HRM project (`hbzgoguwpayuhvbvinqy`). A total of **10 database migrations** were executed successfully.
+
+---
+
+## Changes Made
+
+### Codebase (Phase 1)
+- **Enabled Next.js Image Optimization** — removed `unoptimized: true`, added `remotePatterns` config
+- **Enabled static generation** — removed `staticPageGenerationTimeout: 0`
+
+### Database Performance (Phases 2–3)
+
+| Phase | Action | Count |
+|-------|--------|-------|
+| 2 | Added missing FK indexes | **14 indexes** |
+| 3 | Removed duplicate/unused indexes | **9 indexes dropped** |
+
+**FK indexes added on:** `attendance_records`, `salary_allowances`, `salary_deductions`, `payroll_records`, `expense_requests`, `employee_requests`, `leave_requests`, `salary_regulations`, `expense_financial_mapping`
+
+**Duplicate indexes removed:** `idx_attendance_employee_id`, `employees_email_key`, `employees_user_id_key`, `idx_payroll_employee_id`, `idx_payroll_period`, `idx_attendance_date`, `idx_attendance_employee_date`, `idx_notifications_user_id`, `idx_expense_requests_status`
+
+### Database Security (Phases 4–7)
+
+| Phase | Action | Count |
+|-------|--------|-------|
+| 4 | Enabled RLS on unprotected tables | **6 tables** |
+| 5 | Hardened functions with `search_path = public` | **49 functions** |
+| 6 | Fixed overly permissive RLS policies | **2 policies** |
+| 7 | Changed views to `SECURITY INVOKER` | **4 views** |
+
+**Tables with RLS enabled:** `employee_dependents`, `financial_categories`, `leave_balances`, `salary_deductions`, `salary_allowances`, `payroll_allowances`
+
+**Policies fixed:**
+- `audit_logs` — replaced open `role() = 'authenticated'` with admin-only read
+- `budget_allocations` — replaced open read with admin/accountant-only read
+
+**Views switched to SECURITY INVOKER:** `monthly_attendance_summary`, `payroll_allowances_summary`, `expense_financial_mapping_view`, `employee_balance_summary`
+
+---
+
+## Verification Results
+
+Ran Supabase **performance** and **security** advisors after all changes.
+
+### Security Advisor ✅
+- ✅ No more `rls_disabled` warnings
+- ✅ No more `function_search_path_mutable` warnings (except 1 auth-config level item)
+- ℹ️ 4 tables have RLS enabled but no policies yet (INFO level) — `employee_dependents`, `financial_categories`, `leave_balances`, `salary_deductions`. These are accessed via service role only.
+- ⚠️ Auth config recommendations (OTP expiry, leaked password protection) — not database schema issues
+
+### Performance Advisor ✅
+- ✅ No more `unindexed_foreign_keys` warnings
+- ℹ️ `auth_rls_initplan` warnings — existing RLS policies use `auth.uid()` instead of `(select auth.uid())`. This is a future optimization opportunity.
+- ℹ️ `unused_index` warnings — many newly-created and existing indexes not yet used. These are FK indexes for join performance and should be kept.
+- ℹ️ `multiple_permissive_policies` — some tables have overlapping permissive policies. These are by design for role-based access.
+
+### Remaining Recommendations (Future Work)
+1. **RLS policy optimization** — Wrap `auth.uid()` calls in `(select auth.uid())` for better query performance at scale
+2. **Add RLS policies** to `employee_dependents`, `financial_categories`, `leave_balances`, `salary_deductions`
+3. **Auth config** — Reduce OTP expiry, enable leaked password protection
+4. **Consolidate overlapping permissive policies** on `employees`, `expense_requests`, `attendance_records`

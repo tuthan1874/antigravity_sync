@@ -1,0 +1,30 @@
+# Phase 1: JWT Custom Claims — Walkthrough
+
+## What Was Done
+
+Applied migration `create_custom_access_token_hook` to the HRM Supabase project (`hbzgoguwpayuhvbvinqy`):
+
+| Change | Detail |
+|--------|--------|
+| **New function** | `custom_access_token_hook(event jsonb)` — injects `user_role` + `employee_id` into JWT claims |
+| **Permissions** | Granted `supabase_auth_admin` access to execute the hook and read `employees` table |
+| **Refactored** | `current_user_role()` — now reads `auth.jwt() ->> 'user_role'` (was: `SELECT role FROM employees`) |
+| **Refactored** | `current_user_employee_id()` — now reads `auth.jwt() ->> 'employee_id'` (was: `SELECT id FROM employees`) |
+
+## Test Results ✅
+
+**Test 1 — Hook function exists:** ✅ `custom_access_token_hook` created  
+**Test 2 — Helper functions refactored:** ✅ Both now read from `auth.jwt()`, no longer query `employees`  
+**Test 3 — Hook simulation:** ✅ Input `user_id: a43f6e04-...` → Output: `user_role: "admin"`, `employee_id: "646a5710-..."`
+
+## 🚨 Remaining Manual Step
+
+> [!IMPORTANT]
+> You must enable the hook on **Supabase Dashboard**:
+> 1. Go to [Authentication → Hooks](https://supabase.com/dashboard/project/hbzgoguwpayuhvbvinqy/auth/hooks)
+> 2. Enable **Custom Access Token** hook
+> 3. Select schema `public`, function `custom_access_token_hook`
+> 4. Save
+> 5. **Log out and log back in** to the HRM app — the new JWT will contain `user_role` and `employee_id`
+
+After enabling, verify by decoding your access token at [jwt.io](https://jwt.io) — you should see `user_role` and `employee_id` fields in the payload.

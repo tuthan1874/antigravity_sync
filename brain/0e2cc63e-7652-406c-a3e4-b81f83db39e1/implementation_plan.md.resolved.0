@@ -1,0 +1,129 @@
+# Phase 1: Tối ưu RLS bằng Custom Access Token Hook + JWT Claims
+
+## Bối cảnh
+
+Hiện tại, **mọi RLS policy** đều query bảng `employees` để lấy `role` và `employee_id` mỗi request — gây N+1 query trên mọi bảng. Hai hàm helper `current_user_role()` và `current_user_employee_id()` cũng query bảng này.
+
+Hệ thống hiện có **28 users**, **67+ RLS policies** trên **24+ bảng**. Benchmark từ Supabase cho thấy chuyển sang JWT claims giúp cải thiện **99.94%** hiệu năng.
+
+## Giải pháp
+
+Sử dụng **Custom Access Token Hook** (PL/pgSQL) — chạy mỗi lần token được cấp — để inject `user_role` và `employee_id` vào JWT. Sau đó sửa hai hàm helper để đọc từ JWT thay vì query DB.
+
+> [!IMPORTANT]
+> Phương án này **KHÔNG cần sửa RLS policies** — chỉ cần sửa nội dung 2 hàm helper (`current_user_role`, `current_user_employee_id`). Tất cả policies hiện dùng 2 hàm này sẽ tự động nhanh hơn.
+
+> [!WARNING]
+> Một số policies dùng raw subquery `EXISTS (SELECT 1 FROM employees WHERE ...)` thay vì helper. Những policy này cần được sửa riêng ở Phase 3 (Security Hardening).
+
+---
+
+## Proposed Changes
+
+### 1. Custom Access Token Hook Function
+
+#### [NEW] Migration: `custom_access_token_hook`
+
+Tạo PL/pgSQL function chạy mỗi khi token JWT được cấp:
+
+```sql
+CREATE OR REPLACE FUNCTION public.custom_access_token_hook(event jsonb)
+RETURNS jsonb
+LANGUAGE plpgsql STABLE
+AS $$
+DECLARE
+  claims jsonb;
+  emp_role public.user_role;
+  emp_id uuid;
+BEGIN
+  -- Fetch employee info
+  SELECT e.role, e.id INTO emp_role, emp_id
+  FROM public.employees e
+  WHERE e.auth_user_id = (event->>'user_id')::uuid;
+
+  claims := event->'claims';
+
+  -- Set role claim
+  IF emp_role IS NOT NULL THEN
+    claims := jsonb_set(claims, '{user_role}', to_jsonb(emp_role));
+  ELSE
+    claims := jsonb_set(claims, '{user_role}', 'null');
+  END IF;
+
+  -- Set employee_id claim
+  IF emp_id IS NOT NULL THEN
+    claims := jsonb_set(claims, '{employee_id}', to_jsonb(emp_id));
+  ELSE
+    claims := jsonb_set(claims, '{employee_id}', 'null');
+  END IF;
+
+  event := jsonb_set(event, '{claims}', claims);
+  RETURN event;
+END;
+$$;
+```
+
+Cấp quyền cho `supabase_auth_admin`:
+```sql
+GRANT USAGE ON SCHEMA public TO supabase_auth_admin;
+GRANT EXECUTE ON FUNCTION public.custom_access_token_hook TO supabase_auth_admin;
+REVOKE EXECUTE ON FUNCTION public.custom_access_token_hook FROM authenticated, anon, public;
+```
+
+---
+
+### 2. Refactor Helper Functions
+
+#### [MODIFY] Function `current_user_role()`
+
+```diff
+- SELECT role INTO user_role_val FROM public.employees WHERE auth_user_id = auth.uid();
++ SELECT ((select auth.jwt()) ->> 'user_role')::user_role INTO user_role_val;
+```
+
+#### [MODIFY] Function `current_user_employee_id()`
+
+```diff
+- SELECT id INTO employee_uuid FROM public.employees WHERE auth_user_id = auth.uid();
++ SELECT ((select auth.jwt()) ->> 'employee_id')::uuid INTO employee_uuid;
+```
+
+---
+
+### 3. Enable Hook in Supabase Dashboard
+
+> [!IMPORTANT]
+> Sau khi apply migration, cần vào **Supabase Dashboard → Authentication → Hooks** và bật hook **"Custom Access Token"**, chọn function `public.custom_access_token_hook`. **Bước này PHẢI do bạn thực hiện thủ công trên Dashboard.**
+
+---
+
+## Verification Plan
+
+### Automated Tests (SQL)
+
+1. **Test helper functions sau khi refactor** — chạy SQL trực tiếp trên project:
+   ```sql
+   -- Kiểm tra hook function tồn tại
+   SELECT proname FROM pg_proc WHERE proname = 'custom_access_token_hook';
+   
+   -- Kiểm tra helper functions đã được cập nhật (không còn query employees)
+   SELECT prosrc FROM pg_proc WHERE proname = 'current_user_role';
+   SELECT prosrc FROM pg_proc WHERE proname = 'current_user_employee_id';
+   ```
+
+2. **Test hook function logic** — simulate một event:
+   ```sql
+   SELECT public.custom_access_token_hook(
+     jsonb_build_object(
+       'user_id', (SELECT auth_user_id FROM employees LIMIT 1),
+       'claims', '{}'::jsonb
+     )
+   );
+   ```
+
+### Manual Verification (Bạn cần thực hiện)
+
+1. **Bật hook** trên Supabase Dashboard → Authentication → Hooks → Custom Access Token
+2. **Đăng nhập lại** vào ứng dụng HRM
+3. **Kiểm tra JWT** (mở DevTools → Application → Local Storage → `sb-*-auth-token` → decode access_token tại jwt.io) — phải thấy `user_role` và `employee_id` trong JWT
+4. **Duyệt thử các trang** — đảm bảo tất cả chức năng hoạt động bình thường (danh sách nhân viên, chấm công, bảng lương...)

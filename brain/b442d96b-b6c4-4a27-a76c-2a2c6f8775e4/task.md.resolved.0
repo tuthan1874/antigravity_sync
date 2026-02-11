@@ -1,0 +1,15 @@
+# Project Optimization Plan
+
+- [ ] Analyze Codebase Structure `[/]`
+    - [ ] List root directory files
+    - [ ] Analyze `package.json` for dependencies
+    - [ ] Analyze Next.js configuration
+    - [ ] Identify potential unused files/directories
+- [ ] Analyze Database Schema `[ ]`
+    - [ ] Identify Supabase project
+    - [ ] List tables and schemas
+    - [ ] Check for missing indexes and foreign keys
+    - [ ] Review RLS policies (overview)
+- [ ] Create Optimization Plan `[ ]`
+    - [ ] Draft `implementation_plan.md`
+    - [ ] Review with user

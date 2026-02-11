@@ -1,0 +1,94 @@
+# HRM Optimization Implementation Plan
+
+## Goal
+Optimize the HRM application for better performance, security, and maintainability across both the Next.js codebase and the Supabase database.
+
+---
+
+## Proposed Changes
+
+### Phase 1: Codebase Optimizations ✅ (Partially Done)
+
+#### [MODIFY] [next.config.mjs](file:///e:/TDC_App/TDGAMES_App/HRM/source/next.config.mjs)
+- ✅ Enabled Image Optimization (removed `unoptimized: true`, added `remotePatterns`)
+- ✅ Enabled Static Generation (removed `staticPageGenerationTimeout: 0`)
+
+#### [MODIFY] [package.json](file:///e:/TDC_App/TDGAMES_App/HRM/source/package.json)
+- ⬜ Add `sharp` dependency for image optimization in standalone mode
+
+---
+
+### Phase 2: Database Performance — Add Missing FK Indexes
+
+Create indexes for unindexed foreign keys to improve `JOIN` performance:
+
+| Table | Column | Index Name |
+|---|---|---|
+| `company_settings` | `updated_by` | `idx_company_settings_updated_by` |
+| `employee_balance_transactions` | `created_by` | `idx_ebt_created_by` |
+| `leave_requests` | `request_by` | `idx_leave_requests_request_by` |
+| `payroll_records` | `created_by` | `idx_payroll_records_created_by` |
+| `positions` | `department_id` | `idx_positions_department_id` |
+| `salary_allowances` | `employee_id` | `idx_salary_allowances_employee_id` |
+| `salary_deductions` | `employee_id` | `idx_salary_deductions_employee_id` |
+| `salary_regulations` | `department_id` | `idx_salary_regulations_department_id` |
+| `salary_regulations` | `position_id` | `idx_salary_regulations_position_id` |
+| `notifications` | `created_by` | `idx_notifications_created_by` |
+
+---
+
+### Phase 3: Database Performance — Remove Duplicate/Unused Indexes
+
+| Index to Drop | Table | Reason |
+|---|---|---|
+| `idx_attendance_employee_date` | `attendance_records` | Duplicate of unique constraint `attendance_records_employee_id_date_key` |
+| `idx_employees_department` | `employees` | Duplicate of `idx_employees_department_id` |
+| `idx_employees_lead` | `employees` | Duplicate of `idx_employees_lead_id` |
+| `idx_employees_position` | `employees` | Duplicate of `idx_employees_position_id` |
+| `idx_leave_requests_employee` | `leave_requests` | Duplicate of `idx_leave_requests_employee_id` |
+| `idx_payroll_meal_allowance` | `payroll_records` | Unused — rarely queried by allowance value |
+| `idx_payroll_phone_allowance` | `payroll_records` | Unused |
+| `idx_payroll_transport_allowance` | `payroll_records` | Unused |
+| `idx_payroll_attendance_allowance` | `payroll_records` | Unused |
+
+---
+
+### Phase 4: Database Security — Enable RLS on Unprotected Tables
+
+| Table | Action |
+|---|---|
+| `user_2fa_factors` | Enable RLS + policy: users can only access their own rows |
+| `user_2fa_challenges` | Enable RLS + policy: users can only access their own rows |
+| `user_2fa_attempts` | Enable RLS + policy: users can only access their own rows |
+| `budget_categories` | Enable RLS + policy: authenticated read, admin/accountant write |
+| `expense_budget_mapping` | Enable RLS + policy: admin/accountant full access |
+| `expense_financial_mapping` | Enable RLS + policy: admin/accountant full access |
+
+---
+
+### Phase 5: Database Security — Harden Functions
+
+Set `search_path = public` on all 48 public functions to prevent search_path hijacking. Functions with `SECURITY DEFINER` (8 functions including `current_user_role`, `current_user_employee_id`, `get_managed_employee_ids`, etc.) are especially critical.
+
+---
+
+### Phase 6: Database Security — Fix Overly Permissive Policies
+
+| Table | Policy | Issue | Fix |
+|---|---|---|---|
+| `audit_logs` | `System can insert audit logs` | `WITH CHECK (true)` | Restrict to `service_role` or `authenticated` |
+| `budget_allocations` | `budget_allocations_policy` | `USING (true)` — all access open | Restrict to admin/accountant roles |
+
+---
+
+### Phase 7: Database Security — Review SECURITY DEFINER Views
+
+The 4 views (`monthly_attendance_summary`, `payroll_allowances_summary`, `expense_financial_mapping_view`, `employee_balance_summary`) are set with `SECURITY DEFINER`. These will be changed to `SECURITY INVOKER` so that RLS on underlying tables is respected.
+
+---
+
+## Verification Plan
+
+1. Re-run **Supabase Performance Advisors** → confirm FK index warnings are resolved
+2. Re-run **Supabase Security Advisors** → confirm RLS and function warnings are resolved
+3. **Spot-check queries** on key tables to ensure data is still accessible
