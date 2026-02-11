@@ -1,0 +1,39 @@
+# HRM Backend Optimization — Walkthrough
+
+## Phase 1: JWT Custom Claims ✅
+
+| Migration | What Changed |
+|-----------|-------------|
+| `create_custom_access_token_hook` | Created hook to inject `user_role` + `employee_id` into JWT. Refactored `current_user_role()` and `current_user_employee_id()` to read from JWT instead of querying DB |
+
+**Tests:** ✅ Hook exists, helpers read from `auth.jwt()`, simulation returned correct claims
+
+> [!IMPORTANT]
+> **Manual step pending:** Enable hook on [Supabase Dashboard → Auth → Hooks](https://supabase.com/dashboard/project/hbzgoguwpayuhvbvinqy/auth/hooks) → Custom Access Token → `public.custom_access_token_hook`
+
+---
+
+## Phase 2: Indexing & Integrity ✅
+
+| Migration | What Changed |
+|-----------|-------------|
+| `drop_duplicate_indexes_v2` | Dropped 11 duplicate/redundant indexes (9 indexes + 2 constraints) |
+| `add_employees_lead_id_fkey` | Added `employees.lead_id → employees.id` FK constraint (ON DELETE SET NULL) |
+| `refactor_get_managed_employee_ids_v2` | Added `(select ...)` wrapper for RLS best practice |
+
+### Dropped Indexes Detail
+
+| Table | Dropped | Covered By |
+|-------|---------|-----------|
+| `employees` | `idx_employees_auth_user_id` | `employees_auth_user_id_key` (UNIQUE) |
+| `employees` | `idx_employees_email` | `employees_email_key` (UNIQUE) |
+| `employees` | `uq_employee_code` (constraint) | `employees_employee_code_key` (UNIQUE) |
+| `departments` | `uq_department_name` (constraint) | `departments_name_key` (UNIQUE) |
+| `employee_balances` | `idx_employee_balances_employee_id` | `employee_balances_employee_id_key` (UNIQUE) |
+| `budget_categories` | `idx_budget_categories_code` | `budget_categories_code_key` (UNIQUE) |
+| `payroll_records` | `idx_payroll_employee_period` | `payroll_records_employee_id_month_year_key` (UNIQUE) |
+| `expense_financial_mapping` | `idx_..._expense_id` | `unique_expense_mapping` (UNIQUE) |
+| `expense_financial_mapping` | `idx_..._transaction_id` | `unique_transaction_mapping` (UNIQUE) |
+| `notifications` | `idx_notifications_is_read` | `idx_notifications_unread` (partial, more efficient) |
+
+**Tests:** ✅ All 11 indexes confirmed dropped, FK constraint exists, function refactored

@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Implementation plan for Phase 1 of HRM backend optimization. Creates a Custom Access Token Hook to inject user_role and employee_id into JWT claims. Refactors existing helper functions current_user_role() and current_user_employee_id() to read from JWT instead of querying the employees table. Includes verification steps with SQL tests and manual dashboard configuration.",
-  "updatedAt": "2026-02-11T04:46:40.842070800Z"
+  "summary": "Phase 3 Security Hardening plan. Rewrites ~25 RLS policies that use raw subqueries to employees table to instead use JWT-optimized helper functions (current_user_role(), current_user_employee_id()). Also fixes 2 using(true) policies on company_settings and financial_targets that are open to unauthenticated users. Organized as 3 migrations by issue type.",
+  "updatedAt": "2026-02-11T05:53:08.814433600Z",
+  "version": "2"
 }

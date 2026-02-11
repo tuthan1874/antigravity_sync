@@ -10,13 +10,11 @@
 - [ ] Verify end-to-end (login → check JWT → browse app)
 
 # Phase 2: Indexing & Integrity
-- [x] Drop 11 duplicate/redundant indexes
-- [x] Add FK constraint for employees.lead_id
-- [x] Refactor get_managed_employee_ids()
-- [x] Verify all changes via SQL tests
+- [/] Drop 11 duplicate/redundant indexes
+- [ ] Add FK constraint for employees.lead_id
+- [ ] Refactor get_managed_employee_ids()
+- [ ] Verify all changes via SQL tests
 
-# Phase 3: Security Hardening
-- [x] Audit all RLS policies (using(true), raw subqueries, hardcoded roles)
-- [x] Create implementation plan
-- [x] Rewrite insecure policies
-- [x] Verify changes
+# Phase 3: Security Hardening (Future)
+- [ ] Audit `using(true)` policies
+- [ ] Harden all RLS policies

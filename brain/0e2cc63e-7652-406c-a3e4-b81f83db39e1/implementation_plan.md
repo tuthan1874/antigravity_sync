@@ -1,129 +1,117 @@
-# Phase 1: Tối ưu RLS bằng Custom Access Token Hook + JWT Claims
+# Phase 3: Security Hardening
 
-## Bối cảnh
+## Audit Results
 
-Hiện tại, **mọi RLS policy** đều query bảng `employees` để lấy `role` và `employee_id` mỗi request — gây N+1 query trên mọi bảng. Hai hàm helper `current_user_role()` và `current_user_employee_id()` cũng query bảng này.
+Phân tích **67 RLS policies** trên **24 bảng**, phát hiện 2 loại issue chính:
 
-Hệ thống hiện có **28 users**, **67+ RLS policies** trên **24+ bảng**. Benchmark từ Supabase cho thấy chuyển sang JWT claims giúp cải thiện **99.94%** hiệu năng.
+### 🔴 Issue 1: `using(true)` — Mở cho anonymous users (2 policies)
 
-## Giải pháp
+| Table | Policy | Risk |
+|-------|--------|------|
+| `company_settings` | "Anyone can read company settings" | Cho phép người chưa đăng nhập đọc |
+| `financial_targets` | "Public read access for financial targets" | Cho phép người chưa đăng nhập đọc |
 
-Sử dụng **Custom Access Token Hook** (PL/pgSQL) — chạy mỗi lần token được cấp — để inject `user_role` và `employee_id` vào JWT. Sau đó sửa hai hàm helper để đọc từ JWT thay vì query DB.
+> [!NOTE]  
+> `employees` "Allow auth admin to read employees" `using(true)` cho `supabase_auth_admin` là **OK** — đây là Phase 1 hook.
 
-> [!IMPORTANT]
-> Phương án này **KHÔNG cần sửa RLS policies** — chỉ cần sửa nội dung 2 hàm helper (`current_user_role`, `current_user_employee_id`). Tất cả policies hiện dùng 2 hàm này sẽ tự động nhanh hơn.
+### 🟡 Issue 2: Raw subqueries thay vì helpers (~25 policies)
 
-> [!WARNING]
-> Một số policies dùng raw subquery `EXISTS (SELECT 1 FROM employees WHERE ...)` thay vì helper. Những policy này cần được sửa riêng ở Phase 3 (Security Hardening).
+Các policy này vẫn query trực tiếp bảng `employees` thay vì dùng `current_user_role()` / `current_user_employee_id()` (đã optimize ở Phase 1):
+
+| Table | Policies affected | Pattern |
+|-------|-------------------|---------|
+| `audit_logs` | 1 SELECT | `EXISTS(SELECT 1 FROM employees WHERE ...)` |
+| `balance_settings` | 1 ALL | Same |
+| `company_settings` | 2 (INSERT, UPDATE) | Same |
+| `employee_balance_transactions` | 2 (ALL, SELECT) | Same |
+| `employee_balances` | 2 (ALL, SELECT) | Same |
+| `employee_dependents` | 2 (ALL, SELECT) | Same |
+| `employee_requests` | 4 (INSERT, SELECT×2, UPDATE) | Same |
+| `employees` | 1 UPDATE | Same |
+| `expense_requests` | 2 (ALL, SELECT) | Same |
+| `financial_categories` | 1 ALL | Same |
+| `leave_balances` | 2 (ALL, SELECT) | Same |
+| `notifications` | 3 (INSERT, UPDATE, SELECT) | Inline subqueries |
+| `salary_deductions` | 2 (ALL, SELECT) | Same |
 
 ---
 
 ## Proposed Changes
 
-### 1. Custom Access Token Hook Function
-
-#### [NEW] Migration: `custom_access_token_hook`
-
-Tạo PL/pgSQL function chạy mỗi khi token JWT được cấp:
+### Migration 1: Fix `using(true)` policies
 
 ```sql
-CREATE OR REPLACE FUNCTION public.custom_access_token_hook(event jsonb)
-RETURNS jsonb
-LANGUAGE plpgsql STABLE
-AS $$
-DECLARE
-  claims jsonb;
-  emp_role public.user_role;
-  emp_id uuid;
-BEGIN
-  -- Fetch employee info
-  SELECT e.role, e.id INTO emp_role, emp_id
-  FROM public.employees e
-  WHERE e.auth_user_id = (event->>'user_id')::uuid;
+-- company_settings: require authenticated
+DROP POLICY "Anyone can read company settings" ON public.company_settings;
+CREATE POLICY "Authenticated can read company settings"
+  ON public.company_settings FOR SELECT TO public
+  USING ((select auth.role()) = 'authenticated');
 
-  claims := event->'claims';
-
-  -- Set role claim
-  IF emp_role IS NOT NULL THEN
-    claims := jsonb_set(claims, '{user_role}', to_jsonb(emp_role));
-  ELSE
-    claims := jsonb_set(claims, '{user_role}', 'null');
-  END IF;
-
-  -- Set employee_id claim
-  IF emp_id IS NOT NULL THEN
-    claims := jsonb_set(claims, '{employee_id}', to_jsonb(emp_id));
-  ELSE
-    claims := jsonb_set(claims, '{employee_id}', 'null');
-  END IF;
-
-  event := jsonb_set(event, '{claims}', claims);
-  RETURN event;
-END;
-$$;
-```
-
-Cấp quyền cho `supabase_auth_admin`:
-```sql
-GRANT USAGE ON SCHEMA public TO supabase_auth_admin;
-GRANT EXECUTE ON FUNCTION public.custom_access_token_hook TO supabase_auth_admin;
-REVOKE EXECUTE ON FUNCTION public.custom_access_token_hook FROM authenticated, anon, public;
+-- financial_targets: require authenticated
+DROP POLICY "Public read access for financial targets" ON public.financial_targets;
+CREATE POLICY "Authenticated can read financial targets"
+  ON public.financial_targets FOR SELECT TO public
+  USING ((select auth.role()) = 'authenticated');
 ```
 
 ---
 
-### 2. Refactor Helper Functions
+### Migration 2: Rewrite role-check policies (subquery → helper)
 
-#### [MODIFY] Function `current_user_role()`
+**Pattern**: Replace `EXISTS(SELECT 1 FROM employees WHERE auth_user_id = auth.uid() AND role = ANY(...))` with `(select current_user_role()) = ANY(...)`.
 
-```diff
-- SELECT role INTO user_role_val FROM public.employees WHERE auth_user_id = auth.uid();
-+ SELECT ((select auth.jwt()) ->> 'user_role')::user_role INTO user_role_val;
-```
+Policies to rewrite (grouped by table):
 
-#### [MODIFY] Function `current_user_employee_id()`
-
-```diff
-- SELECT id INTO employee_uuid FROM public.employees WHERE auth_user_id = auth.uid();
-+ SELECT ((select auth.jwt()) ->> 'employee_id')::uuid INTO employee_uuid;
-```
+- `audit_logs` — "Only admin can read audit logs"
+- `balance_settings` — "Admins can manage balance settings"
+- `company_settings` — INSERT, UPDATE
+- `employee_balance_transactions` — "Admins can view all transactions"
+- `employee_balances` — "Admins can view all balances"
+- `employee_dependents` — "Admin HR can manage all dependents"
+- `employee_requests` — "HR and Admin can update requests", "HR and Admin can view all requests"
+- `employees` — "Admin and HR can update any employee avatar"
+- `expense_requests` — "Admins can view all expense attachments"
+- `financial_categories` — "Admin accountant can manage financial categories"
+- `leave_balances` — "Admin HR can manage all leave balances"
+- `salary_deductions` — "Admin HR accountant can manage salary deductions"
 
 ---
 
-### 3. Enable Hook in Supabase Dashboard
+### Migration 3: Rewrite employee-id-check policies (subquery → helper)
 
-> [!IMPORTANT]
-> Sau khi apply migration, cần vào **Supabase Dashboard → Authentication → Hooks** và bật hook **"Custom Access Token"**, chọn function `public.custom_access_token_hook`. **Bước này PHẢI do bạn thực hiện thủ công trên Dashboard.**
+**Pattern**: Replace `employee_id IN (SELECT id FROM employees WHERE auth_user_id = auth.uid())` with `employee_id = (select current_user_employee_id())`.
+
+Policies to rewrite:
+
+- `employee_balance_transactions` — "Employees can view their own transactions"
+- `employee_balances` — "Employees can view their own balance"
+- `employee_dependents` — "Employees can view own dependents"
+- `employee_requests` — "Employees can create their own requests", "Employees can view their own requests"
+- `expense_requests` — "Employees can view their own expense attachments"
+- `leave_balances` — "Employees can view own leave balances"
+- `salary_deductions` — "Employees can view own salary deductions"
+- `notifications` — INSERT, UPDATE, SELECT (complex — uses both employee_id and role inline)
 
 ---
 
 ## Verification Plan
 
-### Automated Tests (SQL)
+### Automated Tests
 
-1. **Test helper functions sau khi refactor** — chạy SQL trực tiếp trên project:
-   ```sql
-   -- Kiểm tra hook function tồn tại
-   SELECT proname FROM pg_proc WHERE proname = 'custom_access_token_hook';
-   
-   -- Kiểm tra helper functions đã được cập nhật (không còn query employees)
-   SELECT prosrc FROM pg_proc WHERE proname = 'current_user_role';
-   SELECT prosrc FROM pg_proc WHERE proname = 'current_user_employee_id';
-   ```
+```sql
+-- 1. Verify no more using(true) policies for public roles
+SELECT tablename, policyname FROM pg_policies
+WHERE schemaname = 'public' AND qual = 'true'
+  AND roles != '{supabase_auth_admin}';
 
-2. **Test hook function logic** — simulate một event:
-   ```sql
-   SELECT public.custom_access_token_hook(
-     jsonb_build_object(
-       'user_id', (SELECT auth_user_id FROM employees LIMIT 1),
-       'claims', '{}'::jsonb
-     )
-   );
-   ```
+-- 2. Verify no more raw subqueries to employees table in policies
+SELECT tablename, policyname FROM pg_policies
+WHERE schemaname = 'public'
+  AND (qual LIKE '%FROM employees%' OR with_check LIKE '%FROM employees%');
 
-### Manual Verification (Bạn cần thực hiện)
+-- 3. Count total policies (should still be ~67)
+SELECT count(*) FROM pg_policies WHERE schemaname = 'public';
+```
 
-1. **Bật hook** trên Supabase Dashboard → Authentication → Hooks → Custom Access Token
-2. **Đăng nhập lại** vào ứng dụng HRM
-3. **Kiểm tra JWT** (mở DevTools → Application → Local Storage → `sb-*-auth-token` → decode access_token tại jwt.io) — phải thấy `user_role` và `employee_id` trong JWT
-4. **Duyệt thử các trang** — đảm bảo tất cả chức năng hoạt động bình thường (danh sách nhân viên, chấm công, bảng lương...)
+### Security Advisor
+Run Supabase security advisor to catch any remaining issues.

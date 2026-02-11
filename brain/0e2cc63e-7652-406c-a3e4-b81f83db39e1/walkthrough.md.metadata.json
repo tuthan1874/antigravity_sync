@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough documenting the Phase 1 JWT Custom Claims optimization. Covers what was changed, test results, and what manual step remains (enabling the hook on Supabase Dashboard).",
-  "updatedAt": "2026-02-11T04:48:19.256876100Z"
+  "summary": "Final walkthrough covering all 3 phases of HRM backend optimization. Phase 1: JWT Custom Claims hook. Phase 2: Dropped 11 duplicate indexes, added FK constraint. Phase 3: Rewrote 26 insecure RLS policies, fixed using(true), set search_path on all functions.",
+  "updatedAt": "2026-02-11T05:56:24.039462600Z",
+  "version": "2"
 }

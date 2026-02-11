@@ -1,0 +1,112 @@
+# Phase 2: Indexing & Integrity
+
+## Bối cảnh
+
+Sau khi phân tích toàn bộ database:
+- **47 FK constraints** — tất cả đều **đã có index** ✅ (không cần thêm FK index)
+- **10 cặp index trùng lặp** — chiếm dung lượng và làm chậm INSERT/UPDATE không cần thiết
+- **1 FK constraint thiếu** — `employees.lead_id` (self-ref) không có FK constraint
+- **`get_managed_employee_ids()`** — hàm helper cũng query DB, cần chuyển sang JWT
+
+## Proposed Changes
+
+### Migration 1: Xóa Duplicate Indexes
+
+Mỗi UNIQUE index đã tự động phục vụ như btree index — index non-unique trùng hoàn toàn thừa.
+
+```sql
+-- employees: unique key đã cover, drop non-unique duplicates
+DROP INDEX IF EXISTS idx_employees_auth_user_id;    -- covered by employees_auth_user_id_key
+DROP INDEX IF EXISTS idx_employees_email;            -- covered by employees_email_key
+
+-- employees: duplicate unique indexes
+DROP INDEX IF EXISTS uq_employee_code;               -- covered by employees_employee_code_key
+
+-- departments: duplicate unique
+DROP INDEX IF EXISTS uq_department_name;              -- covered by departments_name_key
+
+-- employee_balances: unique key covers
+DROP INDEX IF EXISTS idx_employee_balances_employee_id; -- covered by employee_balances_employee_id_key
+
+-- budget_categories: unique key covers
+DROP INDEX IF EXISTS idx_budget_categories_code;       -- covered by budget_categories_code_key
+
+-- payroll_records: unique key covers
+DROP INDEX IF EXISTS idx_payroll_employee_period;       -- covered by payroll_records_employee_id_month_year_key
+
+-- expense_financial_mapping: unique keys cover
+DROP INDEX IF EXISTS idx_expense_financial_mapping_expense_id;      -- covered by unique_expense_mapping
+DROP INDEX IF EXISTS idx_expense_financial_mapping_transaction_id;  -- covered by unique_transaction_mapping
+
+-- notifications: full index redundant with partial
+DROP INDEX IF EXISTS idx_notifications_is_read;  -- partial idx_notifications_unread handles the common query
+```
+
+> [!NOTE]
+> Tổng **11 indexes** bị xóa → giảm ~160-180 KB storage, và cải thiện tốc độ INSERT/UPDATE trên các bảng liên quan.
+
+---
+
+### Migration 2: Thêm FK Constraint cho `employees.lead_id`
+
+```sql
+ALTER TABLE public.employees
+ADD CONSTRAINT employees_lead_id_fkey
+FOREIGN KEY (lead_id)
+REFERENCES public.employees(id)
+ON DELETE SET NULL;
+```
+
+> [!NOTE]
+> `lead_id` đã có index (`idx_employees_lead_id`). Chỉ thiếu FK constraint để đảm bảo data integrity.
+
+---
+
+### Migration 3: Refactor `get_managed_employee_ids()`
+
+Hàm này hiện gọi `current_user_employee_id()` (đã đọc JWT ở Phase 1), nên về mặt hiệu năng đã cải thiện. Tuy nhiên cần đảm bảo nó dùng `(select ...)` wrapper cho `current_user_employee_id()` theo best practice.
+
+```sql
+CREATE OR REPLACE FUNCTION public.get_managed_employee_ids()
+RETURNS SETOF uuid
+LANGUAGE plpgsql
+STABLE
+AS $$
+BEGIN
+  RETURN QUERY
+  SELECT id FROM public.employees
+  WHERE lead_id = (select current_user_employee_id());
+END;
+$$;
+```
+
+---
+
+## Verification Plan
+
+### Automated Tests (SQL)
+
+```sql
+-- 1. Verify duplicate indexes removed
+SELECT i.relname FROM pg_index ix
+JOIN pg_class i ON i.oid = ix.indexrelid
+JOIN pg_class t ON t.oid = ix.indrelid
+JOIN pg_namespace n ON n.oid = t.relnamespace
+WHERE n.nspname = 'public' AND i.relname IN (
+  'idx_employees_auth_user_id', 'idx_employees_email', 'uq_employee_code',
+  'uq_department_name', 'idx_employee_balances_employee_id',
+  'idx_budget_categories_code', 'idx_payroll_employee_period',
+  'idx_expense_financial_mapping_expense_id',
+  'idx_expense_financial_mapping_transaction_id',
+  'idx_notifications_is_read'
+);
+-- Expected: empty result (all dropped)
+
+-- 2. Verify FK constraint exists
+SELECT constraint_name FROM information_schema.table_constraints
+WHERE table_name = 'employees' AND constraint_name = 'employees_lead_id_fkey';
+-- Expected: 1 row
+
+-- 3. Verify get_managed_employee_ids uses subquery wrapper
+SELECT prosrc FROM pg_proc WHERE proname = 'get_managed_employee_ids';
+```

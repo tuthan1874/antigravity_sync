@@ -1,30 +1,48 @@
-# Phase 1: JWT Custom Claims — Walkthrough
+# HRM Backend Optimization — Final Walkthrough
 
-## What Was Done
+## Phase 1: JWT Custom Claims ✅
 
-Applied migration `create_custom_access_token_hook` to the HRM Supabase project (`hbzgoguwpayuhvbvinqy`):
-
-| Change | Detail |
-|--------|--------|
-| **New function** | `custom_access_token_hook(event jsonb)` — injects `user_role` + `employee_id` into JWT claims |
-| **Permissions** | Granted `supabase_auth_admin` access to execute the hook and read `employees` table |
-| **Refactored** | `current_user_role()` — now reads `auth.jwt() ->> 'user_role'` (was: `SELECT role FROM employees`) |
-| **Refactored** | `current_user_employee_id()` — now reads `auth.jwt() ->> 'employee_id'` (was: `SELECT id FROM employees`) |
-
-## Test Results ✅
-
-**Test 1 — Hook function exists:** ✅ `custom_access_token_hook` created  
-**Test 2 — Helper functions refactored:** ✅ Both now read from `auth.jwt()`, no longer query `employees`  
-**Test 3 — Hook simulation:** ✅ Input `user_id: a43f6e04-...` → Output: `user_role: "admin"`, `employee_id: "646a5710-..."`
-
-## 🚨 Remaining Manual Step
+| Migration | Changes |
+|-----------|---------|
+| `create_custom_access_token_hook` | Hook injects `user_role` + `employee_id` into JWT. Refactored `current_user_role()` and `current_user_employee_id()` to read from JWT |
 
 > [!IMPORTANT]
-> You must enable the hook on **Supabase Dashboard**:
-> 1. Go to [Authentication → Hooks](https://supabase.com/dashboard/project/hbzgoguwpayuhvbvinqy/auth/hooks)
-> 2. Enable **Custom Access Token** hook
-> 3. Select schema `public`, function `custom_access_token_hook`
-> 4. Save
-> 5. **Log out and log back in** to the HRM app — the new JWT will contain `user_role` and `employee_id`
+> **Manual step:** Enable hook on [Dashboard → Auth → Hooks](https://supabase.com/dashboard/project/hbzgoguwpayuhvbvinqy/auth/hooks) → Custom Access Token → `public.custom_access_token_hook`
 
-After enabling, verify by decoding your access token at [jwt.io](https://jwt.io) — you should see `user_role` and `employee_id` fields in the payload.
+---
+
+## Phase 2: Indexing & Integrity ✅
+
+| Migration | Changes |
+|-----------|---------|
+| `drop_duplicate_indexes_v2` | Dropped 11 redundant indexes/constraints |
+| `add_employees_lead_id_fkey` | Added FK constraint `employees.lead_id → employees.id` |
+| `refactor_get_managed_employee_ids_v2` | Added `(select ...)` wrapper for RLS best practice |
+
+---
+
+## Phase 3: Security Hardening ✅
+
+| Migration | Changes |
+|-----------|---------|
+| `fix_using_true_policies` | Fixed 2 `using(true)` policies → now require `authenticated` |
+| `rewrite_role_check_subquery_policies` | Rewrote 13 policies: `EXISTS(SELECT FROM employees...)` → `current_user_role()` |
+| `rewrite_employee_id_subquery_policies` | Rewrote 11 policies: `employee_id IN (SELECT...)` → `current_user_employee_id()` + 3 complex notification policies |
+| `fix_function_search_path` | Set `search_path = ''` on all 4 helper functions (security advisor fix) |
+
+### Verification Results
+
+| Test | Result |
+|------|--------|
+| No `using(true)` for public roles | ✅ Empty |
+| No raw subqueries to `employees` in policies | ✅ Empty |
+| Total policy count | ✅ 73 policies |
+| Function search_path warnings | ✅ Fixed |
+
+### Remaining Security Advisor Warnings (non-RLS)
+
+| Warning | Action Required |
+|---------|----------------|
+| Auth OTP long expiry | Consider reducing OTP expiry to < 1 hour |
+| Leaked password protection disabled | Consider enabling in Auth settings |
+| Postgres version has security patches | Consider upgrading Postgres |
