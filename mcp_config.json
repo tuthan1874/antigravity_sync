@@ -10,14 +10,15 @@
       ],
       "env": {}
     },
-    "NocoDB__HRM_Manager": {
+    "NocoDB Base - TD_Games": {
       "command": "npx",
       "args": [
         "mcp-remote",
-        "https://nocodb.tdconsulting.vn/mcp/nc4srd5a6c0rc1g8",
+        "https://nocodb.tdconsulting.vn/mcp/ncendr3ma9fbq00w",
         "--header",
-        "xc-mcp-token: 1yyq9EPiheGbQXtW3x41gSyM9QVzSQ14HyShqKEN"
-      ]
+        "xc-mcp-token: Zz7JG0lyqfpEOfZ1sSixHs-Chc8JpIk1"
+      ],
+      "disabledTools": []
     }
   }
 }
