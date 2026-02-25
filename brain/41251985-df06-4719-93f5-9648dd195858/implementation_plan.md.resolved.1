@@ -1,0 +1,610 @@
+# Technical Specification: Multi-Platform Workflow Automation Tool (NocoDB Edition)
+## Version 2.1 — Revised
+
+---
+
+## 1. Objective
+
+Build a middleware application hosted on a VPS that synchronizes tasks and communication between **ClickUp**, **Slack**, **Discord**, using **NocoDB** as the central database and PM dashboard.
+
+### Key Principles
+- **NocoDB is the single source of truth** — All data flows through NocoDB first
+- **Event-driven architecture** — Webhooks trigger all sync actions
+- **Fault-tolerant** — Failed syncs are queued and retried
+- **Zero context-switching for PMs** — All info visible in NocoDB views
+
+---
+
+## 2. Tech Stack
+
+| Component | Technology | Rationale |
+|-----------|-----------|-----------|
+| **Runtime** | Node.js (v20 LTS) | Native Discord.js, Slack Bolt, event-loop |
+| **Framework** | Fastify | Faster than Express, schema validation built-in |
+| **Database/Dashboard** | NocoDB (Docker) | Open-source Airtable, built-in views & sharing |
+| **Underlying DB** | PostgreSQL 16 | Storage for NocoDB + app event queue |
+| **ClickUp** | ClickUp API v2 + Webhooks | Task management |
+| **Slack** | `@slack/bolt` | Event-driven Slack integration |
+| **Discord** | `discord.js` v14 | Real-time Discord bot + threads |
+| **Queue** | Bull (Redis) hoặc pg-boss (Postgres) | Retry failed events, rate limit compliance |
+| **Deployment** | Docker Compose | Multi-container orchestration |
+
+---
+
+## 3. System Architecture
+
+```mermaid
+graph TB
+    subgraph "Event Sources (Inbound)"
+        CU_WH["ClickUp Webhooks<br/>taskCreated, taskUpdated,<br/>taskCommentPosted"]
+        SL_EV["Slack Events API<br/>message (in threads)"]
+        DC_GW["Discord Bot Gateway<br/>messageCreate (in threads)"]
+        NC_WH["NocoDB Webhooks<br/>record.update (status change)"]
+    end
+
+    subgraph "App Service (Node.js + Fastify)"
+        RT["Webhook Router<br/>/webhooks/clickup<br/>/webhooks/slack<br/>/webhooks/nocodb"]
+        VF["Signature Verifier"]
+        EQ["Event Queue<br/>(pg-boss / Bull)"]
+        
+        subgraph "Workers"
+            TS["Task Sync Worker"]
+            CS["Comment Sync Worker"]
+            NS["Notification Worker"]
+            KW["Keyword Detector"]
+        end
+    end
+
+    subgraph "Data Layer"
+        NOCO["NocoDB<br/>(Dashboard + API)"]
+        PG[("PostgreSQL<br/>(NocoDB data +<br/>Event queue)")]
+    end
+
+    subgraph "Outbound Actions"
+        CU_API["ClickUp API<br/>(update task/comment)"]
+        SL_API["Slack API<br/>(post message/thread)"]
+        DC_API["Discord API<br/>(post message/thread)"]
+    end
+
+    CU_WH --> RT
+    SL_EV --> RT
+    NC_WH --> RT
+    DC_GW --> RT
+
+    RT --> VF --> EQ
+    EQ --> TS
+    EQ --> CS
+    EQ --> NS
+    CS --> KW
+
+    TS --> NOCO
+    CS --> NOCO
+    NOCO --> PG
+
+    NS --> SL_API
+    NS --> DC_API
+    NS --> CU_API
+    TS --> CU_API
+```
+
+---
+
+## 4. Event Sources & Webhook Architecture
+
+### 4.1 Inbound Events
+
+| Source | Method | Events | Endpoint |
+|--------|--------|--------|----------|
+| **ClickUp** | Webhook (HTTP POST) | `taskCreated`, `taskUpdated`, `taskStatusUpdated`, `taskCommentPosted` | `POST /webhooks/clickup` |
+| **Slack** | Events API (HTTP POST) | `message` (in subscribed threads) | `POST /webhooks/slack` |
+| **Discord** | Bot Gateway (WebSocket) | `messageCreate`, `messageReactionAdd` | WebSocket (always-on) |
+| **NocoDB** | Webhook (HTTP POST) | `record.update` (on Status field change) | `POST /webhooks/nocodb` |
+
+### 4.2 Webhook Security
+
+| Source | Verification Method |
+|--------|-------------------|
+| **ClickUp** | Webhook signature header (`X-Signature`) |
+| **Slack** | Request signing secret (`X-Slack-Signature` + timestamp) |
+| **Discord** | Bot token authentication (handled by discord.js) |
+| **NocoDB** | Custom secret header (`X-Noco-Secret`) |
+
+### 4.3 Rate Limits
+
+| Platform | Limit | Strategy |
+|----------|-------|----------|
+| **ClickUp** | 100 req/min | Queue with 600ms delay between calls |
+| **Slack** | Tier 3: 50 req/min (most methods) | Queue with burst control |
+| **Discord** | 50 req/sec global | discord.js handles internally |
+| **NocoDB** | Self-hosted — no limit | N/A |
+
+---
+
+## 5. NocoDB Schema
+
+### 5.1 Table: `Users` (User Mapping)
+
+> [!IMPORTANT]
+> Bảng này map users across platforms — cần tạo **trước tiên**.
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `Name` | SingleLineText | ✅ | Tên hiển thị |
+| `Email` | Email | ✅ | Email chính |
+| `Role` | SingleSelect | ✅ | `Dev` · `Lead` · `PM` · `Client` |
+| `ClickUp_ID` | SingleLineText | | User ID trên ClickUp |
+| `Slack_ID` | SingleLineText | | Member ID trên Slack (format: `U0xxxxxxx`) |
+| `Discord_ID` | SingleLineText | | User ID trên Discord |
+| `Is_Active` | Checkbox | ✅ | Còn active không |
+
+---
+
+### 5.2 Table: `Tasks` (Core Task Tracking)
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `ClickUp_ID` | SingleLineText | ✅ | ClickUp Task ID (unique) |
+| `Task_Name` | SingleLineText | ✅ | Tên task |
+| `Status` | SingleSelect | ✅ | Options below ⬇️ |
+| `Priority` | SingleSelect | | `Urgent` · `High` · `Normal` · `Low` |
+| `Assignee` | Link to Users | | Người được assign |
+| `Project` | SingleLineText | | Tên project / ClickUp List |
+| `Client` | SingleLineText | | Tên client |
+| `Due_Date` | Date | | Deadline |
+| `Slack_Channel` | SingleLineText | | Internal Slack channel ID |
+| `Slack_TS` | SingleLineText | | Internal thread timestamp |
+| `Discord_Channel_ID` | SingleLineText | | Internal Discord channel/forum ID |
+| `Discord_Thread_ID` | SingleLineText | | Internal Discord thread ID |
+| `Client_Slack_Channel` | SingleLineText | | Client-facing Slack channel ID |
+| `Client_Slack_TS` | SingleLineText | | Client thread timestamp |
+| `Client_Discord_Channel_ID` | SingleLineText | | Client-facing Discord channel ID |
+| `Client_Discord_Thread_ID` | SingleLineText | | Client Discord thread ID |
+| `ClickUp_URL` | URL | | Link to ClickUp task |
+| `NocoDB_URL` | Formula | | Auto-generated link to this row |
+| `Created_At` | DateTime | ✅ | Thời điểm tạo |
+| `Updated_At` | DateTime | ✅ | Lần cập nhật cuối |
+
+> [!IMPORTANT]
+> Thread được tách thành **Internal** (Dev/Lead) và **Client** (chỉ tạo khi `Client Review`).
+
+**Status Options:**
+```
+To Do → In Progress → Lead Review → Client Review → FIX → Closed
+```
+
+---
+
+### 5.3 Table: `Comments` (Cross-Platform Log)
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `Task_ID` | Link to Tasks | ✅ | Task liên quan |
+| `Author` | SingleLineText | ✅ | Tên người comment |
+| `Author_Platform_ID` | SingleLineText | | ID của author trên platform gốc |
+| `Source` | SingleSelect | ✅ | `ClickUp` · `Slack` · `Discord` · `NocoDB` |
+| `Content` | LongText | ✅ | Nội dung comment |
+| `Message_ID` | SingleLineText | | ID message gốc (để tránh duplicate) |
+| `Is_Broadcasted` | Checkbox | ✅ | Đã sync sang các platform khác chưa |
+| `Timestamp` | DateTime | ✅ | Thời điểm comment |
+
+---
+
+### 5.4 Table: `Event_Log` (Error Tracking & Audit)
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `Event_Type` | SingleSelect | ✅ | `task_sync` · `comment_sync` · `status_change` · `notification` |
+| `Source` | SingleSelect | ✅ | `ClickUp` · `Slack` · `Discord` · `NocoDB` |
+| `Status` | SingleSelect | ✅ | `Success` · `Failed` · `Retrying` |
+| `Payload` | LongText | | JSON payload (for debugging) |
+| `Error_Message` | LongText | | Error details nếu failed |
+| `Retry_Count` | Number | | Số lần retry |
+| `Related_Task` | Link to Tasks | | Task liên quan |
+| `Timestamp` | DateTime | ✅ | Thời điểm event |
+
+> [!TIP]
+> PM có thể mở bảng `Event_Log`, filter `Status = Failed` để thấy ngay vấn đề sync.
+
+---
+
+## 6. Core Workflow Logic
+
+### Phase 1: Task Initiation & Mapping
+
+```mermaid
+sequenceDiagram
+    participant CU as ClickUp
+    participant APP as App Service
+    participant NOCO as NocoDB
+    participant SL as Slack
+    participant DC as Discord
+
+    CU->>APP: Webhook: taskCreated
+    APP->>APP: Verify signature
+    APP->>APP: Queue event
+
+    APP->>NOCO: Create record in Tasks table
+    NOCO-->>APP: Record ID + NocoDB_URL
+
+    APP->>SL: Create thread in project channel
+    SL-->>APP: thread_ts
+
+    APP->>DC: Create forum post / thread
+    DC-->>APP: thread_id
+
+    APP->>NOCO: Update record (Slack_TS, Discord_Thread_ID)
+    
+    APP->>SL: Post links (ClickUp URL + NocoDB URL)
+    APP->>DC: Post links (ClickUp URL + NocoDB URL)
+```
+
+**Trigger:** ClickUp webhook `taskCreated`
+
+**Steps:**
+1. Verify webhook signature
+2. Queue event vào Event Queue
+3. Worker tạo record trong NocoDB `Tasks` table
+4. Tạo Slack thread trong project channel
+5. Tạo Discord thread/forum post
+6. Update NocoDB record với `Slack_TS` + `Discord_Thread_ID`
+7. Post links (ClickUp URL + NocoDB URL) vào cả Slack + Discord thread
+8. Log event vào `Event_Log`
+
+---
+
+### Phase 2: Bi-directional Comment Sync
+
+```mermaid
+sequenceDiagram
+    participant SRC as Source Platform
+    participant APP as App Service
+    participant NOCO as NocoDB (Comments)
+    participant TGT as Other Platforms
+
+    SRC->>APP: New comment event
+    APP->>APP: Check Message_ID (idempotency)
+    
+    alt New comment
+        APP->>NOCO: Insert into Comments (Is_Broadcasted=false)
+        APP->>TGT: Post comment to other platforms
+        APP->>NOCO: Update Is_Broadcasted=true
+    else Duplicate
+        APP->>APP: Skip (already synced)
+    end
+```
+
+**Logic:**
+1. Comment từ **bất kỳ platform nào** → App nhận event
+2. Check `Message_ID` trong NocoDB → Nếu đã tồn tại = duplicate → skip
+3. Insert vào `Comments` table, `Is_Broadcasted = false`
+4. Broadcast sang các platform còn lại (qua thread TS/ID đã lưu)
+5. Update `Is_Broadcasted = true`
+6. **Format:** `[Author] via [Platform]: {content}`
+
+**Anti-loop Protection:**
+- Mỗi message có `Message_ID` unique
+- Messages posted bởi bot sẽ có metadata marker → bỏ qua khi nhận lại
+
+---
+
+### Phase 3: Status Change, Lead Review & Client Notification Gating
+
+**Trigger:** Status change trong ClickUp HOẶC NocoDB
+
+| Source | Event | Actions |
+|--------|-------|---------|
+| ClickUp → `Lead Review` | `taskStatusUpdated` webhook | Update NocoDB status → Notify Lead via Internal Slack/Discord thread |
+| NocoDB → any status | NocoDB webhook `record.update` | Update ClickUp status → Notify assignee |
+| ClickUp → `Client Review` | `taskStatusUpdated` webhook | Update NocoDB → **Tạo Client thread** (xem bên dưới) |
+| ClickUp → `FIX` (from Client Review) | `taskStatusUpdated` webhook | Update NocoDB → Notify assignee via Internal thread |
+| ClickUp → `Closed` | `taskStatusUpdated` webhook | Update NocoDB → Notify all via cả 2 thread |
+
+#### 🔒 Client Notification Gating
+
+> [!IMPORTANT]
+> Client **chỉ nhận thông báo khi task ở trạng thái `Client Review`**. Trước đó mọi thông báo chỉ gửi trong Internal thread.
+
+**Dual-Thread Model:**
+
+| Thread | Tạo khi | Audience | Sync comments |
+|--------|---------|----------|---------------|
+| **Internal Thread** (Slack + Discord) | Task created (`To Do`) | Dev, Lead, PM | Mọi lúc |
+| **Client Thread** (Slack + Discord) | Status → `Client Review` | Client, PM | Chỉ khi status = `Client Review` |
+
+```mermaid
+sequenceDiagram
+    participant APP as App Service
+    participant NOCO as NocoDB
+    participant SL_INT as Slack (Internal)
+    participant SL_CLI as Slack (Client)
+    participant DC_INT as Discord (Internal)
+    participant DC_CLI as Discord (Client)
+
+    Note over APP: Status → Client Review
+    APP->>SL_CLI: Create client thread (if not exists)
+    SL_CLI-->>APP: client_thread_ts
+    APP->>DC_CLI: Create client thread (if not exists)
+    DC_CLI-->>APP: client_thread_id
+    APP->>NOCO: Save Client_Slack_TS + Client_Discord_Thread_ID
+    APP->>SL_CLI: Post deliverable + links
+    APP->>DC_CLI: Post deliverable + links
+
+    Note over APP: Client comments (while Client Review)
+    SL_CLI->>APP: Client comment
+    APP->>NOCO: Save to Comments
+    APP->>SL_INT: Broadcast to internal
+    APP->>DC_INT: Broadcast to internal
+    APP->>DC_CLI: Broadcast to client Discord
+
+    Note over APP: Status → FIX (back to internal)
+    APP->>SL_INT: Notify assignee in internal thread
+    Note over SL_CLI,DC_CLI: Client threads go silent
+```
+
+**Rules:**
+1. Khi status chuyển sang `Client Review` → Tạo Client thread (nếu chưa có) → Post deliverable
+2. Comments từ Client thread → Sync vào Internal thread + NocoDB
+3. Comments từ Internal thread → **KHÔNG sync sang Client thread** (internal only)
+4. Khi status rời khỏi `Client Review` (ví dụ: về `FIX`) → Client thread ngừng nhận message
+5. Khi status quay lại `Client Review` → Reuse Client thread, gửi update mới
+
+**Lead Notification (Internal Thread):**
+```
+🔍 Task needs review!
+📋 {Task_Name}
+👤 Assignee: {Assignee}
+🔗 NocoDB: {NocoDB_URL}
+🔗 ClickUp: {ClickUp_URL}
+```
+
+**Client Notification (Client Thread — chỉ khi `Client Review`):**
+```
+📬 Task ready for your review!
+📋 {Task_Name}
+🔗 Review: {ClickUp_URL}
+Please reply here with feedback, or type "!approved" to approve.
+```
+
+---
+
+### Phase 4: Keyword & Reaction Automation
+
+> [!IMPORTANT]
+> Chỉ authorized users (role `PM` hoặc `Client` trong bảng Users) mới trigger được.
+
+**Method 1: Prefix Commands (Primary)**
+
+| Command | Triggered by | Action |
+|---------|-------------|--------|
+| `!approved` | PM, Client | Status → `Closed`, notify team |
+| `!fix` | PM, Client | Status → `FIX`, notify assignee |
+| `!review` | Dev, Lead | Status → `Lead Review`, notify lead |
+
+**Method 2: Emoji Reactions (Secondary)**
+
+| Reaction | Platform | Action |
+|----------|----------|--------|
+| ✅ (`:white_check_mark:`) | Slack/Discord | Same as `!approved` |
+| 🔧 (`:wrench:`) | Slack/Discord | Same as `!fix` |
+
+**Confirmation Flow:**
+```
+User: !approved
+Bot: ✅ Confirm close task "{Task_Name}"? React ✅ to confirm or ❌ to cancel.
+User: ✅
+Bot: Task closed. All parties notified.
+```
+
+---
+
+### Phase 5: NocoDB Views & Dashboards
+
+| View Name | Type | Purpose | Audience |
+|-----------|------|---------|----------|
+| **All Tasks** | Grid | Full task list, searchable | PM |
+| **Kanban Board** | Kanban (grouped by Status) | Visual pipeline | PM, Lead |
+| **My Tasks** | Grid + Filter (Assignee = me) | Personal task list | Dev, Lead |
+| **Client Review** | Grid + Filter (Status = Client Review) | Shared view cho client | Client |
+| **Overdue Tasks** | Grid + Filter (Due_Date < today, Status ≠ Closed) | Deadline tracking | PM |
+| **Event Log - Errors** | Grid + Filter (Status = Failed) | Sync error monitoring | PM, Admin |
+| **Comments Feed** | Grid + Sort (Timestamp desc) | All conversations | PM |
+| **Workload Chart** | Chart (Group by Assignee) | Team workload | PM, Lead |
+| **Status Report** | Chart (Group by Status) | Progress overview | PM |
+
+> [!TIP]
+> NocoDB Shared Views cho phép tạo read-only link gửi cho Client mà không cần login.
+
+---
+
+### Phase 6: Automated Weekly Reports
+
+**Trigger:** Cron job — mỗi tuần vào **Thứ 2 lúc 9:00 AM** (configurable)
+
+**Logic:**
+1. Query NocoDB `Tasks` table, aggregate theo Status, Assignee, Client
+2. Generate report summary
+3. Gửi qua Slack, Discord, và Email (optional)
+
+**Report Template (Slack/Discord):**
+```
+📊 Weekly Progress Report — Week {W}, {Year}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📈 Task Summary:
+  • Total Active: {count}
+  • Completed this week: {closed_count}
+  • New this week: {new_count}
+
+📋 By Status:
+  • 🔵 To Do: {count}
+  • 🟡 In Progress: {count}
+  • 🟠 Lead Review: {count}
+  • 🟣 Client Review: {count}
+  • 🔴 FIX: {count}
+  • 🟢 Closed: {count}
+
+⚠️ Overdue Tasks: {overdue_count}
+{list of overdue tasks with assignee}
+
+👥 Workload:
+  • {Assignee_1}: {count} tasks
+  • {Assignee_2}: {count} tasks
+
+🔗 Full Dashboard: {NocoDB_Dashboard_URL}
+```
+
+**Report Variants:**
+
+| Report | Audience | Channel | Content |
+|--------|----------|---------|--------|
+| **Internal Report** | PM, Lead, Dev | Internal Slack channel + Discord channel | Full details: all statuses, workload, overdue |
+| **Client Report** | Client | Client Slack channel + Email | Filtered: chỉ tasks của client đó, chỉ status `Client Review` / `Closed` |
+
+> [!IMPORTANT]
+> Client Report **không hiển thị** internal statuses (To Do, In Progress, Lead Review) — chỉ hiện tasks đã đến Client Review hoặc đã Closed.
+
+**Email Integration (Optional):**
+- Dùng **Nodemailer** + SMTP (Gmail, SendGrid, hoặc self-hosted)
+- Template HTML đẹp với bảng thống kê
+- Chỉ gửi cho Client nếu có tasks ở `Client Review` hoặc `Closed` trong tuần
+
+**Configuration (via `.env`):**
+```env
+# Weekly Report
+REPORT_CRON=0 9 * * 1          # Every Monday at 9:00 AM
+REPORT_TIMEZONE=Asia/Ho_Chi_Minh
+REPORT_SLACK_CHANNEL=#weekly-reports
+REPORT_DISCORD_CHANNEL_ID=xxx
+
+# Email (optional)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=reports@company.com
+SMTP_PASS=xxx
+```
+
+---
+
+## 7. Error Handling & Retry Strategy
+
+### 7.1 Event Queue
+
+| Config | Value |
+|--------|-------|
+| **Queue engine** | pg-boss (Postgres-based, no extra Redis needed) |
+| **Max retries** | 3 |
+| **Retry delay** | Exponential backoff: 5s → 30s → 120s |
+| **Dead letter** | After 3 failures → log to `Event_Log` as `Failed` |
+
+### 7.2 Idempotency
+
+| Entity | Idempotency Key |
+|--------|----------------|
+| Tasks | `ClickUp_ID` — check trước khi insert |
+| Comments | `Message_ID` — check trước khi insert |
+| Notifications | `Event_Type + Task_ID + Timestamp` combo |
+
+### 7.3 Health Check
+
+```
+GET /health → { status: "ok", queue: { active: 5, failed: 0 }, uptime: "2d 5h" }
+```
+
+---
+
+## 8. Security
+
+| Area | Implementation |
+|------|---------------|
+| **API tokens** | Store in `.env` file, never in code |
+| **Webhook verification** | Validate signatures on every inbound event |
+| **NocoDB shared views** | Read-only permissions for Client views |
+| **Bot permissions** | Minimum required permissions (no admin) |
+| **Logging** | Log event metadata, NOT full message content |
+| **Docker** | Non-root containers, internal network only |
+| **HTTPS** | Nginx reverse proxy with SSL (Let's Encrypt) |
+
+---
+
+## 9. Deployment (Docker Compose)
+
+```yaml
+# docker-compose.yml structure
+services:
+  app:          # Node.js automation service
+  nocodb:       # NocoDB official image
+  db:           # PostgreSQL 16
+  nginx:        # Reverse proxy + SSL (optional)
+```
+
+| Service | Image | Ports | Dependencies |
+|---------|-------|-------|-------------|
+| `app` | Custom Node.js | 3000 (internal) | db, nocodb |
+| `nocodb` | `nocodb/nocodb:latest` | 8080 (internal) | db |
+| `db` | `postgres:16-alpine` | 5432 (internal) | — |
+| `nginx` | `nginx:alpine` | 80, 443 (public) | app, nocodb |
+
+**Volume mounts:**
+- `./data/postgres` → Postgres data
+- `./data/nocodb` → NocoDB data
+- `./.env` → Environment variables
+
+---
+
+## 10. Environment Variables
+
+```env
+# App
+NODE_ENV=production
+PORT=3000
+
+# ClickUp
+CLICKUP_API_TOKEN=pk_xxx
+CLICKUP_WEBHOOK_SECRET=xxx
+CLICKUP_TEAM_ID=xxx
+
+# Slack
+SLACK_BOT_TOKEN=xoxb-xxx
+SLACK_SIGNING_SECRET=xxx
+SLACK_APP_TOKEN=xapp-xxx
+
+# Discord
+DISCORD_BOT_TOKEN=xxx
+DISCORD_GUILD_ID=xxx
+
+# NocoDB
+NOCODB_BASE_URL=http://nocodb:8080
+NOCODB_API_TOKEN=xxx
+NOCODB_BASE_ID=xxx
+
+# PostgreSQL
+DATABASE_URL=postgresql://user:pass@db:5432/automation
+```
+
+---
+
+## 11. Implementation Roadmap
+
+| Phase | Scope | Duration | Priority |
+|-------|-------|----------|----------|
+| **0 — Foundation** | Docker Compose + NocoDB Schema + Users table | 2 days | 🔴 Critical |
+| **1 — Task Sync** | ClickUp → NocoDB (one-way) + Internal Slack/Discord thread creation | 3 days | 🔴 Critical |
+| **2 — Comment Sync** | Bi-directional comment sync (Internal threads) | 4 days | 🔴 Critical |
+| **3 — Status Sync** | Status change + Lead Review + **Client Notification Gating** (Dual-Thread) | 3 days | 🔴 Critical |
+| **4 — Automation** | Keyword/Reaction commands with confirmation | 2 days | 🟡 High |
+| **5 — Views** | NocoDB Views, Shared Views, Charts | 1 day | 🟢 Medium |
+| **6 — Weekly Reports** | Cron job + Internal/Client reports via Slack/Discord/Email | 2 days | 🟡 High |
+| **7 — Hardening** | Error handling, retry, monitoring, security audit | 2 days | 🟡 High |
+| **8 — Testing** | End-to-end testing, load testing | 2 days | 🟡 High |
+
+**Total estimated: ~21 working days**
+
+---
+
+## 12. Future Enhancements (v2.1+)
+
+- **AI Summary**: Tóm tắt conversation dài bằng LLM
+- **Time Tracking**: Sync ClickUp time entries → NocoDB
+- **File Sync**: Attachments từ Slack/Discord → ClickUp + NocoDB
+- **Multi-workspace**: Support nhiều ClickUp workspace
+- **Webhook Logs UI**: Admin page xem real-time event flow

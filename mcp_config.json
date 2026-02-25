@@ -20,6 +20,16 @@
         "NOCODB_API_TOKEN": "ia8adC8RqGkyh9khOzthF9BjOL9Tt0vOWx1HjhPb",
         "NOCODB_BASE_ID": "pcrawiz8s9i03rk"
       }
+    },
+    "ClickUp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@taazkareem/clickup-mcp-server"
+      ],
+      "env": {
+        "CLICKUP_API_TOKEN": "pk_152442037_FCXCLFH19WZNZ1V51243JG1TVVZLNXH3"
+      }
     }
   }
 }
