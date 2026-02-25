@@ -1,5 +1,5 @@
 # Technical Specification: Multi-Platform Workflow Automation Tool (NocoDB Edition)
-## Version 2.1 — Revised
+## Version 2.2 — Revised
 
 ---
 
@@ -120,9 +120,65 @@ graph TB
 
 ---
 
-## 5. NocoDB Schema
+## 5. ClickUp Workspace Hierarchy
 
-### 5.1 Table: `Users` (User Mapping)
+```mermaid
+graph LR
+    S["🏢 Space<br/>(Client Name)"] --> F["📁 Folder<br/>(Project Name)"]
+    F --> L["📋 List<br/>(Dept: Art, Anim, VFX, UI...)"]
+    L --> T["✅ Task<br/>(Individual work item)"]
+```
+
+| Level | Meaning | Example |
+|-------|---------|--------|
+| **Space** | 1 khách hàng = 1 Space | `Gameloft`, `VNG`, `Garena` |
+| **Folder** | 1 dự án = 1 Folder | `Dragon Legends - Season 2` |
+| **List** | 1 phần việc = 1 List | `Art`, `Animation`, `VFX`, `UI` |
+| **Task** | 1 task cụ thể | `Design Dragon Boss Sprite` |
+
+**ClickUp Statuses:**
+```
+NEW REQUEST → WIP → LEAD_CHECK → CLIENT_REVIEW → APPROVED → CLOSED
+                         ↓              ↓
+                        FIX ←───────── FIX
+                                              CANCELLED (any time)
+```
+
+| Status | Meaning | Who acts |
+|--------|---------|----------|
+| `NEW REQUEST` | Task mới tạo | PM |
+| `WIP` | Đang làm | Dev |
+| `LEAD_CHECK` | Lead kiểm tra | Lead |
+| `CLIENT_REVIEW` | Gửi khách duyệt | Client |
+| `APPROVED` | Khách duyệt OK | — |
+| `FIX` | Cần sửa lại | Dev |
+| `CLOSED` | Hoàn thành | — |
+| `CANCELLED` | Hủy bỏ | PM |
+
+---
+
+## 6. Slack/Discord Channel Mapping (Configurable)
+
+> [!IMPORTANT]
+> PM có thể **tự cấu hình** cách map ClickUp Lists → Slack/Discord channels qua bảng `Channel_Mapping` trên NocoDB.
+
+**2 chế độ hoạt động:**
+
+| Mode | Mô tả | Ví dụ |
+|------|-------|-------|
+| **All-in-One** | Tất cả tasks của 1 client → 1 channel | `#gameloft-all` |
+| **Per-List** | Mỗi ClickUp List → 1 channel riêng | `#gameloft-art`, `#gameloft-vfx` |
+
+Hệ thống tự động tìm channel phù hợp bằng cách tra bảng `Channel_Mapping`:
+1. Tìm mapping cho **ClickUp List ID** cụ thể → Nếu có, dùng channel đó
+2. Nếu không có → Tìm mapping cho **ClickUp Space ID** (fallback = All-in-One)
+3. Nếu không có → Dùng **default channel** (configurable)
+
+---
+
+## 7. NocoDB Schema
+
+### 7.1 Table: `Users` (User Mapping)
 
 > [!IMPORTANT]
 > Bảng này map users across platforms — cần tạo **trước tiên**.
@@ -139,7 +195,39 @@ graph TB
 
 ---
 
-### 5.2 Table: `Tasks` (Core Task Tracking)
+### 7.2 Table: `Channel_Mapping` (Configurable Routing)
+
+> [!TIP]
+> PM thêm/sửa rows trong bảng này trực tiếp trên NocoDB để cấu hình channel mapping.
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `Label` | SingleLineText | ✅ | Tên hiển thị (VD: `Gameloft - Art`) |
+| `ClickUp_Space_ID` | SingleLineText | ✅ | Space ID (= Client) |
+| `ClickUp_Space_Name` | SingleLineText | | Tên Space (tự fill) |
+| `ClickUp_Folder_ID` | SingleLineText | | Folder ID (= Project), optional |
+| `ClickUp_List_ID` | SingleLineText | | List ID (= Dept), optional — nếu có sẽ ưu tiên |
+| `Slack_Channel_ID` | SingleLineText | | Slack channel cho Internal threads |
+| `Slack_Client_Channel_ID` | SingleLineText | | Slack channel cho Client threads |
+| `Discord_Channel_ID` | SingleLineText | | Discord channel cho Internal threads |
+| `Discord_Client_Channel_ID` | SingleLineText | | Discord channel cho Client threads |
+| `Is_Active` | Checkbox | ✅ | Bật/tắt mapping |
+
+**Ví dụ data:**
+
+| Label | Space_ID | List_ID | Slack_Channel_ID | Discord_Channel_ID |
+|-------|----------|---------|------------------|--------------------|
+| Gameloft - All | abc123 | _(trống)_ | `#gameloft` | `123456789` |
+| Gameloft - Art | abc123 | list_art | `#gameloft-art` | `234567890` |
+| Gameloft - VFX | abc123 | list_vfx | `#gameloft-vfx` | `345678901` |
+| VNG - All | def456 | _(trống)_ | `#vng-projects` | `456789012` |
+
+→ Task trong `Gameloft > Art` list → đi vào `#gameloft-art`
+→ Task trong `Gameloft > Animation` list (chưa map) → fallback vào `#gameloft` (Space-level)
+
+---
+
+### 7.3 Table: `Tasks` (Core Task Tracking)
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
@@ -148,16 +236,20 @@ graph TB
 | `Status` | SingleSelect | ✅ | Options below ⬇️ |
 | `Priority` | SingleSelect | | `Urgent` · `High` · `Normal` · `Low` |
 | `Assignee` | Link to Users | | Người được assign |
-| `Project` | SingleLineText | | Tên project / ClickUp List |
-| `Client` | SingleLineText | | Tên client |
+| `Client_Name` | SingleLineText | | Tên client (= ClickUp Space name) |
+| `Project_Name` | SingleLineText | | Tên dự án (= ClickUp Folder name) |
+| `List_Name` | SingleLineText | | Tên phần việc (= ClickUp List name) |
+| `ClickUp_Space_ID` | SingleLineText | | Để lookup Channel_Mapping |
+| `ClickUp_Folder_ID` | SingleLineText | | Để lookup Channel_Mapping |
+| `ClickUp_List_ID` | SingleLineText | | Để lookup Channel_Mapping |
 | `Due_Date` | Date | | Deadline |
-| `Slack_Channel` | SingleLineText | | Internal Slack channel ID |
+| `Slack_Channel` | SingleLineText | | Internal Slack channel ID (auto from mapping) |
 | `Slack_TS` | SingleLineText | | Internal thread timestamp |
-| `Discord_Channel_ID` | SingleLineText | | Internal Discord channel/forum ID |
+| `Discord_Channel_ID` | SingleLineText | | Internal Discord channel ID (auto from mapping) |
 | `Discord_Thread_ID` | SingleLineText | | Internal Discord thread ID |
-| `Client_Slack_Channel` | SingleLineText | | Client-facing Slack channel ID |
+| `Client_Slack_Channel` | SingleLineText | | Client Slack channel ID (auto from mapping) |
 | `Client_Slack_TS` | SingleLineText | | Client thread timestamp |
-| `Client_Discord_Channel_ID` | SingleLineText | | Client-facing Discord channel ID |
+| `Client_Discord_Channel_ID` | SingleLineText | | Client Discord channel ID (auto from mapping) |
 | `Client_Discord_Thread_ID` | SingleLineText | | Client Discord thread ID |
 | `ClickUp_URL` | URL | | Link to ClickUp task |
 | `NocoDB_URL` | Formula | | Auto-generated link to this row |
@@ -165,16 +257,19 @@ graph TB
 | `Updated_At` | DateTime | ✅ | Lần cập nhật cuối |
 
 > [!IMPORTANT]
-> Thread được tách thành **Internal** (Dev/Lead) và **Client** (chỉ tạo khi `Client Review`).
+> Channels tự động fill từ `Channel_Mapping` dựa trên ClickUp Space/List ID. Thread được tách **Internal** vs **Client**.
 
-**Status Options:**
+**Status Options (khớp ClickUp):**
 ```
-To Do → In Progress → Lead Review → Client Review → FIX → Closed
+NEW REQUEST → WIP → LEAD_CHECK → CLIENT_REVIEW → APPROVED → CLOSED
+                        ↓              ↓
+                       FIX ←────────  FIX
+                                             CANCELLED (any time)
 ```
 
 ---
 
-### 5.3 Table: `Comments` (Cross-Platform Log)
+### 7.4 Table: `Comments` (Cross-Platform Log)
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
@@ -189,7 +284,7 @@ To Do → In Progress → Lead Review → Client Review → FIX → Closed
 
 ---
 
-### 5.4 Table: `Event_Log` (Error Tracking & Audit)
+### 7.5 Table: `Event_Log` (Error Tracking & Audit)
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
@@ -207,7 +302,7 @@ To Do → In Progress → Lead Review → Client Review → FIX → Closed
 
 ---
 
-## 6. Core Workflow Logic
+## 8. Core Workflow Logic
 
 ### Phase 1: Task Initiation & Mapping
 
@@ -376,9 +471,9 @@ Please reply here with feedback, or type "!approved" to approve.
 
 | Command | Triggered by | Action |
 |---------|-------------|--------|
-| `!approved` | PM, Client | Status → `Closed`, notify team |
+| `!approved` | PM, Client | Status → `APPROVED` → `CLOSED`, notify team |
 | `!fix` | PM, Client | Status → `FIX`, notify assignee |
-| `!review` | Dev, Lead | Status → `Lead Review`, notify lead |
+| `!review` | Dev, Lead | Status → `LEAD_CHECK`, notify lead |
 
 **Method 2: Emoji Reactions (Secondary)**
 
@@ -485,9 +580,9 @@ SMTP_PASS=xxx
 
 ---
 
-## 7. Error Handling & Retry Strategy
+## 9. Error Handling & Retry Strategy
 
-### 7.1 Event Queue
+### 9.1 Event Queue
 
 | Config | Value |
 |--------|-------|
@@ -496,7 +591,7 @@ SMTP_PASS=xxx
 | **Retry delay** | Exponential backoff: 5s → 30s → 120s |
 | **Dead letter** | After 3 failures → log to `Event_Log` as `Failed` |
 
-### 7.2 Idempotency
+### 9.2 Idempotency
 
 | Entity | Idempotency Key |
 |--------|----------------|
@@ -504,7 +599,7 @@ SMTP_PASS=xxx
 | Comments | `Message_ID` — check trước khi insert |
 | Notifications | `Event_Type + Task_ID + Timestamp` combo |
 
-### 7.3 Health Check
+### 9.3 Health Check
 
 ```
 GET /health → { status: "ok", queue: { active: 5, failed: 0 }, uptime: "2d 5h" }
@@ -512,7 +607,7 @@ GET /health → { status: "ok", queue: { active: 5, failed: 0 }, uptime: "2d 5h"
 
 ---
 
-## 8. Security
+## 10. Security
 
 | Area | Implementation |
 |------|---------------|
@@ -526,7 +621,7 @@ GET /health → { status: "ok", queue: { active: 5, failed: 0 }, uptime: "2d 5h"
 
 ---
 
-## 9. Deployment (Docker Compose)
+## 11. Deployment (Docker Compose)
 
 ```yaml
 # docker-compose.yml structure
@@ -551,7 +646,7 @@ services:
 
 ---
 
-## 10. Environment Variables
+## 12. Environment Variables
 
 ```env
 # App
@@ -583,11 +678,11 @@ DATABASE_URL=postgresql://user:pass@db:5432/automation
 
 ---
 
-## 11. Implementation Roadmap
+## 13. Implementation Roadmap
 
 | Phase | Scope | Duration | Priority |
 |-------|-------|----------|----------|
-| **0 — Foundation** | Docker Compose + NocoDB Schema + Users table | 2 days | 🔴 Critical |
+| **0 — Foundation** | Docker Compose + NocoDB Schema + Users + Channel_Mapping tables | 2 days | 🔴 Critical |
 | **1 — Task Sync** | ClickUp → NocoDB (one-way) + Internal Slack/Discord thread creation | 3 days | 🔴 Critical |
 | **2 — Comment Sync** | Bi-directional comment sync (Internal threads) | 4 days | 🔴 Critical |
 | **3 — Status Sync** | Status change + Lead Review + **Client Notification Gating** (Dual-Thread) | 3 days | 🔴 Critical |
@@ -601,7 +696,7 @@ DATABASE_URL=postgresql://user:pass@db:5432/automation
 
 ---
 
-## 12. Future Enhancements (v2.1+)
+## 14. Future Enhancements (v3+)
 
 - **AI Summary**: Tóm tắt conversation dài bằng LLM
 - **Time Tracking**: Sync ClickUp time entries → NocoDB

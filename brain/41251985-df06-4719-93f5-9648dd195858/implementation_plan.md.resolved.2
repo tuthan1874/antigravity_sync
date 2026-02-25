@@ -471,9 +471,9 @@ Please reply here with feedback, or type "!approved" to approve.
 
 | Command | Triggered by | Action |
 |---------|-------------|--------|
-| `!approved` | PM, Client | Status → `APPROVED` → `CLOSED`, notify team |
+| `!approved` | PM, Client | Status → `Closed`, notify team |
 | `!fix` | PM, Client | Status → `FIX`, notify assignee |
-| `!review` | Dev, Lead | Status → `LEAD_CHECK`, notify lead |
+| `!review` | Dev, Lead | Status → `Lead Review`, notify lead |
 
 **Method 2: Emoji Reactions (Secondary)**
 
@@ -580,9 +580,9 @@ SMTP_PASS=xxx
 
 ---
 
-## 9. Error Handling & Retry Strategy
+## 7. Error Handling & Retry Strategy
 
-### 9.1 Event Queue
+### 7.1 Event Queue
 
 | Config | Value |
 |--------|-------|
@@ -591,7 +591,7 @@ SMTP_PASS=xxx
 | **Retry delay** | Exponential backoff: 5s → 30s → 120s |
 | **Dead letter** | After 3 failures → log to `Event_Log` as `Failed` |
 
-### 9.2 Idempotency
+### 7.2 Idempotency
 
 | Entity | Idempotency Key |
 |--------|----------------|
@@ -599,7 +599,7 @@ SMTP_PASS=xxx
 | Comments | `Message_ID` — check trước khi insert |
 | Notifications | `Event_Type + Task_ID + Timestamp` combo |
 
-### 9.3 Health Check
+### 7.3 Health Check
 
 ```
 GET /health → { status: "ok", queue: { active: 5, failed: 0 }, uptime: "2d 5h" }
@@ -607,7 +607,7 @@ GET /health → { status: "ok", queue: { active: 5, failed: 0 }, uptime: "2d 5h"
 
 ---
 
-## 10. Security
+## 8. Security
 
 | Area | Implementation |
 |------|---------------|
@@ -621,7 +621,7 @@ GET /health → { status: "ok", queue: { active: 5, failed: 0 }, uptime: "2d 5h"
 
 ---
 
-## 11. Deployment (Docker Compose)
+## 9. Deployment (Docker Compose)
 
 ```yaml
 # docker-compose.yml structure
@@ -646,7 +646,7 @@ services:
 
 ---
 
-## 12. Environment Variables
+## 10. Environment Variables
 
 ```env
 # App
@@ -678,11 +678,11 @@ DATABASE_URL=postgresql://user:pass@db:5432/automation
 
 ---
 
-## 13. Implementation Roadmap
+## 11. Implementation Roadmap
 
 | Phase | Scope | Duration | Priority |
 |-------|-------|----------|----------|
-| **0 — Foundation** | Docker Compose + NocoDB Schema + Users + Channel_Mapping tables | 2 days | 🔴 Critical |
+| **0 — Foundation** | Docker Compose + NocoDB Schema + Users table | 2 days | 🔴 Critical |
 | **1 — Task Sync** | ClickUp → NocoDB (one-way) + Internal Slack/Discord thread creation | 3 days | 🔴 Critical |
 | **2 — Comment Sync** | Bi-directional comment sync (Internal threads) | 4 days | 🔴 Critical |
 | **3 — Status Sync** | Status change + Lead Review + **Client Notification Gating** (Dual-Thread) | 3 days | 🔴 Critical |
@@ -696,7 +696,7 @@ DATABASE_URL=postgresql://user:pass@db:5432/automation
 
 ---
 
-## 14. Future Enhancements (v3+)
+## 12. Future Enhancements (v2.1+)
 
 - **AI Summary**: Tóm tắt conversation dài bằng LLM
 - **Time Tracking**: Sync ClickUp time entries → NocoDB
