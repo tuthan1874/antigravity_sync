@@ -7,18 +7,19 @@
         "@supabase/mcp-server-supabase@latest",
         "--access-token",
         "sbp_bae8339f2bdb1f98916893fd0f3b0be07756fa85"
-      ],
-      "env": {}
+      ]
     },
-    "NocoDB Base - TD_Games": {
+    "NocoDB_TD_Games": {
       "command": "npx",
       "args": [
-        "mcp-remote",
-        "https://nocodb.tdconsulting.vn/mcp/ncendr3ma9fbq00w",
-        "--header",
-        "xc-mcp-token: Zz7JG0lyqfpEOfZ1sSixHs-Chc8JpIk1"
+        "-y",
+        "@andrewlwn77/nocodb-mcp"
       ],
-      "disabledTools": []
+      "env": {
+        "NOCODB_BASE_URL": "https://nocodb.tdconsulting.vn",
+        "NOCODB_API_TOKEN": "ia8adC8RqGkyh9khOzthF9BjOL9Tt0vOWx1HjhPb",
+        "NOCODB_BASE_ID": "pcrawiz8s9i03rk"
+      }
     }
   }
 }
