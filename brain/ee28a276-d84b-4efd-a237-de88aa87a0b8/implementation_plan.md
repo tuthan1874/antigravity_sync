@@ -1,0 +1,96 @@
+# PM Task Management System (Integrated with Workflow Automation)
+
+Hệ thống quản lý công việc, chi phí nhân sự và thanh toán cho PM trong NocoDB (**TD_Games** base). 
+> **Lưu ý quan trọng**: Plan này đã được cập nhật để **tích hợp và kế thừa** cấu trúc cơ sở dữ liệu từ tài liệu `Multi-Platform Workflow Automation Tool (Version 2.2)`, giúp đồng bộ dữ liệu xuyên suốt giữa ClickUp, Slack, Discord và hệ thống Payroll.
+
+## Cấu trúc CSDL Tích Hợp
+
+Hệ thống Payroll sẽ sử dụng lại các bảng Core của hệ thống Automation và bổ sung/mở rộng thêm các trường/bảng cần thiết.
+
+---
+
+### 🟢 1. Bảng: `Users` (Mở rộng từ Automation)
+
+Bảng này đã có trong thiết kế Automation (map qua ClickUp, Slack, Discord). Ta sẽ bổ sung thêm các trường liên quan đến Payroll.
+
+| Field | Type | Thêm mới? | Description |
+|-------|------|-----------|-------------|
+| `Name` | SingleLineText | (Có sẵn) | Tên hiển thị |
+| `Email` | Email | (Có sẵn) | Email chính |
+| `Role` | SingleSelect | (Có sẵn) | `Dev` · `Lead` · `PM` · `Client` |
+| `ClickUp/Slack/Discord_ID`| ... | (Có sẵn) | IDs liên kết |
+| `Type` | SingleSelect | ➕ NEW | `Fulltime` · `Freelancer` · `Contractor` |
+| `Base_Rate` | Currency | ➕ NEW | Mức giá cơ bản (VND/task hoặc VND/giờ) |
+| `Rate_Unit` | SingleSelect | ➕ NEW | `Per Task` · `Per Hour` · `Per Month` |
+| `Bank_Account` | SingleLineText | ➕ NEW | Số tài khoản ngân hàng |
+| `Bank_Name` | SingleLineText | ➕ NEW | Tên ngân hàng |
+
+---
+
+### 🟢 2. Bảng: `Tasks` (Mở rộng từ Automation)
+
+Bảng Tasks (chứa thông tin đồng bộ từ ClickUp/Slack/Discord) được bổ sung trường tính toán chi phí.
+
+| Field | Type | Thêm mới? | Description |
+|-------|------|-----------|-------------|
+| `ClickUp_ID` | SingleLineText | (Có sẵn) | ID từ ClickUp |
+| `Task_Name` | SingleLineText | (Có sẵn) | Tên task |
+| `Status` | SingleSelect | (Có sẵn) | To Do, WIP, Review... |
+| `Client_Name` / `Project_Name` | SingleLineText | (Có sẵn) | Tên dự án / Khách hàng |
+| `Assignee` | Link to Users | (Có sẵn) | Người chịu trách nhiệm chính |
+| ... *các fields Automation* ... | ... | (Có sẵn) | Slack/Discord threads, dates... |
+| `Total_Cost` | Formula | ➕ NEW | `= SUM` của tất cả Assignee Cost trong Task_Assignments |
+
+---
+
+### 🔵 3. Bảng: `Task_Assignments` (Bảng Mới)
+
+Bảng **quan trọng nhất cho Payroll** — Ghi nhận chi tiết chi phí cho TỪNG nhân sự trên TỪNG task, hỗ trợ trường hợp 1 task có nhiều người làm.
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `Task` | Link to Tasks | ✅ | Task thực hiện |
+| `User` | Link to Users | ✅ | Người thực hiện |
+| `Role_in_Task` | SingleSelect | | `Lead` · `Execution` · `Review` |
+| `Agreed_Cost` | Currency | ✅ | Chi phí thỏa thuận cho riêng người này (VND) |
+| `Work_Month` | SingleLineText | ✅ | Tháng chốt công (VD: `2026-02`) |
+| `Payment_Status` | SingleSelect | ✅ | `Unpaid` · `Pending Approval` · `Paid` |
+| `Note` | LongText | | Diễn giải (VD: Thưởng nhanh, Phạt trễ...) |
+
+> Nhờ bảng này, 1 Task `Thiết kế Boss` có thể có User A (Concept - 5tr) và User B (Animation - 8tr). `Total_Cost` của Task tự động = 13tr.
+
+---
+
+### 🔵 4. Bảng: `Monthly_Payroll` (Bảng Mới)
+
+Bảng tổng hợp cuối tháng, đóng vai trò như Bảng Lương/Phiếu Chi cho kế toán.
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `Payroll_Month` | SingleLineText | ✅ | Tháng (VD: `2026-02`) |
+| `User` | Link to Users | ✅ | Nhân sự nhận lương |
+| `Total_Tasks` | Number | | Tổng số task hoàn thành (cần thanh toán) |
+| `Total_Amount` | Currency | | Tổng tiền phải trả (Sum theo User + Month) |
+| `Paid_Amount` | Currency | | Tiền đã thanh toán (có thể trả nhiều đợt) |
+| `Remaining_Amount`| Formula | | `= Total_Amount - Paid_Amount` |
+| `Status` | SingleSelect | ✅ | `Draft` · `Approved` · `Partial Paid` · `Fully Paid` |
+| `Payment_Date` | Date | | Ngày thanh toán đợt cuối |
+| `Tx_Reference` | SingleLineText | | Số tham chiếu ngân hàng (Mã giao dịch) |
+
+---
+
+## Tương tác giữa 2 Hệ thống (Automation + Payroll)
+
+1. **Task Sync**: Khi webhook kéo Task từ ClickUp về, nó sẽ tạo record ở bảng `Tasks` (qua API Fastify).
+2. **Chi Phí**: PM vào NocoDB để tạo các dòng `Task_Assignments` (chọn Task, chọn User, nhập Agreed_Cost).
+3. **Thanh toán**: Cuối tháng, PM tạo record `Monthly_Payroll`, rollup tính tổng tiền của User đó trong Work_Month, và cập nhật trạng thái `Status`.
+
+### Lợi ích của kiến trúc này:
+- Không tạo duplicated tables (`Projects` không cần nữa vì đã có `Client_Name`, `Project_Name` và bảng `Channel_Mapping` bên Automation).
+- Dữ liệu `Users` là Single Source of Truth, dùng cho cả việc thông báo slack và chuyển khoản lương.
+- Giao diện cho PM rất clean và tập trung.
+
+## User Review Required
+> [!IMPORTANT]
+> - Workflow Automation specs cho thấy `Assignee` hiện đang là 1 cột Link (có thể là nhiều users) trong bảng `Tasks`. Với design mới này, bạn có muốn Automation Bot TỰ ĐỘNG tạo các row trong bảng `Task_Assignments` cho mỗi user khi task được Assign trên ClickUp không? (Sau đó PM chỉ việc điền `Agreed_Cost`).
+> - Xác nhận lại việc bỏ bảng `Projects` (vì Automation spec dùng ClickUp Space ID / Folder ID làm cấu trúc quản lý).

@@ -1,0 +1,114 @@
+# Multi-Platform Workflow Automation Tool — Implementation Plan
+
+## Overview
+
+Build a middleware application that synchronizes tasks and communication between **ClickUp**, **Slack**, **Discord**, using **NocoDB** as the central database and PM dashboard. The implementation follows the technical specification from the planning conversation.
+
+> [!IMPORTANT]
+> This is a large project (~21 working days). We'll implement it **phase by phase**, starting with Phase 0 (Foundation) and Phase 1 (Task Sync). Each phase will be reviewed before proceeding.
+
+---
+
+## Phase 0 — Foundation
+
+### 1. Node.js Project Scaffold
+
+#### [NEW] [package.json](file:///e:/TDC_App/TDGAMES_App/ClickUp_Slack/package.json)
+- Initialize with: `name: "clickup-slack-automation"`, `type: "module"`
+- Dependencies: `fastify`, `@slack/bolt`, `discord.js`, `pg-boss`, `pg`, `node-cron`, `dotenv`, `pino`
+- Dev dependencies: `typescript`, `tsx`, `@types/node`
+- Scripts: `dev`, `build`, `start`
+
+#### [NEW] [tsconfig.json](file:///e:/TDC_App/TDGAMES_App/ClickUp_Slack/tsconfig.json)
+- Target: ES2022, Module: NodeNext, strict mode
+
+#### [NEW] [.env.example](file:///e:/TDC_App/TDGAMES_App/ClickUp_Slack/.env.example)
+- All env variables from Section 12 of the spec
+
+#### [NEW] [docker-compose.yml](file:///e:/TDC_App/TDGAMES_App/ClickUp_Slack/docker-compose.yml)
+- Services: `app`, `nocodb`, `db` (postgres:16-alpine), `nginx`
+- Volume mounts for persistent data
+
+#### [NEW] [Dockerfile](file:///e:/TDC_App/TDGAMES_App/ClickUp_Slack/Dockerfile)
+- Multi-stage build: install → build → run
+
+### 2. Application Core Structure
+
+#### [NEW] [src/index.ts](file:///e:/TDC_App/TDGAMES_App/ClickUp_Slack/src/index.ts)
+- Fastify server bootstrap, plugin registration, graceful shutdown
+
+#### [NEW] [src/config/index.ts](file:///e:/TDC_App/TDGAMES_App/ClickUp_Slack/src/config/index.ts)
+- Centralized config from environment variables with validation
+
+#### [NEW] [src/lib/nocodb.ts](file:///e:/TDC_App/TDGAMES_App/ClickUp_Slack/src/lib/nocodb.ts)
+- NocoDB API client (CRUD operations using NocoDB REST API)
+
+#### [NEW] [src/lib/clickup.ts](file:///e:/TDC_App/TDGAMES_App/ClickUp_Slack/src/lib/clickup.ts)
+- ClickUp API v2 client with rate limiting
+
+#### [NEW] [src/lib/slack.ts](file:///e:/TDC_App/TDGAMES_App/ClickUp_Slack/src/lib/slack.ts)
+- Slack Bolt app initialization and helpers
+
+#### [NEW] [src/lib/discord.ts](file:///e:/TDC_App/TDGAMES_App/ClickUp_Slack/src/lib/discord.ts)
+- Discord.js client initialization and helpers
+
+#### [NEW] [src/lib/queue.ts](file:///e:/TDC_App/TDGAMES_App/ClickUp_Slack/src/lib/queue.ts)
+- pg-boss queue setup with retry config (3 retries, exponential backoff)
+
+#### [NEW] [src/routes/webhooks.ts](file:///e:/TDC_App/TDGAMES_App/ClickUp_Slack/src/routes/webhooks.ts)
+- Webhook endpoints: `/webhooks/clickup`, `/webhooks/slack`, `/webhooks/nocodb`
+- Signature verification for each source
+
+#### [NEW] [src/routes/health.ts](file:///e:/TDC_App/TDGAMES_App/ClickUp_Slack/src/routes/health.ts)
+- `GET /health` endpoint
+
+### 3. NocoDB Schema (via MCP)
+
+Create 5 tables in a new NocoDB base called `ClickUp_Automation`:
+
+- **Users** — User identity mapping across platforms
+- **Channel_Mapping** — Configurable routing (ClickUp → Slack/Discord channels)  
+- **Tasks** — Core task tracking with dual-thread references
+- **Comments** — Cross-platform comment log
+- **Event_Log** — Error tracking & audit trail
+
+---
+
+## Phase 1 — Task Sync
+
+### Workers
+
+#### [NEW] [src/workers/task-sync.ts](file:///e:/TDC_App/TDGAMES_App/ClickUp_Slack/src/workers/task-sync.ts)
+- Handle `taskCreated` events from ClickUp
+- Create NocoDB record → Create Slack thread → Create Discord thread → Update NocoDB with thread IDs
+
+#### [NEW] [src/services/channel-mapping.ts](file:///e:/TDC_App/TDGAMES_App/ClickUp_Slack/src/services/channel-mapping.ts)
+- Channel lookup: List ID → Space ID → Default (fallback chain)
+
+---
+
+## User Review Required
+
+> [!WARNING]
+> **NocoDB Base**: Should we create a new base called `ClickUp_Automation`, or use an existing base? The existing bases are: `TDC_Finace`, `HRM_Manager`, `SalesQL`, `EZG_Client`, `TD_Consulting_Discord`, `Apex`, `TD_Games`, `TD_Family`, `TD_Consulting`.
+
+> [!IMPORTANT]
+> **Scope for this session**: We will implement **Phase 0 (Foundation)** and **Phase 1 (Task Sync)** first. This includes:
+> 1. Full project scaffold (Node.js + Docker)
+> 2. NocoDB schema creation (5 tables + views)
+> 3. ClickUp → NocoDB task sync with Slack/Discord thread creation
+>
+> Subsequent phases (Comment Sync, Status Sync, etc.) will be implemented in follow-up sessions.
+
+---
+
+## Verification Plan
+
+### Automated
+- Run `npm run build` to verify TypeScript compilation
+- Start dev server with `npm run dev` and check `/health` endpoint
+
+### Manual
+1. **NocoDB**: Open NocoDB dashboard and verify all 5 tables exist with correct columns
+2. **Docker**: Run `docker-compose up` and verify all services start correctly
+3. **Webhook Test**: Use a tool like `curl` to send a mock ClickUp webhook payload to `/webhooks/clickup` and verify NocoDB record creation

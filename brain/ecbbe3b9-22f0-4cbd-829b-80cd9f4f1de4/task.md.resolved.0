@@ -1,0 +1,61 @@
+# Multi-Platform Workflow Automation Tool — Implementation Tasks
+
+## Phase 0 — Foundation
+- [ ] Initialize Node.js project (Fastify + TypeScript)
+- [ ] Create `docker-compose.yml` (app, nocodb, postgres, nginx)
+- [ ] Create `.env.example` with all required env variables
+- [ ] Create `Dockerfile` for the app service
+- [ ] Create NocoDB tables via MCP:
+  - [ ] `Users` table
+  - [ ] `Channel_Mapping` table
+  - [ ] `Tasks` table
+  - [ ] `Comments` table
+  - [ ] `Event_Log` table
+- [ ] Create NocoDB views
+
+## Phase 1 — Task Sync (ClickUp → NocoDB + Threads)
+- [ ] Implement ClickUp webhook handler (`POST /webhooks/clickup`)
+- [ ] Implement webhook signature verification
+- [ ] Implement event queue (pg-boss)
+- [ ] Implement Task Sync Worker (ClickUp → NocoDB)
+- [ ] Implement Channel Mapping lookup logic
+- [ ] Implement Slack thread creation
+- [ ] Implement Discord thread creation
+- [ ] Implement NocoDB record update (Slack_TS, Discord_Thread_ID)
+
+## Phase 2 — Comment Sync (Bi-directional)
+- [ ] Implement Slack event handler for thread messages
+- [ ] Implement Discord message handler for thread messages
+- [ ] Implement ClickUp comment webhook handler
+- [ ] Implement Comment Sync Worker (idempotency + broadcast)
+- [ ] Implement anti-loop protection (bot marker)
+
+## Phase 3 — Status Sync + Client Notification Gating
+- [ ] Implement NocoDB webhook handler for status changes
+- [ ] Implement ClickUp status update sync
+- [ ] Implement Lead Review notification
+- [ ] Implement Client Thread creation (dual-thread model)
+- [ ] Implement client comment gating logic
+
+## Phase 4 — Keyword & Reaction Automation
+- [ ] Implement prefix commands (`!approved`, `!fix`, `!review`)
+- [ ] Implement emoji reaction handlers
+- [ ] Implement confirmation flow
+- [ ] Implement role-based authorization
+
+## Phase 5 — NocoDB Views & Dashboards
+- [ ] Create Kanban Board view
+- [ ] Create filtered views (My Tasks, Client Review, Overdue, etc.)
+- [ ] Create Chart views
+
+## Phase 6 — Weekly Reports
+- [ ] Implement cron job scheduler
+- [ ] Implement report data aggregation
+- [ ] Implement Internal report (Slack + Discord)
+- [ ] Implement Client report (filtered, Slack + Email)
+
+## Phase 7 — Hardening
+- [ ] Implement health check endpoint
+- [ ] Implement comprehensive error handling
+- [ ] Security audit (tokens, permissions, logging)
+- [ ] Nginx configuration with SSL

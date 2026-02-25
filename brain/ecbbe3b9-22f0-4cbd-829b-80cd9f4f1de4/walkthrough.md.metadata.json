@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary":  "Walkthrough documenting the Phase 0-3 implementation of the Multi-Platform Workflow Automation Tool: project scaffold, NocoDB schema, Docker setup, and core application logic including task sync, comment sync, and status change workers.",
+  "updatedAt":  "2026-02-25T15:26:28.564496700Z"
+}

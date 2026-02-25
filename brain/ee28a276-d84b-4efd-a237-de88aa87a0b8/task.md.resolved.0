@@ -1,0 +1,24 @@
+# PM Task Management System - Task Checklist
+
+## Planning
+- [x] Phân tích cấu trúc NocoDB hiện tại (TD_Games base)
+- [x] Thiết kế implementation plan
+- [ ] Nhận approval từ PM/user
+
+## Execution - Tạo Tables trong NocoDB (TD_Games base)
+- [ ] Tạo bảng **Members** (danh sách nhân sự nội bộ)
+- [ ] Tạo bảng **Projects** (danh sách dự án)
+- [ ] Tạo bảng **Tasks** (task chính với cost, assignee, status)
+- [ ] Tạo bảng **Task_Assignments** (phân công nhân sự + chi phí từng người/task)
+- [ ] Tạo bảng **Monthly_Payroll** (tổng hợp thanh toán cuối tháng)
+
+## Execution - Tạo Views
+- [ ] Tạo view "Tasks by Status" (Kanban)
+- [ ] Tạo view "Monthly Summary" cho PM
+- [ ] Tạo view "Unpaid Tasks" (chưa thanh toán)
+- [ ] Tạo view "Member Payroll" (phân nhóm theo nhân sự)
+
+## Verification
+- [ ] Kiểm tra data relationships hoạt động đúng
+- [ ] Kiểm tra formula tính tổng cost
+- [ ] Hướng dẫn PM sử dụng

@@ -1,0 +1,148 @@
+# PM Task Management System
+
+Xây dựng hệ thống quản lý công việc và chi phí nhân sự cho PM trong NocoDB (**TD_Games** base), bao gồm theo dõi tiến độ task, gán chi phí cho từng nhân sự trên từng task, theo dõi trạng thái thanh toán, và tổng hợp bảng lương cuối tháng.
+
+## Cấu trúc Hiện Tại (TD_Games)
+
+| Table | Dữ liệu |
+|---|---|
+| `Fulltime` | Danh sách ứng viên fulltime (form nộp đơn) |
+| `Freelancer` | Danh sách ứng viên freelancer |
+| `Job` | Vị trí tuyển dụng |
+| `Workspace` | Mapping ClickUp task → Slack channel |
+
+> Các bảng hiện tại phục vụ **tuyển dụng**, chưa có hệ thống quản lý task và chi phí nhân sự.
+
+## Proposed Changes
+
+---
+
+### 🏗️ Bảng 1: Members (Nhân sự)
+
+#### [NEW] Members table trong TD_Games base
+
+Quản lý danh sách nhân sự tham gia dự án (cả fulltime lẫn freelancer đang làm việc).
+
+| Cột | Loại | Mô tả |
+|---|---|---|
+| `full_name` | SingleLineText ⭐ | Họ tên đầy đủ |
+| `email` | Email | Email liên lạc |
+| `role` | SingleSelect | Designer / Developer / PM / QA / Other |
+| `type` | SingleSelect | Fulltime / Freelancer / Contractor |
+| `base_rate` | Currency | Mức giá cơ bản (VND/task hoặc VND/giờ) |
+| `rate_unit` | SingleSelect | Per Task / Per Hour / Per Month |
+| `bank_account` | SingleLineText | Số tài khoản ngân hàng |
+| `bank_name` | SingleLineText | Tên ngân hàng |
+| `status` | SingleSelect | Active / Inactive |
+| `note` | LongText | Ghi chú |
+
+---
+
+### 🏗️ Bảng 2: Projects (Dự án)
+
+#### [NEW] Projects table trong TD_Games base
+
+Quản lý các dự án/client.
+
+| Cột | Loại | Mô tả |
+|---|---|---|
+| `project_name` | SingleLineText ⭐ | Tên dự án |
+| `client_name` | SingleLineText | Tên khách hàng |
+| `clickup_space_id` | SingleLineText | Space ID trong ClickUp |
+| `status` | SingleSelect | Active / On Hold / Completed |
+| `start_date` | Date | Ngày bắt đầu |
+| `end_date` | Date | Ngày kết thúc dự kiến |
+| `total_budget` | Currency | Ngân sách tổng |
+| `note` | LongText | Ghi chú |
+
+---
+
+### 🏗️ Bảng 3: Tasks (Công việc)
+
+#### [NEW] Tasks table trong TD_Games base
+
+Bảng **trung tâm** — từng task cụ thể với trạng thái và chi phí.
+
+| Cột | Loại | Mô tả |
+|---|---|---|
+| `task_name` | SingleLineText ⭐ | Tên task |
+| `clickup_task_id` | SingleLineText | ID task trong ClickUp |
+| `project` | Link → Projects | Thuộc dự án nào |
+| `status` | SingleSelect | NEW REQUEST / WIP / LEAD_CHECK / CLIENT_REVIEW / APPROVED / FIX / CLOSED / CANCELLED |
+| `priority` | SingleSelect | Urgent / High / Normal / Low |
+| `list_name` | SingleLineText | Tên list trong ClickUp |
+| `start_date` | Date | Ngày bắt đầu |
+| `due_date` | Date | Deadline |
+| `completed_date` | Date | Ngày hoàn thành thực tế |
+| `description` | LongText | Mô tả task |
+| `pm_note` | LongText | Ghi chú từ PM |
+| `total_cost` | Formula | = SUM của tất cả assignment cost |
+
+---
+
+### 🏗️ Bảng 4: Task_Assignments (Phân công & Chi phí)
+
+#### [NEW] Task_Assignments table trong TD_Games base
+
+Bảng **quan trọng nhất** — gán nhân sự vào task và theo dõi chi phí + thanh toán từng người.
+
+| Cột | Loại | Mô tả |
+|---|---|---|
+| `task` | Link → Tasks | Task thuộc về |
+| `member` | Link → Members | Nhân sự được giao |
+| `role_in_task` | SingleSelect | Lead / Support / Review |
+| `agreed_cost` | Currency | Chi phí thỏa thuận (VND) |
+| `actual_hours` | Number | Số giờ thực tế làm (nếu có) |
+| `work_month` | SingleLineText | Tháng làm việc (VD: 2026-02) |
+| `payment_status` | SingleSelect | **Chưa thanh toán** / Đã thanh toán / Chờ duyệt |
+| `payment_date` | Date | Ngày thanh toán thực tế |
+| `payment_note` | SingleLineText | Ghi chú thanh toán |
+| `invoice_ref` | SingleLineText | Số phiếu chi / mã chuyển khoản |
+
+---
+
+### 🏗️ Bảng 5: Monthly_Payroll (Bảng lương tháng)
+
+#### [NEW] Monthly_Payroll table trong TD_Games base
+
+Tổng hợp thanh toán cuối tháng cho từng nhân sự.
+
+| Cột | Loại | Mô tả |
+|---|---|---|
+| `payroll_month` | SingleLineText ⭐ | Tháng (VD: 2026-02) |
+| `member` | Link → Members | Nhân sự |
+| `total_tasks` | Number | Tổng số task hoàn thành |
+| `total_amount` | Currency | Tổng tiền phải trả |
+| `paid_amount` | Currency | Tổng đã thanh toán |
+| `remaining_amount` | Formula | = total_amount - paid_amount |
+| `payment_status` | SingleSelect | Chưa thanh toán / Đã thanh toán một phần / Đã thanh toán đủ |
+| `payment_date` | Date | Ngày thanh toán cuối |
+| `bank_transfer_ref` | SingleLineText | Mã chuyển khoản |
+| `note` | LongText | Ghi chú |
+
+---
+
+## Luồng Công Việc Của PM
+
+```mermaid
+graph TD
+    A[PM tạo/sync Task từ ClickUp] --> B[Gán nhân sự vào Task_Assignments]
+    B --> C[Thống nhất agreed_cost với nhân sự]
+    C --> D[Nhân sự làm việc → PM update status]
+    D --> E{Task CLOSED?}
+    E -->|Yes| F[Đánh dấu payment_status = Chờ duyệt]
+    F --> G[Cuối tháng: PM tổng hợp Monthly_Payroll]
+    G --> H[Phê duyệt và thanh toán]
+    H --> I[Update payment_status = Đã thanh toán]
+```
+
+## Verification Plan
+
+### Manual Verification (PM thực hiện)
+1. **Tạo 1 Project mẫu** trong table `Projects`
+2. **Thêm 2 Member** trong table `Members`
+3. **Tạo 1 Task** trong table `Tasks`, link đến Project
+4. **Tạo 2 Assignment** trong `Task_Assignments` (2 member khác nhau, cost khác nhau)
+5. **Kiểm tra** column `total_cost` trên Tasks có tự động tổng hợp không
+6. **Update status** Task → CLOSED
+7. **Tạo Monthly_Payroll** record, kiểm tra `remaining_amount` formula đúng
