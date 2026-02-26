@@ -1,5 +1,14 @@
 {
   "mcpServers": {
+    "NocoDB_Base__TD_App": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://nocodb.tdconsulting.vn/mcp/nc9xf3bvx9g7wkp5",
+        "--header",
+        "xc-mcp-token: F99uDwOQ5ADtDmqakd7DJkIx8ltjvmZB"
+      ]
+    },
     "supabase-mcp-server": {
       "command": "npx",
       "args": [
@@ -18,7 +27,7 @@
       "env": {
         "NOCODB_BASE_URL": "https://nocodb.tdconsulting.vn",
         "NOCODB_API_TOKEN": "ia8adC8RqGkyh9khOzthF9BjOL9Tt0vOWx1HjhPb",
-        "NOCODB_BASE_ID": "pcrawiz8s9i03rk"
+        "NOCODB_BASE_ID": "pjlxcpr5ih0q9y9"
       }
     },
     "ClickUp": {
@@ -28,7 +37,7 @@
         "@taazkareem/clickup-mcp-server"
       ],
       "env": {
-        "CLICKUP_API_TOKEN": "pk_152442037_FCXCLFH19WZNZ1V51243JG1TVVZLNXH3"
+        "CLICKUP_API_TOKEN": "pk_152442037_2ZEMMX3SH944CLF7J0VAFS5CJK39R3EM"
       }
     }
   }
