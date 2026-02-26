@@ -1,5 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_TASK",
-  "summary":  "Run the Node.js project.",
-  "updatedAt":  "2026-02-26T13:16:12.261694900Z"
+  "summary":  "Updated task checklist with OAuth migration steps",
+  "updatedAt":  "2026-02-26T13:39:19.427796100Z",
+  "version":  "4"
 }
