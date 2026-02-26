@@ -10,3 +10,11 @@
 - [x] Add auth routes to `src/api.js`
 - [x] Manual User Authentication (Login Flow)
 - [x] Verify sync works
+
+## Hierarchy Management & Log Filters
+- [x] Create `Customers` and `Projects` tables in NocoDB via MCP
+- [x] Add `Customer_Id` and `Project_Id` columns to respective tables
+- [x] Implement Backend CRUD for Customers and Projects (`nocodb.js`, `api.js`)
+- [x] Update `relay.js` and `drive/sync.js` to log hierarchy IDs
+- [x] Implement Frontend UI for managing Customers and Projects (`index.html`, `app.js`)
+- [x] Implement Log Filtering UI on the Frontend

@@ -1,0 +1,20 @@
+# Run Project
+
+- [x] Install dependencies (`npm install`)
+- [x] Start the project (`npm run dev`)
+
+## OAuth 2.0 Migration
+- [x] Update [.env](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/.env) requirements and [src/config.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/config.js)
+- [x] Create [src/drive/auth.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/auth.js) for OAuth handling
+- [x] Update [src/drive/sync.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js) to use OAuth client and NocoDB tokens
+- [x] Add auth routes to [src/api.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/api.js)
+- [x] Manual User Authentication (Login Flow)
+- [x] Verify sync works
+
+## Hierarchy Management & Log Filters
+- [ ] Create `Customers` and `Projects` tables in NocoDB via MCP
+- [ ] Add `Customer_Id` and `Project_Id` columns to respective tables
+- [ ] Implement Backend CRUD for Customers and Projects ([nocodb.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js), [api.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/api.js))
+- [ ] Update [relay.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/relay.js) and [drive/sync.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js) to log hierarchy IDs
+- [ ] Implement Frontend UI for managing Customers and Projects ([index.html](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.html), [app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js))
+- [ ] Implement Log Filtering UI on the Frontend

@@ -1,19 +1,28 @@
-# Google Drive OAuth 2.0 Migration
+# Task Completed: Customer & Project Hierarchy Setup
 
-We successfully migrated the Drive Sync feature from relying on a restrictive Service Account to leveraging a personal Google Account using OAuth 2.0.
+We have successfully upgraded the application to manage sync configurations hierarchically by Customer and Project.
 
 ## Changes Made
-- **Created `src/drive/auth.js`**: Set up the `googleapis` OAuth 2.0 client to generate login URLs and save credentials.
-- **Updated `src/config.js`**: Replaced Service Account key paths with `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`.
-- **Exposed Authentication API**: Added `/api/auth/google/url` and `/api/auth/google/callback` endpoints mapping to the setup flow.
-- **Updated `src/drive/sync.js`**: Replaced the previous `initDriveService` method which expected a `keyFile` and initialized the Drive instance using the retrieved DB tokens.
+1. **Database Schema:** 
+   - We created `Customers` and `Projects` tables directly in NocoDB.
+   - We added `Customer_Id` and `Project_Id` fields to `SyncMessages`.
+   - We added a `Project_Id` relation to both `SyncConfigs` and `DriveConfigs`.
 
-## What Was Tested
-- Simulated fetching files from the 'Orca' Studio Folder.
-- Monitored real-time folder item retrieval using the new Account.
-- Manually triggered a Drive Sync synchronization script to confirm standard operational behavior.
+2. **Backend API Features:**
+   - Modified `src/nocodb.js` and `src/api.js` to establish new REST endpoint routing for Customers and Projects.
+   - Updated `src/relay.js` and `src/drive/sync.js` to log events with their relevant `Project_Id`.
 
-## Validation Results
-- The login flow successfully deposited the tokens into NocoDB's `Settings` table.
-- Terminal monitoring outputs confirmed that the account successfully gained access to the previously undetected `13XQij...` folder, detecting **2 files**.
-- The 2 files were accurately copied to the destination folder confirming complete restoration of synchronization functionality!
+3. **Frontend Features:**
+   - Added new tabs on the sidebar for **"Customers"** and **"Projects"**.
+   - You can now add, view, and delete Customers and Projects directly from the dashboard.
+   - Modified the **Add Config** modals (for Chat and Drive) to include a dropdown to link the config with a specific Project.
+   - The **"Sync Logs"** dashboard now includes cascading dropdown filters. You can filter displayed logs by a single customer or project.
+
+## Verification
+You can manually test these features on the locally running server:
+1. Reload your browser at [http://localhost:3000](http://localhost:3000).
+2. Create a test Customer, and a test Project.
+3. Edit an existing Sync Config and assign it to the test Project.
+4. Go to the Sync Logs tab, and verify you can filter logs by selecting the Customer and Project.
+
+Please let me know if there are any tweaks needed!

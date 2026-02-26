@@ -1,47 +1,54 @@
-# Migrate Google Drive Sync to OAuth 2.0
+# Hierarchy Management & Log Filters
 
-We will migrate the Google Drive integration from using a Service Account to standard OAuth 2.0 User Auth so that the user can use their standard Google Account (`tdgames.vn@gmail.com`) to sync files without having to manually share folders.
+We will upgrade the application to support a hierarchical structure (`Customer -> Project -> Sync/Drive Configs`) to better organize different sync configurations. Furthermore, we will upgrade the UI to display and filter sync logs by this hierarchy.
 
-## User Setup Required
+## User Review Required
 
 > [!IMPORTANT]
-> You will need to create an OAuth 2.0 Client ID in the Google Cloud Console and add the following to your `.env` file:
-> ```
-> GOOGLE_CLIENT_ID=your_client_id
-> GOOGLE_CLIENT_SECRET=your_client_secret
-> GOOGLE_REDIRECT_URI=http://localhost:3000/api/auth/google/callback
-> ```
+> The database schema will be automatically modified by the AI using the NocoDB MCP server. We will create two new tables (`Customers` and `Projects`) and add relationship columns (`Customer_Id` and `Project_Id`) to existing tables. No manual database setup will be required from you.
 
 ## Proposed Changes
 
-### Configuration
-#### [MODIFY] `src/config.js`
-- Remove `GOOGLE_SERVICE_ACCOUNT_KEY_PATH`
-- Add `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, and `GOOGLE_REDIRECT_URI`
+### Database Schema Updates (via MCP)
+- **Create `Customers` table**: `Title` (SingleLineText)
+- **Create `Projects` table**: `Title` (SingleLineText), `Customer_Id` (Number)
+- **Modify `SyncConfigs`**: Add `Project_Id` (Number)
+- **Modify `DriveConfigs`**: Add `Project_Id` (Number)
+- **Modify `SyncMessages`**: Add `Project_Id` (Number), `Customer_Id` (Number)
 
-### Backend Changes
-#### [NEW] `src/drive/auth.js`
-- Create an OAuth2 client instance using `googleapis`.
-- Implement a method to generate the Google Auth URL.
-- Implement a method to handle the callback, exchange the authorization code for tokens, and listen for token refresh events.
-
-#### [MODIFY] `src/drive/sync.js`
-- Modify `initDriveService` to remove the Service Account setup.
-- Instead, retrieve the `GOOGLE_DRIVE_TOKENS` from the NocoDB `Settings` table.
-- Initialize the Google Drive API client (`google.drive`) using the OAuth2 client and the stored tokens.
+### Backend Updates
+#### [MODIFY] `src/nocodb.js`
+- Implement `getCustomers`, `createCustomer`, `updateCustomer`, `deleteCustomer`.
+- Implement `getProjects`, `createProject`, `updateProject`, `deleteProject`.
+- Update `logMessage` to accept and insert `Customer_Id` and `Project_Id`.
+- Update `getRecentMessages` to support `where` clauses (for filtering by Customer, Project, or SyncConfig).
 
 #### [MODIFY] `src/api.js`
-- Add an endpoint `GET /api/auth/google/url` to return the Google Auth URL.
-- Add an endpoint `GET /api/auth/google/callback` to handle the OAuth redirect, retrieve the tokens, and save them to the NocoDB `Settings` table via `nocodb.upsertSetting('GOOGLE_DRIVE_TOKENS', JSON.stringify(tokens))`.
-- Add an endpoint `GET /api/auth/google/status` to check if tokens exist in the database.
+- Expose REST API endpoints for `/api/customers` and `/api/projects`.
+- Update `/api/sync-messages` to parse query parameters (`customerId`, `projectId`, `syncConfigTitle`) and pass them to the NocoDB fetcher.
+
+#### [MODIFY] `src/relay.js` & `src/drive/sync.js`
+- Ensure that when a message is logged or a drive sync result is logged, the respective `Customer_Id` and `Project_Id` from the config are included.
+
+### Frontend Updates
+#### [MODIFY] `public/index.html`
+- Add navigation links for **"Customers"** and **"Projects"**.
+- Add pages (divs) to display Customers and Projects tables, mimicking the design of Sync Configs.
+- Update the **"Logs"** page to include a filter bar: Dropdowns for Customer, Project, and Task/Config.
+
+#### [MODIFY] `public/app.js`
+- Implement frontend state and API calls to manage Customers and Projects.
+- Inject a "Project" `<select>` dropdown in the "Add Sync Config" and "Add Drive Config" modals.
+- Implement cascaded dropdowns in the Logs page (Selecting a customer filters the projects; selecting a project fetches its logs).
 
 ## Verification Plan
 
 ### Automated Tests
-- Run `npm run dev` and ensure no startup errors occur.
+- Restart the backend to ensure no compilation errors.
 
 ### Manual Verification
-1. User navigates to `http://localhost:3000/api/auth/google/url`.
-2. User copies the provided URL into their browser, logs in with `tdgames.vn@gmail.com`, and grants access.
-3. The browser redirects to `http://localhost:3000/api/auth/google/callback` and says "Authentication successful!".
-4. Wait 5 minutes (or run a manual sync script) to verify that Drive folders sync successfully using the newly acquired tokens.
+1. Open the UI, navigate to "Customers" and create a test customer.
+2. Navigate to "Projects", create a test project under the new customer.
+3. Edit an existing Sync Config to assign it to the new project.
+4. Send a test message in Discord/Slack and verify it relays successfully.
+5. Go to the "Logs" page, select the Customer, and verify the log appears and filters correctly.
