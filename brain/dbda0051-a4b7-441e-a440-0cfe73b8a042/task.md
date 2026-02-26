@@ -7,6 +7,6 @@
 - [x] Update `.env` requirements and `src/config.js`
 - [x] Create `src/drive/auth.js` for OAuth handling
 - [x] Update `src/drive/sync.js` to use OAuth client and NocoDB tokens
-- [ ] Add auth routes to `src/api.js`
-- [ ] Manual User Authentication (Login Flow)
-- [ ] Verify sync works
+- [x] Add auth routes to `src/api.js`
+- [x] Manual User Authentication (Login Flow)
+- [x] Verify sync works
