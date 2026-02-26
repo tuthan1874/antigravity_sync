@@ -1,28 +1,25 @@
-# Task Completed: Customer & Project Hierarchy Setup
+# Task Completed: Directional Sync Setup
 
-We have successfully upgraded the application to manage sync configurations hierarchically by Customer and Project.
+We have successfully upgraded the application to allow users to toggle specific sync directions on a per-config basis.
 
 ## Changes Made
 1. **Database Schema:** 
-   - We created `Customers` and `Projects` tables directly in NocoDB.
-   - We added `Customer_Id` and `Project_Id` fields to `SyncMessages`.
-   - We added a `Project_Id` relation to both `SyncConfigs` and `DriveConfigs`.
+   - Added `Sync_ClickUp_To_Slack`, `Sync_ClickUp_To_Discord`, `Sync_Slack_To_ClickUp`, `Sync_Slack_To_Discord`, `Sync_Discord_To_ClickUp`, `Sync_Discord_To_Slack` Boolean columns to the `SyncConfigs` table via MCP.
 
 2. **Backend API Features:**
-   - Modified `src/nocodb.js` and `src/api.js` to establish new REST endpoint routing for Customers and Projects.
-   - Updated `src/relay.js` and `src/drive/sync.js` to log events with their relevant `Project_Id`.
+   - Modified `src/relay.js` to check the `SyncConfigs` array for the appropriate toggle before continuing any `getTargets()` push operations.
+   - For backward compatibility with existing configs (where these booleans might be null), the backend will allow the sync by default.
 
 3. **Frontend Features:**
-   - Added new tabs on the sidebar for **"Customers"** and **"Projects"**.
-   - You can now add, view, and delete Customers and Projects directly from the dashboard.
-   - Modified the **Add Config** modals (for Chat and Drive) to include a dropdown to link the config with a specific Project.
-   - The **"Sync Logs"** dashboard now includes cascading dropdown filters. You can filter displayed logs by a single customer or project.
+   - Modified `public/app.js` `openModal('chat')` to include 6 individual directional Checkboxes representing each direction.
+   - Updated `handleFormSubmit` to manually parse checkbox input before submitting a POST / PUT to NocoDB.
 
 ## Verification
 You can manually test these features on the locally running server:
 1. Reload your browser at [http://localhost:3000](http://localhost:3000).
-2. Create a test Customer, and a test Project.
-3. Edit an existing Sync Config and assign it to the test Project.
-4. Go to the Sync Logs tab, and verify you can filter logs by selecting the Customer and Project.
+2. Create or Edit an existing **Sync Config**.
+3. Observe the new **"Directional Sync"** options. Uncheck `Discord ➔ ClickUp` or any other path.
+4. Attempt to send a message on that path via Discord.
+5. The message should relay successfully ONLY to manually selected outputs, stopping at untoggled sources.
 
 Please let me know if there are any tweaks needed!
