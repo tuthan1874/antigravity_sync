@@ -1,6 +1,6 @@
 {
-  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary":  "Implementation plan for upgrading the app to support Customer and Project hierarchy, and adding robust Log filters on the frontend.",
-  "updatedAt":  "2026-02-26T14:27:59.573713100Z",
-  "version":  "1"
+  "artifactType":  "ARTIFACT_TYPE_OTHER",
+  "summary":  "Wrote implementation plan for the directional sync changes",
+  "updatedAt":  "2026-02-26T14:51:58.930087200Z",
+  "version":  "2"
 }
