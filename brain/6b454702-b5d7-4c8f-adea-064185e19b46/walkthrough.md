@@ -29,10 +29,12 @@ This ensures the webhook endpoints immediately return an HTTP 200 OK response, p
 
 ## Supplementary Fix: ClickUp Webhooks Domain Registration
 **Background Issue:** 
-After deploying to the VPS at domain `sync.tdgamestudio.com`, ClickUp was no longer sending task comment webhooks because the new webhook URL (`https://sync.tdgamestudio.com/webhook/clickup`) was never registered. The old webhook seemed to have expired or been deleted.
+After deploying to the VPS at domain `sync.tdgamestudio.com`, ClickUp was no longer sending task comment webhooks because the new webhook URL (`https://sync.tdgamestudio.com/webhook/clickup`) was never registered for the active game development team. The old webhook on **TDGAMES_MANAGER** (`9018621527`) pointing to the old nport domain was `suspended` due to failing.
 
 **The Fix:**
-I ran a one-off automated script utilizing your ClickUp API Token, the Team ID (`9018584562`), and the API endpoint `POST https://api.clickup.com/api/v2/team/9018584562/webhook` to formally register `https://sync.tdgamestudio.com/webhook/clickup` to receive `taskCommentPosted` and `taskCommentUpdated` events again.
+I ran an automated script utilizing your ClickUp API Token to:
+1. Delete the old suspended webhook on **TDGAMES_MANAGER** (`9018621527`)
+2. Register the correct `https://sync.tdgamestudio.com/webhook/clickup` webhook on the **TDGAMES_MANAGER** team to receive `taskCommentPosted` and `taskCommentUpdated` events.
 
 **Validation Results & Next Steps:**
 Messages in ClickUp should now instantly broadcast across your configured endpoints on Slack and Discord!
