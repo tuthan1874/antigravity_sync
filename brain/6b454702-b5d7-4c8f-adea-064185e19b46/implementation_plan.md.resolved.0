@@ -1,0 +1,36 @@
+# Async Webhook Processing to Fix Sync Delay and Duplicates
+
+The current implementation of the message synchronization tool for Slack and ClickUp uses `await handleIncomingMessage(...)` inside the HTTP webhook handlers ([src/webhooks/slack.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/webhooks/slack.js) and [src/webhooks/clickup.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/webhooks/clickup.js)).
+
+Because downloading files, sending messages to external APIs, and logging to NocoDB can take several seconds, this synchronous processing causes the webhook endpoint to exceed the timeout limits (like Slack's 3-second limit).
+When the timeout is exceeded, platforms safely assume the delivery failed and **retry sending the identical webhook**. This leads to:
+1. **Duplicate Messages & Files:** Retries cause the exact same message to be synced 2-3 times.
+2. **Delay:** Retries and synchronous processing tie up the application, leading to a staggered syncing of messages.
+
+## User Review Required
+
+No breaking changes. This simply adopts the official best practices for Slack/ClickUp webhooks (acknowledge immediately, process asynchronously). I am submitting this plan for your approval before execution.
+
+## Proposed Changes
+
+### Webhooks
+I will remove the `await` keyword from [handleIncomingMessage](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/relay.js#71-128) calls in both Slack and ClickUp webhooks. I will chain a `.catch(...)` to ensure errors are still logged gracefully, but the execution won't block the `res.sendStatus(200)` response.
+
+#### [MODIFY] [slack.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/webhooks/slack.js)
+Update lines handling 'create', 'update', and 'delete' events to process [handleIncomingMessage](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/relay.js#71-128) asynchronously.
+
+#### [MODIFY] [clickup.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/webhooks/clickup.js)
+Update lines handling 'taskCommentPosted' and 'taskCommentUpdated' events to process [handleIncomingMessage](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/relay.js#71-128) asynchronously.
+
+## Verification Plan
+
+### Automated Tests
+This project does not appear to have an automated test suite explicitly covering webhooks yet, but I will check `test-drive.js` and others in the root. If none exist, verification will be manual.
+
+### Manual Verification
+1. Start the server locally and expose it (or let the automated deployment take it).
+2. Send a message with attachments in a synced Slack thread.
+3. Observe the logs. It should log `[Slack] Event: message` and immediately return HTTP 200 to Slack.
+4. The file download and sync to ClickUp/Discord will continue in the background.
+5. In the target platforms (Discord, ClickUp), verify that the message appears exactly once.
+6. Send 3-4 rapid-fire messages in Slack; they should arrive near-instantly without blocking the webhook.

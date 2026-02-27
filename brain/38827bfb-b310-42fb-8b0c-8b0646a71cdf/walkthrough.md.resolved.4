@@ -1,0 +1,36 @@
+# Thay đổi Giao diện Đăng nhập và Bảo mật Backend
+
+Mình đã hoàn thiện luồng đăng nhập theo đúng yêu cầu bằng cách sử dụng bảng [Account](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js#65-73) trên NocoDB làm nguồn lưu trữ auth, đồng thời kết hợp JSON Web Token (JWT) để bảo mật các tính năng.
+
+## Các thay đổi chính
+
+1. **Cơ sở dữ liệu NocoDB**
+   - Đã tạo thêm bảng [Account](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js#65-73) chứa thông tin username và password.
+   - Thêm bản ghi `admin/admin` để bạn dùng truy cập (bạn có thể vào NocoDB để đổi pass hoặc thêm tài khoản bất kì lúc nào).
+   - Đã thêm cột `Action By` vào bảng `SyncMessages` (Logs) để sau này dễ dàng theo dõi Lịch sử đồng bộ do ai thao tác (Bình thường hệ thống tự động thì lưu là System, nếu trigger bằng tay thì lưu là thẻ tên người dùng).
+
+2. **Backend Node.js API**
+   - Đã tạo mới file [auth.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/middleware/auth.js) gồm luồng Verify (Kiểm tra thẻ JWT hợp lệ không).
+   - Đã chỉnh sửa toàn bộ các API trong [api.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/api.js) (danh sách khách hàng, logs, config) để **BẮT BUỘC** yêu cầu JWT token mới cho fetch. Ngoại trừ `/login`, `/health` và Webhook, mọi request đều bị chặn nếu chưa đăng nhập.
+
+3. **Frontend Giao Diện**
+   - Đã thiết kế giao diện Màn Hình Chờ Đăng Nhập tại [index.html](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.html) và [index.css](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.css).
+   - Tích hợp hàm bắt buộc đăng nhập vào ngay phần boot của [app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js). Mọi request từ JavaScript gọi về Backend bây giờ đều đính kèm chuỗi Token.
+   - Bổ sung cột mới "Action By" vào mục Log.
+   - Đã tích hợp nút "Logout" ở Sidebar.
+
+## Test Verification Output
+Mình đã test các lệnh cURL tương đương ở trên Backend:
+- Truy cập vào API Khách hàng khi không có Token ➔ `401 Unauthorized`.
+- Đăng nhập thử với `admin`/`admin` ➔ Được cấp Token thành công.
+- Truy cập vào API với Token ➔ Trả dữ liệu bình thường.
+- Webhook vào `Slack` hay `Clickup` không truyền Token ➔ Hoạt động bình thường (đảm bảo tính tự động không bị gãy).
+
+Mình cũng đã dùng Trình duyệt tự động mở lên kiểm tra lại phần Giao diện và nút Logout:
+![Verify Login UI Video](file:///C:/Users/dangt/.gemini/antigravity/brain/38827bfb-b310-42fb-8b0c-8b0646a71cdf/verify_login_ui_1772123490675.webp)
+
+## Kết Quả
+Mọi thứ đã chạy ổn định với App [server.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/server.js) hiện tại trên môi trường Development. Bạn có thể mở web URL (http://localhost:3000) trên trình duyệt, hệ thống sẽ hiện hộp thoại yêu cầu Đăng Nhập.
+Tài khoản Test:
+- User: `admin`
+- Pass: `admin`

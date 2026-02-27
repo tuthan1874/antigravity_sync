@@ -1,0 +1,10 @@
+# Task: Verify Login UI and Functionality
+
+## Plan
+- [ ] Open `http://localhost:3000`
+- [ ] Check if login UI is visible and covers the dashboard
+- [ ] Login with `admin`/`admin`
+- [ ] Verify successful login and access to dashboard
+- [ ] Click Logout button
+- [ ] Verify redirection back to login screen
+- [ ] Report findings
