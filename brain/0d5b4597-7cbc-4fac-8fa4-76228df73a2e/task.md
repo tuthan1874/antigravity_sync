@@ -1,8 +1,15 @@
-# Drive Sync Direction Feature
-- [x] Investigate current UI for Sync_Direction selection
-- [x] Add "Client \u2192 Studio" option in UI if missing
-- [x] Implement sync direction logic in backend (`src/drive/sync.js`)
-  - [x] Implement Studio \u2192 Client sync
-  - [x] Implement Client \u2192 Studio sync
-  - [x] Implement 2-way sync
-- [x] Test the new sync directions
+# Fix Attachment Syncing Bugs
+
+## Bug 1: Discord Source Duplication
+- [ ] Investigate `src/webhooks/discord.js` handling of incoming attachments.
+- [ ] Investigate why Discord echoes attachments (2x on Discord).
+- [ ] Investigate why Slack receives 2x text and 2x attachments when Discord syncs.
+
+## Bug 2: Slack Source Attachment to ClickUp
+- [ ] Investigate `src/webhooks/slack.js` handling of incoming attachments.
+- [ ] Investigate `src/relay.js` and ClickUp API logic to see why attachments from Slack are not sent to ClickUp.
+- [ ] Implement file upload to ClickUp task/comment from Slack attachment.
+
+## Verification
+- [ ] Test Discord to Slack/ClickUp with attachments.
+- [ ] Test Slack to Discord/ClickUp with attachments.

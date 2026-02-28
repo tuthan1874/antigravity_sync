@@ -1,6 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_TASK",
-  "summary":  "Task breakdown for adding Client to Studio sync direction for Drive",
-  "updatedAt":  "2026-02-28T08:06:45.871480300Z",
-  "version":  "4"
+  "summary":  "Task breakdown for fixing attachment syncing bugs between Discord, Slack, and ClickUp.",
+  "updatedAt":  "2026-02-28T08:14:31.555447300Z",
+  "version":  "5"
 }
