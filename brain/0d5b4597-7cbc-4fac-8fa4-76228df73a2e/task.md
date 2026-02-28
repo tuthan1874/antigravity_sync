@@ -1,0 +1,8 @@
+# Drive Sync Direction Feature
+- [x] Investigate current UI for Sync_Direction selection
+- [x] Add "Client \u2192 Studio" option in UI if missing
+- [x] Implement sync direction logic in backend (`src/drive/sync.js`)
+  - [x] Implement Studio \u2192 Client sync
+  - [x] Implement Client \u2192 Studio sync
+  - [x] Implement 2-way sync
+- [x] Test the new sync directions

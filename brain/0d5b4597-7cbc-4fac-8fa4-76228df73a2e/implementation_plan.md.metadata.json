@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Plan to add 'Client to Studio' sync direction and fix 'Bidirectional' sync ping-pong using md5Checksums.",
+  "updatedAt":  "2026-02-28T08:04:41.279299600Z"
+}
