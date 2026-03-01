@@ -31,9 +31,9 @@ Here's an overview of the changes made and the achieved results:
 - Deployed a **PM Finance Tracking** navigation tab to the root `http://localhost:3000` view panel (`public/index.html`).
 - Inserted two dynamic `<select>` dropdown menus for rapid pipeline filtering via **Job_Type** and **Payment_Status**.
 - Designed a native modal editing window inside `public/app.js` and `src/api.js` for quick inline overrides:
-  - Can apply *Cost (USD)* directly.
-  - Can switch states between *Unpaid*, *Advance Paid*, and *Fully Paid*.
-  - Can input rich internal *Notes*.
+  - Can apply *Cost (USD/VND)* directly from the modal.
+  - Can switch states between *Unpaid*, *Advance Paid*, and *Fully Paid* directly from the **table view** via inline dropdown menus (no modal needed).
+  - Can input rich internal *Notes* from the modal.
   - *Task Status* is preserved as a **read-only** field, ensuring the source of truth for workflow statuses remains strictly in ClickUp.
 
 ## Instructions / Testing Validation
