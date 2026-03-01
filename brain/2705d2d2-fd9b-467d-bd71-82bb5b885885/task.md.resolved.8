@@ -1,0 +1,24 @@
+# Task Checklist
+
+## Setup mappings
+- [ ] Create `ListMappings` table in NocoDB to map ClickUp List IDs to Slack Channels and Tagged Users.
+- [ ] Implement mapping lookup functions in [nocodb.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js).
+
+## Task Creation Logic
+- [ ] Update [webhooks/clickup.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/webhooks/clickup.js) to intercept `taskCreated`.
+- [ ] Look up list ID in `ListMappings`.
+- [ ] If mapped, send initial Slack message to create a thread.
+- [ ] Save the connection to [SyncConfigs](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js#76-83) in NocoDB.
+
+## Task Status Logic
+- [ ] Update [webhooks/clickup.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/webhooks/clickup.js) to intercept `taskUpdated`.
+- [ ] If status changed to `CLIENT_REVIEW` or `client review`, look up [SyncConfigs](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js#76-83) and `ListMappings`.
+- [ ] Send ping message to the Slack thread tagging the configured users.
+
+## Task Deletion Logic
+- [ ] Update [webhooks/clickup.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/webhooks/clickup.js) to intercept `taskDeleted`.
+- [ ] Look up [SyncConfigs](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js#76-83) and delete the parent Slack message to remove the thread.
+- [ ] Delete or disable the [SyncConfigs](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js#76-83) record.
+
+## Verification
+- [ ] Test the flow by manually simulating webhook payloads or requesting the user to test from ClickUp.

@@ -1,0 +1,9 @@
+# Task: Verify List Configs and PM Tracking
+
+- [ ] Log into http://localhost:3000 (admin/admin)
+- [ ] Navigate to "List Configs" tab
+- [ ] Open "+ Add Mapping" modal and verify
+- [ ] Fill dummy data in modal and close it
+- [ ] Navigate back to "PM Tracking"
+- [ ] Verify data loads in PM Tracking
+- [ ] Final report

@@ -1,0 +1,28 @@
+# Task Checklist
+
+## Setup mappings
+- [x] Create [ListMappings](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js#76-81) table in NocoDB to map ClickUp List IDs to Slack Channels and Tagged Users.
+- [x] Implement mapping lookup functions in [nocodb.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js).
+
+## Task Creation Logic
+- [x] Update [webhooks/clickup.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/webhooks/clickup.js) to intercept `taskCreated`.
+- [x] Look up list ID in [ListMappings](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js#76-81).
+- [x] If mapped, send initial Slack message to create a thread.
+- [x] Save the connection to [SyncConfigs](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js#89-96) in NocoDB.
+
+## Task Status Logic
+- [x] Update [webhooks/clickup.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/webhooks/clickup.js) to intercept `taskUpdated`.
+- [x] If status changed to `CLIENT_REVIEW` or `client review`, look up [SyncConfigs](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js#89-96) and [ListMappings](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js#76-81).
+- [x] Send ping message to the Slack thread tagging the configured users.
+
+## Task Deletion Logic
+- [x] Update [webhooks/clickup.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/webhooks/clickup.js) to intercept `taskDeleted`.
+- [x] Look up [SyncConfigs](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js#89-96) and delete the parent Slack message to remove the thread.
+- [x] Delete or disable the [SyncConfigs](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js#89-96) record.
+
+## List Mappings UI
+- [ ] Backend: Create GET, POST, DELETE routes for [ListMappings](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js#76-81) in [src/api.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/api.js).
+- [ ] Frontend: Add a new navigation tab "List Mappings" in [public/index.html](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.html).
+- [ ] Frontend: Add a data table to display existing mappings.
+- [ ] Frontend: Add an "Add Mapping" modal form in [public/app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js) to create new mappings.
+- [ ] Frontend: Implement `loadListMappings` and `deleteListMapping` JavaScript logic.
