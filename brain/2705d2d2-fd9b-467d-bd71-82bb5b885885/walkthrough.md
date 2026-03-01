@@ -57,6 +57,10 @@ You can now map specific ClickUp Lists to specific Slack Channels natively from 
 4. Attempt clicking **✏️ Edit (Local)** on any task within the UI to simulate PM adjustments: Input a cost, change payment-type, or modify internal notes. Observe that the actual "Task Status" is read-only.
 5. Click on **🔗 List Configs** to add Auto-Thread Sync mappings from ClickUp to Slack. Make sure to input the precise ClickUp List ID, Channel ID, and the raw User Ping string.
 
+### 4. Custom Review Tags & 24h Reminders
+- **Dynamic Tagging**: When a ClickUp task enters `CLIENT_REVIEW` status, the standard Slack list tag mapping is overridden if the ClickUp task contains a Text custom field named `USERS TO TAG (REVIEW)`. This allows you to punch in a specific Slack user ID like `<@U08DZ4GTPBP>` on a per-task basis.
+- **24h Auto-Reminders**: A new cron job scans active lists every 30 minutes for tasks that have been untouched in `CLIENT_REVIEW` for longer than 24 hours. When found, the Bot automatically posts a reminder message pinging the required people in the corresponding Slack thread. Tasks are guaranteed to only be reminded once per 24 hours to prevent spam.
+
 ### PM Finance Tracking Demo
 
 ![PM Tracking Web UI Showing Synced ClickUp Data](/C:/Users/dangt/.gemini/antigravity/brain/2705d2d2-fd9b-467d-bd71-82bb5b885885/pm_tracking_table_1772352726128.png)
