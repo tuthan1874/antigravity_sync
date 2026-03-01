@@ -1,0 +1,44 @@
+# Walkthrough: PM Finance Tracking Integration
+
+I've completed the implementation of your PM Finance Tracking feature in the TDGAMES_App. This provides a realtime 1-way sync from ClickUp to NocoDB, keeping your financial metrics hidden from the frontend ClickUp user interface while empowering your PM team with a cohesive NocoDB dashboard.
+
+Here's an overview of the changes made and the achieved results:
+
+## Completed Features
+
+### 1. NocoDB Finance Tracking Database Structure
+- Created a `PM_Tasks_Tracking` table in your NocoDB instance directly connected to your `.env` configuration.
+- Successfully imported the following fields: 
+  - `Task_ID` (ClickUp ID string, serves as external ID link)
+  - `Task_Name` 
+  - `Job_Type` (Auto-mapped as either `Art` or `Animation` based on list parameters)
+  - `Status`
+  - `Assignee` 
+  - `Task_URL`
+- NocoDB internal fields (Hidden from ClickUp):
+  - `Cost` (decimal data type, formatted in USD)
+  - `Payment_Status` (Options: Unpaid, Advance Paid, Fully Paid)
+  - `Notes` 
+
+### 2. External Data Flow: ClickUp ➔ NocoDB Sync
+- Extended your existing `public/index.html` webhook server file inside `src/webhooks/clickup.js` to process Task lifecycle events: `taskCreated`, `taskUpdated`, and `taskDeleted`.
+- Filtered hooks automatically to sync exclusively from the `Art` and `Animation` folder structures.
+- Implemented smart Upserts inside `src/nocodb.js` to overwrite basic details seamlessly from ClickUp without destroying or overriding localized financial information. 
+   > [!TIP]
+   > Changing a task's name or Assignee from ClickUp will automatically reflect over to the NocoDB Dashboard while ensuring your financial data is fully preserved.
+
+### 3. Integrated Custom User Interface for the PM Team
+- Deployed a **PM Finance Tracking** navigation tab to the root `http://localhost:3000` view panel (`public/index.html`).
+- Inserted two dynamic `<select>` dropdown menus for rapid pipeline filtering via **Job_Type** and **Payment_Status**.
+- Designed a native modal editing window inside `public/app.js` and `src/api.js` for quick inline overrides:
+  - Can apply *Cost (USD)* directly.
+  - Can switch states between *Unpaid*, *Advance Paid*, and *Fully Paid*.
+  - Can input rich internal *Notes*.
+  - *Task Status* is preserved as a **read-only** field, ensuring the source of truth for workflow statuses remains strictly in ClickUp.
+
+## Instructions / Testing Validation
+
+1. Access the web dashboard locally (Ensure nodemon `npm run dev` is running).
+2. Click on the brand new **💰 PM Tracking** sidebar element.
+3. Your active Clickup tasks should map successfully. Try opening ClickUp entirely outside of NocoDB to update a task's title or status. You will see the update in this window reflected with preserved custom cost metrics.
+4. Attempt clicking **✏️ Edit (Local)** on any task within the UI to simulate PM adjustments: Input a cost, change payment-type, or modify internal notes. Observe that the actual "Task Status" is read-only.

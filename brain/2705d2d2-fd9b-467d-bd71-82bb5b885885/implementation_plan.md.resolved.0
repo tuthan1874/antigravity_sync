@@ -1,0 +1,49 @@
+# NocoDB Finance Tracking Implementation Plan
+
+Mục tiêu: Quản lý chi phí cho các task trên ClickUp mà không hiển thị chi phí lên ClickUp, sử dụng NocoDB làm backend và tích hợp vào UI hiện tại.
+
+## 1. NocoDB Schema (Table: `PM_Tasks_Tracking`)
+
+Bảng mới sẽ chứa cả thông tin lấy từ ClickUp và thông tin chi phí riêng.
+
+**Từ ClickUp (Đồng bộ)**
+- `Task_ID` (SingleLineText, Primary Key)
+- `Task_Name` (SingleLineText)
+- `Job_Type` (SingleSelect): `Art` hoặc `Animation` (dựa trên List ID)
+- `Status` (SingleSelect): `new request`, `in progess`, `fix`, `lead_check`, `client_review`, `approved`, `cancelled`, `Closed`
+- `Assignee` (SingleLineText)
+- `Task_URL` (URL)
+
+**Quản lý nội bộ (PM nhập)**
+- `Cost` (Currency / Decimal): Chi phí task
+- `Payment_Status` (SingleSelect): `Unpaid`, `Advance Paid`, `Fully Paid`
+- `Notes` (LongText)
+
+## 2. API & Webhook Logic
+
+### Đồng bộ ClickUp -> NocoDB
+- Cập nhật Webhook Handler [src/webhooks/clickup.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/webhooks/clickup.js)
+- Bắt sự kiện tạo/cập nhật task, kiểm tra xem List ID có phải là Art (`901815849460`) hoặc Animation (`901816296143`) không.
+- Nếu có, Upsert (Tạo mới hoặc Cập nhật) record trong bảng `PM_Tasks_Tracking`.
+- Lưu ý: Không overwrite trường `Cost`, `Payment_Status`, `Notes` nếu update.
+
+### Đồng bộ NocoDB -> ClickUp
+- Khi PM đổi `Status` trên UI, backend sẽ gọi API cập nhật ClickUp *và* NocoDB.
+- Hướng này được xử lý bằng API riêng cho trang Finance, chứ không dựa vào NocoDB webhook để tránh vòng lặp (hoặc xử lý riêng logic update NocoDB).
+
+## 3. UI Implementation
+- Thêm Tab mới trên giao diện: "Finance & Tracking"
+- Gọi bảng `PM_Tasks_Tracking` từ NocoDB.
+- Sử dụng Data table cho phép edit trực tiếp cột `Cost`, `Payment_Status`.
+- Hiển thị filter theo `Job_Type`, `Payment_Status`.
+
+## 4. Các bước triển khai
+1. Tạo bảng bằng code thông qua API NocoDB (NocoDB MCP tools) hoặc hướng dẫn cấu hình NocoDB.
+2. Cập nhật [clickup.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/test-clickup.js) để đẩy data task vào NocoDB.
+3. Tạo REST endpoint nội bộ (`/api/finance/tasks`) hỗ trợ GET/PUT cho UI.
+4. Cập nhật `index.html` và `index.js` thêm giao diện Finance tab.
+
+## 5. Verification Plan
+- Chạy thử thay đổi status / tạo mới trên ClickUp -> Check NocoDB.
+- Mở Web UI, thử edit Cost -> Check NocoDB giữ nguyên đúng.
+- Trên Web UI thao tác đổi Status -> Check Webhook ClickUp không làm mất data Cost.

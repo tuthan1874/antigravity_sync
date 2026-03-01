@@ -1,0 +1,14 @@
+# Task Checklist: NocoDB Finance Tracking (Realtime with ClickUp)
+
+- [x] Phase 1: Tạo NocoDB Base và Bảng Tracking
+  - [x] Liệt kê danh sách Base trên NocoDB
+  - [x] Khởi tạo Bảng `PM_Tasks_Tracking` với các trường dữ liệu cần thiết.
+- [x] Phase 2: Triển khai luồng Webhook ClickUp -> NocoDB
+  - [x] Cập nhật file [src/webhooks/clickup.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/webhooks/clickup.js).
+  - [x] Add logic: Insert vào NocoDB khi task mới tạo ở List Art/Animation.
+  - [x] Add logic: Update trạng thái/tên task vào NocoDB khi task bị thay đổi trên ClickUp (Giữ nguyên Cost/Payment Info).
+- [ ] Phase 3: Xây dựng UI cho PM
+  - [ ] Tạo file HTML/CSS hoặc tích hợp vào trang dashboard hiện tại.
+  - [ ] Thêm backend API cho UI gọi (GET danh sách tài chính, PUT cập nhật Cost/Payment Status).
+- [ ] Phase 4: Test luồng đồng bộ ngược (NocoDB UI -> ClickUp)
+  - [ ] Sửa đổi Status trên giao diện web NocoDB mới làm -> Bắn API thay đổi Status trên ClickUp.
