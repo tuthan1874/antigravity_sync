@@ -19,12 +19,12 @@ You can now map specific ClickUp Lists to specific Slack Channels natively from 
 ## Completed Features
 
 ### 1. NocoDB Finance Tracking Database Structure
-- Created a `PM_Tasks_Tracking` table in your NocoDB instance directly connected to your `.env` configuration.
+- Created a `PM_Tasks_Tracking` table in your NocoDB instance directly connected to your [.env](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/.env) configuration.
 - Successfully imported the following fields: 
   - `Task_ID` (ClickUp ID string, serves as external ID link)
   - `Task_Name` 
   - `Job_Type` (Auto-mapped as either `Art` or `Animation` based on list parameters)
-  - `Status`
+  - [Status](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/platforms/clickup-api.js#94-103)
   - `Assignee` 
   - `Task_URL`
 - NocoDB internal fields (Hidden from ClickUp):
@@ -34,16 +34,16 @@ You can now map specific ClickUp Lists to specific Slack Channels natively from 
   - `Notes` 
 
 ### 2. External Data Flow: ClickUp ➔ NocoDB Sync
-- Extended your existing `public/index.html` webhook server file inside `src/webhooks/clickup.js` to process Task lifecycle events: `taskCreated`, `taskUpdated`, and `taskDeleted`.
+- Extended your existing [public/index.html](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.html) webhook server file inside [src/webhooks/clickup.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/webhooks/clickup.js) to process Task lifecycle events: `taskCreated`, `taskUpdated`, and `taskDeleted`.
 - Filtered hooks automatically to sync exclusively from the `Art` and `Animation` folder structures.
-- Implemented smart Upserts inside `src/nocodb.js` to overwrite basic details seamlessly from ClickUp without destroying or overriding localized financial information. 
+- Implemented smart Upserts inside [src/nocodb.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js) to overwrite basic details seamlessly from ClickUp without destroying or overriding localized financial information. 
    > [!TIP]
    > Changing a task's name or Assignee from ClickUp will automatically reflect over to the NocoDB Dashboard while ensuring your financial data is fully preserved.
 
 ### 3. Integrated Custom User Interface for the PM Team
-- Deployed a **PM Finance Tracking** navigation tab to the root `http://localhost:3000` view panel (`public/index.html`).
+- Deployed a **PM Finance Tracking** navigation tab to the root `http://localhost:3000` view panel ([public/index.html](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.html)).
 - Inserted two dynamic `<select>` dropdown menus for rapid pipeline filtering via **Job_Type** and **Payment_Status**.
-- Designed a native modal editing window inside `public/app.js` and `src/api.js` for quick inline overrides:
+- Designed a native modal editing window inside [public/app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js) and [src/api.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/api.js) for quick inline overrides:
   - Can apply *Cost (USD/VND)* directly from the modal.
   - Can switch states between *Unpaid*, *Advance Paid*, and *Fully Paid* directly from the **table view** via inline dropdown menus (no modal needed).
   - Can input rich internal *Notes* from the modal.
@@ -63,4 +63,4 @@ You can now map specific ClickUp Lists to specific Slack Channels natively from 
 
 ### PM Finance Tracking Demo
 
-![PM Tracking Web UI Showing Synced ClickUp Data](C:\Users\dangt\.gemini\antigravity\brain\2705d2d2-fd9b-467d-bd71-82bb5b885885\pm_tracking_table_1772352726128.png)
+![PM Tracking Web UI Showing Synced ClickUp Data](/C:/Users/dangt/.gemini/antigravity/brain/2705d2d2-fd9b-467d-bd71-82bb5b885885/pm_tracking_table_1772352726128.png)
