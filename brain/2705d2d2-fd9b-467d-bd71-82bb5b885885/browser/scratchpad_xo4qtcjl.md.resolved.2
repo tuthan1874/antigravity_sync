@@ -1,0 +1,13 @@
+# PM Tracking Edit and Verify Task
+
+- [x] Navigate to http://localhost:3000
+- [x] Go to PM Tracking page
+- [ ] Edit 1st item (Currency: VND, Cost: 1500000) - FAILED (401 Unauthorized in direct fetch, 500 in UI)
+- [ ] Edit 2nd item (Currency: USD, Cost: 250.50)
+- [ ] Verify formatting (VND: 1.500.000 ₫, USD: $250.50)
+- [ ] Screenshot of PM Tracking table
+
+### Errors Encountered
+- Direct fetch to `/api/pm-tracking/86ewrndqk` returned `401 Unauthorized`.
+- UI interaction for save seems to trigger 500 errors or fails silently.
+- App requires `chatsync_token` found in localStorage.

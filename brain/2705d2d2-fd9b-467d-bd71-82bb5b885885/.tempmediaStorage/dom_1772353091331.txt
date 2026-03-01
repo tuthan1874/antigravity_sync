@@ -1,0 +1,45 @@
+⚡
+ChatSync
+[0] (47,93)<a class='nav-link active' href='#'>Dashboard />
+	[1] (16,93)<span >📊 />
+[2] (47,133)<a class='nav-link' href='#'>Chat Sync />
+	[3] (16,133)<span >💬 />
+[4] (47,173)<a class='nav-link' href='#'>Customers />
+	[5] (16,173)<span >🏢 />
+[6] (47,213)<a class='nav-link' href='#'>Projects />
+	[7] (16,213)<span >📦 />
+[8] (47,253)<a class='nav-link' href='#'>Drive Sync />
+	[9] (16,253)<span >📁 />
+[10] (47,293)<a class='nav-link' href='#'>PM Tracking />
+	[11] (16,293)<span >💰 />
+[12] (47,333)<a class='nav-link' href='#'>Sync Logs />
+	[13] (16,333)<span >📋 />
+[14] (47,372)<a class='nav-link' href='#'>Name Mappings />
+	[15] (16,372)<span >👤 />
+[16] (47,412)<a class='nav-link' href='#'>Settings />
+	[17] (16,412)<span >⚙️ />
+Connected
+[18] (47,971)<button class='btn btn-secondary'>Logout />
+	[19] (37,971)<span >🚪 />
+Dashboard
+Overview of your sync configurations
+💬
+—
+Chat Syncs
+✅
+—
+Active
+📁
+—
+Drive Syncs
+🔄
+—
+Drive Active
+Recent Sync Activity
+Time
+Source
+Author
+Content
+Synced To
+Status
+Loading...

@@ -1,0 +1,200 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+⚡
+ChatSync
+📊
+Dashboard
+💬
+Chat Sync
+🏢
+Customers
+📦
+Projects
+📁
+Drive Sync
+💰
+PM Tracking
+📋
+Sync Logs
+👤
+Name Mappings
+⚙️
+Settings
+Connected
+🚪
+Logout
+PM Finance Tracking
+Realtime sync with ClickUp. Internal cost tracking.
+🔄 Refresh
+Job Type
+Task Name
+Status
+Assignee
+Cost
+Payment Status
+Notes
+Actions
+Art
+[2D Modeling] [Character] Tasmanian Devil (Taz)
+86ewrndqk
+approved
+NaNguyen
+$0.00
+Unpaid
+—
+✏️ Edit (Local)
+Art
+[2D Modeling] [Character] TestB
+86ewrn9q7
+approved
+NaNguyen
+$0.00
+Unpaid
+—
+✏️ Edit (Local)
+Art
+[2D Modeling] [Character] Duck Dodgers
+86ewrmt5h
+client_review
+NaNguyen
+$0.00
+Unpaid
+—
+✏️ Edit (Local)
+Art
+[2D Modeling] [Character] Aquamarine
+86ewrmrmt
+client_review
+NaNguyen
+$0.00
+Unpaid
+—
+✏️ Edit (Local)
+Art
+[2D Modeling] [Character] Sylvester
+86ewrmrcc
+approved
+NaNguyen
+$0.00
+Unpaid
+—
+✏️ Edit (Local)
+Art
+[2D Modeling] [Character] Ice King Finn
+86ewrmr1n
+approved
+NaNguyen
+$0.00
+Unpaid
+—
+✏️ Edit (Local)
+Art
+[2D Modeling] [Character] Finn the Human
+86ewrmqg9
+approved
+NaNguyen
+$0.00
+Unpaid
+—
+✏️ Edit (Local)
+Art
+[2D Modeling] [Character] Marvin the Martian
+86ewrmhc5
+new request
+NaNguyen
+$0.00
+Unpaid
+—
+✏️ Edit (Local)
+Animation
+[2D Animation] [Character] Ice King Finn
+86ewrnmz6
+approved
+TDGames
+$0.00
+Unpaid
+—
+✏️ Edit (Local)
+Animation
+[2D Animation] [Character] Finn the Human
+86ewrnmec
+approved
+TDGames
+$0.00
+Unpaid
+—
+✏️ Edit (Local)
+Animation
+[2D Animation] [Character] Tweety Bird
+86ewrnkaq
+approved
+TDGames
+$0.00
+Unpaid
+—
+✏️ Edit (Local)
+Animation
+[2D Animation] [Character] Tasmanian Devil (Taz)
+86ewrnjdb
+approved
+TDGames
+$0.00
+Unpaid
+—
+✏️ Edit (Local)
+Animation
+[2D Animation] [Character] Garnet
+86ewrnj5p
+approved
+TDGames
+$0.00
+Unpaid
+—
+✏️ Edit (Local)
+Animation
+[2D Animation] [Boss] Lich
+86ewrnh5j
+approved
+TDGames
+$0.00
+Unpaid
+—
+✏️ Edit (Local)
+Animation
+[2D Animation] [Character] BMO
+86ewrmru0
+in progess
+TDGames
+$0.00
+Unpaid
+—
+✏️ Edit (Local)
+Animation
+[2D Animation] [Character] Bugs Bunny
+86ewrmqwy
+approved
+TDGames
+$0.00
+Unpaid
+—
+✏️ Edit (Local)
+[0] (500,500)<div class='modal-overlay active' id='modal-overlay' />
+	[1] (500,500)<div class='modal' />
+		Edit PM Tracking: [2D Modeling] [Character] Tasmanian Devil (Taz)
+		[2] (595,303)<button class='btn-close'>× />
+		[3] (500,360)<label >Task Status (Synced from ClickUp) />
+		approved
+		[4] (500,406)<label >Currency />
+		[5] (500,432)<select  />
+		[6] (500,468)<label >Cost />
+		[7] (500,494)<input placeholder='0.00' />
+		[8] (500,530)<label >Payment Status />
+		[9] (500,555)<select  />
+		[10] (500,592)<label >Notes />
+		[11] (432,621)<textarea placeholder='Additional notes...' />
+		[12] (551,703)<button class='btn btn-secondary'>Cancel />
+		[13] (586,703)<button class='btn btn-primary'>Save />
+
+</current_dom>
