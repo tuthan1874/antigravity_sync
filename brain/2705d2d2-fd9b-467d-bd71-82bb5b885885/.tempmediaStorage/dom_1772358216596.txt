@@ -1,0 +1,106 @@
+⚡
+ChatSync
+[0] (47,93)<a class='nav-link active' href='#'>Dashboard />
+	[1] (16,93)<span >📊 />
+[2] (47,133)<a class='nav-link' href='#'>Chat Sync />
+	[3] (16,133)<span >💬 />
+[4] (47,173)<a class='nav-link' href='#'>Customers />
+	[5] (16,173)<span >🏢 />
+[6] (47,213)<a class='nav-link' href='#'>Projects />
+	[7] (16,213)<span >📦 />
+[8] (47,253)<a class='nav-link' href='#'>Drive Sync />
+	[9] (16,253)<span >📁 />
+[10] (47,293)<a class='nav-link' href='#'>PM Tracking />
+	[11] (16,293)<span >💰 />
+[12] (47,333)<a class='nav-link' href='#'>List Configs />
+	[13] (16,333)<span >🔗 />
+[14] (47,372)<a class='nav-link' href='#'>Sync Logs />
+	[15] (16,372)<span >📋 />
+[16] (47,412)<a class='nav-link' href='#'>Name Mappings />
+	[17] (16,412)<span >👤 />
+[18] (47,452)<a class='nav-link' href='#'>Settings />
+	[19] (16,452)<span >⚙️ />
+Connected
+[20] (47,971)<button class='btn btn-secondary'>Logout />
+	[21] (37,971)<span >🚪 />
+Dashboard
+Overview of your sync configurations
+💬
+0
+Chat Syncs
+✅
+0
+Active
+📁
+0
+Drive Syncs
+🔄
+0
+Drive Active
+Recent Sync Activity
+Time
+Source
+Author
+Content
+Synced To
+Status
+2/28/2026, 3:12:51 PM
+clickup
+TDGames
+Vch
+slack, discord
+success
+2/28/2026, 3:11:02 PM
+slack
+Toan - PM
+Như này
+clickup, discord
+success
+2/28/2026, 3:10:08 PM
+drive
+System
+✅ Copied 3 files to Client Folder.
+Client Folder
+success
+2/28/2026, 3:09:17 PM
+discord
+Toan - Animator
+Alo
+clickup, slack
+success
+2/28/2026, 3:09:00 PM
+discord
+Toan - Animator
+Alo
+clickup, slack
+success
+2/28/2026, 3:06:22 PM
+drive
+System
+✅ Copied 3 files to Studio Folder.
+bidirectional
+success
+2/28/2026, 3:06:14 PM
+drive
+System
+✅ Copied 1 test file to Client Folder.
+Client Folder
+success
+2/27/2026, 11:20:37 PM
+clickup
+TDGames
+345
+slack, discord
+success
+2/27/2026, 10:41:11 PM
+slack
+Toan - PM
+Và 2
+clickup, discord
+success
+2/27/2026, 10:41:05 PM
+slack
+Toan - PM
+test 1
+clickup, discord
+success
