@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_TASK",
+  "summary":  "Task list for cleaning up unused files and pushing to GitHub.",
+  "updatedAt":  "2026-03-03T17:19:10.272441700Z",
+  "version":  "4"
+}

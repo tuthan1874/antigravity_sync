@@ -1,0 +1,23 @@
+# Clean Up Unused Files and Push to GitHub
+
+This plan outlines the steps to remove unused files and push the cleaned-up source code to GitHub.
+
+## Proposed Changes
+
+### File Cleanup
+I will remove the following unused files and directories to keep the codebase clean:
+
+1.  **Delete `services/firebaseService.ts`**: This service is no longer used as the app has migrated to NocoDB.
+2.  **Delete `migrated_prompt_history/`**: This directory contains local session logs and is not needed in the repository.
+
+### Git Configuration
+I will perform the following actions using the terminal:
+
+1.  **Commit Cleanup**: Commit the deletion of the unused files.
+2.  **Push**: Push the local `main` branch to the remote repository.
+
+## Verification Plan
+
+### Manual Verification
+1.  **Check Remote Status**: Run `git remote show origin` to verify that the remote branch is up-to-date.
+2.  **GitHub UI**: The user can check the GitHub repository to confirm the files have been removed.

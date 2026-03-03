@@ -1,0 +1,24 @@
+# Push Source Code to GitHub
+
+This plan outlines the steps to push the current project source code to the configured GitHub repository.
+
+## Proposed Changes
+
+### Secret Redaction & Configuration
+I will redact sensitive information and move them to environment variables to comply with GitHub's repository rules:
+
+1.  **Modify [services/firebaseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/firebaseService.ts)**: Replace the hardcoded Firebase config with environment variables (`import.meta.env`).
+2.  **Update [.env.local](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/.env.local)**: Add the Firebase configuration values.
+3.  **Update `.env` (if exists) or create it**: Create a template `.env` file with placeholders for the secrets.
+
+### Git Configuration
+I will perform the following actions using the terminal:
+
+1.  **Commit Changes**: Commit the redaction of secrets.
+2.  **Push**: Push the local `main` branch to the remote repository.
+
+## Verification Plan
+
+### Manual Verification
+1.  **Check Remote Status**: Run `git remote show origin` to verify that the remote branch has been created and is up-to-date.
+2.  **GitHub UI (Optional)**: The user can check the GitHub repository URL to confirm the files are present.
