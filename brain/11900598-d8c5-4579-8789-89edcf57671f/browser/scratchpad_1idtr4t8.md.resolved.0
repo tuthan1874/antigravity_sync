@@ -1,0 +1,9 @@
+# Bank Profile Management Test Checklist
+
+- [ ] Open Bank Manager panel (gear icon ⚙️)
+- [ ] Verify existing banks and icons (Edit/Delete) are visible
+- [ ] Edit an existing bank (change alias)
+- [ ] Save changes and verify update
+- [ ] Add a new bank (Test Bank)
+- [ ] Verify new bank is added to the list
+- [ ] Check for console errors throughout

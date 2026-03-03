@@ -1,0 +1,4 @@
+# Task: Add Missing Edit Sections
+
+- [/] Add "Invoice Dates" inputs (Issue Date, Due Date) to Edit tab in [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
+- [ ] Add "Studio Info" section (section 04) to Edit tab in [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)

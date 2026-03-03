@@ -1,0 +1,11 @@
+# Task Checklist
+- [x] Open http://localhost:3000/
+- [x] Open Bank Manager panel via gear icon
+- [x] Verify existing bank profiles or add one
+- [x] Hover over a bank profile to see edit/delete icons
+- [x] Capture hover state screenshot
+- [x] Click edit icon and capture edit form screenshot
+- [ ] Verify editing functionality works
+    - [ ] Update bank info
+    - [ ] Click Save
+    - [ ] Verify change in list

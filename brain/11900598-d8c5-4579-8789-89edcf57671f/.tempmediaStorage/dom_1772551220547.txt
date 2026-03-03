@@ -1,0 +1,65 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,234)<div  />
+	Cloud Billing
+	Hybrid Storage Active
+	[1] (855,30)<button class='px-4 md:px-8 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all bg-primary text-black shadow-btn-glow'>edit />
+	[2] (902,30)<button class='px-4 md:px-8 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>preview />
+	[3] (954,30)<button class='px-4 md:px-8 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>history />
+	Issue Date
+	[4] (289,65)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	Due Date
+	[5] (358,65)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	Manage Banks
+	[6] (324,236)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Tên nhận biết (Ví dụ: MB Cá Nhân) />
+	[7] (324,269)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' placeholder='Gợi nhớ...' />
+	[8] (324,309)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Beneficiary Name />
+	[9] (324,343)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	[10] (324,383)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Account Number />
+	[11] (324,416)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	[12] (324,456)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Bank Name />
+	[13] (324,490)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	[14] (324,530)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Branch />
+	[15] (324,563)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	[16] (294,603)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>SWIFT />
+	[17] (294,637)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	[18] (354,603)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>CITAD />
+	[19] (354,637)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	[20] (324,694)<button class='inline-flex items-center justify-center font-bold uppercase tracking-wider rounded-xl transition-all duration-300 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-primary text-white shadow-btn-glow hover:shadow-btn-glow-hover hover:-translate-y-0.5 active:bg-gradient-to-br active:from-primary-deep active:to-primary-dark px-4 py-2 text-xs w-full'>Save Profile />
+	☁️ CLOUD • NocoDB
+	VCB Test
+	TD Consulting CO LTD
+	9876543210
+	•
+	Vietcombank
+	[21] (360,782)<button class='p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors' title='Chỉnh sửa' />
+	[22] (374,782)<button class='p-2 text-status-error hover:bg-status-error/10 rounded-lg transition-colors' title='Xóa' />
+	✏️ Đang chỉnh sửa
+	[23] (322,879)<input class='w-full text-xs font-bold px-3 py-2 rounded-lg border outline-none bg-transparent focus:border-primary transition-colors border-white/10 text-white' placeholder='Tên nhận biết' />
+	[24] (322,913)<input class='w-full text-xs font-bold px-3 py-2 rounded-lg border outline-none bg-transparent focus:border-primary transition-colors border-white/10 text-white' placeholder='Beneficiary Name' />
+	[25] (322,948)<input class='w-full text-xs font-bold px-3 py-2 rounded-lg border outline-none bg-transparent focus:border-primary transition-colors border-white/10 text-white' placeholder='Account Number' />
+	[26] (322,983)<input class='w-full text-xs font-bold px-3 py-2 rounded-lg border outline-none bg-transparent focus:border-primary transition-colors border-white/10 text-white' placeholder='Bank Name' />
+	03
+	Discount & Tax
+	[27] (456,113)<label class='text-[11px] font-black uppercase tracking-widest text-neutral-medium'>Discount />
+	[28] (550,113)<button class='px-3 py-1.5 transition-all bg-primary text-black'>% />
+	[29] (566,113)<button class='px-3 py-1.5 transition-all text-white/40 hover:text-white'>USD />
+	[30] (509,152)<input class='w-full text-2xl font-black bg-transparent outline-none border-b-2 pb-2 transition-colors border-white/10 text-white/30' placeholder='0' />
+	%
+	[31] (667,108)<label class='text-[11px] font-black uppercase tracking-widest block text-neutral-medium'>Tax Rate />
+	[32] (667,143)<input class='w-full text-2xl font-black bg-transparent outline-none border-b-2 pb-2 transition-colors border-white/10 text-white/30' placeholder='0' />
+	%
+	04
+	Studio Info
+	[33] (588,340)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Studio Name />
+	[34] (588,373)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	[35] (512,432)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Email />
+	[36] (512,465)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	[37] (664,432)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Tax Code (MST) />
+	[38] (664,465)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	[39] (588,524)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Studio Address />
+	[40] (588,583)<textarea class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 py-4 font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all min-h-[120px] resize-y placeholder:text-neutral-medium/50 leading-relaxed' />
+
+</current_dom>

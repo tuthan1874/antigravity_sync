@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_TASK",
+  "summary":  "Task checklist for adding client management (save/reuse client details), auto-save invoice on export with paidDate tracking, and a new Dashboard tab with revenue per client and pending invoices.",
+  "updatedAt":  "2026-03-03T15:47:56.300530900Z"
+}

@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_TASK",
+  "summary":  "Checklist for fixing bank profile management: NocoDB-only storage, working edit, and improved UX.",
+  "updatedAt":  "2026-03-03T15:07:15.863470800Z",
+  "version":  "1"
+}
