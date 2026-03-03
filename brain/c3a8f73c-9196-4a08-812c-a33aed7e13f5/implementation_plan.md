@@ -1,0 +1,42 @@
+# Google Drive Sync Optimization Plan
+
+This document outlines the proposed changes to resolve the issues inside Google Drive synchronization (`src/drive/sync.js`), effectively addressing the folder duplication (39 vs 43 folders) and slow sync performance.
+
+## User Review Required
+
+> [!WARNING]
+> We will implement **True Mirror Syncing**. This means regardless of sync direction (1-way or Bidirectional), if a file is deleted or renamed on one side, those operations are replicated on the other side. This exactly matches Google Drive desktop behavior.
+
+## Proposed Changes
+
+### Drive Sync Logic updates `src/drive/sync.js`
+We will rewrite the `syncFolder` and supporting Google Drive API wrapper functions:
+
+1. **Unique File Tracking via `appProperties` (Solves duplicates / Rename bugs)**
+   - Update `listFiles` to fetch `appProperties`.
+   - Update `copyFile` and `createFolder` to embed metadata: `appProperties: { sourceId: fileId }`.
+   - When matching source files to destination files, we will match primarily by `appProperties.sourceId`.
+   - If a source file matches by `sourceId` but the names differ, it securely updates the destination file's name (resolving folder renames seamlessly).
+
+2. **Mirror Deletion (Solves "ghost" folders accumulating)**
+   - Add logic so that after processing all source files, iterate over existing destination files. 
+   - If a destination file was NOT found in the source files (and was previously synced by this tool), issue a `driveService.files.update` to move it to trash (`trashed: true`).
+   - For Bidirectional sync, this ensures that deleted items on *either* side don't get "resurrected" by the older copy during the next scan.
+
+3. **Parallel Processing (Solves slow sync speed)**
+   - Instead of standard `for...of` loops causing sequential uploads/creations, implement `Promise.all` chunks (e.g., batches of 5-10 concurrent requests).
+   - This drastically improves wait times.
+   
+#### [MODIFY] [sync.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js)
+
+## Verification Plan
+
+### Automated Tests
+*Currently no automated test suites configured.*
+
+### Manual Verification
+1. Start the server using `npm run dev`.
+2. Find an active `Drive_Configs` record in NocoDB.
+3. Rename a folder in the Client's source drive, run sync, and observe that it renames the Dest folder instead of creating a duplicate.
+4. Delete a file/folder in either Drive, run sync, and verify the corresponding file on the other end is moved to the trash instead of being re-copied.
+5. Check terminal logs to note the improved parallel speed of uploads.

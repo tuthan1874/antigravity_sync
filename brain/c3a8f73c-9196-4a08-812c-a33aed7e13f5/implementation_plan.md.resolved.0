@@ -1,0 +1,41 @@
+# Google Drive Sync Optimization Plan
+
+This document outlines the proposed changes to resolve the issues inside Google Drive synchronization ([src/drive/sync.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js)), effectively addressing the folder duplication (39 vs 43 folders) and slow sync performance.
+
+## User Review Required
+
+> [!WARNING]
+> By default, the current sync behavior is pure "append only" (never deletes). The new implementation will introduce **Mirror Deletions** for 1-way syncs. This means if a file/folder is deleted in the Source Drive, it will also be deleted in the Destination Drive. Please confirm if this is the desired behavior for 1-way syncs. Bidirectional sync will preserve files on both sides to avoid accidental data loss unless requested otherwise.
+
+## Proposed Changes
+
+### Drive Sync Logic updates [src/drive/sync.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js)
+We will rewrite the [syncFolder](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js#76-128) and supporting Google Drive API wrapper functions:
+
+1. **Unique File Tracking via `appProperties` (Solves duplicates / Rename bugs)**
+   - Update [listFiles](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js#23-45) to also fetch `appProperties`.
+   - Update [copyFile](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js#46-60) and [createFolder](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js#61-75) to embed metadata: `appProperties: { sourceId: fileId }`.
+   - When matching source files to destination files, we will match primarily by `appProperties.sourceId`.
+   - If a source file matches by `sourceId` but the names differ, it securely updates the destination file's name (resolving folder renames seamlessly).
+
+2. **Mirror Deletion (Solves "ghost" folders accumulating)**
+   - Add a `mirror` Boolean parameter to [syncFolder](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js#76-128) (Default: `true` for one-way syncs, `false` for bidirectional).
+   - After processing all source files, iterate over existing destination files. If a destination file was NOT found in the source files, issue a `driveService.files.update` to move it to trash (`trashed: true`).
+
+3. **Parallel Processing (Solves slow sync speed)**
+   - Instead of standard `for...of` loops causing sequential uploads/creations, we'll implement a fast chunk-based parallel executor.
+   - We will run [copyFile](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js#46-60) and [createFolder](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js#61-75) concurrently with a limit of 5-10 operations at a time to maximize speed while respecting Google Drive's API limits.
+   
+#### [MODIFY] [sync.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js)
+
+## Verification Plan
+
+### Automated Tests
+*Currently no automated test suites configured.*
+
+### Manual Verification
+1. Open the project and start the server using `npm run dev`.
+2. Find an active `Drive_Configs` record in NocoDB.
+3. Rename a folder in the Client's source drive, run sync, and observe that it renames the Dest folder instead of creating a duplicate.
+4. Delete a file in the Source drive, run the sync, and verify the corresponding file on our end is sent to the trash.
+5. Check terminal logs to note the improved parallel speed of uploads.
