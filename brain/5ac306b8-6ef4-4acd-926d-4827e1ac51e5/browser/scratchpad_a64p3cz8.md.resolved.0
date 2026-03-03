@@ -1,0 +1,9 @@
+# Task: Verify Invoice App Changes
+
+- [ ] Navigate to http://localhost:3000/
+- [ ] Take a screenshot of the "Edit" tab (Section 01/02)
+- [ ] Scroll down and verify "Discount & Tax" (Section 03) in "Edit" tab
+- [ ] Take a screenshot of Section 03
+- [ ] Click "PREVIEW" tab and wait 1s
+- [ ] Take a screenshot of the invoice preview (check compact layout and discount/tax totals)
+- [ ] Report findings to the user

@@ -1,0 +1,8 @@
+# Verification Plan
+
+- [ ] Navigate to http://localhost:3000
+- [ ] Verify Dashboard is visible
+- [ ] Verify styling (Dark mode, TD Games branding)
+- [ ] Click 'Create New Invoice'
+- [ ] Verify editor appears
+- [ ] Report issues

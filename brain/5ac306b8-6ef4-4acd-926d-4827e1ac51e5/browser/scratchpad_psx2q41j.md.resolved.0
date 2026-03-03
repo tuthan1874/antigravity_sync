@@ -1,0 +1,9 @@
+# Task: Verify Logo and PDF Preview
+
+- [ ] Navigate to http://localhost:3000/
+- [ ] Take screenshot of EDIT tab
+- [ ] Click PREVIEW tab
+- [ ] Wait 1 second
+- [ ] Take screenshot of PREVIEW tab
+- [ ] Verify logo change (TD Games logo - orange crown/cube)
+- [ ] Report results

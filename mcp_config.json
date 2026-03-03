@@ -4,9 +4,9 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "https://nocodb.tdconsulting.vn/mcp/nc9xf3bvx9g7wkp5",
+        "https://nocodb.tdconsulting.vn/mcp/nc6csrghltflt5nq",
         "--header",
-        "xc-mcp-token: F99uDwOQ5ADtDmqakd7DJkIx8ltjvmZB"
+        "xc-mcp-token: FK6W1o5CHiyxEjaE4uu-dMdDrxpDHhq9E"
       ]
     },
     "supabase-mcp-server": {
@@ -39,6 +39,18 @@
       "env": {
         "CLICKUP_API_TOKEN": "pk_152442037_2ZEMMX3SH944CLF7J0VAFS5CJK39R3EM"
       }
+    },
+    "StitchMCP": {
+      "$typeName": "exa.cascade_plugins_pb.CascadePluginCommandTemplate",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://stitch.googleapis.com/mcp",
+        "--header",
+        "X-Goog-Api-Key: AQ.Ab8RN6Jc99tuXq5w7lJOmLC7e327PARs4ZmsC5VE011XxGUywQ"
+      ],
+      "env": {}
     }
   }
 }

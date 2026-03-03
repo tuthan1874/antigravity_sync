@@ -1,0 +1,25 @@
+# Invoice App - Walkthrough
+
+## Changes Made
+
+### 1. Logo Update
+- **File**: `components/InvoicePreview.tsx`
+- Replaced placeholder icon with the official **TD Games logo** (orange crown/cube icon)
+- Now uses the same CDN URL as the navbar: `pub-f0ef2ac3b67c4d4da2fe20c73ab57f83.r2.dev/logo_td.png`
+
+### 2. PDF Export with Color Preservation
+- **File**: `index.html` — improved `@media print` CSS block
+- Added `print-color-adjust: exact` and `-webkit-print-color-adjust: exact` to all elements so dark/light theme colors are preserved when saving as PDF
+- Removed deprecated `color-adjust` property
+- Sidebar panels now have `no-print` class (`App.tsx`) so they are hidden when printing, leaving only the invoice
+
+## How to Export PDF with Colors
+1. Go to **EDIT** tab, fill in invoice data
+2. Click **"Xuất PDF (Có thể copy text)"** button
+3. In the browser print dialog, select **"Save as PDF"**
+4. Make sure **"Background graphics"** option is checked to preserve dark theme colors
+5. Click Save — the PDF will have selectable text AND correct colors
+
+## Invoice Preview with New Logo
+
+![Invoice Preview with TD Games Logo](file:///C:/Users/dangt/.gemini/antigravity/brain/5ac306b8-6ef4-4acd-926d-4827e1ac51e5/preview_tab_screenshot_1772546341981.png)

@@ -1,0 +1,10 @@
+# Task: Verify PDF Export Height
+
+- [ ] Navigate to http://localhost:3000/
+- [ ] Take initial screenshot (initial state)
+- [ ] Click "PREVIEW" tab button
+- [ ] Wait 1 second (tab transition and rendering)
+- [ ] Take preview screenshot (after switch)
+- [ ] Execute JS to check `#invoice-capture` dimensions
+- [ ] Capture console logs
+- [ ] Summarize and report results

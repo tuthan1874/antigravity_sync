@@ -1,0 +1,69 @@
+# Migrate Invoice App Backend: Firebase → NocoDB
+
+Thay thế toàn bộ Firebase Firestore bằng NocoDB REST API. NocoDB đã được dùng trong các dự án TD_App khác và có MCP server sẵn. Data sẽ được lưu tại base **TD_App** (`pjlxcpr5ih0q9y9`) trên `https://nocodb.tdconsulting.vn`.
+
+## Proposed Changes
+
+### NocoDB Tables (tạo mới qua MCP)
+
+#### [NEW] Table: `INV_Banks`
+Lưu Banking Profiles với các cột:
+- `alias` (Text) — Tên nhận biết
+- `accountName` (Text) — Tên thụ hưởng
+- `accountNumber` (Text) — Số tài khoản
+- `bankName` (Text) — Tên ngân hàng
+- `branchName` (Text) — Chi nhánh
+- `bankAddress` (Text) — Địa chỉ ngân hàng
+- `citadCode` (Text) — Mã CITAD
+- `swiftCode` (Text) — Mã SWIFT
+
+#### [NEW] Table: `INV_Invoices`
+Lưu toàn bộ Invoice data dưới dạng JSON:
+- `invoiceNumber` (Text) — Mã invoice
+- `issueDate` (Text) — Ngày phát hành
+- `dueDate` (Text) — Hạn thanh toán
+- `currency` (SingleSelect: USD, VND)
+- `status` (SingleSelect: pending, paid, cancelled)
+- `theme` (Text)
+- `taxRate` (Number)
+- `discountType` (Text)
+- `discountValue` (Number)
+- `clientInfo` (LongText/JSON) — Thông tin client
+- `studioInfo` (LongText/JSON) — Thông tin studio
+- `bankingInfo` (LongText/JSON) — Thông tin ngân hàng
+- `items` (LongText/JSON) — Danh sách service items
+
+---
+
+### Source Code Changes
+
+#### [MODIFY] [services/firebaseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/firebaseService.ts) → rename/rewrite as `services/nocodbService.ts`
+Viết lại toàn bộ service layer:
+- Dùng NocoDB REST API ([fetch](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/firebaseService.ts#121-134) calls) thay Firebase SDK
+- Giữ nguyên **interface** [SaveResponse](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/firebaseService.ts#38-44) và các function exports để không cần đổi nơi gọi
+- Giữ fallback **localStorage** khi API lỗi
+- JSON.stringify cho các nested objects (clientInfo, studioInfo, bankingInfo, items)
+- JSON.parse khi đọc về
+
+#### [MODIFY] [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
+- Đổi import từ `firebaseService` → `nocodbService`
+- Không cần thay đổi logic vì interface giống nhau
+
+#### [NEW] [.env.local](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/.env.local)
+Thêm NocoDB config:
+```
+VITE_NOCODB_BASE_URL=https://nocodb.tdconsulting.vn
+VITE_NOCODB_API_TOKEN=ia8adC8RqGkyh9khOzthF9BjOL9Tt0vOWx1HjhPb
+VITE_NOCODB_BASE_ID=pjlxcpr5ih0q9y9
+```
+
+## Verification Plan
+
+### Manual Testing (Browser)
+1. Mở `http://localhost:3000/`
+2. Mở Config → thêm Banking Profile mới → click Save Profile → kiểm tra xuất hiện trong dropdown
+3. Vào NocoDB dashboard (`nocodb.tdconsulting.vn`) → kiểm tra bảng `INV_Banks` có record mới
+4. Tạo invoice với vài service items → click **Save Storage** → kiểm tra bảng `INV_Invoices` có record
+5. Chuyển sang tab **History** → xác nhận invoice vừa tạo xuất hiện
+6. Click Load invoice từ History → kiểm tra dữ liệu đầy đủ (items, client, banking)
+7. Sau khi verify hết, xóa [firebaseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/firebaseService.ts)

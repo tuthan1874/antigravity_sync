@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Plan to migrate the invoice app backend from Firebase Firestore to NocoDB. Creates 2 new tables (INV_Banks, INV_Invoices) in the TD_App base. Rewrites the service layer in nocodbService.ts keeping the same interface. Updates .env.local with NocoDB credentials. Adds env variables for base URL, API token, and base ID.",
+  "updatedAt":  "2026-03-03T14:31:49.176675200Z"
+}

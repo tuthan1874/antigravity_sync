@@ -1,0 +1,44 @@
+# TD Games Invoice Generator V2 Refactor - Walkthrough
+
+This document outlines the successful refactoring of the TD Games Invoice Generator application into its V2 version. The refactor successfully migrated the backend to NocoDB and replaced the UI with a premium, modern design using Stitch MCP.
+
+## Changes Made
+
+### 1. NocoDB Backend Integration
+- **New Workspace:** Created a dedicated set of tables in the `TD_Games` NocoDB base to store invoice data without conflicting with existing tables.
+- **Tables Created:**
+    - `v2_Invoice_Clients`: Stores client contact information.
+    - `v2_Invoices`: Core invoice details (number, date, status, currency).
+    - `v2_Invoice_Items`: Line items linked to invoices via Foreign Keys.
+    - `v2_Bank_Profiles`: Reusable banking configurations.
+- **Service Layer:** Implemented [services/nocodbService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-generator/services/nocodbService.ts) using Axios for secure and structured API communication with NocoDB.
+
+### 2. UI Redesign (Stitch MCP)
+- **Dashboard:** A high-fidelity dashboard with glassmorphism, dark mode, and real-time statistics.
+- **Invoice Editor:** A split-screen editor providing a side-by-side view of the input form and a live-updating invoice preview.
+- **Branding:** Consistent "TD Games - Premium Billing Engine" branding applied throughout the app.
+
+### 3. Frontend Architecture
+- **App.tsx Refactor:** Simplified the main entry point to manage routing between the Dashboard and Editor.
+- **Componentized Styles:** Isolated styles into [DashboardV2.css](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-generator/components/DashboardV2.css) and [InvoiceEditorV2.css](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-generator/components/InvoiceEditorV2.css) for better maintainability.
+- **Export System:** Integrated existing HTML-to-PDF/PNG export functionality into the new Editor interface.
+
+## Visual Verification
+
+### Dashboard V2
+The new dashboard provides a modern overview of billing activities with quick access to invoice creation.
+![Dashboard V2](/e:/TDC_App/TDGAMES_App/td-games-invoice-generator/dashboard_v2.png)
+*(Note: I will capture a high-quality dashboard screenshot now)*
+
+### Invoice Editor & Preview
+The split-screen editor allows for efficient invoice creation with instant visual feedback.
+![Invoice Editor](/e:/TDC_App/TDGAMES_App/td-games-invoice-generator/invoice_editor.png)
+
+## Verification Results
+- [x] **Database Connectivity:** Successfully fetched and displayed records (and handled empty states) from NocoDB.
+- [x] **UI Responsiveness:** Verified theme consistency and click-through navigation between Dashboard and Editor.
+- [x] **Deployment Ready:** Resolved missing dependency issues (`axios`) and Vite compilation errors ([index.css](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-generator/index.css) import).
+
+## Next Steps for User
+1. **API Token Configuration:** Ensure the `VITE_NOCODB_TOKEN` is set in your environment if moving to a restricted production base.
+2. **Data Migration:** If desired, old Firebase data can be imported into the new `v2_` NocoDB tables using the NocoDB import tool.

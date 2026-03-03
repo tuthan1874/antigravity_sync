@@ -1,0 +1,39 @@
+# Refactor TD Games Invoice Generator
+
+This plan outlines the total overhaul of the current Invoice Generator application, migrating the data layer to NocoDB and the UI system to a Stitch-generated design.
+
+## Proposed Changes
+
+### [Backend] NocoDB Integration
+We will move away from the current hybrid Firebase/Local storage to a centralized NocoDB backend within the `TD_Games` base (`pcrawiz8s9i03rk`).
+
+#### [NEW] Database Tables
+To avoid affecting existing tables, we will create:
+- **`v2_Invoice_Clients`**: Store recurring client data.
+- **`v2_Invoices`**: Header information (Invoice #, Date, Status, Total, Currency).
+- **`v2_Invoice_Items`**: Line items linked to an invoice.
+- **`v2_Bank_Profiles`**: Reusable banking information.
+
+### [Frontend] UI & UX Overhaul (Stitch)
+We will use Stitch to generate a high-end, premium Dashboard and Editor experience.
+
+#### [REPLACE] Dashboard & List View
+- Redesign the "History" tab into a modern Dashboard.
+- Better visual status tracking (Paid vs. Pending).
+
+#### [REPLACE] Invoice Editor
+- Move from the current multi-section form to a more intuitive, live-preview-driven editor.
+- Implement the Stitch design for the Invoice template itself to provide a more professional look.
+
+#### [MODIFY] [nocodbService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-generator/services/nocodbService.ts) [NEW]
+- New service to handle all CRUD operations with NocoDB.
+
+#### [MODIFY] [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-generator/App.tsx)
+- Refactor the main entry point to use the new Stitch components and NocoDB data fetching.
+
+## Verification Plan
+
+### Manual Verification
+- Create a new invoice and verify it saves to NocoDB.
+- Export the invoice in all 4 formats and verify layout integrity.
+- Switch bank profiles and verify details update correctly in the UI.
