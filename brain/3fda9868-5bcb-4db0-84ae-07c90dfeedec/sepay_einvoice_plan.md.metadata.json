@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Integration plan for SePay eInvoice API into TD Games Billing app. Covers new service layer, data mapping from InvoiceData to SePay format, UI changes, credential config, NocoDB schema updates, and async polling strategy.",
+  "updatedAt":  "2026-03-04T16:03:06.834138Z"
+}
