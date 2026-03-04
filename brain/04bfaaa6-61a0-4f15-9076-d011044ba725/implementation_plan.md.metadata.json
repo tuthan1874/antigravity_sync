@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Updated SePay eInvoice integration plan using Supabase Edge Function as proxy to solve CORS and credentials exposure issues. Covers: Edge Function deployment on project Workflow (fifuhkupaqcfjwyouwpa), client service layer (sePayService.ts), data mapping InvoiceData→SePay, NocoDB schema additions, UI changes (button, modal, badges), and verification plan.",
+  "updatedAt":  "2026-03-04T16:50:46.308470300Z"
+}

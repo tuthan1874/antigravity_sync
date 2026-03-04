@@ -6,20 +6,19 @@ Tích hợp SePay eInvoice cho phép app xuất hóa đơn điện tử hợp l�
 
 ---
 
-## 🔴 Thông tin bạn cần cung cấp trước khi code
+## ✅ Credentials (đã có đủ — sẵn sàng implement)
 
-> [!IMPORTANT]
-> **Bắt buộc phải có để bắt đầu:**
->
-> | # | Thông tin | Ghi chú |
-> |---|-----------|---------|
-> | 1 | `client_id` | Cấp khi đăng ký SePay eInvoice |
-> | 2 | `client_secret` | Cấp khi đăng ký SePay eInvoice |
-> | 3 | `provider_account_id` | UUID tài khoản nhà phát hành HĐ (lấy từ `GET /v1/provider-accounts`) |
-> | 4 | `template_code` mặc định | Mã mẫu HĐ muốn dùng (VD: `"1"` = GTGT, `"2"` = bán hàng) |
-> | 5 | `invoice_series` mặc định | Ký hiệu HĐ tương ứng (VD: `"C25HTV"`) |
->
-> **Môi trường:** Bắt đầu bằng **Sandbox** (`https://einvoice-api-sandbox.sepay.vn`)
+| # | Thông tin | Giá trị |
+|---|-----------|---------|
+| 1 | `client_id` | `EINV-LIVE-30FNB2UCPW315TF2` |
+| 2 | `client_secret` | `7603cde31d4208308f737bac243eef49` |
+| 3 | `provider_account_id` | `d83e6718-0a8b-11f1-b21a-a6006ab65aca` |
+| 4 | `template_code` | `1` (Hóa đơn GTGT) |
+| 5 | `invoice_series` | `C26TSE` |
+
+> **Môi trường:** **Production** (`https://einvoice-api.sepay.vn`)
+
+
 
 ---
 

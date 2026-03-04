@@ -1,0 +1,15 @@
+# SePay eInvoice Integration Tasks
+
+- [ ] Deploy Edge Function `sepay-proxy` to Supabase Workflow project
+  - [ ] Write Edge Function code (token, create-draft, check-status)
+  - [ ] Set Supabase Secrets for SePay credentials
+  - [ ] Deploy & test from browser
+- [ ] Add NocoDB columns to INV_Invoices
+- [ ] Update [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts) with new fields
+- [ ] Create `services/sePayService.ts` (client-side service)
+- [ ] Update [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) — UI changes
+  - [ ] Payment method dropdown in edit form
+  - [ ] "Xuất HĐ Điện Tử" button + modal flow
+  - [ ] History tab badges + PDF download
+- [ ] Update [.env.local](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/.env.local) with Edge Function URL
+- [ ] End-to-end verification

@@ -1,0 +1,11 @@
+# Task: Test SePay eInvoice API CORS
+
+## Plan
+- [ ] Open a browser page at `https://www.google.com`
+- [ ] Execute fetch request with SePay credentials
+- [ ] Monitor result in page title and console logs
+- [ ] Document result (Success/CORS Error)
+- [ ] Finalize findings
+
+## Progress
+- Initializing task.

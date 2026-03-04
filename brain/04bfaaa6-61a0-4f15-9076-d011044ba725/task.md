@@ -1,0 +1,21 @@
+# SePay eInvoice Integration Tasks
+
+- [x] Deploy Edge Function `sepay-proxy` to Supabase Workflow project
+  - [x] Write Edge Function code (token, create-draft, check-status)
+  - [ ] Set Supabase Secrets for SePay credentials (needs user dashboard action)
+  - [x] Deploy to Supabase
+- [x] Add NocoDB columns to INV_Invoices (5 columns added)
+- [x] Update `types.ts` with new fields
+- [x] Create `services/sePayService.ts` (client-side service)
+- [x] Update `services/nocodbService.ts` (save/parse eInvoice fields)
+- [x] Update `App.tsx` — UI changes
+  - [x] Payment method pill selector in Discount & Tax section
+  - [x] "Xuất HĐ Điện Tử" button in Actions sidebar
+  - [x] eInvoice progress/result/error modal
+  - [x] History tab eInvoice badges
+  - [x] "Mở PDF Nháp" link when draft exists
+- [x] Update `.env.local` with Edge Function URL
+- [x] Fix pre-existing TS error in `constants.ts` (missing import)
+- [x] TypeScript build passes (0 errors)
+- [ ] Set Supabase Secrets (user action required)
+- [ ] End-to-end test with real invoice

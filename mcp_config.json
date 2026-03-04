@@ -10,13 +10,15 @@
       ]
     },
     "supabase-mcp-server": {
+      "$typeName": "exa.cascade_plugins_pb.CascadePluginCommandTemplate",
       "command": "npx",
       "args": [
         "-y",
         "@supabase/mcp-server-supabase@latest",
         "--access-token",
-        "sbp_bae8339f2bdb1f98916893fd0f3b0be07756fa85"
-      ]
+        "sbp_cc1f12e7a3e420cd5dcc109972f28658cc09c681"
+      ],
+      "env": {}
     },
     "NocoDB_TD_Games": {
       "command": "npx",

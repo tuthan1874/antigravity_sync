@@ -1,0 +1,165 @@
+# SePay eInvoice Integration — Updated Plan (Edge Function Proxy)
+
+## Tổng quan
+
+Tích hợp SePay eInvoice API để xuất hóa đơn điện tử nháp từ TD Games Invoice App. Do SePay API **không hỗ trợ CORS**, toàn bộ logic gọi SePay sẽ đi qua **Supabase Edge Function** làm proxy.
+
+### Kiến trúc
+
+```
+React App  →  Supabase Edge Function  →  SePay API
+(browser)     (fifuhkupaqcfjwyouwpa)     (einvoice-api.sepay.vn)
+```
+
+> [!IMPORTANT]
+> SePay credentials (`client_id`, `client_secret`) sẽ nằm trên **Supabase Secrets** — KHÔNG expose ra client.
+
+---
+
+## Proposed Changes
+
+### 1. Supabase Edge Function
+
+#### [NEW] Edge Function `sepay-proxy`
+
+Một Edge Function duy nhất xử lý 2 action qua body `{ action, payload }`:
+
+| Action | Làm gì | SePay Endpoint |
+|--------|--------|----------------|
+| `create-draft` | Lấy token → tạo hóa đơn nháp | `POST /v1/token` + `POST /v1/invoices/create` |
+| `check-status` | Poll kết quả tạo hóa đơn | `GET /v1/invoices/create/check/{tracking_code}` |
+
+**Logic bên trong Edge Function:**
+
+```
+Action: create-draft
+  1. Đọc SEPAY_CLIENT_ID, SEPAY_CLIENT_SECRET từ Deno.env
+  2. POST /v1/token (Basic Auth) → access_token
+  3. POST /v1/invoices/create (is_draft: true, Bearer token) → tracking_code
+  4. Return { tracking_code }
+
+Action: check-status  
+  1. Lấy token (cache hoặc lấy mới)
+  2. GET /v1/invoices/create/check/{tracking_code}
+  3. Return { status, invoice: { pdf_url, reference_code } }
+```
+
+**Supabase Secrets cần set:**
+```
+SEPAY_BASE_URL=https://einvoice-api.sepay.vn
+SEPAY_CLIENT_ID=EINV-LIVE-30FNB2UCPW315TF2
+SEPAY_CLIENT_SECRET=7603cde31d4208308f737bac243eef49
+SEPAY_PROVIDER_ACCOUNT_ID=d83e6718-0a8b-11f1-b21a-a6006ab65aca
+SEPAY_TEMPLATE_CODE=1
+SEPAY_INVOICE_SERIES=C26TSE
+```
+
+> [!NOTE]
+> Edge Function sẽ **disable JWT verification** (`verify_jwt: false`) vì app hiện tại không dùng Supabase Auth. Thay vào đó, Edge Function sẽ yêu cầu một API key đơn giản trong header để ngăn truy cập trái phép.
+
+---
+
+### 2. Client Service Layer
+
+#### [NEW] [sePayService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/sePayService.ts)
+
+File này chỉ làm 3 việc:
+1. **`mapInvoiceToSePay(invoice: InvoiceData)`** — map dữ liệu app → SePay payload (buyer, items, tax, discount...)
+2. **`createDraftEInvoice(invoice: InvoiceData)`** — gọi Edge Function action `create-draft`
+3. **`checkEInvoiceStatus(trackingCode: string)`** — gọi Edge Function action `check-status`
+
+Data mapping (giữ nguyên từ plan gốc):
+
+| App field | SePay field |
+|-----------|-------------|
+| `clientInfo.name` | `buyer.name` |
+| `clientInfo.taxCode` | `buyer.tax_code` (có → `type: "company"`) |
+| `clientInfo.address` | `buyer.address` |
+| `items[].description` | `items[].item_name` |
+| `items[].quantity` | `items[].quantity` |
+| `items[].unitPrice` | `items[].unit_price` |
+| `taxRate` | `items[].tax_rate` |
+| `discountValue` | item `line_type: 3` hoặc `discount_amount` |
+| `currency` | `currency` |
+| `issueDate` | `issued_date` (format `YYYY-MM-DD HH:mm:ss`) |
+
+---
+
+### 3. Types & NocoDB Schema
+
+#### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
+
+Thêm vào `InvoiceData`:
+```typescript
+payment_method?: 'TM' | 'CK' | 'TM/CK' | 'KHAC';
+einvoice_status?: 'none' | 'draft' | 'failed';
+einvoice_reference_code?: string;
+einvoice_tracking_code?: string;
+einvoice_pdf_url?: string;
+```
+
+#### NocoDB `INV_Invoices` — Thêm 5 cột
+
+| Cột | Type | Mô tả |
+|-----|------|-------|
+| `einvoice_status` | SingleSelect: `none / draft / failed` | Trạng thái |
+| `einvoice_reference_code` | Text | UUID nháp từ SePay |
+| `einvoice_tracking_code` | Text | tracking_code |
+| `einvoice_pdf_url` | URL | Link PDF nháp |
+| `payment_method` | SingleSelect: `TM / CK / TM/CK / KHAC` | Phương thức TT |
+
+---
+
+### 4. UI Changes
+
+#### [MODIFY] [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
+
+Thêm **nhẹ nhàng**, không refactor lại gì:
+
+1. **Edit form** — thêm dropdown "Phương thức thanh toán"
+2. **Toolbar** — thêm nút `📄 Xuất HĐ Điện Tử`
+3. **Flow khi click:**
+   - Modal xác nhận thông tin + tổng tiền
+   - Spinner "Đang gửi lên SePay..."
+   - Poll `check-status` → hiện kết quả
+   - Thành công → nút "Mở PDF nháp" + lưu NocoDB
+   - Lỗi → hiện message rõ ràng
+4. **Tab History** — badge trạng thái + nút Tải PDF nháp
+
+---
+
+### 5. Config
+
+#### [MODIFY] [.env.local](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/.env.local)
+
+Thay thế 6 biến `VITE_SEPAY_*` cũ bằng:
+```
+VITE_SEPAY_EDGE_FUNCTION_URL=https://fifuhkupaqcfjwyouwpa.supabase.co/functions/v1/sepay-proxy
+VITE_SEPAY_API_KEY=<simple-api-key-for-edge-function>
+```
+
+> Client chỉ cần biết URL Edge Function — không còn biết SePay credentials.
+
+---
+
+## Verification Plan
+
+### Automated (browser test)
+1. Deploy Edge Function lên Supabase project `Workflow`
+2. Gọi thử Edge Function từ browser console:
+   ```javascript
+   fetch('https://fifuhkupaqcfjwyouwpa.supabase.co/functions/v1/sepay-proxy', {
+     method: 'POST',
+     headers: { 'Content-Type': 'application/json', 'x-api-key': '<key>' },
+     body: JSON.stringify({ action: 'create-draft', payload: { /* test data */ } })
+   })
+   ```
+3. Verify nhận được `tracking_code`
+4. Gọi `check-status` → verify nhận `pdf_url`
+
+### Manual (user)
+1. Mở app → tạo invoice → click "Xuất HĐ Điện Tử"
+2. Xác nhận modal hiện đúng thông tin
+3. Chờ kết quả → kiểm tra PDF nháp mở được
+4. Kiểm tra NocoDB ghi đúng `einvoice_status = "draft"` + `reference_code`
+5. Vào SePay Portal kiểm tra hóa đơn nháp có hiển thị đúng
