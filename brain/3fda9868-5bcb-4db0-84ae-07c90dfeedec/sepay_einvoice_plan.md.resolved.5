@@ -53,7 +53,7 @@ Lưu reference_code + pdf_url vào NocoDB → mở PDF cho user
 
 ### 1. Config & Credentials
 
-#### [MODIFY] `.env.local`
+#### [MODIFY] [.env.local](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/.env.local)
 ```
 VITE_SEPAY_BASE_URL=https://einvoice-api-sandbox.sepay.vn
 VITE_SEPAY_CLIENT_ID=<client_id>
@@ -74,32 +74,28 @@ VITE_SEPAY_INVOICE_SERIES=<invoice_series>
 | `getAccessToken()` | POST `/v1/token` | Basic Auth (no body), cache 24h |
 | `getProviderAccounts()` | GET `/v1/provider-accounts` | Lấy danh sách account, lấy `id` |
 | `getProviderAccountDetail(id)` | GET `/v1/provider-accounts/{id}` | Lấy `templates[]` → chọn `template_code` + `invoice_series` |
-| `createDraftEInvoice(invoice)` | POST `/v1/invoices/create` | `is_draft: true`, map `InvoiceData` → payload |
+| `createDraftEInvoice(invoice)` | POST `/v1/invoices/create` | `is_draft: true`, map [InvoiceData](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts#46-64) → payload |
 | `pollCreateStatus(code)` | GET `/v1/invoices/create/check/{code}` | Poll → khi `status: Success` lấy `invoice.pdf_url` + `reference_code` |
 | `checkUsage()` | GET `/v1/usage` | Trả về `quota_remaining` |
 
 ---
 
-### 3. Data Mapping `InvoiceData` → SePay
+### 3. Data Mapping [InvoiceData](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts#46-64) → SePay
 
 | App field | SePay field | Ghi chú |
 |-----------|-------------|---------|
 | `clientInfo.name` | `buyer.name` | |
-| `clientInfo.taxCode` | `buyer.tax_code` | Có taxCode → `type: "company"`, không → `"personal"` |
+| `clientInfo.taxCode` | `buyer.tax_code` | Nếu có taxCode → `type: "company"`, không → `"personal"` |
 | `clientInfo.address` | `buyer.address` | |
 | `clientInfo.email` | `buyer.email` | |
-| `items[].description` | `items[].item_name` | `line_number` tự tăng, `line_type: 1` |
+| `items[].description` | `items[].item_name` | `line_type: 1` |
 | `items[].quantity` | `items[].quantity` | |
 | `items[].unitPrice` | `items[].unit_price` | |
-| `taxRate` | `items[].tax_rate` | Chỉ cần với HĐ GTGT. Enum: `-2, -1, 0, 5, 8, 10` |
-| `discountValue` (CK tổng đơn) | item `line_type: 3` + `before_discount_and_tax_amount` | Chiết khấu thương mại |
-| `discountValue` (CK trên SP) | `items[].discount_amount` (số tiền) hoặc `items[].discount_tax` (%) | Chiết khấu trực tiếp trên dòng hàng |
-| `notes` *(mới)* | item `line_type: 4` + `item_name: "..."` | Ghi chú hiển thị trên HĐ |
+| `taxRate` | `items[].tax_rate` | Enum: `-2, -1, 0, 5, 8, 10` |
+| `discountValue` | item riêng `line_type: 3` | Tách thành dòng chiết khấu |
 | `currency` | `currency` | |
 | `issueDate` | `issued_date` | Format: `YYYY-MM-DD HH:mm:ss` |
-| `payment_method` *(mới thêm)* | `payment_method` | Thêm dropdown vào Edit form: TM / CK / TM/CK / KHAC |
-| env `VITE_SEPAY_TEMPLATE_CODE` | `template_code` | Lấy từ `provider-accounts/{id}.templates[]` |
-| env `VITE_SEPAY_INVOICE_SERIES` | `invoice_series` | Lấy từ `provider-accounts/{id}.templates[]` |
+| – *(mới thêm)* | `payment_method` | Thêm dropdown vào Edit form: TM / CK / TM/CK / KHAC |
 
 ---
 
