@@ -1,5 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary":  "Walkthrough of the process to push source code to GitHub and the security improvements made.",
-  "updatedAt":  "2026-03-03T17:17:21.533582300Z"
+  "summary":  "Final walkthrough of the process to clean up and push source code to GitHub, including secret removal and git re-initialization.",
+  "updatedAt":  "2026-03-03T17:36:30.882819500Z",
+  "version":  "1"
 }
