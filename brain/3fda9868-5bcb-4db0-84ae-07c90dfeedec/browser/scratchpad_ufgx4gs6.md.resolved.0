@@ -1,0 +1,9 @@
+# Verification Plan
+
+1. [ ] Open `http://localhost:3000`
+2. [ ] Verify login screen visibility
+3. [ ] Check branding (TD Games Billing)
+4. [ ] Check for username/password fields
+5. [ ] Check for console errors
+6. [ ] Capture screenshot
+7. [ ] Report findings

@@ -1,0 +1,10 @@
+[0] (500,500)<div  />
+	TD Games Billing
+	Internal Dashboard
+	[1] (500,461)<label class='block text-xs font-black uppercase tracking-widest mb-2'>Tên đăng nhập />
+	[2] (500,493)<input class='w-full rounded-xl pl-11 pr-4 py-3.5 text-sm font-medium outline-none transition-all' placeholder='username' />
+	[3] (500,535)<label class='block text-xs font-black uppercase tracking-widest mb-2'>Mật khẩu />
+	[4] (500,567)<input class='w-full rounded-xl pl-11 pr-12 py-3.5 text-sm font-medium outline-none transition-all' placeholder='••••••••' />
+	[5] (626,567)<button class='absolute right-4 top-1/2 -translate-y-1/2 transition-opacity hover:opacity-100' />
+	[6] (500,623)<button class='w-full rounded-xl py-4 text-sm font-black uppercase tracking-widest transition-all relative overflow-hidden'>Đăng nhập />
+	Internal use only · TD Games © 2026
