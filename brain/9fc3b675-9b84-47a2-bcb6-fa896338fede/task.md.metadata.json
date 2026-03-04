@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_TASK",
+  "summary":  "Checklist for deploying td-games-invoice-app to VPS with Nginx and Certbot SSL",
+  "updatedAt":  "2026-03-04T14:41:14.862019200Z"
+}
