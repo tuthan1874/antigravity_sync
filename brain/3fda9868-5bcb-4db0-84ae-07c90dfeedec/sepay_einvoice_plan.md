@@ -6,19 +6,43 @@ Tích hợp SePay eInvoice cho phép app xuất hóa đơn điện tử hợp l�
 
 ---
 
-## Kiến trúc tích hợp
+## 🔴 Thông tin bạn cần cung cấp trước khi code
 
-```mermaid
-flowchart LR
-  App["TD Games Billing\n(React)"] --> S["sePayService.ts"]
-  S --> |"POST /token"| SePay["SePay eInvoice API"]
-  S --> |"POST /invoices/create"| SePay
-  S --> |"GET /create/check"| SePay
-  S --> |"POST /invoices/issue"| SePay
-  S --> |"GET /issue/check"| SePay
-  S --> |"GET /invoices/{ref}"| SePay
-  S --> NocoDB["NocoDB\nINV_Invoices"]
+> [!IMPORTANT]
+> **Bắt buộc phải có để bắt đầu:**
+>
+> | # | Thông tin | Ghi chú |
+> |---|-----------|---------|
+> | 1 | `client_id` | Cấp khi đăng ký SePay eInvoice |
+> | 2 | `client_secret` | Cấp khi đăng ký SePay eInvoice |
+> | 3 | `provider_account_id` | UUID tài khoản nhà phát hành HĐ (lấy từ `GET /v1/provider-accounts`) |
+> | 4 | `template_code` mặc định | Mã mẫu HĐ muốn dùng (VD: `"1"` = GTGT, `"2"` = bán hàng) |
+> | 5 | `invoice_series` mặc định | Ký hiệu HĐ tương ứng (VD: `"C25HTV"`) |
+>
+> **Môi trường:** Bắt đầu bằng **Sandbox** (`https://einvoice-api-sandbox.sepay.vn`)
+
+---
+
+## Luồng xử lý (đơn giản hoá)
+
+Chỉ xuất **hóa đơn nháp** (`is_draft: true`). Việc phát hành và ký số sẽ do người dùng thực hiện thủ công trên SePay Portal.
+
 ```
+[Click Xuất HĐ Nháp]
+    ↓
+POST /v1/token → access_token
+    ↓
+POST /v1/invoices/create (is_draft: true)  ← Không trừ hạn ngạch
+    → tracking_code
+    ↓
+Poll GET /v1/invoices/create/check/{tracking_code}  (mỗi 2s, tối đa 30 lần)
+    ↓ status = "Success"
+GET /v1/invoices/{reference_code}/download?type=pdf (base64 → Blob → download)
+    ↓
+Lưu reference_code, pdf_url vào NocoDB (trạng thái = "draft")
+```
+
+> ✅ Hóa đơn nháp **không bị trừ hạn ngạch**. Người dùng vào SePay Portal để ký và phát hành chính thức.
 
 ---
 
@@ -27,12 +51,13 @@ flowchart LR
 ### 1. Config & Credentials
 
 #### [MODIFY] `.env.local`
-Thêm các env vars:
 ```
 VITE_SEPAY_BASE_URL=https://einvoice-api-sandbox.sepay.vn
 VITE_SEPAY_CLIENT_ID=<client_id>
 VITE_SEPAY_CLIENT_SECRET=<client_secret>
 VITE_SEPAY_PROVIDER_ACCOUNT_ID=<provider_account_id>
+VITE_SEPAY_TEMPLATE_CODE=<template_code>
+VITE_SEPAY_INVOICE_SERIES=<invoice_series>
 ```
 
 ---
@@ -40,109 +65,79 @@ VITE_SEPAY_PROVIDER_ACCOUNT_ID=<provider_account_id>
 ### 2. Service Layer
 
 #### [NEW] `services/sePayService.ts`
-Các function chính:
 
-| Function | Mô tả |
-|----------|-------|
-| `getAccessToken()` | POST `/v1/token`, cache token + expiry |
-| `getProviderAccounts()` | GET `/v1/provider-accounts` |
-| `createEInvoice(invoice)` | POST `/v1/invoices/create`, map InvoiceData → SePay format |
-| `checkCreateStatus(tracking_code)` | Poll GET `/v1/invoices/create/check/{code}` |
-| `issueEInvoice(reference_code)` | POST `/v1/invoices/issue` |
-| `checkIssueStatus(tracking_code)` | Poll GET `/v1/invoices/issue/check/{code}` |
-| `getEInvoiceDetail(reference_code)` | GET `/v1/invoices/{reference_code}` → PDF/XML URLs |
-| `checkUsage()` | GET `/v1/usage` |
-
-**Lưu ý quan trọng về async polling:**
-- Create và Issue đều bất đồng bộ → phải poll `/check` sau mỗi bước
-- Chiến lược: retry mỗi 2 giây, tối đa 30 lần (~1 phút)
+| Function | Endpoint | Mô tả |
+|----------|----------|---------|
+| `getAccessToken()` | POST `/v1/token` | Basic Auth, cache token 24h |
+| `createDraftEInvoice(invoice)` | POST `/v1/invoices/create` | `is_draft: true`, map InvoiceData → SePay |
+| `pollCreateStatus(code)` | GET `/v1/invoices/create/check/{code}` | Poll đến Success/Failed |
+| `downloadEInvoicePdf(ref)` | GET `/v1/invoices/{ref}/download?type=pdf` | decode base64 → Blob download |
+| `checkUsage()` | GET `/v1/usage` | Hiển thị hạn ngạch còn lại |
 
 ---
 
-### 3. Data Mapping
+### 3. Data Mapping `InvoiceData` → SePay
 
-Cần map `InvoiceData` (format nội bộ) → format SePay:
-
-| InvoiceData | SePay field |
-|-------------|-------------|
-| `studioInfo.name` | `seller.name` |
-| `studioInfo.taxCode` | `seller.tax_code` |
-| `studioInfo.address` | `seller.address` |
-| `clientInfo.name` | `buyer.name` |
-| `clientInfo.taxCode` | `buyer.tax_code` |
-| `clientInfo.address` | `buyer.address` |
-| `items[].description` | `items[].name` |
-| `items[].quantity` | `items[].quantity` |
-| `items[].unitPrice` | `items[].unit_price` |
-| `taxRate` | `tax_rate` |
-| `discountValue` | `discount` |
-| `currency` | `currency` |
-| `issueDate` | `issue_date` |
-| `invoiceNumber` | `reference_code` (nội bộ) |
-
-> ⚠️ **Cần clarify với SePay**: format chính xác của payload (tên field, nested structure) cần xác nhận từ docs chi tiết.
+| App field | SePay field | Ghi chú |
+|-----------|-------------|---------|
+| `clientInfo.name` | `buyer.name` | |
+| `clientInfo.taxCode` | `buyer.tax_code` | Nếu có taxCode → `type: "company"`, không → `"personal"` |
+| `clientInfo.address` | `buyer.address` | |
+| `clientInfo.email` | `buyer.email` | |
+| `items[].description` | `items[].item_name` | `line_type: 1` |
+| `items[].quantity` | `items[].quantity` | |
+| `items[].unitPrice` | `items[].unit_price` | |
+| `taxRate` | `items[].tax_rate` | Enum: `-2, -1, 0, 5, 8, 10` |
+| `discountValue` | item riêng `line_type: 3` | Tách thành dòng chiết khấu |
+| `currency` | `currency` | |
+| `issueDate` | `issued_date` | Format: `YYYY-MM-DD HH:mm:ss` |
+| – *(mới thêm)* | `payment_method` | Thêm dropdown vào Edit form: TM / CK / TM/CK / KHAC |
 
 ---
 
-### 4. NocoDB Schema Update
+### 4. UI Changes
 
-#### [MODIFY] `INV_Invoices` table — thêm các cột:
+#### [MODIFY] Edit form — thêm field `payment_method`
+```
+Phương thức thanh toán: [ Tiền mặt ▾ ]
+```
+
+#### [MODIFY] Preview/Edit toolbar — thêm button
+```
+[ Export PDF ]  [ Save ]  [ 📄 Xuất HĐ Điện Tử ]
+```
+
+**Flow khi click:**
+1. Modal xác nhận: tóm tắt thông tin + tổng tiền
+2. Spinner + status: **Đang tạo hóa đơn nháp...**
+3. Thành công → nút **Tải PDF nháp** + badge "Nháp - chờ phát hành"
+4. Lỗi → message cụ thể từ `data.message`
+
+> Sau khi xuất nháp, người dùng vào **SePay Portal** để ký và phát hành chính thức.
+
+#### [MODIFY] tab `history` — mỗi invoice card thêm:
+- Badge: `Chưa xuất` / `Nháp ✓` / `Lỗi ✗`
+- Nút **Tải PDF nháp** nếu đã có `einvoice_reference_code`
+
+---
+
+### 5. NocoDB Schema — thêm cột vào `INV_Invoices`
 
 | Cột | Type | Mô tả |
 |-----|------|-------|
-| `einvoice_status` | SingleSelect: `none / creating / created / issuing / issued / failed` | Trạng thái eInvoice |
-| `einvoice_reference_code` | Text | Mã hóa đơn CQT cấp |
-| `einvoice_tracking_create` | Text | tracking_code bước create |
-| `einvoice_tracking_issue` | Text | tracking_code bước issue |
-| `einvoice_pdf_url` | URL | Link tải PDF hóa đơn điện tử |
-| `einvoice_xml_url` | URL | Link tải XML |
-
----
-
-### 5. UI Changes
-
-#### [MODIFY] `App.tsx`
-
-**Trong tab `edit` / `preview` — thêm button:**
-```
-[ EXPORT PDF ]  [ Save Invoice ]  [ 📄 Xuất HĐ Điện Tử ]
-```
-
-**Flow khi click "Xuất HĐ Điện Tử":**
-1. Modal xác nhận → hiện thông tin invoice tóm tắt
-2. Loading stepper: **Tạo HĐ** → **Phát hành** → **Hoàn tất**
-3. Thành công → hiện link tải PDF/XML điện tử
-4. Lỗi → hiện message rõ ràng từng bước
-
-**Trong tab `history`:**
-- Hiện badge trạng thái eInvoice trên mỗi invoice card
-- Nút download PDF/XML điện tử nếu đã issued
-
----
-
-## Các điểm cần xác nhận trước khi code
-
-> [!IMPORTANT]
-> Cần có để bắt đầu implement:
-> 1. **Credentials SePay**: `client_id`, `client_secret` (Sandbox trước)
-> 2. **Provider Account ID**: ID tài khoản eInvoice đã đăng ký với SePay
-> 3. **Docs payload chi tiết**: Cấu trúc JSON chính xác cho `POST /v1/invoices/create`
-> 4. **Mẫu hóa đơn**: Ký hiệu/mẫu số cần truyền vào API
+| `einvoice_status` | SingleSelect: `none / draft / failed` | Trạng thái |
+| `einvoice_reference_code` | Text | UUID nháp từ SePay |
+| `einvoice_tracking_code` | Text | tracking_code từ create |
+| `einvoice_pdf_url` | URL | Link PDF nháp |
+| `payment_method` | SingleSelect: `TM / CK / TM/CK / KHAC` | Phương thức TT |
 
 ---
 
 ## Verification Plan
 
-### Sandbox Testing
-1. Lấy token thành công
-2. Create invoice → nhận `tracking_code`
-3. Poll `create/check` → status `success`
-4. Issue invoice → nhận `tracking_code` issue
-5. Poll `issue/check` → status `success`
-6. Lấy detail → có `pdf_url`, `xml_url`
-7. Download và mở file PDF kiểm tra nội dung
-
-### Production Checklist
-- [ ] Đổi `VITE_SEPAY_BASE_URL` sang production URL
-- [ ] Kiểm tra hạn ngạch `/v1/usage`
-- [ ] Test end-to-end với hóa đơn thật
+1. Lấy token thành công (`client_id` / `client_secret` Sandbox)
+2. Create draft (`is_draft: true`) → nhận `tracking_code`
+3. Poll `create/check` → `status: "Success"`, có `reference_code` + `pdf_url`
+4. Download PDF nháp → mở file kiểm tra nội dung
+5. Xác nhận NocoDB ghi đúng `einvoice_status = "draft"` + `reference_code`
+6. Đổi `VITE_SEPAY_BASE_URL` sang production → test lại với HĐ nháp thật
