@@ -1,0 +1,6 @@
+# Task: Open Excel file and wait
+
+## Plan
+- [ ] Open `file:///E:/TDC_App/TDGAMES_App/excel-professional-skill/output/MTCV_CEO_TD_GAMES.xlsx` in the browser
+- [ ] Wait for 3 seconds
+- [ ] Provide summary and finish
