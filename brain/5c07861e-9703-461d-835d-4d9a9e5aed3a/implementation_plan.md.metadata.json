@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Detailed analysis of the Drive Sync bug where Client→Studio sync results in Studio having more files. Root cause: when destination already has files with same names, the sync creates duplicates because name-matched files don't get tracked with sourceId appProperties, causing them to persist alongside newly copied files. Proposes 3 fixes: (1) stamp sourceId on name-matched files, (2) improve mirror delete to handle duplicates, (3) same fix for folders.",
+  "updatedAt":  "2026-03-05T03:04:16.975923400Z"
+}

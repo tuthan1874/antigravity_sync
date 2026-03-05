@@ -1,6 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_TASK",
-  "summary":  "Tracking SePay eInvoice integration tasks. Most items complete, remaining: Supabase secrets and end-to-end verification.",
-  "updatedAt":  "2026-03-04T16:58:26.623448700Z",
-  "version":  "1"
+  "summary":  "Updated task list with new UX improvement items for eInvoice flow integration with Export/Save workflow and History tab.",
+  "updatedAt":  "2026-03-04T17:09:19.069024100Z",
+  "version":  "2"
 }

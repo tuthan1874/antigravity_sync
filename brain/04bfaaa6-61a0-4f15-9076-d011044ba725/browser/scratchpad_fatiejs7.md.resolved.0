@@ -1,0 +1,8 @@
+# TD Games Invoice App Verification Plan
+
+- [ ] Open http://localhost:3000/
+- [ ] Log in as admin (if necessary)
+- [ ] Navigate to the HISTORY tab
+- [ ] Verify the eInvoice button (document icon) in history cards
+- [ ] Verify eInvoice badges (HĐ Nháp ✓ or HĐ Lỗi ✗)
+- [ ] Capture screenshots of the History tab findings

@@ -1,0 +1,8 @@
+# Fix Drive Sync Duplicate Bug
+
+- [x] Analyze root cause of Studio having more files than Client
+- [/] Implement fixes in [sync.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js)
+  - [ ] Fix 1: Stamp `sourceId` on name-matched files (legacy fallback)
+  - [ ] Fix 2: Stamp `sourceId` on name-matched folders
+  - [ ] Fix 3: Add duplicate detection + cleanup in mirror delete step
+- [ ] Verify the fix

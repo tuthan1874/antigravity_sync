@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary":  "Documents the 3 fixes applied to sync.js to resolve the duplicate file/folder bug in Drive Sync Client→Studio direction.",
+  "updatedAt":  "2026-03-05T03:06:23.774234100Z"
+}
