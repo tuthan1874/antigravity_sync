@@ -4,34 +4,34 @@
 
 ### Project Setup
 - [x] Init Next.js project
-- [x] Install dependencies (openai SDK)
-- [ ] Set up environment variables (.env.local)
-- [ ] Project structure & layout
+- [x] Install dependencies (openai SDK, fastapi, openpyxl)
+- [x] Set up environment variables (.env.example)
+- [x] Project structure & layout
 
 ### Python Engine (FastAPI)
-- [/] `engine/server.py` — FastAPI microservice
-- [/] `engine/excel_from_json.py` — JSON → Excel converter
-- [/] `engine/themes.py` — 5 color themes
-- [ ] Test: JSON input → .xlsx output
+- [x] `engine/themes.py` — 5 color themes
+- [x] `engine/excel_from_json.py` — JSON → Excel converter
+- [x] `engine/server.py` — FastAPI microservice
+- [x] Test: JSON input → .xlsx output ✅
 
 ### AI Integration (OpenRouter)
-- [ ] `lib/aiProvider.ts` — OpenRouter API client with model selection
-- [ ] `lib/prompts/system-prompt.ts` — System prompt with JSON schema
-- [ ] `app/api/generate/route.ts` — Generation endpoint
-- [ ] Test: prompt → structured JSON
+- [x] `lib/aiProvider.ts` — OpenRouter API client with model selection
+- [x] `lib/prompts/system-prompt.ts` — System prompt with JSON schema
+- [x] `app/api/generate/route.ts` — Generation endpoint
+- [ ] Test: prompt → structured JSON (needs OpenRouter API key)
 
 ### Frontend
-- [ ] `app/layout.tsx` + `globals.css` — App shell, design system
-- [ ] `app/page.tsx` — Main page (chat + preview)
-- [ ] `components/PromptInput.tsx` — Input with template chips
-- [ ] `components/SpreadsheetPreview.tsx` — HTML table preview
-- [ ] `components/ExportPanel.tsx` — Download buttons
-- [ ] `app/settings/page.tsx` — API key & model settings
+- [x] `globals.css` — Dark glassmorphism design system
+- [x] `layout.tsx` — App shell, SEO metadata
+- [x] `page.tsx` — Full app (chat + preview + export + settings)
+- [x] Build passed ✅
 
-### End-to-End Integration
-- [ ] Connect frontend → AI → preview
-- [ ] Connect preview → Python engine → .xlsx download
-- [ ] Full E2E test
+### End-to-End Verification
+- [x] FastAPI `/health` — OK
+- [x] FastAPI `/themes` — 5 themes returned
+- [x] FastAPI `/export-excel` — .xlsx file generated
+- [x] Next.js build — Compiled successfully
+- [ ] Full E2E with real AI key (needs user's OpenRouter key)
 
 ## Phase 2 — Google Sheets (Later)
 - [ ] Google Sheets API integration
