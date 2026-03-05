@@ -1,0 +1,17 @@
+# Fix Drive Sync Duplicate Bug
+
+- [x] Analyze root cause of Studio having more files than Client
+- [x] Implement fixes in [sync.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js)
+  - [x] Fix 1: Stamp `sourceId` on name-matched files (legacy fallback)
+  - [x] Fix 2: Stamp `sourceId` on name-matched folders
+  - [x] Fix 3: Add duplicate detection + cleanup in mirror delete step
+- [x] Verify the fix
+
+# Sync Safety Mechanisms
+
+- [x] Refactor [syncFolder](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js#85-340) to accept options/context (direction, role)
+- [x] Client folder protection — skip mirror delete when dest = Client
+- [x] Delete threshold (>50%) — abort + alert if too many deletions
+- [x] Audit log — log every deletion to NocoDB
+- [x] Fix bidirectional sync — copy new files both ways without deleting wrong side
+- [x] Verify

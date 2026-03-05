@@ -1,0 +1,137 @@
+# 🔍 Code Review & Improvement Suggestions
+
+## 🚨 Critical Issues (Should Fix)
+
+### 1. Debug log đang ghi file liên tục vào disk
+[slack.js:59](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/webhooks/slack.js#L59):
+```javascript
+require('fs').appendFileSync('slack_debug_payloads.log', ...);
+```
+Mỗi Slack event đều ghi vào file → **file log sẽ lớn dần vô hạn**, gây hết disk. Nên xóa hoặc chuyển thành conditional debug.
+
+---
+
+### 2. JWT Secret hardcoded
+[auth.js:5](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/middleware/auth.js#L5):
+```javascript
+const JWT_SECRET = process.env.JWT_SECRET || 'chatsync-secret-key-123!@#';
+```
+Fallback secret bị hardcode → nếu quên set env var, ai cũng có thể forge JWT. Nên **bắt buộc** `JWT_SECRET` từ `.env`, crash nếu thiếu.
+
+---
+
+### 3. Password lưu plaintext
+[api.js:22](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/api.js#L22):
+```javascript
+if (!account || account.Password !== password)
+```
+Password so sánh trực tiếp → NocoDB lưu plaintext. Nên dùng `bcrypt` để hash.
+
+---
+
+### 4. `GOOGLE_SERVICE_ACCOUNT_KEY.json` nằm trong repo
+File chứa private key → dù đã có trong `.gitignore`, nhưng file tồn tại ở root rất dễ bị push nhầm. Nên di chuyển ra ngoài hoặc dùng env var.
+
+---
+
+## ⚠️ Important Improvements
+
+### 5. ClickUp webhook handler quá lớn (278 dòng, 1 function)
+[clickup.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/webhooks/clickup.js) — Handler `router.post('/')` chứa cả:
+- Comment sync logic
+- PM Finance tracking
+- Slack auto-threading
+- Review notification
+
+**Gợi ý**: Tách thành các module riêng:
+- `handlers/comment-sync.js`
+- `handlers/pm-tracking.js`  
+- `handlers/slack-automation.js`
+
+---
+
+### 6. Hardcoded List IDs
+[clickup.js:163](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/webhooks/clickup.js#L163):
+```javascript
+if (listId === '901815849460' || listId === '901816296143')
+```
+List IDs cứng trong code → thêm/sửa list phải sửa code + redeploy. Nên lưu trong NocoDB Settings hoặc `ListMappings` table.
+
+---
+
+### 7. Không có retry/error recovery cho Drive sync
+Nếu Google Drive API bị rate limit hoặc timeout giữa chừng, sync dừng lại mà không retry. Nên thêm:
+- Exponential backoff cho API calls
+- Retry failed operations (3 lần)
+
+---
+
+### 8. Reminders dùng file JSON trên disk
+[reminders.js:8](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/jobs/reminders.js#L8):
+```javascript
+const REMINDERS_FILE = path.join(__dirname, '../../.data_reminders.json');
+```
+Data persistence bằng local file → mất khi redeploy/restart container. Nên lưu vào NocoDB.
+
+---
+
+### 9. Drive sync cron không `await`
+[server.js:99](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/server.js#L99):
+```javascript
+cron.schedule('*/5 * * * *', () => {
+    driveSync.runDriveSync(); // ← không await
+});
+```
+Nếu sync chạy >5 phút, 2 instance sync chạy song song → race condition, duplicate files. Nên thêm lock:
+```javascript
+let isSyncing = false;
+cron.schedule('*/5 * * * *', async () => {
+    if (isSyncing) return;
+    isSyncing = true;
+    try { await driveSync.runDriveSync(); }
+    finally { isSyncing = false; }
+});
+```
+
+---
+
+## 💡 Nice-to-Have
+
+### 10. Thêm `.env.example`
+Hiện tại chỉ có `.env` trong gitignore. Dev mới join sẽ không biết cần set biến nào. Tạo `.env.example` listing tất cả env vars.
+
+### 11. Cleanup test files & output files
+Root có nhiều file test/debug không cần cho production:
+- `test-*.js` (6 files)
+- `*.txt` output files (4 files)
+- `tmp_syncconfigs.json`
+- `create-nocodb-table.js`, `fix-columns.js`, `update-currency-col.js`
+
+Nên di chuyển vào folder `scripts/` hoặc `tests/`.
+
+### 12. CORS không restrict origin
+[server.js:14](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/server.js#L14):
+```javascript
+app.use(cors());
+```
+Cho phép mọi origin → production nên set `origin: [allowed domains]`.
+
+### 13. Health check thiếu thông tin
+Health endpoint chỉ check Discord status. Nên thêm: NocoDB connection, Slack bot, Drive auth status.
+
+---
+
+## 📊 Priority Matrix
+
+| # | Issue | Impact | Effort | Priority |
+|---|-------|:---:|:---:|:---:|
+| 1 | Debug log vô hạn | 🔴 High | 🟢 Easy | **P0** |
+| 9 | Race condition Drive sync | 🔴 High | 🟢 Easy | **P0** |
+| 2 | JWT secret hardcoded | 🟠 Medium | 🟢 Easy | **P1** |
+| 3 | Password plaintext | 🟠 Medium | 🟡 Medium | **P1** |
+| 6 | Hardcoded List IDs | 🟠 Medium | 🟡 Medium | **P1** |
+| 8 | Reminders file-based | 🟠 Medium | 🟡 Medium | **P1** |
+| 5 | ClickUp handler monolith | 🟡 Low | 🟡 Medium | **P2** |
+| 7 | No retry for Drive API | 🟡 Low | 🟡 Medium | **P2** |
+| 4 | Service account key in repo | 🟡 Low | 🟢 Easy | **P2** |
+| 10-13 | Nice-to-have items | 🟢 Low | 🟢 Easy | **P3** |

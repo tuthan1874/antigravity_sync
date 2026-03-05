@@ -1,5 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary":  "Documents the 3 fixes applied to sync.js to resolve the duplicate file/folder bug in Drive Sync Client→Studio direction.",
-  "updatedAt":  "2026-03-05T03:06:23.774234100Z"
+  "summary":  "Complete walkthrough of all Drive Sync fixes: duplicate bug fix, client protection, delete threshold, audit logging, and bidirectional sync safety.",
+  "updatedAt":  "2026-03-05T03:30:24.975107500Z",
+  "version":  "1"
 }

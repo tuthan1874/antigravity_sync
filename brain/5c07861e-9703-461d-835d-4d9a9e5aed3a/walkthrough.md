@@ -1,28 +1,32 @@
-# Drive Sync Duplicate Bug Fix
+# Drive Sync — Bug Fix + Safety Mechanisms
 
-## Vấn đề
-Khi sync Drive ở chế độ **Client → Studio**, folder Studio có nhiều file/folder hơn Client. Nguyên nhân: file/folder đã tồn tại ở Studio (cùng tên với Client) không được gắn `sourceId` → các lần sync sau tạo bản copy mới thay vì dùng file cũ, và mirror delete không xóa được bản gốc thừa.
-
-## Thay đổi
-
-### [sync.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js)
+## Thay đổi trong [sync.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js)
 
 render_diffs(file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/drive/sync.js)
 
-### 3 Fix áp dụng:
+## Tổng kết thay đổi
 
-| Fix | Mô tả | Dòng |
-|-----|--------|------|
-| **Stamp sourceId (Folders)** | Khi folder match bằng tên (không có sourceId), tự động gán `appProperties.sourceId` | 138-150 |
-| **Stamp sourceId (Files)** | Tương tự cho files | 167-179 |
-| **Duplicate Cleanup** | Re-scan dest sau STEP 1, phát hiện file duplicate (cùng sourceId hoặc file gốc trùng tên nhưng đã có tracked copy), tự động trash | 219-295 |
+### 1. Fix Duplicate Bug ✅
+File/folder match bằng tên (legacy) giờ được gắn `sourceId` → không tạo duplicate sau này.
 
-## Cách hoạt động sau fix
+### 2. Client Folder Protection 🛡️ ✅
+- `studio→client`: Copy file sang Client, **KHÔNG bao giờ xóa** file Client (`protectDest: true`)
+- `bidirectional`: Copy cả 2 chiều, **CHỈ mirror-delete ở Studio** (Client luôn được bảo vệ)
 
-1. **Lần sync đầu**: File "Superman" ở Studio match bằng tên → được gán `sourceId` → từ nay trở đi track bằng ID chính xác
-2. **Lần sync sau**: Match chính xác bằng `sourceId` → không tạo duplicate
-3. **Dọn dẹp**: Nếu đã tồn tại duplicate từ trước, STEP 2 phát hiện và trash bản thừa
+### 3. Delete Threshold (50%) 🚨 ✅
+Nếu STEP 2 phát hiện cần xóa **>50% file** ở destination → **dừng sync**, log cảnh báo vào NocoDB.
+
+### 4. Audit Log 📝 ✅
+Mọi thao tác xóa đều được log vào NocoDB (`SyncMessages`) với lý do cụ thể.
+
+## Bảng tổng hợp behavior
+
+| Direction | Copy | Mirror Delete | Client Protected |
+|-----------|------|---------------|:---:|
+| `studio→client` | Studio → Client | ❌ Không xóa | ✅ |
+| `client→studio` | Client → Studio | ✅ Xóa Studio thừa | N/A |
+| `bidirectional` | Cả 2 chiều | ✅ Chỉ xóa ở Studio | ✅ |
 
 ## Verification
-- File `sync.js` đã được review toàn bộ, logic đúng và không ảnh hưởng đến các direction khác (`studio→client`, `bidirectional`)
-- Bạn cần chạy `node test-drive.js` để verify trên data thực
+- `test-drive.js` chạy thành công (exit code 0)
+- Log cho thấy `🛡️ Skipping mirror delete (destination protected)` khi sync tới Client
