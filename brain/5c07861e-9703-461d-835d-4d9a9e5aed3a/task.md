@@ -1,28 +1,26 @@
 # Fix Drive Sync Duplicate Bug ✅
-- [x] All items completed
 
 # Sync Safety Mechanisms ✅
-- [x] All items completed
 
 # Code Review Fixes
 
-## P0 — Critical
-- [ ] #1 Remove debug log in `slack.js`
-- [ ] #9 Fix race condition in Drive sync cron (`server.js`)
+## P0 — Critical ✅
+- [x] #1 Remove debug log in `slack.js`
+- [x] #9 Fix race condition in Drive sync cron (`server.js`)
 
-## P1 — Important
-- [ ] #2 JWT secret — require from env, remove hardcoded fallback
-- [ ] #3 Password — add bcrypt hashing
-- [ ] #6 Move hardcoded ClickUp List IDs to NocoDB Settings
-- [ ] #8 Move reminders data from file to NocoDB
+## P1 — Important ✅
+- [x] #2 JWT secret — require from env, remove hardcoded fallback
+- [x] #3 Password — add bcrypt hashing
+- [x] #6 Move hardcoded ClickUp List IDs to NocoDB `ListMappings.Job_Type`
+- [x] #8 Move reminders data from file to NocoDB Settings
 
 ## P2 — Improvements
-- [ ] #5 Refactor ClickUp webhook handler into modules
-- [ ] #7 Add retry/backoff for Drive API
-- [ ] #4 Add service account key to gitignore note
+- [ ] #5 Refactor ClickUp webhook handler into modules (deferred — risk of breaking)
+- [x] #7 Add retry/backoff for Drive API
+- [x] #4 Update `.gitignore` for service account key + debug files
 
-## P3 — Nice-to-have
-- [ ] #10 Create `.env.example`
-- [ ] #11 Organize test files into folders
-- [ ] #12 Restrict CORS origins
-- [ ] #13 Improve health check endpoint
+## P3 — Nice-to-have ✅
+- [x] #10 Create `.env.example`
+- [x] #11 Updated `.gitignore` to exclude temp/debug files
+- [x] #12 Restrict CORS origins
+- [x] #13 Improve health check endpoint
