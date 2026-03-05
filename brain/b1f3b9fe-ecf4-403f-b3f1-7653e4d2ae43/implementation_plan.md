@@ -1,247 +1,248 @@
-# AI Excel & Google Sheet Generator App
+# AI Excel & Google Sheet Generator App — Updated Plan
 
-Ứng dụng web cho phép người dùng tạo file **Excel (.xlsx)** và **Google Sheet** chuyên nghiệp bằng ngôn ngữ tự nhiên, sử dụng AI model (Gemini, OpenAI, Claude).
+Ứng dụng web cho phép người dùng tạo file **Excel (.xlsx)** và **Google Sheet** chuyên nghiệp bằng ngôn ngữ tự nhiên, thông qua AI (OpenRouter multi-model).
 
-## Tổng quan kiến trúc
+## Quyết định đã xác nhận
+
+| Hạng mục | Quyết định |
+|---|---|
+| **AI Provider** | OpenRouter (chọn model: Claude ưu tiên, Gemini, OpenAI) |
+| **Google Credentials** | Service Account `tdgames@gen-lang-client-0156221369.iam.gserviceaccount.com` |
+| **Deployment** | VPS Ubuntu |
+| **Phase 1** | MVP = Excel only |
+| **Phase 2** | Google Sheets (triển khai sau) |
+
+---
+
+## Kiến trúc tổng quan
 
 ```mermaid
-graph LR
-    A[User nhập prompt] --> B[Frontend - Next.js]
-    B --> C[API Route]
-    C --> D{AI Model}
-    D --> E[Structured JSON]
-    E --> F{Output Format?}
-    F -->|Excel| G[openpyxl Engine]
-    F -->|Google Sheet| H[Google Sheets API]
-    G --> I[Download .xlsx]
-    H --> J[Link Google Sheet]
+graph TB
+    subgraph "Frontend — Next.js (Port 3000)"
+        A[PromptInput] --> B[API Route /api/generate]
+        B --> C[OpenRouter API]
+        C --> D[Structured JSON]
+        D --> E[SpreadsheetPreview]
+        E --> F[ExportPanel]
+    end
+
+    subgraph "Backend — FastAPI Python (Port 8000)"
+        F -->|POST /export-excel| G[excel_from_json.py]
+        G --> H[openpyxl Engine]
+        H --> I[.xlsx file download]
+    end
+
+    subgraph "Phase 2 — Google Sheets"
+        F -.->|POST /export-gsheet| J[Google Sheets API]
+        J -.-> K[Link Google Sheet]
+    end
 ```
 
-**Luồng hoạt động:**
-1. User nhập yêu cầu bằng tiếng Việt, ví dụ: *"Tạo bảng kế hoạch Q2 có 3 nhóm công việc"*
-2. AI model phân tích → trả về **structured JSON** (headers, groups, data, styles)
-3. Backend nhận JSON → render ra Excel hoặc Google Sheet với format chuẩn doanh nghiệp
+**Tại sao tách 2 service?**
+- Next.js xử lý frontend + AI call (TypeScript)
+- FastAPI xử lý Excel generation (Python/openpyxl) — dễ deploy riêng, dễ scale
 
 ---
 
-## User Review Required
+## Proposed Changes — Phase 1 MVP
 
-> [!IMPORTANT]
-> **Chọn AI Model Provider**: App sẽ hỗ trợ multi-model. Bạn muốn ưu tiên model nào làm mặc định? (Gemini, OpenAI GPT-4o, Claude?)
+### Component 1: Python Engine (FastAPI)
 
-> [!IMPORTANT]
-> **Google Cloud Credentials**: Để tích hợp Google Sheets API, cần Google Service Account hoặc OAuth2. Bạn đã có credentials trong `Google_Credentials/` chưa?
+#### [NEW] `engine/server.py`
+FastAPI microservice chạy trên port 8000:
+- `POST /export-excel` — nhận JSON → trả file .xlsx
+- `GET /health` — health check
+- CORS cho phép frontend gọi
 
-> [!WARNING]
-> **Hosting**: App sẽ chạy local hay deploy lên Vercel/server? Nếu local thì backend Python (openpyxl) cần chạy song song với frontend Next.js.
+#### [NEW] `engine/excel_from_json.py`
+Converter chính: JSON schema → Excel file. Sử dụng `ExcelBuilder` class có sẵn từ `templates/excel_template.py` + mở rộng thêm:
+- Parse JSON từ AI → auto-detect pattern (timeline, summary, job description, report)
+- Apply theme colors
+- Handle merge cells, group rows, freeze panes
+- Multi-sheet support
 
----
+#### [NEW] `engine/themes.py`
+5 color themes có sẵn:
 
-## Proposed Changes
-
-### 1. Frontend — Next.js Web App
-
-#### [NEW] `app/page.tsx` — Trang chính
-- **Chat-like UI** để nhập prompt bằng ngôn ngữ tự nhiên
-- Panel preview kết quả (bảng HTML preview trước khi export)
-- Nút chọn output: **Excel** hoặc **Google Sheet**
-- Settings panel: API key config, model selection
-
-#### [NEW] `app/settings/page.tsx` — Cấu hình
-- Form nhập API key cho từng model (Gemini, OpenAI, Claude)
-- Google Sheets credentials upload
-- Chọn default color theme (Maroon, Teal, Corporate Blue, Custom)
-- Template library (lưu các prompt hay dùng)
-
-#### [NEW] `components/PromptInput.tsx`
-- Textarea có gợi ý (autocomplete templates)
-- Chips chọn nhanh: "Bảng kế hoạch", "Báo cáo tài chính", "Timeline dự án", "Mô tả công việc"
-- Upload file đính kèm (CSV, JSON) để AI format lại
-
-#### [NEW] `components/SpreadsheetPreview.tsx`
-- Preview bảng dạng HTML table trước khi export
-- Hiển thị màu sắc, merge cells, group rows giống Excel thật
-- Cho phép edit trực tiếp trên preview
-
-#### [NEW] `components/ExportPanel.tsx`
-- Nút Download Excel (.xlsx)
-- Nút Export to Google Sheet (mở link mới)
-- Nút Copy as Markdown table
-
----
-
-### 2. Backend API Routes
-
-#### [NEW] `app/api/generate/route.ts` — AI Generation endpoint
-- Nhận prompt từ frontend
-- Gọi AI model (Gemini/OpenAI/Claude) với **system prompt** chuyên biệt
-- System prompt bao gồm:
-  - Các pattern Excel có sẵn (từ skill)
-  - Schema JSON output mong muốn
-  - Hướng dẫn về style/color/layout
-- Trả về structured JSON:
-
-```json
-{
-  "title": "KẾ HOẠCH Q2 2026",
-  "subtitle": "Phòng Kinh doanh — TD GAMES",
-  "theme": "maroon",
-  "sheets": [
-    {
-      "name": "Kế hoạch",
-      "columns": [
-        {"header": "STT", "width": 6, "align": "center"},
-        {"header": "Công việc", "width": 55, "align": "left"},
-        {"header": "Người phụ trách", "width": 20, "align": "center"}
-      ],
-      "groups": [
-        {
-          "name": "A. Nghiên cứu thị trường",
-          "rows": [
-            {"stt": "1.1", "values": ["Khảo sát đối thủ", "Team MKT"]},
-            {"stt": "1.2", "values": ["Phân tích dữ liệu", "Data Analyst"]}
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
-
-#### [NEW] `app/api/export-excel/route.ts` — Excel export
-- Nhận structured JSON → gọi Python script (openpyxl) → trả file .xlsx
-- Sử dụng `child_process` hoặc Python HTTP microservice
-
-#### [NEW] `app/api/export-gsheet/route.ts` — Google Sheet export
-- Nhận structured JSON → gọi Google Sheets API
-- Tạo spreadsheet mới, apply format, trả về URL
-
----
-
-### 3. Python Engine — Excel Generator
+| Theme | Header | Group | Accent |
+|---|---|---|---|
+| `corporate_blue` | #4472C4 | #D9E2F3 | #70AD47 |
+| `maroon` | #4A1A2E | #F2E6E9 | #8B3A4A |
+| `teal` | #1A4A4A | #E6F2F2 | #2D6B6B |
+| `dark_mode` | #2D2D2D | #404040 | #4FC3F7 |
+| `forest_green` | #2E7D32 | #E8F5E9 | #66BB6A |
 
 #### [MODIFY] [excel_template.py](file:///e:/TDC_App/TDGAMES_App/excel-professional-skill/templates/excel_template.py)
-- Thêm method `from_json(json_data)` vào `ExcelBuilder` class
-- Nhận structured JSON từ API → auto-render ra Excel với full styling
-- Hỗ trợ nhiều theme: maroon, teal, corporate_blue, dark_mode
+- Thêm `ExcelBuilder.from_json(json_data, theme)` class method
+- Thêm theme parameter cho các styling methods
 
-#### [NEW] `engine/excel_from_json.py` — JSON → Excel converter
-- Standalone script nhận JSON input (stdin hoặc file) → xuất .xlsx
-- Parse JSON schema → áp dụng đúng pattern (timeline, summary, multi-sheet, job description)
-- Auto-detect best layout dựa trên data structure
-
-#### [NEW] `engine/themes.py` — Theme definitions
-- Định nghĩa 5+ color themes có sẵn
-- Mỗi theme = bộ (header, group, accent, border, text colors)
+#### [NEW] `engine/requirements.txt`
+```
+fastapi==0.115.0
+uvicorn==0.34.0
+openpyxl==3.1.5
+python-multipart==0.0.20
+```
 
 ---
 
-### 4. Google Sheets Integration
+### Component 2: AI Integration (OpenRouter)
 
-#### [NEW] `lib/googleSheets.ts` — Google Sheets service
-- Authenticate bằng Service Account hoặc OAuth2
-- `createSpreadsheet(json)` → tạo sheet mới trên Google Drive
-- `applyFormatting(sheetId, format)` → áp dụng:
-  - Merge cells, freeze panes
-  - Background colors, font styles, borders
-  - Column widths, row heights
-  - Conditional formatting
-
-#### [NEW] `lib/gsheetFormatter.ts` — Format mapper
-- Map từ internal JSON format → Google Sheets API format requests
-- Convert HEX colors → Google Sheets RGB format
-- Handle merge ranges, borders, alignments
-
----
-
-### 5. AI Prompt Engineering
-
-#### [NEW] `lib/prompts/system-prompt.ts` — System prompts
-- System prompt cho AI model, bao gồm:
-  - JSON output schema với ví dụ
-  - Danh sách patterns có sẵn (timeline, summary, job_description, report)
-  - Style guidelines (corporate colors, typography)
-  - Ngữ cảnh tiếng Việt (thuật ngữ doanh nghiệp VN)
-
-#### [NEW] `lib/aiProvider.ts` — Multi-model abstraction
-- Unified interface cho Gemini, OpenAI, Claude
-- Auto-retry, error handling, token counting
+#### [NEW] `src/lib/aiProvider.ts`
+OpenRouter client sử dụng OpenAI SDK (compatible):
+```typescript
+// OpenRouter dùng OpenAI-compatible API
+const openai = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.OPENROUTER_API_KEY,
+});
+```
+- Hỗ trợ chọn model: `anthropic/claude-sonnet-4`, `google/gemini-2.5-pro`, `openai/gpt-4o`
 - Streaming response support
+- Error handling + retry
+
+#### [NEW] `src/lib/prompts/system-prompt.ts`
+System prompt hướng dẫn AI trả về JSON schema chuẩn:
+- Định nghĩa JSON output format
+- Danh sách patterns có sẵn
+- Style guidelines (corporate colors, typography)
+- Ngữ cảnh tiếng Việt (thuật ngữ doanh nghiệp VN)
+
+#### [NEW] `src/app/api/generate/route.ts`
+API route nhận prompt từ frontend → gọi OpenRouter → trả structured JSON. Sử dụng streaming để hiện progress.
 
 ---
 
-## Cấu trúc thư mục dự kiến
+### Component 3: Frontend (Next.js)
+
+#### [MODIFY] `src/app/layout.tsx`
+- Custom fonts (Inter from Google Fonts)
+- Dark theme meta tags, favicon
+
+#### [NEW] `src/app/globals.css`
+Design system hoàn chỉnh:
+- CSS variables cho colors, typography, spacing
+- Dark glassmorphism theme
+- Responsive breakpoints
+- Animation keyframes
+
+#### [MODIFY] `src/app/page.tsx`
+Trang chính với layout 2 panel:
+- **Left panel**: Chat input + prompt history
+- **Right panel**: Spreadsheet preview + export buttons
+- State management: prompt → AI response → preview → export
+
+#### [NEW] `src/components/PromptInput.tsx`
+- Textarea với auto-resize
+- Template chips bar: "Bảng kế hoạch", "Báo cáo tài chính", "Timeline", "Mô tả CV"
+- Loading state khi AI đang generate
+- Hỗ trợ upload CSV/JSON để AI format lại
+
+#### [NEW] `src/components/SpreadsheetPreview.tsx`
+- Render JSON → HTML table với full styling (colors, borders, merge cells)
+- Hiển thị sheet tabs nếu multi-sheet
+- Responsive scroll
+
+#### [NEW] `src/components/ExportPanel.tsx`
+- Nút Download Excel (.xlsx) — gọi Python engine
+- Nút Copy JSON (debug)
+- Theme selector dropdown
+- (Phase 2: nút Export to Google Sheet)
+
+#### [NEW] `src/app/settings/page.tsx`
+- Form nhập OpenRouter API key
+- Model selector dropdown
+- Lưu settings vào localStorage
+
+---
+
+### Component 4: Environment & Config
+
+#### [NEW] `app/.env.local`
+```env
+OPENROUTER_API_KEY=your_openrouter_key_here
+PYTHON_ENGINE_URL=http://localhost:8000
+```
+
+#### [NEW] `app/.env.example`
+Template cho deployment (không chứa secrets).
+
+---
+
+## Cấu trúc thư mục cuối cùng
 
 ```
 excel-professional-skill/
-├── app/                          # Next.js App Router
-│   ├── page.tsx                  # Trang chính (chat + preview)
-│   ├── settings/page.tsx         # Cài đặt API keys
-│   ├── layout.tsx
-│   ├── globals.css
-│   └── api/
-│       ├── generate/route.ts     # AI generate JSON
-│       ├── export-excel/route.ts # JSON → .xlsx
-│       └── export-gsheet/route.ts# JSON → Google Sheet
-├── components/
-│   ├── PromptInput.tsx
-│   ├── SpreadsheetPreview.tsx
-│   ├── ExportPanel.tsx
-│   ├── SettingsForm.tsx
-│   └── ThemeSelector.tsx
-├── lib/
-│   ├── aiProvider.ts             # Multi-model AI
-│   ├── googleSheets.ts           # Google Sheets API
-│   ├── gsheetFormatter.ts        # Format mapper
-│   └── prompts/
-│       └── system-prompt.ts      # AI system prompts
-├── engine/                       # Python backend
-│   ├── excel_from_json.py        # JSON → Excel
-│   ├── themes.py                 # Color themes
-│   └── server.py                 # Flask/FastAPI micro-service
-├── templates/                    # Existing templates
+├── app/                          # Next.js frontend
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── page.tsx          # Main page
+│   │   │   ├── layout.tsx
+│   │   │   ├── globals.css
+│   │   │   ├── settings/page.tsx # Settings
+│   │   │   └── api/
+│   │   │       └── generate/route.ts
+│   │   ├── components/
+│   │   │   ├── PromptInput.tsx
+│   │   │   ├── SpreadsheetPreview.tsx
+│   │   │   └── ExportPanel.tsx
+│   │   └── lib/
+│   │       ├── aiProvider.ts
+│   │       └── prompts/system-prompt.ts
+│   ├── .env.local
+│   ├── .env.example
+│   ├── package.json
+│   └── next.config.ts
+├── engine/                       # Python FastAPI backend
+│   ├── server.py
+│   ├── excel_from_json.py
+│   ├── themes.py
+│   └── requirements.txt
+├── templates/                    # Existing templates (reused)
 │   ├── excel_template.py
 │   └── timeline_template.py
-├── SKILL.md
-└── package.json
+├── GOOGLE_SERVICE_ACCOUNT_KEY.json  # (Phase 2)
+└── SKILL.md
 ```
 
 ---
 
-## Phân chia giai đoạn triển khai
+## Deployment (VPS Ubuntu)
 
-### Phase 1 — MVP (Core Excel Generation)
-1. Init Next.js project
-2. Build frontend: prompt input + preview + download
-3. Tích hợp 1 AI model (Gemini hoặc OpenAI)
-4. Python engine: JSON → Excel
-5. Test end-to-end: prompt → preview → download .xlsx
+```mermaid
+graph LR
+    A[Nginx Reverse Proxy] --> B[Next.js :3000]
+    A --> C[FastAPI :8000]
+    B --> D[OpenRouter API]
+```
 
-### Phase 2 — Multi-model + Google Sheets
-6. Thêm multi-model support (Gemini, OpenAI, Claude)
-7. Settings page: API key management
-8. Google Sheets API integration
-9. Dual export: Excel + Google Sheet
+- **Next.js**: `npm run build && npm start` (or PM2)
+- **FastAPI**: `uvicorn server:app --host 0.0.0.0 --port 8000` (or systemd service)
+- **Nginx**: Reverse proxy cả 2 service, SSL via Let's Encrypt
 
-### Phase 3 — Polish
-10. Template library (lưu & tái sử dụng prompt)
-11. Theme customization UI
-12. History (lịch sử tạo file)
-13. Batch generation (tạo nhiều file cùng lúc)
+---
+
+## Thứ tự triển khai (Phase 1)
+
+| Step | Mô tả | Ước lượng |
+|---|---|---|
+| 1 | Python Engine: `themes.py` + `excel_from_json.py` + `server.py` | ★★★ |
+| 2 | AI: `system-prompt.ts` + `aiProvider.ts` + `/api/generate` | ★★★ |
+| 3 | Frontend: `globals.css` + layout + components | ★★★★ |
+| 4 | Integration: connect all parts, E2E test | ★★ |
 
 ---
 
 ## Verification Plan
 
-### Automated Tests
-- **Unit test Python engine**: `python -m pytest engine/test_excel_from_json.py` — verify JSON → Excel output chính xác
-- **API route test**: Gọi `/api/generate` với sample prompt → verify JSON schema hợp lệ
-- **Build test**: `npm run build` — verify Next.js build thành công
+### Automated
+- `python -m pytest engine/` — test JSON → Excel output
+- `npm run build` — verify Next.js build
 
-### Manual Verification
-1. Mở app tại `http://localhost:3000`
+### Manual
+1. Start cả 2 services (Next.js + FastAPI)
 2. Nhập prompt: *"Tạo bảng kế hoạch Q2 gồm 3 nhóm: Marketing, Sales, Operations"*
-3. Verify preview hiển thị đúng bảng với colors, merge cells
-4. Click **Download Excel** → mở file .xlsx verify format đẹp
-5. Click **Export Google Sheet** → mở link verify formatting trên Google Sheets
-6. Thay đổi AI model trong Settings → verify vẫn generate đúng
+3. Verify preview hiển thị đúng bảng
+4. Download Excel → mở verify format đẹp
+5. Thử đổi model (Claude → Gemini) → verify generate đúng
+6. Thử đổi theme (maroon → teal) → verify colors

@@ -1,5 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary":  "Implementation plan for a Next.js web app that uses AI models (Gemini/OpenAI/Claude) to generate professional Excel files and Google Sheets from natural language prompts. Covers architecture, frontend components, backend API routes, Python engine for Excel generation, Google Sheets API integration, AI prompt engineering, directory structure, phased rollout (3 phases), and verification plan.",
-  "updatedAt":  "2026-03-05T09:37:48.581159900Z"
+  "summary":  "Updated implementation plan incorporating user decisions: OpenRouter for multi-model AI (Claude priority), Google Service Account credentials, VPS Ubuntu deployment, Phase 1 MVP Excel-only approach. Includes detailed technical architecture, file-by-file changes, Python FastAPI engine, and deployment configuration.",
+  "updatedAt":  "2026-03-05T09:46:51.468127600Z",
+  "version":  "1"
 }
