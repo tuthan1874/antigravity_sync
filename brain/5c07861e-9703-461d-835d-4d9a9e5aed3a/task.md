@@ -14,8 +14,8 @@
 - [x] #6 Move hardcoded ClickUp List IDs to NocoDB `ListMappings.Job_Type`
 - [x] #8 Move reminders data from file to NocoDB Settings
 
-## P2 — Improvements
-- [ ] #5 Refactor ClickUp webhook handler into modules (deferred — risk of breaking)
+## P2 — Improvements ✅
+- [x] #5 Refactor ClickUp webhook handler into modules
 - [x] #7 Add retry/backoff for Drive API
 - [x] #4 Update `.gitignore` for service account key + debug files
 
