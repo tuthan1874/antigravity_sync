@@ -1,0 +1,108 @@
+[0] (27,26)<a aria-label='Trang chủ Trang tính' href='https://docs.google.com/spreadsheets/?usp=sheets_web' />
+	[1] (27,26)<div  />
+		[2] (27,26)<div  />
+QUY TRÌNH LÀM VIỆC CỦA HR IEC
+[3] (293,18)<div aria-label='Trạng thái của tài liệu: Đã lưu vào Drive.' class='goog-control' id='docs-save-indicator-badge' role='button' />
+	[4] (293,18)<div  />
+		[5] (293,18)<div  />
+			[6] (293,18)<div  />
+[7] (763,23)<div aria-label='Cá heo ẩn danh' class='docs-presence-plus-collab-widget-container goog-inline-block docs-presence-plus-collab-widget-focus' id=':9w' role='button' />
+	[8] (763,23)<div  />
+		[9] (763,23)<div  />
+			[10] (763,23)<div  />
+				[11] (763,23)<img  />
+[12] (824,23)<div aria-label='Chia sẻ. Bất kỳ ai có đường liên kết. Bất kỳ ai có đường liên kết đều có thể truy cập. Không yêu cầu đăng nhập.' class='goog-inline-block jfk-button jfk-button-action scb-split-button docs-titlebar-button jfk-button-disabled' role='button'>Chia sẻ />
+[13] (878,23)<div aria-label='Thao tác chia sẻ nhanh' class='docs-titlebar-button scb-quick-actions-menu-button goog-flat-menu-button goog-flat-menu-button-disabled goog-flat-menu-button-collapse-left goog-inline-block' id='scb-quick-actions-menu-button' role='button' />
+[14] (942,23)<a aria-label='Đăng nhập' class='gb_Va gb_Wd gb_Od gb_Ed' href='https://accounts.google.com/ServiceLogin?service=wise&passive=1209600&osid=1&continue=https://docs.google.com/spreadsheets/d/1uc6VFOX0HVW2DA4CyD5UKVZFa-nfnou_BEIfXZmEIWY/edit?gid%3D2116911919&followup=https://docs.google.com/spreadsheets/d/1uc6VFOX0HVW2DA4CyD5UKVZFa-nfnou_BEIfXZmEIWY/edit?gid%3D2116911919&ltmpl=sheets&ec=GAZAmwI'>Đăng nhập />
+	Đăng nhập
+[15] (59,35)<div class='menu-button goog-control goog-inline-block' id='docs-file-menu' role='menuitem'>Tệp />
+[16] (107,35)<div class='menu-button goog-control goog-inline-block' id='docs-edit-menu' role='menuitem'>Chỉnh sửa />
+[17] (156,35)<div class='menu-button goog-control goog-inline-block' id='docs-view-menu' role='menuitem'>Xem />
+[18] (193,35)<div class='menu-button goog-control goog-inline-block goog-control-disabled' id='docs-insert-menu' role='menuitem'>Chèn />
+[19] (245,35)<div class='menu-button goog-control goog-inline-block goog-control-disabled' id='docs-format-menu' role='menuitem'>Định dạng />
+[20] (302,35)<div class='menu-button goog-control goog-inline-block' id='w183' role='menuitem'>Dữ liệu />
+[21] (353,35)<div class='menu-button goog-control goog-inline-block' id='docs-tools-menu' role='menuitem'>Công cụ />
+[22] (407,35)<div class='menu-button goog-control goog-inline-block goog-control-disabled' id='docs-extensions-menu' role='menuitem'>Tiện ích />
+[23] (461,35)<div class='menu-button goog-control goog-inline-block' id='docs-help-menu' role='menuitem'>Trợ giúp />
+[24] (37,66)<input aria-label='Trình đơn' class='docs-omnibox-input jfk-textinput assisted-actions-toolbar-omnibox label-input-label' placeholder='Trình đơn' role='combobox' />
+[25] (61,66)<div aria-label='In (Ctrl+P)' class='goog-toolbar-button goog-inline-block' id='t-print' role='button' />
+	[26] (61,66)<div  />
+		[27] (61,66)<div  />
+			[28] (61,67)<div  />
+[29] (89,66)<div aria-label='Các chế độ xem bộ lọc' class='goog-toolbar-menu-button goog-inline-block' id='t-autofilter-menu' role='button' />
+	[30] (89,66)<div  />
+		[31] (88,66)<div  />
+			[32] (84,66)<div  />
+				[33] (84,67)<div  />
+			[34] (96,59)<div  />
+				[35] (98,67)<div  />
+[36] (135,66)<div aria-label='Thu phóng' class='docs-toolbar-zoom-combobox goog-toolbar-combo-button goog-inline-block' id='t-zoom' role='combobox' />
+	[37] (135,67)<div  />
+		[38] (135,67)<div  />
+			[39] (129,67)<div aria-label='Danh sách Thu phóng. 100% được chọn.' class='goog-inline-block goog-toolbar-combo-button-caption' id=':5e' role='option' />
+				[40] (127,67)<input aria-label='Thu phóng' class='goog-toolbar-combo-button-input jfk-textinput' />
+			[41] (152,59)<div  />
+				[42] (155,67)<div  />
+[43] (218,66)<div aria-label='Chế độ' class='goog-flat-menu-button goog-inline-block' id='docs-access-level-indicator' role='button' />
+	[44] (210,67)<div >Chỉ xem />
+		[45] (190,66)<div  />
+[46] (965,66)<div aria-label='Ẩn các menu (Ctrl+Shift+F)' class='goog-toolbar-button goog-inline-block' id='viewModeButton' role='button' />
+	[47] (965,66)<div  />
+		[48] (965,66)<div  />
+			[49] (965,67)<div  />
+[50] (36,98)<input class='jfk-textinput waffle-name-box' id='t-name-box' />
+[51] (72,99)<div aria-label='Nút trình đơn hộp tên. Hãy chọn một trong các mục trong trình đơn để chuyển đến dải ô được đặt tên tương ứng.' class='name-box-dropdown docs-toolbar-button-split-right goog-toolbar-menu-button goog-inline-block goog-toolbar-menu-button-disabled' id='t-name-box-dropdown' role='button' />
+	[52] (71,101)<div  />
+		[53] (70,101)<div  />
+			[54] (69,94)<div  />
+				[55] (71,99)<div  />
+[56] (556,100)<div class='cell-input disabled-input' role='textbox'>Bước />
+[57] (500,108)<div  />
+[58] (995,555)<div class='native-scrollbar native-scrollbar-ltr native-scrollbar-y' scrollable='true' />
+[59] (514,966)<div class='native-scrollbar native-scrollbar-ltr native-scrollbar-x' scrollable='true' />
+[60] (48,985)<div aria-label='Tất cả trang tính' class='docs-sheet-menu-button goog-inline-block docs-sheet-all-button docs-sheet-button' id=':f' role='button' />
+	[61] (48,985)<div  />
+		[62] (48,985)<div  />
+			[63] (48,985)<div  />
+[64] (448,993)<div class='docs-sheet-container-bar goog-toolbar goog-inline-block' role='toolbar' scrollable='true' />
+	[65] (163,986)<div class='goog-inline-block docs-sheet-tab docs-material docs-sheet-active-tab' id=':x' role='button' />
+		QUY TRÌNH TUYỂN DỤNG
+	[66] (324,986)<div class='goog-inline-block docs-sheet-tab docs-material' id=':1d' role='button' />
+		[67] (326,986)<div  />
+			[68] (326,986)<div  />
+				[69] (317,986)<div  />
+					[70] (317,986)<span >CONTENT FANPAGE />
+					[71] (324,999)<div  />
+				[72] (383,986)<div  />
+	[73] (456,986)<div class='goog-inline-block docs-sheet-tab docs-material' id=':1t' role='button' />
+		[74] (459,986)<div  />
+			[75] (459,986)<div  />
+				[76] (449,986)<div  />
+					[77] (449,986)<span >XIN NGHỈ PHÉP />
+					[78] (456,999)<div  />
+	[79] (561,986)<div class='goog-inline-block docs-sheet-tab docs-material' id=':29' role='button' />
+		[80] (563,986)<div  />
+			[81] (563,986)<div  />
+				[82] (553,986)<div  />
+					[83] (553,986)<span >ĐI MUỘN />
+					[84] (561,999)<div  />
+				[85] (592,986)<div  />
+	[86] (685,986)<div class='goog-inline-block docs-sheet-tab docs-material' id=':2p' role='button' />
+		[87] (687,986)<div  />
+			[88] (687,986)<div  />
+				[89] (678,986)<div  />
+					[90] (678,986)<span >QUY TRÌNH ĐÁNH GIÁ />
+					[91] (685,999)<div  />
+				[92] (753,986)<div  />
+	[93] (822,986)<div class='goog-inline-block docs-sheet-tab docs-material' id=':35' role='button' />
+		[94] (824,986)<div  />
+			[95] (824,986)<div  />
+				[96] (815,986)<div  />
+					[97] (815,986)<span >CAREER PATH />
+					[98] (822,999)<div  />
+	Quy trình Onboard
+[99] (846,985)<div aria-label='Cuộn sang trái' class='docs-sheet-button goog-inline-block docs-sheet-left-button docs-sheet-button-disabled docs-sheet-left-disabled' id=':g' role='button' />
+[100] (877,985)<div aria-label='Cuộn sang phải' class='docs-sheet-button goog-inline-block docs-sheet-right-button' id=':h' role='button' />
+	[101] (877,985)<div  />
+		[102] (877,985)<div  />
+			[103] (877,985)<div  />

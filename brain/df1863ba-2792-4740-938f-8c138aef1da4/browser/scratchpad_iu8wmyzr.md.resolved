@@ -1,0 +1,20 @@
+# Progress Tracking - Google Sheets GIDs
+
+## Task: Identify GIDs for 9 tabs in the Google Sheet
+
+### Tabs Found:
+1. QUY TRÌNH TUYỂN DỤNG: gid=2116911919
+2. CONTENT FANPAGE: gid=649275369
+3. XIN NGHỈ PHÉP: [Pending]
+4. ĐI MUỘN: [Pending]
+5. QUY TRÌNH ĐÁNH GIÁ: [Pending]
+6. CAREER PATH: [Pending]
+7. Quy trình Onboard: [Pending]
+8. Phỏng vấn nghỉ việc: [Pending]
+9. QUẢN LÝ TÀI SẢN: [Pending]
+
+### Plan:
+- [x] Open the spreadsheet URL.
+- [x] Click on the first tab and confirm gid=2116911919.
+- [ ] Click on each subsequent tab and record the gid from the URL.
+- [ ] Return the final list.
