@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_TASK",
+  "summary":  "Checklist for adding Discord Channel ID and Discord Users to Ping fields to the List Mappings feature, including NocoDB schema changes, frontend updates, and Discord automation handler.",
+  "updatedAt":  "2026-03-06T16:24:01.439709200Z"
+}

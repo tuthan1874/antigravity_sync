@@ -1,0 +1,9 @@
+# Add Discord to List Mappings
+
+## Changes
+- [/] Add `Discord_Channel_ID` and `Discord_Review_User_IDs` columns to NocoDB ListMappings table
+- [ ] Update frontend table display in [app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js) to show Discord columns
+- [ ] Update frontend modal form in [app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js) to include Discord fields
+- [ ] Create `discord-automation.js` handler (mirrors [slack-automation.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/handlers/slack-automation.js) for Discord threads)
+- [ ] Wire up `discord-automation.js` in [clickup.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/test-clickup.js) webhook handler
+- [ ] Verify via browser that the UI works correctly
