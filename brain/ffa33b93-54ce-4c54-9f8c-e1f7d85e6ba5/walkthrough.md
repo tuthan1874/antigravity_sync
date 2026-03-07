@@ -1,69 +1,63 @@
-# TD_Feedback — Phase 1 MVP Walkthrough
+# UI/UX Comprehensive Fix — Walkthrough
 
-## ✅ Build & Runtime Verified
+## Summary
+Fixed all critical CSS class mismatches, styling inconsistencies, and layout issues across the TD_Feedback app to align with the TD Games Style Guide.
 
-```
-▲ Next.js 16.1.6 (Turbopack)
-✓ Compiled successfully
-✓ Ready in 674ms at http://localhost:3000
-```
+## Changes Made
 
-## Screenshots
+### 1. Dashboard CSS (`dashboard.module.css`)
+Completely rewrote the CSS module to match the class names used in `page.tsx`. Previously, the TSX referenced classes like `.title`, `.projectCard`, `.projectThumb`, etc., but the CSS defined different names like `.headerLeft`, `.cardThumb`.
 
-### Landing Page
-![Landing Page](file:///C:/Users/dangt/.gemini/antigravity/brain/ffa33b93-54ce-4c54-9f8c-e1f7d85e6ba5/landing_page_1772898236159.png)
+### 2. Global Form Utilities (`globals.css`)
+Added missing form utility classes: `.form-group`, `.form-label`, `.form-input`, `.form-textarea` — used by modals across the app.
 
-### Signup Page
-![Signup Page](file:///C:/Users/dangt/.gemini/antigravity/brain/ffa33b93-54ce-4c54-9f8c-e1f7d85e6ba5/signup_page_1772898247220.png)
+### 3. Header Component Fix (`Header.tsx` + `Header.module.css`)
+- **Root cause of oversized page title**: The `<h1>` using `styles.title` and `styles.left` had no matching CSS, rendering with browser default h1 styles (massive text)
+- Rewrote `Header.module.css` with proper `.header`, `.left`, `.title`, `.right`, `.userMenu`, `.avatar`, `.userName` classes
+- Changed container from global `app-header` class to `styles.header`
 
-### Demo Recording
-![App Demo](file:///C:/Users/dangt/.gemini/antigravity/brain/ffa33b93-54ce-4c54-9f8c-e1f7d85e6ba5/landing_page_test_1772898218484.webp)
+### 4. Project Page Fixes (`project/[id]/page.tsx`)
+- Removed conflicting `card card-interactive` global class from item cards
+- Fixed `var(--danger)` → `var(--color-error)`
+- Corrected function declaration order and `useEffect` dependencies
+- Restored accidentally removed state declarations
+- Added `'use client'` directive
 
----
+### 5. Color Variable Fix
+Replaced all `var(--danger)` references with `var(--color-error)` in dashboard and project pages.
 
-## Delivered Features
+## Verification
 
-| Feature | Status |
-|---------|--------|
-| Landing page (animated dark theme) | ✅ |
-| Login / Signup (Supabase Auth) | ✅ |
-| Dashboard (project cards CRUD) | ✅ |
-| Project detail (review items grid) | ✅ |
-| Media upload (drag & drop → R2) | ✅ |
-| Review workspace (image + video) | ✅ |
-| Annotation canvas (freehand draw) | ✅ |
-| Drawing toolbar (colors, sizes) | ✅ |
-| Video player (frame-by-frame) | ✅ |
-| Comment panel (threaded, resolve) | ✅ |
-| Timeline markers | ✅ |
-| Shared review page (public token) | ✅ |
-| Database schema + RLS | ✅ |
+### Before Fixes
+- Oversized "Project" text dominating the project detail page
+- Inconsistent card styling with double hover effects
+- Missing form element styling in modals
 
-## Routes
+### After Fixes
 
-| Route | Description |
-|-------|-------------|
-| `/` | Landing page |
-| `/login` | Login |
-| `/signup` | Registration |
-| `/dashboard` | Projects |
-| `/project/[id]` | Review items |
-| `/review/[id]` | ⭐ Review workspace |
-| `/shared/[token]` | Public shared review |
-| `/api/upload` | R2 upload |
+#### Dashboard
+![Dashboard with properly styled header and cards](file:///C:/Users/dangt/.gemini/antigravity/brain/ffa33b93-54ce-4c54-9f8c-e1f7d85e6ba5/dashboard_verification_1772900315045.png)
 
-## Setup
+#### Project Detail
+![Project detail page with fixed header text size](file:///C:/Users/dangt/.gemini/antigravity/brain/ffa33b93-54ce-4c54-9f8c-e1f7d85e6ba5/project_detail_verification_1772900337405.png)
 
-```bash
-cd e:\TDC_App\TDGAMES_App\SyncSketch\td-feedback
-npm run dev
-```
+#### Landing Page
+![Clean landing page with consistent orange/dark theme](file:///C:/Users/dangt/.gemini/antigravity/brain/ffa33b93-54ce-4c54-9f8c-e1f7d85e6ba5/landing_v2_check_1772900054218.png)
 
-Fill `.env.local` with Supabase keys + R2 credentials.
+#### Login & Signup
+````carousel
+![Login page](file:///C:/Users/dangt/.gemini/antigravity/brain/ffa33b93-54ce-4c54-9f8c-e1f7d85e6ba5/login_v2_check_1772900063984.png)
+<!-- slide -->
+![Signup page](file:///C:/Users/dangt/.gemini/antigravity/brain/ffa33b93-54ce-4c54-9f8c-e1f7d85e6ba5/signup_v2_check_1772900074298.png)
+````
 
-## Next Steps
-
-- Share link generation UI
-- Version upload + A/B comparison
-- Real-time collaboration
-- Slack/Discord notifications
+## Files Modified
+| File | Change |
+|------|--------|
+| [dashboard.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/dashboard/dashboard.module.css) | Full rewrite to match TSX class names |
+| [dashboard/page.tsx](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/dashboard/page.tsx) | Removed unused import, fixed CSS classes, fixed color var |
+| [project/page.tsx](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/project/%5Bid%5D/page.tsx) | Fixed state, useEffect, removed conflicting classes |
+| [project.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/project/%5Bid%5D/project.module.css) | Removed global `.card` class conflict |
+| [globals.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/globals.css) | Added form utility classes |
+| [Header.tsx](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/components/layout/Header.tsx) | Fixed container class, restored `return` |
+| [Header.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/components/layout/Header.module.css) | Full rewrite with proper layout classes |

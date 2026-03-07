@@ -1,0 +1,66 @@
+# TD_Feedback — UI/UX Redesign Walkthrough
+
+## 🎨 Redesign Based on TD Games Style Guide
+
+The entire UI/UX has been redesigned to match the official **TD Games Style Guide** ([Style_Guild.md](file:///e:/TDC_App/TDGAMES_App/SyncSketch/Style_Guild.md)).
+
+## Before → After
+
+### Landing Page (Orange Theme)
+![Landing Page Redesigned](file:///C:/Users/dangt/.gemini/antigravity/brain/ffa33b93-54ce-4c54-9f8c-e1f7d85e6ba5/landing_page_redesign_1772898965394.png)
+
+### Signup Page (Glass Card)
+![Signup Page Redesigned](file:///C:/Users/dangt/.gemini/antigravity/brain/ffa33b93-54ce-4c54-9f8c-e1f7d85e6ba5/signup_page_redesign_1772898975360.png)
+
+### Demo Recording
+![Redesign Demo](file:///C:/Users/dangt/.gemini/antigravity/brain/ffa33b93-54ce-4c54-9f8c-e1f7d85e6ba5/orange_redesign_test_1772898942862.webp)
+
+---
+
+## Changes Made
+
+| Element | Before (Old) | After (Style Guide) |
+|---------|-------------|---------------------|
+| Primary color | Purple `#7C6AEF` | Orange `#FF9500` |
+| Font | Inter | **Montserrat** |
+| Background | `#111` | `#0F0F0F` |
+| Surface | `#1a1a2e` | `#1A1A1A` |
+| Buttons | Flat purple | **Gradient orange + glow shadow** |
+| Cards | Simple border | **Orange border + hover glow** |
+| Forms | Plain inputs | **Glass effect + orange focus ring** |
+| Radius | 8-12px | **12-20px** |
+| Animations | Basic | **fadeInUp, scaleIn, shake, pulse** |
+| Logo SVG | Purple fill | **Orange `#FF9500` fill** |
+
+## Files Updated (14 total)
+
+| File | Description |
+|------|-------------|
+| [globals.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/globals.css) | Complete design system rewrite |
+| [landing.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/landing.module.css) | Landing page with orange orbs & glow cards |
+| [page.tsx](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/page.tsx) (landing) | Updated logo SVG and nav |
+| [auth.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/%28auth%29/login/auth.module.css) | Glass card login/signup |
+| [login/page.tsx](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/%28auth%29/login/page.tsx) | Orange logo |
+| [signup/page.tsx](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/%28auth%29/signup/page.tsx) | Orange logo |
+| [dashboard.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/dashboard/dashboard.module.css) | Project cards with orange hover |
+| [project.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/project/%5Bid%5D/project.module.css) | Item grid with glow effects |
+| [review.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/review/%5Bid%5D/review.module.css) | Workspace toolbar/timeline |
+| [CommentPanel.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/components/comments/CommentPanel.module.css) | Orange avatars & thread borders |
+| [MediaUploader.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/components/upload/MediaUploader.module.css) | Orange dropzone |
+| [AnnotationCanvas.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/components/canvas/AnnotationCanvas.module.css) | Orange floating actions |
+| [DrawingToolbar.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/components/canvas/DrawingToolbar.module.css) | Orange color picker |
+| [Sidebar.tsx](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/components/layout/Sidebar.tsx) + CSS | Orange logo, orange active states |
+| [Header.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/components/layout/Header.module.css) | Orange gradient avatar |
+| [utils.ts](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/lib/utils.ts) | Status colors updated |
+
+## Design Tokens Applied
+
+```css
+--color-primary: #FF9500
+--gradient-btn: linear-gradient(135deg, #FF9500, #FF7A00)
+--shadow-glow-md: 0 8px 24px rgba(255,149,0,0.4)
+--font-family: 'Montserrat', sans-serif
+--color-bg: #0F0F0F
+--color-surface: #1A1A1A
+--radius-lg: 20px
+```

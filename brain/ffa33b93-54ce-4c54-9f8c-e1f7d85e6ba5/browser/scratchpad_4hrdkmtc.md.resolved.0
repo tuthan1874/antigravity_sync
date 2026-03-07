@@ -1,0 +1,12 @@
+# UI/UX Audit Plan
+
+## Tasks:
+- [ ] Visit `http://localhost:3000` (Landing Page) & Take Screenshot
+- [ ] Visit `http://localhost:3000/login` & Take Screenshot
+- [ ] Visit `http://localhost:3000/signup` & Take Screenshot
+- [ ] Visit `http://localhost:3000/dashboard` & Take Screenshot
+- [ ] Review `Style_Guild.md` for design principles
+- [ ] Document all visual issues (layout, alignment, spacing, etc.)
+
+## Findings:
+- *To be filled*

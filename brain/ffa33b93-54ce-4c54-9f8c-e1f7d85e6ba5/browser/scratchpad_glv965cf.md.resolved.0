@@ -1,0 +1,13 @@
+# Task: Verify TD_Feedback App UI/UX Redesign
+
+## Verification Plan
+1. [ ] Navigate to `http://localhost:3000` (Landing Page)
+2. [ ] Verify Landing Page style (Orange #FF9500, Montserrat, #0F0F0F background)
+3. [ ] Take screenshot of Landing Page
+4. [ ] Navigate to `http://localhost:3000/signup` (Signup Page)
+5. [ ] Verify Signup Page style
+6. [ ] Take screenshot of Signup Page
+7. [ ] Report observations
+
+## Observations
+- 

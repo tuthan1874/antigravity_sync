@@ -1,0 +1,47 @@
+# TD_Feedback — UI/UX Redesign Walkthrough
+
+## 🎨 Redesign Based on TD Games Style Guide
+
+The entire UI/UX has been redesigned to match the official **TD Games Style Guide**, including replacing the placeholder SVG logo with the actual TD Games brand logo.
+
+## Screenshots
+
+````carousel
+![Landing Page with TD Games Logo](file:///C:/Users/dangt/.gemini/antigravity/brain/ffa33b93-54ce-4c54-9f8c-e1f7d85e6ba5/landing_page_after_reload_1772899212340.png)
+<!-- slide -->
+![Signup Page with TD Games Logo](file:///C:/Users/dangt/.gemini/antigravity/brain/ffa33b93-54ce-4c54-9f8c-e1f7d85e6ba5/signup_page_logo_check_1772899219795.png)
+````
+
+## Demo Recording
+![Logo Replacement Demo](file:///C:/Users/dangt/.gemini/antigravity/brain/ffa33b93-54ce-4c54-9f8c-e1f7d85e6ba5/logo_replacement_test_1772899182448.webp)
+
+---
+
+## Changes Summary
+
+| Element | Before | After |
+|---------|--------|-------|
+| Primary color | Purple `#7C6AEF` | **Orange `#FF9500`** |
+| Logo | SVG placeholder | **Actual TD Games logo** |
+| Font | Inter | **Montserrat** |
+| Background | `#111` | **`#0F0F0F`** |
+| Buttons | Flat purple | **Gradient orange + glow** |
+| Cards | Simple border | **Orange border + hover glow** |
+| Forms | Plain inputs | **Glass effect + orange focus** |
+| Animations | Basic | **fadeInUp, scaleIn, shake, pulse** |
+
+## Files Updated
+
+### Logo Replacement (5 files)
+- [page.tsx](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/page.tsx) — landing navbar
+- [login/page.tsx](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/(auth)/login/page.tsx) — login card
+- [signup/page.tsx](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/(auth)/signup/page.tsx) — signup card
+- [Sidebar.tsx](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/components/layout/Sidebar.tsx) — sidebar
+- [shared/page.tsx](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/shared/[token]/page.tsx) — shared review page
+
+### Style Guide CSS (10+ files)
+- [globals.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/globals.css) — Full design system rewrite
+- [landing.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/landing.module.css), [auth.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/%28auth%29/login/auth.module.css), [dashboard.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/dashboard/dashboard.module.css), [project.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/project/%5Bid%5D/project.module.css), [review.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/app/review/%5Bid%5D/review.module.css)
+- [CommentPanel.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/components/comments/CommentPanel.module.css), [MediaUploader.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/components/upload/MediaUploader.module.css), [AnnotationCanvas.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/components/canvas/AnnotationCanvas.module.css), [DrawingToolbar.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/components/canvas/DrawingToolbar.module.css)
+- [Sidebar.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/components/layout/Sidebar.module.css), [Header.module.css](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/components/layout/Header.module.css)
+- [utils.ts](file:///e:/TDC_App/TDGAMES_App/SyncSketch/td-feedback/src/lib/utils.ts) — Status colors updated

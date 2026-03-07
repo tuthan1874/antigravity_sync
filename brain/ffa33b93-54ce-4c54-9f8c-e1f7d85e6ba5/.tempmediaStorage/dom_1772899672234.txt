@@ -1,0 +1,22 @@
+TD Feedback
+[0] (903,30)<a class='landing-module__g1LwZa__navLink' href='/login'>Log in />
+[1] (952,30)<a class='btn btn-primary' href='/signup'>Get Started />
+Built for Art & Animation Teams
+Visual Feedback,
+Made Simple
+Review art, animation and VFX with frame-accurate annotations, threaded comments, and version control — all in one place.
+[2] (475,447)<a class='btn btn-primary' href='/signup'>Start Reviewing />
+[3] (549,447)<a class='btn btn-secondary' href='/login'>Log in />
+🎨
+Draw & Annotate
+Brush, shapes, arrows — right on the frame
+🎬
+Frame-Accurate
+Comment on exact video frames
+📋
+Version Control
+Compare versions side by side
+🔗
+Share Links
+Send to clients — no login needed
+© 2026 TD Games Studio — feedback.tdgamestudio.com

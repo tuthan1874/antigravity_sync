@@ -1,0 +1,7 @@
+# Redesign Verification Progress
+
+- [ ] Navigate to http://localhost:3000 and capture screenshot.
+- [ ] Check TD Games logo on the landing page (navbar).
+- [ ] Navigate to http://localhost:3000/signup and capture screenshot.
+- [ ] Check TD Games logo on the signup page.
+- [ ] Verify size and alignment of the logo next to "TD Feedback" text.

@@ -1,0 +1,5 @@
+# UI Fixes Verification Plan
+- [ ] Navigate to http://localhost:3000 and screenshot (landing page)
+- [ ] Navigate to http://localhost:3000/login, log in, and screenshot (dashboard page)
+- [ ] Click on a project and screenshot (project detail page)
+- [ ] Verify header size, card styling, and overall layout cleanliness
