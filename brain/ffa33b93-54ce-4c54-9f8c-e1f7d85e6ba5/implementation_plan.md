@@ -1,148 +1,127 @@
-# TD Games SyncSketch - Visual Review & Feedback Platform
+# TD_Feedback — Visual Review & Feedback Platform
 
-## Mục tiêu
+## Confirmed Details
 
-Xây dựng một nền tảng review/feedback trực quan cho **TD Games Studio** (chuyên Outsource Art/Animation/VFX), lấy cảm hứng từ SyncSketch. App tập trung vào việc feedback Art, Animation và VFX một cách hiệu quả, dễ dàng cho cả Internal team và External clients.
-
----
-
-## User Review Required
-
-> [!IMPORTANT]
-> **Quyết định về Tech Stack & Hosting**: Plan đề xuất dùng **Next.js + Supabase** (tận dụng Supabase project đã có). Nếu muốn dùng stack khác (VPS riêng, Firebase, v.v.), cần confirm trước khi bắt đầu.
-
-> [!IMPORTANT]
-> **Phạm vi MVP**: Plan chia thành 4 phases. Cần confirm có muốn build tất cả hay chỉ tập trung Phase 1 (Core) trước.
-
-> [!WARNING]
-> **Storage & Chi phí**: Upload video/image sẽ cần storage đáng kể. Cần xác nhận sử dụng Supabase Storage (có giới hạn theo plan) hay S3/Cloudflare R2 cho media files.
-
-> [!IMPORTANT]
-> **Domain & Branding**: Cần confirm tên app chính thức (ví dụ: "TD Review", "ArtSync", "TD Sketch"...) và domain nếu có.
+| Item | Decision |
+|------|----------|
+| **App Name** | TD_Feedback |
+| **Supabase Project** | `Workflow` (`fifuhkupaqcfjwyouwpa`, ap-northeast-1) |
+| **Storage** | Cloudflare R2 |
+| **Scope** | Phase 1 (MVP) first |
+| **Media Types** | Image, GIF, Video (2D focused) |
+| **Domain** | `feedback.tdgamestudio.com` |
+| **Hosting** | VPS |
 
 ---
 
-## Tổng quan Kiến trúc
+## Architecture
 
 ```mermaid
 graph TB
-    subgraph "Frontend - Next.js App"
-        A[Dashboard] --> B[Project Browser]
-        B --> C[Review Workspace]
-        C --> D[Annotation Canvas<br/>Fabric.js]
-        C --> E[Video Player<br/>Custom Controls]
-        C --> F[Comment Panel]
-        C --> G[Version Comparison]
+    subgraph "Frontend — Next.js 15"
+        A[Landing / Login] --> B[Dashboard]
+        B --> C[Project Page]
+        C --> D["Review Workspace ⭐"]
+        D --> D1[Image/GIF Viewer]
+        D --> D2[Video Player]
+        D --> D3[Annotation Canvas — Fabric.js]
+        D --> D4[Comment Panel]
+        D --> D5[Version Switcher]
     end
 
-    subgraph "Backend - Supabase"
-        H[Auth - SSO/Email]
-        I[PostgreSQL Database]
-        J[Storage - Media Files]
-        K[Realtime - WebSocket]
-        L[Edge Functions]
+    subgraph "Supabase — Workflow Project"
+        E[Auth]
+        F[PostgreSQL]
+        G[Realtime — WebSocket]
+        H[Edge Functions]
     end
 
-    subgraph "External Services"
-        M[ClickUp Integration]
-        N[Slack/Discord Bot]
-        O[Email Notifications]
+    subgraph "Cloudflare R2"
+        I[Media Storage]
     end
 
-    A --> H
-    C --> I
-    C --> J
-    C --> K
-    D --> K
-    L --> M
-    L --> N
-    L --> O
+    subgraph "VPS — feedback.tdgamestudio.com"
+        J[Next.js Server]
+        K[R2 Proxy / Presigned URLs]
+    end
+
+    D --> F
+    D3 --> G
+    D --> I
+    A --> E
 ```
-
----
 
 ## Tech Stack
 
-| Layer | Technology | Lý do |
-|-------|-----------|------|
-| **Frontend** | Next.js 15 (App Router) | SSR, performance, routing |
-| **UI Framework** | Vanilla CSS + CSS Modules | Full control, premium design |
-| **Canvas/Annotation** | Fabric.js | Powerful drawing, shapes, text on canvas |
-| **Video Player** | Custom HTML5 Video + Canvas overlay | Frame-accurate annotation |
-| **State Management** | Zustand | Lightweight, simple |
-| **Backend** | Supabase (project `Web_App` hoặc tạo mới) | Auth, DB, Storage, Realtime |
-| **Database** | PostgreSQL (Supabase) | Relational, robust |
-| **Storage** | Supabase Storage / Cloudflare R2 | Media files |
-| **Realtime** | Supabase Realtime (WebSocket) | Live collaboration |
-| **Deployment** | Vercel | Tích hợp tốt với Next.js |
+| Layer | Tech |
+|-------|------|
+| Frontend | Next.js 15, App Router, TypeScript |
+| Styling | Vanilla CSS + CSS Modules, dark theme |
+| Annotation | Fabric.js |
+| Video Player | Custom HTML5 Video + Canvas overlay |
+| State | Zustand |
+| Auth & DB | Supabase (project `Workflow`) |
+| Storage | Cloudflare R2 (presigned URLs) |
+| Realtime | Supabase Realtime |
+| Deploy | VPS, `feedback.tdgamestudio.com` |
 
 ---
 
-## Proposed Changes - Phased Development
-
----
-
-### 🔷 Phase 1: Core Platform (MVP) — _~3-4 weeks_
-
-Xây dựng nền tảng cơ bản: upload, xem, annotate, và comment.
-
-#### Database Schema
+## Database Schema (Supabase — `public` schema)
 
 ```sql
--- Projects: Nhóm các review items theo dự án
-CREATE TABLE projects (
+-- fb_projects: Nhóm review items theo dự án khách hàng
+CREATE TABLE fb_projects (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name TEXT NOT NULL,
   description TEXT,
   thumbnail_url TEXT,
   owner_id UUID REFERENCES auth.users(id),
-  team_id UUID,
-  status TEXT DEFAULT 'active', -- active, archived
+  status TEXT DEFAULT 'active',
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
 );
 
--- Review Items: Từng file cần review (image/video/3D)
-CREATE TABLE review_items (
+-- fb_review_items: Từng file cần review
+CREATE TABLE fb_review_items (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  project_id UUID REFERENCES projects(id) ON DELETE CASCADE,
+  project_id UUID REFERENCES fb_projects(id) ON DELETE CASCADE,
   name TEXT NOT NULL,
-  media_type TEXT NOT NULL, -- image, video, sequence
+  media_type TEXT NOT NULL, -- 'image', 'gif', 'video'
   media_url TEXT NOT NULL,
   thumbnail_url TEXT,
-  duration_ms INTEGER, -- for video
-  frame_count INTEGER, -- for image sequence
+  duration_ms INTEGER,
   fps REAL DEFAULT 24,
   width INTEGER,
   height INTEGER,
   file_size BIGINT,
   sort_order INTEGER DEFAULT 0,
   version INTEGER DEFAULT 1,
-  parent_item_id UUID REFERENCES review_items(id), -- version chain
+  parent_item_id UUID REFERENCES fb_review_items(id),
   uploaded_by UUID REFERENCES auth.users(id),
-  status TEXT DEFAULT 'pending_review', -- pending_review, in_review, approved, revision_needed
+  status TEXT DEFAULT 'pending_review',
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
 );
 
--- Annotations: Drawings/marks trên frame cụ thể
-CREATE TABLE annotations (
+-- fb_annotations: Drawings trên frame cụ thể
+CREATE TABLE fb_annotations (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  review_item_id UUID REFERENCES review_items(id) ON DELETE CASCADE,
-  frame_number INTEGER, -- frame tại thời điểm annotate
-  timestamp_ms INTEGER, -- timestamp cho video
-  annotation_data JSONB NOT NULL, -- Fabric.js canvas JSON
+  review_item_id UUID REFERENCES fb_review_items(id) ON DELETE CASCADE,
+  frame_number INTEGER,
+  timestamp_ms INTEGER,
+  annotation_data JSONB NOT NULL,
   color TEXT DEFAULT '#FF0000',
   author_id UUID REFERENCES auth.users(id),
   created_at TIMESTAMPTZ DEFAULT now()
 );
 
--- Comments: Text feedback gắn với annotation hoặc timeline
-CREATE TABLE comments (
+-- fb_comments: Text feedback
+CREATE TABLE fb_comments (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  review_item_id UUID REFERENCES review_items(id) ON DELETE CASCADE,
-  annotation_id UUID REFERENCES annotations(id),
-  parent_comment_id UUID REFERENCES comments(id), -- reply thread
+  review_item_id UUID REFERENCES fb_review_items(id) ON DELETE CASCADE,
+  annotation_id UUID REFERENCES fb_annotations(id),
+  parent_comment_id UUID REFERENCES fb_comments(id),
   content TEXT NOT NULL,
   frame_number INTEGER,
   timestamp_ms INTEGER,
@@ -153,29 +132,13 @@ CREATE TABLE comments (
   updated_at TIMESTAMPTZ DEFAULT now()
 );
 
--- Teams & Members
-CREATE TABLE teams (
+-- fb_share_links: Chia sẻ review cho external clients
+CREATE TABLE fb_share_links (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  name TEXT NOT NULL,
-  slug TEXT UNIQUE NOT NULL,
-  owner_id UUID REFERENCES auth.users(id),
-  created_at TIMESTAMPTZ DEFAULT now()
-);
-
-CREATE TABLE team_members (
-  team_id UUID REFERENCES teams(id) ON DELETE CASCADE,
-  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
-  role TEXT DEFAULT 'reviewer', -- admin, artist, reviewer, client
-  PRIMARY KEY (team_id, user_id)
-);
-
--- Share Links: Chia sẻ review cho external clients
-CREATE TABLE share_links (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  project_id UUID REFERENCES projects(id) ON DELETE CASCADE,
-  review_item_id UUID REFERENCES review_items(id),
+  project_id UUID REFERENCES fb_projects(id) ON DELETE CASCADE,
+  review_item_id UUID REFERENCES fb_review_items(id),
   token TEXT UNIQUE NOT NULL,
-  permissions TEXT DEFAULT 'view_comment', -- view_only, view_comment, full
+  permissions TEXT DEFAULT 'view_comment',
   expires_at TIMESTAMPTZ,
   password_hash TEXT,
   created_by UUID REFERENCES auth.users(id),
@@ -183,228 +146,90 @@ CREATE TABLE share_links (
 );
 ```
 
-#### Frontend Pages & Components
-
-##### [NEW] `e:\TDC_App\TDGAMES_App\SyncSketch\` — Next.js Project Root
-
-| Path | Mô tả |
-|------|-------|
-| `app/page.tsx` | Landing page |
-| `app/(auth)/login/page.tsx` | Login (Supabase Auth) |
-| `app/(auth)/signup/page.tsx` | Signup |
-| `app/dashboard/page.tsx` | Dashboard - danh sách projects |
-| `app/project/[id]/page.tsx` | Project view - grid/list review items |
-| `app/review/[id]/page.tsx` | **⭐ Review Workspace** - core page |
-| `components/canvas/AnnotationCanvas.tsx` | Fabric.js annotation overlay |
-| `components/canvas/DrawingToolbar.tsx` | Brush, shapes, text, color picker |
-| `components/player/VideoPlayer.tsx` | Custom video player với frame controls |
-| `components/player/ImageViewer.tsx` | Zoomable image viewer |
-| `components/player/SequencePlayer.tsx` | Image sequence playback |
-| `components/comments/CommentPanel.tsx` | Sidebar comment list + thread |
-| `components/comments/CommentForm.tsx` | Add comment form |
-| `components/timeline/AnnotationTimeline.tsx` | Visual timeline với annotation markers |
-| `components/upload/MediaUploader.tsx` | Drag & drop upload |
-| `components/version/VersionSwitcher.tsx` | So sánh versions |
-| `components/share/ShareDialog.tsx` | Tạo share links |
-| `components/layout/Sidebar.tsx` | Navigation sidebar |
-| `components/layout/Header.tsx` | Top bar with user menu |
-
-#### Key Features - Phase 1
-
-1. **Media Upload & Management**
-   - Drag & drop upload images, videos, image sequences
-   - Auto-generate thumbnails
-   - Organize by projects
-
-2. **Annotation System** (Core differentiator)
-   - Freehand brush drawing with pressure sensitivity
-   - Shapes: rectangle, circle, arrow, line
-   - Text annotations
-   - Color picker with preset colors
-   - Frame-accurate annotations (tied to specific video frame)
-   - Annotation history (undo/redo)
-
-3. **Comment System**
-   - Frame-specific comments (click on timeline → comment appears at that frame)
-   - Threaded replies
-   - @mention team members
-   - Mark as resolved
-   - Comment markers on timeline
-
-4. **Video Player**
-   - Frame-by-frame navigation (← → keys)
-   - Loop range selection
-   - Playback speed control
-   - Frame counter display
-   - Timecode display
-
-5. **Version Control**
-   - Upload new versions of same asset
-   - Side-by-side comparison (A/B)
-   - Onion skin overlay
-
-6. **Share & Permissions**
-   - Share via link (no login required for external clients)
-   - Password-protected links
-   - View-only / View+Comment permissions
+> [!NOTE]
+> Tables prefixed with `fb_` to avoid conflicts with existing tables in the `Workflow` project.
 
 ---
 
-### 🔷 Phase 2: Real-time Collaboration — _~2 weeks_
+## Phase 1 MVP — Component Breakdown
 
-7. **Synchronized Review Session**
-   - "Present Mode" — leader controls playback, everyone sees same frame
-   - Real-time cursor visibility (see where others are looking)
-   - Live annotation broadcast (draw → everyone sees immediately)
-   - Session chat
-
-8. **Notifications**
-   - Email notifications for new comments/reviews
-   - In-app notification center
-   - Slack/Discord webhook notifications
-
----
-
-### 🔷 Phase 3: Advanced Review Features — _~2-3 weeks_
-
-9. **Comparison Tools**
-   - Side-by-side version comparison
-   - Overlay diff (blend modes)
-   - Before/After slider
-   - Animated GIF comparison
-
-10. **Review Status Workflow**
-    - Custom statuses: Pending → In Review → Needs Revision → Approved
-    - Approval workflow (require N approvals)
-    - Status dashboard / progress tracking
-
-11. **Batch Operations**
-    - Multi-select items → bulk status change
-    - Batch download
-    - Playlist mode (auto-play sequence of items)
-
----
-
-### 🔷 Phase 4: Integrations & Advanced — _~2-3 weeks_
-
-12. **ClickUp Integration**
-    - Tự động tạo task khi item cần revision
-    - Sync status giữa ClickUp ↔ Review app
-    - Link review items trong ClickUp comments
-
-13. **Slack/Discord Integration**
-    - Post review updates to channels
-    - Reply to comments from Slack/Discord
-
-14. **NocoDB Integration**
-    - Log review activities
-    - Track project metrics
-    - Reporting dashboard
-
----
-
-## Cấu trúc Project
-
+### Project Structure
 ```
 e:\TDC_App\TDGAMES_App\SyncSketch\
-├── app/                          # Next.js App Router
-│   ├── (auth)/                   # Auth pages
-│   │   ├── login/page.tsx
-│   │   └── signup/page.tsx
-│   ├── dashboard/page.tsx        # Projects dashboard
-│   ├── project/[id]/page.tsx     # Single project view
-│   ├── review/[id]/page.tsx      # ⭐ Review workspace
-│   ├── shared/[token]/page.tsx   # Public shared review
-│   ├── layout.tsx                # Root layout
-│   ├── page.tsx                  # Landing page
-│   └── globals.css               # Global styles
-├── components/
-│   ├── canvas/                   # Annotation engine
-│   ├── player/                   # Media players
-│   ├── comments/                 # Comment system
-│   ├── timeline/                 # Timeline & markers
-│   ├── upload/                   # File upload
-│   ├── version/                  # Version management
-│   ├── share/                    # Sharing
-│   ├── layout/                   # App shell
-│   └── ui/                       # Common UI components
-├── lib/
-│   ├── supabase/                 # Supabase client & helpers
-│   ├── annotation/               # Annotation logic
-│   ├── media/                    # Media processing utils
-│   └── utils/                    # General utilities
-├── hooks/                        # Custom React hooks
-├── stores/                       # Zustand stores
-├── styles/                       # CSS modules
-├── types/                        # TypeScript types
-├── public/                       # Static assets
+├── src/
+│   ├── app/
+│   │   ├── page.tsx                    # Landing
+│   │   ├── layout.tsx                  # Root layout
+│   │   ├── globals.css                 # Design system
+│   │   ├── (auth)/login/page.tsx
+│   │   ├── (auth)/signup/page.tsx
+│   │   ├── dashboard/page.tsx
+│   │   ├── project/[id]/page.tsx
+│   │   ├── review/[id]/page.tsx        # ⭐ Core
+│   │   ├── shared/[token]/page.tsx     # Public review
+│   │   └── api/
+│   │       ├── upload/route.ts         # R2 presigned URL
+│   │       └── share/route.ts
+│   ├── components/
+│   │   ├── canvas/                     # AnnotationCanvas, DrawingToolbar
+│   │   ├── player/                     # VideoPlayer, ImageViewer
+│   │   ├── comments/                   # CommentPanel, CommentForm
+│   │   ├── timeline/                   # AnnotationTimeline
+│   │   ├── upload/                     # MediaUploader
+│   │   ├── version/                    # VersionSwitcher
+│   │   ├── share/                      # ShareDialog
+│   │   └── layout/                     # Sidebar, Header
+│   ├── lib/
+│   │   ├── supabase.ts                 # Client init
+│   │   ├── r2.ts                       # R2 upload helpers
+│   │   └── utils.ts
+│   ├── hooks/
+│   ├── stores/
+│   └── types/
+├── public/
 ├── next.config.ts
 ├── package.json
-└── tsconfig.json
+└── .env.local
 ```
 
----
+### Key Features (Phase 1)
 
-## Design System
+1. **Upload**: Drag & drop Image/GIF/Video → R2 → auto thumbnail
+2. **Annotation**: Brush, shapes, arrows, text — frame-accurate cho video
+3. **Comments**: Frame-specific, threaded, resolve/unresolve
+4. **Video Player**: Frame-by-frame (←→), loop, speed, timecode
+5. **Versions**: Upload new version, A/B side-by-side compare
+6. **Share Links**: Public link (no login), optional password
 
-### Color Palette (Dark Theme — phù hợp review visual content)
+### Design — Dark Theme
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--bg-primary` | `#0D0D0F` | Main background |
-| `--bg-secondary` | `#16161A` | Cards, panels |
-| `--bg-tertiary` | `#1E1E24` | Inputs, hover states |
-| `--accent-primary` | `#6C5CE7` | Primary buttons, links |
-| `--accent-secondary` | `#00D2FF` | Active states |
-| `--accent-success` | `#00E676` | Approved status |
-| `--accent-warning` | `#FFB300` | Needs revision |
-| `--accent-danger` | `#FF5252` | Rejected, urgent |
-| `--text-primary` | `#F5F5F7` | Main text |
-| `--text-secondary` | `#8E8E93` | Muted text |
-| `--border` | `#2C2C30` | Borders |
-
-### Typography
-- **Font**: `Inter` (headings) + `JetBrains Mono` (timecode/frame numbers)
-- Full dark mode optimized for viewing visual content
+| `--bg-primary` | `#0D0D0F` | Main bg |
+| `--bg-secondary` | `#16161A` | Panels |
+| `--bg-tertiary` | `#1E1E24` | Inputs |
+| `--accent` | `#6C5CE7` | Primary |
+| `--accent-blue` | `#00D2FF` | Active |
+| `--success` | `#00E676` | Approved |
+| `--warning` | `#FFB300` | Revision |
+| `--danger` | `#FF5252` | Urgent |
+| `--text-primary` | `#F5F5F7` | Text |
+| `--text-muted` | `#8E8E93` | Muted |
 
 ---
 
 ## Verification Plan
 
-### Phase 1 Verification
-
-#### Automated Tests
-Sẽ setup sau khi có codebase:
-```bash
-# Unit tests cho annotation logic
-npm run test -- --filter annotation
-
-# Component tests
-npm run test -- --filter components
-```
-
-#### Manual Verification (cần user test)
-1. **Upload Flow**: Upload 1 image + 1 video → verify hiển thị đúng
-2. **Annotation**: Vẽ annotation trên image → save → reload → verify vẫn còn
-3. **Video Frame Annotation**: Vẽ annotation tại frame 50 → navigate đi chỗ khác → quay lại frame 50 → verify annotation hiển thị
-4. **Comments**: Thêm comment tại frame → verify marker xuất hiện trên timeline
-5. **Version Upload**: Upload version 2 → verify có thể switch giữa v1 và v2
-6. **Share Link**: Tạo share link → mở incognito → verify xem và comment được
-7. **Browser Testing**: Test trên Chrome, Firefox, Safari
-
-#### Test bằng Browser Tool
-- Navigate qua các pages: Dashboard → Project → Review
-- Verify responsive design
-- Test annotation drawing via canvas interactions
-- Kiểm tra video player controls
+1. Upload image → annotate → save → reload → verify annotation persists
+2. Upload video → navigate to frame 50 → draw → go to frame 100 → back to 50 → verify
+3. Add comment at frame → verify timeline marker
+4. Upload version 2 → compare with v1
+5. Generate share link → open incognito → verify access
+6. Test responsive on desktop browsers
 
 ---
 
-## Câu hỏi cần Confirm trước khi bắt đầu
+## User Questions
 
-1. **Tên app chính thức?** (ví dụ: "TD Review", "ArtSync", "TD Sketch")
-2. **Dùng Supabase project nào?** Tạo mới hay dùng `Web_App` hiện có?
-3. **Storage choice?** Supabase Storage vs Cloudflare R2 vs AWS S3?
-4. **Bắt đầu từ Phase nào?** Gợi ý: Phase 1 (MVP) trước
-5. **Có cần hỗ trợ 3D model review** (như SyncSketch) hay chỉ cần Image + Video + Image Sequence?
-6. **Domain/hosting** cho production?
+> [!IMPORTANT]
+> **Cloudflare R2**: Anh đã có R2 bucket chưa? Cần access key + secret key + bucket name + account ID để config. Nếu chưa có, tôi có thể guide setup.

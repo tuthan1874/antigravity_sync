@@ -1,5 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_TASK",
-  "summary":  "Task checklist tracking Phase 1 MVP development of TD Review app, covering project setup, layout, auth, dashboard, media upload, review workspace, version control, and sharing features.",
-  "updatedAt":  "2026-03-07T14:56:10.582589600Z"
+  "summary":  "Task checklist for TD_Feedback Phase 1 MVP, tracking project setup, database, layout, auth, dashboard, upload, review workspace, versions, and sharing.",
+  "updatedAt":  "2026-03-07T15:04:12.625826500Z",
+  "version":  "1"
 }

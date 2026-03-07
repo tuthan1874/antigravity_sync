@@ -1,47 +1,41 @@
-# TD Review - Phase 1 MVP
+# TD_Feedback — Phase 1 MVP
 
 ## Project Setup
 - [/] Initialize Next.js project
-- [ ] Install dependencies (Fabric.js, Zustand, Supabase client)
-- [ ] Setup Supabase database schema
-- [ ] Configure project structure
+- [ ] Install dependencies (Fabric.js, Zustand, Supabase, AWS SDK for R2)
+- [ ] Configure env variables
+- [ ] Setup Supabase database schema (fb_ tables)
 
-## Core Layout & Design System
-- [ ] Global CSS with dark theme design system
-- [ ] Root layout with sidebar navigation
-- [ ] Header component
+## Design System & Layout
+- [ ] Global CSS dark theme
+- [ ] Root layout + Sidebar + Header
 
 ## Authentication
-- [ ] Login page
-- [ ] Signup page
-- [ ] Auth middleware/guards
+- [ ] Login / Signup pages
+- [ ] Auth middleware
 
 ## Dashboard & Projects
-- [ ] Dashboard page (list projects)
-- [ ] Create project dialog
-- [ ] Project detail page (list review items)
+- [ ] Dashboard (list projects)
+- [ ] Create/edit project
+- [ ] Project detail (list review items)
 
 ## Media Upload
-- [ ] Media uploader component (drag & drop)
-- [ ] Upload to Supabase Storage
-- [ ] Thumbnail generation
+- [ ] R2 presigned URL API route
+- [ ] Drag & drop uploader component
 
 ## Review Workspace (Core)
 - [ ] Review page layout
-- [ ] Image viewer with zoom/pan
+- [ ] Image/GIF viewer
 - [ ] Video player with frame controls
-- [ ] Annotation canvas (Fabric.js overlay)
-- [ ] Drawing toolbar (brush, shapes, text, colors)
-- [ ] Comment panel with threads
-- [ ] Annotation timeline markers
-- [ ] Frame-accurate annotation linking
+- [ ] Annotation canvas (Fabric.js)
+- [ ] Drawing toolbar
+- [ ] Comment panel
+- [ ] Timeline markers
 
 ## Version Control
-- [ ] Version upload
-- [ ] Version switcher
+- [ ] Version upload + switcher
 - [ ] Side-by-side comparison
 
 ## Sharing
 - [ ] Share link generation
 - [ ] Public shared review page
-- [ ] Permission controls

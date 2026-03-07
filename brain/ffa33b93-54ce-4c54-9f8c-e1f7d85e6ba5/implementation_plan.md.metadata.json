@@ -1,5 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary":  "Full implementation plan for building a SyncSketch-like visual review and feedback application for TD Games Studio. Covers architecture, tech stack, phased development approach with 4 phases: core upload/annotation, real-time collaboration, advanced features, and integrations. Uses Next.js + Supabase + Fabric.js/Canvas API.",
-  "updatedAt":  "2026-03-07T14:55:27.117867500Z"
+  "summary":  "Updated implementation plan for TD_Feedback app with all user-confirmed details: Supabase Workflow project, Cloudflare R2 storage, Image/GIF/Video only, VPS deployment at feedback.tdgamestudio.com. Includes detailed database schema, project structure, component breakdown, and Phase 1 MVP scope.",
+  "updatedAt":  "2026-03-07T15:03:45.598866700Z",
+  "version":  "1"
 }
