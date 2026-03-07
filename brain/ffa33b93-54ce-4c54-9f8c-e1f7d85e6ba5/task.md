@@ -1,0 +1,47 @@
+# TD Review - Phase 1 MVP
+
+## Project Setup
+- [/] Initialize Next.js project
+- [ ] Install dependencies (Fabric.js, Zustand, Supabase client)
+- [ ] Setup Supabase database schema
+- [ ] Configure project structure
+
+## Core Layout & Design System
+- [ ] Global CSS with dark theme design system
+- [ ] Root layout with sidebar navigation
+- [ ] Header component
+
+## Authentication
+- [ ] Login page
+- [ ] Signup page
+- [ ] Auth middleware/guards
+
+## Dashboard & Projects
+- [ ] Dashboard page (list projects)
+- [ ] Create project dialog
+- [ ] Project detail page (list review items)
+
+## Media Upload
+- [ ] Media uploader component (drag & drop)
+- [ ] Upload to Supabase Storage
+- [ ] Thumbnail generation
+
+## Review Workspace (Core)
+- [ ] Review page layout
+- [ ] Image viewer with zoom/pan
+- [ ] Video player with frame controls
+- [ ] Annotation canvas (Fabric.js overlay)
+- [ ] Drawing toolbar (brush, shapes, text, colors)
+- [ ] Comment panel with threads
+- [ ] Annotation timeline markers
+- [ ] Frame-accurate annotation linking
+
+## Version Control
+- [ ] Version upload
+- [ ] Version switcher
+- [ ] Side-by-side comparison
+
+## Sharing
+- [ ] Share link generation
+- [ ] Public shared review page
+- [ ] Permission controls

@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Full implementation plan for building a SyncSketch-like visual review and feedback application for TD Games Studio. Covers architecture, tech stack, phased development approach with 4 phases: core upload/annotation, real-time collaboration, advanced features, and integrations. Uses Next.js + Supabase + Fabric.js/Canvas API.",
+  "updatedAt":  "2026-03-07T14:55:27.117867500Z"
+}
