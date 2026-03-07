@@ -1,0 +1,15 @@
+# TD Feedback App Verification
+
+## Plan
+1. [ ] Navigate to `http://localhost:3000`
+2. [ ] Verify landing page:
+   - [ ] Page loads without errors
+   - [ ] Dark theme is applied
+   - [ ] Logo "TD Feedback" is visible
+   - [ ] Hero section "Visual Feedback, Made Simple" is shown
+   - [ ] Feature cards are visible
+   - [ ] "Get Started" and "Log in" buttons are present
+3. [ ] Take a screenshot of the landing page
+4. [ ] Navigate to sign-up page (click "Get Started" or "Sign up")
+5. [ ] Take a screenshot of the sign-up page
+6. [ ] Summarize findings and report to the user.
