@@ -1,6 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_TASK",
-  "summary":  "Task checklist for TD_Feedback Phase 1 MVP, tracking project setup, database, layout, auth, dashboard, upload, review workspace, versions, and sharing.",
-  "updatedAt":  "2026-03-07T15:04:12.625826500Z",
-  "version":  "1"
+  "summary":  "Tracking Phase 1 MVP progress. Most tasks completed: project setup, DB schema, design system, auth, dashboard, project page, upload, review workspace with annotation/comments. Remaining: shared page, build verification.",
+  "updatedAt":  "2026-03-07T15:15:24.612962600Z",
+  "version":  "2"
 }

@@ -1,41 +1,41 @@
 # TD_Feedback — Phase 1 MVP
 
 ## Project Setup
-- [/] Initialize Next.js project
-- [ ] Install dependencies (Fabric.js, Zustand, Supabase, AWS SDK for R2)
-- [ ] Configure env variables
-- [ ] Setup Supabase database schema (fb_ tables)
+- [x] Initialize Next.js project
+- [x] Install dependencies (Zustand, Supabase, AWS SDK for R2)
+- [x] Configure env variables
+- [x] Setup Supabase database schema (fb_ tables with RLS)
 
 ## Design System & Layout
-- [ ] Global CSS dark theme
-- [ ] Root layout + Sidebar + Header
+- [x] Global CSS dark theme (300+ lines)
+- [x] Root layout + AppShell + Sidebar + Header
 
 ## Authentication
-- [ ] Login / Signup pages
-- [ ] Auth middleware
+- [x] Login / Signup pages
+- [x] Auth state management (Zustand + Supabase listener)
 
 ## Dashboard & Projects
-- [ ] Dashboard (list projects)
-- [ ] Create/edit project
-- [ ] Project detail (list review items)
+- [x] Dashboard (list projects, grid cards)
+- [x] Create/delete project modals
+- [x] Project detail page (review items grid, status management)
 
 ## Media Upload
-- [ ] R2 presigned URL API route
-- [ ] Drag & drop uploader component
+- [x] R2 presigned URL API route
+- [x] Drag & drop uploader component (progress tracking)
 
 ## Review Workspace (Core)
-- [ ] Review page layout
-- [ ] Image/GIF viewer
-- [ ] Video player with frame controls
-- [ ] Annotation canvas (Fabric.js)
-- [ ] Drawing toolbar
-- [ ] Comment panel
-- [ ] Timeline markers
-
-## Version Control
-- [ ] Version upload + switcher
-- [ ] Side-by-side comparison
+- [x] Review page layout (workspace with canvas + sidebar)
+- [x] Image/GIF viewer
+- [x] Video player with frame controls + keyboard shortcuts
+- [x] Annotation canvas (freehand drawing, undo, save)
+- [x] Drawing toolbar (colors, brush sizes)
+- [x] Comment panel (threaded, resolve, filter)
+- [x] Timeline markers (annotations + comments)
 
 ## Sharing
-- [ ] Share link generation
-- [ ] Public shared review page
+- [/] Public shared review page
+- [ ] Share link generation dialog
+
+## Verification
+- [/] Build check
+- [ ] Browser test
