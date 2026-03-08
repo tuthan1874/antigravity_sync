@@ -37,3 +37,11 @@
 - [x] Create `Dockerfile` + `docker-compose.yml`
 - [x] Create `README.md`
 - [ ] Create walkthrough summary
+
+## Phase 8: Admin Web UI
+- [ ] Create `admin/api.py` (FastAPI backend)
+- [ ] Create `admin/static/index.html` (SPA shell)
+- [ ] Create `admin/static/styles.css` (design system)
+- [ ] Create `admin/static/app.js` (frontend logic)
+- [ ] Integrate admin into `main.py`
+- [ ] Add `fastapi` + `uvicorn` to requirements.txt
