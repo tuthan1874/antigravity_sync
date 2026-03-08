@@ -39,9 +39,9 @@
 - [ ] Create walkthrough summary
 
 ## Phase 8: Admin Web UI
-- [ ] Create `admin/api.py` (FastAPI backend)
-- [ ] Create `admin/static/index.html` (SPA shell)
-- [ ] Create `admin/static/styles.css` (design system)
-- [ ] Create `admin/static/app.js` (frontend logic)
-- [ ] Integrate admin into `main.py`
-- [ ] Add `fastapi` + `uvicorn` to requirements.txt
+- [x] Create `admin/api.py` (FastAPI backend)
+- [x] Create `admin/static/index.html` (SPA shell)
+- [x] Create `admin/static/styles.css` (design system)
+- [x] Create `admin/static/app.js` (frontend logic)
+- [x] Integrate admin into `main.py`
+- [x] Add `fastapi` + `uvicorn` to requirements.txt

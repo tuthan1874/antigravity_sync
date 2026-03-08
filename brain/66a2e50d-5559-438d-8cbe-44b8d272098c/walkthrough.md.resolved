@@ -2,7 +2,13 @@
 
 ## What Was Built
 
-A complete **Memory Database System** for TD Games that uses Discord & Slack bots to listen to company chat channels, summarize important information daily via LLM, and store structured memories in Qdrant via mem0.
+A complete **Memory Database System** + **Admin Web UI** for TD Games.
+
+## Admin UI - Live Screenshot
+
+![Admin Dashboard running at localhost:8500](C:\Users\dangt\.gemini\antigravity\brain\66a2e50d-5559-438d-8cbe-44b8d272098c\admin_ui_verification_1772989198607.png)
+
+![Admin UI test recording](C:\Users\dangt\.gemini\antigravity\brain\66a2e50d-5559-438d-8cbe-44b8d272098c\admin_ui_test_1772989186049.webp)
 
 ## Architecture
 
@@ -20,11 +26,15 @@ graph TB
         BUF["SQLite Buffer (by day)"]
     end
     subgraph "Daily Digest (23:00)"
-        LLM["LLM via CLiproxyAPI"]
+        LLM["LLM via CLiproxyAPI (gpt-5.2)"]
         M0["mem0 Memory Layer"]
     end
-    subgraph "Qdrant VPS"
-        Q["Per-role Collections"]
+    subgraph "Storage"
+        Q["Qdrant Collections (per-role)"]
+    end
+    subgraph "Admin UI (:8500)"
+        FE["SPA Frontend"]
+        API["FastAPI Backend"]
     end
 
     DC --> DB --> BUF
@@ -32,40 +42,57 @@ graph TB
     BUF -->|"Cron"| LLM --> M0 --> Q
     DC -.->|"@mention"| DB -.->|"Query"| M0
     SL -.->|"@mention"| SB -.->|"Query"| M0
+    API --> BUF
+    API --> Q
+    FE --> API
 ```
 
-## Files Created (15 files)
+## API Configuration
+
+| Component | Config Key | Purpose |
+|-----------|-----------|---------|
+| **LLM Chat** | `LLM_API_KEY` + `LLM_BASE_URL` | CLIproxyAPI (gpt-5.2) — chat only |
+| **Embeddings** | `OPENAI_API_KEY` | Official OpenAI API (text-embedding-3-small) |
+
+## Files Created (20 files)
 
 | File | Purpose |
 |------|---------|
-| [requirements.txt](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/requirements.txt) | Python dependencies |
-| [.env.example](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/.env.example) | Environment template (CLiproxyAPI, Qdrant, schedule) |
-| [config/settings.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/config/settings.py) | Pydantic settings + per-role token resolver |
-| [config/bot_roles.yaml](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/config/bot_roles.yaml) | 5 roles (CTO/CEO/PM/HRM/CFO) with system & digest prompts |
-| [core/memory_engine.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/memory_engine.py) | mem0 + Qdrant per-role collection management |
-| [core/message_buffer.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/message_buffer.py) | SQLite buffer with date grouping & processed tracking |
-| [core/daily_digest.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/daily_digest.py) | LLM summarization pipeline, noise filtering |
-| [core/query_engine.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/query_engine.py) | Memory search + LLM response generation |
-| [bots/discord_bot.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/bots/discord_bot.py) | Discord.py bot — multi-server, mention handler |
-| [bots/slack_bot.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/bots/slack_bot.py) | Slack Bolt bot — Socket Mode, threaded replies |
-| [scheduler/jobs.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/scheduler/jobs.py) | APScheduler with daily digest + weekly cleanup |
-| [main.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/main.py) | Entry point — starts all bots + scheduler |
-| [scripts/setup_qdrant_collections.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/scripts/setup_qdrant_collections.py) | One-time Qdrant collection setup |
-| [scripts/manual_digest.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/scripts/manual_digest.py) | CLI to manually trigger digest |
-| [Dockerfile](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/Dockerfile) + [docker-compose.yml](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/docker-compose.yml) | Production deployment |
+| [requirements.txt](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/requirements.txt) | Dependencies (fastapi, uvicorn, mem0, etc.) |
+| [.env.example](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/.env.example) | Env template with all bot tokens |
+| [config/settings.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/config/settings.py) | Separated LLM + Embedder configs |
+| [config/bot_roles.yaml](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/config/bot_roles.yaml) | 5 roles with prompts |
+| [core/memory_engine.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/memory_engine.py) | mem0 + Qdrant per-role |
+| [core/message_buffer.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/message_buffer.py) | SQLite buffer |
+| [core/daily_digest.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/daily_digest.py) | LLM summarization |
+| [core/query_engine.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/query_engine.py) | Memory search + LLM response |
+| [bots/discord_bot.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/bots/discord_bot.py) | Discord bot |
+| [bots/slack_bot.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/bots/slack_bot.py) | Slack bot |
+| [scheduler/jobs.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/scheduler/jobs.py) | APScheduler |
+| [main.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/main.py) | Entry point (bots + scheduler + admin) |
+| [admin/api.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/admin/api.py) | FastAPI backend (13 endpoints) |
+| [admin/static/index.html](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/admin/static/index.html) | SPA shell |
+| [admin/static/styles.css](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/admin/static/styles.css) | Dark OLED design system |
+| [admin/static/app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/admin/static/app.js) | Frontend JS (6 pages) |
+| [scripts/setup_qdrant_collections.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/scripts/setup_qdrant_collections.py) | Collection setup |
+| [scripts/manual_digest.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/scripts/manual_digest.py) | CLI digest trigger |
+| [Dockerfile](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/Dockerfile) | Docker image |
+| [docker-compose.yml](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/docker-compose.yml) | Production deploy |
 
-## Key Design Decisions
+## Admin Web UI Pages
 
-1. **Strategy A (separate tokens)**: Each bot role has its own Discord App + Slack App → cleanest multi-server experience, each bot has its own identity/avatar
-2. **Daily Digest over Realtime**: Messages buffered in SQLite → LLM summarizes at 23:00 → only important info stored in Qdrant. Filters noise with `NO_IMPORTANT_INFO` response
-3. **Extensible roles**: Add new roles by editing [bot_roles.yaml](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/config/bot_roles.yaml) + setting env tokens — no code changes
-4. **Token convention**: `{ROLE_ID}_{PLATFORM}_TOKEN` (e.g., `TD_CTO_DISCORD_TOKEN`)
+| Page | Features |
+|------|----------|
+| **Dashboard** | Stats overview, Qdrant collection cards, system info |
+| **Bot Manager** | CRUD roles via YAML, token status, edit/delete |
+| **Message Buffer** | Browse/filter buffered messages by date/role/platform |
+| **Memory Explorer** | Semantic search on Qdrant collections per role |
+| **Digest Manager** | Manual trigger, date picker, role filter |
+| **Qdrant** | Collection list with vector counts and status |
 
-## Next Steps to Deploy
+## Deploy Steps
 
-1. Copy [.env.example](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/.env.example) → `.env`, fill in CLiproxyAPI URL and API key
-2. Create Discord Bot Apps → enable **Message Content Intent** → get tokens
-3. Create Slack Apps → enable **Socket Mode** → get bot + app tokens
-4. Set all tokens as env vars
-5. Run `python -m scripts.setup_qdrant_collections`
-6. Run `python main.py` (or `docker-compose up -d`)
+1. `cp .env.example .env` → fill in keys and tokens
+2. `pip install -r requirements.txt`
+3. `python -m scripts.setup_qdrant_collections`
+4. `python main.py` → Admin at `http://localhost:8500`
