@@ -1,6 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary":  "Implementation plan for the TD Memory Admin Web UI. Built with FastAPI backend + vanilla HTML/CSS/JS frontend. Features: Dashboard (stats, charts, live buffer), Bot Manager (roles, tokens, start/stop), Memory Explorer (search Qdrant collections), Digest Manager (trigger/view digests), Config Editor (bot_roles.yaml, .env). Uses design system from UI/UX Pro Max: dark OLED theme, Fira Code/Sans, green accents. Served alongside the existing bot system.",
-  "updatedAt":  "2026-03-08T16:48:04.871235400Z",
-  "version":  "1"
+  "summary":  "Implementation plan for Phase 9: ClickUp Task Manager and Reminder System. Adds conversational task creation flow, ClickUp API integration (space: TD_Workspace, folder: Bot_Manager, per-bot lists), custom field for assignee tracking, LLM-powered intent detection, and APScheduler-based reminder system. Covers new modules, bot updates, and admin UI additions.",
+  "updatedAt":  "2026-03-08T17:21:59.284951Z",
+  "version":  "2"
 }

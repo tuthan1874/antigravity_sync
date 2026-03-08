@@ -45,3 +45,16 @@
 - [x] Create `admin/static/app.js` (frontend logic)
 - [x] Integrate admin into `main.py`
 - [x] Add `fastapi` + `uvicorn` to requirements.txt
+
+## Phase 9: ClickUp Task Manager & Reminders
+- [x] Plan ClickUp + Reminder architecture
+- [x] Create `core/clickup_client.py` (ClickUp API wrapper)
+- [x] Create `core/intent_detector.py` (LLM intent classifier)
+- [x] Create `core/conversation_manager.py` (multi-turn flow)
+- [x] Create `core/reminder_manager.py` (cron/reminder system)
+- [x] Update `bots/discord_bot.py` (intent detection, task flow)
+- [x] Update `bots/slack_bot.py` (intent detection, task flow)
+- [x] Update admin UI (reminders page)
+- [x] Update `config/bot_roles.yaml` (ClickUp list IDs)
+- [x] Update `config/settings.py` (ClickUp API token)
+- [x] Update `main.py` (wire all components)

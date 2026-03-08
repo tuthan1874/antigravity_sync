@@ -1,88 +1,168 @@
-# TD Memory Admin - Web UI Implementation Plan
+# Phase 9: ClickUp Task Manager & Reminder System
 
-Admin web panel để quản lý hệ thống Memory Database mà không cần SSH vào VPS.
+Bots sẽ có thêm khả năng **tạo task trên ClickUp** và **nhắc hẹn/cron job**.
 
 ## Architecture
 
 ```mermaid
-graph LR
-    subgraph "Admin Web UI"
-        FE["Frontend<br/>HTML + CSS + JS"]
-        API["FastAPI Backend<br/>:8500"]
+graph TB
+    subgraph "User tags bot"
+        U[User @bot_name]
     end
-    FE -->|"REST API"| API
-    API --> BUF["SQLite Buffer"]
-    API --> QD["Qdrant"]
-    API --> YAML["bot_roles.yaml"]
-    API --> ENV[".env"]
-    API --> PROC["Bot Processes"]
+    subgraph "Intent Detection (LLM)"
+        ID["Detect intent:<br/>1. QUERY (memory Q&A)<br/>2. CREATE_TASK<br/>3. UPDATE_TASK<br/>4. SET_REMINDER"]
+    end
+    subgraph "Conversational Flow"
+        CF["Multi-turn conversation<br/>Bot asks questions<br/>User provides info"]
+    end
+    subgraph "Actions"
+        CU["ClickUp API<br/>Create/Update Task"]
+        RM["Reminder Manager<br/>APScheduler jobs"]
+    end
+
+    U --> ID
+    ID -->|"QUERY"| QE[Query Engine]
+    ID -->|"CREATE_TASK / UPDATE_TASK"| CF --> CU
+    ID -->|"SET_REMINDER"| CF --> RM
+    RM -->|"At scheduled time"| NOTIFY[Send reminder to channel]
 ```
 
-**Stack**: FastAPI (Python backend) + Vanilla HTML/CSS/JS (no framework). Served from the same Python process.
+## ClickUp Structure
+
+```
+TD_Workspace (Space)
+  └─ Bot_Manager (Folder)
+       ├─ TD_CTO (List) ← tasks created by TD_CTO bot
+       ├─ TD_CEO (List) ← tasks created by TD_CEO bot
+       ├─ TD_PM  (List)
+       ├─ TD_HRM (List)
+       └─ TD_CFO (List)
+```
+
+Each list needs two custom fields:
+- **Assignee Name** (text): Name of the person handling the task
+- **Assignee ID** (text): Discord/Slack user ID for mention/reminder
 
 ## Proposed Changes
 
-### Backend API
+---
 
-#### [NEW] [admin/api.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/admin/api.py)
+### ClickUp Client
 
-FastAPI app with these endpoints:
+#### [NEW] [core/clickup_client.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/clickup_client.py)
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/dashboard` | Stats: bots active, messages today, collections, memory counts |
-| GET | `/api/roles` | List all roles from `bot_roles.yaml` |
-| POST | `/api/roles` | Add new role |
-| PUT | `/api/roles/{role_id}` | Edit role config |
-| DELETE | `/api/roles/{role_id}` | Remove role |
-| GET | `/api/bots/status` | Live status of all Discord/Slack bots |
-| GET | `/api/buffer/stats` | Message buffer stats (per day, per role) |
-| GET | `/api/buffer/messages` | Browse buffered messages (paginated) |
-| POST | `/api/digest/trigger` | Manually trigger daily digest |
-| GET | `/api/digest/history` | View digest history/logs |
-| GET | `/api/memories/{role_id}` | Search/browse memories in Qdrant |
-| POST | `/api/memories/{role_id}/search` | Semantic search on a collection |
-| GET | `/api/qdrant/collections` | List all Qdrant collections + stats |
+ClickUp API v2 wrapper:
 
-#### [NEW] [admin/static/](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/admin/static/)
+| Method | ClickUp API | Purpose |
+|--------|-------------|---------|
+| `create_task(list_id, name, description, due_date, start_date, custom_fields)` | `POST /list/{id}/task` | Create task with custom fields |
+| `update_task(task_id, status, due_date, ...)` | `PUT /task/{id}` | Update status/dates |
+| `get_task(task_id)` | `GET /task/{id}` | Get task details |
+| `get_list_tasks(list_id)` | `GET /list/{id}/task` | List tasks |
+| `set_custom_field(task_id, field_id, value)` | `POST /task/{id}/field/{id}` | Set assignee fields |
 
-Frontend files served as static assets:
+---
 
-| File | Content |
-|------|---------|
-| `index.html` | SPA shell with sidebar navigation |
-| `styles.css` | Design system CSS (MASTER.md colors, fonts, spacing) |
-| `app.js` | Main JS — routing, API calls, DOM rendering |
+### Intent Detection & Conversation Manager
 
-### Frontend Pages
+#### [NEW] [core/intent_detector.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/intent_detector.py)
 
-| Page | Features |
-|------|----------|
-| **Dashboard** | Message count today, active bots, collection sizes, digest status chart |
-| **Bot Manager** | List roles, token status (set/unset), start/stop controls |
-| **Role Editor** | Add/edit roles: name, prompts, collection mapping |
-| **Message Buffer** | Browse today's messages, filter by role/platform/channel |
-| **Memory Explorer** | Search Qdrant collections, view stored memories per role |
-| **Digest Manager** | Trigger manual digest, view history, last run status |
+LLM-based intent classification:
 
-### Design System Applied
+```
+Intents:
+  QUERY        → forward to query_engine (existing)
+  CREATE_TASK  → start task creation flow
+  UPDATE_TASK  → update existing task (done/pending/reschedule)
+  SET_REMINDER → start reminder creation flow
+```
 
-From `MASTER.md`:
-- **Theme**: Dark OLED (`#020617` bg, `#F8FAFC` text, `#22C55E` accent)
-- **Fonts**: Fira Code (headings/code) + Fira Sans (body)
-- **Components**: Cards with `border-radius: 12px`, green CTAs, subtle shadows
-- **Icons**: Lucide Icons (SVG, no emojis)
+#### [NEW] [core/conversation_manager.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/conversation_manager.py)
 
-### Integration with main.py
+Multi-turn conversation state machine per user+bot:
 
-#### [MODIFY] [main.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/main.py)
-- Import and mount FastAPI admin app alongside existing bot startup
-- Start uvicorn in background thread on port 8500
+**Task Creation Flow:**
+```
+1. Bot detects CREATE_TASK intent
+2. Bot asks: "Task name?"
+3. User replies → Bot asks: "Description?"
+4. User replies → Bot asks: "Who handles this? (tag or name)"
+5. User replies → Bot asks: "Start date?"
+6. User replies → Bot asks: "Deadline?"
+7. User replies → Bot shows summary + confirm
+8. User confirms → Create on ClickUp
+```
+
+**Reminder Flow:**
+```
+1. Bot detects SET_REMINDER intent
+2. Bot asks: "What to remind?"
+3. User replies → Bot asks: "When? (date/time)"
+4. User replies → Bot asks: "Repeat? (once/daily/weekly)"
+5. User replies → Bot shows summary + confirm
+6. User confirms → Schedule reminder
+```
+
+State stored in SQLite with timeout (auto-cancel after 10 min inactive).
+
+---
+
+### Reminder Manager
+
+#### [NEW] [core/reminder_manager.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/reminder_manager.py)
+
+- SQLite table `reminders`: id, role_id, user_id, platform, channel_id, message, cron_expr, next_run, repeat_type, is_active
+- On startup: load all active reminders → add to APScheduler
+- Send reminder message to the original channel, tagging the user
+- After one-time reminder fires, mark inactive
+
+---
+
+### Bot Updates
+
+#### [MODIFY] [bots/discord_bot.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/bots/discord_bot.py)
+
+- On @mention: pass to `IntentDetector` instead of directly to `QueryEngine`
+- If intent is `CREATE_TASK`/`SET_REMINDER`: start conversation flow
+- Track reply context via Discord message reference (threaded replies)
+
+#### [MODIFY] [bots/slack_bot.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/bots/slack_bot.py)
+
+- Same intent detection on `app_mention`
+- Use Slack threads for conversation flow (all replies in same thread)
+
+---
+
+### Config Updates
+
+#### [MODIFY] [.env.example](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/.env.example)
+
+```env
+# ---- ClickUp ----
+CLICKUP_API_TOKEN=pk_your_clickup_api_token
+```
+
+#### [MODIFY] [config/bot_roles.yaml](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/config/bot_roles.yaml)
+
+Each role gets a `clickup_list_id`:
+```yaml
+TD_CTO:
+  clickup_list_id: "900123456789"
+  # ... existing fields
+```
+
+---
+
+### Admin UI Updates
+
+#### [MODIFY] [admin/static/app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/admin/static/app.js)
+
+- New "Reminders" page in sidebar → view/manage scheduled reminders
+- Roles table shows ClickUp list ID status
 
 ## Verification Plan
 
-### Manual Verification
-- Open `http://localhost:8500` → see dashboard
-- Browse bots, check token status
-- Trigger manual digest from UI
-- Search memories in Memory Explorer
+### Manual Testing
+- Tag bot on Discord → ask to create task → verify conversation flow → check ClickUp
+- Tag bot → ask for reminder → verify it fires at scheduled time
+- Tag bot → ask to update task status → verify ClickUp changes

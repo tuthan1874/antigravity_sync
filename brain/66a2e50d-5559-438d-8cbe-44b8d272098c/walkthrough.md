@@ -1,98 +1,80 @@
 # TD Games Memory Database - Walkthrough
 
-## What Was Built
-
-A complete **Memory Database System** + **Admin Web UI** for TD Games.
-
 ## Admin UI - Live Screenshot
 
 ![Admin Dashboard running at localhost:8500](C:\Users\dangt\.gemini\antigravity\brain\66a2e50d-5559-438d-8cbe-44b8d272098c\admin_ui_verification_1772989198607.png)
-
-![Admin UI test recording](C:\Users\dangt\.gemini\antigravity\brain\66a2e50d-5559-438d-8cbe-44b8d272098c\admin_ui_test_1772989186049.webp)
 
 ## Architecture
 
 ```mermaid
 graph TB
-    subgraph "Chat Platforms"
-        DC[Discord Channels]
-        SL[Slack Channels]
+    subgraph Chat["Chat Platforms"]
+        D[Discord] & S[Slack]
     end
-    subgraph "Bot Layer"
-        DB["Discord Bot (discord.py)"]
-        SB["Slack Bot (slack-bolt)"]
+    subgraph Bots["Bot Roles (TD_CTO, CEO, PM...)"]
+        B["Intent Detection (LLM)"]
+        B -->|QUERY| QE[Query Engine]
+        B -->|CREATE_TASK / UPDATE_TASK| CF[Conversation Flow] --> CU[ClickUp API]
+        B -->|SET_REMINDER| CF2[Conversation Flow] --> RM[Reminder Manager]
     end
-    subgraph "Buffer"
-        BUF["SQLite Buffer (by day)"]
+    subgraph Store
+        BUF[SQLite Buffer] --> DD[Daily Digest]
+        DD --> M0[mem0 Normalizer] --> Q[(Qdrant)]
+        QE --> Q
     end
-    subgraph "Daily Digest (23:00)"
-        LLM["LLM via CLiproxyAPI (gpt-5.2)"]
-        M0["mem0 Memory Layer"]
-    end
-    subgraph "Storage"
-        Q["Qdrant Collections (per-role)"]
-    end
-    subgraph "Admin UI (:8500)"
-        FE["SPA Frontend"]
-        API["FastAPI Backend"]
-    end
-
-    DC --> DB --> BUF
-    SL --> SB --> BUF
-    BUF -->|"Cron"| LLM --> M0 --> Q
-    DC -.->|"@mention"| DB -.->|"Query"| M0
-    SL -.->|"@mention"| SB -.->|"Query"| M0
-    API --> BUF
-    API --> Q
-    FE --> API
+    Chat --> Bots
+    D & S -->|all messages| BUF
+    Admin[Admin UI :8500] --> Bots & Store
 ```
 
-## API Configuration
-
-| Component | Config Key | Purpose |
-|-----------|-----------|---------|
-| **LLM Chat** | `LLM_API_KEY` + `LLM_BASE_URL` | CLIproxyAPI (gpt-5.2) — chat only |
-| **Embeddings** | `OPENAI_API_KEY` | Official OpenAI API (text-embedding-3-small) |
-
-## Files Created (20 files)
+## Key Files (24 total)
 
 | File | Purpose |
 |------|---------|
-| [requirements.txt](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/requirements.txt) | Dependencies (fastapi, uvicorn, mem0, etc.) |
-| [.env.example](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/.env.example) | Env template with all bot tokens |
-| [config/settings.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/config/settings.py) | Separated LLM + Embedder configs |
-| [config/bot_roles.yaml](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/config/bot_roles.yaml) | 5 roles with prompts |
-| [core/memory_engine.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/memory_engine.py) | mem0 + Qdrant per-role |
-| [core/message_buffer.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/message_buffer.py) | SQLite buffer |
-| [core/daily_digest.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/daily_digest.py) | LLM summarization |
-| [core/query_engine.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/query_engine.py) | Memory search + LLM response |
-| [bots/discord_bot.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/bots/discord_bot.py) | Discord bot |
-| [bots/slack_bot.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/bots/slack_bot.py) | Slack bot |
-| [scheduler/jobs.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/scheduler/jobs.py) | APScheduler |
-| [main.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/main.py) | Entry point (bots + scheduler + admin) |
-| [admin/api.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/admin/api.py) | FastAPI backend (13 endpoints) |
-| [admin/static/index.html](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/admin/static/index.html) | SPA shell |
-| [admin/static/styles.css](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/admin/static/styles.css) | Dark OLED design system |
-| [admin/static/app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/admin/static/app.js) | Frontend JS (6 pages) |
-| [scripts/setup_qdrant_collections.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/scripts/setup_qdrant_collections.py) | Collection setup |
-| [scripts/manual_digest.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/scripts/manual_digest.py) | CLI digest trigger |
-| [Dockerfile](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/Dockerfile) | Docker image |
-| [docker-compose.yml](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/docker-compose.yml) | Production deploy |
+| `main.py` | Entry point: starts bots, scheduler, admin, ClickUp, reminders |
+| `config/settings.py` | Settings: LLM, Embedder, Qdrant, ClickUp |
+| `config/bot_roles.yaml` | 5 roles with prompts + `clickup_list_id` |
+| `.env.example` | All env vars including ClickUp token |
+| `core/memory_engine.py` | mem0 + Qdrant integration |
+| `core/message_buffer.py` | SQLite raw message buffer |
+| `core/daily_digest.py` | AI daily summarization |
+| `core/query_engine.py` | Semantic search + LLM answers |
+| `core/clickup_client.py` | **[NEW]** ClickUp API v2 async wrapper |
+| `core/intent_detector.py` | **[NEW]** LLM-based intent classifier |
+| `core/conversation_manager.py` | **[NEW]** Multi-turn conversation state machine |
+| `core/reminder_manager.py` | **[NEW]** APScheduler reminder system |
+| `bots/discord_bot.py` | Discord bot with intent + conversations |
+| `bots/slack_bot.py` | Slack bot with intent + conversations |
+| `scheduler/jobs.py` | APScheduler cron jobs |
+| `admin/api.py` | FastAPI backend (7 endpoint groups) |
+| `admin/static/index.html` | SPA shell with 7 nav items |
+| `admin/static/styles.css` | Dark OLED design system |
+| `admin/static/app.js` | Frontend logic with 7 pages |
+| `requirements.txt` | Dependencies |
+| `Dockerfile`, `docker-compose.yml` | Containerization |
 
-## Admin Web UI Pages
+## Phase 9: ClickUp + Reminders (New)
 
-| Page | Features |
-|------|----------|
-| **Dashboard** | Stats overview, Qdrant collection cards, system info |
-| **Bot Manager** | CRUD roles via YAML, token status, edit/delete |
-| **Message Buffer** | Browse/filter buffered messages by date/role/platform |
-| **Memory Explorer** | Semantic search on Qdrant collections per role |
-| **Digest Manager** | Manual trigger, date picker, role filter |
-| **Qdrant** | Collection list with vector counts and status |
+### How It Works
 
-## Deploy Steps
+1. **User @tags bot** on Discord/Slack
+2. **Intent Detector** (LLM) classifies: `QUERY`, `CREATE_TASK`, `UPDATE_TASK`, or `SET_REMINDER`
+3. If task/reminder:
+   - **Conversation Manager** starts multi-step Q&A (name, description, assignee, deadline...)
+   - Pre-fills info extracted by intent detector
+   - Shows summary → user confirms
+4. **ClickUp Client** creates/updates task via API with custom fields
+5. **Reminder Manager** schedules via APScheduler (once/daily/weekly)
 
-1. `cp .env.example .env` → fill in keys and tokens
-2. `pip install -r requirements.txt`
-3. `python -m scripts.setup_qdrant_collections`
-4. `python main.py` → Admin at `http://localhost:8500`
+### Setup Required
+
+```env
+# .env
+CLICKUP_API_TOKEN=pk_your_token_here
+```
+
+```yaml
+# bot_roles.yaml - per role
+TD_CTO:
+  clickup_list_id: "900123456789"
+```
