@@ -26,6 +26,7 @@ The project evolved through several phases to reach completion:
 7. **Admin UI**: Building the FastAPI + HTML/JS dashboard.
 8. **UI/UX Polishing**: Final polish of the dark OLED dashboard.
 9. **Tasks & Reminders**: Implementation of `ClickUpClient`, `IntentDetector`, `ConversationManager`, and `ReminderManager`.
+10. **Agent Persona & Memory Model**: Transition to an OpenClaw-inspired agent directory structure (`SOUL.md`, `IDENTITY.md`, `USER.md`, `MEMORY.md`) to provide persistent persona and context.
 - **Language**: Python 3.11+
 - **Memories**: [mem0](https://github.com/mem0ai/mem0)
 - **Vector DB**: Qdrant (Self-hosted)

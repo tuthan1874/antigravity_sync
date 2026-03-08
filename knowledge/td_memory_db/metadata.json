@@ -1,6 +1,6 @@
 {
   "title": "TD Games Memory Database System",
-  "summary": "AI-driven corporate memory system for TD Games. Captures Discord/Slack chat logs into a daily summarization pipeline (Digest), uses mem0/Qdrant for semantic storage, and provides specialized bot roles that respond via RAG. Includes intent-based conversational agents for ClickUp task management (with auto-provisioning and platform-aware assignment) and persistent reminders. Proposes a three-layer agent memory model (Session, Markdown-based Workspace, and Long-term Vector) to deepen persona and context persistence.",
+  "summary": "AI-driven corporate memory system for TD Games. Captures Discord/Slack chat logs into a daily summarization pipeline (Digest), uses mem0/Qdrant for semantic storage, and provides specialized bot roles that respond via RAG. Includes intent-based conversational agents for ClickUp task management (with auto-provisioning and platform-aware assignment) and persistent reminders. Implements a multi-layered agent folder structure (SOUL, IDENTITY, USER, MEMORY) to ensure persistent persona and context.",
   "references": [
     {
       "type": "conversation_id",

@@ -70,7 +70,7 @@ graph TB
 8.  **ClickUp Client**: Async wrapper for ClickUp API v2 used for task operations. Supports auto-provisioning of lists and custom fields.
 9.  **Reminder Manager**: Persistence-backed scheduling system for user-requested notifications using `APScheduler`.
 10. **Admin UI**: Provides a visual interface to manage the system without SSH.
-11. **Agent Memory Models**:
-    - **Layer A (Session)**: Transient history within a chat thread.
-    - **Layer B (Workspace)**: DurableMarkdown-based persona and standards (Proposed).
-    - **Layer C (Long-term)**: Mem0-managed vector search in Qdrant (Aggregated from daily digests).
+11. **Multi-Layered Memory Stack**:
+    - **Layer A (Session)**: Transient chat history (window-limited).
+    - **Layer B (Agent Context)**: File-based persona and persistent standards (SOUL.md, IDENTITY.md, USER.md, MEMORY.md, TOOLS.md). Extracted and injected into every prompt.
+    - **Layer C (Long-term)**: Mem0-managed vector search in Qdrant (Search-based retrieval from summarized daily digests).

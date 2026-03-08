@@ -33,6 +33,12 @@ Messages are processed in batches to save tokens and maintain context.
 3. Relevant memories are injected into the system prompt.
 4. LLM generates a response in the role's persona.
 
+## 3.1 Agent Context Loader (Layer B)
+The system uses `core/agent_loader.py` to implement a multi-layered persona:
+- **Loading**: It reads files like `SOUL.md`, `IDENTITY.md`, and `USER.md` from `data/agents/{role_id}`.
+- **Prompt Injection**: These files are combined into a single context block and prepended to the bot's system prompt (from `bot_roles.yaml`).
+- **Precedence**: Agent files take priority over generic role prompts, ensuring consistent behavior across all interactions.
+
 ## 4. Message Buffer Schema
 SQLite table `messages`:
 - `id`: Primary Key

@@ -40,9 +40,10 @@ If a task or reminder intent is detected, the `ConversationManager` (`core/conve
 - **Flow Engine**:
   1. Detect intent and extract initial parameters from the @mention request.
   2. Sequential Progression: Ask remaining questions one by one (e.g., "Ten task la gi?").
-  3. **Auto-Skipping**: Steps that are pre-filled by the intent detector or the platform (like `assignee_id` when a @mention is used) are automatically skipped by the manager.
-  4. Confirmation Summary: Show a full summary (Task Name, Description, Assignee Name/ID, Dates).
-  5. Wait for explicit "OK" or Vietnamese affirmation ("duoc", "tao di") before calling the ClickUp API.
+  3. **Auto-Skipping**: Steps that are pre-filled by the intent detector are automatically skipped.
+  4. **Platform-Aware Assignees**: The bot intercepts replies to the "assignee_name" step. If the message contains an @mention, it extracts the display name and platform ID (e.g., `discord:123` or `slack:UABC`). Otherwise, it uses the requester's platform prefix for the ID.
+  5. Confirmation Summary: Show a full summary (Task Name, Description, Assignee Name/ID, Dates).
+  6. Wait for explicit "OK" or Vietnamese affirmation ("duoc", "tao di") before calling the ClickUp API.
 
 ### Natural Language Date Parsing
 The manager uses a specialized LLM prompt to parse Vietnamese temporal expressions (e.g., "sang thu hai tuan sau") into valid ISO datetime strings based on the current system time.

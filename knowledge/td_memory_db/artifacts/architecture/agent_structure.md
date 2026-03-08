@@ -1,34 +1,33 @@
-# Agent Folder Structure & Memory Layers (Proposed)
+# Agent Folder Structure & Memory Layers (Implemented)
 
-Based on the [OpenClaw](https://github.com/nextlevelbuilder/openclaw) agent model, the system is evolving towards a more structured organization for bot personas and persistent context.
+Based on the [OpenClaw](https://github.com/nextlevelbuilder/openclaw) agent model, the system uses a structured organization for bot personas and persistent context across all roles.
 
 ## 1. Directory Structure
 
-Each bot role (agent) is proposed to have its own configuration directory within `data/agents/{role_id}/`:
+Each bot role (agent) has its own configuration directory within `data/agents/{role_id}/`:
 
 | File | Purpose |
 |------|---------|
 | `SOUL.md` | **Persona / Rules**: The agent's tone, decision-making principles, and safety rules. The core identity. |
 | `IDENTITY.md` | **Identification**: Display name, role description, vibe, and representative emoji. |
-| `AGENTS.md` | **Scope**: Mission statement and what the agent specifically focuses on (e.g., CTO focuses on architecture). |
-| `USER.md` | **Human Context**: Preferences for the user (Toan), such as timezone, address language, and style. |
+| `USER.md` | **Human Context**: Preferences for the specific user (e.g., Toan), including timezone and address style. |
 | `MEMORY.md` | **Fixed Memory (Layer B)**: Durable business context, standards, and historical decisions in Markdown format. |
-| `memory/*.md` | **Memory Chunks**: Subject-specific context that is too large for `MEMORY.md`. |
-| `TOOLS.md` | **Tool Config**: Instructions or configs for tools used by that specific agent. |
+| `memory/*.md` | **Memory Chunks**: Subject-specific context (e.g., `tech_standards.md`) that is too large for `MEMORY.md`. |
+| `TOOLS.md` | **Tool Config**: Specific endpoints and instructions for tools used by that agent (ClickUp, Qdrant). |
 
 ## 2. Three-Layer Memory Model
 
-To provide the most accurate and context-aware responses, the bots utilize three distinct layers of memory:
+The bots utilize three distinct layers of memory to provide accurate and context-aware responses:
 
 ### Layer A: Session Context (Short-Term)
-- **What**: Conversation history in the current chat session.
+- **What**: Conversation history in the current chat session/thread.
 - **Persistence**: Temporary, limited by the model's context window.
 - **Usage**: Handles follow-up questions and immediate thread context.
 
 ### Layer B: Workspace Memory (Medium-Term / File-Based)
-- **What**: Content from `MEMORY.md` and `memory/*.md` in the agent's folder.
+- **What**: Content from `SOUL.md`, `IDENTITY.md`, `USER.md`, `MEMORY.md`, and `memory/*.md` in the agent's folder.
 - **Persistence**: Durable and easily editable by humans.
-- **Usage**: Injected into the **System Prompt** every time. Contains rules, company standards, and "facts" that shouldn't rely on semantic search.
+- **Usage**: Injected into the **System Prompt** every single time. This ensures the bot never "forgets" foundational company rules, its own persona, or user preferences.
 
 ### Layer C: Long-Term Memory (Persistent / Vector Search)
 - **What**: Mem0-managed storage in **Qdrant**.
@@ -36,7 +35,7 @@ To provide the most accurate and context-aware responses, the bots utilize three
 - **Usage**: RAG (Retrieval-Augmented Generation). The agent searches for relevant facts from past chat history or summarized digests when the user asks a question.
 
 ## 3. Benefits of this Architecture
-- **Isolation**: Each bot has its own "brain" folder, making it easier to clone or customize roles.
-- **Persona Depth**: Moving beyond a single line in `bot_roles.yaml` to a multi-page `SOUL.md` allows for much richer character interaction.
-- **Contextual Accuracy**: Layer B ensures the bot never "forgets" foundational company rules, even if they aren't semantically identical to the user's query.
-- **Maintainability**: Markdown files are easier to manage and version control than database records for persona definition.
+- **Isolation**: Each bot has its own "brain" folder, making it easy to clone or customize roles without touching the codebase.
+- **Persona Depth**: Detailed `SOUL.md` files allow for much richer character interaction compared to single-line prompts.
+- **Contextual Integrity**: Layer B ensures the bot always operates within company standards and project history, regardless of whether a semantic search (Layer C) finds a match.
+- **Maintainability**: Using Markdown files makes it trivial to update bot knowledge or user preferences using standard text editors.
