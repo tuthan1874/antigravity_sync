@@ -1,41 +1,39 @@
 # TD Games Memory Database System - Task Checklist
 
 ## Phase 1: Planning & Architecture
-- [/] Research mem0, Qdrant, Discord.py, Slack Bolt
-- [/] Write implementation plan
-- [ ] Get user approval on plan
+- [x] Research mem0, Qdrant, Discord.py, Slack Bolt
+- [x] Write implementation plan
+- [x] Get user approval on plan
 
 ## Phase 2: Project Setup
-- [ ] Initialize Python project structure in `Sync_Qdrant`
-- [ ] Create `pyproject.toml` / `requirements.txt`
-- [ ] Create config management (`.env`, `config.py`)
-- [ ] Set up Docker Compose for local development
+- [x] Initialize Python project structure in `Sync_Qdrant`
+- [x] Create `requirements.txt`
+- [x] Create config management (`.env`, `settings.py`)
+- [x] Create `bot_roles.yaml`
 
 ## Phase 3: Core Memory Engine
-- [ ] Implement mem0 + Qdrant integration layer
-- [ ] Create per-bot collection management
-- [ ] Implement daily digest scheduler (APScheduler)
-- [ ] Build memory search/retrieval service
+- [x] Implement `core/memory_engine.py` (mem0 + Qdrant)
+- [x] Implement `core/message_buffer.py` (SQLite buffer)
+- [x] Implement `core/daily_digest.py` (LLM summarization)
+- [x] Implement `core/query_engine.py` (search + answer)
 
 ## Phase 4: Discord Bot
-- [ ] Create Discord bot framework with discord.py
-- [ ] Implement message listener (on_message)
-- [ ] Implement @mention Q&A handler
-- [ ] Multi-bot role configuration
+- [x] Create `bots/discord_bot.py` (discord.py)
+- [x] Message listener + @mention Q&A handler
+- [x] Multi-server, multi-role support
 
 ## Phase 5: Slack Bot
-- [ ] Create Slack bot framework with slack-bolt
-- [ ] Implement message listener (message event)
-- [ ] Implement @mention Q&A handler (app_mention)
-- [ ] Multi-bot role configuration
+- [x] Create `bots/slack_bot.py` (slack-bolt Socket Mode)
+- [x] Message listener + @mention Q&A handler
+- [x] Thread-based replies
 
-## Phase 6: Daily Digest & Scheduling
-- [ ] Implement daily summarization with LLM
-- [ ] Schedule via cron/APScheduler
-- [ ] Store daily summary to Qdrant collections
+## Phase 6: Scheduler & Scripts
+- [x] Implement `scheduler/jobs.py` (APScheduler)
+- [x] Create `scripts/setup_qdrant_collections.py`
+- [x] Create `scripts/manual_digest.py`
 
-## Phase 7: Deployment & Ops
-- [ ] Create Dockerfile for production
-- [ ] Create docker-compose.yml (app + optional Qdrant)
-- [ ] Create systemd service files
-- [ ] Write deployment docs
+## Phase 7: Entry Point & Deployment
+- [x] Create `main.py` (orchestrator)
+- [x] Create `Dockerfile` + `docker-compose.yml`
+- [x] Create `README.md`
+- [ ] Create walkthrough summary
