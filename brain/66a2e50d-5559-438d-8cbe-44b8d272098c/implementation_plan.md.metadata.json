@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Implementation plan for the TD Games Memory Database system. Covers architecture (Discord/Slack bots → message buffer → daily LLM digest → mem0 → Qdrant), project structure, config management with bot_roles.yaml, core modules (memory_engine, message_buffer, daily_digest, query_engine), bot implementations (discord.py + slack-bolt), scheduler (APScheduler), deployment (Docker), and verification plan. Includes questions about LLM provider choice, Qdrant VPS details, bot role list, and token strategy.",
+  "updatedAt":  "2026-03-08T16:21:12.149071600Z"
+}

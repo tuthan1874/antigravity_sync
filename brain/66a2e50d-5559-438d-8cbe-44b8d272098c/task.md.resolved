@@ -1,0 +1,41 @@
+# TD Games Memory Database System - Task Checklist
+
+## Phase 1: Planning & Architecture
+- [/] Research mem0, Qdrant, Discord.py, Slack Bolt
+- [/] Write implementation plan
+- [ ] Get user approval on plan
+
+## Phase 2: Project Setup
+- [ ] Initialize Python project structure in `Sync_Qdrant`
+- [ ] Create `pyproject.toml` / `requirements.txt`
+- [ ] Create config management (`.env`, `config.py`)
+- [ ] Set up Docker Compose for local development
+
+## Phase 3: Core Memory Engine
+- [ ] Implement mem0 + Qdrant integration layer
+- [ ] Create per-bot collection management
+- [ ] Implement daily digest scheduler (APScheduler)
+- [ ] Build memory search/retrieval service
+
+## Phase 4: Discord Bot
+- [ ] Create Discord bot framework with discord.py
+- [ ] Implement message listener (on_message)
+- [ ] Implement @mention Q&A handler
+- [ ] Multi-bot role configuration
+
+## Phase 5: Slack Bot
+- [ ] Create Slack bot framework with slack-bolt
+- [ ] Implement message listener (message event)
+- [ ] Implement @mention Q&A handler (app_mention)
+- [ ] Multi-bot role configuration
+
+## Phase 6: Daily Digest & Scheduling
+- [ ] Implement daily summarization with LLM
+- [ ] Schedule via cron/APScheduler
+- [ ] Store daily summary to Qdrant collections
+
+## Phase 7: Deployment & Ops
+- [ ] Create Dockerfile for production
+- [ ] Create docker-compose.yml (app + optional Qdrant)
+- [ ] Create systemd service files
+- [ ] Write deployment docs
