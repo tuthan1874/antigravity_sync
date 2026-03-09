@@ -1,0 +1,55 @@
+# P0 Fixes Walkthrough
+
+## Changes Made
+
+### P0-1: `active_bots` wiring (Digest callback fix)
+
+| File | Change |
+|------|--------|
+| [discord_bot.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/bots/discord_bot.py) | Added `active_bots` param, self-register on [on_ready()](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/bots/discord_bot.py#67-74) |
+| [slack_bot.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/bots/slack_bot.py) | Added `active_bots` param, register during [__init__()](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/scheduled_digest.py#44-72) |
+| [main.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/main.py) | Pass `active_bots` to [run_discord_bot()](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/bots/discord_bot.py#506-544) and [run_slack_bot()](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/bots/slack_bot.py#583-634) |
+
+**Before:** `active_bots = {}` — never populated → [digest_send_callback](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/main.py#216-243) always failed silently  
+**After:** Bots self-register → `active_bots["discord"]["TD_CTO"] = bot_instance`
+
+---
+
+### P0-2: LLM retry with tenacity
+
+| File | Change |
+|------|--------|
+| [llm_utils.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/llm_utils.py) | **[NEW]** Shared retry decorators (3 attempts, exponential backoff) |
+| [intent_detector.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/intent_detector.py) | Wrapped [detect()](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/intent_detector.py#94-150) LLM call |
+| [query_engine.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/query_engine.py) | Wrapped [answer()](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/query_engine.py#45-106) LLM call + DRY refactor |
+| [daily_digest.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/daily_digest.py) | Wrapped [_summarize_batch()](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/daily_digest.py#186-250) LLM call |
+| [scheduled_digest.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/scheduled_digest.py) | Wrapped [_summarize_messages()](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/scheduled_digest.py#372-420) LLM call |
+| [conversation_manager.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/conversation_manager.py) | Wrapped [parse_date_with_llm()](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/conversation_manager.py#338-366) LLM call |
+| [requirements.txt](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/requirements.txt) | Added `tenacity>=8.0` |
+
+**Retries on:** `APITimeoutError`, `APIConnectionError`, `RateLimitError`, `InternalServerError`  
+**Strategy:** 3 attempts, wait 2s → 4s → 15s max
+
+---
+
+### P0-3: SQLite thread-safety
+
+All 4 modules updated with `check_same_thread=False`:
+- [message_buffer.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/message_buffer.py) (2 connect calls)
+- [conversation_manager.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/conversation_manager.py) (2 connect calls)
+- [reminder_manager.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/reminder_manager.py) (7 connect calls)
+- [scheduled_digest.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/scheduled_digest.py) (6 connect calls)
+
+---
+
+### Bonus: [answer_sync()](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/query_engine.py#107-165) DRY refactor
+
+[query_engine.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/query_engine.py): [answer_sync()](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/query_engine.py#107-165) now delegates to [answer()](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/query_engine.py#45-106) via `asyncio.run()` — removed ~60 lines of duplicated logic.
+
+## Verification
+
+```
+✅ All 12 module imports pass
+✅ tenacity 9.1.4 installed
+✅ No syntax errors
+```

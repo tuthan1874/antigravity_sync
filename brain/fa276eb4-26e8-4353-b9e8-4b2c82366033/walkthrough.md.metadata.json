@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary":  "Documents all P0 fixes made: active_bots wiring (3 files), LLM retry with tenacity (6 files + 1 new), SQLite thread-safety (4 files, 17 connect calls), and answer_sync() DRY refactor. All imports verified passing.",
+  "updatedAt":  "2026-03-09T13:38:18.613769600Z"
+}
