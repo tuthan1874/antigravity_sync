@@ -1,25 +1,49 @@
-# Fix P0 Critical Issues
+# Fix P0 Critical Issues — ✅ COMPLETED
 
-## P0-1: Fix `active_bots` population
-- [x] Register Discord bot instances into `active_bots` dict on `on_ready()`
-- [x] Register Slack bot instances into `active_bots` dict on start
-- [x] Pass `active_bots` ref to bot constructors via `run_discord_bot` / `run_slack_bot`
-- [x] Wire `active_bots` from `main.py` into both bot launchers
+## P0-1: Fix `active_bots` population ✅
+## P0-2: Add LLM retry + error handling ✅
+## P0-3: Fix SQLite thread-safety ✅
+## Bonus: Refactor `query_engine.py` DRY ✅
 
-## P0-2: Add LLM retry + error handling
-- [x] Create `core/llm_utils.py` with tenacity retry decorators
-- [x] Add `tenacity>=8.0` to `requirements.txt`
-- [x] Wrap LLM calls in `IntentDetector.detect()` with retry
-- [x] Wrap LLM calls in `QueryEngine.answer()` with retry
-- [x] Wrap LLM calls in `DailyDigest._summarize_batch()` with retry
-- [x] Wrap LLM calls in `ScheduledDigest._summarize_messages()` with retry
-- [x] Wrap LLM calls in `ConversationManager.parse_date_with_llm()` with retry
+---
 
-## P0-3: Fix SQLite thread-safety
-- [x] `MessageBuffer` — `check_same_thread=False`
-- [x] `ConversationManager` — `check_same_thread=False`
-- [x] `ReminderManager` — `check_same_thread=False`
-- [x] `ScheduledDigestManager` — `check_same_thread=False`
+# Fix P1 Medium Priority
 
-## P1 Quick Win: Refactor `query_engine.py` DRY
-- [x] Eliminate `answer_sync()` duplication (~60 lines removed)
+## P1-1: Loại bỏ prompt duplication (yaml vs md)
+- [ ] Remove `system_prompt` from `bot_roles.yaml` (keep only in `data/agents/`)
+- [ ] Update `BotRoleConfig` to make `system_prompt` optional
+- [ ] Ensure `agent_loader.py` is the single source of truth
+
+## P1-2: Admin auth
+- [ ] Add API key middleware to FastAPI admin
+- [ ] Add `ADMIN_API_KEY` to `.env` / settings
+- [ ] Protect all mutating endpoints
+
+## P1-3: LLM rate limiting
+- [ ] Add asyncio.Semaphore for concurrent LLM calls
+- [ ] Wire semaphore into IntentDetector and QueryEngine
+
+## P1-4: Digest run logging
+- [ ] Create `digest_runs` table in MessageBuffer or DailyDigest
+- [ ] Log each digest run with status, counts, timestamp
+- [ ] Use transaction to prevent partial-process marking
+
+## P1-5: Health check endpoint
+- [ ] Add `/health` endpoint to admin API
+- [ ] Return bot status, DB connectivity, LLM reachability
+
+---
+
+# Fix P2 Nice-to-have
+
+## P2-1: Team Directory → RAG injection
+- [ ] Inject team context into QueryEngine when query is people-related
+
+## P2-2: Auto cleanup schedule
+- [ ] Schedule weekly cleanup job for old processed messages
+
+## P2-3: Basic unit tests
+- [ ] Create `tests/` folder with pytest setup
+- [ ] Test IntentDetector parsing
+- [ ] Test MessageBuffer CRUD
+- [ ] Test ConversationManager flow
