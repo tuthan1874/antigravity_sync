@@ -1,49 +1,19 @@
-# Fix P0 Critical Issues — ✅ COMPLETED
+# Upgrade Roadmap — All Items Complete ✅
 
-## P0-1: Fix `active_bots` population ✅
-## P0-2: Add LLM retry + error handling ✅
-## P0-3: Fix SQLite thread-safety ✅
-## Bonus: Refactor `query_engine.py` DRY ✅
+## P0 Critical ✅
+- [x] Fix `active_bots` population
+- [x] LLM retry + error handling (tenacity)
+- [x] SQLite thread-safety (`check_same_thread=False`)
 
----
+## P1 Medium ✅
+- [x] Remove prompt duplication (yaml → SOUL.md only)
+- [x] Admin auth (`X-API-Key` middleware)
+- [x] LLM rate limiting (asyncio/threading semaphore)
+- [x] Digest run logging (`digest_runs` table)
+- [x] Health check endpoint (`/health`)
 
-# Fix P1 Medium Priority
-
-## P1-1: Loại bỏ prompt duplication (yaml vs md)
-- [ ] Remove `system_prompt` from `bot_roles.yaml` (keep only in `data/agents/`)
-- [ ] Update `BotRoleConfig` to make `system_prompt` optional
-- [ ] Ensure `agent_loader.py` is the single source of truth
-
-## P1-2: Admin auth
-- [ ] Add API key middleware to FastAPI admin
-- [ ] Add `ADMIN_API_KEY` to `.env` / settings
-- [ ] Protect all mutating endpoints
-
-## P1-3: LLM rate limiting
-- [ ] Add asyncio.Semaphore for concurrent LLM calls
-- [ ] Wire semaphore into IntentDetector and QueryEngine
-
-## P1-4: Digest run logging
-- [ ] Create `digest_runs` table in MessageBuffer or DailyDigest
-- [ ] Log each digest run with status, counts, timestamp
-- [ ] Use transaction to prevent partial-process marking
-
-## P1-5: Health check endpoint
-- [ ] Add `/health` endpoint to admin API
-- [ ] Return bot status, DB connectivity, LLM reachability
-
----
-
-# Fix P2 Nice-to-have
-
-## P2-1: Team Directory → RAG injection
-- [ ] Inject team context into QueryEngine when query is people-related
-
-## P2-2: Auto cleanup schedule
-- [ ] Schedule weekly cleanup job for old processed messages
-
-## P2-3: Basic unit tests
-- [ ] Create `tests/` folder with pytest setup
-- [ ] Test IntentDetector parsing
-- [ ] Test MessageBuffer CRUD
-- [ ] Test ConversationManager flow
+## P2 Nice-to-have ✅
+- [x] Team Directory → RAG injection
+- [x] Auto cleanup schedule (already existed)
+- [x] Basic unit tests (14 tests passing)
+- [x] Refactor `query_engine.py` DRY
