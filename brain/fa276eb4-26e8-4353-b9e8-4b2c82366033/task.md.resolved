@@ -1,0 +1,24 @@
+# Fix P0 Critical Issues
+
+## P0-1: Fix `active_bots` population
+- [ ] Register Discord bot instances into `active_bots` dict on [on_ready()](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/bots/discord_bot.py#67-74)
+- [ ] Register Slack bot instances into `active_bots` dict on start
+- [ ] Pass `active_bots` ref to bot constructors
+- [ ] Verify [digest_send_callback](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/main.py#216-243) can find bots
+
+## P0-2: Add LLM retry + error handling
+- [ ] Add `tenacity` to [requirements.txt](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/requirements.txt)
+- [ ] Wrap LLM calls in `IntentDetector.detect()` with retry
+- [ ] Wrap LLM calls in `QueryEngine.answer()` / [answer_sync()](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/query_engine.py#107-165) with retry
+- [ ] Wrap LLM calls in `DailyDigest._summarize_batch()` with retry
+- [ ] Wrap LLM calls in `ScheduledDigest._summarize_messages()` with retry
+- [ ] Wrap LLM calls in `ConversationManager.parse_date_with_llm()` with retry
+
+## P0-3: Fix SQLite thread-safety
+- [ ] Update [MessageBuffer](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/message_buffer.py#44-291) to use thread-safe connection pattern
+- [ ] Update [ConversationManager](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/conversation_manager.py#103-366) to use thread-safe connection pattern
+- [ ] Update [ReminderManager](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/reminder_manager.py#21-296) to use thread-safe connection pattern
+- [ ] Update [ScheduledDigestManager](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/scheduled_digest.py#41-420) to use thread-safe connection pattern
+
+## P1 Quick Win: Refactor [query_engine.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/query_engine.py) DRY
+- [ ] Eliminate [answer_sync()](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/query_engine.py#107-165) duplication

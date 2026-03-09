@@ -1,6 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_TASK",
-  "summary":  "Task checklist tracking all 9 phases. Phases 1-8 complete. Phase 9 (ClickUp + Reminders) now complete with all core modules, bot updates, config, and admin UI done.",
-  "updatedAt":  "2026-03-08T17:32:43.339889400Z",
-  "version":  "5"
+  "summary":  "Completed checklist for scheduled digest cron upgrades.",
+  "updatedAt":  "2026-03-08T18:26:20.599782900Z",
+  "version":  "7"
 }

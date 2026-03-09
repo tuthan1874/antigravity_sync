@@ -1,80 +1,50 @@
-# TD Games Memory Database - Walkthrough
+# Session Summary — 9/3/2026
 
-## Admin UI - Live Screenshot
+## Đã hoàn thành hôm nay
 
-![Admin Dashboard running at localhost:8500](C:\Users\dangt\.gemini\antigravity\brain\66a2e50d-5559-438d-8cbe-44b8d272098c\admin_ui_verification_1772989198607.png)
+### 1. Agent Structure (OpenClaw-inspired)
+25 files tạo mới cho 5 bot roles:
 
-## Architecture
+| Bot | SOUL | IDENTITY | USER | TOOLS | MEMORY |
+|-----|------|----------|------|-------|--------|
+| TD_CTO | ✅ | ✅ | ✅ | ✅ | ✅ |
+| TD_CEO | ✅ | ✅ | ✅ | ✅ | ✅ |
+| TD_PM | ✅ | ✅ | ✅ | ✅ | ✅ |
+| TD_HRM | ✅ | ✅ | ✅ | ✅ | ✅ |
+| TD_CFO | ✅ | ✅ | ✅ | ✅ | ✅ |
 
-```mermaid
-graph TB
-    subgraph Chat["Chat Platforms"]
-        D[Discord] & S[Slack]
-    end
-    subgraph Bots["Bot Roles (TD_CTO, CEO, PM...)"]
-        B["Intent Detection (LLM)"]
-        B -->|QUERY| QE[Query Engine]
-        B -->|CREATE_TASK / UPDATE_TASK| CF[Conversation Flow] --> CU[ClickUp API]
-        B -->|SET_REMINDER| CF2[Conversation Flow] --> RM[Reminder Manager]
-    end
-    subgraph Store
-        BUF[SQLite Buffer] --> DD[Daily Digest]
-        DD --> M0[mem0 Normalizer] --> Q[(Qdrant)]
-        QE --> Q
-    end
-    Chat --> Bots
-    D & S -->|all messages| BUF
-    Admin[Admin UI :8500] --> Bots & Store
-```
+- [core/agent_loader.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/agent_loader.py) — loads `.md` files → inject vào system prompt
+- [core/query_engine.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/query_engine.py) — uses `self.system_prompt` from agent context
 
-## Key Files (24 total)
+---
 
-| File | Purpose |
-|------|---------|
-| `main.py` | Entry point: starts bots, scheduler, admin, ClickUp, reminders |
-| `config/settings.py` | Settings: LLM, Embedder, Qdrant, ClickUp |
-| `config/bot_roles.yaml` | 5 roles with prompts + `clickup_list_id` |
-| `.env.example` | All env vars including ClickUp token |
-| `core/memory_engine.py` | mem0 + Qdrant integration |
-| `core/message_buffer.py` | SQLite raw message buffer |
-| `core/daily_digest.py` | AI daily summarization |
-| `core/query_engine.py` | Semantic search + LLM answers |
-| `core/clickup_client.py` | **[NEW]** ClickUp API v2 async wrapper |
-| `core/intent_detector.py` | **[NEW]** LLM-based intent classifier |
-| `core/conversation_manager.py` | **[NEW]** Multi-turn conversation state machine |
-| `core/reminder_manager.py` | **[NEW]** APScheduler reminder system |
-| `bots/discord_bot.py` | Discord bot with intent + conversations |
-| `bots/slack_bot.py` | Slack bot with intent + conversations |
-| `scheduler/jobs.py` | APScheduler cron jobs |
-| `admin/api.py` | FastAPI backend (7 endpoint groups) |
-| `admin/static/index.html` | SPA shell with 7 nav items |
-| `admin/static/styles.css` | Dark OLED design system |
-| `admin/static/app.js` | Frontend logic with 7 pages |
-| `requirements.txt` | Dependencies |
-| `Dockerfile`, `docker-compose.yml` | Containerization |
+### 2. Team Directory
+- [data/team_directory.yaml](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/data/team_directory.yaml) — source of truth
+- [core/team_directory.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/team_directory.py) — CRUD class (register, remove, search, get_context_for_user)
+- [admin/api.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/admin/api.py) — REST: `GET/POST/DELETE /api/team`
+- [admin/static/app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/admin/static/app.js) — UI page: add form + member table
+- [admin/static/index.html](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/admin/static/index.html) — nav item added
 
-## Phase 9: ClickUp + Reminders (New)
+---
 
-### How It Works
+### 3. Scheduled Digest (Cron Jobs)
+- [core/scheduled_digest.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/scheduled_digest.py) — **ScheduledDigestManager**
+  - Full cron expression: `0 9 * * 1-5` (T2–T6 9h)
+  - Timezone: `Asia/Ho_Chi_Minh` default
+  - LLM pipeline: pull messages → summarize → post lại channel
+  - SQLite persistence + APScheduler
+- [core/intent_detector.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/intent_detector.py) — +2 intents: `SCHEDULE_DIGEST`, `CANCEL_DIGEST`
+- [core/message_buffer.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/core/message_buffer.py) — +`get_messages_by_date()` method
+- [bots/discord_bot.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/bots/discord_bot.py) — `_schedule_digest()`, `_cancel_digest()`
+- [bots/slack_bot.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/bots/slack_bot.py) — same
+- [main.py](file:///e:/TDC_App/TDGAMES_App/Sync_Qdrant/main.py) — wired with LLM client, buffer, send_callback
 
-1. **User @tags bot** on Discord/Slack
-2. **Intent Detector** (LLM) classifies: `QUERY`, `CREATE_TASK`, `UPDATE_TASK`, or `SET_REMINDER`
-3. If task/reminder:
-   - **Conversation Manager** starts multi-step Q&A (name, description, assignee, deadline...)
-   - Pre-fills info extracted by intent detector
-   - Shows summary → user confirms
-4. **ClickUp Client** creates/updates task via API with custom fields
-5. **Reminder Manager** schedules via APScheduler (once/daily/weekly)
+---
 
-### Setup Required
+## Cần làm tiếp (mai)
 
-```env
-# .env
-CLICKUP_API_TOKEN=pk_your_token_here
-```
-
-```yaml
-# bot_roles.yaml - per role
-TD_CTO:
-  clickup_list_id: "900123456789"
-```
+- [ ] **Test chạy thực tế** — restart `python main.py` + test trên Discord/Slack
+- [ ] **Bot command cho Team Directory** — intent `REGISTER_MEMBER` để user tag bot đăng ký thành viên qua chat
+- [ ] **Wire `active_bots` dict** — hiện `active_bots` chưa được populate khi bot start, cần register bot instances vào dict này để `send_callback` tìm được đúng bot
+- [ ] **Populate `.env`** với actual API keys nếu chưa
+- [ ] **Kiểm tra Qdrant connection** — fix DeprecationWarning
