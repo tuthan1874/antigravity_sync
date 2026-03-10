@@ -1,0 +1,9 @@
+# Task: Verify PM Tracking Payment Status Badges
+
+## Checklist
+- [ ] Open http://localhost:3000
+- [ ] Login with admin/admin
+- [ ] Navigate to PM Tracking
+- [ ] Verify Payment Status column has colored badges
+- [ ] Toggle a badge and verify update
+- [ ] Take screenshots
