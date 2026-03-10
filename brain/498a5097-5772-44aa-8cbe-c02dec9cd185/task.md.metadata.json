@@ -1,6 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_TASK",
-  "summary":  "Task checklist for decoupling PM Tracking from List Configs. Covers NocoDB table creation, backend CRUD + matching logic, API routes, frontend UI, and verification.",
-  "updatedAt":  "2026-03-10T14:46:45.215975200Z",
-  "version":  "3"
+  "summary":  "Task checklist for full UI/UX redesign with orange light/dark theme — all items completed.",
+  "updatedAt":  "2026-03-10T15:24:45.048919100Z",
+  "version":  "5"
 }

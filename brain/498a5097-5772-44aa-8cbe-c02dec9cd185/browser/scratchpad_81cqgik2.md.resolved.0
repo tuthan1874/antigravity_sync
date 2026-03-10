@@ -1,0 +1,12 @@
+# Task Checklist
+- [ ] Open http://localhost:3000/
+- [ ] Screenshot login page (verify orange theme)
+- [ ] Login (admin/admin123)
+- [ ] Screenshot Dashboard (light mode)
+- [ ] Toggle to dark mode
+- [ ] Screenshot Dashboard (dark mode)
+- [ ] Navigate to PM Tracking
+- [ ] Screenshot PM Tracking (dark mode)
+- [ ] Toggle back to light mode
+- [ ] Screenshot PM Tracking (light mode)
+- [ ] Report visual state and issues

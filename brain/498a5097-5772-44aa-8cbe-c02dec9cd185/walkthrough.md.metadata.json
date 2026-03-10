@@ -1,6 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary":  "Walkthrough documenting both sessions: 1) List Configs pause/active + PM Tracking fix, 2) Independent PM Tracking config with Space/Folder/List matching. Includes screenshots of all verified UI states.",
-  "updatedAt":  "2026-03-10T14:54:35.524524600Z",
-  "version":  "1"
+  "summary":  "Walkthrough of the full UI/UX redesign from purple/blue dark-only theme to orange light/dark theme with screenshots showing login, dashboard light, dashboard dark, and PM tracking pages.",
+  "updatedAt":  "2026-03-10T15:24:45.115814Z",
+  "version":  "2"
 }

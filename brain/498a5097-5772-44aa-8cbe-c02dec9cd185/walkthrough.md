@@ -1,52 +1,40 @@
-# PM Tracking — Independent Config + List Configs Fix
+# UI/UX Redesign Walkthrough — Orange Theme
 
-## Session 1: List Configs Pause/Active + PM Tracking Fix
+## Summary
+Redesigned the entire ChatSync dashboard using the **UI/UX Pro Max Skill**. Replaced the old purple/blue dark-only theme with a modern orange light/dark theme.
 
-### Changes
-- Added `Job_Type` and `Enabled` columns to `ListMappings` NocoDB table
-- Added ⏸️/▶️ toggle to List Configs UI
-- Fixed PM Tracking root cause: missing `Job_Type` column → handler was skipping all tasks
+## Changes Made
 
----
+### 1. CSS Rewrite — [index.css](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.css)
+- Complete rewrite with CSS custom properties for light/dark themes
+- **Light**: `#EA580C` orange on warm white `#FAFAF9`
+- **Dark**: `#F97316` orange on warm black `#0C0A09`
+- Clean flat design with subtle shadows and orange gradient accents
+- Platform-specific badges (ClickUp purple, Slack pink, Discord indigo, Drive teal)
 
-## Session 2: Decouple PM Tracking from List Configs
+### 2. HTML Updates — [index.html](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.html)
+- Added Google Fonts: **Inter** (headings/body) + **Fira Code** (data/IDs)
+- Added **theme toggle button** (🌙/☀️) in sidebar footer
 
-### Problem
-PM Tracking was tied to `ListMappings` — could only track by List ID and only if a List Config existed.
+### 3. JS Theme Logic — [app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js)
+- `toggleTheme()` — switches `data-theme` attribute on `<html>`
+- Persists preference in `localStorage`
+- Auto-restores on page load
+- Replaced hardcoded inline colors (`#667eea`, `#38f9d7`, `#888`) with CSS variables
 
-### Solution
-Created independent `PM_Tracking_Configs` table supporting 3 tracking levels:
+## Screenshots
 
-| Level | Use Case |
-|-------|----------|
-| 🌐 **Space** | Track ALL tasks across all folders/lists in a space |
-| 📁 **Folder** | Track all tasks within a specific folder |
-| 📋 **List** | Track tasks in a specific list (most specific) |
+### Login Page
+![Login page with warm cream background and orange Sign In button](file:///C:/Users/dangt/.gemini/antigravity/brain/498a5097-5772-44aa-8cbe-c02dec9cd185/login_page_1773156113552.png)
 
-### Matching Priority
-When a webhook arrives: **List match → Folder match → Space match** (most specific wins)
+### Dashboard — Light Mode
+![Dashboard with white background, orange sidebar accent, clean stat cards](file:///C:/Users/dangt/.gemini/antigravity/brain/498a5097-5772-44aa-8cbe-c02dec9cd185/dashboard_light_mode_1773156191348.png)
 
-### Files Changed
-- **`nocodb.js`** — CRUD + `findPMTrackingConfig()` with priority matching
-- **`pm-tracking.js`** — Rewrote handler to use new config table (with ListMappings fallback)
-- **`api.js`** — Added `/api/pm-tracking-configs` CRUD routes
-- **`index.html`** — Added "📋 Tracking Configs" card on PM Tracking page
-- **`app.js`** — Added `loadPMTrackingConfigs()`, modal, toggle, delete
+### Dashboard — Dark Mode
+![Dashboard with dark charcoal background, bright orange accents](file:///C:/Users/dangt/.gemini/antigravity/brain/498a5097-5772-44aa-8cbe-c02dec9cd185/dashboard_dark_mode_1773156202113.png)
 
-### Verification
+### PM Tracking — Light Mode
+![PM tracking table with orange task links, colored status badges](file:///C:/Users/dangt/.gemini/antigravity/brain/498a5097-5772-44aa-8cbe-c02dec9cd185/pm_tracking_page_1773156218744.png)
 
-#### PM Tracking Page — Configs + Tasks
-![PM Tracking page with Tracking Configs section showing KABAM config (Active) and tasks table below](C:\Users\dangt\.gemini\antigravity\brain\498a5097-5772-44aa-8cbe-c02dec9cd185\pm_config_active_1773154374184.png)
-
-#### Add PM Config Modal
-![Modal with Title, ClickUp Type (List/Folder/Space), ClickUp ID, Job Type, Status fields](C:\Users\dangt\.gemini\antigravity\brain\498a5097-5772-44aa-8cbe-c02dec9cd185\pm_config_modal_1773154329845.png)
-
-#### Pause Toggle Working
-![KABAM config shown in Paused state with dimmed row](C:\Users\dangt\.gemini\antigravity\brain\498a5097-5772-44aa-8cbe-c02dec9cd185\pm_config_paused_1773154358326.png)
-
-#### Demo Recording
-![Browser verification recording](C:\Users\dangt\.gemini\antigravity\brain\498a5097-5772-44aa-8cbe-c02dec9cd185\pm_tracking_configs_1773154263242.webp)
-
-### Commits
-- `1bf0020` — feat: add pause/active toggle for List Configs + fix PM Tracking
-- `9fd65e3` — feat: decouple PM Tracking with independent Space/Folder/List configs
+## Theme Toggle Demo
+![Theme toggle animation showing light to dark switch](file:///C:/Users/dangt/.gemini/antigravity/brain/498a5097-5772-44aa-8cbe-c02dec9cd185/orange_theme_verify_1773156087388.webp)

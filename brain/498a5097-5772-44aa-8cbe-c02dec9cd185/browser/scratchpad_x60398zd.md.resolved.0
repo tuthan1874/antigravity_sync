@@ -1,0 +1,9 @@
+# UI Verification Plan
+
+- [ ] Navigate to http://localhost:3000/
+- [ ] Screenshot login page & describe theme
+- [ ] Login (admin/admin123)
+- [ ] Screenshot Dashboard (Light Mode) & describe
+- [ ] Toggle Dark Mode & screenshot
+- [ ] Toggle back to Light Mode & screenshot
+- [ ] Navigate to PM Tracking & screenshot

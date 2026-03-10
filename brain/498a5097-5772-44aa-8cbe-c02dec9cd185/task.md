@@ -1,21 +1,18 @@
-# Decouple PM Tracking — Independent Config
+# UI/UX Redesign — Orange Theme
 
-## Task 1: Create NocoDB Table
-- [ ] Create `PM_Tracking_Configs` table with columns: Title, ClickUp_Type, ClickUp_ID, Job_Type, Enabled
-- [ ] Migrate existing KABAM data (List_ID=901815849460, Job_Type=Art)
+## Task 1: Rewrite CSS Design System
+- [x] Rewrite `index.css` with light/dark theme variables
+- [x] Orange gradient accents, clean flat design
+- [x] Responsive sidebar, cards, tables, badges, buttons, modals, login
 
-## Task 2: Backend — NocoDB Functions
-- [ ] Add CRUD functions in `nocodb.js` for PM_Tracking_Configs
-- [ ] Add `findPMTrackingConfig(taskDeet)` matching logic (list→folder→space)
+## Task 2: Update HTML
+- [x] Add Google Fonts link (Inter + Fira Code)
+- [x] Add theme toggle button in sidebar
 
-## Task 3: Backend — Handler + API
-- [ ] Rewrite `pm-tracking.js` to use new config table
-- [ ] Add CRUD routes in `api.js` for `/api/pm-tracking-configs`
+## Task 3: Update JS
+- [x] Add `toggleTheme()` function with localStorage persistence
 
-## Task 4: Frontend UI
-- [ ] Add PM Tracking Configs section to `index.html` (table + add button)
-- [ ] Add `loadPMTrackingConfigs()`, modal, toggle in `app.js`
-
-## Task 5: Verification + Commit
-- [ ] Test in browser
-- [ ] Commit + push
+## Task 4: Verify
+- [x] Start server, test light theme
+- [x] Test dark theme toggle
+- [x] Check all pages visually
