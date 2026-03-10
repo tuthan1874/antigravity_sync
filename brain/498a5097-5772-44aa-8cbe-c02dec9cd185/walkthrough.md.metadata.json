@@ -1,6 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary":  "Walkthrough of the comprehensive UI/UX overhaul fixing layout issues, overlapping text, and poor aesthetics. Includes new screenshots of dashboard and PM tracking in both light and dark modes.",
-  "updatedAt":  "2026-03-10T15:46:17.048106200Z",
-  "version":  "3"
+  "summary":  "Walkthrough documenting PM Task Data enhancements: added Due Date, Closed Date, Bonus, Bonus Reason columns; inline cost/bonus editing; dynamic filters; screenshots showing verification results.",
+  "updatedAt":  "2026-03-10T16:08:43.581394900Z",
+  "version":  "4"
 }

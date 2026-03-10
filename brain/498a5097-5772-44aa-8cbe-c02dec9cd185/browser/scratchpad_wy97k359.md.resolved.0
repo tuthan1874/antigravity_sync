@@ -1,0 +1,27 @@
+# PM Tracking Redesign Verification Plan
+
+1. [ ] Login to http://localhost:3000 (admin/admin)
+2. [ ] Navigate to PM Tracking page via sidebar
+3. [ ] Verify TASK DATA table columns:
+    - Job Type
+    - Task Name
+    - Status
+    - Assignee
+    - Due Date
+    - Closed Date
+    - Cost
+    - Bonus
+    - Bonus Reason
+    - Payment Status
+    - Notes
+    - Actions
+4. [ ] Verify toolbar filters:
+    - All Configs
+    - All Job Types
+    - All Payments
+    - All Assignees
+    - All Statuses
+    - Due Date
+5. [ ] Test inline cost editing (click $0.00 cell)
+6. [ ] Take screenshots of table, toolbar, and inline editing.
+7. [ ] Report findings.

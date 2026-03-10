@@ -1,6 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_TASK",
-  "summary":  "Checklist tracking PM Task Data enhancements: adding Due Date, Closed Date, Bonus, Bonus Reason columns; inline cost editing; and new filters.",
-  "updatedAt":  "2026-03-10T16:00:41.783857200Z",
-  "version":  "6"
+  "summary":  "Completed checklist for PM Task Data enhancements. All items done.",
+  "updatedAt":  "2026-03-10T16:08:43.560693100Z",
+  "version":  "7"
 }

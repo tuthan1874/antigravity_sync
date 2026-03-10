@@ -1,0 +1,79 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+⚡
+ChatSync
+[0] (51,83)<a class='nav-link' href='#' />
+	[1] (15,83)<span >📊 />
+	[2] (38,83)<span >Dashboard />
+[3] (51,119)<a class='nav-link' href='#' />
+	[4] (15,119)<span >💬 />
+	[5] (37,119)<span >Chat Sync />
+[6] (51,156)<a class='nav-link' href='#' />
+	[7] (15,156)<span >🏢 />
+	[8] (37,156)<span >Customers />
+[9] (51,192)<a class='nav-link' href='#' />
+	[10] (15,192)<span >📦 />
+	[11] (34,192)<span >Projects />
+[12] (51,228)<a class='nav-link' href='#' />
+	[13] (15,228)<span >📁 />
+	[14] (37,228)<span >Drive Sync />
+[15] (51,264)<a class='nav-link active' href='#' />
+	[16] (15,264)<span >💰 />
+	[17] (40,264)<span >PM Tracking />
+[18] (51,301)<a class='nav-link' href='#' />
+	[19] (15,301)<span >🔗 />
+	[20] (39,301)<span >List Configs />
+[21] (51,337)<a class='nav-link' href='#' />
+	[22] (15,337)<span >📋 />
+	[23] (37,337)<span >Sync Logs />
+[24] (51,373)<a class='nav-link' href='#' />
+	[25] (15,373)<span >👤 />
+	[26] (44,373)<span >Name Mappings />
+[27] (51,409)<a class='nav-link' href='#' />
+	[28] (15,409)<span >⚙️ />
+	[29] (34,409)<span >Settings />
+Connected
+[30] (51,944)<button class='theme-toggle' id='theme-toggle' />
+	[31] (35,944)<span >☀️ />
+	[32] (56,944)<span >Light Mode />
+[33] (51,977)<button class='btn btn-secondary btn-full btn-logout' />
+	[34] (41,977)<span >🚪 />
+	[35] (55,977)<span >Logout />
+PM Finance Tracking
+Realtime sync with ClickUp. Internal cost tracking.
+[36] (906,38)<button class='btn btn-secondary btn-sm'>🔄 Refresh />
+[37] (956,38)<button class='btn btn-primary btn-sm' id='btn-pm-sync'>⚡ Sync from
+            ClickUp />
+[38] (153,105)<select id='pm-filter-config' />
+[39] (220,105)<select id='pm-filter-jobtype' />
+[40] (286,105)<select id='pm-filter-payment' />
+[41] (353,105)<select id='pm-filter-assignee' />
+[42] (419,105)<select id='pm-filter-status' />
+[43] (485,105)<select id='pm-filter-duedate' />
+📋 Tracking Configs
+[44] (954,161)<button class='btn btn-primary btn-sm'>+ Add PM Config />
+Title
+Type
+ClickUp ID
+Job Type
+Status
+Actions
+Loading...
+📊 Task Data
+Job Type
+Task Name
+Status
+Assignee
+Due Date
+Closed Date
+Cost
+Bonus
+Bonus Reason
+Payment Status
+Notes
+Actions
+Loading...
+
+</current_dom>

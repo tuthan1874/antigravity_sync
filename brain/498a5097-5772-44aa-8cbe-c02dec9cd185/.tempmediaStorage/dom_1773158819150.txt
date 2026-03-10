@@ -1,0 +1,275 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+⚡
+ChatSync
+[0] (51,83)<a class='nav-link' href='#' />
+	[1] (15,83)<span >📊 />
+	[2] (37,83)<span >Dashboard />
+[3] (51,119)<a class='nav-link' href='#' />
+	[4] (15,119)<span >💬 />
+	[5] (37,119)<span >Chat Sync />
+[6] (51,156)<a class='nav-link' href='#' />
+	[7] (15,156)<span >🏢 />
+	[8] (37,156)<span >Customers />
+[9] (51,192)<a class='nav-link' href='#' />
+	[10] (15,192)<span >📦 />
+	[11] (34,192)<span >Projects />
+[12] (51,228)<a class='nav-link' href='#' />
+	[13] (15,228)<span >📁 />
+	[14] (37,228)<span >Drive Sync />
+[15] (51,264)<a class='nav-link active' href='#' />
+	[16] (15,264)<span >💰 />
+	[17] (40,264)<span >PM Tracking />
+[18] (51,301)<a class='nav-link' href='#' />
+	[19] (15,301)<span >🔗 />
+	[20] (39,301)<span >List Configs />
+[21] (51,337)<a class='nav-link' href='#' />
+	[22] (15,337)<span >📋 />
+	[23] (37,337)<span >Sync Logs />
+[24] (51,373)<a class='nav-link' href='#' />
+	[25] (15,373)<span >👤 />
+	[26] (44,373)<span >Name Mappings />
+[27] (51,409)<a class='nav-link' href='#' />
+	[28] (15,409)<span >⚙️ />
+	[29] (34,409)<span >Settings />
+Connected
+[30] (51,944)<button class='theme-toggle' id='theme-toggle' />
+	[31] (35,944)<span >☀️ />
+	[32] (56,944)<span >Light Mode />
+[33] (51,977)<button class='btn btn-secondary btn-full btn-logout' />
+	[34] (41,977)<span >🚪 />
+	[35] (55,977)<span >Logout />
+PM Finance Tracking
+Realtime sync with ClickUp. Internal cost tracking.
+[36] (906,33)<button class='btn btn-secondary btn-sm'>🔄 Refresh />
+[37] (956,33)<button class='btn btn-primary btn-sm' id='btn-pm-sync'>⚡ Sync from
+            ClickUp />
+[38] (163,99)<select id='pm-filter-config' />
+[39] (238,99)<select id='pm-filter-jobtype' />
+[40] (305,99)<select id='pm-filter-payment' />
+[41] (373,99)<select id='pm-filter-assignee' />
+[42] (441,99)<select id='pm-filter-status' />
+[43] (507,99)<select id='pm-filter-duedate' />
+📋 Tracking Configs
+[44] (954,156)<button class='btn btn-primary btn-sm'>+ Add PM Config />
+Title
+Type
+ClickUp ID
+Job Type
+Status
+Actions
+KABAM ORCA - Art
+📋 list
+901815849460
+Art
+active
+[45] (804,226)<button class='btn btn-sm btn-warning' title='Pause'>⏸️ />
+[46] (822,226)<button class='btn btn-sm btn-primary'>✏️ />
+[47] (840,226)<button class='btn btn-sm btn-danger'>🗑️ />
+KABAM ORCA - Animation
+📋 list
+901816296143
+Animation
+active
+[48] (804,265)<button class='btn btn-sm btn-warning' title='Pause'>⏸️ />
+[49] (822,265)<button class='btn btn-sm btn-primary'>✏️ />
+[50] (840,265)<button class='btn btn-sm btn-danger'>🗑️ />
+📊 Task Data
+Job Type
+Task Name
+Status
+Assignee
+Due Date
+Closed Date
+Cost
+Bonus
+Bonus Reason
+Payment Status
+Notes
+Actions
+Art
+[51] (240,380)<a href='https://app.clickup.com/t/86ewrndqk'>[2D Modeling] [Character] Tasmanian Devil (Taz) />
+86ewrndqk
+approved
+NgocAnh_TDGames
+—
+—
+[52] (651,387)<td class='inline-editable' title='Click to edit'>$0.00 />
+[53] (694,387)<td class='inline-editable' title='Click to edit'>— />
+—
+[54] (821,381)<select class='form-group' />
+—
+[55] (943,384)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Art
+[56] (230,426)<a href='https://app.clickup.com/t/86ewrmt5h'>[2D Modeling] [Character] Duck Dodgers />
+86ewrmt5h
+client_review
+NgocAnh_TDGames
+—
+—
+[57] (651,434)<td class='inline-editable' title='Click to edit'>$0.00 />
+[58] (694,434)<td class='inline-editable' title='Click to edit'>— />
+—
+[59] (821,428)<select class='form-group' />
+—
+[60] (943,430)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Art
+[61] (228,473)<a href='https://app.clickup.com/t/86ewrmrmt'>[2D Modeling] [Character] Aquamarine />
+86ewrmrmt
+approved
+NgocAnh_TDGames
+—
+—
+[62] (651,480)<td class='inline-editable' title='Click to edit'>$0.00 />
+[63] (694,480)<td class='inline-editable' title='Click to edit'>— />
+—
+[64] (821,474)<select class='form-group' />
+—
+[65] (943,476)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Art
+[66] (224,519)<a href='https://app.clickup.com/t/86ewrmrcc'>[2D Modeling] [Character] Sylvester />
+86ewrmrcc
+approved
+NgocAnh_TDGames
+—
+—
+[67] (651,527)<td class='inline-editable' title='Click to edit'>$0.00 />
+[68] (694,527)<td class='inline-editable' title='Click to edit'>— />
+—
+[69] (821,521)<select class='form-group' />
+—
+[70] (943,523)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Art
+[71] (229,566)<a href='https://app.clickup.com/t/86ewrmr1n'>[2D Modeling] [Character] Ice King Finn />
+86ewrmr1n
+approved
+NgocAnh_TDGames
+—
+—
+[72] (651,573)<td class='inline-editable' title='Click to edit'>$0.00 />
+[73] (694,573)<td class='inline-editable' title='Click to edit'>— />
+—
+[74] (821,567)<select class='form-group' />
+—
+[75] (943,569)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Art
+[76] (232,612)<a href='https://app.clickup.com/t/86ewrmqg9'>[2D Modeling] [Character] Finn the Human />
+86ewrmqg9
+approved
+NgocAnh_TDGames
+—
+—
+[77] (651,620)<td class='inline-editable' title='Click to edit'>$0.00 />
+[78] (694,620)<td class='inline-editable' title='Click to edit'>— />
+—
+[79] (821,614)<select class='form-group' />
+—
+[80] (943,616)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Art
+[81] (236,659)<a href='https://app.clickup.com/t/86ewrmhc5'>[2D Modeling] [Character] Marvin the Martian />
+86ewrmhc5
+fix
+NgocAnh_TDGames
+—
+—
+[82] (651,666)<td class='inline-editable' title='Click to edit'>$0.00 />
+[83] (694,666)<td class='inline-editable' title='Click to edit'>— />
+—
+[84] (821,660)<select class='form-group' />
+—
+[85] (943,662)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Art
+[86] (225,705)<a href='https://app.clickup.com/t/86ewudvdq'>[2D Modeling] [Character] Amethyst />
+86ewudvdq
+client_review
+NgocAnh_TDGames
+—
+—
+[87] (651,713)<td class='inline-editable' title='Click to edit'>$0.00 />
+[88] (694,713)<td class='inline-editable' title='Click to edit'>— />
+—
+[89] (821,707)<select class='form-group' />
+—
+[90] (943,709)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Art
+[91] (222,752)<a href='https://app.clickup.com/t/86ewudvh5'>[2D Modeling] [Character] Starfire />
+86ewudvh5
+fix
+NgocAnh_TDGames
+—
+—
+[92] (651,759)<td class='inline-editable' title='Click to edit'>$0.00 />
+[93] (694,759)<td class='inline-editable' title='Click to edit'>— />
+—
+[94] (821,753)<select class='form-group' />
+—
+[95] (943,755)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Art
+[96] (226,798)<a href='https://app.clickup.com/t/86ewudvxt'>[2D Modeling] [Character] Superman />
+86ewudvxt
+fix
+NgocAnh_TDGames
+—
+—
+[97] (651,806)<td class='inline-editable' title='Click to edit'>$0.00 />
+[98] (694,806)<td class='inline-editable' title='Click to edit'>— />
+—
+[99] (821,800)<select class='form-group' />
+—
+[100] (943,802)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Art
+[101] (228,845)<a href='https://app.clickup.com/t/86ewvqcvd'>[2D Modeling] [Character] Green Arrow />
+86ewvqcvd
+new request
+NgocAnh_TDGames
+—
+—
+[102] (651,852)<td class='inline-editable' title='Click to edit'>$0.00 />
+[103] (694,852)<td class='inline-editable' title='Click to edit'>— />
+—
+[104] (821,846)<select class='form-group' />
+—
+[105] (943,848)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Art
+[106] (227,891)<a href='https://app.clickup.com/t/86ewvqcq3'>[2D Modeling] [Character] Daffy Hood />
+86ewvqcq3
+new request
+NgocAnh_TDGames
+—
+—
+[107] (651,899)<td class='inline-editable' title='Click to edit'>$0.00 />
+[108] (694,899)<td class='inline-editable' title='Click to edit'>— />
+—
+[109] (821,893)<select class='form-group' />
+—
+[110] (943,895)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Art
+[111] (231,938)<a href='https://app.clickup.com/t/86ewvqckq'>[2D Modeling] [Character] Wakko Warner />
+86ewvqckq
+client_review
+NgocAnh_TDGames
+—
+—
+[112] (651,945)<td class='inline-editable' title='Click to edit'>$0.00 />
+[113] (694,945)<td class='inline-editable' title='Click to edit'>— />
+—
+[114] (821,939)<select class='form-group' />
+—
+[115] (943,941)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Art
+[116] (225,984)<a href='https://app.clickup.com/t/86ewvqcg6'>[2D Modeling] [Character] Beast Boy />
+86ewvqcg6
+new request
+NgocAnh_TDGames
+—
+—
+[117] (651,992)<td class='inline-editable' title='Click to edit'>$0.00 />
+[118] (694,992)<td class='inline-editable' title='Click to edit'>— />
+—
+[119] (821,986)<select class='form-group' />
+—
+[120] (943,988)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+
+</current_dom>
