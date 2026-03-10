@@ -1,5 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary":  "Implementation plan covering: 1) Root cause analysis (NocoDB ListMappings missing Job_Type and Enabled columns), 2) Schema changes via MCP, 3) Backend handler modifications to check Enabled status, 4) Frontend UI updates for status column/toggle/modal fields, 5) Verification plan.",
-  "updatedAt":  "2026-03-10T13:27:16.975616700Z"
+  "summary":  "Plan to decouple PM Tracking from List Configs by creating a new PM_Tracking_Configs NocoDB table supporting Space/Folder/List level tracking. Covers schema, backend handler rewrite, NocoDB functions, API routes, and frontend UI changes.",
+  "updatedAt":  "2026-03-10T14:46:17.056673700Z",
+  "version":  "1"
 }

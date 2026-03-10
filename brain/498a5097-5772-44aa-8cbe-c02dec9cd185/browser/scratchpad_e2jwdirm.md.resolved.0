@@ -1,0 +1,9 @@
+# PM Tracking Logic Verification Checklist
+
+- [ ] Navigate to `http://localhost:3000`
+- [ ] Login as `admin` (try password `admin` first, then `admin123`)
+- [ ] Go to "PM Tracking" in the sidebar
+- [ ] Verify TWO sections: "📋 Tracking Configs" and the tasks table (Capture screenshot)
+- [ ] Test "+ Add PM Config" button: Verify modal fields (Title, Type, ClickUp ID, Job Type, Status) (Capture screenshot)
+- [ ] Test Pause/Activate toggle on KABAM config row (Capture screenshot)
+- [ ] Return findings

@@ -1,63 +1,81 @@
-# List Configs Pause/Active + PM Tracking Fix
+# Decouple PM Tracking — Independent Config by Space/Folder/List
 
-## Root Cause Analysis
+## Problem
+PM Tracking hiện phụ thuộc vào bảng `ListMappings` (List Configs). User muốn tạo bảng config riêng cho PM Tracking — có thể theo dõi theo **Space ID**, **Folder ID**, hoặc **List ID** một cách độc lập.
 
-### PM Tracking không hoạt động
-Bảng `ListMappings` trong NocoDB **thiếu cột `Job_Type`**. Handler `pm-tracking.js` kiểm tra `listMapping?.Job_Type` — luôn trả về `undefined` → handler skip tất cả tasks, không sync gì vào `PM_Tasks_Tracking`.
+## Design
 
-### List Configs thiếu chức năng Pause/Active  
-Bảng `ListMappings` không có cột `Enabled` hoặc `Status`. Không có cách nào tạm dừng (pause) một luồng auto-sync mà không xóa mapping.
+### ClickUp Task Data (từ webhook)
+Khi nhận webhook, `getTask(task_id)` trả về:
+```json
+{
+  "list": { "id": "901815849460" },
+  "folder": { "id": "90181234567" },
+  "space": { "id": "90180000001" }
+}
+```
+→ Ta có cả 3 level để match config.
+
+### Matching Logic
+Khi nhận task event, handler sẽ tìm config theo thứ tự ưu tiên:
+1. **List ID** match → cụ thể nhất
+2. **Folder ID** match → tất cả list trong folder
+3. **Space ID** match → tất cả folder/list trong space
 
 ---
 
 ## Proposed Changes
 
-### NocoDB Schema (ListMappings table)
+### NocoDB Schema
 
-#### Add 2 new columns via MCP
-1. **`Job_Type`** — `SingleSelect` với options: `Art`, `Animation`
-2. **`Enabled`** — `SingleSelect` với options: `Active`, `Paused` (default: `Active`)
+#### [NEW] Bảng `PM_Tracking_Configs`
 
-Sau đó update record KABAM/ORCA (Id=2) với `Job_Type=Art`, `Enabled=Active`.
+| Column | Type | Mô tả |
+|--------|------|--------|
+| `Id` | ID (auto) | Primary key |
+| `Title` | SingleLineText | Tên config (VD: "KABAM Art Tracking") |
+| `ClickUp_Type` | SingleLineText | `space` / `folder` / `list` |
+| `ClickUp_ID` | SingleLineText | ID của Space, Folder hoặc List |
+| `Job_Type` | SingleLineText | `Art` / `Animation` |
+| `Enabled` | SingleLineText | `Active` / `Paused` |
 
 ---
 
-### Backend Handler
+### Backend
 
 #### [MODIFY] [pm-tracking.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/handlers/pm-tracking.js)
-- Thêm check `listMapping?.Enabled === 'Paused'` → skip PM tracking nếu mapping bị paused
+- Thay `findListMapping(listId)` bằng `findPMTrackingConfig(taskDeet)`
+- Match theo `list.id` → `folder.id` → `space.id` (ưu tiên cụ thể nhất)
+- Vẫn return `listMapping` (ko thay đổi) cho Slack/Discord handlers
 
-#### [MODIFY] [slack-automation.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/handlers/slack-automation.js)
-- Thêm check `listMapping?.Enabled === 'Paused'` trước khi tạo thread/tag reviewers (line 30)
-
-#### [MODIFY] [discord-automation.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/handlers/discord-automation.js)
-- Thêm check `listMapping?.Enabled === 'Paused'` trước khi tạo thread/ping reviewers (line 31)
-
----
-
-### Frontend UI
-
-#### [MODIFY] [index.html](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.html)
-- Thêm cột `Job Type` và `Status` vào table header (List Mappings, line 438-447)
-- Cập nhật colspan từ 8 → 10
-
-#### [MODIFY] [app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js)
-- `loadListMappings()`: Hiển thị `Job_Type`, `Enabled` (status badge), và nút toggle ⏸️/▶️
-- `openModal('list-mapping')`: Thêm select `Job_Type` (Art/Animation) và `Enabled` (Active/Paused)  
-- Thêm function `toggleListMappingStatus(id, currentStatus)` gọi PUT API để đổi trạng thái
+#### [MODIFY] [nocodb.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js)
+- Thêm functions: `getPMTrackingConfigs()`, `findPMTrackingConfig(taskDeet)`, `createPMTrackingConfig()`, `updatePMTrackingConfig()`, `deletePMTrackingConfig()`
 
 #### [MODIFY] [api.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/api.js)
-- Route `PUT /api/list-mappings/:id` đã tồn tại → không cần thêm route mới
+- Thêm CRUD routes: `GET/POST/PUT/DELETE /api/pm-tracking-configs`
 
 ---
 
-## Verification Plan
+### Frontend
 
-### Manual Verification
-1. Start server: `node server.js` từ thư mục project
-2. Mở browser → trang List Configs
-   - Kiểm tra bảng hiển thị cột Job Type và Status
-   - Nhấn nút toggle ⏸️ để pause → status đổi thành "Paused"
-   - Nhấn nút toggle ▶️ để active lại → status đổi thành "Active"
-3. Mở trang PM Tracking → kiểm tra dữ liệu hiện có vẫn hiển thị bình thường
-4. Edit một List Mapping → kiểm tra modal có field Job Type và Enabled
+#### [MODIFY] [index.html](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.html)
+- Thêm section "PM Tracking Configs" vào trang PM Tracking (nút "+ Add PM Config")
+
+#### [MODIFY] [app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js)
+- Thêm `loadPMTrackingConfigs()`, `openModal('pm-config')`, toggle pause/active
+- Hiển thị bảng configs phía trên bảng tasks
+
+---
+
+## Cleanup
+
+#### ListMappings — giữ nguyên `Job_Type` + `Enabled`
+Cột `Job_Type` trên `ListMappings` sẽ **không còn được dùng** cho PM Tracking (vì đã tách ra). Có thể xóa sau nếu muốn, nhưng cột `Enabled` vẫn hữu ích cho Slack/Discord automation.
+
+---
+
+## Verification
+1. Tạo PM Config với `ClickUp_Type=space`, nhập Space ID → verify tất cả task trong space đó được track
+2. Tạo PM Config với `ClickUp_Type=list`, nhập List ID → verify chỉ task trong list đó được track
+3. Pause config → verify task mới không được track
+4. PM Tracking page hiển thị cả config table + task table

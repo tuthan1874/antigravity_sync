@@ -1,41 +1,52 @@
-# List Configs Pause/Active + PM Tracking Fix — Walkthrough
+# PM Tracking — Independent Config + List Configs Fix
 
-## Changes Made
+## Session 1: List Configs Pause/Active + PM Tracking Fix
 
-### 1. NocoDB Schema (ListMappings table)
-Added 2 new columns:
-- **`Job_Type`** — Identifies task type (Art / Animation) for PM Tracking
-- **`Enabled`** — Controls whether the mapping is Active or Paused
+### Changes
+- Added `Job_Type` and `Enabled` columns to `ListMappings` NocoDB table
+- Added ⏸️/▶️ toggle to List Configs UI
+- Fixed PM Tracking root cause: missing `Job_Type` column → handler was skipping all tasks
 
-Updated existing KABAM/ORCA record with `Job_Type=Art`, `Enabled=Active`.
+---
 
-### 2. Backend Handlers
+## Session 2: Decouple PM Tracking from List Configs
 
-**`pm-tracking.js`** — Added `Enabled === 'Paused'` check; skips tracking when paused.
+### Problem
+PM Tracking was tied to `ListMappings` — could only track by List ID and only if a List Config existed.
 
-**`slack-automation.js`** — Added `Enabled === 'Paused'` check; skips Slack thread creation when paused.
+### Solution
+Created independent `PM_Tracking_Configs` table supporting 3 tracking levels:
 
-**`discord-automation.js`** — Added `Enabled === 'Paused'` check; skips Discord thread creation when paused.
+| Level | Use Case |
+|-------|----------|
+| 🌐 **Space** | Track ALL tasks across all folders/lists in a space |
+| 📁 **Folder** | Track all tasks within a specific folder |
+| 📋 **List** | Track tasks in a specific list (most specific) |
 
-### 3. Frontend UI (`app.js` + `index.html`)
-- Added **Job Type** and **Status** columns to the List Mappings table
-- Added ⏸️/**▶️ toggle button** for quick pause/activate
-- Paused rows appear **dimmed** (opacity: 0.55)
-- **Add/Edit modal** now includes Job Type and Status dropdowns
+### Matching Priority
+When a webhook arrives: **List match → Folder match → Space match** (most specific wins)
 
-## Verification
+### Files Changed
+- **`nocodb.js`** — CRUD + `findPMTrackingConfig()` with priority matching
+- **`pm-tracking.js`** — Rewrote handler to use new config table (with ListMappings fallback)
+- **`api.js`** — Added `/api/pm-tracking-configs` CRUD routes
+- **`index.html`** — Added "📋 Tracking Configs" card on PM Tracking page
+- **`app.js`** — Added `loadPMTrackingConfigs()`, modal, toggle, delete
 
-### List Configs — Table with Status & Toggle
-![List Configs table showing Job Type column, Active status badge, and toggle/edit/delete buttons](C:\Users\dangt\.gemini\antigravity\brain\498a5097-5772-44aa-8cbe-c02dec9cd185\list_configs_scrolled_1773149696940.png)
+### Verification
 
-### Add Mapping Modal — Job Type & Status Fields
-![Add List Mapping modal with Job Type (None/Art/Animation) and Status (Active/Paused) dropdowns](C:\Users\dangt\.gemini\antigravity\brain\498a5097-5772-44aa-8cbe-c02dec9cd185\add_mapping_modal_1773149728593.png)
+#### PM Tracking Page — Configs + Tasks
+![PM Tracking page with Tracking Configs section showing KABAM config (Active) and tasks table below](C:\Users\dangt\.gemini\antigravity\brain\498a5097-5772-44aa-8cbe-c02dec9cd185\pm_config_active_1773154374184.png)
 
-### PM Tracking — Data Loading Successfully
-![PM Finance Tracking page showing Art and Animation tasks with statuses, assignees, and payment tracking](C:\Users\dangt\.gemini\antigravity\brain\498a5097-5772-44aa-8cbe-c02dec9cd185\pm_tracking_page_1773149739832.png)
+#### Add PM Config Modal
+![Modal with Title, ClickUp Type (List/Folder/Space), ClickUp ID, Job Type, Status fields](C:\Users\dangt\.gemini\antigravity\brain\498a5097-5772-44aa-8cbe-c02dec9cd185\pm_config_modal_1773154329845.png)
 
-### Demo Recording
-![Browser verification recording](C:\Users\dangt\.gemini\antigravity\brain\498a5097-5772-44aa-8cbe-c02dec9cd185\list_configs_verification_1773149443899.webp)
+#### Pause Toggle Working
+![KABAM config shown in Paused state with dimmed row](C:\Users\dangt\.gemini\antigravity\brain\498a5097-5772-44aa-8cbe-c02dec9cd185\pm_config_paused_1773154358326.png)
 
-## Root Cause (PM Tracking)
-The `ListMappings` table was missing the `Job_Type` column entirely. The `pm-tracking.js` handler checked `listMapping?.Job_Type` which always returned `undefined`, causing it to skip all tasks and never sync to `PM_Tasks_Tracking`.
+#### Demo Recording
+![Browser verification recording](C:\Users\dangt\.gemini\antigravity\brain\498a5097-5772-44aa-8cbe-c02dec9cd185\pm_tracking_configs_1773154263242.webp)
+
+### Commits
+- `1bf0020` — feat: add pause/active toggle for List Configs + fix PM Tracking
+- `9fd65e3` — feat: decouple PM Tracking with independent Space/Folder/List configs
