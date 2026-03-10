@@ -1,0 +1,188 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+⚡
+ChatSync
+[0] (95,94)<a class='nav-link' href='#'>Dashboard />
+	[1] (32,94)<span >📊 />
+[2] (95,134)<a class='nav-link' href='#'>Chat Sync />
+	[3] (32,134)<span >💬 />
+[4] (95,174)<a class='nav-link' href='#'>Customers />
+	[5] (32,174)<span >🏢 />
+[6] (95,215)<a class='nav-link' href='#'>Projects />
+	[7] (32,215)<span >📦 />
+[8] (95,255)<a class='nav-link' href='#'>Drive Sync />
+	[9] (32,255)<span >📁 />
+[10] (95,296)<a class='nav-link active' href='#'>PM Tracking />
+	[11] (33,296)<span >💰 />
+[12] (95,337)<a class='nav-link' href='#'>List Configs />
+	[13] (32,337)<span >🔗 />
+[14] (95,377)<a class='nav-link' href='#'>Sync Logs />
+	[15] (32,377)<span >📋 />
+[16] (95,417)<a class='nav-link' href='#'>Name Mappings />
+	[17] (32,417)<span >👤 />
+[18] (95,458)<a class='nav-link' href='#'>Settings />
+	[19] (32,458)<span >⚙️ />
+Connected
+[20] (95,970)<button class='btn btn-secondary'>Logout />
+	[21] (74,970)<span >🚪 />
+PM Finance Tracking
+Realtime sync with ClickUp. Internal cost tracking.
+[22] (277,82)<select class='form-group' id='pm-filter-jobtype' />
+[23] (393,82)<select class='form-group' id='pm-filter-payment' />
+[24] (989,89)<button class='btn btn-secondary'>🔄 Refresh />
+Job Type
+Task Name
+Status
+Assignee
+Cost
+Payment Status
+Notes
+Actions
+Art
+[25] (431,184)<a href='https://app.clickup.com/t/86ewrndqk'>[2D Modeling] [Character] Tasmanian Devil (Taz) />
+86ewrndqk
+approved
+NgocAnh_TDGames
+$0.00
+[26] (807,182)<select class='form-group' />
+—
+[27] (976,184)<button class='btn btn-sm btn-secondary'>✏️ Edit (Local) />
+Art
+[28] (391,237)<a href='https://app.clickup.com/t/86ewrn9q7'>[2D Modeling] [Character] TestB />
+86ewrn9q7
+approved
+NaNguyen
+$0.00
+[29] (807,235)<select class='form-group' />
+—
+[30] (976,238)<button class='btn btn-sm btn-secondary'>✏️ Edit (Local) />
+Art
+[31] (412,290)<a href='https://app.clickup.com/t/86ewrmt5h'>[2D Modeling] [Character] Duck Dodgers />
+86ewrmt5h
+fix
+NgocAnh_TDGames
+$0.00
+[32] (807,289)<select class='form-group' />
+—
+[33] (976,291)<button class='btn btn-sm btn-secondary'>✏️ Edit (Local) />
+Art
+[34] (407,343)<a href='https://app.clickup.com/t/86ewrmrmt'>[2D Modeling] [Character] Aquamarine />
+86ewrmrmt
+approved
+NgocAnh_TDGames
+$0.00
+[35] (807,342)<select class='form-group' />
+—
+[36] (976,344)<button class='btn btn-sm btn-secondary'>✏️ Edit (Local) />
+Art
+[37] (400,397)<a href='https://app.clickup.com/t/86ewrmrcc'>[2D Modeling] [Character] Sylvester />
+86ewrmrcc
+approved
+NgocAnh_TDGames
+$0.00
+[38] (807,395)<select class='form-group' />
+—
+[39] (976,397)<button class='btn btn-sm btn-secondary'>✏️ Edit (Local) />
+Art
+[40] (409,450)<a href='https://app.clickup.com/t/86ewrmr1n'>[2D Modeling] [Character] Ice King Finn />
+86ewrmr1n
+approved
+NgocAnh_TDGames
+$0.00
+[41] (807,448)<select class='form-group' />
+—
+[42] (976,451)<button class='btn btn-sm btn-secondary'>✏️ Edit (Local) />
+Art
+[43] (416,503)<a href='https://app.clickup.com/t/86ewrmqg9'>[2D Modeling] [Character] Finn the Human />
+86ewrmqg9
+approved
+NgocAnh_TDGames
+$0.00
+[44] (807,502)<select class='form-group' />
+—
+[45] (976,504)<button class='btn btn-sm btn-secondary'>✏️ Edit (Local) />
+Art
+[46] (423,557)<a href='https://app.clickup.com/t/86ewrmhc5'>[2D Modeling] [Character] Marvin the Martian />
+86ewrmhc5
+in progess
+NgocAnh_TDGames
+$0.00
+[47] (807,555)<select class='form-group' />
+—
+[48] (976,557)<button class='btn btn-sm btn-secondary'>✏️ Edit (Local) />
+Animation
+[49] (411,610)<a href='https://app.clickup.com/t/86ewrnmz6'>[2D Animation] [Character] Ice King Finn />
+86ewrnmz6
+approved
+TDGames
+$0.00
+[50] (807,608)<select class='form-group' />
+—
+[51] (976,611)<button class='btn btn-sm btn-secondary'>✏️ Edit (Local) />
+Animation
+[52] (417,663)<a href='https://app.clickup.com/t/86ewrnmec'>[2D Animation] [Character] Finn the Human />
+86ewrnmec
+approved
+TDGames
+$0.00
+[53] (807,661)<select class='form-group' />
+—
+[54] (976,664)<button class='btn btn-sm btn-secondary'>✏️ Edit (Local) />
+Animation
+[55] (408,716)<a href='https://app.clickup.com/t/86ewrnkaq'>[2D Animation] [Character] Tweety Bird />
+86ewrnkaq
+approved
+TDGames
+$0.00
+[56] (807,715)<select class='form-group' />
+—
+[57] (976,717)<button class='btn btn-sm btn-secondary'>✏️ Edit (Local) />
+Animation
+[58] (433,770)<a href='https://app.clickup.com/t/86ewrnjdb'>[2D Animation] [Character] Tasmanian Devil (Taz) />
+86ewrnjdb
+approved
+TDGames
+$0.00
+[59] (807,768)<select class='form-group' />
+—
+[60] (976,770)<button class='btn btn-sm btn-secondary'>✏️ Edit (Local) />
+Animation
+[61] (396,823)<a href='https://app.clickup.com/t/86ewrnj5p'>[2D Animation] [Character] Garnet />
+86ewrnj5p
+approved
+TDGames
+$0.00
+[62] (807,821)<select class='form-group' />
+—
+[63] (976,824)<button class='btn btn-sm btn-secondary'>✏️ Edit (Local) />
+Animation
+[64] (377,876)<a href='https://app.clickup.com/t/86ewrnh5j'>[2D Animation] [Boss] Lich />
+86ewrnh5j
+approved
+TDGames
+$0.00
+[65] (807,875)<select class='form-group' />
+—
+[66] (976,877)<button class='btn btn-sm btn-secondary'>✏️ Edit (Local) />
+Animation
+[67] (391,929)<a href='https://app.clickup.com/t/86ewrmru0'>[2D Animation] [Character] BMO />
+86ewrmru0
+client_review
+TDGames
+$0.00
+[68] (807,928)<select class='form-group' />
+—
+[69] (976,930)<button class='btn btn-sm btn-secondary'>✏️ Edit (Local) />
+Animation
+[70] (408,983)<a href='https://app.clickup.com/t/86ewrmqwy'>[2D Animation] [Character] Bugs Bunny />
+86ewrmqwy
+approved
+TDGames
+$0.00
+[71] (807,981)<select class='form-group' />
+—
+[72] (976,983)<button class='btn btn-sm btn-secondary'>✏️ Edit (Local) />
+
+</current_dom>

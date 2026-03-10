@@ -1,0 +1,26 @@
+# Testing Plan for List Configs and PM Tracking
+
+- [x] Navigate to http://localhost:3000 (Success)
+- [x] Login (admin/admin123) (Success - worked with Enter or one of the JS attempts)
+- [x] Verify "List Configs" page
+    - [x] Check table columns (Verified)
+    - [x] Check KABAM/ORCA row data (Job Type: Art, Status: active) (Verified)
+    - [x] Check action buttons (Pause, Edit, Delete) (Verified)
+    - [x] Capture screenshot 1 (Saved as `list_configs_initial`)
+- [x] Test Pause/Active toggle
+    - [x] Click Pause button (Success)
+    - [x] Verify paused state (screenshot 2 - Saved as `list_configs_paused`)
+    - [ ] Click Activate button
+- [ ] Verify "+ Add Mapping" modal
+    - [ ] Check Job Type and Status fields
+    - [ ] Capture screenshot 3
+- [ ] Verify "PM Tracking" page
+    - [ ] Check if data loads
+    - [ ] Capture screenshot 4
+
+## Observations
+- Login initially failed with 401 but eventually succeeded (possibly after multiple attempts or using Enter).
+- "List Configs" table has all requested columns: ClickUp List ID, Job Type, Slack Channel ID, Slack Users to Tag, Discord Channel ID, Discord Users to Tag, Customer, Project, Status, Actions.
+- KABAM/ORCA row correctly shows "Art" in Job Type and "active" status initially.
+- After clicking Pause (⏸️), the status changed to "paused" and the button changed to ▶️. Row appears as expected.
+- Next steps: Activate the row, check "+ Add Mapping" modal, and check PM Tracking page.

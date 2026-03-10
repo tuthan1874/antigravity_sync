@@ -1,0 +1,27 @@
+# Testing Plan for List Configs and PM Tracking
+
+- [/] Navigate to http://localhost:3000 (Success)
+- [ ] Login (admin/admin123) - **FAILING: Invalid origin or password**
+- [ ] Verify "List Configs" page
+    - [ ] Check table columns
+    - [ ] Check KABAM/ORCA row data (Job Type: Art, Status: active)
+    - [ ] Check action buttons (Pause, Edit, Delete)
+    - [ ] Capture screenshot 1
+- [ ] Test Pause/Active toggle
+    - [ ] Click Pause button
+    - [ ] Verify paused state (screenshot 2)
+    - [ ] Click Activate button
+- [ ] Verify "+ Add Mapping" modal
+    - [ ] Check Job Type and Status fields
+    - [ ] Capture screenshot 3
+- [ ] Verify "PM Tracking" page
+    - [ ] Check if data loads
+    - [ ] Capture screenshot 4
+
+## Observations
+- Attempted login multiple times with `admin` / `admin123`.
+- UI returns "Invalid origin or password".
+- Console shows 401 Unauthorized for `/api/login`.
+- Sidebar links are present in DOM but hidden by login modal.
+- JS `click()` on sidebar links doesn't bypass the modal.
+- Plan: Inspect network requests for details.

@@ -1,0 +1,56 @@
+⚡
+ChatSync
+Welcome Back
+Please sign in to continue
+[0] (500,483)<label >Username />
+[1] (500,509)<input class='form-control' id='login-username' placeholder='Enter username' />
+[2] (500,545)<label >Password />
+[3] (500,571)<input class='form-control' id='login-password' placeholder='Enter password' />
+[4] (500,615)<button class='btn btn-primary'>Sign In />
+⚡
+ChatSync
+📊
+Dashboard
+💬
+Chat Sync
+🏢
+Customers
+📦
+Projects
+📁
+Drive Sync
+💰
+PM Tracking
+🔗
+List Configs
+📋
+Sync Logs
+👤
+Name Mappings
+⚙️
+Settings
+Connecting...
+🚪
+Logout
+Dashboard
+Overview of your sync configurations
+💬
+—
+Chat Syncs
+✅
+—
+Active
+📁
+—
+Drive Syncs
+🔄
+—
+Drive Active
+Recent Sync Activity
+Time
+Source
+Author
+Content
+Synced To
+Status
+Loading...

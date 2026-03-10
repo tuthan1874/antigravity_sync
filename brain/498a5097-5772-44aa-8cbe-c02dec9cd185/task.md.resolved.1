@@ -1,0 +1,21 @@
+# List Configs Pause/Active + PM Tracking Fix
+
+## Task 1: Add `Enabled` and `Job_Type` columns to NocoDB ListMappings
+- [x] Add `Enabled` column (SingleLineText) to ListMappings table
+- [x] Add `Job_Type` column (SingleLineText) to ListMappings table  
+- [x] Update existing record (Id=2, KABAM/ORCA) with `Job_Type=Art`, `Enabled=Active`
+
+## Task 2: Add Pause/Active UI to List Configs
+- [x] Update [index.html](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.html) — add Job Type + Status columns to table header
+- [x] Update [app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js) — [loadListMappings()](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js#462-517) to show Job Type, Enabled badge + toggle button
+- [x] Update [app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js) — [openModal('list-mapping')](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js#641-877) to include Enabled and Job_Type fields
+- [x] Add [toggleListMappingStatus()](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js#533-546) function for quick pause/active toggle
+
+## Task 3: Fix PM Tracking (Backend)
+- [x] Update [pm-tracking.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/handlers/pm-tracking.js) handler to check `listMapping.Enabled` before processing
+- [x] Update [slack-automation.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/handlers/slack-automation.js) to check `listMapping.Enabled` before processing  
+- [x] Update [discord-automation.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/handlers/discord-automation.js) to check `listMapping.Enabled` before processing
+
+## Task 4: Verification
+- [ ] Start dev server and test List Configs page
+- [ ] Verify PM Tracking page still displays existing data
