@@ -1,6 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_TASK",
-  "summary":  "Task checklist for full UI/UX redesign with orange light/dark theme — all items completed.",
-  "updatedAt":  "2026-03-10T15:24:45.048919100Z",
-  "version":  "5"
+  "summary":  "Checklist tracking PM Task Data enhancements: adding Due Date, Closed Date, Bonus, Bonus Reason columns; inline cost editing; and new filters.",
+  "updatedAt":  "2026-03-10T16:00:41.783857200Z",
+  "version":  "6"
 }

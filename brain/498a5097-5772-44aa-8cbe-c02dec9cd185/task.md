@@ -1,18 +1,11 @@
-# UI/UX Redesign — Orange Theme
+# PM Task Data Enhancements
 
-## Task 1: Rewrite CSS Design System
-- [x] Rewrite `index.css` with light/dark theme variables
-- [x] Orange gradient accents, clean flat design
-- [x] Responsive sidebar, cards, tables, badges, buttons, modals, login
-
-## Task 2: Update HTML
-- [x] Add Google Fonts link (Inter + Fira Code)
-- [x] Add theme toggle button in sidebar
-
-## Task 3: Update JS
-- [x] Add `toggleTheme()` function with localStorage persistence
-
-## Task 4: Verify
-- [x] Start server, test light theme
-- [x] Test dark theme toggle
-- [x] Check all pages visually
+- [x] Add NocoDB columns: Due_Date, Closed_Date, Bonus, Bonus_Reason
+- [ ] Update `pm-tracking.js` handler to include due_date/date_closed from ClickUp
+- [ ] Update `nocodb.js` upsertPMTaskTracking to save Due_Date, Closed_Date
+- [ ] Update `api.js` PUT route to allow Bonus, Bonus_Reason updates
+- [ ] Update `api.js` refresh route to include due_date/date_closed
+- [ ] Update `api.js` GET route to add Assignee/Status/DueDate/ClosedDate filters
+- [ ] Update `index.html` table headers and toolbar filters
+- [ ] Update `app.js` loadPMTracking rendering + inline Cost edit + new filters
+- [ ] Browser verification
