@@ -1,6 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary":  "Walkthrough of the full UI/UX redesign from purple/blue dark-only theme to orange light/dark theme with screenshots showing login, dashboard light, dashboard dark, and PM tracking pages.",
-  "updatedAt":  "2026-03-10T15:24:45.115814Z",
-  "version":  "2"
+  "summary":  "Walkthrough of the comprehensive UI/UX overhaul fixing layout issues, overlapping text, and poor aesthetics. Includes new screenshots of dashboard and PM tracking in both light and dark modes.",
+  "updatedAt":  "2026-03-10T15:46:17.048106200Z",
+  "version":  "3"
 }
