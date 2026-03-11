@@ -1,0 +1,116 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Skip to content
+Navigation Menu
+[0] (19,28)<a aria-label='Homepage' class='tmp-mr-lg-3 color-fg-inherit flex-order-2 js-prevent-focus-on-mobile-nav' href='/' />
+[1] (50,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Platform />
+[2] (89,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Solutions />
+[3] (129,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Resources />
+[4] (175,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Open Source />
+[5] (221,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Enterprise />
+[6] (254,28)<a class='NavLink-module__link__EG3d4 MarketingNavigation-module__navLink__hUomM' href='https://github.com/pricing' />
+	[7] (254,28)<span >Pricing />
+[8] (844,28)<button aria-label='Search or jump to…' class='header-search-button placeholder input-button form-control d-flex flex-1 flex-self-stretch flex-items-center no-wrap width-full py-0 pl-2 pr-0 text-left border-0 box-shadow-none' placeholder='Search or jump to...' />
+	[9] (788,28)<div  />
+	[10] (844,28)<span >Search or jump to... />
+	[11] (902,28)<div  />
+[12] (924,28)<a class='HeaderMenu-link HeaderMenu-link--sign-in HeaderMenu-button flex-shrink-0 no-underline d-none d-lg-inline-flex border border-lg-0 rounded px-2 py-1' href='/login?return_to=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive%2Fsettings%2Fsecrets%2Factions'>Sign in />
+Sign in to GitHub
+[13] (870,109)<label >Username or email address />
+[14] (885,133)<input class='form-control input-block js-login-field' id='login_field' />
+[15] (848,165)<label >Password />
+[16] (885,188)<input class='form-control form-control input-block js-password-field' id='password' />
+[17] (913,165)<a class='label-link position-absolute top-0 right-0' href='/password_reset' id='forgot-password'>Forgot password? />
+[18] (885,225)<input class='btn btn-primary btn-block js-sign-in-button' />
+[19] (885,257)<a class='Button--link Button--medium Button' href='/login?return_to=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive%2Fsettings%2Fsecrets%2Factions' />
+	[20] (885,257)<span  />
+		[21] (885,257)<span >or continue with other methods />
+[22] (956,28)<a class='HeaderMenu-link HeaderMenu-link--sign-up HeaderMenu-button flex-shrink-0 d-flex d-lg-inline-flex no-underline border color-border-default rounded px-2 py-1' href='/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive%2Fsettings%2Fsecrets%2Factions&source=header'>Sign up />
+[23] (981,28)<button class='Button Button--iconOnly Button--invisible Button--medium AppHeader-button HeaderMenu-link border' id='icon-button-648f32c8-0a33-4258-8dda-c423900bd49c' />
+[24] (500,372)<label class='d-block text-normal color-fg-muted mb-1 f4'>Find code, projects, and people on GitHub: />
+[25] (483,397)<input class='flex-auto input-lg form-control mr-2' id='not-found-search' />
+[26] (676,397)<button class='btn'>Search />
+[27] (457,441)<a class='Link--secondary' href='https://support.github.com?tags=dotcom-404'>Contact Support />
+—
+[28] (503,441)<a class='Link--secondary' href='https://githubstatus.com'>GitHub Status />
+—
+[29] (546,441)<a class='Link--secondary' href='https://twitter.com/githubstatus'>@githubstatus />
+Site-wide Links
+[30] (282,610)<a aria-label='Go to GitHub homepage' class='color-fg-default d-inline-block' href='/' />
+Subscribe to our developer newsletter
+Get tips, technical guides, and best practices. Twice a month.
+[31] (280,707)<a class='btn-mktg tmp-mb-4 btn-muted-mktg' href='https://github.com/newsletter'>Subscribe />
+Platform
+[32] (438,634)<a class='Link--secondary' href='/features'>Features />
+[33] (440,659)<a class='Link--secondary' href='/enterprise'>Enterprise />
+[34] (437,685)<a class='Link--secondary' href='/features/copilot'>Copilot />
+[35] (431,711)<a class='Link--secondary' href='/features/ai'>AI />
+[36] (438,736)<a class='Link--secondary' href='/security'>Security />
+[37] (436,762)<a class='Link--secondary' href='/pricing'>Pricing />
+[38] (434,788)<a class='Link--secondary' href='/team'>Team />
+[39] (440,813)<a class='Link--secondary' href='https://resources.github.com'>Resources />
+[40] (440,839)<a class='Link--secondary' href='https://github.com/github/roadmap'>Roadmap />
+[41] (448,865)<a class='Link--secondary' href='/resources/articles/devops-tools-comparison'>Compare GitHub />
+Ecosystem
+[42] (526,634)<a class='Link--secondary' href='https://docs.github.com/get-started/exploring-integrations/about-building-integrations'>Developer API />
+[43] (519,659)<a class='Link--secondary' href='https://partner.github.com'>Partners />
+[44] (521,685)<a class='Link--secondary' href='https://github.com/edu'>Education />
+[45] (522,711)<a class='Link--secondary' href='https://cli.github.com'>GitHub CLI />
+[46] (529,736)<a class='Link--secondary' href='https://desktop.github.com'>GitHub Desktop />
+[47] (527,762)<a class='Link--secondary' href='https://github.com/mobile'>GitHub Mobile />
+[48] (534,788)<a class='Link--secondary' href='https://github.com/marketplace'>GitHub Marketplace />
+[49] (525,813)<a class='Link--secondary' href='https://github.com/mcp'>MCP Registry />
+Support
+[50] (597,634)<a class='Link--secondary' href='https://docs.github.com'>Docs />
+[51] (613,659)<a class='Link--secondary' href='https://github.community'>Community Forum />
+[52] (616,685)<a class='Link--secondary' href='https://services.github.com'>Professional Services />
+[53] (612,711)<a class='Link--secondary' href='/enterprise/premium-support'>Premium Support />
+[54] (597,736)<a class='Link--secondary' href='https://skills.github.com'>Skills />
+[55] (598,762)<a class='Link--secondary' href='https://www.githubstatus.com'>Status />
+[56] (609,788)<a class='Link--secondary' href='https://support.github.com?tags=dotcom-footer'>Contact GitHub />
+Company
+[57] (679,634)<a class='Link--secondary' href='https://github.com/about'>About />
+[58] (687,659)<a class='Link--secondary' href='https://github.com/why-github'>Why GitHub />
+[59] (692,685)<a class='Link--secondary' href='/customer-stories?type=enterprise'>Customer stories />
+[60] (677,711)<a class='Link--secondary' href='https://github.blog'>Blog />
+[61] (696,736)<a class='Link--secondary' href='/readme'>The ReadME Project />
+[62] (681,762)<a class='Link--secondary' href='https://github.careers'>Careers />
+[63] (685,788)<a class='Link--secondary' href='/newsroom'>Newsroom />
+[64] (683,813)<a class='Link--secondary' href='/about/diversity'>Inclusion />
+[65] (688,839)<a class='Link--secondary' href='https://socialimpact.github.com'>Social Impact />
+[66] (678,865)<a class='Link--secondary' href='https://shop.github.com'>Shop />
+©
+2026
+GitHub, Inc.
+[67] (309,969)<a class='Link--secondary' href='https://docs.github.com/site-policy/github-terms/github-terms-of-service'>Terms />
+[68] (329,969)<a class='Link--secondary' href='https://docs.github.com/site-policy/privacy-policies/github-privacy-statement'>Privacy />
+[69] (357,969)<a class='Link--secondary' href='https://github.com/github/site-policy/pull/582'>(Updated 02/2024)
+02/2024 />
+	02/2024
+[70] (391,969)<a class='Link--secondary' href='/sitemap'>Sitemap />
+[71] (418,969)<a class='Link--secondary' href='/git-guides'>What is Git? />
+[72] (454,970)<button class='Link--secondary underline-on-hover border-0 p-0 color-bg-transparent'>Manage cookies />
+[73] (516,970)<button class='Link--secondary underline-on-hover border-0 p-0 color-bg-transparent text-left'>Do not share my personal information />
+[74] (609,970)<a class='footer-social-icon d-block Link--outlineOffset' href='https://www.linkedin.com/company/github'>GitHub on LinkedIn />
+	GitHub on LinkedIn
+[75] (622,970)<a class='footer-social-icon d-block Link--outlineOffset' href='https://www.instagram.com/github'>GitHub on Instagram />
+	GitHub on Instagram
+[76] (637,970)<a class='footer-social-icon d-block Link--outlineOffset' href='https://www.youtube.com/github'>GitHub on YouTube />
+	GitHub on YouTube
+[77] (651,970)<a class='footer-social-icon d-block Link--outlineOffset' href='https://x.com/github'>GitHub on X />
+	GitHub on X
+[78] (663,970)<a class='footer-social-icon d-block Link--outlineOffset' href='https://www.tiktok.com/@github'>GitHub on TikTok />
+	GitHub on TikTok
+[79] (677,970)<a class='footer-social-icon d-block Link--outlineOffset' href='https://www.twitch.tv/github'>GitHub on Twitch />
+	GitHub on Twitch
+[80] (690,970)<a class='footer-social-icon d-block Link--outlineOffset' href='https://github.com/github'>GitHub’s organization on GitHub />
+	GitHub’s organization on GitHub
+[81] (727,970)<button aria-label='English - Select language' class='d-flex flex-items-center border-0 color-bg-transparent p-0 locale-trigger Button--secondary Button--medium Button' id='locale-selector-text' role='button' />
+	[82] (727,970)<span  />
+		[83] (727,970)<span  />
+			[84] (727,969)<span  />
+				[85] (727,970)<span >English />
+
+</current_dom>

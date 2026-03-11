@@ -1,80 +1,112 @@
-# Full UI/UX Redesign — Orange Theme with Light/Dark Mode
+# Monthly Invoice / Payment Summary Feature
 
-## Goal
-Redesign the entire ChatSync dashboard with:
-- **Light Theme**: Orange + White — clean, bright, professional
-- **Dark Theme**: Orange + Black — premium, modern, high-contrast
-- Theme toggle button in sidebar
+Tạo chức năng tổng hợp hoá đơn hàng tháng cho mỗi Assignee, hiển thị các task còn Pending, tính tổng tiền, và cho phép export hình ảnh để gửi đối soát.
 
-## Design System (from UI/UX Pro Max Skill)
+## Luồng hoạt động
 
-### Color Palette
-| Token | Light Theme | Dark Theme |
-|-------|-------------|------------|
-| `--primary` | `#EA580C` (deep orange) | `#F97316` (bright orange) |
-| `--primary-hover` | `#C2410C` | `#FB923C` |
-| `--bg-primary` | `#FAFAF9` (warm white) | `#0C0A09` (warm black) |
-| `--bg-secondary` | `#FFFFFF` | `#1C1917` |
-| `--bg-card` | `#FFFFFF` | `#292524` |
-| `--bg-hover` | `#FFF7ED` (orange tint) | `#44403C` |
-| `--bg-input` | `#F5F5F4` | `#1C1917` |
-| `--border` | `#E7E5E4` | `#44403C` |
-| `--text-primary` | `#0C0A09` | `#FAFAF9` |
-| `--text-secondary` | `#57534E` | `#A8A29E` |
-| `--text-muted` | `#A8A29E` | `#78716C` |
-| `--accent` | `#EA580C` | `#F97316` |
-| `--success` | `#16A34A` | `#22C55E` |
-| `--warning` | `#D97706` | `#FBBF24` |
-| `--error` | `#DC2626` | `#EF4444` |
-| `--info` | `#2563EB` | `#3B82F6` |
+```mermaid
+flowchart TD
+    A[Chọn tháng + Assignee] --> B[API lấy tasks Pending]
+    B --> C[Chia tasks theo Assignee]
+    C --> D[Hiển thị Invoice Preview]
+    D --> E{Export?}
+    E -->|PNG| F[html2canvas capture]
+    E -->|Mark Done| G[Batch update Payment_Status = Paid]
+```
 
-### Typography (Skill: "Dashboard Data" pairing)
-- **Headings**: `Inter` (weight 600-700) — modern, clean
-- **Body**: `Inter` (weight 400-500)
-- **Data/Monospace**: `Fira Code` — for IDs, URLs, code
-
-### Design Principles
-- Clean Flat Design with subtle shadows
-- Orange gradient accents for primary actions
-- Smooth micro-animations (hover, page transitions)
-- Consistent 8px spacing grid
-- `border-radius: 12px` for cards, `8px` for buttons/inputs
+**Logic lọc dữ liệu:**
+- Lấy tất cả tasks có `Payment_Status = Unpaid`
+- Nếu task có `Closed_Date` thuộc tháng đang chọn → hiển thị
+- Nếu task của tháng trước mà vẫn `Unpaid` → **cộng dồn** vào tháng hiện tại
+- Nhóm theo Assignee → mỗi Assignee = 1 invoice
 
 ## Proposed Changes
 
-### CSS — Complete Rewrite
+### Backend API
 
-#### [MODIFY] [index.css](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.css)
+#### [MODIFY] [api.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/api.js)
 
-Full rewrite of the design system with:
-1. **`:root`** — Light theme variables (default)
-2. **`[data-theme="dark"]`** — Dark theme overrides
-3. **Sidebar** — Orange accent, logo gradient → orange
-4. **Stats grid** — Orange-tinted stat icons
-5. **Cards/Tables** — Clean borders, proper contrast
-6. **Buttons** — Orange gradient primary, neutral secondary
-7. **Badges** — Same semantic colors (success/warning/error)
-8. **Modals** — Updated backgrounds
-9. **Login** — Orange gradient background
-10. **Theme toggle** — Sun/moon icon button in sidebar
+Thêm 1 route mới:
 
-### HTML — Add Theme Toggle
+- **GET `/api/pm-tracking/invoice`** — Query params: `month` (YYYY-MM), `assignee` (optional)
+  - Trả về tasks nhóm theo Assignee, chỉ lấy `Payment_Status = Unpaid`
+  - Filter: `Closed_Date <= end of selected month` (tasks đã closed đến hết tháng đó)
+  - Ngoài ra cũng lấy luôn task không có Closed_Date mà Unpaid (chưa closed nhưng đã có cost)
+  - Response format:
+    ```json
+    {
+      "invoices": {
+        "NgocAnh_TDGames": {
+          "tasks": [...],
+          "totalCost": 500,
+          "totalBonus": 50,
+          "grandTotal": 550,
+          "currency": "USD"
+        }
+      },
+      "month": "2026-03"
+    }
+    ```
+
+- **POST `/api/pm-tracking/invoice/mark-paid`** — Body: `{ taskIds: [1, 2, 3] }`
+  - Batch update Payment_Status → Paid cho tất cả task trong invoice sau khi đã thanh toán
+
+---
+
+### Frontend UI
 
 #### [MODIFY] [index.html](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.html)
 
-- Add theme toggle button in sidebar footer
-- Add `<link>` for Google Fonts (Inter + Fira Code)
+Thêm section **Invoice Generator** vào trang PM Tracking, đặt sau Task Data card:
 
-### JS — Theme Persistence
+```
+┌──────────────────────────────────────────────┐
+│ 💰 Monthly Invoice                           │
+│ ┌────────┐ ┌──────────────┐ ┌──────────────┐│
+│ │Mar 2026│ │All Assignees │ │Generate      ││
+│ └────────┘ └──────────────┘ └──────────────┘│
+├──────────────────────────────────────────────┤
+│ Invoice Preview (per assignee):              │
+│ ┌──────────────────────────────────────────┐ │
+│ │  INVOICE — NgocAnh_TDGames               │ │
+│ │  Period: March 2026 (+ overdue)          │ │
+│ │  ──────────────────────────────────────  │ │
+│ │  # │ Task Name      │ Cost  │ Bonus     │ │
+│ │  1 │ Tasmanian D... │ $100  │ $10       │ │
+│ │  2 │ Duck Dodgers   │ $50   │ —         │ │
+│ │  ──────────────────────────────────────  │ │
+│ │  Subtotal Cost:   $150                   │ │
+│ │  Subtotal Bonus:  $10                    │ │
+│ │  GRAND TOTAL:     $160                   │ │
+│ └──────────────────────────────────────────┘ │
+│ [📸 Export PNG]  [✅ Mark All Paid]           │
+└──────────────────────────────────────────────┘
+```
 
 #### [MODIFY] [app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js)
 
-- Add `toggleTheme()` function
-- Save preference to `localStorage`
-- Apply on page load
+Thêm functions:
+
+| Function | Mô tả |
+|----------|--------|
+| `generateInvoice()` | Call API, render invoice preview cho mỗi assignee |
+| `exportInvoicePNG()` | Dùng `html2canvas` capture div invoice → download PNG |
+| `markInvoicePaid(taskIds)` | POST mark-paid, refresh lại |
+
+#### [MODIFY] [index.css](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.css)
+
+Thêm styles cho invoice card: `.invoice-card`, `.invoice-header`, `.invoice-table`, `.invoice-total`
+
+---
+
+### Dependencies
+
+- **html2canvas** — Load từ CDN `<script>`, không cần npm install. Dùng để capture invoice div → PNG image
 
 ## Verification Plan
-- Start server, open in browser
-- Verify Light and Dark themes
-- Toggle between themes
-- Check all pages: Dashboard, Chat Sync, Drive Sync, PM Tracking, Customers, Projects, List Configs, Sync Logs, Name Mappings, Settings
+
+### Browser test
+1. Chọn tháng, bấm Generate → hiển thị invoice grouped by assignee
+2. Kiểm tra logic cộng dồn: task tháng trước Pending → xuất hiện trong invoice tháng này
+3. Bấm Export PNG → download file ảnh invoice
+4. Bấm Mark All Paid → tất cả task chuyển sang Done, invoice rỗng

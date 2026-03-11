@@ -1,6 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary":  "Walkthrough documenting PM Task Data enhancements: added Due Date, Closed Date, Bonus, Bonus Reason columns; inline cost/bonus editing; dynamic filters; screenshots showing verification results.",
-  "updatedAt":  "2026-03-10T16:08:43.581394900Z",
-  "version":  "4"
+  "summary":  "Progress walkthrough for Monthly Invoice feature. Documents completed backend/frontend work, current status, and TODO items for next session including verification and polish.",
+  "updatedAt":  "2026-03-10T16:50:07.647708100Z",
+  "version":  "6"
 }

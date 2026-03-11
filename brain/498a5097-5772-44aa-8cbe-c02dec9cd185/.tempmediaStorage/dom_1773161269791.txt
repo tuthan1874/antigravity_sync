@@ -1,0 +1,60 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+⚡
+ChatSync
+[0] (51,83)<a class='nav-link' href='#' />
+	[1] (15,83)<span >📊 />
+	[2] (38,83)<span >Dashboard />
+[3] (51,119)<a class='nav-link' href='#' />
+	[4] (15,119)<span >💬 />
+	[5] (37,119)<span >Chat Sync />
+[6] (51,156)<a class='nav-link' href='#' />
+	[7] (15,156)<span >🏢 />
+	[8] (37,156)<span >Customers />
+[9] (51,192)<a class='nav-link' href='#' />
+	[10] (15,192)<span >📦 />
+	[11] (34,192)<span >Projects />
+[12] (51,228)<a class='nav-link' href='#' />
+	[13] (15,228)<span >📁 />
+	[14] (37,228)<span >Drive Sync />
+[15] (51,264)<a class='nav-link' href='#' />
+	[16] (15,264)<span >💰 />
+	[17] (39,264)<span >PM Tracking />
+[18] (51,301)<a class='nav-link active' href='#' />
+	[19] (15,301)<span >🧾 />
+	[20] (44,301)<span >Monthly Invoice />
+[21] (51,337)<a class='nav-link' href='#' />
+	[22] (15,337)<span >🔗 />
+	[23] (39,337)<span >List Configs />
+[24] (51,373)<a class='nav-link' href='#' />
+	[25] (15,373)<span >📋 />
+	[26] (37,373)<span >Sync Logs />
+[27] (51,409)<a class='nav-link' href='#' />
+	[28] (15,409)<span >👤 />
+	[29] (44,409)<span >Name Mappings />
+[30] (51,446)<a class='nav-link' href='#' />
+	[31] (15,446)<span >⚙️ />
+	[32] (34,446)<span >Settings />
+Connected
+[33] (51,944)<button class='theme-toggle' id='theme-toggle' />
+	[34] (35,944)<span >☀️ />
+	[35] (56,944)<span >Light Mode />
+[36] (51,977)<button class='btn btn-secondary btn-full btn-logout' />
+	[37] (41,977)<span >🚪 />
+	[38] (55,977)<span >Logout />
+Monthly Invoice
+Tổng hợp hoá đơn thanh toán hàng tháng cho Assignees
+🧾 Generate Invoice
+[39] (811,106)<input id='invoice-month' />
+[40] (877,106)<select id='invoice-assignee' />
+[41] (945,106)<button class='btn btn-primary'>📄 Generate
+              Invoice />
+🧾
+Chọn tháng và bấm
+              Generate
+Hệ thống sẽ tổng hợp các task đã closed và chưa thanh
+              toán cho từng Assignee
+
+</current_dom>

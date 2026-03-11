@@ -1,0 +1,27 @@
+# Monthly Invoice Feature — Walkthrough
+
+## What was built
+
+A monthly invoice generation feature in PM Tracking that:
+- Groups **Pending** tasks by Assignee
+- Shows task details (name, type, closed date, cost, bonus, total)
+- **Rolls over** overdue tasks from previous months
+- Exports invoice as **PNG image** for sharing
+- **Batch marks** all tasks as Paid
+
+## Files Changed
+
+| File | Change |
+|------|--------|
+| [api.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/api.js) | Added GET `/pm-tracking/invoice` + POST `/pm-tracking/invoice/mark-paid` |
+| [index.html](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.html) | Invoice section UI + html2canvas CDN |
+| [app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js) | [generateInvoice()](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js#553-680), [exportInvoicePNG()](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js#681-705), [markInvoicePaid()](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js#713-731) |
+| [index.css](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.css) | Payment badge styles (from previous task) |
+
+## Result
+
+![Monthly Invoice Feature](file:///C:/Users/dangt/.gemini/antigravity/brain/498a5097-5772-44aa-8cbe-c02dec9cd185/monthly_invoice_full_view_1773160378368.png)
+
+Invoice cards are grouped by Assignee with task details, totals, and Export PNG / Mark All Paid buttons.
+
+![Browser Recording](file:///C:/Users/dangt/.gemini/antigravity/brain/498a5097-5772-44aa-8cbe-c02dec9cd185/monthly_invoice_verify_1773160278865.webp)

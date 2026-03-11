@@ -1,0 +1,286 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+⚡
+ChatSync
+[0] (51,83)<a class='nav-link' href='#' />
+	[1] (15,83)<span >📊 />
+	[2] (37,83)<span >Dashboard />
+[3] (51,119)<a class='nav-link' href='#' />
+	[4] (15,119)<span >💬 />
+	[5] (37,119)<span >Chat Sync />
+[6] (51,156)<a class='nav-link' href='#' />
+	[7] (15,156)<span >🏢 />
+	[8] (37,156)<span >Customers />
+[9] (51,192)<a class='nav-link' href='#' />
+	[10] (15,192)<span >📦 />
+	[11] (34,192)<span >Projects />
+[12] (51,228)<a class='nav-link' href='#' />
+	[13] (15,228)<span >📁 />
+	[14] (37,228)<span >Drive Sync />
+[15] (51,264)<a class='nav-link active' href='#' />
+	[16] (15,264)<span >💰 />
+	[17] (40,264)<span >PM Tracking />
+[18] (51,301)<a class='nav-link' href='#' />
+	[19] (15,301)<span >🔗 />
+	[20] (39,301)<span >List Configs />
+[21] (51,337)<a class='nav-link' href='#' />
+	[22] (15,337)<span >📋 />
+	[23] (37,337)<span >Sync Logs />
+[24] (51,373)<a class='nav-link' href='#' />
+	[25] (15,373)<span >👤 />
+	[26] (44,373)<span >Name Mappings />
+[27] (51,409)<a class='nav-link' href='#' />
+	[28] (15,409)<span >⚙️ />
+	[29] (34,409)<span >Settings />
+Connected
+[30] (51,944)<button class='theme-toggle' id='theme-toggle' />
+	[31] (35,944)<span >☀️ />
+	[32] (56,944)<span >Light Mode />
+[33] (51,977)<button class='btn btn-secondary btn-full btn-logout' />
+	[34] (41,977)<span >🚪 />
+	[35] (55,977)<span >Logout />
+Art
+[36] (226,23)<a href='https://app.clickup.com/t/86ewvqcq3'>[2D Modeling] [Character] Daffy Hood />
+86ewvqcq3
+new request
+NgocAnh_TDGames
+—
+—
+[37] (654,31)<td class='inline-editable' title='Click to edit'>$0.00 />
+[38] (701,31)<td class='inline-editable' title='Click to edit'>— />
+—
+[39] (823,31)<span class='payment-badge payment-unpaid' title='Click to toggle'>🔴 Pending />
+—
+[40] (945,27)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Art
+[41] (229,69)<a href='https://app.clickup.com/t/86ewvqckq'>[2D Modeling] [Character] Wakko Warner />
+86ewvqckq
+client_review
+NgocAnh_TDGames
+—
+—
+[42] (654,77)<td class='inline-editable' title='Click to edit'>$0.00 />
+[43] (701,77)<td class='inline-editable' title='Click to edit'>— />
+—
+[44] (823,77)<span class='payment-badge payment-unpaid' title='Click to toggle'>🔴 Pending />
+—
+[45] (945,73)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Art
+[46] (224,114)<a href='https://app.clickup.com/t/86ewvqcg6'>[2D Modeling] [Character] Beast Boy />
+86ewvqcg6
+new request
+NgocAnh_TDGames
+—
+—
+[47] (654,122)<td class='inline-editable' title='Click to edit'>$0.00 />
+[48] (701,122)<td class='inline-editable' title='Click to edit'>— />
+—
+[49] (823,122)<span class='payment-badge payment-unpaid' title='Click to toggle'>🔴 Pending />
+—
+[50] (945,119)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Animation
+[51] (247,160)<a href='https://app.clickup.com/t/86ewuduf2'>[2D Animation] [Enemies] Metropolis Enemies- Tentacle />
+86ewuduf2
+client_review
+TDGames
+—
+—
+[52] (654,168)<td class='inline-editable' title='Click to edit'>$0.00 />
+[53] (701,168)<td class='inline-editable' title='Click to edit'>— />
+—
+[54] (823,168)<span class='payment-badge payment-unpaid' title='Click to toggle'>🔴 Pending />
+—
+[55] (945,164)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Animation
+[56] (251,206)<a href='https://app.clickup.com/t/86ewudu9j'>[2D Animation] [Enemies] Metropolis Enemies- Robot Guard />
+86ewudu9j
+client_review
+TDGames
+—
+—
+[57] (654,214)<td class='inline-editable' title='Click to edit'>$0.00 />
+[58] (701,214)<td class='inline-editable' title='Click to edit'>— />
+—
+[59] (823,214)<span class='payment-badge payment-unpaid' title='Click to toggle'>🔴 Pending />
+—
+[60] (945,210)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Animation
+[61] (254,252)<a href='https://app.clickup.com/t/86ewudrdy'>[2D Animation] [Enemies] Metropolis Enemies- Brainiac Robot />
+86ewudrdy
+client_review
+TDGames
+—
+—
+[62] (654,259)<td class='inline-editable' title='Click to edit'>$0.00 />
+[63] (701,259)<td class='inline-editable' title='Click to edit'>— />
+—
+[64] (823,259)<span class='payment-badge payment-unpaid' title='Click to toggle'>🔴 Pending />
+—
+[65] (945,256)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Animation
+[66] (232,297)<a href='https://app.clickup.com/t/86ewtepvu'>[2D Animation] [Character] Steven Universe />
+86ewtepvu
+fix
+HUYNQ_TDGames
+—
+—
+[67] (654,305)<td class='inline-editable' title='Click to edit'>$0.00 />
+[68] (701,305)<td class='inline-editable' title='Click to edit'>— />
+—
+[69] (823,305)<span class='payment-badge payment-unpaid' title='Click to toggle'>🔴 Pending />
+—
+[70] (945,301)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Animation
+[71] (219,343)<a href='https://app.clickup.com/t/86ewteg1w'>[2D Animation] [Character] Robin />
+86ewteg1w
+lead_check
+HUYNQ_TDGames
+—
+—
+[72] (654,351)<td class='inline-editable' title='Click to edit'>$0.00 />
+[73] (701,351)<td class='inline-editable' title='Click to edit'>— />
+—
+[74] (823,351)<span class='payment-badge payment-unpaid' title='Click to toggle'>🔴 Pending />
+—
+[75] (945,347)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Animation
+[76] (229,389)<a href='https://app.clickup.com/t/86ewtefuv'>[2D Animation] [Character] Jake the Dog />
+86ewtefuv
+client_review
+Trungtt_TDGames
+—
+—
+[77] (654,397)<td class='inline-editable' title='Click to edit'>$0.00 />
+[78] (701,397)<td class='inline-editable' title='Click to edit'>— />
+—
+[79] (823,397)<span class='payment-badge payment-unpaid' title='Click to toggle'>🔴 Pending />
+—
+[80] (945,393)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Animation
+[81] (227,434)<a href='https://app.clickup.com/t/86ewtakjd'>[2D Animation] [Character] Aquamarine />
+86ewtakjd
+fix
+HUYNQ_TDGames
+—
+—
+[82] (654,442)<td class='inline-editable' title='Click to edit'>$0.00 />
+[83] (701,442)<td class='inline-editable' title='Click to edit'>— />
+—
+[84] (823,442)<span class='payment-badge payment-unpaid' title='Click to toggle'>🔴 Pending />
+—
+[85] (945,439)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Animation
+[86] (228,480)<a href='https://app.clickup.com/t/86ewrnmz6'>[2D Animation] [Character] Ice King Finn />
+86ewrnmz6
+approved
+TDGames
+2026-02-24
+—
+[87] (654,488)<td class='inline-editable' title='Click to edit'>$0.00 />
+[88] (701,488)<td class='inline-editable' title='Click to edit'>— />
+—
+[89] (823,488)<span class='payment-badge payment-unpaid' title='Click to toggle'>🔴 Pending />
+—
+[90] (945,484)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Animation
+[91] (232,526)<a href='https://app.clickup.com/t/86ewrnmec'>[2D Animation] [Character] Finn the Human />
+86ewrnmec
+approved
+TDGames
+2026-02-12
+—
+[92] (654,534)<td class='inline-editable' title='Click to edit'>$0.00 />
+[93] (701,534)<td class='inline-editable' title='Click to edit'>— />
+—
+[94] (823,534)<span class='payment-badge payment-unpaid' title='Click to toggle'>🔴 Pending />
+—
+[95] (945,530)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Animation
+[96] (227,572)<a href='https://app.clickup.com/t/86ewrnkaq'>[2D Animation] [Character] Tweety Bird />
+86ewrnkaq
+approved
+TDGames
+2026-01-29
+—
+[97] (654,579)<td class='inline-editable' title='Click to edit'>$0.00 />
+[98] (701,579)<td class='inline-editable' title='Click to edit'>— />
+—
+[99] (823,579)<span class='payment-badge payment-unpaid' title='Click to toggle'>🔴 Pending />
+—
+[100] (945,576)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Animation
+[101] (239,617)<a href='https://app.clickup.com/t/86ewrnjdb'>[2D Animation] [Character] Tasmanian Devil (Taz) />
+86ewrnjdb
+approved
+TDGames
+2026-02-26
+—
+[102] (654,625)<td class='inline-editable' title='Click to edit'>$0.00 />
+[103] (701,625)<td class='inline-editable' title='Click to edit'>— />
+—
+[104] (823,625)<span class='payment-badge payment-unpaid' title='Click to toggle'>🔴 Pending />
+—
+[105] (945,622)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Animation
+[106] (221,663)<a href='https://app.clickup.com/t/86ewrnj5p'>[2D Animation] [Character] Garnet />
+86ewrnj5p
+approved
+TDGames
+2026-02-15
+—
+[107] (654,671)<td class='inline-editable' title='Click to edit'>$0.00 />
+[108] (701,671)<td class='inline-editable' title='Click to edit'>— />
+—
+[109] (823,671)<span class='payment-badge payment-unpaid' title='Click to toggle'>🔴 Pending />
+—
+[110] (945,667)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Animation
+[111] (212,709)<a href='https://app.clickup.com/t/86ewrnh5j'>[2D Animation] [Boss] Lich />
+86ewrnh5j
+approved
+TDGames
+2026-01-08
+—
+[112] (654,717)<td class='inline-editable' title='Click to edit'>$0.00 />
+[113] (701,717)<td class='inline-editable' title='Click to edit'>— />
+—
+[114] (823,717)<span class='payment-badge payment-unpaid' title='Click to toggle'>🔴 Pending />
+—
+[115] (945,713)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Animation
+[116] (219,755)<a href='https://app.clickup.com/t/86ewrmru0'>[2D Animation] [Character] BMO />
+86ewrmru0
+approved
+TDGames
+—
+—
+[117] (654,762)<td class='inline-editable' title='Click to edit'>$0.00 />
+[118] (701,762)<td class='inline-editable' title='Click to edit'>— />
+—
+[119] (823,762)<span class='payment-badge payment-unpaid' title='Click to toggle'>🔴 Pending />
+—
+[120] (945,759)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+Animation
+[121] (227,800)<a href='https://app.clickup.com/t/86ewrmqwy'>[2D Animation] [Character] Bugs Bunny />
+86ewrmqwy
+approved
+TDGames
+2026-02-04
+—
+[122] (654,808)<td class='inline-editable' title='Click to edit'>$0.00 />
+[123] (701,808)<td class='inline-editable' title='Click to edit'>— />
+—
+[124] (823,808)<span class='payment-badge payment-unpaid' title='Click to toggle'>🔴 Pending />
+—
+[125] (945,804)<button class='btn btn-sm btn-secondary'>✏️ Edit />
+💰 Monthly Invoice
+[126] (847,867)<input id='invoice-month' />
+[127] (909,867)<select id='invoice-assignee' />
+[128] (959,867)<button class='btn btn-primary btn-sm'>📄 Generate />
+Chọn tháng và bấm
+Generate
+để tạo hoá đơn
+
+</current_dom>

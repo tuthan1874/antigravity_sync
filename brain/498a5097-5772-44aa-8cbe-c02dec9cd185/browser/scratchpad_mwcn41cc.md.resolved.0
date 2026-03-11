@@ -1,0 +1,9 @@
+# Task Checklist
+- [ ] Navigate to http://localhost:3000
+- [ ] Login with admin/admin
+- [ ] Go to "PM Tracking" page
+- [ ] Verify "Monthly Invoice" section existence
+- [ ] Generate an invoice for the current month
+- [ ] Verify invoice components (table, totals, buttons)
+- [ ] Test "Export PNG" button
+- [ ] Capture screenshots of the process

@@ -1,0 +1,5 @@
+# Monthly Invoice Verification Checklist
+- [ ] Login to the application
+- [ ] Verify "Monthly Invoice" tab in sidebar
+- [ ] Verify "Monthly Invoice" page content
+- [ ] Generate an invoice and verify the result

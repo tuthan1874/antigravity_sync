@@ -1,56 +1,40 @@
-# PM Task Data Enhancements — Walkthrough
+# Monthly Invoice Feature — Progress
 
-## Goal
-Add new columns (Due Date, Closed Date, Bonus, Bonus Reason), inline Cost/Bonus editing, and additional filters (Assignee, Status, Due Date) to the PM Finance Tracking Task Data table.
+## ✅ Completed
 
-## Changes Made
+### Backend API (`src/api.js`)
+- **GET `/api/pm-tracking/invoice?month=YYYY-MM&assignee=Name`** — Groups pending tasks by assignee, filters by Closed_Date (only closed tasks), rolls over overdue from previous months
+- **POST `/api/pm-tracking/invoice/mark-paid`** — Batch updates task Payment_Status to "Done"
+- Logic fix: Only tasks with `Closed_Date` are included (unclosed tasks excluded)
 
-### NocoDB Schema
-Added 4 columns to `PM_Tasks_Tracking`: `Due_Date` (text), `Closed_Date` (text), `Bonus` (decimal), `Bonus_Reason` (text).
+### Frontend — Separate Tab
+- Added **🧾 Monthly Invoice** nav link in sidebar (below PM Tracking)
+- Created dedicated `page-invoice` section with page header
+- Month picker (auto-fills current month), Assignee dropdown, Generate button
 
----
+### Invoice UI (`app.js`)
+- `generateInvoice()` — Fetches data, renders summary stats bar + invoice cards per assignee
+- `exportInvoicePNG()` — Uses html2canvas to export invoice card as PNG
+- `markInvoicePaid()` — Batch marks tasks as Done, refreshes invoice
+- Premium UI: gradient header, alternating rows, OVERDUE badges, Grand Total footer
 
-### Backend — [pm-tracking.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/handlers/pm-tracking.js)
-Added `Due_Date` and `Closed_Date` to taskData, converting ClickUp's Unix timestamps to ISO date strings.
+### Other Changes (this session)
+- Payment Status simplified to **Pending** / **Done** with color-coded badges
+- Added **Bonus** + **Bonus_Reason** inline editable columns
+- Added filters: Assignee, Status, Due Date
+- Integrated Due Date & Closed Date from ClickUp
 
-### Backend — [nocodb.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js)
-Updated `upsertPMTaskTracking` to include `Due_Date`/`Closed_Date` in both update and insert payloads.
+## 🔧 TODO (Next Session)
+1. **Verify invoice generation in browser** — The last browser test was cancelled before completion
+2. **Test Export PNG** — Confirm html2canvas captures the invoice card properly
+3. **Test Mark All Paid** — Confirm batch update works end-to-end
+4. **UI polish** — Review invoice card design on both light/dark themes
+5. **Edge cases** — Test with no data, single assignee, mixed currencies
 
-### Backend — [api.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/api.js)
-- **GET /pm-tracking**: Added `assignee` (like), `status` (eq), `hasDueDate` (yes/no) query filters.
-- **PUT /pm-tracking/:id**: Added `Bonus`, `Bonus_Reason` to allowed update fields.
-- **POST /pm-tracking/refresh**: Added `Due_Date`, `Closed_Date` to refreshed task data.
+## Screenshots
 
----
+![Monthly Invoice v1 (before redesign)](file:///C:/Users/dangt/.gemini/antigravity/brain/498a5097-5772-44aa-8cbe-c02dec9cd185/monthly_invoice_full_view_1773160378368.png)
 
-### Frontend — [index.html](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.html)
-- Toolbar: Added 3 new filter selects — Assignees, Statuses, Due Date
-- Table: Added 4 new columns — Due Date, Closed Date, Bonus, Bonus Reason
+![Sidebar with Invoice tab](file:///C:/Users/dangt/.gemini/antigravity/brain/498a5097-5772-44aa-8cbe-c02dec9cd185/sidebar_with_monthly_invoice_1773161265024.png)
 
-### Frontend — [app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js)
-- `loadPMTracking()`: Renders all new columns, sends new filter params
-- `populatePMFilters()`: Auto-populates Assignee, Status, Job Type dropdowns from data
-- `inlineEditCost()`: Click a Cost cell → inline number input → Enter to save
-- `inlineEditBonus()`: Click a Bonus cell → inline input → prompts for reason on save
-- Edit modal: Added Bonus + Bonus Reason form fields
-
-## Verification
-
-### Full table with new columns and 6 filters
-![PM Tracking with new columns and filters](file:///C:/Users/dangt/.gemini/antigravity/brain/498a5097-5772-44aa-8cbe-c02dec9cd185/pm_tracking_toolbar_and_table_1773158818938.png)
-
-### Inline Cost editing verified ($0 → $100)
-![Inline cost edit confirmation](file:///C:/Users/dangt/.gemini/antigravity/brain/498a5097-5772-44aa-8cbe-c02dec9cd185/pm_tracking_inline_edit_input_1773158842947.png)
-
-### Browser recording
-![PM Task Data enhancements demo](file:///C:/Users/dangt/.gemini/antigravity/brain/498a5097-5772-44aa-8cbe-c02dec9cd185/pm_task_data_verify_1773158783708.webp)
-
-## Summary
-| Feature | Status |
-|---------|--------|
-| Due Date & Closed Date columns | ✅ Synced from ClickUp |
-| Cost inline edit (click to edit) | ✅ Working |
-| Bonus + Bonus Reason columns | ✅ Working |
-| Assignee filter | ✅ Dynamic from data |
-| Status filter | ✅ Dynamic from data |
-| Due Date filter | ✅ Has/No Due Date |
+![Invoice page empty state](file:///C:/Users/dangt/.gemini/antigravity/brain/498a5097-5772-44aa-8cbe-c02dec9cd185/monthly_invoice_page_empty_1773161273594.png)
