@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Plan to add dual currency (VNĐ/USD) support to the Invoice page and integrate the TD Games logo into the sidebar, login screen, and invoice headers. No backend changes needed.",
+  "updatedAt": "2026-03-11T15:24:42.502164400Z"
+}

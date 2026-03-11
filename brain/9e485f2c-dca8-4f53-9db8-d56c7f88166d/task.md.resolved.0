@@ -1,0 +1,7 @@
+# Invoice Dual Currency & Logo Updates
+
+- [ ] Save TD Games logo to `public/` directory
+- [ ] Update [index.html](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.html) — sidebar logo and invoice page
+- [ ] Update [app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js) — invoice generation with dual currency support + logo in invoice header
+- [ ] Update [index.css](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.css) — logo styling (if needed)
+- [ ] Commit, push, and verify via browser

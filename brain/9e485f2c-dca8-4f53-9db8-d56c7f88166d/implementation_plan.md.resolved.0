@@ -1,0 +1,42 @@
+# Invoice Dual Currency & Logo Updates
+
+Add support for dual currency display (VNĐ/USD) on the invoice and integrate the TD Games logo into the app sidebar and invoice headers.
+
+## Proposed Changes
+
+### Logo Asset
+
+#### [NEW] [td-games-logo.png](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/td-games-logo.png)
+- Save the user-provided TD Games logo to `public/`
+
+---
+
+### Frontend HTML
+
+#### [MODIFY] [index.html](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.html)
+- **Sidebar logo**: Replace the `⚡` emoji with an `<img>` tag pointing to `td-games-logo.png`
+- **Login page logo**: Also replace the login overlay emoji with the actual logo
+
+---
+
+### Frontend JS
+
+#### [MODIFY] [app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js)
+- **Invoice header**: Add the TD Games logo image in the gradient header of each invoice card
+- **Summary bar**: Handle mixed currencies properly — currently uses `allCurrency` from the first assignee, but assignees can have different currencies. Show two separate totals if mixed currencies exist (VNĐ total + USD total)
+- **Per-assignee formatting**: Already works correctly (each `inv.currency` is used)
+
+---
+
+### Backend API (No changes needed)
+The backend at [api.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/api.js) line 432 already handles per-assignee currency: `if (t.Currency === 'VND') invoices[assignee].currency = 'VND'`. No backend changes required.
+
+## Verification Plan
+
+### Manual Verification
+1. Open the ChatSync dashboard in the browser at the VPS URL
+2. Navigate to **Monthly Invoice** tab
+3. Generate an invoice for a month with tasks — verify logo appears in invoice header
+4. Verify currency formatting is correct for each assignee (VNĐ vs USD)
+5. Export PNG of an invoice — verify logo renders in the exported image
+6. Check sidebar shows the TD Games logo instead of ⚡ emoji

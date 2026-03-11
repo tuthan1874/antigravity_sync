@@ -1,0 +1,147 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Skip to content
+Navigation Menu
+[0] (19,28)<a aria-label='Homepage' class='tmp-mr-lg-3 color-fg-inherit flex-order-2 js-prevent-focus-on-mobile-nav' href='/' />
+[1] (50,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Platform />
+[2] (89,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Solutions />
+[3] (129,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Resources />
+[4] (175,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Open Source />
+[5] (221,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Enterprise />
+[6] (254,28)<a class='NavLink-module__link__EG3d4 MarketingNavigation-module__navLink__hUomM' href='https://github.com/pricing' />
+	[7] (254,28)<span >Pricing />
+[8] (844,28)<button aria-label='Search or jump to…' class='header-search-button placeholder input-button form-control d-flex flex-1 flex-self-stretch flex-items-center no-wrap width-full py-0 pl-2 pr-0 text-left border-0 box-shadow-none' placeholder='Search or jump to...' />
+	[9] (788,28)<div  />
+	[10] (844,28)<span >Search or jump to... />
+	[11] (902,28)<div  />
+[12] (924,28)<a class='HeaderMenu-link HeaderMenu-link--sign-in HeaderMenu-button flex-shrink-0 no-underline d-none d-lg-inline-flex border border-lg-0 rounded px-2 py-1' href='/login?return_to=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive%2Factions%2Fruns%2F22960450280%2Fworkflow'>Sign in />
+[13] (956,28)<a class='HeaderMenu-link HeaderMenu-link--sign-up HeaderMenu-button flex-shrink-0 d-flex d-lg-inline-flex no-underline border color-border-default rounded px-2 py-1' href='/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Factions%2Fworkflow_runs%2Fworkflow_file&source=header-repo&source_repo=tdgamesvn%2Fsync_slack_discord_clickup_drive'>Sign up />
+[14] (41,79)<a class='url fn' href='/tdgamesvn'>tdgamesvn />
+/
+[15] (123,79)<a href='/tdgamesvn/sync_slack_discord_clickup_drive'>sync_slack_discord_clickup_drive />
+Public
+[16] (881,78)<a aria-label='You must be signed in to change notification settings' class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive' id='repository-details-watch-button'>Notifications />
+[17] (926,78)<a class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive' id='fork-button'>Fork />
+	[18] (937,78)<span >0 />
+[19] (968,78)<a aria-label='You must be signed in to star a repository' class='tooltipped tooltipped-sw btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive' />
+	[20] (969,78)<span >Star />
+	[21] (979,78)<span >0 />
+[22] (27,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive' id='code-tab' />
+	[23] (31,121)<span >Code />
+[24] (59,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/issues' id='issues-tab' />
+	[25] (64,121)<span >Issues />
+[26] (107,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/pulls' id='pull-requests-tab' />
+	[27] (106,121)<span >Pull requests />
+	[28] (129,121)<span >1 />
+[29] (156,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions' id='actions-tab' />
+	[30] (161,121)<span >Actions />
+[31] (194,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/projects' id='projects-tab' />
+	[32] (199,121)<span >Projects />
+[33] (232,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/security' id='security-tab' />
+	[34] (237,121)<span >Security />
+[35] (271,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/pulse' id='insights-tab' />
+	[36] (275,121)<span >Insights />
+[37] (34,161)<a class='Link' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions/workflows/deploy.yml' />
+	[38] (38,161)<span >Deploy to VPS />
+feat: add Notes and Bonus Reason columns to Invoice table
+#5
+[39] (960,183)<a class='btn' href='/login?return_to=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive%2Factions%2Fruns%2F22960450280%2Fworkflow'>Sign in to view logs />
+Workflow file for this run
+[40] (180,261)<a class='Link--secondary Link--inTextBlock' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/b92a75284ebc147c84fd6a1c3708f074ebaca59b/.github/workflows/deploy.yml'>.github/workflows/deploy.yml />
+at
+[41] (226,261)<a class='text-mono Link--secondary Link--inTextBlock' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/b92a75284ebc147c84fd6a1c3708f074ebaca59b'>b92a752 />
+[42] (981,254)<a aria-label='Edit workflow file' class='text-center Link--primary d-block' href='/tdgamesvn/sync_slack_discord_clickup_drive/edit/main/.github/workflows/deploy.yml' />
+[43] (151,304)<td  />
+name
+:
+Deploy to VPS
+[44] (151,320)<td  />
+[45] (151,335)<td  />
+on
+:
+[46] (151,350)<td  />
+push
+:
+[47] (151,366)<td  />
+branches
+:
+[main]
+[48] (151,381)<td  />
+[49] (151,396)<td  />
+jobs
+:
+[50] (151,412)<td  />
+deploy
+:
+[51] (151,427)<td  />
+name
+:
+Deploy to Production VPS
+[52] (151,442)<td  />
+runs-on
+:
+ubuntu-latest
+[53] (151,458)<td  />
+[54] (151,473)<td  />
+steps
+:
+[55] (151,488)<td  />
+-
+name
+:
+Deploy via SSH
+[56] (151,504)<td  />
+uses
+:
+appleboy/ssh-action@v1
+[57] (151,519)<td  />
+with
+:
+[58] (151,534)<td  />
+host
+:
+${{ secrets.VPS_HOST }}
+[59] (151,549)<td  />
+username
+:
+${{ secrets.VPS_USER }}
+[60] (151,565)<td  />
+password
+:
+${{ secrets.VPS_PASSWORD }}
+[61] (151,580)<td  />
+port
+:
+${{ secrets.VPS_PORT }}
+[62] (151,595)<td  />
+script
+:
+|
+[63] (151,611)<td  />
+echo "🚀 Starting deployment..."
+[64] (151,626)<td  />
+cd /opt/chatsync/app/
+[65] (151,641)<td  />
+[66] (151,657)<td  />
+echo "📥 Pulling latest code..."
+[67] (151,672)<td  />
+sudo -u chatsync git pull origin main
+[68] (151,687)<td  />
+[69] (151,703)<td  />
+echo "📦 Installing dependencies..."
+[70] (151,718)<td  />
+sudo -u chatsync npm install
+[71] (151,733)<td  />
+[72] (151,749)<td  />
+echo "🔄 Restarting service..."
+[73] (151,764)<td  />
+sudo systemctl restart chatsync
+[74] (151,779)<td  />
+[75] (151,795)<td  />
+echo "✅ Deployment complete!"
+[76] (151,810)<td  />
+sudo systemctl status chatsync --no-pager
+
+</current_dom>

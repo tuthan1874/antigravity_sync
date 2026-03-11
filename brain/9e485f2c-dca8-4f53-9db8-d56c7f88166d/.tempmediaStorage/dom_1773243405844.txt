@@ -1,0 +1,109 @@
+Skip to content
+Navigation Menu
+[0] (19,28)<a aria-label='Homepage' class='tmp-mr-lg-3 color-fg-inherit flex-order-2 js-prevent-focus-on-mobile-nav' href='/' />
+[1] (50,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Platform />
+[2] (89,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Solutions />
+[3] (129,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Resources />
+[4] (175,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Open Source />
+[5] (221,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Enterprise />
+[6] (254,28)<a class='NavLink-module__link__EG3d4 MarketingNavigation-module__navLink__hUomM' href='https://github.com/pricing' />
+	[7] (254,28)<span >Pricing />
+[8] (844,28)<button aria-label='Search or jump to…' class='header-search-button placeholder input-button form-control d-flex flex-1 flex-self-stretch flex-items-center no-wrap width-full py-0 pl-2 pr-0 text-left border-0 box-shadow-none' placeholder='Search or jump to...' />
+	[9] (788,28)<div  />
+	[10] (844,28)<span >Search or jump to... />
+	[11] (902,28)<div  />
+[12] (924,28)<a class='HeaderMenu-link HeaderMenu-link--sign-in HeaderMenu-button flex-shrink-0 no-underline d-none d-lg-inline-flex border border-lg-0 rounded px-2 py-1' href='/login?return_to=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive%2Factions'>Sign in />
+[13] (956,28)<a class='HeaderMenu-link HeaderMenu-link--sign-up HeaderMenu-button flex-shrink-0 d-flex d-lg-inline-flex no-underline border color-border-default rounded px-2 py-1' href='/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Factions%2Findex&source=header-repo&source_repo=tdgamesvn%2Fsync_slack_discord_clickup_drive'>Sign up />
+[14] (981,28)<button class='Button Button--iconOnly Button--invisible Button--medium AppHeader-button HeaderMenu-link border' id='icon-button-d74e991e-97f4-43e9-a0d1-f62f34132e60' />
+[15] (41,79)<a class='url fn' href='/tdgamesvn'>tdgamesvn />
+/
+[16] (123,79)<a href='/tdgamesvn/sync_slack_discord_clickup_drive'>sync_slack_discord_clickup_drive />
+Public
+[17] (881,78)<a aria-label='You must be signed in to change notification settings' class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive' id='repository-details-watch-button'>Notifications />
+[18] (926,78)<a class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive' id='fork-button'>Fork />
+	[19] (937,78)<span >0 />
+[20] (968,78)<a aria-label='You must be signed in to star a repository' class='tooltipped tooltipped-sw btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive' />
+	[21] (969,78)<span >Star />
+	[22] (979,78)<span >0 />
+[23] (27,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive' id='code-tab' />
+	[24] (31,121)<span >Code />
+[25] (59,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/issues' id='issues-tab' />
+	[26] (64,121)<span >Issues />
+[27] (107,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/pulls' id='pull-requests-tab' />
+	[28] (106,121)<span >Pull requests />
+	[29] (129,121)<span >1 />
+[30] (156,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions' id='actions-tab' />
+	[31] (161,121)<span >Actions />
+[32] (194,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/projects' id='projects-tab' />
+	[33] (199,121)<span >Projects />
+[34] (232,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/security' id='security-tab' />
+	[35] (237,121)<span >Security />
+[36] (271,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/pulse' id='insights-tab' />
+	[37] (275,121)<span >Insights />
+Actions: tdgamesvn/sync_slack_discord_clickup_drive
+Actions
+[38] (65,197)<a class='ActionListContent' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions' id='item-f094f83d-545b-41f9-8f36-b620bd0c6351' />
+	[39] (65,197)<span >All workflows />
+[40] (65,234)<a class='ActionListContent' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions/workflows/deploy.yml' id='item-1a019ea5-4163-45d4-8a39-b3f83f979528' />
+	[41] (65,234)<span >Deploy to VPS />
+Management
+[42] (65,296)<a class='ActionListContent ActionListContent--visual16' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions/caches' id='item-bcee6da1-273a-4eab-b4bf-7f51ac5d68d6' />
+	[43] (70,296)<span >Caches />
+All workflows
+[44] (691,164)<input aria-label='Filter workflow runs' class='form-control subnav-search-input width-full f5 tmp-pr-5 flex-auto js-navigation-enable actions-tab-filter-input' placeholder='Filter workflow runs' role='combobox' />
+Showing runs from all workflows
+3 workflow runs
+[45] (636,235)<button class='Button--invisible Button--medium Button color-fg-muted text-normal' id='actions_events_filter-button' />
+	[46] (633,235)<span  />
+		[47] (633,235)<span >Event />
+[48] (666,235)<button class='Button--invisible Button--medium Button color-fg-muted text-normal' id='actions_status_filter-button' />
+	[49] (663,235)<span  />
+		[50] (663,235)<span >Status />
+[51] (698,235)<button class='Button--invisible Button--medium Button color-fg-muted text-normal' id='actions_branch_filter-button' />
+	[52] (695,235)<span  />
+		[53] (695,235)<span >Branch />
+[54] (729,235)<button class='Button--invisible Button--medium Button color-fg-muted text-normal' id='actions_actors_filter-button' />
+	[55] (726,235)<span  />
+		[56] (726,235)<span >Actor />
+[57] (378,281)<a aria-label='completed successfully:  Run 5 of Deploy to VPS. feat: add Notes and Bonus Reason columns to Invoice table' class='d-flex flex-items-center width-full mb-1' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions/runs/22960450280' />
+	[58] (260,281)<div  />
+	[59] (378,281)<span >feat: add Notes and Bonus Reason columns to Invoice table />
+Deploy to VPS
+#5:
+Commit
+[60] (332,300)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/b92a75284ebc147c84fd6a1c3708f074ebaca59b'>b92a752 />
+pushed
+            by
+[61] (376,300)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn'>tdgamesvn />
+[62] (514,290)<a class='d-inline-block branch-name css-truncate css-truncate-target my-0 my-md-1' href='/tdgamesvn/sync_slack_discord_clickup_drive/tree/refs/heads/main' title='main'>main />
+13s
+[63] (739,290)<details class='details-overlay details-reset position-relative d-inline-block ' />
+	[64] (739,290)<summary class='timeline-comment-action btn-link' />
+[65] (378,341)<a aria-label='completed successfully:  Run 4 of Deploy to VPS. feat: add TD Games logo + dual currency (VND/USD) support on Invoice' class='d-flex flex-items-center width-full mb-1' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions/runs/22960346445' />
+	[66] (260,341)<div  />
+	[67] (378,341)<span >feat: add TD Games logo + dual currency (VND/USD) support on Invoice />
+Deploy to VPS
+#4:
+Commit
+[68] (332,360)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/33436ed958af6c8af3fae0a8b691649244ad06b7'>33436ed />
+pushed
+            by
+[69] (376,360)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn'>tdgamesvn />
+[70] (514,349)<a class='d-inline-block branch-name css-truncate css-truncate-target my-0 my-md-1' href='/tdgamesvn/sync_slack_discord_clickup_drive/tree/refs/heads/main' title='main'>main />
+16s
+[71] (739,349)<details class='details-overlay details-reset position-relative d-inline-block ' />
+	[72] (739,349)<summary class='timeline-comment-action btn-link' />
+[73] (378,400)<a aria-label='completed successfully:  Run 3 of Deploy to VPS. ci: fix deploy commands to match VPS setup (systemctl + chatsync user)' class='d-flex flex-items-center width-full mb-1' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions/runs/22958966823' />
+	[74] (260,400)<div  />
+	[75] (378,400)<span >ci: fix deploy commands to match VPS setup (systemctl + chatsync user) />
+Deploy to VPS
+#3:
+Commit
+[76] (332,419)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/1e0abae7866861b95befa329e1505c289e43c47b'>1e0abae />
+pushed
+            by
+[77] (376,419)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn'>tdgamesvn />
+[78] (514,409)<a class='d-inline-block branch-name css-truncate css-truncate-target my-0 my-md-1' href='/tdgamesvn/sync_slack_discord_clickup_drive/tree/refs/heads/main' title='main'>main />
+17s
+[79] (739,409)<details class='details-overlay details-reset position-relative d-inline-block ' />
+	[80] (739,409)<summary class='timeline-comment-action btn-link' />
