@@ -1,84 +1,215 @@
-# Component Refactoring — App.tsx (1723 lines → ~300 lines)
+# Migration Plan: NocoDB → Supabase + Cloudflare R2
 
-## Goal
-Split the monolithic `App.tsx` into focused, reusable components while preserving all existing functionality.
+## Background
 
-## Current Structure Analysis
+The TD Games Billing App currently uses NocoDB (self-hosted) as its backend with 5 tables. The NocoDB API token is **exposed in the frontend `.env`**, creating a significant security vulnerability. This plan migrates everything to Supabase with proper auth, RLS, and Cloudflare R2 for file storage.
 
-| Section | Lines | Description |
-|---|---|---|
-| FilterBar component | 36-118 | Already a component inside App.tsx |
-| State declarations | 120-180 | 25+ useState hooks |
-| Effects & handlers | 182-635 | Data loading, CRUD, eInvoice, export |
-| Navbar | 650-695 | Tab navigation, user info |
-| History tab | 698-793 | Invoice cards with actions |
-| Dashboard tab | 793-900 | Stats & charts |
-| Editor tab | 900-1560 | Invoice form (biggest section) |
-| Modals | 1560-1723 | eInvoice, save confirm, reset popups |
-
-## Proposed Changes
-
-### Shared
-
-#### [NEW] [useInvoiceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/hooks/useInvoiceState.ts)
-Custom hook consolidating all state + handlers (banks, studios, clients, eInvoice, export). Reduces App.tsx state from 25+ to a single hook call.
-
----
-
-### Components to Extract
-
-#### [MOVE] [FilterBar.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/FilterBar.tsx)
-Move FilterBar out of App.tsx → standalone component (~80 lines)
-
-#### [NEW] [Navbar.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/Navbar.tsx)
-Tab navigation + user info + logout (~50 lines)
-
-#### [NEW] [HistoryTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/HistoryTab.tsx)
-History list with invoice cards, filter bar, action buttons (~100 lines)
-
-#### [NEW] [DashboardTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/DashboardTab.tsx)
-Dashboard stats, charts, filter bar (~120 lines)
-
-#### [NEW] [InvoiceEditor.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/InvoiceEditor.tsx)
-The main invoice form — studio info, client info, items table, banking, payment method, export buttons (~650 lines, largest component)
-
-#### [NEW] [StudioManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/StudioManager.tsx)
-Studio CRUD modal (~100 lines)
-
-#### [NEW] [BankManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/BankManager.tsx)
-Bank CRUD modal (~100 lines)
-
-#### [NEW] [EInvoiceModals.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/EInvoiceModals.tsx)
-All eInvoice-related modals (progress, success/download, prompt, reset confirm) (~150 lines)
-
-#### [NEW] [ToastNotification.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/ToastNotification.tsx)
-Toast notification component (~20 lines)
-
-#### [MODIFY] [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
-Reduced to ~300 lines: imports, hook call, and tab routing layout
-
----
-
-## Result
-
-| Before | After |
-|---|---|
-| App.tsx: **1723 lines** | App.tsx: **~300 lines** |
-| 1 mega-component | **10+ focused components** |
-| All state in one place | Custom hook `useInvoiceState` |
-| Hard to find code | Clear file names = easy navigation |
+## User Review Required
 
 > [!IMPORTANT]
-> This is a **pure refactor** — no functionality changes. The app should work identically after the split and will be verified against the dev server.
+> **Supabase Project Target**: Which Supabase project should we use?
+> - **Option A**: Use existing `Web_App` project (`dqnjtkbxtscjikalkajq`) — already has 40+ HRM tables, adding billing tables here
+> - **Option B**: Create a new dedicated `TD_Billing` project — cleaner separation, own auth
+> - **Recommendation**: **Option B** — keeps billing isolated from HRM, independent auth and RLS policies
+>
+> Please confirm which project to use.
+
+> [!IMPORTANT]
+> **Supabase Auth**: Currently using hardcoded accounts table in NocoDB. Migration options:
+> - **Option A**: Use Supabase Auth (email/password) — proper JWT, RLS, password hashing
+> - **Option B**: Keep custom accounts table but with RLS protection
+> - **Recommendation**: **Option A** — full Supabase Auth with role metadata in `user_metadata`
+
+> [!WARNING]
+> **Data Migration**: All existing invoices, banks, clients, studios, and accounts will be migrated from NocoDB → Supabase. Data will be verified after migration. NocoDB will remain operational until migration is confirmed successful.
+
+---
+
+## Phase 1: Supabase Schema Creation
+
+### Database Tables
+
+#### `studios`
+| Column | Type | Constraints |
+|--------|------|-------------|
+| `id` | uuid (PK) | default `gen_random_uuid()` |
+| `name` | text | NOT NULL |
+| `address` | text | |
+| `email` | text | |
+| `tax_code` | text | |
+| `is_default` | boolean | default `false` |
+| `created_at` | timestamptz | default `now()` |
+
+#### `banks`
+| Column | Type | Constraints |
+|--------|------|-------------|
+| `id` | uuid (PK) | default `gen_random_uuid()` |
+| `alias` | text | |
+| `account_name` | text | NOT NULL |
+| `account_number` | text | NOT NULL |
+| `bank_name` | text | |
+| `branch_name` | text | |
+| `bank_address` | text | |
+| `citad_code` | text | |
+| `swift_code` | text | |
+| `is_default` | boolean | default `false` |
+| `created_at` | timestamptz | default `now()` |
+
+#### `clients`
+| Column | Type | Constraints |
+|--------|------|-------------|
+| `id` | uuid (PK) | default `gen_random_uuid()` |
+| `client_type` | text | default `'company'`, check `individual/company` |
+| `name` | text | NOT NULL |
+| `contact_person` | text | |
+| `email` | text | |
+| `address` | text | |
+| `tax_code` | text | |
+| `created_at` | timestamptz | default `now()` |
+
+#### `invoices`
+| Column | Type | Constraints |
+|--------|------|-------------|
+| `id` | uuid (PK) | default `gen_random_uuid()` |
+| `invoice_number` | text | NOT NULL, UNIQUE |
+| `issue_date` | date | |
+| `due_date` | date | |
+| `currency` | text | default `'USD'` |
+| `tax_rate` | numeric | default `0` |
+| `discount_type` | text | default `'percentage'` |
+| `discount_value` | numeric | default `0` |
+| `theme` | text | default `'dark'` |
+| `status` | text | default `'pending'` |
+| `paid_date` | date | |
+| `payment_method` | text | default `'TM/CK'` |
+| `client_info` | jsonb | NOT NULL |
+| `studio_info` | jsonb | NOT NULL |
+| `banking_info` | jsonb | NOT NULL |
+| `items` | jsonb | NOT NULL |
+| `client_name` | text | (denormalized for query) |
+| `einvoice_status` | text | |
+| `einvoice_reference_code` | text | |
+| `einvoice_tracking_code` | text | |
+| `einvoice_pdf_url` | text | |
+| `created_at` | timestamptz | default `now()` |
+
+### Row Level Security (RLS)
+
+All tables will have RLS enabled:
+- **Authenticated users**: Full CRUD on all billing tables
+- Future enhancement: role-based access (admin vs member) via `auth.jwt() ->> 'role'`
+
+### Auth Setup
+
+- Create Supabase Auth users for each NocoDB account
+- Store `role` in `raw_user_meta_data` (`admin` / `member`)
+- Login via `supabase.auth.signInWithPassword()`
+
+---
+
+## Phase 2: Data Migration
+
+### Migration Script (Node.js)
+
+Create a one-time script that:
+1. Fetches all data from NocoDB via REST API
+2. Transforms field names (`camelCase` → `snake_case`)
+3. Bulk inserts into Supabase tables
+4. Creates Supabase Auth users from NocoDB accounts table
+5. Verifies row counts match
+
+### Tables to Migrate
+
+| NocoDB Table | Supabase Table | Est. Records |
+|---|---|---|
+| Invoices (`mmnt9jn9emxyrf2`) | `invoices` | ~20-50 |
+| Banks (`my6rgff3524vzxu`) | `banks` | ~5-10 |
+| Clients (`m16sxozs3iprnaj`) | `clients` | ~10-20 |
+| Studios (`miuypz827hkvnos`) | `studios` | ~3-5 |
+| Accounts (`mlxnhdoe8i1ehnc`) | Supabase Auth | ~2-3 |
+
+---
+
+## Phase 3: Service Layer Rewrite
+
+### [NEW] [supabaseClient.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/supabaseClient.ts)
+
+Supabase client initialization with `createClient()`.
+
+### [NEW] [supabaseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/supabaseService.ts)
+
+Drop-in replacement for `nocodbService.ts` with **identical exports**:
+- Same function names: `fetchInvoicesFromCloud`, `saveInvoiceToCloud`, etc.
+- Same TypeScript interfaces
+- Internal implementation uses `supabase.from('table').select()` instead of REST API
+
+### [MODIFY] [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
+
+Change import path:
+```diff
+-import { ... } from './services/nocodbService';
++import { ... } from './services/supabaseService';
+```
+
+### [MODIFY] [LoginScreen.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/LoginScreen.tsx)
+
+Replace `loginWithCredentials()` with `supabase.auth.signInWithPassword()`.
+
+### [DELETE] [nocodbService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/nocodbService.ts)
+
+Remove after migration is confirmed.
+
+### [MODIFY] [.env.local](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/.env.local)
+
+```diff
+-VITE_NOCODB_BASE_URL=...
+-VITE_NOCODB_API_TOKEN=...
+-VITE_NOCODB_BASE_ID=...
+-VITE_NOCODB_BANKS_TABLE_ID=...
+-VITE_NOCODB_INVOICES_TABLE_ID=...
+-VITE_NOCODB_CLIENTS_TABLE_ID=...
+-VITE_NOCODB_STUDIOS_TABLE_ID=...
+-VITE_NOCODB_ACCOUNTS_TABLE_ID=...
++VITE_SUPABASE_URL=https://xxx.supabase.co
++VITE_SUPABASE_ANON_KEY=xxx
+```
+
+> [!TIP]
+> The Supabase anon key is **safe to expose** in frontend — it only works with RLS policies, unlike the NocoDB API token which had full access.
+
+---
+
+## Phase 4: Cloudflare R2 Integration
+
+### Edge Function for PDF Storage
+
+- Reuse existing Cloudflare R2 secrets in Supabase Edge Functions
+- Create edge function `upload-to-r2` for storing exported PDFs
+- eInvoice PDFs from SePay can be cached in R2 for faster access
+- This is an enhancement, not a blocker for migration
+
+---
+
+## Phase 5: Cleanup
+
+1. Remove all NocoDB env vars from `.env` and `.env.local`
+2. Delete `nocodbService.ts`
+3. Uninstall any NocoDB-specific packages (none currently)
+4. Update deployment configs
+
+---
 
 ## Verification Plan
 
 ### Automated Tests
-- `npm run dev` — verify no build errors
-- Browser test all 4 tabs (edit, preview, history, dashboard)
+- TypeScript compilation (`npx tsc --noEmit`)
+- Row count verification after migration
 
 ### Manual Verification
-- Create/edit invoice, export PDF
-- eInvoice create + download
-- Studio/Bank manager CRUD
-- Default studio/bank persistence on F5
+1. Login with migrated credentials
+2. View History tab — all invoices present
+3. View Dashboard — KPIs match
+4. Create new invoice → save → verify in Supabase
+5. Create eInvoice → verify SePay integration works
+6. CRUD banks/studios/clients
+7. Export PDF
