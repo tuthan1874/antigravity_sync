@@ -1,7 +1,16 @@
-# Client Type Toggle: Individual & Company Clients
+# Component Refactoring — App.tsx
 
-- [x] Add `clientType` to `ClientInfo` in `types.ts`
-- [x] Update Client Details form in `App.tsx` with toggle & conditional fields
-- [x] Update `InvoicePreview.tsx` for client type rendering
-- [x] Update `nocodbService.ts` persistence
-- [/] Verify in browser
+## Tasks
+- [ ] Extract `ToastNotification` component
+- [ ] Move `FilterBar` to own file
+- [ ] Extract `Navbar` component
+- [ ] Extract `HistoryTab` component
+- [ ] Extract `DashboardTab` component
+- [ ] Extract `StudioManager` component
+- [ ] Extract `BankManager` component
+- [ ] Extract `EInvoiceModals` component
+- [ ] Extract `InvoiceEditor` component
+- [ ] Create `useInvoiceState` hook
+- [ ] Rewrite `App.tsx` to use all extracted components
+- [ ] Verify build compiles
+- [ ] Verify all tabs work in browser

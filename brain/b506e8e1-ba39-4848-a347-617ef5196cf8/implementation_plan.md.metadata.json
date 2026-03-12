@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Implementation plan for adding a client type toggle (individual vs company) to the Client Details section. Covers changes to types, form UI in App.tsx, InvoicePreview rendering, and NocoDB persistence. Includes manual verification steps.",
-  "updatedAt": "2026-03-12T13:05:19.670208700Z"
+  "summary": "Implementation plan to refactor App.tsx (1723 lines) into 10+ focused components: FilterBar, Navbar, HistoryTab, DashboardTab, InvoiceEditor, StudioManager, BankManager, EInvoiceModals, ToastNotification, plus a custom useInvoiceState hook. Pure refactor with no functionality changes.",
+  "updatedAt": "2026-03-12T16:38:06.530160300Z",
+  "version": "1"
 }

@@ -1,68 +1,84 @@
-# Client Type Toggle: Individual & Company Clients
+# Component Refactoring — App.tsx (1723 lines → ~300 lines)
 
-Thêm khả năng chọn loại khách hàng (cá nhân / công ty) trong phần Client Details. Khi chọn "Cá nhân", form sẽ hiển thị các trường phù hợp cho khách hàng cá nhân. Khi chọn "Công ty", form giữ nguyên như hiện tại.
+## Goal
+Split the monolithic `App.tsx` into focused, reusable components while preserving all existing functionality.
+
+## Current Structure Analysis
+
+| Section | Lines | Description |
+|---|---|---|
+| FilterBar component | 36-118 | Already a component inside App.tsx |
+| State declarations | 120-180 | 25+ useState hooks |
+| Effects & handlers | 182-635 | Data loading, CRUD, eInvoice, export |
+| Navbar | 650-695 | Tab navigation, user info |
+| History tab | 698-793 | Invoice cards with actions |
+| Dashboard tab | 793-900 | Stats & charts |
+| Editor tab | 900-1560 | Invoice form (biggest section) |
+| Modals | 1560-1723 | eInvoice, save confirm, reset popups |
 
 ## Proposed Changes
 
-### Types Layer
+### Shared
 
-#### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
-
-- Add `clientType` field to `ClientInfo`: `clientType?: 'individual' | 'company'` (optional, defaults to `'company'` for backward compatibility)
-- The `name` field will serve dual purpose: company name for companies, full name for individuals
+#### [NEW] [useInvoiceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/hooks/useInvoiceState.ts)
+Custom hook consolidating all state + handlers (banks, studios, clients, eInvoice, export). Reduces App.tsx state from 25+ to a single hook call.
 
 ---
 
-### Form UI: Client Details Toggle
+### Components to Extract
+
+#### [MOVE] [FilterBar.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/FilterBar.tsx)
+Move FilterBar out of App.tsx → standalone component (~80 lines)
+
+#### [NEW] [Navbar.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/Navbar.tsx)
+Tab navigation + user info + logout (~50 lines)
+
+#### [NEW] [HistoryTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/HistoryTab.tsx)
+History list with invoice cards, filter bar, action buttons (~100 lines)
+
+#### [NEW] [DashboardTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/DashboardTab.tsx)
+Dashboard stats, charts, filter bar (~120 lines)
+
+#### [NEW] [InvoiceEditor.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/InvoiceEditor.tsx)
+The main invoice form — studio info, client info, items table, banking, payment method, export buttons (~650 lines, largest component)
+
+#### [NEW] [StudioManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/StudioManager.tsx)
+Studio CRUD modal (~100 lines)
+
+#### [NEW] [BankManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/BankManager.tsx)
+Bank CRUD modal (~100 lines)
+
+#### [NEW] [EInvoiceModals.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/EInvoiceModals.tsx)
+All eInvoice-related modals (progress, success/download, prompt, reset confirm) (~150 lines)
+
+#### [NEW] [ToastNotification.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/ToastNotification.tsx)
+Toast notification component (~20 lines)
 
 #### [MODIFY] [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
-
-**Lines 1108-1196** — Client Details section:
-
-1. Add a **segmented toggle** (Cá nhân / Công ty) right after the section header, before the saved client selector
-2. When `clientType === 'individual'`:
-   - Label "Company Name" → **"Họ và Tên"** (Full Name)
-   - **Hide** the "Tax ID" field (individuals rarely have MST)
-   - "Contact Person" → **"Số điện thoại"** (Phone)
-   - Keep "Contact Email" and "Billing Address" as-is
-3. When `clientType === 'company'` (default):
-   - Keep all current fields unchanged (Company Name, Contact Person, Contact Email, Tax ID, Billing Address)
+Reduced to ~300 lines: imports, hook call, and tab routing layout
 
 ---
 
-### Invoice Preview
+## Result
 
-#### [MODIFY] [InvoicePreview.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/InvoicePreview.tsx)
+| Before | After |
+|---|---|
+| App.tsx: **1723 lines** | App.tsx: **~300 lines** |
+| 1 mega-component | **10+ focused components** |
+| All state in one place | Custom hook `useInvoiceState` |
+| Hard to find code | Clear file names = easy navigation |
 
-**Lines 97-110** — "Client Information" section:
-
-- If `clientType === 'individual'`: show label "Client" instead of nothing, hide Tax ID display, show phone if available
-- If company or unset: keep current rendering (backward compatible)
-
----
-
-### Persistence Layer
-
-#### [MODIFY] [nocodbService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/nocodbService.ts)
-
-- Add `clientType` to `saveClientToCloud` and `updateClientInCloud` payloads
-- Add `clientType` to `fetchClientsFromCloud` mapping
-
-> [!NOTE]
-> Because `clientInfo` is stored as a JSON blob in invoices, the `clientType` field will automatically be persisted inside that JSON without needing any invoice schema change.
-
----
+> [!IMPORTANT]
+> This is a **pure refactor** — no functionality changes. The app should work identically after the split and will be verified against the dev server.
 
 ## Verification Plan
 
-### Manual Verification (Browser)
-1. Open http://localhost:3000/ and log in
-2. Go to the Edit tab → Client Details section
-3. Verify the toggle "Cá nhân / Công ty" appears
-4. Click "Cá nhân" — verify:
-   - "Company Name" label changes to "Họ và Tên"
-   - "Contact Person" label changes to "Số điện thoại"
-   - Tax ID field is hidden
-5. Click "Công ty" — verify everything returns to original labels
-6. Fill out a client as "Cá nhân", save the client, then select it from the dropdown — verify fields populate correctly
-7. Switch to Preview tab — verify client info renders correctly for both types
+### Automated Tests
+- `npm run dev` — verify no build errors
+- Browser test all 4 tabs (edit, preview, history, dashboard)
+
+### Manual Verification
+- Create/edit invoice, export PDF
+- eInvoice create + download
+- Studio/Bank manager CRUD
+- Default studio/bank persistence on F5

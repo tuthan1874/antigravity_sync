@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_TASK",
-  "summary": "Task checklist for implementing client type toggle — all implementation items completed, verification in progress.",
-  "updatedAt": "2026-03-12T13:07:29.388018600Z",
-  "version": "1"
+  "summary": "Task checklist for refactoring App.tsx into focused components. Tracks progress through each extraction step.",
+  "updatedAt": "2026-03-12T16:38:39.309104600Z",
+  "version": "2"
 }
