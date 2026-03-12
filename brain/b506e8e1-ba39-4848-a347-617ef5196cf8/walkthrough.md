@@ -1,24 +1,41 @@
-# Client Type Toggle — Walkthrough
+# Walkthrough — Client Type Toggle & eInvoice Fix
 
-## Changes Made
+## 1. Client Type Toggle ✅
 
-Added a **Cá nhân / Công ty** (Individual / Company) toggle to the Client Details section across 4 files:
-
-| File | Change |
-|------|--------|
-| [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts) | Added `clientType?: 'individual' \| 'company'` to `ClientInfo` |
-| [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) | Segmented toggle + conditional labels & fields |
-| [InvoicePreview.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/InvoicePreview.tsx) | Conditional "Phone/Contact" label + Tax ID visibility |
-| [nocodbService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/nocodbService.ts) | `clientType` persisted in fetch/save/update |
-
-## Verification
+Added Individual/Company toggle to Client Details. Verified in browser.
 
 ````carousel
-![Công ty mode (default) — Company Name, Contact Person, Tax ID visible](C:\Users\dangt\.gemini\antigravity\brain\b506e8e1-ba39-4848-a347-617ef5196cf8\client_details_default_company_1773320872728.png)
+![Company mode (default)](C:\Users\dangt\.gemini\antigravity\brain\b506e8e1-ba39-4848-a347-617ef5196cf8\client_details_default_company_1773320872728.png)
 <!-- slide -->
-![Cá nhân mode — Họ và Tên, Số điện thoại, Tax ID hidden](C:\Users\dangt\.gemini\antigravity\brain\b506e8e1-ba39-4848-a347-617ef5196cf8\client_details_individual_mode_1773320885568.png)
-<!-- slide -->
-![Reverted back to Công ty — all fields restored](C:\Users\dangt\.gemini\antigravity\brain\b506e8e1-ba39-4848-a347-617ef5196cf8\client_details_reverted_company_1773320914248.png)
+![Individual mode — Full Name, Phone Number, Tax ID hidden](C:\Users\dangt\.gemini\antigravity\brain\b506e8e1-ba39-4848-a347-617ef5196cf8\client_details_individual_mode_1773320885568.png)
 ````
 
-All verifications passed ✅
+---
+
+## 2. eInvoice SePay Fix ✅
+
+### Root Cause
+`sePayService.ts` had **wrong field names** compared to the actual SePay API spec, and `nocodbService.ts` used an invalid SingleSelect value.
+
+### Fixes Applied
+
+| File | Issue | Fix |
+|------|-------|-----|
+| [sePayService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/sePayService.ts) | `unit_name` (wrong) | Changed to `unit` |
+| ↳ | `item_total_amount_without_tax` (invalid field) | Removed; discount lines now use `before_discount_and_tax_amount` |
+| ↳ | `tax_rate` could be any number | Added mapping to valid SePay enum: -2,-1,0,5,8,10 |
+| ↳ | No null-safety for `clientInfo`/`items` | Added fallback defaults |
+| ↳ | `buyer.phone` not sent for individual clients | Now sent when `clientType === 'individual'` |
+| [nocodbService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/nocodbService.ts) | `einvoice_status: 'none'` (invalid SingleSelect) | Changed default to `''` in both save and parse |
+
+### SePay API Spec (from docs)
+
+```
+POST v1/invoices/create
+Required: template_code, invoice_series, provider_account_id, issued_date, currency
+buyer: { type, name, tax_code, address, email, phone }
+items: [{ line_number, line_type, item_name, unit, quantity, unit_price, tax_rate }]
+```
+
+> [!NOTE]
+> The Edge Function proxy (`sepay-proxy`) auto-injects `template_code`, `invoice_series`, `provider_account_id`, and `is_draft: true`. The client only needs to send `buyer`, `items`, `currency`, `issued_date`, and `payment_method`.
