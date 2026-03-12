@@ -1,0 +1,13 @@
+# Verification Plan: Client Details Toggle
+
+- [ ] Log in to http://localhost:3000/
+- [ ] Locate Section 01: CLIENT DETAILS
+- [ ] Capture default state (Company mode)
+- [ ] Switch to Individual mode (👤 Cá nhân)
+- [ ] Verify:
+    - [ ] Label "Company Name" -> "Họ và Tên"
+    - [ ] Label "Contact Person" -> "Số điện thoại"
+    - [ ] Tax ID field is hidden
+- [ ] Switch back to Company mode
+- [ ] Verify labels and Tax ID visibility revert
+- [ ] Final summary report

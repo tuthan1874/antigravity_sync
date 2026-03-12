@@ -1,0 +1,68 @@
+# Client Type Toggle: Individual & Company Clients
+
+Thêm khả năng chọn loại khách hàng (cá nhân / công ty) trong phần Client Details. Khi chọn "Cá nhân", form sẽ hiển thị các trường phù hợp cho khách hàng cá nhân. Khi chọn "Công ty", form giữ nguyên như hiện tại.
+
+## Proposed Changes
+
+### Types Layer
+
+#### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
+
+- Add `clientType` field to `ClientInfo`: `clientType?: 'individual' | 'company'` (optional, defaults to `'company'` for backward compatibility)
+- The `name` field will serve dual purpose: company name for companies, full name for individuals
+
+---
+
+### Form UI: Client Details Toggle
+
+#### [MODIFY] [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
+
+**Lines 1108-1196** — Client Details section:
+
+1. Add a **segmented toggle** (Cá nhân / Công ty) right after the section header, before the saved client selector
+2. When `clientType === 'individual'`:
+   - Label "Company Name" → **"Họ và Tên"** (Full Name)
+   - **Hide** the "Tax ID" field (individuals rarely have MST)
+   - "Contact Person" → **"Số điện thoại"** (Phone)
+   - Keep "Contact Email" and "Billing Address" as-is
+3. When `clientType === 'company'` (default):
+   - Keep all current fields unchanged (Company Name, Contact Person, Contact Email, Tax ID, Billing Address)
+
+---
+
+### Invoice Preview
+
+#### [MODIFY] [InvoicePreview.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/InvoicePreview.tsx)
+
+**Lines 97-110** — "Client Information" section:
+
+- If `clientType === 'individual'`: show label "Client" instead of nothing, hide Tax ID display, show phone if available
+- If company or unset: keep current rendering (backward compatible)
+
+---
+
+### Persistence Layer
+
+#### [MODIFY] [nocodbService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/nocodbService.ts)
+
+- Add `clientType` to `saveClientToCloud` and `updateClientInCloud` payloads
+- Add `clientType` to `fetchClientsFromCloud` mapping
+
+> [!NOTE]
+> Because `clientInfo` is stored as a JSON blob in invoices, the `clientType` field will automatically be persisted inside that JSON without needing any invoice schema change.
+
+---
+
+## Verification Plan
+
+### Manual Verification (Browser)
+1. Open http://localhost:3000/ and log in
+2. Go to the Edit tab → Client Details section
+3. Verify the toggle "Cá nhân / Công ty" appears
+4. Click "Cá nhân" — verify:
+   - "Company Name" label changes to "Họ và Tên"
+   - "Contact Person" label changes to "Số điện thoại"
+   - Tax ID field is hidden
+5. Click "Công ty" — verify everything returns to original labels
+6. Fill out a client as "Cá nhân", save the client, then select it from the dropdown — verify fields populate correctly
+7. Switch to Preview tab — verify client info renders correctly for both types

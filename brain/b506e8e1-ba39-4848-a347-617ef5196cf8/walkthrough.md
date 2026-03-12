@@ -1,0 +1,24 @@
+# Client Type Toggle — Walkthrough
+
+## Changes Made
+
+Added a **Cá nhân / Công ty** (Individual / Company) toggle to the Client Details section across 4 files:
+
+| File | Change |
+|------|--------|
+| [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts) | Added `clientType?: 'individual' \| 'company'` to `ClientInfo` |
+| [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) | Segmented toggle + conditional labels & fields |
+| [InvoicePreview.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/InvoicePreview.tsx) | Conditional "Phone/Contact" label + Tax ID visibility |
+| [nocodbService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/nocodbService.ts) | `clientType` persisted in fetch/save/update |
+
+## Verification
+
+````carousel
+![Công ty mode (default) — Company Name, Contact Person, Tax ID visible](C:\Users\dangt\.gemini\antigravity\brain\b506e8e1-ba39-4848-a347-617ef5196cf8\client_details_default_company_1773320872728.png)
+<!-- slide -->
+![Cá nhân mode — Họ và Tên, Số điện thoại, Tax ID hidden](C:\Users\dangt\.gemini\antigravity\brain\b506e8e1-ba39-4848-a347-617ef5196cf8\client_details_individual_mode_1773320885568.png)
+<!-- slide -->
+![Reverted back to Công ty — all fields restored](C:\Users\dangt\.gemini\antigravity\brain\b506e8e1-ba39-4848-a347-617ef5196cf8\client_details_reverted_company_1773320914248.png)
+````
+
+All verifications passed ✅

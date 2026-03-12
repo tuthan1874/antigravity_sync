@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan for adding a client type toggle (individual vs company) to the Client Details section. Covers changes to types, form UI in App.tsx, InvoicePreview rendering, and NocoDB persistence. Includes manual verification steps.",
+  "updatedAt": "2026-03-12T13:05:19.670208700Z"
+}
