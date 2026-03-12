@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough documenting the refactoring of App.tsx from 1723 lines to ~320 lines by extracting 7 focused components. Includes file structure, validation results, and summary of changes.",
-  "updatedAt": "2026-03-12T16:47:16.933332800Z",
-  "version": "2"
+  "summary": "Walkthrough documenting the migration from NocoDB to Supabase. Covers schema creation, data migration, service layer rewrite, verification results with browser recording.",
+  "updatedAt": "2026-03-12T17:11:06.563146400Z",
+  "version": "3"
 }

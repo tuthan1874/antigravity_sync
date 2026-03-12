@@ -1,0 +1,87 @@
+[0] (500,500)<div  />
+	TD Games Billing
+	[1] (762,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>edit />
+	[2] (802,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>preview />
+	[3] (849,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all bg-primary text-black shadow-btn-glow'>history />
+	[4] (904,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>📊
+dashboard />
+	admin
+	admin
+	[5] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Đăng xuất' />
+	Invoice History
+	Synced from NocoDB Cloud
+	[6] (736,137)<button class='inline-flex items-center justify-center font-bold uppercase tracking-wider rounded-xl transition-all duration-300 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20 px-4 py-2 text-xs '>Refresh />
+	[7] (323,201)<label class='text-neutral-light text-sm font-semibold mb-2 block'>Studio />
+	[8] (323,235)<select class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all appearance-none cursor-pointer' />
+	[9] (467,201)<label class='text-neutral-light text-sm font-semibold mb-2 block'>Khách hàng />
+	[10] (467,235)<select class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all appearance-none cursor-pointer' />
+	[11] (578,201)<label class='text-neutral-light text-sm font-semibold mb-2 block'>Từ ngày />
+	[12] (578,235)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all' />
+	[13] (658,201)<label class='text-neutral-light text-sm font-semibold mb-2 block'>Đến ngày />
+	[14] (658,235)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all' />
+	5
+	/
+	5
+	hoá đơn
+	pending
+	2026-03-12
+	INV-202603-005
+	Dace Marsh
+	🏢
+	TD GAMES COMPANY LIMITED
+	$2,000.00
+	[15] (341,438)<button class='p-2 hover:text-primary transition-colors' title='Load to Editor' />
+	[16] (358,438)<button class='p-2 hover:text-emerald-400 transition-colors text-emerald-500/40' title='Xuất HĐ Điện Tử' />
+	[17] (375,438)<button class='p-2 hover:text-primary transition-colors' title='Mark Paid/Pending' />
+	[18] (392,438)<button class='p-2 hover:text-status-error transition-colors' title='Xoá hoá đơn' />
+	pending
+	2026-02-28
+	INV-202603-004
+	KABAM GAMES, INC
+	🏢
+	TD CONSULTING COMPANY LIMITED
+	$6,600.00
+	[19] (514,438)<button class='p-2 hover:text-primary transition-colors' title='Load to Editor' />
+	[20] (531,438)<button class='p-2 hover:text-emerald-400 transition-colors text-emerald-500/40' title='Xuất HĐ Điện Tử' />
+	[21] (548,438)<button class='p-2 hover:text-primary transition-colors' title='Mark Paid/Pending' />
+	[22] (565,438)<button class='p-2 hover:text-status-error transition-colors' title='Xoá hoá đơn' />
+	paid
+	Paid:
+	2026-03-03
+	2026-02-02
+	INV-202602-003
+	KABAM GAMES, INC
+	🏢
+	TD CONSULTING COMPANY LIMITED
+	$4,400.00
+	[23] (686,451)<button class='p-2 hover:text-primary transition-colors' title='Load to Editor' />
+	[24] (704,451)<button class='p-2 hover:text-emerald-400 transition-colors text-emerald-500/40' title='Xuất HĐ Điện Tử' />
+	[25] (721,451)<button class='p-2 hover:text-primary transition-colors' title='Mark Paid/Pending' />
+	[26] (738,451)<button class='p-2 hover:text-status-error transition-colors' title='Xoá hoá đơn' />
+	paid
+	Paid:
+	2026-03-03
+	2026-01-26
+	INV-202601-002
+	KABAM GAMES, INC
+	🏢
+	TD CONSULTING COMPANY LIMITED
+	$660.00
+	[27] (341,656)<button class='p-2 hover:text-primary transition-colors' title='Load to Editor' />
+	[28] (358,656)<button class='p-2 hover:text-emerald-400 transition-colors text-emerald-500/40' title='Xuất HĐ Điện Tử' />
+	[29] (375,656)<button class='p-2 hover:text-primary transition-colors' title='Mark Paid/Pending' />
+	[30] (392,656)<button class='p-2 hover:text-status-error transition-colors' title='Xoá hoá đơn' />
+	paid
+	Paid:
+	2026-03-03
+	2026-01-01
+	INV-202601-001
+	KABAM GAMES, INC
+	🏢
+	TD CONSULTING COMPANY LIMITED
+	$660.00
+	[31] (514,656)<button class='p-2 hover:text-primary transition-colors' title='Load to Editor' />
+	[32] (531,656)<button class='p-2 hover:text-emerald-400 transition-colors text-emerald-500/40' title='Xuất HĐ Điện Tử' />
+	[33] (548,656)<button class='p-2 hover:text-primary transition-colors' title='Mark Paid/Pending' />
+	[34] (565,656)<button class='p-2 hover:text-status-error transition-colors' title='Xoá hoá đơn' />
+	TD Consulting • Enterprise Billing Engine • v2.1

@@ -1,41 +1,53 @@
-# Walkthrough: App.tsx Component Refactoring
+# Walkthrough: NocoDB → Supabase Migration
 
 ## What Changed
 
-Refactored `App.tsx` from **1723 lines → ~320 lines** by extracting 7 focused components.
+Migrated the TD Games Billing App backend from NocoDB (self-hosted REST API) to Supabase (PostgreSQL + RLS) on the `Workflow` project.
 
-## New Files Created
+## Schema Created (5 tables)
 
-| Component | Lines | Purpose |
+All tables prefixed with `invoice_` on Supabase project `fifuhkupaqcfjwyouwpa`:
+
+| Table | Records | Purpose |
 |---|---|---|
-| [ToastNotification.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/ToastNotification.tsx) | ~20 | Toast messages |
-| [FilterBar.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/FilterBar.tsx) | ~85 | Shared filter bar (History + Dashboard) |
-| [Navbar.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/Navbar.tsx) | ~55 | Tab nav, user info, logout |
-| [HistoryTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/HistoryTab.tsx) | ~130 | Invoice cards + reset popup |
-| [DashboardTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/DashboardTab.tsx) | ~115 | KPIs, revenue chart, pending list |
-| [EInvoiceModals.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/EInvoiceModals.tsx) | ~150 | Save confirm, eInvoice prompt, progress modal |
-| [InvoiceEditor.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/InvoiceEditor.tsx) | ~550 | Full editor: sidebar + client/items/tax/studio forms |
+| `invoice_studios` | 2 | Studio profiles (TD Consulting, TD Games) |
+| `invoice_banks` | 2 | Banking info for invoices |
+| `invoice_clients` | 2 | Client records (Kabam, Dace Marsh) |
+| `invoice_invoices` | 5 | Invoice data with JSONB fields |
+| `invoice_accounts` | 2 | Login credentials (admin, member) |
 
-## Modified Files
+## Files Changed
 
 | File | Change |
 |---|---|
-| [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) | Reduced to ~320 lines — state + handlers + component composition |
+| [supabaseClient.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/supabaseClient.ts) | **[NEW]** Supabase client init |
+| [supabaseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/supabaseService.ts) | **[NEW]** Drop-in replacement for nocodbService |
+| [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) | Import switched to supabaseService |
+| [LoginScreen.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/LoginScreen.tsx) | Dynamic import switched |
+| [.env.local](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/.env.local) | NocoDB vars → Supabase URL + anon key |
+| [.env](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/.env) | Template updated |
 
-## Architecture
+## Security Improvement
 
+```diff
+- VITE_NOCODB_API_TOKEN=ia8adC8Rq...  (full DB access, exposed in frontend)
++ VITE_SUPABASE_ANON_KEY=eyJhbG...    (safe to expose, RLS-protected)
 ```
-App.tsx (state + handlers + routing)
-├── ToastNotification
-├── Navbar
-├── HistoryTab ← FilterBar
-├── DashboardTab ← FilterBar
-├── InvoiceEditor ← InvoicePreview, Button, Input, Select, TextArea
-└── EInvoiceModals
-```
 
-## Validation
+## Verification Results
 
-- ✅ `npx tsc --noEmit` — **zero errors**
-- ✅ Dev server running without issues
-- ✅ Pure refactor — no functionality changes
+- ✅ TypeScript: **zero errors**
+- ✅ Login: admin/Admin@123 succeeded
+- ✅ History: all 5 invoices visible
+- ✅ Dashboard: KPIs correct ($5,720 revenue, 2 unpaid)
+- ✅ Editor: studios dropdown loaded (TD Consulting, TD Games ★)
+
+## Browser Test Recording
+
+![Migration test recording](file:///C:/Users/dangt/.gemini/antigravity/brain/b506e8e1-ba39-4848-a347-617ef5196cf8/migration_test_recording.webp)
+
+## Not Yet Done
+
+- `nocodbService.ts` kept for rollback safety — delete after confirming everything works
+- Cloudflare R2 edge function for PDF storage — future enhancement
+- Migration script at `scripts/migrate-to-supabase.ts` can be deleted after confirmation
