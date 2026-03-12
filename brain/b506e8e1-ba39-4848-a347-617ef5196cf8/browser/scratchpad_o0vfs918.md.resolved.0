@@ -1,0 +1,7 @@
+# Task: Verify SePay Configuration
+
+- [ ] Execute debug JavaScript on localhost:3000
+- [ ] Verify `provider_account_id` is `d612a84f-15ec-11f1-b21a-a6006ab65aca`
+- [ ] Verify `base_url` is `https://einvoice-api.sepay.vn`
+- [ ] Verify token status is success
+- [ ] Report results to user

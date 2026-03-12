@@ -1,0 +1,9 @@
+# Task: Query SePay Production Provider Accounts
+
+## Goals
+- [ ] Execute debug fetch in browser console
+- [ ] Capture `provider_accounts` data from response
+- [ ] Report production provider IDs
+
+## Progress
+- Initialized scratchpad
