@@ -1,0 +1,149 @@
+{
+  "tables": [
+    {
+      "id": "mj3wt01xz347q7d",
+      "table_name": "SyncConfigs",
+      "title": "SyncConfigs",
+      "type": "table",
+      "enabled": true,
+      "created_at": "2026-02-26 06:09:12+00:00",
+      "updated_at": "2026-02-26 06:09:12+00:00"
+    },
+    {
+      "id": "mv9cobnehqnb2ao",
+      "table_name": "SyncMessages",
+      "title": "SyncMessages",
+      "type": "table",
+      "enabled": true,
+      "created_at": "2026-02-26 06:09:14+00:00",
+      "updated_at": "2026-02-26 06:09:14+00:00"
+    },
+    {
+      "id": "m1gsxj3apjo482z",
+      "table_name": "DriveConfigs",
+      "title": "DriveConfigs",
+      "type": "table",
+      "enabled": true,
+      "created_at": "2026-02-26 06:09:14+00:00",
+      "updated_at": "2026-02-26 06:09:14+00:00"
+    },
+    {
+      "id": "mdza0khvmq4vw7p",
+      "table_name": "Settings",
+      "title": "Settings",
+      "type": "table",
+      "enabled": true,
+      "created_at": "2026-02-26 06:09:15+00:00",
+      "updated_at": "2026-02-26 06:09:15+00:00"
+    },
+    {
+      "id": "m4ckn6c3l8mmgtm",
+      "table_name": "NameMappings",
+      "title": "NameMappings",
+      "type": "table",
+      "enabled": true,
+      "created_at": "2026-02-26 09:21:57+00:00",
+      "updated_at": "2026-02-26 09:21:57+00:00"
+    },
+    {
+      "id": "mfic82wcf8nai91",
+      "table_name": "Customers",
+      "title": "Customers",
+      "type": "table",
+      "enabled": true,
+      "created_at": "2026-02-26 14:29:04+00:00",
+      "updated_at": "2026-02-26 14:29:04+00:00"
+    },
+    {
+      "id": "mnjh597fjwvcc4h",
+      "table_name": "Projects",
+      "title": "Projects",
+      "type": "table",
+      "enabled": true,
+      "created_at": "2026-02-26 14:29:04+00:00",
+      "updated_at": "2026-02-26 14:29:04+00:00"
+    },
+    {
+      "id": "m2xp5fev5rtogdd",
+      "table_name": "Account",
+      "title": "Account",
+      "type": "table",
+      "enabled": true,
+      "created_at": "2026-02-26 16:18:01+00:00",
+      "updated_at": "2026-02-26 16:18:01+00:00"
+    },
+    {
+      "id": "m4lh3dsbb8e2v4u",
+      "table_name": "PM_Tasks_Tracking",
+      "title": "PM_Tasks_Tracking",
+      "type": "table",
+      "enabled": true,
+      "created_at": "2026-03-01 07:43:44+00:00",
+      "updated_at": "2026-03-01 07:43:44+00:00"
+    },
+    {
+      "id": "mkpnkcng2s4qcuw",
+      "table_name": "ListMappings",
+      "title": "ListMappings",
+      "type": "table",
+      "enabled": true,
+      "created_at": "2026-03-01 09:11:59+00:00",
+      "updated_at": "2026-03-01 09:11:59+00:00"
+    },
+    {
+      "id": "my6rgff3524vzxu",
+      "table_name": "INV_Banks",
+      "title": "INV_Banks",
+      "type": "table",
+      "enabled": true,
+      "created_at": "2026-03-03 14:31:48+00:00",
+      "updated_at": "2026-03-03 14:31:48+00:00"
+    },
+    {
+      "id": "mmnt9jn9emxyrf2",
+      "table_name": "INV_Invoices",
+      "title": "INV_Invoices",
+      "type": "table",
+      "enabled": true,
+      "created_at": "2026-03-03 14:32:04+00:00",
+      "updated_at": "2026-03-03 14:32:04+00:00"
+    },
+    {
+      "id": "m16sxozs3iprnaj",
+      "table_name": "td_invoice_clients",
+      "title": "td_invoice_clients",
+      "type": "table",
+      "enabled": true,
+      "created_at": "2026-03-03 15:48:17+00:00",
+      "updated_at": "2026-03-03 15:48:17+00:00"
+    },
+    {
+      "id": "miuypz827hkvnos",
+      "table_name": "td_invoice_studios",
+      "title": "td_invoice_studios",
+      "type": "table",
+      "enabled": true,
+      "created_at": "2026-03-03 16:12:16+00:00",
+      "updated_at": "2026-03-03 16:12:16+00:00"
+    },
+    {
+      "id": "mlxnhdoe8i1ehnc",
+      "table_name": "INV_Accounts",
+      "title": "INV_Accounts",
+      "type": "table",
+      "enabled": true,
+      "created_at": "2026-03-04 15:31:12+00:00",
+      "updated_at": "2026-03-04 15:31:12+00:00"
+    },
+    {
+      "id": "mw5b5v6nkyk4bpg",
+      "table_name": "PM_Tracking_Configs",
+      "title": "PM_Tracking_Configs",
+      "type": "table",
+      "enabled": true,
+      "created_at": "2026-03-10 14:47:01+00:00",
+      "updated_at": "2026-03-10 14:47:01+00:00"
+    }
+  ],
+  "count": 16
+}
