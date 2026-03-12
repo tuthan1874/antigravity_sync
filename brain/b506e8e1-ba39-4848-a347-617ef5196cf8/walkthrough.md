@@ -1,41 +1,41 @@
-# Walkthrough — Client Type Toggle & eInvoice Fix
+# Walkthrough: App.tsx Component Refactoring
 
-## 1. Client Type Toggle ✅
+## What Changed
 
-Added Individual/Company toggle to Client Details. Verified in browser.
+Refactored `App.tsx` from **1723 lines → ~320 lines** by extracting 7 focused components.
 
-````carousel
-![Company mode (default)](C:\Users\dangt\.gemini\antigravity\brain\b506e8e1-ba39-4848-a347-617ef5196cf8\client_details_default_company_1773320872728.png)
-<!-- slide -->
-![Individual mode — Full Name, Phone Number, Tax ID hidden](C:\Users\dangt\.gemini\antigravity\brain\b506e8e1-ba39-4848-a347-617ef5196cf8\client_details_individual_mode_1773320885568.png)
-````
+## New Files Created
 
----
+| Component | Lines | Purpose |
+|---|---|---|
+| [ToastNotification.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/ToastNotification.tsx) | ~20 | Toast messages |
+| [FilterBar.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/FilterBar.tsx) | ~85 | Shared filter bar (History + Dashboard) |
+| [Navbar.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/Navbar.tsx) | ~55 | Tab nav, user info, logout |
+| [HistoryTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/HistoryTab.tsx) | ~130 | Invoice cards + reset popup |
+| [DashboardTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/DashboardTab.tsx) | ~115 | KPIs, revenue chart, pending list |
+| [EInvoiceModals.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/EInvoiceModals.tsx) | ~150 | Save confirm, eInvoice prompt, progress modal |
+| [InvoiceEditor.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/InvoiceEditor.tsx) | ~550 | Full editor: sidebar + client/items/tax/studio forms |
 
-## 2. eInvoice SePay Fix ✅
+## Modified Files
 
-### Root Cause
-`sePayService.ts` had **wrong field names** compared to the actual SePay API spec, and `nocodbService.ts` used an invalid SingleSelect value.
+| File | Change |
+|---|---|
+| [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) | Reduced to ~320 lines — state + handlers + component composition |
 
-### Fixes Applied
-
-| File | Issue | Fix |
-|------|-------|-----|
-| [sePayService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/sePayService.ts) | `unit_name` (wrong) | Changed to `unit` |
-| ↳ | `item_total_amount_without_tax` (invalid field) | Removed; discount lines now use `before_discount_and_tax_amount` |
-| ↳ | `tax_rate` could be any number | Added mapping to valid SePay enum: -2,-1,0,5,8,10 |
-| ↳ | No null-safety for `clientInfo`/`items` | Added fallback defaults |
-| ↳ | `buyer.phone` not sent for individual clients | Now sent when `clientType === 'individual'` |
-| [nocodbService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/nocodbService.ts) | `einvoice_status: 'none'` (invalid SingleSelect) | Changed default to `''` in both save and parse |
-
-### SePay API Spec (from docs)
+## Architecture
 
 ```
-POST v1/invoices/create
-Required: template_code, invoice_series, provider_account_id, issued_date, currency
-buyer: { type, name, tax_code, address, email, phone }
-items: [{ line_number, line_type, item_name, unit, quantity, unit_price, tax_rate }]
+App.tsx (state + handlers + routing)
+├── ToastNotification
+├── Navbar
+├── HistoryTab ← FilterBar
+├── DashboardTab ← FilterBar
+├── InvoiceEditor ← InvoicePreview, Button, Input, Select, TextArea
+└── EInvoiceModals
 ```
 
-> [!NOTE]
-> The Edge Function proxy (`sepay-proxy`) auto-injects `template_code`, `invoice_series`, `provider_account_id`, and `is_draft: true`. The client only needs to send `buyer`, `items`, `currency`, `issued_date`, and `payment_method`.
+## Validation
+
+- ✅ `npx tsc --noEmit` — **zero errors**
+- ✅ Dev server running without issues
+- ✅ Pure refactor — no functionality changes
