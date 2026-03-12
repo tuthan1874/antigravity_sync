@@ -1,0 +1,228 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Skip to content
+Navigation Menu
+[0] (19,28)<a aria-label='Homepage' class='tmp-mr-lg-3 color-fg-inherit flex-order-2 js-prevent-focus-on-mobile-nav' href='/' />
+[1] (50,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Platform />
+[2] (89,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Solutions />
+[3] (129,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Resources />
+[4] (175,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Open Source />
+[5] (221,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Enterprise />
+[6] (254,28)<a class='NavLink-module__link__EG3d4 MarketingNavigation-module__navLink__hUomM' href='https://github.com/pricing' />
+	[7] (254,28)<span >Pricing />
+[8] (844,28)<button aria-label='Search or jump to…' class='header-search-button placeholder input-button form-control d-flex flex-1 flex-self-stretch flex-items-center no-wrap width-full py-0 pl-2 pr-0 text-left border-0 box-shadow-none' placeholder='Search or jump to...' />
+	[9] (788,28)<div  />
+	[10] (844,28)<span >Search or jump to... />
+	[11] (902,28)<div  />
+[12] (924,28)<a class='HeaderMenu-link HeaderMenu-link--sign-in HeaderMenu-button flex-shrink-0 no-underline d-none d-lg-inline-flex border border-lg-0 rounded px-2 py-1' href='/login?return_to=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive'>Sign in />
+[13] (956,28)<a class='HeaderMenu-link HeaderMenu-link--sign-up HeaderMenu-button flex-shrink-0 d-flex d-lg-inline-flex no-underline border color-border-default rounded px-2 py-1' href='/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E&source=header-repo&source_repo=tdgamesvn%2Fsync_slack_discord_clickup_drive'>Sign up />
+[14] (981,28)<button class='Button Button--iconOnly Button--invisible Button--medium AppHeader-button HeaderMenu-link border' id='icon-button-8d0251ea-10a2-4b8d-bdbe-fd7f1d81c003' />
+[15] (41,79)<a class='url fn' href='/tdgamesvn'>tdgamesvn />
+/
+[16] (123,79)<a href='/tdgamesvn/sync_slack_discord_clickup_drive'>sync_slack_discord_clickup_drive />
+Public
+[17] (881,78)<a aria-label='You must be signed in to change notification settings' class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive' id='repository-details-watch-button'>Notifications />
+[18] (926,78)<a class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive' id='fork-button'>Fork />
+	[19] (937,78)<span >0 />
+[20] (968,78)<a aria-label='You must be signed in to star a repository' class='tooltipped tooltipped-sw btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive' />
+	[21] (969,78)<span >Star />
+	[22] (979,78)<span >0 />
+[23] (27,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected' href='/tdgamesvn/sync_slack_discord_clickup_drive' id='code-tab' />
+	[24] (31,121)<span >Code />
+[25] (59,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/issues' id='issues-tab' />
+	[26] (64,121)<span >Issues />
+[27] (107,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/pulls' id='pull-requests-tab' />
+	[28] (106,121)<span >Pull requests />
+	[29] (129,121)<span >1 />
+[30] (156,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions' id='actions-tab' />
+	[31] (161,121)<span >Actions />
+[32] (194,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/projects' id='projects-tab' />
+	[33] (199,121)<span >Projects />
+[34] (232,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/security' id='security-tab' />
+	[35] (237,121)<span >Security />
+[36] (271,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/pulse' id='insights-tab' />
+	[37] (275,121)<span >Insights />
+tdgamesvn/sync_slack_discord_clickup_drive
+[38] (283,170)<button aria-label='main branch' class='prc-Button-ButtonBase-9n-Xk overview-ref-selector width-full RefSelectorAnchoredOverlay-module__RefSelectorOverlayBtn__a3WK3' id='ref-picker-repos-header-ref-selector' />
+	[39] (283,170)<span  />
+		[40] (278,170)<span  />
+			[41] (278,170)<div  />
+				[42] (271,170)<div  />
+				[43] (282,170)<div  />
+					[44] (282,170)<span >main />
+[45] (327,170)<a class='prc-Button-ButtonBase-9n-Xk OverviewContent-module__Button___Uotu' href='/tdgamesvn/sync_slack_discord_clickup_drive/branches' />
+	[46] (327,170)<span  />
+		[47] (331,170)<span  />
+			[48] (331,170)<span >Branches />
+				[49] (320,170)<strong >2 />
+[50] (361,170)<a class='prc-Button-ButtonBase-9n-Xk OverviewContent-module__Button___Uotu' href='/tdgamesvn/sync_slack_discord_clickup_drive/tags' />
+	[51] (361,170)<span  />
+		[52] (365,170)<span  />
+			[53] (365,170)<span >Tags />
+				[54] (360,170)<strong >0 />
+[55] (530,170)<span  />
+	[56] (495,170)<span  />
+	[57] (533,170)<input aria-label='Go to file' class='prc-components-Input-IwWrt' placeholder='Go to file' role='combobox' />
+[58] (595,170)<button class='prc-Button-ButtonBase-9n-Xk' id='_R_3idajal1d_' />
+	[59] (595,170)<span  />
+		[60] (595,170)<span >Code />
+Folders and files
+Latest commit
+[61] (273,215)<a class='Link__StyledLink-sc-1syctfj-0 prc-Link-Link-9ZwDx' href='/tdgamesvn' />
+	[62] (272,216)<img  />
+[63] (292,215)<a aria-label='commits by tdgamesvn' class='Link__StyledLink-sc-1syctfj-0 iIGVMW AuthorAvatar-module__authorHoverableLink__MHTT8 prc-Link-Link-9ZwDx' href='/tdgamesvn/sync_slack_discord_clickup_drive/commits?author=tdgamesvn'>tdgamesvn />
+[64] (384,215)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/81ec156d7addc34ffb739aa2b4f59db6d65726d8'>fix: disable browser caching for JS/CSS to ensure fresh deploys />
+[65] (468,215)<button class='prc-Button-ButtonBase-9n-Xk IconButton__StyledIconButton-sc-i53dt6-0 gUydnL ChecksStatusBadge-module__ChecksStatusBadgeIconButton__rcQQ1 prc-Button-IconButton-fyge7' />
+[66] (523,215)<a aria-label='Commit 81ec156' class='Link--secondary prc-Link-Link-9ZwDx' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/81ec156d7addc34ffb739aa2b4f59db6d65726d8'>81ec156 />
+·
+History
+[67] (591,215)<a class='prc-Button-ButtonBase-9n-Xk d-none d-lg-flex LinkButton-module__linkButton__nFnov flex-items-center fgColor-default' href='/tdgamesvn/sync_slack_discord_clickup_drive/commits/main/' />
+	[68] (591,215)<span  />
+		[69] (595,215)<span  />
+			[70] (595,215)<span >35 Commits />
+[71] (439,251)<tr  />
+	[72] (293,250)<a aria-label='.agent/skills, (Directory)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/tree/main/.agent/skills' title='This path skips through empty directories' />
+		[73] (288,250)<span >.agent/ />
+		[74] (302,250)<span >skills />
+	[75] (494,250)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/3359d3b7869b79ce3d5685da5db9065f1788095d' title='feat: Monthly Invoice - separate tab, premium UI, closed-tasks-only logic'>feat: Monthly Invoice - separate tab, premium UI, closed-tasks-only l… />
+[76] (439,282)<tr  />
+	[77] (301,282)<a aria-label='.github/workflows, (Directory)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/tree/main/.github/workflows' title='This path skips through empty directories' />
+		[78] (289,282)<span >.github/ />
+		[79] (310,282)<span >workflows />
+	[80] (497,282)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/1e0abae7866861b95befa329e1505c289e43c47b' title='ci: fix deploy commands to match VPS setup (systemctl + chatsync user)'>ci: fix deploy commands to match VPS setup (systemctl + chatsync user) />
+[81] (439,313)<tr  />
+	[82] (287,313)<a aria-label='public, (Directory)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/tree/main/public' title='public'>public />
+	[83] (485,313)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/fe15d9f8e98c6d1af3edaca383a88c3a56eeba70' title='fix: add horizontal scroll to invoice table for all columns visible'>fix: add horizontal scroll to invoice table for all columns visible />
+[84] (439,344)<tr  />
+	[85] (283,344)<a aria-label='src, (Directory)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/tree/main/src' title='src'>src />
+	[86] (494,344)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/3359d3b7869b79ce3d5685da5db9065f1788095d' title='feat: Monthly Invoice - separate tab, premium UI, closed-tasks-only logic'>feat: Monthly Invoice - separate tab, premium UI, closed-tasks-only l… />
+[87] (439,375)<tr  />
+	[88] (295,375)<a aria-label='.env.example, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/.env.example' title='.env.example'>.env.example />
+	[89] (492,375)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/9de23aad84e20463a84a61bf939a9a50fe176303' title='refactor: code review fixes (13/13) + Drive sync native file protection
+
+P0: Remove debug log (slack.js), fix race condition cron (server.js)
+P1: JWT secret required from env, bcrypt password hashing, dynamic ClickUp List IDs, NocoDB-based reminders
+P2: Refactor ClickUp handler into 3 modules (comment-sync, pm-tracking, slack-automation), Drive API retry with backoff, .gitignore cleanup
+P3: .env.example, CORS restriction, improved health check
+Fix: Studio native files preserved during client->studio mirror delete'>refactor: code review fixes (13/13) + Drive sync native file protection />
+[90] (439,406)<tr  />
+	[91] (291,406)<a aria-label='.gitignore, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/.gitignore' title='.gitignore'>.gitignore />
+	[92] (492,406)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/9de23aad84e20463a84a61bf939a9a50fe176303' title='refactor: code review fixes (13/13) + Drive sync native file protection
+
+P0: Remove debug log (slack.js), fix race condition cron (server.js)
+P1: JWT secret required from env, bcrypt password hashing, dynamic ClickUp List IDs, NocoDB-based reminders
+P2: Refactor ClickUp handler into 3 modules (comment-sync, pm-tracking, slack-automation), Drive API retry with backoff, .gitignore cleanup
+P3: .env.example, CORS restriction, improved health check
+Fix: Studio native files preserved during client->studio mirror delete'>refactor: code review fixes (13/13) + Drive sync native file protection />
+[93] (439,438)<tr  />
+	[94] (294,437)<a aria-label='README.md, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/README.md' title='README.md'>README.md />
+	[95] (499,437)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/bf6761cf52ca72ee4895abde6873e20cb4606304' title='docs: update README with Discord List Mapping, handlers, and auto-threading features'>docs: update README with Discord List Mapping, handlers, and auto-thr… />
+[96] (439,469)<tr  />
+	[97] (306,469)<a aria-label='create-nocodb-table.js, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/create-nocodb-table.js' title='create-nocodb-table.js'>create-nocodb-table.js />
+	[98] (494,469)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/00913b61851cf6064bd4bcca009bbe0cb5fc861d' title='feat: ClickUp to Slack auto-threading, UI List Configs, and PM Currency tracking'>feat: ClickUp to Slack auto-threading, UI List Configs, and PM Curren… />
+[99] (439,500)<tr  />
+	[100] (307,500)<a aria-label='create-table-output.txt, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/create-table-output.txt' title='create-table-output.txt'>create-table-output.txt />
+	[101] (494,500)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/00913b61851cf6064bd4bcca009bbe0cb5fc861d' title='feat: ClickUp to Slack auto-threading, UI List Configs, and PM Currency tracking'>feat: ClickUp to Slack auto-threading, UI List Configs, and PM Curren… />
+[102] (439,531)<tr  />
+	[103] (304,531)<a aria-label='debug-webhooks.txt, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/debug-webhooks.txt' title='debug-webhooks.txt'>debug-webhooks.txt />
+	[104] (494,531)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/00913b61851cf6064bd4bcca009bbe0cb5fc861d' title='feat: ClickUp to Slack auto-threading, UI List Configs, and PM Currency tracking'>feat: ClickUp to Slack auto-threading, UI List Configs, and PM Curren… />
+[105] (439,562)<tr  />
+	[106] (291,562)<a aria-label='deploy.sh, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/deploy.sh' title='deploy.sh'>deploy.sh />
+	[107] (461,562)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/a5710374d0b0379ab4e845cf0e962a7fed315321' title='ci: add GitHub Actions auto-deploy to VPS'>ci: add GitHub Actions auto-deploy to VPS />
+[108] (439,593)<tr  />
+	[109] (296,593)<a aria-label='fix-columns.js, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/fix-columns.js' title='fix-columns.js'>fix-columns.js />
+	[110] (494,593)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/00913b61851cf6064bd4bcca009bbe0cb5fc861d' title='feat: ClickUp to Slack auto-threading, UI List Configs, and PM Currency tracking'>feat: ClickUp to Slack auto-threading, UI List Configs, and PM Curren… />
+[111] (439,625)<tr  />
+	[112] (299,624)<a aria-label='folder-output.txt, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/folder-output.txt' title='folder-output.txt'>folder-output.txt />
+	[113] (494,624)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/00913b61851cf6064bd4bcca009bbe0cb5fc861d' title='feat: ClickUp to Slack auto-threading, UI List Configs, and PM Currency tracking'>feat: ClickUp to Slack auto-threading, UI List Configs, and PM Curren… />
+[114] (439,656)<tr  />
+	[115] (307,656)<a aria-label='import-existing-tasks.js, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/import-existing-tasks.js' title='import-existing-tasks.js'>import-existing-tasks.js />
+	[116] (494,656)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/00913b61851cf6064bd4bcca009bbe0cb5fc861d' title='feat: ClickUp to Slack auto-threading, UI List Configs, and PM Currency tracking'>feat: ClickUp to Slack auto-threading, UI List Configs, and PM Curren… />
+[117] (439,687)<tr  />
+	[118] (297,687)<a aria-label='list-statuses.txt, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/list-statuses.txt' title='list-statuses.txt'>list-statuses.txt />
+	[119] (494,687)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/00913b61851cf6064bd4bcca009bbe0cb5fc861d' title='feat: ClickUp to Slack auto-threading, UI List Configs, and PM Currency tracking'>feat: ClickUp to Slack auto-threading, UI List Configs, and PM Curren… />
+[120] (439,718)<tr  />
+	[121] (301,718)<a aria-label='package-lock.json, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/package-lock.json' title='package-lock.json'>package-lock.json />
+	[122] (492,718)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/9de23aad84e20463a84a61bf939a9a50fe176303' title='refactor: code review fixes (13/13) + Drive sync native file protection
+
+P0: Remove debug log (slack.js), fix race condition cron (server.js)
+P1: JWT secret required from env, bcrypt password hashing, dynamic ClickUp List IDs, NocoDB-based reminders
+P2: Refactor ClickUp handler into 3 modules (comment-sync, pm-tracking, slack-automation), Drive API retry with backoff, .gitignore cleanup
+P3: .env.example, CORS restriction, improved health check
+Fix: Studio native files preserved during client->studio mirror delete'>refactor: code review fixes (13/13) + Drive sync native file protection />
+[123] (439,749)<tr  />
+	[124] (295,749)<a aria-label='package.json, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/package.json' title='package.json'>package.json />
+	[125] (492,749)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/9de23aad84e20463a84a61bf939a9a50fe176303' title='refactor: code review fixes (13/13) + Drive sync native file protection
+
+P0: Remove debug log (slack.js), fix race condition cron (server.js)
+P1: JWT secret required from env, bcrypt password hashing, dynamic ClickUp List IDs, NocoDB-based reminders
+P2: Refactor ClickUp handler into 3 modules (comment-sync, pm-tracking, slack-automation), Drive API retry with backoff, .gitignore cleanup
+P3: .env.example, CORS restriction, improved health check
+Fix: Studio native files preserved during client->studio mirror delete'>refactor: code review fixes (13/13) + Drive sync native file protection />
+[126] (439,780)<tr  />
+	[127] (289,780)<a aria-label='server.js, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/server.js' title='server.js'>server.js />
+	[128] (485,780)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/81ec156d7addc34ffb739aa2b4f59db6d65726d8' title='fix: disable browser caching for JS/CSS to ensure fresh deploys'>fix: disable browser caching for JS/CSS to ensure fresh deploys />
+[129] (439,811)<tr  />
+	[130] (306,811)<a aria-label='setup-list-mappings.js, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/setup-list-mappings.js' title='setup-list-mappings.js'>setup-list-mappings.js />
+	[131] (494,811)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/00913b61851cf6064bd4bcca009bbe0cb5fc861d' title='feat: ClickUp to Slack auto-threading, UI List Configs, and PM Currency tracking'>feat: ClickUp to Slack auto-threading, UI List Configs, and PM Curren… />
+[132] (439,843)<tr  />
+	[133] (304,843)<a aria-label='test-clickup-folder.js, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/test-clickup-folder.js' title='test-clickup-folder.js'>test-clickup-folder.js />
+	[134] (494,843)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/00913b61851cf6064bd4bcca009bbe0cb5fc861d' title='feat: ClickUp to Slack auto-threading, UI List Configs, and PM Currency tracking'>feat: ClickUp to Slack auto-threading, UI List Configs, and PM Curren… />
+[135] (439,874)<tr  />
+	[136] (306,874)<a aria-label='test-clickup-statuses.js, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/test-clickup-statuses.js' title='test-clickup-statuses.js'>test-clickup-statuses.js />
+	[137] (494,874)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/00913b61851cf6064bd4bcca009bbe0cb5fc861d' title='feat: ClickUp to Slack auto-threading, UI List Configs, and PM Currency tracking'>feat: ClickUp to Slack auto-threading, UI List Configs, and PM Curren… />
+[138] (439,905)<tr  />
+	[139] (308,905)<a aria-label='test-clickup-summary.js, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/test-clickup-summary.js' title='test-clickup-summary.js'>test-clickup-summary.js />
+	[140] (494,905)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/00913b61851cf6064bd4bcca009bbe0cb5fc861d' title='feat: ClickUp to Slack auto-threading, UI List Configs, and PM Currency tracking'>feat: ClickUp to Slack auto-threading, UI List Configs, and PM Curren… />
+[141] (439,936)<tr  />
+	[142] (295,936)<a aria-label='test-clickup.js, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/test-clickup.js' title='test-clickup.js'>test-clickup.js />
+	[143] (494,936)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/00913b61851cf6064bd4bcca009bbe0cb5fc861d' title='feat: ClickUp to Slack auto-threading, UI List Configs, and PM Currency tracking'>feat: ClickUp to Slack auto-threading, UI List Configs, and PM Curren… />
+[144] (439,967)<tr  />
+	[145] (293,967)<a aria-label='test-drive.js, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/test-drive.js' title='test-drive.js'>test-drive.js />
+	[146] (493,967)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/535f32c857aedc70aaae4adc3b5c7a90371f3976' title='feat: Add Custom Project Hierarchy, Table Filters, and Directional Sync Configurations'>feat: Add Custom Project Hierarchy, Table Filters, and Directional Sy… />
+[147] (439,998)<tr  />
+	[148] (300,998)<a aria-label='test-slack-auto.js, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/test-slack-auto.js' title='test-slack-auto.js'>test-slack-auto.js />
+	feat: ClickUp to Slack auto-threading, UI List Configs, and PM Curren…
+About
+No description, website, or topics provided.
+Resources
+[149] (646,245)<a class='Link--muted' href='#readme-ov-file'>Readme />
+[150] (646,267)<a class='Link Link--muted' href='/tdgamesvn/sync_slack_discord_clickup_drive/activity' />
+	[151] (651,267)<span >Activity />
+Stars
+[152] (645,290)<a class='Link Link--muted' href='/tdgamesvn/sync_slack_discord_clickup_drive/stargazers'>stars />
+	[153] (644,290)<strong >0 />
+Watchers
+[154] (650,312)<a class='Link Link--muted' href='/tdgamesvn/sync_slack_discord_clickup_drive/watchers'>watching />
+	[155] (644,312)<strong >0 />
+Forks
+[156] (645,334)<a class='Link Link--muted' href='/tdgamesvn/sync_slack_discord_clickup_drive/forks'>forks />
+	[157] (644,334)<strong >0 />
+[158] (652,356)<a class='Link--muted' href='/contact/report-content?content_url=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive&report=tdgamesvn+%28user%29'>Report repository />
+[159] (643,399)<a class='Link--primary no-underline Link' href='/tdgamesvn/sync_slack_discord_clickup_drive/releases'>Releases />
+No releases published
+[160] (684,468)<a class='Link--primary no-underline Link d-flex flex-items-center' href='/users/tdgamesvn/packages?repo_name=sync_slack_discord_clickup_drive'>Packages />
+No packages published
+[161] (684,538)<a class='Link--primary no-underline Link d-flex flex-items-center' href='/tdgamesvn/sync_slack_discord_clickup_drive/graphs/contributors'>Contributors />
+	[162] (673,538)<span >1 />
+[163] (638,572)<a class='mr-2' href='https://github.com/tdgamesvn' />
+	[164] (638,572)<img  />
+[165] (661,571)<a class='Link--primary no-underline flex-self-center' href='https://github.com/tdgamesvn' />
+	[166] (661,571)<strong >tdgamesvn />
+Languages
+[167] (654,665)<a class='d-inline-flex flex-items-center flex-nowrap Link--secondary no-underline text-small tmp-mr-3' href='/tdgamesvn/sync_slack_discord_clickup_drive/search?l=javascript' />
+	[168] (651,665)<span >JavaScript />
+	[169] (670,665)<span >81.7% />
+[170] (698,665)<a class='d-inline-flex flex-items-center flex-nowrap Link--secondary no-underline text-small tmp-mr-3' href='/tdgamesvn/sync_slack_discord_clickup_drive/search?l=css' />
+	[171] (697,665)<span >CSS />
+	[172] (708,665)<span >9.3% />
+[173] (648,682)<a class='d-inline-flex flex-items-center flex-nowrap Link--secondary no-underline text-small tmp-mr-3' href='/tdgamesvn/sync_slack_discord_clickup_drive/search?l=html' />
+	[174] (647,682)<span >HTML />
+	[175] (660,682)<span >8.7% />
+[176] (688,682)<a class='d-inline-flex flex-items-center flex-nowrap Link--secondary no-underline text-small tmp-mr-3' href='/tdgamesvn/sync_slack_discord_clickup_drive/search?l=shell' />
+	[177] (687,682)<span >Shell />
+	[178] (699,682)<span >0.3% />
+
+</current_dom>

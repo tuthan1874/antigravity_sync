@@ -1,0 +1,12 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Kaspersky Premium
+Đã chặn hoạt động truy cập website không được tin tưởng
+Website này có một hoặc nhiều chứng chỉ không hợp lệ, vì vậy chúng tôi không thể đảm bảo độ xác thực của website đó. Chủ sở hữu website có thể đã không cập nhật chứng chỉ kịp thời hoặc đó có thể là website giả mạo do những kẻ lừa đảo tạo ra. Truy cập website như vậy sẽ khiến bạn dễ bị tấn công hơn.
+Chúng tôi đã bảo vệ để bạn không truy cập website này. Bạn có thể yên tâm đóng cửa sổ này.
+[0] (421,256)<label class='spoiler-label' />
+	[1] (415,257)<span >Hiển thị chi tiết />
+
+</current_dom>

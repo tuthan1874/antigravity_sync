@@ -1,6 +1,8 @@
-# Invoice Dual Currency & Logo Updates
+# Session Tasks — 2026-03-11
 
-- [x] Save TD Games logo to [public/td-games-logo.png](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/td-games-logo.png)
-- [x] Update [index.html](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/index.html) — sidebar logo and login page logo
-- [x] Update [app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js) — invoice header with logo, mixed-currency summary, currency flag per assignee
-- [ ] Commit, push, and auto-deploy via GitHub Actions
+- [x] Push pending code to GitHub
+- [x] Set up GitHub Actions CI/CD auto-deploy to VPS
+- [x] Add TD Games logo to sidebar, login, and invoice header
+- [x] Add dual currency support (VNĐ/USD) to invoice
+- [x] Add Notes and Bonus Notes columns to invoice table
+- [x] Fix deploy issues (cache + git reset --hard)

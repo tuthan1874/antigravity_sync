@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan for adding cascade pause/delete behavior from ListMappings to SyncConfigs. Covers adding a List_Mapping_Id column to SyncConfigs, updating automation handlers to store the link, updating API endpoints for cascade, and backfilling existing records.",
+  "updatedAt": "2026-03-12T11:54:24.721955900Z"
+}

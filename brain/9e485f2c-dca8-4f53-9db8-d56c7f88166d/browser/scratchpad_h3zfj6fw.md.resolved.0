@@ -1,0 +1,11 @@
+# VPS Code Verification Task
+
+## Task Checklist
+- [ ] Open `http://180.93.144.98:3000/app.js` in the browser
+- [ ] Check for string "Bonus_Reason"
+- [ ] Check for string "Bonus Note"
+- [ ] Report results
+
+## Information Found
+- URL: `http://180.93.144.98:3000/app.js`
+- Target strings: `Bonus_Reason`, `Bonus Note`

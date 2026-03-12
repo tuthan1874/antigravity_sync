@@ -1,0 +1,17 @@
+# VPS Code Verification Task
+
+## Task Checklist
+- [x] Open `http://180.93.144.98:3000/app.js` in the browser
+- [ ] Check for string "Bonus_Reason"
+- [ ] Check for string "Bonus Note"
+- [ ] Report results
+
+## Information Found
+- URL: `http://180.93.144.98:3000/app.js`
+- Response: `{"detail":"Not Found"}` at port 3000.
+- Observations: `http://180.93.144.98:3000/` serves "Open WebUI".
+- Port 3001: Timed out.
+- Port 80: Blocked by Kaspersky.
+- Note: The user's app might be on a different port or the path is different.
+- GitHub Repo: `tdgamesvn/sync_slack_discord_clickup_drive`
+- Repo findings: Default port is 3000, `app.js` should be in `public/`.

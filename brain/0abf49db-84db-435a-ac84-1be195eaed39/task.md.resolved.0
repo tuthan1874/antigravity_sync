@@ -1,0 +1,13 @@
+# Cascade Pause/Delete from ListMappings to SyncConfigs
+
+## Tasks
+- [x] Research codebase architecture (ListMappings, SyncConfigs, automation handlers)
+- [x] Analyze NocoDB table schemas and data relationships
+- [/] Write implementation plan
+- [ ] Add `List_Mapping_Id` column to SyncConfigs table in NocoDB
+- [ ] Update [slack-automation.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/handlers/slack-automation.js) to store `List_Mapping_Id` when creating SyncConfigs
+- [ ] Update [discord-automation.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/handlers/discord-automation.js) to store `List_Mapping_Id` when creating SyncConfigs
+- [ ] Add `getSyncConfigsByListMappingId()` function to [nocodb.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js)
+- [ ] Update API: cascade pause/delete on `PUT /api/list-mappings/:id` and `DELETE /api/list-mappings/:id`
+- [ ] Backfill existing SyncConfigs with correct `List_Mapping_Id`
+- [ ] Verify changes

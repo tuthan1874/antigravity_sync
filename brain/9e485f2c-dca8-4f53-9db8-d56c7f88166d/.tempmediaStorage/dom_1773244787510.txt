@@ -1,0 +1,100 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Skip to content
+Navigation Menu
+[0] (19,28)<a aria-label='Homepage' class='tmp-mr-lg-3 color-fg-inherit flex-order-2 js-prevent-focus-on-mobile-nav' href='/' />
+[1] (50,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Platform />
+[2] (89,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Solutions />
+[3] (129,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Resources />
+[4] (175,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Open Source />
+[5] (221,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Enterprise />
+[6] (254,28)<a class='NavLink-module__link__EG3d4 MarketingNavigation-module__navLink__hUomM' href='https://github.com/pricing' />
+	[7] (254,28)<span >Pricing />
+[8] (844,28)<button aria-label='Search or jump to…' class='header-search-button placeholder input-button form-control d-flex flex-1 flex-self-stretch flex-items-center no-wrap width-full py-0 pl-2 pr-0 text-left border-0 box-shadow-none' placeholder='Search or jump to...' />
+	[9] (788,28)<div  />
+	[10] (844,28)<span >Search or jump to... />
+	[11] (902,28)<div  />
+[12] (924,28)<a class='HeaderMenu-link HeaderMenu-link--sign-in HeaderMenu-button flex-shrink-0 no-underline d-none d-lg-inline-flex border border-lg-0 rounded px-2 py-1' href='/login?return_to=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive%2Factions'>Sign in />
+[13] (956,28)<a class='HeaderMenu-link HeaderMenu-link--sign-up HeaderMenu-button flex-shrink-0 d-flex d-lg-inline-flex no-underline border color-border-default rounded px-2 py-1' href='/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Factions%2Findex&source=header-repo&source_repo=tdgamesvn%2Fsync_slack_discord_clickup_drive'>Sign up />
+[14] (981,28)<button class='Button Button--iconOnly Button--invisible Button--medium AppHeader-button HeaderMenu-link border' id='icon-button-6d381e9c-3a2c-41d7-9c9d-770aaf31c564' />
+[15] (41,79)<a class='url fn' href='/tdgamesvn'>tdgamesvn />
+/
+[16] (123,79)<a href='/tdgamesvn/sync_slack_discord_clickup_drive'>sync_slack_discord_clickup_drive />
+Public
+[17] (881,78)<a aria-label='You must be signed in to change notification settings' class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive' id='repository-details-watch-button'>Notifications />
+[18] (926,78)<a class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive' id='fork-button'>Fork />
+	[19] (937,78)<span >0 />
+[20] (968,78)<a aria-label='You must be signed in to star a repository' class='tooltipped tooltipped-sw btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive' />
+	[21] (969,78)<span >Star />
+	[22] (979,78)<span >0 />
+[23] (27,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive' id='code-tab' />
+	[24] (31,121)<span >Code />
+[25] (59,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/issues' id='issues-tab' />
+	[26] (64,121)<span >Issues />
+[27] (107,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/pulls' id='pull-requests-tab' />
+	[28] (106,121)<span >Pull requests />
+	[29] (129,121)<span >1 />
+[30] (156,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions' id='actions-tab' />
+	[31] (161,121)<span >Actions />
+[32] (194,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/projects' id='projects-tab' />
+	[33] (199,121)<span >Projects />
+[34] (232,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/security' id='security-tab' />
+	[35] (237,121)<span >Security />
+[36] (271,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/pulse' id='insights-tab' />
+	[37] (275,121)<span >Insights />
+[38] (34,161)<a class='Link' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions/workflows/deploy.yml' />
+	[39] (38,161)<span >Deploy to VPS />
+fix: disable browser caching for JS/CSS to ensure fresh deploys
+#7
+[40] (960,183)<a class='btn' href='/login?return_to=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive%2Factions%2Fruns%2F22961084765'>Sign in to view logs />
+[41] (66,314)<div  />
+	[42] (66,238)<a class='prc-ActionList-ActionListContent-KBb8- prc-Link-Link-9ZwDx' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions/runs/22961084765' id='_r_6_' />
+		[43] (70,238)<span  />
+			[44] (70,238)<span >Summary />
+	All jobs
+	[45] (113,266)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' id='_r_7_' />
+	[46] (66,306)<a class='prc-ActionList-ActionListContent-KBb8- prc-Link-Link-9ZwDx' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions/runs/22961084765/job/66651599903' id='_r_h_' />
+		[47] (70,306)<span  />
+			[48] (70,306)<span >Deploy to Production VPS />
+	Run details
+	[49] (66,366)<a class='prc-ActionList-ActionListContent-KBb8- prc-Link-Link-9ZwDx' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions/runs/22961084765/usage' id='_r_d_' />
+		[50] (70,366)<span  />
+			[51] (70,366)<span >Usage />
+	[52] (66,390)<a class='prc-ActionList-ActionListContent-KBb8- prc-Link-Link-9ZwDx' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions/runs/22961084765/workflow' id='_r_e_' />
+		[53] (70,390)<span  />
+			[54] (70,390)<span >Workflow file />
+Triggered via push
+[55] (166,263)<a class='Link--primary text-semibold mr-1 no-underline' href='/tdgamesvn'>tdgamesvn />
+	[56] (152,264)<img  />
+pushed
+[57] (219,264)<a class='Link--primary text-small Link--inTextBlock ml-1' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/81ec156d7addc34ffb739aa2b4f59db6d65726d8'>81ec156 />
+[58] (240,263)<a class='d-inline-block branch-name css-truncate css-truncate-target my-0 my-md-1' href='/tdgamesvn/sync_slack_discord_clickup_drive/tree/refs/heads/main' title='main'>main />
+Status
+Success
+Total duration
+[59] (324,262)<a class='h4 Link--inTextBlock Link--primary color-fg-default' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions/runs/22961084765/usage'>16s />
+Artifacts
+–
+[60] (566,392)<div class='actions-fullwidth-module WorkflowGraph color-shadow-small tmp-mb-3 border rounded color-bg-inset overflow-hidden position-relative p-2 border-top-0 border-md-top' />
+	[61] (566,335)<div  />
+		[62] (164,333)<div  />
+			[63] (164,326)<h2  />
+				[64] (164,326)<a class='Link--primary no-underline' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions/runs/22961084765/workflow'>deploy.yml />
+			[65] (164,342)<div >on: push />
+	[66] (567,419)<div class='width-full height-full position-relative px-2 mx-md-1' />
+		[67] (567,419)<div  />
+			[68] (210,419)<div  />
+				[69] (199,419)<div  />
+					[70] (199,410)<div class='WorkflowCard  position-relative rounded-2 border tmp-mb-6 tmp-my-3' id='group-_' />
+						[71] (199,410)<streaming-graph-job class='js-socket-channel WorkflowJob position-relative rounded-2 width-full' />
+							[72] (199,410)<a class='WorkflowJob-title d-flex flex-items-center no-underline f5 ' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions/runs/22961084765/job/66651599903' id='workflow-job-name-deploy' />
+								Deploy to Production VPS
+								11s
+	[73] (966,458)<div  />
+		[74] (972,456)<div  />
+			[75] (967,456)<div  />
+			[76] (977,456)<div  />
+
+</current_dom>

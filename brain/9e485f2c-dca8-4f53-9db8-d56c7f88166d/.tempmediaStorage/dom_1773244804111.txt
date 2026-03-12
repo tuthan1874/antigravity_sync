@@ -1,0 +1,253 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Skip to content
+Navigation Menu
+[0] (19,28)<a aria-label='Homepage' class='tmp-mr-lg-3 color-fg-inherit flex-order-2 js-prevent-focus-on-mobile-nav' href='/' />
+[1] (50,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Platform />
+[2] (89,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Solutions />
+[3] (129,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Resources />
+[4] (175,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Open Source />
+[5] (221,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Enterprise />
+[6] (254,28)<a class='NavLink-module__link__EG3d4 MarketingNavigation-module__navLink__hUomM' href='https://github.com/pricing' />
+	[7] (254,28)<span >Pricing />
+[8] (844,28)<button aria-label='Search or jump to…' class='header-search-button placeholder input-button form-control d-flex flex-1 flex-self-stretch flex-items-center no-wrap width-full py-0 pl-2 pr-0 text-left border-0 box-shadow-none' placeholder='Search or jump to...' />
+	[9] (788,28)<div  />
+	[10] (844,28)<span >Search or jump to... />
+	[11] (902,28)<div  />
+[12] (924,28)<a class='HeaderMenu-link HeaderMenu-link--sign-in HeaderMenu-button flex-shrink-0 no-underline d-none d-lg-inline-flex border border-lg-0 rounded px-2 py-1' href='/login?return_to=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive%2Fblob%2Fmain%2FREADME.md'>Sign in />
+[13] (956,28)<a class='HeaderMenu-link HeaderMenu-link--sign-up HeaderMenu-button flex-shrink-0 d-flex d-lg-inline-flex no-underline border color-border-default rounded px-2 py-1' href='/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fblob%2Fshow&source=header-repo&source_repo=tdgamesvn%2Fsync_slack_discord_clickup_drive'>Sign up />
+[14] (41,79)<a class='url fn' href='/tdgamesvn'>tdgamesvn />
+/
+[15] (123,79)<a href='/tdgamesvn/sync_slack_discord_clickup_drive'>sync_slack_discord_clickup_drive />
+Public
+[16] (881,78)<a aria-label='You must be signed in to change notification settings' class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive' id='repository-details-watch-button'>Notifications />
+[17] (926,78)<a class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive' id='fork-button'>Fork />
+	[18] (937,78)<span >0 />
+[19] (968,78)<a aria-label='You must be signed in to star a repository' class='tooltipped tooltipped-sw btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive' />
+	[20] (969,78)<span >Star />
+	[21] (979,78)<span >0 />
+[22] (27,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected' href='/tdgamesvn/sync_slack_discord_clickup_drive' id='code-tab' />
+	[23] (31,121)<span >Code />
+[24] (59,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/issues' id='issues-tab' />
+	[25] (64,121)<span >Issues />
+[26] (107,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/pulls' id='pull-requests-tab' />
+	[27] (106,121)<span >Pull requests />
+	[28] (129,121)<span >1 />
+[29] (156,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions' id='actions-tab' />
+	[30] (161,121)<span >Actions />
+[31] (194,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/projects' id='projects-tab' />
+	[32] (199,121)<span >Projects />
+[33] (232,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/security' id='security-tab' />
+	[34] (237,121)<span >Security />
+[35] (271,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/pulse' id='insights-tab' />
+	[36] (275,121)<span >Insights />
+[37] (13,164)<button class='prc-Button-ButtonBase-9n-Xk position-relative ExpandFileTreeButton-module__expandButton__hDOcv fgColor-muted prc-Button-IconButton-fyge7' />
+Files
+[38] (55,201)<button aria-label='main branch' class='prc-Button-ButtonBase-9n-Xk react-repos-tree-pane-ref-selector width-full ref-selector-class RefSelectorAnchoredOverlay-module__RefSelectorOverlayBtn__a3WK3' id='ref-picker-repos-header-ref-selector' />
+	[39] (55,201)<span  />
+		[40] (50,201)<span  />
+			[41] (50,201)<div  />
+				[42] (14,201)<div  />
+				[43] (26,201)<div  />
+					[44] (26,200)<span >main />
+[45] (113,201)<button class='prc-Button-ButtonBase-9n-Xk SearchButton-module__IconButton__SBlqu prc-Button-IconButton-fyge7' />
+[46] (63,231)<span  />
+	[47] (13,231)<span  />
+	[48] (66,231)<input aria-label='Go to file' class='prc-components-Input-IwWrt' placeholder='Go to file' role='combobox' />
+[49] (60,587)<div  />
+	[50] (60,265)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.agent-item' role='treeitem' />
+		[51] (60,265)<div  />
+			.agent
+	[52] (60,290)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.github-item' role='treeitem' />
+		[53] (60,290)<div  />
+			.github
+	[54] (60,314)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='public-item' role='treeitem' />
+		[55] (60,314)<div  />
+			public
+	[56] (60,339)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='src-item' role='treeitem' />
+		[57] (60,339)<div  />
+			src
+	[58] (60,363)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.env.example-item' role='treeitem' />
+		[59] (60,363)<div  />
+			.env.example
+	[60] (60,388)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.gitignore-item' role='treeitem' />
+		[61] (60,388)<div  />
+			.gitignore
+	[62] (60,412)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='README.md-item' role='treeitem' />
+		[63] (60,412)<div  />
+			[64] (63,412)<div  />
+				[65] (19,412)<div  />
+				[66] (67,412)<span  />
+					[67] (40,412)<span >README.md />
+	[68] (60,437)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='create-nocodb-table.js-item' role='treeitem' />
+		[69] (60,437)<div  />
+			create-nocodb-table.js
+	[70] (60,461)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='create-table-output.txt-item' role='treeitem' />
+		[71] (60,461)<div  />
+			create-table-output.txt
+	[72] (60,486)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='debug-webhooks.txt-item' role='treeitem' />
+		[73] (60,486)<div  />
+			debug-webhooks.txt
+	[74] (60,510)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='deploy.sh-item' role='treeitem' />
+		[75] (60,510)<div  />
+			deploy.sh
+	[76] (60,535)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='fix-columns.js-item' role='treeitem' />
+		[77] (60,535)<div  />
+			fix-columns.js
+	[78] (60,560)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='folder-output.txt-item' role='treeitem' />
+		[79] (60,560)<div  />
+			folder-output.txt
+	[80] (60,584)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='import-existing-tasks.js-item' role='treeitem' />
+		[81] (60,584)<div  />
+			import-existing-tasks.js
+	[82] (60,609)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='list-statuses.txt-item' role='treeitem' />
+		[83] (60,609)<div  />
+			list-statuses.txt
+	[84] (60,633)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='package-lock.json-item' role='treeitem' />
+		[85] (60,633)<div  />
+			package-lock.json
+	[86] (60,658)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='package.json-item' role='treeitem' />
+		[87] (60,658)<div  />
+			package.json
+	[88] (60,682)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='server.js-item' role='treeitem' />
+		[89] (60,682)<div  />
+			server.js
+	[90] (60,707)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='setup-list-mappings.js-item' role='treeitem' />
+		[91] (60,707)<div  />
+			setup-list-mappings.js
+	[92] (60,731)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='test-clickup-folder.js-item' role='treeitem' />
+		[93] (60,731)<div  />
+			test-clickup-folder.js
+	[94] (60,756)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='test-clickup-statuses.js-item' role='treeitem' />
+		[95] (60,756)<div  />
+			test-clickup-statuses.js
+	[96] (60,780)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='test-clickup-summary.js-item' role='treeitem' />
+		[97] (60,780)<div  />
+			test-clickup-summary.js
+	[98] (60,805)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='test-clickup.js-item' role='treeitem' />
+		[99] (60,805)<div  />
+			test-clickup.js
+	[100] (60,829)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='test-drive.js-item' role='treeitem' />
+		[101] (60,829)<div  />
+			test-drive.js
+	[102] (60,854)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='test-slack-auto.js-item' role='treeitem' />
+		[103] (60,854)<div  />
+			test-slack-auto.js
+	[104] (60,878)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='tmp_syncconfigs.json-item' role='treeitem' />
+		[105] (60,878)<div  />
+			tmp_syncconfigs.json
+	[106] (60,903)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='update-currency-col.js-item' role='treeitem' />
+		[107] (60,903)<div  />
+			update-currency-col.js
+[108] (125,640)<div aria-label='Draggable pane splitter' class='prc-PageLayout-DraggableHandle-9s6B4' role='slider' />
+Breadcrumbs
+[109] (177,164)<a class='Breadcrumb-module__repoLink__O2Nbs prc-Link-Link-9ZwDx' href='/tdgamesvn/sync_slack_discord_clickup_drive/tree/main'>sync_slack_discord_clickup_drive />
+/
+README.md
+[110] (276,164)<button class='prc-Button-ButtonBase-9n-Xk ml-2 prc-Button-IconButton-fyge7' />
+[111] (988,164)<button class='prc-Button-ButtonBase-9n-Xk js-blob-dropdown-click NavigationMenu-module__IconButton__HpX3G prc-Button-IconButton-fyge7' id='_R_96dajal1d_' />
+Latest commit
+[112] (142,206)<a class='Link__StyledLink-sc-1syctfj-0 prc-Link-Link-9ZwDx' href='/tdgamesvn' />
+	[113] (141,207)<img  />
+[114] (162,206)<a aria-label='commits by tdgamesvn' class='Link__StyledLink-sc-1syctfj-0 iIGVMW AuthorAvatar-module__authorHoverableLink__MHTT8 prc-Link-Link-9ZwDx' href='/tdgamesvn/sync_slack_discord_clickup_drive/commits?author=tdgamesvn'>tdgamesvn />
+[115] (268,205)<a class='Link--secondary' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/bf6761cf52ca72ee4895abde6873e20cb4606304'>docs: update README with Discord List Mapping, handlers, and auto-thr… />
+[116] (366,206)<button class='prc-Button-ButtonBase-9n-Xk LatestCommit-module__IconButton__mkJr_ prc-Button-IconButton-fyge7' />
+[117] (923,206)<a aria-label='Commit bf6761c' class='Link--secondary prc-Link-Link-9ZwDx' href='/tdgamesvn/sync_slack_discord_clickup_drive/commit/bf6761cf52ca72ee4895abde6873e20cb4606304'>bf6761c />
+·
+History
+[118] (975,206)<a class='prc-Button-ButtonBase-9n-Xk d-none d-lg-flex LinkButton-module__linkButton__nFnov flex-items-center fgColor-default' href='/tdgamesvn/sync_slack_discord_clickup_drive/commits/main/README.md' />
+	[119] (975,206)<span  />
+		[120] (979,206)<span  />
+			[121] (979,206)<span >History />
+File metadata and controls
+[122] (150,253)<button class='prc-SegmentedControl-Button-E48xz' />
+	[123] (150,253)<span  />
+		[124] (150,253)<div >Preview />
+[125] (176,253)<button class='prc-SegmentedControl-Button-E48xz' />
+	[126] (176,253)<span  />
+		[127] (176,253)<div >Code />
+[128] (200,253)<button class='prc-SegmentedControl-Button-E48xz' />
+	[129] (200,253)<span  />
+		[130] (200,253)<div >Blame />
+268 lines (221 loc) · 9.15 KB
+[131] (920,253)<a class='prc-Button-ButtonBase-9n-Xk LinkButton-module__linkButton__nFnov BlobViewHeader-module__LinkButton__X9kx2' href='https://github.com/tdgamesvn/sync_slack_discord_clickup_drive/raw/refs/heads/main/README.md' />
+	[132] (920,253)<span  />
+		[133] (920,253)<span >Raw />
+[134] (933,253)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' />
+[135] (944,253)<button class='prc-Button-ButtonBase-9n-Xk BlobViewHeader-module__downloadButton__ef459 prc-Button-IconButton-fyge7' />
+[136] (968,253)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' id='_r_3v_' />
+[137] (982,253)<button class='prc-Button-ButtonBase-9n-Xk pr-mr-2 TableOfContents-module__IconButton__jrlNM prc-Button-IconButton-fyge7' />
+⚡ ChatSync — ClickUp ↔ Slack ↔ Discord + Google Drive
+[138] (360,311)<a aria-label='Permalink: ⚡ ChatSync — ClickUp ↔ Slack ↔ Discord + Google Drive' class='anchor' href='#-chatsync--clickup--slack--discord--google-drive' id='user-content--chatsync--clickup--slack--discord--google-drive' />
+Real-time, bidirectional chat synchronization between
+ClickUp
+,
+Slack
+, and
+Discord
+with one-way
+Google Drive
+folder sync.
+✨ Features
+[139] (360,394)<a aria-label='Permalink: ✨ Features' class='anchor' href='#-features' id='user-content--features' />
+Chat Sync
+: Messages (text + files) sync across ClickUp comments, Slack threads, and Discord threads
+Bidirectional
+: Send from any platform → other two receive instantly
+File Attachments
+: Images and files are downloaded and re-uploaded across platforms
+List Mappings
+: Map ClickUp Lists → Slack & Discord channels for auto-threading, status updates, and reviewer pings
+Auto-Threading
+: New ClickUp tasks auto-create threaded messages on Slack and Discord
+Reviewer Ping
+: Automatically tag reviewers on Slack/Discord when task status →
+CLIENT_REVIEW
+Task Cleanup
+: Deleting a ClickUp task removes the Slack thread and archives/locks the Discord thread
+Custom Name Mappings
+: Override display names (e.g., "NA" → "Art Director")
+Drive Sync
+: One-way folder sync from studio → client Google Drive folders
+PM Finance Tracking
+: Track task costs and payment status synced from ClickUp
+Dashboard UI & Security
+: Web-based admin panel protected by JWT authentication and NocoDB
+Account
+table
+Action Logs
+: Track system sync logs and identify the user responsible (
+Action By
+feature)
+Loop Prevention
+: Smart detection prevents infinite message loops
+🏗️ Architecture
+[140] (360,730)<a aria-label='Permalink: 🏗️ Architecture' class='anchor' href='#️-architecture' id='user-content-️-architecture' />
+┌─────────┐     ┌─────────┐     ┌─────────┐
+│ ClickUp │     │  Slack  │     │ Discord │
+│ Webhook │     │ Events  │     │   Bot   │
+└────┬────┘     └────┬────┘     └────┬────┘
+     │               │               │
+     └───────┬───────┴───────┬───────┘
+             │               │
+        ┌────▼────┐    ┌─────▼─────┐
+        │ Express │    │ Discord.js│
+        │ Server  │    │  Client   │
+        └────┬────┘    └─────┬─────┘
+             │               │
+             └───────┬───────┘
+                     │
+              ┌──────▼──────┐
+              │ Relay Engine │
+              │  (relay.js)  │
+              └──────┬──────┘
+                     │
+              ┌──────▼──────┐
+              │   NocoDB     │
+              │  (Database)  │
+              └─────────────┘
+[141] (752,777)<clipboard-copy aria-label='Copy' class='ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 d-flex flex-justify-center flex-items-center' role='button' />
+
+</current_dom>

@@ -1,0 +1,78 @@
+# Cascade Pause/Delete from ListMappings to SyncConfigs
+
+## Problem
+
+When a **ListMapping** (List Configs page) is **Paused** or **Deleted**, the auto-created **SyncConfig** records (Chat Sync Configs page) that were spawned from it remain `Status: 'active'` and continue to operate independently. The user expects that pausing/deleting a parent ListMapping should cascade that state to all its child SyncConfigs.
+
+## Root Cause
+
+There is no foreign key or tracking field linking a `SyncConfig` back to the `ListMapping` that created it. The automation handlers (`slack-automation.js`, `discord-automation.js`) create SyncConfigs on `taskCreated` events but don't store a reference to the originating `ListMapping.Id`.
+
+## Proposed Changes
+
+### NocoDB Schema
+
+#### [MODIFY] SyncConfigs table (NocoDB)
+- Add a new column `List_Mapping_Id` (Number) to the `SyncConfigs` table
+- This establishes the parent-child link between ListMappings → SyncConfigs
+
+---
+
+### Backend Handler Changes
+
+#### [MODIFY] [slack-automation.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/handlers/slack-automation.js)
+- In `taskCreated` handler, include `List_Mapping_Id: listMapping.Id` when calling `createSyncConfig()`
+- This ensures every new SyncConfig knows which ListMapping spawned it
+
+#### [MODIFY] [discord-automation.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/handlers/discord-automation.js)
+- Same change: include `List_Mapping_Id: listMapping.Id` when calling `createSyncConfig()`
+
+---
+
+### NocoDB Data Access Layer
+
+#### [MODIFY] [nocodb.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/nocodb.js)
+- Add `getSyncConfigsByListMappingId(listMappingId)` function to fetch all SyncConfigs belonging to a specific ListMapping
+- Add `bulkUpdateSyncConfigStatus(listMappingId, status)` function to batch-update Status for all SyncConfigs under a ListMapping
+
+---
+
+### API Cascade Logic
+
+#### [MODIFY] [api.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/src/api.js)
+
+**`PUT /api/list-mappings/:id`** — When the `Enabled` field is changed to `'Paused'`:
+1. Fetch all SyncConfigs with matching `List_Mapping_Id`
+2. Update their `Status` to `'paused'`
+3. When `Enabled` is changed back (un-paused), set their `Status` back to `'active'`
+
+**`DELETE /api/list-mappings/:id`** — Before deleting the ListMapping:
+1. Fetch all SyncConfigs with matching `List_Mapping_Id`
+2. Delete all of them (or set Status to `'deleted'`)
+3. Then delete the ListMapping itself
+
+---
+
+### Backfill Existing Data
+
+- Write a one-time backfill: for the existing ListMapping (Id=2, `Slack_Channel_ID` = `C08EQRZ1QAC`, `Project_Id` = 1), find all SyncConfigs containing the same `Slack_Channel_ID` and `Project_Id`, and set their `List_Mapping_Id` = 2
+- Since the ListMapping #2 is already `Paused`, also set those SyncConfigs' `Status` to `'paused'`
+
+## Verification Plan
+
+### Automated Verification
+Since there are no existing automated tests in this project, we will verify via:
+
+1. **After deployment**: Call `GET /api/sync-configs` and verify that all SyncConfigs linked to the Paused ListMapping now have `Status: 'paused'` instead of `'active'`
+
+### Manual Verification (by user on VPS)
+
+1. **Pause test**: 
+   - Enable the existing ListMapping (set `Enabled` back to active)
+   - Create a new task in the ClickUp list → verify a new SyncConfig appears with `List_Mapping_Id` set
+   - Pause the ListMapping → verify all child SyncConfigs become `paused`
+   - Send a message in the ClickUp task → verify it does NOT sync to Slack/Discord (because config is paused)
+   
+2. **Delete test**: 
+   - Delete the ListMapping → verify all child SyncConfigs are deleted as well
+   - Check Chat Sync Configs page to confirm they are gone

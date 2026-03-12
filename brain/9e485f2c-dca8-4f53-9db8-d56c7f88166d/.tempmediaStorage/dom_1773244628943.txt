@@ -1,0 +1,270 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Skip to content
+Navigation Menu
+[0] (19,28)<a aria-label='Homepage' class='tmp-mr-lg-3 color-fg-inherit flex-order-2 js-prevent-focus-on-mobile-nav' href='/' />
+[1] (50,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Platform />
+[2] (89,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Solutions />
+[3] (129,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Resources />
+[4] (175,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Open Source />
+[5] (221,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Enterprise />
+[6] (254,28)<a class='NavLink-module__link__EG3d4 MarketingNavigation-module__navLink__hUomM' href='https://github.com/pricing' />
+	[7] (254,28)<span >Pricing />
+[8] (844,28)<button aria-label='Search or jump to…' class='header-search-button placeholder input-button form-control d-flex flex-1 flex-self-stretch flex-items-center no-wrap width-full py-0 pl-2 pr-0 text-left border-0 box-shadow-none' placeholder='Search or jump to...' />
+	[9] (788,28)<div  />
+	[10] (844,28)<span >Search or jump to... />
+	[11] (902,28)<div  />
+[12] (924,28)<a class='HeaderMenu-link HeaderMenu-link--sign-in HeaderMenu-button flex-shrink-0 no-underline d-none d-lg-inline-flex border border-lg-0 rounded px-2 py-1' href='/login?return_to=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive%2Ftree%2Fmain%2F.github%2Fworkflows'>Sign in />
+[13] (956,28)<a class='HeaderMenu-link HeaderMenu-link--sign-up HeaderMenu-button flex-shrink-0 d-flex d-lg-inline-flex no-underline border color-border-default rounded px-2 py-1' href='/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Ffiles%2Fdisambiguate&source=header-repo&source_repo=tdgamesvn%2Fsync_slack_discord_clickup_drive'>Sign up />
+[14] (981,28)<button class='Button Button--iconOnly Button--invisible Button--medium AppHeader-button HeaderMenu-link border' id='icon-button-a505484f-00ae-475b-bc38-f2a3d0467494' />
+[15] (41,79)<a class='url fn' href='/tdgamesvn'>tdgamesvn />
+/
+[16] (123,79)<a href='/tdgamesvn/sync_slack_discord_clickup_drive'>sync_slack_discord_clickup_drive />
+Public
+[17] (881,78)<a aria-label='You must be signed in to change notification settings' class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive' id='repository-details-watch-button'>Notifications />
+[18] (926,78)<a class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive' id='fork-button'>Fork />
+	[19] (937,78)<span >0 />
+[20] (968,78)<a aria-label='You must be signed in to star a repository' class='tooltipped tooltipped-sw btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Fsync_slack_discord_clickup_drive' />
+	[21] (969,78)<span >Star />
+	[22] (979,78)<span >0 />
+[23] (27,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected' href='/tdgamesvn/sync_slack_discord_clickup_drive' id='code-tab' />
+	[24] (31,121)<span >Code />
+[25] (59,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/issues' id='issues-tab' />
+	[26] (64,121)<span >Issues />
+[27] (107,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/pulls' id='pull-requests-tab' />
+	[28] (106,121)<span >Pull requests />
+	[29] (129,121)<span >1 />
+[30] (156,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/actions' id='actions-tab' />
+	[31] (161,121)<span >Actions />
+[32] (194,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/projects' id='projects-tab' />
+	[33] (199,121)<span >Projects />
+[34] (232,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/security' id='security-tab' />
+	[35] (237,121)<span >Security />
+[36] (271,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/sync_slack_discord_clickup_drive/pulse' id='insights-tab' />
+	[37] (275,121)<span >Insights />
+[38] (13,164)<button class='prc-Button-ButtonBase-9n-Xk position-relative ExpandFileTreeButton-module__expandButton__hDOcv fgColor-muted prc-Button-IconButton-fyge7' />
+Files
+[39] (55,201)<button aria-label='main branch' class='prc-Button-ButtonBase-9n-Xk react-repos-tree-pane-ref-selector width-full ref-selector-class RefSelectorAnchoredOverlay-module__RefSelectorOverlayBtn__a3WK3' id='ref-picker-repos-header-ref-selector' />
+	[40] (55,201)<span  />
+		[41] (50,201)<span  />
+			[42] (50,201)<div  />
+				[43] (14,201)<div  />
+				[44] (26,201)<div  />
+					[45] (26,200)<span >main />
+[46] (113,201)<button class='prc-Button-ButtonBase-9n-Xk SearchButton-module__IconButton__SBlqu prc-Button-IconButton-fyge7' />
+[47] (63,231)<span  />
+	[48] (13,231)<span  />
+	[49] (66,231)<input aria-label='Go to file' class='prc-components-Input-IwWrt' placeholder='Go to file' role='combobox' />
+[50] (60,601)<div  />
+	[51] (60,265)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.agent-item' role='treeitem' />
+		[52] (60,265)<div  />
+			[53] (9,265)<div  />
+			[54] (63,265)<div  />
+				[55] (19,265)<div  />
+					[56] (19,265)<div  />
+				[57] (67,265)<span  />
+					[58] (32,265)<span >.agent />
+	[59] (60,302)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.github/workflows-item' role='treeitem' />
+		[60] (60,290)<div  />
+			[61] (9,290)<div  />
+			[62] (63,290)<div  />
+				[63] (19,290)<div  />
+					[64] (19,290)<div  />
+				[65] (67,290)<span  />
+					[66] (47,289)<span >.github/
+workflows />
+		[67] (60,315)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.github/workflows/deploy.yml-item' role='treeitem' />
+			[68] (60,315)<div  />
+				[69] (8,315)<div  />
+					[70] (8,315)<div  />
+						[71] (8,315)<div  />
+				[72] (64,315)<div  />
+					[73] (22,314)<div  />
+					[74] (69,315)<span  />
+						[75] (41,314)<span >deploy.yml />
+	[76] (60,339)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='public-item' role='treeitem' />
+		[77] (60,339)<div  />
+			[78] (9,339)<div  />
+			[79] (63,339)<div  />
+				[80] (19,339)<div  />
+					[81] (19,339)<div  />
+				[82] (67,339)<span  />
+					[83] (32,339)<span >public />
+	[84] (60,364)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='src-item' role='treeitem' />
+		[85] (60,364)<div  />
+			[86] (9,364)<div  />
+			[87] (63,364)<div  />
+				[88] (19,364)<div  />
+					[89] (19,364)<div  />
+				[90] (67,364)<span  />
+					[91] (28,363)<span >src />
+	[92] (60,389)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.env.example-item' role='treeitem' />
+		[93] (60,389)<div  />
+			[94] (63,389)<div  />
+				[95] (19,388)<div  />
+				[96] (67,389)<span  />
+					[97] (41,388)<span >.env.example />
+	[98] (60,413)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.gitignore-item' role='treeitem' />
+		[99] (60,413)<div  />
+			[100] (63,413)<div  />
+				[101] (19,413)<div  />
+				[102] (67,413)<span  />
+					[103] (37,413)<span >.gitignore />
+	[104] (60,438)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='README.md-item' role='treeitem' />
+		[105] (60,438)<div  />
+			[106] (63,438)<div  />
+				[107] (19,438)<div  />
+				[108] (67,438)<span  />
+					[109] (40,437)<span >README.md />
+	[110] (60,463)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='create-nocodb-table.js-item' role='treeitem' />
+		[111] (60,463)<div  />
+			[112] (63,463)<div  />
+				[113] (19,462)<div  />
+				[114] (67,463)<span  />
+					[115] (52,462)<span >create-nocodb-table.js />
+	[116] (60,487)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='create-table-output.txt-item' role='treeitem' />
+		[117] (60,487)<div  />
+			[118] (63,487)<div  />
+				[119] (19,487)<div  />
+				[120] (67,487)<span  />
+					[121] (52,487)<span >create-table-output.txt />
+	[122] (60,512)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='debug-webhooks.txt-item' role='treeitem' />
+		[123] (60,512)<div  />
+			[124] (63,512)<div  />
+				[125] (19,512)<div  />
+				[126] (67,512)<span  />
+					[127] (50,511)<span >debug-webhooks.txt />
+	[128] (60,537)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='deploy.sh-item' role='treeitem' />
+		[129] (60,537)<div  />
+			[130] (63,537)<div  />
+				[131] (19,536)<div  />
+				[132] (67,537)<span  />
+					[133] (37,536)<span >deploy.sh />
+	[134] (60,561)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='fix-columns.js-item' role='treeitem' />
+		[135] (60,561)<div  />
+			[136] (63,561)<div  />
+				[137] (19,561)<div  />
+				[138] (67,561)<span  />
+					[139] (41,561)<span >fix-columns.js />
+	[140] (60,586)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='folder-output.txt-item' role='treeitem' />
+		[141] (60,586)<div  />
+			[142] (63,586)<div  />
+				[143] (19,586)<div  />
+				[144] (67,586)<span  />
+					[145] (45,585)<span >folder-output.txt />
+	[146] (60,611)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='import-existing-tasks.js-item' role='treeitem' />
+		[147] (60,611)<div  />
+			[148] (63,611)<div  />
+				[149] (19,610)<div  />
+				[150] (67,611)<span  />
+					[151] (53,610)<span >import-existing-tasks.js />
+	[152] (60,635)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='list-statuses.txt-item' role='treeitem' />
+		[153] (60,635)<div  />
+			[154] (63,635)<div  />
+				[155] (19,635)<div  />
+				[156] (67,635)<span  />
+					[157] (43,635)<span >list-statuses.txt />
+	[158] (60,660)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='package-lock.json-item' role='treeitem' />
+		[159] (60,660)<div  />
+			[160] (63,660)<div  />
+				[161] (19,660)<div  />
+				[162] (67,660)<span  />
+					[163] (47,659)<span >package-lock.json />
+	[164] (60,685)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='package.json-item' role='treeitem' />
+		[165] (60,685)<div  />
+			[166] (63,685)<div  />
+				[167] (19,684)<div  />
+				[168] (67,685)<span  />
+					[169] (41,684)<span >package.json />
+	[170] (60,709)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='server.js-item' role='treeitem' />
+		[171] (60,709)<div  />
+			[172] (63,709)<div  />
+				[173] (19,709)<div  />
+				[174] (67,709)<span  />
+					[175] (35,709)<span >server.js />
+	[176] (60,734)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='setup-list-mappings.js-item' role='treeitem' />
+		[177] (60,734)<div  />
+			[178] (63,734)<div  />
+				[179] (19,734)<div  />
+				[180] (67,734)<span  />
+					[181] (52,733)<span >setup-list-mappings.js />
+	[182] (60,759)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='test-clickup-folder.js-item' role='treeitem' />
+		[183] (60,759)<div  />
+			[184] (63,759)<div  />
+				[185] (19,758)<div  />
+				[186] (67,759)<span  />
+					[187] (50,758)<span >test-clickup-folder.js />
+	[188] (60,783)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='test-clickup-statuses.js-item' role='treeitem' />
+		[189] (60,783)<div  />
+			[190] (63,783)<div  />
+				[191] (19,783)<div  />
+				[192] (67,783)<span  />
+					[193] (52,783)<span >test-clickup-statuses.js />
+	[194] (60,808)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='test-clickup-summary.js-item' role='treeitem' />
+		[195] (60,808)<div  />
+			[196] (63,808)<div  />
+				[197] (19,808)<div  />
+				[198] (67,808)<span  />
+					[199] (53,807)<span >test-clickup-summary.js />
+	[200] (60,832)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='test-clickup.js-item' role='treeitem' />
+		[201] (60,832)<div  />
+			[202] (63,832)<div  />
+				[203] (19,832)<div  />
+				[204] (67,832)<span  />
+					[205] (41,832)<span >test-clickup.js />
+	[206] (60,857)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='test-drive.js-item' role='treeitem' />
+		[207] (60,857)<div  />
+			[208] (63,857)<div  />
+				[209] (19,857)<div  />
+				[210] (67,857)<span  />
+					[211] (39,857)<span >test-drive.js />
+	[212] (60,882)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='test-slack-auto.js-item' role='treeitem' />
+		[213] (60,882)<div  />
+			[214] (63,882)<div  />
+				[215] (19,882)<div  />
+				[216] (67,882)<span  />
+					[217] (45,881)<span >test-slack-auto.js />
+	[218] (60,906)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='tmp_syncconfigs.json-item' role='treeitem' />
+		[219] (60,906)<div  />
+			[220] (63,906)<div  />
+				[221] (19,906)<div  />
+				[222] (67,906)<span  />
+					[223] (51,906)<span >tmp_syncconfigs.json />
+	[224] (60,931)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='update-currency-col.js-item' role='treeitem' />
+		[225] (60,931)<div  />
+			[226] (63,931)<div  />
+				[227] (19,931)<div  />
+				[228] (67,931)<span  />
+					[229] (52,931)<span >update-currency-col.js />
+[230] (125,640)<div aria-label='Draggable pane splitter' class='prc-PageLayout-DraggableHandle-9s6B4' role='slider' />
+Breadcrumbs
+[231] (177,164)<a class='Breadcrumb-module__repoLink__O2Nbs prc-Link-Link-9ZwDx' href='/tdgamesvn/sync_slack_discord_clickup_drive/tree/main'>sync_slack_discord_clickup_drive />
+/
+[232] (241,164)<a class='Breadcrumb-module__directoryLink__kQy_t prc-Link-Link-9ZwDx' href='/tdgamesvn/sync_slack_discord_clickup_drive/tree/main/.github'>.github />
+/
+workflows
+/
+[233] (306,164)<button class='prc-Button-ButtonBase-9n-Xk ml-2 prc-Button-IconButton-fyge7' />
+Directory actions
+More options
+[234] (988,164)<button class='prc-Button-ButtonBase-9n-Xk CodeViewHeader-module__IconButton__PYSHU prc-Button-IconButton-fyge7' id='_R_1bcqjal1d_' title='More options' />
+Latest commit
+History
+[235] (975,206)<a class='prc-Button-ButtonBase-9n-Xk d-none d-lg-flex LinkButton-module__linkButton__nFnov flex-items-center fgColor-default' href='/tdgamesvn/sync_slack_discord_clickup_drive/commits/main/.github/workflows' />
+	[236] (975,206)<span  />
+		[237] (979,206)<span  />
+			[238] (979,206)<span >History />
+Folders and files
+Name
+Last commit message
+Last commit date
+[239] (563,282)<tr  />
+	parent directory
+	[240] (563,282)<a aria-label='Parent directory' class='DirectoryRow-module__PrimerLink__COEaW prc-Link-Link-9ZwDx' href='/tdgamesvn/sync_slack_discord_clickup_drive/tree/main/.github' />
+		[241] (563,282)<div >.. />
+[242] (563,313)<tr  />
+	[243] (161,313)<a aria-label='deploy.yml, (File)' class='Link--primary' href='/tdgamesvn/sync_slack_discord_clickup_drive/blob/main/.github/workflows/deploy.yml' title='deploy.yml'>deploy.yml />
+
+</current_dom>

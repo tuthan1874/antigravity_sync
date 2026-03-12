@@ -1,0 +1,18 @@
+# VPS Code Verification Task
+
+## Task Checklist
+- [x] Open `http://180.93.144.98:3000/app.js` in the browser
+- [x] Check for string "Bonus_Reason" -> NOT FOUND (404)
+- [x] Check for string "Bonus Note" -> NOT FOUND (404)
+- [x] Report results
+
+## Information Found
+- URL: `http://180.93.144.98:3000/app.js`
+- Result: **404 Not Found** (`{"detail":"Not Found"}`).
+- VPS Port 3000: Running **Open WebUI** (SvelteKit app), not the user's `chatsync` app.
+- Evidence: Network requests show `_app/immutable/` paths, title is "Open WebUI", login page is displayed.
+- GitHub Repo (`tdgamesvn/sync_slack_discord_clickup_drive`):
+  - `server.js` defaults to Port 3000.
+  - [public/app.js](file:///e:/TDC_App/TDGAMES_App/Sync_Slack_Discord_ClickUp_Drive/public/app.js) is the target file.
+  - Deployment uses `pm2 restart chatsync`.
+- Conclusion: The user's app is likely not running on Port 3000 or the deployment to this port was overshadowed by Open WebUI.

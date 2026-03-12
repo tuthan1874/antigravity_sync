@@ -1,0 +1,611 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (13,25)<button class='prc-Button-ButtonBase-9n-Xk position-relative ExpandFileTreeButton-module__expandButton__hDOcv fgColor-muted prc-Button-IconButton-fyge7' />
+Files
+[1] (55,61)<button aria-label='main branch' class='prc-Button-ButtonBase-9n-Xk react-repos-tree-pane-ref-selector width-full ref-selector-class RefSelectorAnchoredOverlay-module__RefSelectorOverlayBtn__a3WK3' id='ref-picker-repos-header-ref-selector' />
+	[2] (55,61)<span  />
+		[3] (50,61)<span  />
+			[4] (50,61)<div  />
+				[5] (14,61)<div  />
+				[6] (26,61)<div  />
+					[7] (26,61)<span >main />
+[8] (113,61)<button class='prc-Button-ButtonBase-9n-Xk SearchButton-module__IconButton__SBlqu prc-Button-IconButton-fyge7' />
+[9] (63,92)<span  />
+	[10] (13,92)<span  />
+	[11] (66,92)<input aria-label='Go to file' class='prc-components-Input-IwWrt' placeholder='Go to file' role='combobox' />
+[12] (60,449)<div  />
+	[13] (60,126)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.agent-item' role='treeitem' />
+		[14] (60,126)<div  />
+			[15] (9,126)<div  />
+			[16] (63,126)<div  />
+				[17] (19,126)<div  />
+					[18] (19,126)<div  />
+				[19] (67,126)<span  />
+					[20] (32,125)<span >.agent />
+	[21] (60,150)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.github-item' role='treeitem' />
+		[22] (60,150)<div  />
+			[23] (9,150)<div  />
+			[24] (63,150)<div  />
+				[25] (19,150)<div  />
+					[26] (19,150)<div  />
+				[27] (67,150)<span  />
+					[28] (33,150)<span >.github />
+	[29] (60,175)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='public-item' role='treeitem' />
+		[30] (60,175)<div  />
+			[31] (9,175)<div  />
+			[32] (63,175)<div  />
+				[33] (19,175)<div  />
+					[34] (19,175)<div  />
+				[35] (67,175)<span  />
+					[36] (32,175)<span >public />
+	[37] (60,200)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='src-item' role='treeitem' />
+		[38] (60,200)<div  />
+			[39] (9,200)<div  />
+			[40] (63,200)<div  />
+				[41] (19,200)<div  />
+					[42] (19,200)<div  />
+				[43] (67,200)<span  />
+					[44] (28,199)<span >src />
+	[45] (60,224)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.env.example-item' role='treeitem' />
+		[46] (60,224)<div  />
+			[47] (63,224)<div  />
+				[48] (19,224)<div  />
+				[49] (67,224)<span  />
+					[50] (41,224)<span >.env.example />
+	[51] (60,249)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.gitignore-item' role='treeitem' />
+		[52] (60,249)<div  />
+			[53] (63,249)<div  />
+				[54] (19,249)<div  />
+				[55] (67,249)<span  />
+					[56] (37,249)<span >.gitignore />
+	[57] (60,274)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='README.md-item' role='treeitem' />
+		[58] (60,274)<div  />
+			[59] (63,274)<div  />
+				[60] (19,274)<div  />
+				[61] (67,274)<span  />
+					[62] (40,273)<span >README.md />
+	[63] (60,298)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='create-nocodb-table.js-item' role='treeitem' />
+		[64] (60,298)<div  />
+			[65] (63,298)<div  />
+				[66] (19,298)<div  />
+				[67] (67,298)<span  />
+					[68] (52,298)<span >create-nocodb-table.js />
+	[69] (60,323)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='create-table-output.txt-item' role='treeitem' />
+		[70] (60,323)<div  />
+			[71] (63,323)<div  />
+				[72] (19,323)<div  />
+				[73] (67,323)<span  />
+					[74] (52,323)<span >create-table-output.txt />
+	[75] (60,348)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='debug-webhooks.txt-item' role='treeitem' />
+		[76] (60,348)<div  />
+			[77] (63,348)<div  />
+				[78] (19,348)<div  />
+				[79] (67,348)<span  />
+					[80] (50,347)<span >debug-webhooks.txt />
+	[81] (60,372)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='deploy.sh-item' role='treeitem' />
+		[82] (60,372)<div  />
+			[83] (63,372)<div  />
+				[84] (19,372)<div  />
+				[85] (67,372)<span  />
+					[86] (37,372)<span >deploy.sh />
+	[87] (60,397)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='fix-columns.js-item' role='treeitem' />
+		[88] (60,397)<div  />
+			[89] (63,397)<div  />
+				[90] (19,397)<div  />
+				[91] (67,397)<span  />
+					[92] (41,397)<span >fix-columns.js />
+	[93] (60,422)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='folder-output.txt-item' role='treeitem' />
+		[94] (60,422)<div  />
+			[95] (63,422)<div  />
+				[96] (19,422)<div  />
+				[97] (67,422)<span  />
+					[98] (45,421)<span >folder-output.txt />
+	[99] (60,446)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='import-existing-tasks.js-item' role='treeitem' />
+		[100] (60,446)<div  />
+			[101] (63,446)<div  />
+				[102] (19,446)<div  />
+				[103] (67,446)<span  />
+					[104] (53,446)<span >import-existing-tasks.js />
+	[105] (60,471)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='list-statuses.txt-item' role='treeitem' />
+		[106] (60,471)<div  />
+			[107] (63,471)<div  />
+				[108] (19,471)<div  />
+				[109] (67,471)<span  />
+					[110] (43,471)<span >list-statuses.txt />
+	[111] (60,496)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='package-lock.json-item' role='treeitem' />
+		[112] (60,496)<div  />
+			[113] (63,496)<div  />
+				[114] (19,496)<div  />
+				[115] (67,496)<span  />
+					[116] (47,495)<span >package-lock.json />
+	[117] (60,520)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='package.json-item' role='treeitem' />
+		[118] (60,520)<div  />
+			[119] (63,520)<div  />
+				[120] (19,520)<div  />
+				[121] (67,520)<span  />
+					[122] (41,520)<span >package.json />
+	[123] (60,545)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='server.js-item' role='treeitem' />
+		[124] (60,545)<div  />
+			[125] (63,545)<div  />
+				[126] (19,545)<div  />
+				[127] (67,545)<span  />
+					[128] (35,545)<span >server.js />
+	[129] (60,570)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='setup-list-mappings.js-item' role='treeitem' />
+		[130] (60,570)<div  />
+			[131] (63,570)<div  />
+				[132] (19,570)<div  />
+				[133] (67,570)<span  />
+					[134] (52,569)<span >setup-list-mappings.js />
+	[135] (60,594)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='test-clickup-folder.js-item' role='treeitem' />
+		[136] (60,594)<div  />
+			[137] (63,594)<div  />
+				[138] (19,594)<div  />
+				[139] (67,594)<span  />
+					[140] (50,594)<span >test-clickup-folder.js />
+	[141] (60,619)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='test-clickup-statuses.js-item' role='treeitem' />
+		[142] (60,619)<div  />
+			[143] (63,619)<div  />
+				[144] (19,619)<div  />
+				[145] (67,619)<span  />
+					[146] (52,619)<span >test-clickup-statuses.js />
+	[147] (60,644)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='test-clickup-summary.js-item' role='treeitem' />
+		[148] (60,644)<div  />
+			[149] (63,644)<div  />
+				[150] (19,644)<div  />
+				[151] (67,644)<span  />
+					[152] (53,643)<span >test-clickup-summary.js />
+	[153] (60,668)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='test-clickup.js-item' role='treeitem' />
+		[154] (60,668)<div  />
+			[155] (63,668)<div  />
+				[156] (19,668)<div  />
+				[157] (67,668)<span  />
+					[158] (41,668)<span >test-clickup.js />
+	[159] (60,693)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='test-drive.js-item' role='treeitem' />
+		[160] (60,693)<div  />
+			[161] (63,693)<div  />
+				[162] (19,693)<div  />
+				[163] (67,693)<span  />
+					[164] (39,693)<span >test-drive.js />
+	[165] (60,718)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='test-slack-auto.js-item' role='treeitem' />
+		[166] (60,718)<div  />
+			[167] (63,718)<div  />
+				[168] (19,718)<div  />
+				[169] (67,718)<span  />
+					[170] (45,717)<span >test-slack-auto.js />
+	[171] (60,742)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='tmp_syncconfigs.json-item' role='treeitem' />
+		[172] (60,742)<div  />
+			[173] (63,742)<div  />
+				[174] (19,742)<div  />
+				[175] (67,742)<span  />
+					[176] (51,742)<span >tmp_syncconfigs.json />
+	[177] (60,767)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='update-currency-col.js-item' role='treeitem' />
+		[178] (60,767)<div  />
+			[179] (63,767)<div  />
+				[180] (19,767)<div  />
+				[181] (67,767)<span  />
+					[182] (52,767)<span >update-currency-col.js />
+[183] (125,500)<div aria-label='Draggable pane splitter' class='prc-PageLayout-DraggableHandle-9s6B4' role='slider' />
+Breadcrumbs
+[184] (178,16)<a class='Breadcrumb-module__repoLink__O2Nbs prc-Link-Link-9ZwDx' href='/tdgamesvn/sync_slack_discord_clickup_drive/tree/main'>sync_slack_discord_clickup_drive />
+/
+server.js
+[185] (979,17)<button class='prc-Button-ButtonBase-9n-Xk FileNameStickyHeader-module__Button__LSEU_ FileNameStickyHeader-module__GoToTopButton__nxAFn' />
+	[186] (979,17)<span  />
+		[187] (983,17)<span >Top />
+File metadata and controls
+[188] (146,51)<button class='prc-SegmentedControl-Button-E48xz' />
+	[189] (146,51)<span  />
+		[190] (146,51)<div >Code />
+[191] (171,51)<button class='prc-SegmentedControl-Button-E48xz' />
+	[192] (171,51)<span  />
+		[193] (171,51)<div >Blame />
+162 lines (140 loc) · 5.78 KB
+[194] (924,51)<a class='prc-Button-ButtonBase-9n-Xk LinkButton-module__linkButton__nFnov BlobViewHeader-module__LinkButton__X9kx2' href='https://github.com/tdgamesvn/sync_slack_discord_clickup_drive/raw/refs/heads/main/server.js' />
+	[195] (924,51)<span  />
+		[196] (924,51)<span >Raw />
+[197] (936,51)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' />
+[198] (947,51)<button class='prc-Button-ButtonBase-9n-Xk BlobViewHeader-module__downloadButton__ef459 prc-Button-IconButton-fyge7' />
+[199] (971,51)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' id='_r_3v_' />
+[200] (985,51)<button class='prc-Button-ButtonBase-9n-Xk BlobViewHeader-module__IconButton_2__RyjZg prc-Button-IconButton-fyge7' id='symbols-button' />
+[201] (152,76)<div >75 />
+[202] (577,76)<div  />
+	async
+	function
+	start
+	(
+	)
+	{
+100
+101
+102
+103
+104
+105
+[203] (150,91)<div >106 />
+[204] (150,106)<div >107 />
+[205] (150,122)<div >108 />
+[206] (150,137)<div >109 />
+[207] (150,152)<div >110 />
+[208] (150,168)<div >111 />
+[209] (150,183)<div >112 />
+[210] (150,198)<div >113 />
+[211] (150,214)<div >114 />
+[212] (150,229)<div >115 />
+[213] (150,244)<div >116 />
+[214] (150,260)<div >117 />
+[215] (150,275)<div >118 />
+[216] (150,290)<div >119 />
+[217] (150,305)<div >120 />
+[218] (150,321)<div >121 />
+[219] (150,336)<div >122 />
+[220] (150,351)<div >123 />
+[221] (150,367)<div >124 />
+[222] (150,382)<div >125 />
+[223] (150,397)<div >126 />
+[224] (150,413)<div >127 />
+[225] (150,428)<div >128 />
+[226] (150,443)<div >129 />
+[227] (150,459)<div >130 />
+[228] (150,474)<div >131 />
+[229] (150,489)<div >132 />
+[230] (150,505)<div >133 />
+[231] (150,520)<div >134 />
+[232] (150,535)<div >135 />
+[233] (150,551)<div >136 />
+[234] (150,566)<div >137 />
+[235] (150,581)<div >138 />
+[236] (150,597)<div >139 />
+[237] (150,612)<div >140 />
+[238] (150,627)<div >141 />
+[239] (150,643)<div >142 />
+[240] (150,658)<div >143 />
+[241] (150,673)<div >144 />
+[242] (150,689)<div >145 />
+[243] (150,704)<div >146 />
+[244] (150,719)<div >147 />
+[245] (150,735)<div >148 />
+[246] (150,750)<div >149 />
+[247] (150,765)<div >150 />
+[248] (150,781)<div >151 />
+[249] (150,796)<div >152 />
+[250] (150,811)<div >153 />
+[251] (150,827)<div >154 />
+[252] (150,842)<div >155 />
+[253] (150,857)<div >156 />
+[254] (150,873)<div >157 />
+[255] (150,888)<div >158 />
+[256] (150,903)<div >159 />
+[257] (150,919)<div >160 />
+[258] (150,934)<div >161 />
+[259] (150,949)<div >162 />
+await
+discordBot
+.
+startBot
+(
+)
+;
+console
+.
+log
+(
+'✅ Discord bot started'
+)
+;
+}
+catch
+(
+err
+)
+{
+console
+.
+warn
+(
+'⚠️  Discord bot failed:'
+,
+err
+.
+message
+)
+;
+}
+// 4. Initialize Drive sync
+try
+{
+await
+driveSync
+.
+initDriveService
+(
+)
+;
+console
+.
+log
+(
+'✅ Google Drive service initialized'
+)
+;
+}
+catch
+(
+err
+)
+{
+console
+.
+warn
+(
+'⚠️  Drive init failed:'
+,
+err
+.
+message
+)
+;
+}
+// 5. Schedule Drive sync cron (every 5 minutes) with lock to prevent overlap
+let
+isDriveSyncing
+=
+false
+;
+cron
+.
+schedule
+(
+'*/5 * * * *'
+,
+async
+(
+)
+=>
+{
+if
+(
+isDriveSyncing
+)
+{
+console
+.
+log
+(
+'[Cron] Drive sync still running, skipping...'
+)
+;
+return
+;
+}
+isDriveSyncing
+=
+true
+;
+try
+{
+console
+.
+log
+(
+'[Cron] Running Drive sync...'
+)
+;
+await
+driveSync
+.
+runDriveSync
+(
+)
+;
+}
+catch
+(
+err
+)
+{
+console
+.
+error
+(
+'[Cron] Drive sync error:'
+,
+err
+.
+message
+)
+;
+}
+finally
+{
+isDriveSyncing
+=
+false
+;
+}
+}
+)
+;
+// 5.1 Schedule Review Reminders cron (every 30 minutes)
+const
+{
+checkReviewReminders
+}
+=
+require
+(
+'./src/jobs/reminders'
+)
+;
+let
+isCheckingReminders
+=
+false
+;
+cron
+.
+schedule
+(
+'*/30 * * * *'
+,
+async
+(
+)
+=>
+{
+if
+(
+isCheckingReminders
+)
+return
+;
+isCheckingReminders
+=
+true
+;
+try
+{
+await
+checkReviewReminders
+(
+)
+;
+}
+catch
+(
+err
+)
+{
+console
+.
+error
+(
+'[Cron] Reminder check error:'
+,
+err
+.
+message
+)
+;
+}
+finally
+{
+isCheckingReminders
+=
+false
+;
+}
+}
+)
+;
+// 6. Start HTTP server
+app
+.
+listen
+(
+config
+.
+PORT
+,
+(
+)
+=>
+{
+console
+.
+log
+(
+'═══════════════════════════════════════'
+)
+;
+console
+.
+log
+(
+`  🚀 Server running on port
+${
+config
+.
+PORT
+}
+`
+)
+;
+console
+.
+log
+(
+`  📡 Webhooks:`
+)
+;
+console
+.
+log
+(
+`     ClickUp: /webhook/clickup`
+)
+;
+console
+.
+log
+(
+`     Slack:   /webhook/slack`
+)
+;
+console
+.
+log
+(
+`  🌐 Dashboard: http://localhost:
+${
+config
+.
+PORT
+}
+`
+)
+;
+console
+.
+log
+(
+'═══════════════════════════════════════'
+)
+;
+}
+)
+;
+}
+start
+(
+)
+.
+catch
+(
+(
+err
+)
+=>
+{
+console
+.
+error
+(
+'Fatal error:'
+,
+err
+)
+;
+process
+.
+exit
+(
+1
+)
+;
+}
+)
+;
+
+</current_dom>
