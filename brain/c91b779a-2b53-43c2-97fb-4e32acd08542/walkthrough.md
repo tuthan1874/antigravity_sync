@@ -1,73 +1,102 @@
-# P3 Features Walkthrough — TD Games Billing App
+# TD Games Invoice App — Session Walkthrough
 
-## Summary
+## Tổng quan các thay đổi trong session này
 
-All 4 P3 features have been implemented, verified, and are running on `http://localhost:3000/`.
+### 1. 💱 USD → VND Exchange Rate cho eInvoice
+
+**Vấn đề**: SePay eInvoice chỉ hỗ trợ VND, nhưng hoá đơn có thể là USD.
+
+**Giải pháp**: Khi bấm "Create eInvoice" trên hoá đơn USD → hiện modal nhập tỷ giá → convert tất cả giá sang VND.
+
+**Files thay đổi**:
+- [sePayService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/sePayService.ts) — `mapInvoiceToSePay` nhận `exchangeRate`, convert `unit_price` và `discountAmount` sang VND
+- [useInvoiceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/hooks/useInvoiceState.ts) — State cho exchange rate modal, `executeCreateEInvoice`, `confirmCreateEInvoiceWithRate`
+- [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) — Exchange Rate Modal UI
+
+**Tỷ giá**: Dùng tỷ giá **bán** của ngân hàng nơi mở tài khoản (Techcombank), theo Thông tư 200/2014/TT-BTC. Mặc định 25,400.
 
 ---
 
-## P3-1: Supabase Realtime Sync ✅
+### 2. 💰 Payment Tracking (Phí chuyển khoản)
 
-- Enabled Realtime publication on `invoice_invoices` table
-- Added channel subscription in [useInvoiceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/hooks/useInvoiceState.ts#L103-L145) that auto-refreshes history on INSERT/UPDATE/DELETE
-- Toast notifications appear in Vietnamese (📥/✏️/🗑️)
-- Cleanup on logout/unmount
+**Vấn đề**: Hoá đơn $1,900 nhưng thực nhận $1,884.50 do phí CK trung gian.
 
-## P3-2: Activity Log / Audit Trail ✅
+**Giải pháp**: Khi toggle sang Paid → hiện modal nhập số tiền thực nhận → auto tính phí.
 
-- **DB**: Created `invoice_activity_logs` table with trigger `log_invoice_change()` on `invoice_invoices`
-- **Trigger** auto-logs: `created`, `updated`, `status_changed`, `einvoice_*`, `deleted`
-- **UI**: New [ActivityLogTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/ActivityLogTab.tsx) — timeline view with action filter, relative time display
-- **Access**: Admin-only (📋 tab in Navbar)
+**Supabase**: Thêm 2 cột `amount_received`, `transfer_fee` vào bảng `invoice_invoices`.
 
-````carousel
-![Activity tab with all 6 nav tabs visible](C:\Users\dangt\.gemini\antigravity\brain\c91b779a-2b53-43c2-97fb-4e32acd08542\activity_tab.png)
-<!-- slide -->
-![Recurring tab — empty state with Tạo mới button](C:\Users\dangt\.gemini\antigravity\brain\c91b779a-2b53-43c2-97fb-4e32acd08542\recurring_tab.png)
-<!-- slide -->
-![History tab showing ✉️ email button on every invoice card](C:\Users\dangt\.gemini\antigravity\brain\c91b779a-2b53-43c2-97fb-4e32acd08542\history_email.png)
-````
+**Files thay đổi**:
+- [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts) — Thêm `amount_received`, `transfer_fee`
+- [supabaseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/supabaseService.ts) — `updateInvoiceStatusInCloud` nhận thêm params, `parseInvoice` map fields mới
+- [useInvoiceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/hooks/useInvoiceState.ts) — `paymentModal` state, `calcInvoiceTotal`, `confirmPayment`
+- [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) — Payment Confirmation Modal UI
+- [DashboardTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/DashboardTab.tsx) — Revenue dùng `amount_received`, thêm KPI "Phí CK"
+- [HistoryTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/HistoryTab.tsx) — Hiển thị "Nhận" + "Phí" trên card
 
-## P3-3: Recurring Invoices ✅
+---
 
-- **DB**: Created `invoice_recurring` table (name, frequency, next_run, client/studio/bank/items JSON)
-- **Service**: CRUD + toggle in [supabaseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/supabaseService.ts#L426-L488)
-- **UI**: New [RecurringTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/RecurringTab.tsx) — create form + template card grid with pause/resume/delete
-- **Edge Function**: `process-recurring-invoices` deployed — queries due templates, creates invoices, advances `next_run`
+### 3. 🎨 History Card Redesign
 
-## P3-4: Email Notifications ✅
+- **Status accent bar** ở đầu card (xanh/vàng)
+- Visual hierarchy: Invoice Number → Client → Badges → Amount → Actions
+- Action bar mờ, sáng khi hover
+- Nút Delete tách riêng bằng divider, màu đỏ
+- Icon Paid màu xanh khi đã paid
+- Phí chuyển khoản màu cam đỏ (`text-orange-500`)
+- Icons 18px, padding p-2
 
-- **DB**: Added `email_sent_at`, `email_sent_to` columns to `invoice_invoices`
-- **Edge Function**: `send-invoice-email` deployed — Resend API integration with mock fallback
-- **UI**: New [EmailModal.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/EmailModal.tsx) — styled HTML email template, pre-filled recipient/subject
-- **Integration**: ✉️ button on every HistoryTab invoice card
+---
 
-## Verification
+### 4. 📥 Download PDF qua N8N
 
-| Check | Result |
-|-------|--------|
-| TypeScript `tsc --noEmit` | ✅ 0 errors |
-| Browser: Navbar tabs | ✅ 6 tabs (edit/preview/history/dashboard/activity/recurring) |
-| Browser: Activity Log | ✅ Timeline loads |
-| Browser: Recurring form | ✅ Create form opens with all fields |
-| Browser: Email modal | ✅ Opens from History, shows recipient/subject/preview |
+Chuyển download eInvoice PDF từ Supabase Edge Function sang **N8N webhook**:
 
-## Browser Recording
+```
+https://n8n.tdconsulting.vn/webhook/sepay-invoice-download
+```
 
-![P3 Features Verification](C:\Users\dangt\.gemini\antigravity\brain\c91b779a-2b53-43c2-97fb-4e32acd08542\p3_verification_1773365686301.webp)
+Params: `reference_code`, `tracking_code`, `pdf_url`, `filename`
 
-## Files Changed
+---
 
-| File | Change |
-|------|--------|
-| [useInvoiceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/hooks/useInvoiceState.ts) | +Realtime sub, +email state, +activity/recurring tabs |
-| [supabaseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/supabaseService.ts) | +Activity log + Recurring CRUD functions |
-| [ActivityLogTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/ActivityLogTab.tsx) | **NEW** — Timeline audit trail |
-| [RecurringTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/RecurringTab.tsx) | **NEW** — Recurring template manager |
-| [EmailModal.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/EmailModal.tsx) | **NEW** — Email sending modal |
-| [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) | +Import/render new components |
-| [Navbar.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/Navbar.tsx) | +activity/recurring tab types |
-| [HistoryTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/HistoryTab.tsx) | +Email button |
+### 5. 🚀 GitHub Actions Auto-Deploy
 
-> [!TIP]
-> To enable actual email sending, set `RESEND_API_KEY` in Supabase Edge Function secrets. Without it, emails are logged in mock mode.
+**File**: [.github/workflows/deploy.yml](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/.github/workflows/deploy.yml)
+
+**Flow**: Push to `main` → GitHub Actions SSH vào VPS → `git pull` → `npm install` → `npm run build`
+
+**GitHub Secrets cần thiết**:
+
+| Secret | Mô tả |
+|---|---|
+| `VPS_HOST` | IP VPS |
+| `VPS_USER` | SSH user (root) |
+| `VPS_SSH_KEY` | Private key `~/.ssh/id_ed25519` |
+
+**VPS path**: `/opt/td-games-invoice-app`
+
+**Deploy thủ công** (nếu cần):
+```bash
+cd /opt/td-games-invoice-app
+git pull origin main
+npm install --production=false
+npm run build
+```
+
+---
+
+### 6. 📝 Auto-resize Textarea (Description)
+
+Invoice Editor: Description field chuyển từ `<input>` sang `<textarea>` auto-resize theo nội dung.
+
+---
+
+## Quy trình deploy hiện tại
+
+```
+Local dev → git push main → GitHub Actions → VPS auto build
+                                                ↓
+                                    /opt/td-games-invoice-app/dist/
+                                                ↓
+                                          Nginx serve
+```

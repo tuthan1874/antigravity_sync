@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Complete walkthrough of all P3 features implemented for the TD Games Billing App: Supabase Realtime sync, Activity Log with DB triggers, Recurring Invoices with Edge Function, and Email Notifications via Resend API. Includes screenshots and browser recording.",
-  "updatedAt": "2026-03-13T01:39:14.202691400Z"
+  "summary": "Complete walkthrough of all changes made in this session to the TD Games Invoice App. Covers: USD→VND exchange rate for eInvoice, payment tracking with transfer fees, History card UI redesign, N8N PDF download, GitHub Actions auto-deploy pipeline, and description textarea auto-resize. Includes file references, deployment workflow, and GitHub Secrets configuration.",
+  "updatedAt": "2026-03-13T04:33:53.404462100Z",
+  "version": "1"
 }
