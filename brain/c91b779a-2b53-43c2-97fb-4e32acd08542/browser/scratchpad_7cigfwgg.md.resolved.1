@@ -1,0 +1,15 @@
+# Delete Invoice Testing Checklist
+
+- [x] Navigate to http://localhost:3000/
+- [x] Login as admin (if needed)
+- [x] Navigate to History tab
+- [x] Attempt to delete an invoice
+- [x] Observe confirmation dialog (Mocked: returned true, message confirmed)
+- [x] Check for console/network errors (No errors found)
+- [x] Verify if record is deleted from UI (Record INV-202603-006 deleted, count went from 6 to 5)
+
+Findings:
+- Deletion works when `window.confirm` returns true.
+- The confirm dialog for invoices with eInvoice status 'draft' shows the correct warning: "⚠️ Hoá đơn này đã có eInvoice nháp trên SePay. Bạn cần vào SePay để huỷ hoá đơn nháp thủ công. Bạn vẫn muốn xoá hoá đơn này khỏi hệ thống?"
+- The user might have been blocked by the native dialog or didn't notice it.
+- A toast notification "🗑️ Hoá đơn đã bị xoá" appeared after deletion.

@@ -1,0 +1,9 @@
+# Delete Invoice Testing Checklist
+
+- [ ] Navigate to http://localhost:3000/
+- [ ] Login as admin (if needed)
+- [ ] Navigate to History tab
+- [ ] Attempt to delete an invoice
+- [ ] Observe confirmation dialog
+- [ ] Check for console/network errors
+- [ ] Verify if record is deleted from UI
