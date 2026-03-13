@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Implementation plan for P3 features of TD Games Billing App: Supabase Realtime sync, Activity Log with DB triggers, Recurring Invoices with Edge Function cron, and Email Notifications via Resend API. Includes detailed file changes, DB migrations, and verification plan.",
-  "updatedAt": "2026-03-13T01:25:15.543287500Z"
+  "summary": "Plan to add eInvoice status tracking: sync with SePay API to check if draft invoices have been signed (issued) or deleted (cancelled), update UI badges, add a sync button, and auto-clear deleted eInvoice data.",
+  "updatedAt": "2026-03-13T04:40:49.450088Z",
+  "version": "1"
 }

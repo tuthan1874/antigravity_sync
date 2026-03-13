@@ -1,32 +1,11 @@
-# P3 Features — TD Games Billing App
+# eInvoice Status Tracking
 
-## P3-1: Supabase Realtime for Live Updates
-- [x] Subscribe to `invoice_invoices` table changes in `useInvoiceState`
-- [x] Auto-refresh History & Dashboard when INSERT/UPDATE/DELETE detected
-- [x] Show toast notification on realtime events
-- [x] Cleanup subscription on unmount
-
-## P3-2: Activity Log / Audit Trail
-- [x] Create `invoice_activity_logs` table in Supabase
-- [x] Add DB trigger for automatic logging on invoice changes
-- [x] Create `ActivityLogTab` component  
-- [x] Add "Activity" tab to Navbar (admin only)
-- [x] Wire up service layer + display
-
-## P3-3: Recurring Invoices
-- [x] Create `invoice_recurring` table in Supabase
-- [x] Add `RecurringManager` component (create/edit/delete recurring templates)
-- [x] Add Supabase Edge Function `process-recurring-invoices` (cron trigger)
-- [x] Integrate UI into existing flow
-
-## P3-4: Email Notifications
-- [x] Deploy Supabase Edge Function `send-invoice-email` (Resend API)
-- [x] Add "Send Email" button on HistoryTab invoice cards
-- [x] Email modal with recipient/subject/body preview
-- [x] Track email status in `invoice_invoices` (new columns)
-
-## Verification
-- [x] Browser test: Realtime sync
-- [x] Browser test: Activity log display
-- [x] Browser test: Recurring invoice creation
-- [x] TypeScript compilation check
+- [x] Expand `einvoice_status` type to include `'issued'`
+- [x] Add `einvoice_invoice_number` column to Supabase
+- [x] Add `getEInvoiceDetail()` to sePayService
+- [x] Add `get-invoice-detail` action to Edge Function proxy (v16)
+- [x] Add `syncEInvoiceStatuses()` to useInvoiceState hook
+- [x] Update HistoryTab badges & actions for `issued` status
+- [x] Add Sync button to History header
+- [x] TypeScript compile check — zero errors
+- [x] Commit & push
