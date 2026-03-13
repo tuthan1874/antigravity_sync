@@ -1,0 +1,13 @@
+# Multi-Currency Dashboard Testing
+
+## Plan
+- [ ] Navigate to http://localhost:3001
+- [ ] Log in if necessary (admin / Admin@123)
+- [ ] Navigate to the DASHBOARD tab
+- [ ] Verify multi-currency KPI cards
+- [ ] Verify revenue by client separation
+- [ ] Capture screenshot of the dashboard
+- [ ] Report findings
+
+## Findings
+- 

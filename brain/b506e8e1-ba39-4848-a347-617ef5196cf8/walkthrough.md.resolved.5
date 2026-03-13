@@ -1,0 +1,36 @@
+# Walkthrough: P2 UX Improvements
+
+## Changes Made
+
+### 1. Custom Hook [useInvoiceState()](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/hooks/useInvoiceState.ts#27-481) — App.tsx cleanup
+
+| File | Before | After |
+|---|---|---|
+| [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) | 521 lines | **105 lines** (−80%) |
+| [useInvoiceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/hooks/useInvoiceState.ts) | — | **300 lines** (all state + handlers) |
+
+App.tsx is now purely a render component — all logic lives in the hook.
+
+### 2. Duplicate Invoice (Clone Feature)
+
+New blue 📋 clone button on each History card, next to the edit button.
+
+**What it does:**
+- Copies all invoice data (client, studio, bank, items, theme)
+- Resets: `id`, `invoiceNumber` (auto-incremented), `issueDate` (today), `dueDate` (+30 days), `status` → pending
+- Clears eInvoice status
+- Switches to Edit tab with toast notification
+
+### 3. Minor Fixes
+- Fixed "Synced from NocoDB Cloud" → "Synced from Supabase" in HistoryTab
+- Fixed stale "Đã lưu tài khoản lên NocoDB" toast text
+- Export service is now lazy-imported for smaller initial bundle
+
+## Screenshot
+
+![Cloned invoice in editor](file:///C:/Users/dangt/.gemini/antigravity/brain/b506e8e1-ba39-4848-a347-617ef5196cf8/cloned_invoice_editor_1773337366100.png)
+
+## Verification
+- ✅ TypeScript: zero errors
+- ✅ Login: succeeded with hashed password
+- ✅ Clone: INV-202603-005 → INV-202603-006 with correct data

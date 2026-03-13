@@ -1,53 +1,64 @@
-# Walkthrough: NocoDB → Supabase Migration
+# TD Games Billing App — Session Walkthrough
 
-## What Changed
+## Completed Work (2026-03-12/13)
 
-Migrated the TD Games Billing App backend from NocoDB (self-hosted REST API) to Supabase (PostgreSQL + RLS) on the `Workflow` project.
+### Migration: NocoDB → Supabase
+- All tables created with `invoice_` prefix on Supabase project `workflow` (`fifuhkupaqcfjwyouwpa`)
+- Tables: `invoice_studios`, `invoice_banks`, `invoice_clients`, `invoice_invoices`, `invoice_accounts`
+- All data migrated (2 studios, 2 banks, 2 clients, 5 invoices, 2 accounts)
+- RLS enabled on all tables
+- Created [supabaseClient.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/supabaseClient.ts) and [supabaseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/supabaseService.ts)
 
-## Schema Created (5 tables)
-
-All tables prefixed with `invoice_` on Supabase project `fifuhkupaqcfjwyouwpa`:
-
-| Table | Records | Purpose |
+### P1 Optimizations ✅
+| # | Item | Status |
 |---|---|---|
-| `invoice_studios` | 2 | Studio profiles (TD Consulting, TD Games) |
-| `invoice_banks` | 2 | Banking info for invoices |
-| `invoice_clients` | 2 | Client records (Kabam, Dace Marsh) |
-| `invoice_invoices` | 5 | Invoice data with JSONB fields |
-| `invoice_accounts` | 2 | Login credentials (admin, member) |
+| 1 | Delete `nocodbService.ts` + migration script | ✅ Done |
+| 2 | Hash passwords (bcrypt) + RPC `invoice_verify_login` | ✅ Done |
+| 3 | Replace N8N → SePay Edge Function for PDF download | ✅ Done |
 
-## Files Changed
+### P2 UX Improvements ✅
+| # | Item | Status |
+|---|---|---|
+| 4 | `useInvoiceState()` hook — App.tsx: 521→105 lines | ✅ Done |
+| 5 | Clone/Duplicate invoice button on History cards | ✅ Done |
+| 6 | Multi-currency dashboard (USD/VND separated) | ✅ Done |
+| 7 | PDF export via Edge Function | ⏭️ Skipped (window.print() sufficient) |
 
-| File | Change |
-|---|---|
-| [supabaseClient.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/supabaseClient.ts) | **[NEW]** Supabase client init |
-| [supabaseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/supabaseService.ts) | **[NEW]** Drop-in replacement for nocodbService |
-| [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) | Import switched to supabaseService |
-| [LoginScreen.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/LoginScreen.tsx) | Dynamic import switched |
-| [.env.local](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/.env.local) | NocoDB vars → Supabase URL + anon key |
-| [.env](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/.env) | Template updated |
+### Git
+- Commit: `d4435a1` on `main` branch
+- Repo: `tdgamesvn/tdgames_billing`
+- 37 files changed, +9,712 / −2,077 lines
 
-## Security Improvement
+## Remaining P3 Items (Future)
+- Supabase Realtime for live updates
+- Activity log / audit trail
+- Recurring invoices
+- Email notifications for invoices
+- Cloudflare R2 storage integration (secrets already configured in Supabase)
 
-```diff
-- VITE_NOCODB_API_TOKEN=ia8adC8Rq...  (full DB access, exposed in frontend)
-+ VITE_SUPABASE_ANON_KEY=eyJhbG...    (safe to expose, RLS-protected)
+## Key Architecture
+
+```
+App.tsx (105 lines, render only)
+  └─ useInvoiceState() hook (hooks/useInvoiceState.ts)
+      ├─ supabaseService.ts (CRUD for all tables)
+      ├─ supabaseClient.ts (Supabase init)
+      └─ sePayService.ts (eInvoice creation + PDF download)
+
+Components:
+  Navbar, InvoiceEditor, HistoryTab, DashboardTab,
+  EInvoiceModals, FilterBar, ToastNotification, LoginScreen
 ```
 
-## Verification Results
+## Environment
+- `.env.local`: Supabase URL + Anon Key + SePay config (gitignored)
+- Dev server: `npm run dev` on port 3001
+- Supabase project: `fifuhkupaqcfjwyouwpa` (workflow)
 
-- ✅ TypeScript: **zero errors**
-- ✅ Login: admin/Admin@123 succeeded
-- ✅ History: all 5 invoices visible
-- ✅ Dashboard: KPIs correct ($5,720 revenue, 2 unpaid)
-- ✅ Editor: studios dropdown loaded (TD Consulting, TD Games ★)
+## Screenshots
 
-## Browser Test Recording
-
-![Migration test recording](file:///C:/Users/dangt/.gemini/antigravity/brain/b506e8e1-ba39-4848-a347-617ef5196cf8/migration_test_recording.webp)
-
-## Not Yet Done
-
-- `nocodbService.ts` kept for rollback safety — delete after confirming everything works
-- Cloudflare R2 edge function for PDF storage — future enhancement
-- Migration script at `scripts/migrate-to-supabase.ts` can be deleted after confirmation
+````carousel
+![Multi-currency Dashboard](file:///C:/Users/dangt/.gemini/antigravity/brain/b506e8e1-ba39-4848-a347-617ef5196cf8/dashboard_multicurrency_verified_1773338049103.png)
+<!-- slide -->
+![Clone Invoice Result](file:///C:/Users/dangt/.gemini/antigravity/brain/b506e8e1-ba39-4848-a347-617ef5196cf8/cloned_invoice_editor_1773337366100.png)
+````

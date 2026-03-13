@@ -1,0 +1,14 @@
+# Task: Test Clone Invoice Feature
+
+## Checklist
+- [ ] Login to http://localhost:3001 (Failed due to doubled password, fixing)
+- [ ] Navigate to History tab
+- [ ] Click Clone button on an invoice
+- [ ] Verify redirect to Edit tab with pre-filled data
+- [ ] Verify new invoice number and today's date
+- [ ] Take screenshot of cloned data in editor
+
+## Observations
+- First login attempt with `admin` / `Admin@123` failed with "Incorrect username or password".
+- Discovered that `Admin@123Admin@123` was being entered because `browser_press_key` and JS were appending/stacking values.
+- Will use a clean JS script to clear and set values.

@@ -1,0 +1,40 @@
+# Walkthrough: P1 Optimizations
+
+## Changes Made
+
+### 1. ❌ Deleted Dead Code
+- Removed [services/nocodbService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/nocodbService.ts) (342 lines, contained exposed API token)
+- Removed [scripts/migrate-to-supabase.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/scripts/migrate-to-supabase.ts) (one-time migration, no longer needed)
+
+### 2. 🔐 Password Hashing (bcrypt)
+- Enabled `pgcrypto` extension on Supabase
+- Hashed existing plaintext passwords with `crypt()` + `gen_salt('bf', 8)`
+- Created `invoice_verify_login` RPC function (SECURITY DEFINER) — password verification runs server-side, never exposed to client
+
+```diff
+- password stored as: Admin@123 (plaintext 😱)
++ password stored as: $2a$08$xxxx... (bcrypt hash ✅)
+```
+
+### 3. 🔄 Replaced N8N with SePay Edge Function
+
+The SePay Edge Function already had a `download-pdf` GET handler built in. Removed N8N dependency entirely.
+
+| File | Change |
+|---|---|
+| [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) | [handleDownloadEInvoice](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx#415-427) → uses Edge Function |
+| [EInvoiceModals.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/EInvoiceModals.tsx) | Download button → uses Edge Function |
+| [.env.local](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/.env.local) | Removed `VITE_N8N_DOWNLOAD_URL` |
+
+```diff
+- Dependencies: NocoDB + N8N + SePay Edge Function
++ Dependencies: Supabase + SePay Edge Function only
+```
+
+## Verification
+
+- ✅ TypeScript: zero errors
+- ✅ Login with hashed password: succeeded
+- ✅ N8N env var removed, PDF download points to Edge Function
+
+![Login test](file:///C:/Users/dangt/.gemini/antigravity/brain/b506e8e1-ba39-4848-a347-617ef5196cf8/p1_login_test_1773336695826.webp)

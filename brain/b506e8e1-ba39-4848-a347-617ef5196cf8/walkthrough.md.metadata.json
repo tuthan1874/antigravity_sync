@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough documenting the migration from NocoDB to Supabase. Covers schema creation, data migration, service layer rewrite, verification results with browser recording.",
-  "updatedAt": "2026-03-12T17:11:06.563146400Z",
-  "version": "3"
+  "summary": "Complete session walkthrough for TD Games Billing App. Documents: NocoDB→Supabase migration, P1 security optimizations (bcrypt, remove dead code, SePay consolidation), P2 UX improvements (useInvoiceState hook, clone invoice, multi-currency dashboard). Includes architecture overview, remaining P3 items, and environment details for resuming work.",
+  "updatedAt": "2026-03-12T18:01:27.593067100Z",
+  "version": "6"
 }

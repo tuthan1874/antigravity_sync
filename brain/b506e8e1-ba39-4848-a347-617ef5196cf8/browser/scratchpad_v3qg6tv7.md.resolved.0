@@ -1,0 +1,9 @@
+# Task: Test Clone Invoice Feature
+
+## Checklist
+- [ ] Login to http://localhost:3001
+- [ ] Navigate to History tab
+- [ ] Click Clone button on an invoice
+- [ ] Verify redirect to Edit tab with pre-filled data
+- [ ] Verify new invoice number and today's date
+- [ ] Take screenshot of cloned data in editor

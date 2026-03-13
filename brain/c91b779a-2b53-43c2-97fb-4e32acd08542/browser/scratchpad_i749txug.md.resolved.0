@@ -1,0 +1,7 @@
+# TD Games Billing App P3 Verification Plan
+
+- [ ] Login with "admin" / "Admin@123"
+- [ ] Verify Navbar tabs (edit, preview, history, dashboard, activity, recurring)
+- [ ] Verify Activity Log tab (timeline-style entries)
+- [ ] Verify Recurring tab ("Tạo mới" button and form)
+- [ ] Verify History tab (email icon and modal)

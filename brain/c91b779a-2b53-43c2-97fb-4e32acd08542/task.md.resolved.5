@@ -1,0 +1,32 @@
+# P3 Features — TD Games Billing App
+
+## P3-1: Supabase Realtime for Live Updates
+- [x] Subscribe to `invoice_invoices` table changes in [useInvoiceState](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/hooks/useInvoiceState.ts#28-530)
+- [x] Auto-refresh History & Dashboard when INSERT/UPDATE/DELETE detected
+- [x] Show toast notification on realtime events
+- [x] Cleanup subscription on unmount
+
+## P3-2: Activity Log / Audit Trail
+- [x] Create `invoice_activity_logs` table in Supabase
+- [x] Add DB trigger for automatic logging on invoice changes
+- [x] Create [ActivityLogTab](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/ActivityLogTab.tsx#36-143) component  
+- [x] Add "Activity" tab to Navbar (admin only)
+- [x] Wire up service layer + display
+
+## P3-3: Recurring Invoices
+- [x] Create `invoice_recurring` table in Supabase
+- [x] Add `RecurringManager` component (create/edit/delete recurring templates)
+- [x] Add Supabase Edge Function `process-recurring-invoices` (cron trigger)
+- [x] Integrate UI into existing flow
+
+## P3-4: Email Notifications
+- [x] Deploy Supabase Edge Function `send-invoice-email` (Resend API)
+- [x] Add "Send Email" button on HistoryTab invoice cards
+- [x] Email modal with recipient/subject/body preview
+- [x] Track email status in `invoice_invoices` (new columns)
+
+## Verification
+- [x] Browser test: Realtime sync
+- [x] Browser test: Activity log display
+- [x] Browser test: Recurring invoice creation
+- [x] TypeScript compilation check

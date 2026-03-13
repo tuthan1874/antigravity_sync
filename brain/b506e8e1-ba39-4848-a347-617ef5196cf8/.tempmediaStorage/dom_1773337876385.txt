@@ -1,0 +1,67 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,963)<div  />
+	Đã tạo hóa đơn điện tử nháp thành công!
+	✕
+	TD Games Billing
+	edit
+	preview
+	history
+	📊
+	dashboard
+	admin
+	admin
+	Actions
+	EXPORT PDF
+	Save Invoice
+	📄
+	Create eInvoice
+	✅ View Draft PDF
+	Config
+	Studio Profile
+	Banking Profile
+	Invoice Theme
+	Status
+	Currency
+	Invoice #
+	Issue Date
+	Due Date
+	01
+	Client Details
+	💾 Save Client
+	👤 Individual
+	🏢 Company
+	Khách hàng đã lưu
+	Full Name
+	*
+	Phone Number
+	Contact Email
+	Billing Address
+	02
+	Service Items
+	+
+	Add Item
+	Description
+	Qty
+	Unit Price
+	Total
+	01
+	2.000 ₫
+	Subtotal
+	2.000 ₫
+	03
+	Discount & Tax
+	📄
+	Success!
+	✓
+	Reference:
+	aaf0ec1c-cb02-42a4-96e8-58be2b71ced5
+	[1] (500,539)<button class='inline-block px-6 py-3 rounded-2xl bg-emerald-500 text-white font-black text-sm uppercase tracking-widest hover:bg-emerald-600 transition-all cursor-pointer'>📥 Download Draft PDF />
+	Go to
+	SePay Portal
+	to sign and publish officially
+	[2] (500,623)<button class='w-full py-4 rounded-2xl text-sm font-black uppercase tracking-widest border transition-all hover:scale-[1.02] mt-2 border-white/10 text-white/60 hover:text-white'>Close />
+
+</current_dom>
