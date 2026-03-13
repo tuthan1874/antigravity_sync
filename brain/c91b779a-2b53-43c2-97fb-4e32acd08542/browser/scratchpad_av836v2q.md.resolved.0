@@ -1,0 +1,7 @@
+# Task: Verify Favicon on localhost:5173
+
+## Checklist
+- [ ] Navigate to http://localhost:5173
+- [ ] Verify page loads
+- [ ] Capture screenshot (check for favicon in DOM/metadata)
+- [ ] Confirm favicon visibility

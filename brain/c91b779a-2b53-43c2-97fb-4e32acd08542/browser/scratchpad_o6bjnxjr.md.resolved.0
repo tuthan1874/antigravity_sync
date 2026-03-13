@@ -1,0 +1,7 @@
+# Task: Generate PNG favicon for TD Games Invoice App
+
+## Progress
+- [ ] Open localhost:5173
+- [ ] Execute JS to generate favicon
+- [ ] Capture console log for FAVICON_DATA_URL
+- [ ] Take screenshot for verification
