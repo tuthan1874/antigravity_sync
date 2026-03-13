@@ -1,0 +1,6 @@
+# Task: Verify Navbar Redesign for Exchange Rate
+
+- [ ] Open http://localhost:3000
+- [ ] Verify exchange rate badge position (next to TD GAMES BILLING)
+- [ ] Verify content (USD -> VND, rate value, timestamp)
+- [ ] Capture screenshot
