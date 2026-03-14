@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Complete walkthrough of all changes made in this session to the TD Games Invoice App. Covers: USD→VND exchange rate for eInvoice, payment tracking with transfer fees, History card UI redesign, N8N PDF download, GitHub Actions auto-deploy pipeline, and description textarea auto-resize. Includes file references, deployment workflow, and GitHub Secrets configuration.",
-  "updatedAt": "2026-03-13T04:33:53.404462100Z",
-  "version": "1"
+  "summary": "Complete walkthrough of the 2026-03-13 session covering: eInvoice sync fix, persistent login, favicon branding, full Vietnamese-to-English translation, live VCB USD/VND exchange rate integration (Edge Function + Navbar display + eInvoice auto-populate), and emoji icon removal from all UI buttons.",
+  "updatedAt": "2026-03-13T16:27:40.141835300Z",
+  "version": "2"
 }

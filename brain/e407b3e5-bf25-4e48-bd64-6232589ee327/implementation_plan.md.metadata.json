@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Kế hoạch xây dựng Landing Page cho Headhunter cá nhân bao gồm: trang chính với job listings, trang profile, form ứng tuyển với tích hợp Google Sheets và email notification qua Google Apps Script. Thiết kế dark theme premium với glassmorphism, responsive design.",
+  "updatedAt": "2026-03-14T14:04:44.909833100Z"
+}

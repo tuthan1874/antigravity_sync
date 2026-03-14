@@ -1,102 +1,58 @@
-# TD Games Invoice App — Session Walkthrough
+# TD Games Billing — Session Walkthrough (2026-03-13)
 
-## Tổng quan các thay đổi trong session này
-
-### 1. 💱 USD → VND Exchange Rate cho eInvoice
-
-**Vấn đề**: SePay eInvoice chỉ hỗ trợ VND, nhưng hoá đơn có thể là USD.
-
-**Giải pháp**: Khi bấm "Create eInvoice" trên hoá đơn USD → hiện modal nhập tỷ giá → convert tất cả giá sang VND.
-
-**Files thay đổi**:
-- [sePayService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/sePayService.ts) — `mapInvoiceToSePay` nhận `exchangeRate`, convert `unit_price` và `discountAmount` sang VND
-- [useInvoiceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/hooks/useInvoiceState.ts) — State cho exchange rate modal, `executeCreateEInvoice`, `confirmCreateEInvoiceWithRate`
-- [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) — Exchange Rate Modal UI
-
-**Tỷ giá**: Dùng tỷ giá **bán** của ngân hàng nơi mở tài khoản (Techcombank), theo Thông tư 200/2014/TT-BTC. Mặc định 25,400.
+## Summary
+Full-day session covering invoice sync fixes, UI/UX improvements, persistent auth, branding, internationalization, and live exchange rate integration.
 
 ---
 
-### 2. 💰 Payment Tracking (Phí chuyển khoản)
+## Changes Made
 
-**Vấn đề**: Hoá đơn $1,900 nhưng thực nhận $1,884.50 do phí CK trung gian.
+### 1. eInvoice Sync Fix
+- Fixed sync not detecting deleted invoices on SePay portal
+- Merged redundant "Sync eInvoice" and "Refresh" buttons into a single sync action
 
-**Giải pháp**: Khi toggle sang Paid → hiện modal nhập số tiền thực nhận → auto tính phí.
+### 2. Persistent Login (30-day Session)
+- Added `localStorage`-based session persistence with 30-day expiry
+- No more logout on F5/page refresh
 
-**Supabase**: Thêm 2 cột `amount_received`, `transfer_fee` vào bảng `invoice_invoices`.
+### 3. Browser Tab Branding
+- Set custom favicon using [logo_td_notext.png](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/public/logo_td_notext.png) as PNG favicon
+- Updated page title to "TD Games - Invoice Generator"
 
-**Files thay đổi**:
-- [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts) — Thêm `amount_received`, `transfer_fee`
-- [supabaseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/supabaseService.ts) — `updateInvoiceStatusInCloud` nhận thêm params, `parseInvoice` map fields mới
-- [useInvoiceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/hooks/useInvoiceState.ts) — `paymentModal` state, `calcInvoiceTotal`, `confirmPayment`
-- [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) — Payment Confirmation Modal UI
-- [DashboardTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/DashboardTab.tsx) — Revenue dùng `amount_received`, thêm KPI "Phí CK"
-- [HistoryTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/HistoryTab.tsx) — Hiển thị "Nhận" + "Phí" trên card
+### 4. Full UI Translation (Vietnamese → English)
+Translated **all** UI text across 8+ files:
+- `FilterBar.tsx`, `ActivityLogTab.tsx`, `DashboardTab.tsx`
+- `EInvoiceModals.tsx`, `EmailModal.tsx`, `InvoiceEditor.tsx`
+- `useInvoiceState.ts`, `Navbar.tsx`
 
----
+### 5. Live VCB USD/VND Exchange Rate
+- **Edge Function**: Deployed `vcb-exchange-rate` on Supabase — proxies [Vietcombank API](https://portal.vietcombank.com.vn/Usercontrols/TVPortal.TyGia/pXML.aspx?b=10), returns JSON with Buy/Transfer/Sell rates
+- **Service**: [exchangeRateService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/exchangeRateService.ts)
+- **Auto-fetch**: Loads on app start + refreshes every hour
+- **Navbar display**: `USD → VND | 26,318 ₫ | VCB • 13/03, 22:30` — next to "TD GAMES BILLING"
+- **eInvoice integration**: Exchange rate modal auto-populates with VCB sell rate + clickable "Use VCB Rate" button
 
-### 3. 🎨 History Card Redesign
+![Exchange rate badge in navbar](file:///C:/Users/dangt/.gemini/antigravity/brain/c91b779a-2b53-43c2-97fb-4e32acd08542/navbar_redesign_preview_1773416160063.png)
 
-- **Status accent bar** ở đầu card (xanh/vàng)
-- Visual hierarchy: Invoice Number → Client → Badges → Amount → Actions
-- Action bar mờ, sáng khi hover
-- Nút Delete tách riêng bằng divider, màu đỏ
-- Icon Paid màu xanh khi đã paid
-- Phí chuyển khoản màu cam đỏ (`text-orange-500`)
-- Icons 18px, padding p-2
-
----
-
-### 4. 📥 Download PDF qua N8N
-
-Chuyển download eInvoice PDF từ Supabase Edge Function sang **N8N webhook**:
-
-```
-https://n8n.tdconsulting.vn/webhook/sepay-invoice-download
-```
-
-Params: `reference_code`, `tracking_code`, `pdf_url`, `filename`
+### 6. Removed All Emoji Icons
+- All buttons now text-only (no emoji prefixes)
+- Navbar tabs, action buttons, client toggles, payment methods — clean text
 
 ---
 
-### 5. 🚀 GitHub Actions Auto-Deploy
+## Key Files Modified
+| File | Changes |
+|------|---------|
+| [Navbar.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/Navbar.tsx) | Exchange rate badge, removed emojis from tabs |
+| [InvoiceEditor.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/InvoiceEditor.tsx) | Removed all emojis, translated all VN text |
+| [useInvoiceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/hooks/useInvoiceState.ts) | Auto-fetch VCB rate, persistent login |
+| [exchangeRateService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/exchangeRateService.ts) | **[NEW]** VCB API service |
+| [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) | Exchange rate modal translated, VCB rate wiring |
 
-**File**: [.github/workflows/deploy.yml](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/.github/workflows/deploy.yml)
+## Edge Functions
+| Function | Purpose |
+|----------|---------|
+| `vcb-exchange-rate` | Proxy for Vietcombank exchange rate API (CORS bypass) |
 
-**Flow**: Push to `main` → GitHub Actions SSH vào VPS → `git pull` → `npm install` → `npm run build`
-
-**GitHub Secrets cần thiết**:
-
-| Secret | Mô tả |
-|---|---|
-| `VPS_HOST` | IP VPS |
-| `VPS_USER` | SSH user (root) |
-| `VPS_SSH_KEY` | Private key `~/.ssh/id_ed25519` |
-
-**VPS path**: `/opt/td-games-invoice-app`
-
-**Deploy thủ công** (nếu cần):
-```bash
-cd /opt/td-games-invoice-app
-git pull origin main
-npm install --production=false
-npm run build
-```
-
----
-
-### 6. 📝 Auto-resize Textarea (Description)
-
-Invoice Editor: Description field chuyển từ `<input>` sang `<textarea>` auto-resize theo nội dung.
-
----
-
-## Quy trình deploy hiện tại
-
-```
-Local dev → git push main → GitHub Actions → VPS auto build
-                                                ↓
-                                    /opt/td-games-invoice-app/dist/
-                                                ↓
-                                          Nginx serve
-```
+## Git Commits
+All changes pushed to `main` on `tdgamesvn/tdgames_billing`.
