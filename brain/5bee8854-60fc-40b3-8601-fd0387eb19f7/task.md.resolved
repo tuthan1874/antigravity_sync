@@ -1,29 +1,28 @@
-# TD GAMES Platform — App Launcher
+# TD GAMES Platform — Restructure & Expense Module
 
-## Phase 1: Restructure Folders (Option A)
-- [ ] Create `apps/invoice/components/`, `apps/invoice/hooks/`, `apps/invoice/services/`
-- [ ] Move Invoice components → `apps/invoice/components/`
-- [ ] Move [useInvoiceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/hooks/useInvoiceState.ts) → `apps/invoice/hooks/`
-- [ ] Move Invoice services → `apps/invoice/services/`
-- [ ] Keep [supabaseClient.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/supabaseClient.ts) in root `services/` (shared)
-- [ ] Keep [LoginScreen.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/LoginScreen.tsx), [FormElements.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/FormElements.tsx), [Button.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/Button.tsx), [ToastNotification.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/ToastNotification.tsx) in root `components/` (shared)
-- [ ] Update ALL import paths in moved files
-- [ ] Build test — 0 errors
+## Phase 1: Folder Restructure (Option A)
+- [x] Create `apps/invoice/` folder structure
+- [x] Move Invoice components (10 files) to `apps/invoice/components/`
+- [x] Move Invoice hook to `apps/invoice/hooks/`
+- [x] Move Invoice services (4 files) to `apps/invoice/services/`
+- [x] Fix all import paths (`@/` alias for root, relative for intra-module)
+- [x] Create `config/apps.ts` — app registry
+- [x] Create `components/HomeScreen.tsx` — app launcher
+- [x] Create `apps/invoice/components/InvoiceApp.tsx` — self-contained wrapper
+- [x] Update Navbar with ← back button and app name
+- [x] Rewrite `App.tsx` as platform shell
+- [x] TypeScript build verification — 0 errors
+- [x] Browser test: Login → Home → Invoice → Back flow
 
-## Phase 2: Home Screen + App Router
-- [ ] Create `config/apps.ts` (app registry)
-- [ ] Create `components/HomeScreen.tsx` (app launcher grid)
-- [ ] Modify [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) for activeApp routing
-- [ ] Modify Invoice Navbar for ← Back button
-- [ ] Build + browser test
-
-## Phase 3: Expense App
-- [ ] Create Supabase tables (expense_categories, expense_expenses, expense_recurring)
+## Phase 2: Expense Module
+- [ ] Create Supabase tables (`expense_categories`, `expense_expenses`, `expense_recurring`)
 - [ ] Create `apps/expense/services/expenseService.ts`
 - [ ] Create `apps/expense/hooks/useExpenseState.ts`
-- [ ] Create Expense components (ExpenseApp, List, Form, Categories, Recurring)
-- [ ] Build + browser test
+- [ ] Create Expense components (ExpenseApp, ExpenseList, ExpenseForm, etc.)
+- [ ] Integrate Expense app into platform router
+- [ ] Test full Expense CRUD flow
 
-## Phase 4: Final Verification
-- [ ] Full flow test: Login → Home → Invoice → Back → Expense → Back
-- [ ] Commit + Push to GitHub
+## Phase 3: Polish
+- [ ] Delete empty `hooks/` directory
+- [ ] Clean up any unused old files
+- [ ] Git commit & push
