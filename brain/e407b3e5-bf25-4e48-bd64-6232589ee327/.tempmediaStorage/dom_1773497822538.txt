@@ -1,0 +1,55 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (311,21)<a class='nav-logo' href='index.html' />
+	[1] (283,21)<div >💼 />
+	[2] (320,21)<span >Linh Nguyễn />
+[3] (525,21)<a class='nav-link' href='index.html#jobs'>Việc làm />
+[4] (564,21)<a class='nav-link' href='index.html#about'>Giới thiệu />
+[5] (600,21)<a class='nav-link active' href='profile.html'>Profile />
+[6] (633,21)<a class='nav-link' href='index.html#contact'>Liên hệ />
+[7] (691,21)<a class='nav-cta' href='index.html#jobs'>Xem Job Mới 🔥 />
+Linh Nguyễn
+Senior Headhunter
+[8] (305,373)<a aria-label='LinkedIn' href='#' title='LinkedIn'>in />
+[9] (324,373)<a aria-label='Facebook' href='#' title='Facebook'>f />
+[10] (343,373)<a aria-label='Email' href='mailto:linh.nguyen.headhunter@gmail.com' title='Email'>@ />
+[11] (362,373)<a aria-label='Phone' href='tel:+84901234567' title='Phone'>📞 />
+CEO, COO, HR Director, Operations Manager
+Factory Manager, Quality Control, Supply Chain
+Hospital Director, Pharma Manager, R&D Lead
+📋
+Kinh nghiệm
+Senior Headhunter
+Talent Solutions Vietnam
+2020 - Hiện tại
+Dẫn dắt team headhunting 5 người, phụ trách tuyển dụng vị trí C-level và management 
+                cho các tập đoàn đa quốc gia. Đạt top performer 4 năm liên tiếp.
+Recruitment Consultant
+ManpowerGroup Vietnam
+2017 - 2020
+Tư vấn và tuyển dụng nhân sự cho các vị trí mid-senior level trong ngành IT và Finance. 
+                Hoàn thành 120% KPI trong 3 năm liên tiếp.
+HR Executive
+FPT Software
+2015 - 2017
+Phụ trách tuyển dụng mass hiring cho dự án outsourcing, xây dựng pipeline ứng viên 
+                và quản lý employer branding trên các kênh social media.
+💬
+Đánh giá từ ứng viên & khách hàng
+Linh đã giúp tôi tìm được vị trí Tech Lead tại một startup rất tốt. 
+                Sự tận tâm và hiểu biết về ngành của Linh thực sự ấn tượng.
+Minh Trần
+Tech Lead @ VNG Corporation
+Chuyên nghiệp, nhanh nhẹn và rất hiểu nhu cầu tuyển dụng. 
+                Linh đã giúp chúng tôi tuyển được CFO trong vòng 3 tuần!
+Hà Phương
+HR Director @ Masan Group
+Không chỉ giới thiệu job, Linh còn tư vấn về career path rất tận tình. 
+                Nhờ Linh mà tôi đã có bước chuyển mình quan trọng trong sự nghiệp.
+Đức Anh
+Product Manager @ Shopee
+[12] (979,959)<button aria-label='Scroll to top' class='scroll-top visible' id='scrollTop'>↑ />
+
+</current_dom>

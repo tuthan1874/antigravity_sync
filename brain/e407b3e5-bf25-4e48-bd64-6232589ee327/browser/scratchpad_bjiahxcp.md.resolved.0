@@ -1,0 +1,7 @@
+# Task Plan: Verify Profile Page
+
+- [ ] Navigate to `profile.html`
+- [ ] Take screenshot of header/avatar area
+- [ ] Take screenshot of stats and expertise sections
+- [ ] Take screenshot of experience and testimonials sections
+- [ ] Extract and summarize content from each section

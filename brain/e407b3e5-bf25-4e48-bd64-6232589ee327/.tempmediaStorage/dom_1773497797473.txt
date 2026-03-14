@@ -1,0 +1,68 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (311,28)<a class='nav-logo' href='index.html' />
+	[1] (283,28)<div >💼 />
+	[2] (320,28)<span >Linh Nguyễn />
+[3] (525,27)<a class='nav-link' href='index.html#jobs'>Việc làm />
+[4] (564,27)<a class='nav-link' href='index.html#about'>Giới thiệu />
+[5] (600,27)<a class='nav-link active' href='profile.html'>Profile />
+[6] (633,27)<a class='nav-link' href='index.html#contact'>Liên hệ />
+[7] (691,27)<a class='nav-cta' href='index.html#jobs'>Xem Job Mới 🔥 />
+Linh Nguyễn
+Senior Headhunter
+[8] (305,373)<a aria-label='LinkedIn' href='#' title='LinkedIn'>in />
+[9] (324,373)<a aria-label='Facebook' href='#' title='Facebook'>f />
+[10] (343,373)<a aria-label='Email' href='mailto:linh.nguyen.headhunter@gmail.com' title='Email'>@ />
+[11] (362,373)<a aria-label='Phone' href='tel:+84901234567' title='Phone'>📞 />
+Xin chào! Tôi là
+Linh Nguyễn
+, một Senior Headhunter với hơn
+8 năm kinh nghiệm
+trong lĩnh vực tuyển dụng nhân sự cấp cao tại Việt Nam. Tôi đã giúp hàng trăm ứng viên tìm được 
+          công việc mơ ước và đồng hành cùng hơn 50 doanh nghiệp xây dựng đội ngũ nhân sự chất lượng.
+Triết lý của tôi đơn giản:
+"Mỗi ứng viên đều xứng đáng với cơ hội tốt nhất, 
+          và mỗi doanh nghiệp đều cần đúng người để phát triển."
+Tôi không chỉ tìm kiếm 
+          sự phù hợp về kỹ năng, mà còn về văn hóa và giá trị.
+📊
+Thành tích
+8+
+Năm kinh nghiệm
+500+
+Ứng viên kết nối
+150+
+Tuyển dụng thành công
+95%
+Tỷ lệ hài lòng
+🎯
+Lĩnh vực chuyên môn
+💻
+IT & Technology
+Software Engineer, DevOps, Data, Product Manager
+💰
+Finance & Banking
+CFO, Financial Analyst, Risk Management
+📢
+Marketing & Sales
+CMO, Brand Manager, Business Development
+👥
+Management
+CEO, COO, HR Director, Operations Manager
+🏗️
+Manufacturing
+Factory Manager, Quality Control, Supply Chain
+🏥
+Healthcare
+Hospital Director, Pharma Manager, R&D Lead
+📋
+Kinh nghiệm
+Senior Headhunter
+Talent Solutions Vietnam
+2020 - Hiện tại
+Dẫn dắt team headhunting 5 người, phụ trách tuyển dụng vị trí C-level và management 
+                cho các tập đoàn đa quốc gia. Đạt top performer 4 năm liên tiếp.
+
+</current_dom>
