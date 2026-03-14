@@ -1,34 +1,72 @@
-# Expense UI/UX → Invoice Style Alignment
+# Workforce App — Phase 1 Walkthrough
 
-## What Changed
+## What Was Built
 
-Rewrote all 5 Expense components to match Invoice's UI/UX exactly.
+New **Workforce** app in the TD Games Platform for managing freelancers/inhouse workers, contracts, task tracking, and monthly settlements.
 
-| Change | Before | After |
-|--------|--------|-------|
-| Navbar | Custom green navbar | Shared `Navbar` from Invoice |
-| Colors | `#34C759` hardcoded | `text-primary` / `bg-primary` tokens |
-| Layout | Table for list, flat cards | Card grid (3-col) matching HistoryTab |
-| Animations | None | `animate-fadeInUp` on all pages |
-| Buttons | Custom green buttons | `shadow-btn-glow` + `rounded-2xl` |
-| Empty states | Emoji + text | Circular icon container (same as Invoice) |
-| Action icons | Emoji (✏️🗑️) | SVG icons with hover effects |
-| Form inputs | `border-white/10` | `border-primary/10` + `focus:border-primary/40` |
+---
 
-## Side-by-Side Comparison
+## Database (Supabase)
 
-````carousel
-![Expense List — now uses orange `text-primary`, card grid, same Navbar](file:///C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/expense_list_history_1773509601809.png)
-<!-- slide -->
-![Invoice History — identical styling: card grid, gradient accent bars, orange amounts](file:///C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/invoice_history_tab_1773509644093.png)
-<!-- slide -->
-![Expense Form — standard form with `border-primary/10` inputs, `shadow-btn-glow` submit](file:///C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/expense_add_form_edit_tab_1773509611992.png)
-<!-- slide -->
-![Category Manager — card grid with category-colored accent bars, SVG edit/delete icons](file:///C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/expense_categories_activity_tab_1773509621617.png)
-````
+Created 5 tables with RLS enabled:
 
-![Full test recording](file:///C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/expense_ui_comparison_1773509569297.webp)
+| Table | Purpose |
+|---|---|
+| `wf_workers` | Nhân sự (name, email, phone, bank info, type) |
+| `wf_contracts` | Hợp đồng (worker link, rate, dates, status) |
+| `wf_tasks` | Task (worker, project, client, price, status, ClickUp fields) |
+| `wf_settlements` | Nghiệm thu tháng (worker, period, total, status) |
+| `wf_settlement_tasks` | Junction table (settlement ↔ tasks) |
+
+---
+
+## Files Created/Modified
+
+### New Files
+- [workforceService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts) — Full Supabase CRUD
+- [useWorkforceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/hooks/useWorkforceState.ts) — Central state hook
+- [WorkforceApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/WorkforceApp.tsx) — App shell with shared Navbar
+- [WorkerList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/WorkerList.tsx) — Worker cards + filter
+- [WorkerForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/WorkerForm.tsx) — Add/edit worker + contracts
+- [TaskList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/TaskList.tsx) — Task cards + add form
+- [SettlementManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/SettlementManager.tsx) — Settlement creation + status flow
+
+### Modified Files
+- [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts) — Added `Worker`, `WorkerContract`, `WorkforceTask`, `Settlement`, `SettlementTask`
+- [apps.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/config/apps.ts) — Registered Workforce app (purple theme)
+- [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) — Added Workforce route
+- [Navbar.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/components/Navbar.tsx) — Added `tabLabels` prop for custom tab text
+- [ExpenseApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseApp.tsx) — Using new `tabLabels` prop
+
+---
 
 ## Verification
-- **TypeScript**: 0 errors
-- **Browser**: Expense and Invoice visually identical in navbar, card layout, colors, typography, and interactions
+
+### TypeScript Build
+`npx tsc --noEmit` — **0 errors** ✅
+
+### Browser Test
+
+````carousel
+![Home Screen with Invoice, Expense, and Workforce cards](C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/wf_homescreen.png)
+<!-- slide -->
+![Worker List tab with summary cards and empty state](C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/wf_worker_list.png)
+<!-- slide -->
+![Task List with added task and add form visible](C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/wf_task_list.png)
+````
+
+![Full test recording](C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/workforce_full_test_1773511620953.webp)
+
+### Verified Features
+- ✅ Home Screen shows 3 app cards (Invoice, Expense, Workforce)
+- ✅ Workforce tabs: NHÂN SỰ / THÊM/SỬA / TASK / NGHIỆM THU
+- ✅ Worker CRUD (add, view in card grid)
+- ✅ Task CRUD (add with worker assignment, status badge)
+- ✅ Settlement manager with summary cards
+- ✅ UI style consistent with Invoice/Expense (dark theme, primary colors, card layout)
+
+---
+
+## Next Steps (Future Phases)
+- **Phase 2**: ClickUp task sync via Edge Function proxy
+- **Phase 3**: Auto-create Expense record when settlement is paid

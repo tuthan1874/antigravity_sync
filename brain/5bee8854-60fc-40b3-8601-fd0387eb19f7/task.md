@@ -1,30 +1,30 @@
 # Workforce App — Phase 1
 
 ## Database
-- [ ] Create `wf_workers` table
-- [ ] Create `wf_contracts` table
-- [ ] Create `wf_tasks` table
-- [ ] Create `wf_settlements` + `wf_settlement_tasks` tables
-- [ ] Enable RLS on all tables
+- [x] Create `wf_workers` table
+- [x] Create `wf_contracts` table
+- [x] Create `wf_tasks` table
+- [x] Create `wf_settlements` + `wf_settlement_tasks` tables
+- [x] Enable RLS on all tables
 
 ## Frontend — Types & Services
-- [ ] Add Workforce types to `types.ts`
-- [ ] Create `workforceService.ts` (Supabase CRUD)
+- [x] Add Workforce types to `types.ts`
+- [x] Create `workforceService.ts` (Supabase CRUD)
 
 ## Frontend — Components
-- [ ] Create `WorkforceApp.tsx` (shell + shared Navbar)
-- [ ] Create `WorkerList.tsx` (danh sách nhân sự)
-- [ ] Create `WorkerForm.tsx` (thêm/sửa nhân sự + hợp đồng)
-- [ ] Create `TaskList.tsx` (danh sách task)
-- [ ] Create `SettlementManager.tsx` (nghiệm thu tháng)
+- [x] Create `WorkforceApp.tsx` (shell + shared Navbar)
+- [x] Create `WorkerList.tsx` (danh sách nhân sự)
+- [x] Create `WorkerForm.tsx` (thêm/sửa nhân sự + hợp đồng)
+- [x] Create `TaskList.tsx` (danh sách task)
+- [x] Create `SettlementManager.tsx` (nghiệm thu tháng)
 
 ## App Registration
-- [ ] Add to `config/apps.ts`
-- [ ] Add route in `App.tsx`
+- [x] Add to `config/apps.ts`
+- [x] Add route in `App.tsx`
 
 ## Hooks
-- [ ] Create `useWorkforceState.ts`
+- [x] Create `useWorkforceState.ts`
 
 ## Verification
-- [ ] TypeScript build passes
-- [ ] Browser test: full flow
+- [x] TypeScript build passes (0 errors)
+- [x] Browser test: full flow verified
