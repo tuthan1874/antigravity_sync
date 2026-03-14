@@ -1,0 +1,44 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-[#34C759] hover:bg-[#34C759]/10' title='Back to Home' />
+	TD Games Expense
+	[2] (779,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Danh sách />
+	[3] (831,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all bg-[#34C759] text-black shadow-[0_0_12px_rgba(52,199,89,0.4)]'>Thêm mới />
+	[4] (879,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Định kỳ />
+	[5] (927,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Danh mục />
+	admin
+	admin
+	➕
+	Thêm chi phí mới
+	[6] (500,178)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Mô tả chi phí * />
+	[7] (500,207)<input class='w-full bg-transparent border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-[#34C759]/50 focus:ring-1 focus:ring-[#34C759]/20 transition-all' placeholder='Ví dụ: Thuê freelancer design...' />
+	[8] (429,249)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Số tiền * />
+	[9] (429,278)<input class='w-full bg-transparent border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-[#34C759]/50 focus:ring-1 focus:ring-[#34C759]/20 transition-all' placeholder='0' />
+	[10] (571,249)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Đơn vị tiền tệ />
+	[11] (571,277)<select class='w-full bg-transparent border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-[#34C759]/50 focus:ring-1 focus:ring-[#34C759]/20 transition-all' />
+	[12] (429,319)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Ngày chi />
+	[13] (429,349)<input class='w-full bg-transparent border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-[#34C759]/50 focus:ring-1 focus:ring-[#34C759]/20 transition-all' />
+	[14] (571,319)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Danh mục />
+	[15] (571,348)<select class='w-full bg-transparent border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-[#34C759]/50 focus:ring-1 focus:ring-[#34C759]/20 transition-all' />
+	[16] (429,392)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Dự án />
+	[17] (429,421)<input class='w-full bg-transparent border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-[#34C759]/50 focus:ring-1 focus:ring-[#34C759]/20 transition-all' placeholder='Tên dự án...' />
+	[18] (571,392)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Khách hàng />
+	[19] (571,421)<input class='w-full bg-transparent border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-[#34C759]/50 focus:ring-1 focus:ring-[#34C759]/20 transition-all' placeholder='Tên khách hàng...' />
+	[20] (429,462)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Chi cho (Vendor) />
+	[21] (429,492)<input class='w-full bg-transparent border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-[#34C759]/50 focus:ring-1 focus:ring-[#34C759]/20 transition-all' placeholder='Người / Công ty nhận tiền...' />
+	[22] (571,462)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Phương thức thanh toán />
+	[23] (571,491)<select class='w-full bg-transparent border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-[#34C759]/50 focus:ring-1 focus:ring-[#34C759]/20 transition-all' />
+	[24] (429,533)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Trạng thái />
+	[25] (429,562)<select class='w-full bg-transparent border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-[#34C759]/50 focus:ring-1 focus:ring-[#34C759]/20 transition-all' />
+	[26] (571,533)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>URL Hoá đơn / Receipt />
+	[27] (571,562)<input class='w-full bg-transparent border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-[#34C759]/50 focus:ring-1 focus:ring-[#34C759]/20 transition-all' placeholder='https://...' />
+	[28] (500,604)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Ghi chú />
+	[29] (500,649)<textarea class='w-full bg-transparent border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-[#34C759]/50 focus:ring-1 focus:ring-[#34C759]/20 transition-all resize-none' placeholder='Ghi chú thêm...' />
+	[30] (430,729)<button class='flex-1 py-3.5 rounded-xl font-black text-sm uppercase tracking-wider bg-white/5 hover:bg-white/10 text-white transition-colors'>Huỷ />
+	[31] (570,729)<button class='flex-1 py-3.5 rounded-xl font-black text-sm uppercase tracking-wider bg-[#34C759] hover:bg-[#2DB84E] text-black transition-colors shadow-[0_8px_24px_rgba(52,199,89,0.3)]'>➕ Thêm chi phí />
+	TD Consulting • Expense Manager • v1.0
+
+</current_dom>

@@ -1,0 +1,15 @@
+# Task Checklist - Expense Module Testing
+
+- [ ] Navigate to http://localhost:3000/
+- [ ] Login (if needed)
+- [ ] Verify Home Screen with app cards (Invoice, Expense) - **Screenshot 1**
+- [ ] Enter Expense app, verify list view - **Screenshot 2**
+- [ ] Check "Thêm mới" tab (add expense form) - **Screenshot 3**
+- [ ] Add test expense:
+    - Title: "Test hosting VPS"
+    - Amount: 500000
+    - Category: Select any
+    - Vendor: "DigitalOcean"
+- [ ] Verify redirection to list and presence of new expense - **Screenshot 4**
+- [ ] Check "Danh mục" tab - **Screenshot 5**
+- [ ] Go back to Home Screen - **Screenshot 6**

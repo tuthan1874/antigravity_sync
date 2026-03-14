@@ -4,25 +4,26 @@
 - [x] Create `apps/invoice/` folder structure
 - [x] Move Invoice components (10 files) to `apps/invoice/components/`
 - [x] Move Invoice hook to `apps/invoice/hooks/`
-- [x] Move Invoice services (4 files) to `apps/invoice/services/`
-- [x] Fix all import paths (`@/` alias for root, relative for intra-module)
-- [x] Create `config/apps.ts` — app registry
-- [x] Create `components/HomeScreen.tsx` — app launcher
-- [x] Create `apps/invoice/components/InvoiceApp.tsx` — self-contained wrapper
-- [x] Update Navbar with ← back button and app name
-- [x] Rewrite `App.tsx` as platform shell
-- [x] TypeScript build verification — 0 errors
-- [x] Browser test: Login → Home → Invoice → Back flow
+- [x] Create `config/apps.ts` with app registry
+- [x] Create `HomeScreen.tsx` with iPhone-style App Launcher
+- [x] Create `InvoiceApp.tsx` wrapper with back button
+- [x] Update `App.tsx` with app router logic
+- [x] Fix all import paths
+- [x] Verify TypeScript build — 0 errors
+- [x] Browser test — Home → Invoice → Back all working
+- [x] Match HomeScreen background to LoginScreen
 
 ## Phase 2: Expense Module
-- [ ] Create Supabase tables (`expense_categories`, `expense_expenses`, `expense_recurring`)
-- [ ] Create `apps/expense/services/expenseService.ts`
-- [ ] Create `apps/expense/hooks/useExpenseState.ts`
-- [ ] Create Expense components (ExpenseApp, ExpenseList, ExpenseForm, etc.)
-- [ ] Integrate Expense app into platform router
-- [ ] Test full Expense CRUD flow
-
-## Phase 3: Polish
-- [ ] Delete empty `hooks/` directory
-- [ ] Clean up any unused old files
-- [ ] Git commit & push
+- [x] Create Supabase tables (categories, expenses, recurring)
+- [x] Seed 7 default categories
+- [x] Add Expense types to `types.ts`
+- [x] Create `expenseService.ts` (full CRUD)
+- [x] Create `useExpenseState.ts` hook
+- [x] Create `ExpenseApp.tsx` main container
+- [x] Create `ExpenseList.tsx` with summary cards + filters + table
+- [x] Create `ExpenseForm.tsx` add/edit form
+- [x] Create `ExpenseRecurring.tsx` recurring templates
+- [x] Create `ExpenseCategoryManager.tsx` with icon/color pickers
+- [x] Wire into `App.tsx` router
+- [x] TypeScript build — 0 errors
+- [x] Browser test — full CRUD flow verified
