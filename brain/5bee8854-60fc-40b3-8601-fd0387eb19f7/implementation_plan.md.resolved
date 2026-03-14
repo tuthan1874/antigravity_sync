@@ -1,135 +1,162 @@
-# TD GAMES BILLING — Multi-Module Platform (Invoice + Expense)
+# TD GAMES Platform — App Launcher Architecture
 
-Restructure the existing Invoice app into a multi-module **TD GAMES BILLING** platform. Add a new **Expense** module for cost tracking alongside the existing **Invoice** module for revenue tracking.
+Build the **TD GAMES** ecosystem as a single platform with an iPhone-style **Home Screen** after login. Each module is an independent "app" with its own icon, UI, and data.
+
+## Architecture Overview
+
+```
+Login → Home Screen (App Grid) → Click App → Full App View (with ← Back)
+```
+
+```mermaid
+graph TD
+    A[Login Screen] --> B[🏠 Home Screen]
+    B --> C[📄 Invoice App]
+    B --> D[💰 Expense App]
+    B --> E[📊 Dashboard App - future]
+    B --> F[... more apps]
+    C --> B
+    D --> B
+    E --> B
+```
 
 ## User Review Required
 
 > [!IMPORTANT]
-> **Data Layer: Supabase (NOT NocoDB)**
-> Both modules use the same Supabase project **Workflow** (`fifuhkupaqcfjwyouwpa`). Invoice tables already use `invoice_*` prefix. Expense tables will use `expense_*` prefix.
+> **Home Screen replaces the old Navbar tabs**
+> After login, user lands on a beautiful Home Screen with app icons in a grid. The Navbar module-switcher idea is scrapped. Each app has its own internal Navbar with a ← Back button.
 
 > [!IMPORTANT]
-> **Client Data Sharing Strategy**
-> Current client data lives in `invoice_clients`. Two options:
-> - **Option A**: Expense module also reads/writes to `invoice_clients` directly
-> - **Option B**: Rename `invoice_clients` → `billing_clients` (shared table) via migration
->
-> **Recommend Option A** for simplicity — no migration needed, both modules reference the same table.
-
-> [!WARNING]
-> **Scope**: Dashboard module (Revenue vs Expense overview) will be a separate 3rd module later. This plan only covers Invoice + Expense.
+> **App Registry Pattern**
+> Apps are registered in a simple array config. Adding a new app in the future = adding 1 entry to the config + the app component. Very extensible.
 
 ---
 
 ## Proposed Changes
 
-### Phase 1: App Shell — Module Navigation
+### Phase 1: Platform Shell (Home Screen + App Router)
 
-#### [MODIFY] [Navbar.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/Navbar.tsx)
-- Add **module switcher** (styled dropdown or segmented control) near the logo
-- Options: `📄 Invoice` | `💰 Expense`
-- Each module shows its own tab bar:
-  - Invoice tabs: `edit`, `preview`, `history`, `dashboard`, `activity`, `recurring`
-  - Expense tabs: `expenses`, `add`, `categories`, `recurring`
+#### [NEW] `components/HomeScreen.tsx`
+- Beautiful grid layout of app icons (like iPhone)
+- Each app card: icon (emoji/SVG), name, brief description
+- Dark theme matching existing design (`#0F0F0F` background)
+- Smooth animations on hover/click
+- Shows user info + logout button at top
+- Initial apps:
+  - 📄 **Invoice** — "Quản lý hoá đơn & doanh thu"
+  - 💰 **Expense** — "Quản lý chi phí & thanh toán"
 
 #### [MODIFY] [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
-- Add `activeModule` state: `'invoice' | 'expense'`
-- Conditionally render Invoice or Expense module
-- All existing Invoice logic stays **completely untouched**
+- Add `activeApp` state: `null` (home) | `'invoice'` | `'expense'`
+- `activeApp === null` → render `<HomeScreen />`
+- `activeApp === 'invoice'` → render existing Invoice module
+- `activeApp === 'expense'` → render new Expense module
+- Pass `onBack={() => setActiveApp(null)}` to each app
 
-#### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
-- Add types: `ExpenseRecord`, `ExpenseCategory`, `RecurringExpense`
+#### [MODIFY] [Navbar.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/Navbar.tsx)
+- Add a ← **Back to Home** button (left side) when inside an app
+- Keep existing tab navigation for each app's internal tabs
+- Show current app name in the navbar title area
+
+#### [NEW] `config/apps.ts`
+- App registry config array:
+```ts
+export const APPS = [
+  { id: 'invoice', name: 'Invoice', icon: '📄', desc: 'Quản lý hoá đơn & doanh thu', color: '#FF9500' },
+  { id: 'expense', name: 'Expense', icon: '💰', desc: 'Quản lý chi phí & thanh toán', color: '#34C759' },
+  // Future: { id: 'dashboard', name: 'Dashboard', icon: '📊', ... }
+];
+```
 
 ---
 
-### Phase 2: Supabase Schema (expense_* tables)
+### Phase 2: Supabase Schema for Expense
 
-Using the same Supabase project `fifuhkupaqcfjwyouwpa`. All tables below will be created via migration.
+Same project `fifuhkupaqcfjwyouwpa`. Migration creates 3 new tables:
 
-**`expense_categories`**
+**`expense_categories`** — default: Freelancer, Tool/License, Server Hosting, Tax, Salary, Equipment, Office Rent
+
 | Column | Type | Notes |
 |--------|------|-------|
-| id | uuid (PK) | Auto-generated |
-| name | text | e.g. "Freelancer", "Server Hosting" |
-| color | text | Hex color for UI |
-| icon | text | Emoji or icon name |
-| created_at | timestamptz | Default now() |
+| id | uuid PK | gen_random_uuid() |
+| name | text | Category name |
+| color | text | Hex color |
+| icon | text | Emoji |
+| created_at | timestamptz | now() |
 
-Default categories: Freelancer, Tool/License, Server Hosting, Tax, Salary, Equipment, Office Rent
+**`expense_expenses`** — main expense records
 
-**`expense_expenses`**
 | Column | Type | Notes |
 |--------|------|-------|
-| id | uuid (PK) | Auto-generated |
-| title | text | Expense description |
-| amount | numeric | Expense amount |
-| currency | text | USD or VND |
-| expense_date | date | When the expense occurred |
-| category_id | uuid (FK) | → expense_categories.id |
+| id | uuid PK | gen_random_uuid() |
+| title | text | Description |
+| amount | numeric | Amount |
+| currency | text | USD/VND |
+| expense_date | date | When it occurred |
+| category_id | uuid FK | → expense_categories |
 | project | text | Project name |
-| client_name | text | Client name (shared data) |
+| client_name | text | Client (from shared invoice_clients) |
 | vendor | text | Who was paid |
-| payment_method | text | Cash, Bank Transfer, Card |
-| status | text | pending, approved, paid |
-| notes | text | Additional notes |
-| receipt_url | text | Receipt image URL |
-| is_recurring | boolean | Flag for recurring |
-| recurring_frequency | text | monthly, quarterly, yearly |
+| payment_method | text | Cash/Transfer/Card |
+| status | text | pending/approved/paid |
+| notes | text | Notes |
+| receipt_url | text | Receipt file URL |
+| is_recurring | boolean | Recurring flag |
+| recurring_frequency | text | monthly/quarterly/yearly |
 | created_by | text | Username |
-| created_at | timestamptz | Auto timestamp |
+| created_at | timestamptz | now() |
 
-**`expense_recurring`**
+**`expense_recurring`** — recurring expense templates
+
 | Column | Type | Notes |
 |--------|------|-------|
-| id | uuid (PK) | Auto-generated |
+| id | uuid PK | gen_random_uuid() |
 | title | text | Template name |
 | amount | numeric | Amount |
 | currency | text | USD/VND |
-| category_id | uuid (FK) | → expense_categories.id |
-| project | text | Project name |
-| vendor | text | Who is paid |
-| frequency | text | monthly, quarterly, yearly |
-| next_run | date | Next auto-generation date |
+| category_id | uuid FK | → expense_categories |
+| project | text | Project |
+| vendor | text | Payee |
+| frequency | text | monthly/quarterly/yearly |
+| next_run | date | Next date |
 | is_active | boolean | Active flag |
-| created_at | timestamptz | Auto |
+| created_at | timestamptz | now() |
 
 ---
 
-### Phase 3: Expense Module — Components
+### Phase 3: Expense Module — Components & Services
 
 #### [NEW] `components/expense/ExpenseApp.tsx`
-Main container — manages internal tab routing (list, add/edit, categories, recurring)
+Main container, internal tab routing
 
 #### [NEW] `components/expense/ExpenseList.tsx`
-Table view with filters (category, project, client, date range, status). Monthly totals summary.
+Table view + filters + monthly totals
 
 #### [NEW] `components/expense/ExpenseForm.tsx`
-Add/Edit form: title, amount, currency, date, category, project, client, vendor, payment method, notes, receipt upload, recurring toggle
+Add/Edit expense form with all fields
 
 #### [NEW] `components/expense/ExpenseCategoryManager.tsx`
-CRUD for categories with color/icon assignment
+Category CRUD with color/icon
 
 #### [NEW] `components/expense/ExpenseRecurring.tsx`
-Manage recurring expense templates, show next due dates
-
----
-
-### Phase 4: Expense Data Layer
+Recurring expense template management
 
 #### [NEW] `services/expenseService.ts`
-Supabase CRUD for `expense_expenses`, `expense_categories`, `expense_recurring`
+Supabase CRUD for all expense_* tables
 
 #### [NEW] `hooks/useExpenseState.ts`
-State management hook (same pattern as [useInvoiceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/hooks/useInvoiceState.ts))
+State management (same pattern as useInvoiceState.ts)
+
+#### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
+Add: `ExpenseRecord`, `ExpenseCategory`, `RecurringExpense`, `AppConfig`
 
 ---
 
 ## Verification Plan
 
-1. `npm run dev` → Navigate to `http://localhost:3000`
-2. Verify module switcher in Navbar (Invoice ↔ Expense)
-3. Switch to Expense → UI loads correctly
-4. Switch back to Invoice → all Invoice features work unchanged
+1. Login → Home Screen displays with app icons grid
+2. Click Invoice → Invoice app loads (all existing features work)
+3. Click ← Back → returns to Home Screen
+4. Click Expense → Expense app loads
 5. Add expense → saves to Supabase
-6. Manage categories → CRUD works
-7. Client dropdown shows data from shared `invoice_clients` table
+6. Back to Home → smooth transition

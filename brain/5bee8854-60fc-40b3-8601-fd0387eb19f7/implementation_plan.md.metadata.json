@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Corrected implementation plan for TD GAMES BILLING multi-module platform. Uses Supabase (project Workflow) with `expense_*` prefixed tables, matching the existing `invoice_*` pattern. Covers architecture (module switcher), Supabase schema for expenses, component structure, shared client data, and verification.",
-  "updatedAt": "2026-03-14T16:44:26.953986200Z",
-  "version": "1"
+  "summary": "Redesigned architecture: TD GAMES Platform with iPhone-style App Launcher home screen. After login, users see a beautiful grid of app icons. Clicking an app opens it full-screen with a back button. First two apps: Invoice (existing) and Expense (new). Covers HomeScreen component, AppShell wrapper, Supabase schema for expenses, and all Expense module components.",
+  "updatedAt": "2026-03-14T16:51:48.219893500Z",
+  "version": "2"
 }
