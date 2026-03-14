@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough documenting the complete Workforce app Phase 1 build: DB schema, types, services, hooks, 5 React components, app registration, and browser test verification with screenshots.",
-  "updatedAt": "2026-03-14T18:11:56.190918800Z",
-  "version": "3"
+  "summary": "Walkthrough for ClickUp sync implementation: Edge Function proxy, config wizard, sync-only task list, email-based matching. Includes screenshots of all new UI elements.",
+  "updatedAt": "2026-03-14T18:27:03.076858800Z",
+  "version": "4"
 }

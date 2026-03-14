@@ -1,72 +1,83 @@
-# Workforce App — Phase 1 Walkthrough
+# Workforce App — ClickUp Sync Walkthrough
 
 ## What Was Built
 
-New **Workforce** app in the TD Games Platform for managing freelancers/inhouse workers, contracts, task tracking, and monthly settlements.
+Replaced manual task creation with **ClickUp sync** — tasks now only come from ClickUp, matched by **email** between ClickUp assignee and worker profile.
 
 ---
 
-## Database (Supabase)
+## Architecture
 
-Created 5 tables with RLS enabled:
+```mermaid
+graph LR
+    A["Frontend<br/>🔄 Sync ClickUp"] --> B["Edge Function<br/>clickup-sync"]
+    B --> C["ClickUp API"]
+    C --> B
+    B --> A
+    A --> D["Match by Email<br/>Assignee ↔ Worker"]
+    D --> E["Supabase<br/>wf_tasks"]
+```
 
-| Table | Purpose |
+## Changes Made
+
+### Database
+- **`wf_clickup_config`** table — stores API token, team_id, selected spaces/lists
+
+### Edge Function (`clickup-sync`)
+4 actions via POST proxy:
+| Action | Description |
 |---|---|
-| `wf_workers` | Nhân sự (name, email, phone, bank info, type) |
-| `wf_contracts` | Hợp đồng (worker link, rate, dates, status) |
-| `wf_tasks` | Task (worker, project, client, price, status, ClickUp fields) |
-| `wf_settlements` | Nghiệm thu tháng (worker, period, total, status) |
-| `wf_settlement_tasks` | Junction table (settlement ↔ tasks) |
+| `get_teams` | Fetch workspaces |
+| `get_spaces` | Fetch spaces in a team |
+| `get_lists` | Fetch lists + folders in a space |
+| `sync_tasks` | Fetch tasks + resolve assignee emails via team members |
+
+### Frontend Files
+
+| File | Change |
+|---|---|
+| [clickupService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/clickupService.ts) | NEW — Edge Function proxy calls + config CRUD |
+| [ClickUpConfig.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/ClickUpConfig.tsx) | NEW — Multi-step wizard (Token → Team → Spaces/Lists) |
+| [TaskList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/TaskList.tsx) | REWRITTEN — Removed add form, added Sync button |
+| [WorkforceApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/WorkforceApp.tsx) | MODIFIED — Added Config tab |
+| [useWorkforceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/hooks/useWorkforceState.ts) | MODIFIED — Added 'config' tab type |
 
 ---
 
-## Files Created/Modified
+## Sync Flow
 
-### New Files
-- [workforceService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts) — Full Supabase CRUD
-- [useWorkforceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/hooks/useWorkforceState.ts) — Central state hook
-- [WorkforceApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/WorkforceApp.tsx) — App shell with shared Navbar
-- [WorkerList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/WorkerList.tsx) — Worker cards + filter
-- [WorkerForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/WorkerForm.tsx) — Add/edit worker + contracts
-- [TaskList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/TaskList.tsx) — Task cards + add form
-- [SettlementManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/SettlementManager.tsx) — Settlement creation + status flow
-
-### Modified Files
-- [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts) — Added [Worker](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts#124-137), [WorkerContract](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts#138-151), [WorkforceTask](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts#152-172), [Settlement](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts#173-187), [SettlementTask](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts#188-193)
-- [apps.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/config/apps.ts) — Registered Workforce app (purple theme)
-- [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) — Added Workforce route
-- [Navbar.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/components/Navbar.tsx) — Added `tabLabels` prop for custom tab text
-- [ExpenseApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseApp.tsx) — Using new `tabLabels` prop
+1. Admin enters ClickUp API Token → selects Team → selects Spaces/Lists → saves
+2. On Task tab, clicks **"🔄 Sync ClickUp"**
+3. Edge Function fetches team members (for email mapping) + tasks from selected lists
+4. Frontend matches `assignee email` ↔ `worker.email` in database
+5. Matched tasks are **upserted** into `wf_tasks` (new → insert, existing → update)
+6. Unmatched tasks (no email match) are skipped with count shown
 
 ---
 
 ## Verification
 
-### TypeScript Build
+### Build
 `npx tsc --noEmit` — **0 errors** ✅
 
 ### Browser Test
 
 ````carousel
-![Home Screen with Invoice, Expense, and Workforce cards](C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/wf_homescreen.png)
+![Task tab — Sync ClickUp button replaces manual add](C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/workforce_task_tab_1773512756870.png)
 <!-- slide -->
-![Worker List tab with summary cards and empty state](C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/wf_worker_list.png)
-<!-- slide -->
-![Task List with added task and add form visible](C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/wf_task_list.png)
+![Config tab — ClickUp setup wizard](C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/workforce_config_tab_1773512770250.png)
 ````
 
-![Full test recording](C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/workforce_full_test_1773511620953.webp)
+![Full test recording](C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/clickup_sync_test_1773512721020.webp)
 
-### Verified Features
-- ✅ Home Screen shows 3 app cards (Invoice, Expense, Workforce)
-- ✅ Workforce tabs: NHÂN SỰ / THÊM/SỬA / TASK / NGHIỆM THU
-- ✅ Worker CRUD (add, view in card grid)
-- ✅ Task CRUD (add with worker assignment, status badge)
-- ✅ Settlement manager with summary cards
-- ✅ UI style consistent with Invoice/Expense (dark theme, primary colors, card layout)
+### Verified
+- ✅ 5 tabs: NHÂN SỰ / THÊM/SỬA / TASK / NGHIỆM THU / CẤU HÌNH
+- ✅ Task tab has "🔄 Sync ClickUp" button (no manual add form)
+- ✅ Config tab shows step wizard (Token → Team → Spaces → Lists)
+- ✅ Edge Function deployed and responding
 
 ---
 
-## Next Steps (Future Phases)
-- **Phase 2**: ClickUp task sync via Edge Function proxy
-- **Phase 3**: Auto-create Expense record when settlement is paid
+## Next Steps
+- Test with real ClickUp API token to verify full sync flow
+- Phase 3: Auto-create Expense record when settlement is paid

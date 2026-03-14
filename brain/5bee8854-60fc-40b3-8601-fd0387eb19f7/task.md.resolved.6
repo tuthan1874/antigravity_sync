@@ -1,0 +1,23 @@
+# Workforce App — ClickUp Sync
+
+## Database
+- [ ] Create `wf_clickup_config` table (token, team_id, spaces/lists)
+
+## Edge Function
+- [ ] Create `clickup-sync` Edge Function (proxy for ClickUp API)
+
+## Frontend — Remove Manual Task
+- [ ] Remove "Thêm task" form from TaskList.tsx
+
+## Frontend — Sync Button
+- [ ] Create `clickupService.ts` (call Edge Function)
+- [ ] Add "🔄 Sync ClickUp" button to TaskList
+- [ ] Match assignee email → worker email → upsert wf_tasks
+
+## Frontend — Config Page
+- [ ] Create `ClickUpConfig.tsx` (token, team, space selection)
+- [ ] Add new tab/section in WorkforceApp
+
+## Verification
+- [ ] TypeScript build passes
+- [ ] Browser test: sync flow

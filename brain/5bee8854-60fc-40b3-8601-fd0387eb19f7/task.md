@@ -1,30 +1,23 @@
-# Workforce App — Phase 1
+# Workforce App — ClickUp Sync
 
 ## Database
-- [x] Create `wf_workers` table
-- [x] Create `wf_contracts` table
-- [x] Create `wf_tasks` table
-- [x] Create `wf_settlements` + `wf_settlement_tasks` tables
-- [x] Enable RLS on all tables
+- [x] Create `wf_clickup_config` table (token, team_id, spaces/lists)
 
-## Frontend — Types & Services
-- [x] Add Workforce types to `types.ts`
-- [x] Create `workforceService.ts` (Supabase CRUD)
+## Edge Function
+- [x] Create `clickup-sync` Edge Function (proxy for ClickUp API)
 
-## Frontend — Components
-- [x] Create `WorkforceApp.tsx` (shell + shared Navbar)
-- [x] Create `WorkerList.tsx` (danh sách nhân sự)
-- [x] Create `WorkerForm.tsx` (thêm/sửa nhân sự + hợp đồng)
-- [x] Create `TaskList.tsx` (danh sách task)
-- [x] Create `SettlementManager.tsx` (nghiệm thu tháng)
+## Frontend — Remove Manual Task
+- [x] Remove "Thêm task" form from TaskList.tsx
 
-## App Registration
-- [x] Add to `config/apps.ts`
-- [x] Add route in `App.tsx`
+## Frontend — Sync Button
+- [x] Create `clickupService.ts` (call Edge Function)
+- [x] Add "🔄 Sync ClickUp" button to TaskList
+- [x] Match assignee email → worker email → upsert wf_tasks
 
-## Hooks
-- [x] Create `useWorkforceState.ts`
+## Frontend — Config Page
+- [x] Create `ClickUpConfig.tsx` (token, team, space selection)
+- [x] Add new tab "Cấu hình" in WorkforceApp
 
 ## Verification
 - [x] TypeScript build passes (0 errors)
-- [x] Browser test: full flow verified
+- [x] Browser test: all tabs visible, sync button present, config wizard loads
