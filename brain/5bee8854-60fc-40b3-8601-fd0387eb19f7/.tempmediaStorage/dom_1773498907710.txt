@@ -1,0 +1,71 @@
+[0] (497,46)<div  />
+	TD Games Billing
+	USD
+	→
+	VND
+	26.318
+	₫
+	VCB •
+	14/03, 21:31
+	[1] (662,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all bg-primary text-black shadow-btn-glow'>edit />
+	[2] (702,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>preview />
+	[3] (749,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>history />
+	[4] (800,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>dashboard />
+	[5] (852,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>activity />
+	[6] (903,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>recurring />
+	admin
+	admin
+	[7] (968,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	EXPORT PDF
+	[8] (321,84)<button class='inline-flex items-center justify-center font-bold uppercase tracking-wider rounded-xl transition-all duration-300 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20 px-8 py-4 text-sm w-full !py-4 border border-primary/20 hover:bg-primary/5'>Save Invoice />
+	[9] (321,138)<button class='w-full py-4 rounded-2xl text-sm font-black uppercase tracking-widest border-2 border-dashed border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/60 transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2'>Create eInvoice />
+	Config
+	[10] (380,248)<button class='p-2 rounded-lg transition-all text-primary hover:bg-primary/10' />
+	[11] (321,287)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Studio Profile />
+	[12] (321,321)<select class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all appearance-none cursor-pointer flex items-center leading-none' />
+	[13] (321,361)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Banking Profile />
+	[14] (321,395)<select class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all appearance-none cursor-pointer flex items-center leading-none' />
+	[15] (321,434)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Invoice Theme />
+	[16] (321,468)<select class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all appearance-none cursor-pointer flex items-center leading-none' />
+	[17] (321,508)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Status />
+	[18] (321,542)<select class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all appearance-none cursor-pointer flex items-center leading-none' />
+	[19] (286,582)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Currency />
+	[20] (286,615)<select class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all appearance-none cursor-pointer flex items-center leading-none' />
+	[21] (355,582)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Invoice # />
+	[22] (355,615)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	[23] (286,667)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Issue Date />
+	[24] (286,701)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	[25] (355,667)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Due Date />
+	[26] (355,701)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	Studios
+	[27] (380,822)<button class='p-2 rounded-lg transition-all text-primary hover:bg-primary/10' />
+	01
+	$2,500.00
+	Subtotal
+	$2,500.00
+	03
+	Discount & Tax
+	[28] (453,225)<label class='text-[11px] font-black uppercase tracking-widest text-neutral-medium'>Discount />
+	[29] (547,225)<button class='px-3 py-1.5 transition-all bg-primary text-black'>% />
+	[30] (563,225)<button class='px-3 py-1.5 transition-all text-white/40 hover:text-white'>USD />
+	[31] (506,264)<input class='w-full text-2xl font-black bg-transparent outline-none border-b-2 pb-2 transition-colors border-white/10 text-white/30' placeholder='0' />
+	%
+	[32] (664,220)<label class='text-[11px] font-black uppercase tracking-widest block text-neutral-medium'>Tax Rate />
+	[33] (664,255)<input class='w-full text-2xl font-black bg-transparent outline-none border-b-2 pb-2 transition-colors border-white/10 text-white/30' placeholder='0' />
+	%
+	[34] (585,324)<label class='text-[11px] font-black uppercase tracking-widest block mb-3 text-neutral-medium'>Payment Method />
+	[35] (475,354)<button class='flex-1 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all border border-white/10 text-white/40 hover:text-white hover:border-white/30'>Bank Transfer />
+	[36] (548,354)<button class='flex-1 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all border border-white/10 text-white/40 hover:text-white hover:border-white/30'>Cash />
+	[37] (622,354)<button class='flex-1 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all bg-primary text-black shadow-btn-glow'>Cash/Bank />
+	[38] (696,354)<button class='flex-1 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all border border-white/10 text-white/40 hover:text-white hover:border-white/30'>Other />
+	04
+	Studio Info
+	[39] (585,540)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Studio Name />
+	[40] (585,573)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	[41] (509,632)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Email />
+	[42] (509,665)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	[43] (661,632)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Tax Code (MST) />
+	[44] (661,665)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	[45] (585,724)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Studio Address />
+	[46] (585,783)<textarea class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 py-4 font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all min-h-[120px] resize-y placeholder:text-neutral-medium/50 leading-relaxed' />
+	TD Consulting • Enterprise Billing Engine • v2.1

@@ -1,0 +1,6 @@
+# Task: Verify Date Input Icons visibility
+
+- [ ] Navigate to http://localhost:3000/
+- [ ] Scroll to CONFIG section in left sidebar
+- [ ] Take zoomed-in screenshot of "Issue Date" and "Due Date"
+- [ ] Verify icons are fully visible and not clipped

@@ -1,0 +1,7 @@
+# Task: Verify Date Input Icons and Text
+
+- [ ] Navigate to http://localhost:3000/
+- [ ] Locate "Issue Date" and "Due Date" in the left sidebar CONFIG section
+- [ ] Take a screenshot of the area
+- [ ] Check for clipping or cut-off text/icons
+- [ ] Final report

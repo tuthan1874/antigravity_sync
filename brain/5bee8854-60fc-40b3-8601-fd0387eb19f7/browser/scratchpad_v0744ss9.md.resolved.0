@@ -1,0 +1,6 @@
+# Task: Verify Date Input Icon Changes
+
+- [ ] Open http://localhost:3000/
+- [ ] Locate Issue Date and Due Date inputs
+- [ ] Take screenshot of the inputs
+- [ ] Confirm if icons are larger and more visible

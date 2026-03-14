@@ -1,0 +1,14 @@
+# Task: Verify Date Input Icons
+
+## Plan
+1. Navigate to http://localhost:3000/
+2. Locate CONFIG section in left sidebar.
+3. Find Issue Date and Due Date input fields.
+4. Take zoomed screenshots to verify icons are not clipped.
+5. Confirm icons are fully visible and report back.
+
+## Progress
+- [ ] Navigate to page
+- [ ] Locate date inputs
+- [ ] Capture screenshots
+- [ ] Verify visibility

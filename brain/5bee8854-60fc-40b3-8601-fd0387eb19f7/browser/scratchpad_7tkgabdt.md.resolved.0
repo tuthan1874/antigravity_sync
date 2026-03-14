@@ -1,0 +1,15 @@
+# Task: Verify Date Picker Icons
+
+## Objectives
+- [ ] Navigate to http://localhost:3000/
+- [ ] Take a screenshot of the "Issue Date" and "Due Date" fields in the CONFIG section.
+- [ ] Verify icons are not clipped and text is visible.
+- [ ] Click the calendar icon on "Issue Date" and verify the picker opens.
+- [ ] Provide screenshots of the fields and open picker.
+
+## Progress
+- [ ] Navigate to page
+- [ ] Capture initial screenshot
+- [ ] Verify icon/text visibility
+- [ ] Test date picker interaction
+- [ ] Capture date picker screenshot
