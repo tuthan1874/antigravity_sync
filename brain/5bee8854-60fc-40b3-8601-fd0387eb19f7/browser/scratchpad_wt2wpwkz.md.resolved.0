@@ -1,0 +1,14 @@
+# Verification Plan: Expense App UI/UX Consistency
+
+- [ ] Log in to the application at http://localhost:3000
+- [ ] Take screenshot of Home Screen
+- [ ] Navigate to Expense App
+- [ ] Take screenshot of Expense List (History tab)
+- [ ] Take screenshot of Add Expense (Edit tab)
+- [ ] Take screenshot of Categories (Activity tab)
+- [ ] Navigate to Invoice App
+- [ ] Take screenshot of Invoice History tab
+- [ ] Final assessment of consistency
+
+## Observations
+- 

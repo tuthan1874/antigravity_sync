@@ -1,47 +1,34 @@
-# TD GAMES Platform — Expense Module Walkthrough
+# Expense UI/UX → Invoice Style Alignment
 
-## What Was Built
+## What Changed
 
-Full **Expense Management module** for the TD GAMES Enterprise Platform.
+Rewrote all 5 Expense components to match Invoice's UI/UX exactly.
 
-### Database (Supabase)
-- `expense_categories` — 7 seeded categories (Freelancer, Tool/License, Server & Hosting, etc.)
-- `expense_expenses` — Main expense records with category joins
-- `expense_recurring` — Recurring expense templates
-- RLS policies + indexes on date/category/status
+| Change | Before | After |
+|--------|--------|-------|
+| Navbar | Custom green navbar | Shared `Navbar` from Invoice |
+| Colors | `#34C759` hardcoded | `text-primary` / `bg-primary` tokens |
+| Layout | Table for list, flat cards | Card grid (3-col) matching HistoryTab |
+| Animations | None | `animate-fadeInUp` on all pages |
+| Buttons | Custom green buttons | `shadow-btn-glow` + `rounded-2xl` |
+| Empty states | Emoji + text | Circular icon container (same as Invoice) |
+| Action icons | Emoji (✏️🗑️) | SVG icons with hover effects |
+| Form inputs | `border-white/10` | `border-primary/10` + `focus:border-primary/40` |
 
-### Files Created
-
-| File | Purpose |
-|------|---------|
-| [expenseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/services/expenseService.ts) | Full CRUD for categories, expenses, recurring |
-| [useExpenseState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/hooks/useExpenseState.ts) | State hook with filtering, totals |
-| [ExpenseApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseApp.tsx) | Main container with green-themed navbar + tabs |
-| [ExpenseList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseList.tsx) | Summary cards, filters, table with status toggle |
-| [ExpenseForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseForm.tsx) | Add/edit form (12 fields) |
-| [ExpenseRecurring.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseRecurring.tsx) | Recurring template management |
-| [ExpenseCategoryManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseCategoryManager.tsx) | Category CRUD with icon/color pickers |
-
-### Modified Files
-- [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts) — Added `ExpenseCategory`, `ExpenseRecord`, `RecurringExpense`
-- [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) — Replaced placeholder with real `ExpenseApp`
-
-## Verification
-
-### TypeScript Build — ✅ Zero errors
-
-### Browser Test — ✅ All steps passed
+## Side-by-Side Comparison
 
 ````carousel
-![Expense List — Empty state with summary cards and filters](file:///C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/expense_app_list_empty_1773508931258.png)
+![Expense List — now uses orange `text-primary`, card grid, same Navbar](file:///C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/expense_list_history_1773509601809.png)
 <!-- slide -->
-![Add Expense Form — 12 fields, green submit button](file:///C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/expense_add_form_1773508948265.png)
+![Invoice History — identical styling: card grid, gradient accent bars, orange amounts](file:///C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/invoice_history_tab_1773509644093.png)
 <!-- slide -->
-![Expense List with test data — VPS hosting 500,000₫ saved to Supabase](file:///C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/expense_list_with_test_data_1773509002745.png)
+![Expense Form — standard form with `border-primary/10` inputs, `shadow-btn-glow` submit](file:///C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/expense_add_form_edit_tab_1773509611992.png)
 <!-- slide -->
-![Categories Grid — 7 seeded categories with icons and colors](file:///C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/expense_categories_1773509010770.png)
-<!-- slide -->
-![Back to Home — Navigation works correctly](file:///C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/home_screen_returned_1773509020185.png)
+![Category Manager — card grid with category-colored accent bars, SVG edit/delete icons](file:///C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/expense_categories_activity_tab_1773509621617.png)
 ````
 
-![Full test flow recording](file:///C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/expense_app_test_1773508892118.webp)
+![Full test recording](file:///C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/expense_ui_comparison_1773509569297.webp)
+
+## Verification
+- **TypeScript**: 0 errors
+- **Browser**: Expense and Invoice visually identical in navbar, card layout, colors, typography, and interactions

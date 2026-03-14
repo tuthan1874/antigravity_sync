@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Documents Phase 2 Expense module implementation: 3 Supabase tables, 7 new frontend files, App.tsx integration. Includes browser test screenshots showing list view, add form, saved data, categories grid, and navigation.",
-  "updatedAt": "2026-03-14T17:24:43.523409700Z",
-  "version": "1"
+  "summary": "Documents UI/UX alignment between Expense and Invoice modules. Shows side-by-side comparison screenshots proving consistent navbar, card layouts, color tokens, and typography.",
+  "updatedAt": "2026-03-14T17:34:54.126068900Z",
+  "version": "2"
 }
