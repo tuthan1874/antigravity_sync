@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Corrected implementation plan for TD GAMES BILLING multi-module platform. Uses Supabase (project Workflow) with `expense_*` prefixed tables, matching the existing `invoice_*` pattern. Covers architecture (module switcher), Supabase schema for expenses, component structure, shared client data, and verification.",
+  "updatedAt": "2026-03-14T16:44:26.953986200Z",
+  "version": "1"
+}

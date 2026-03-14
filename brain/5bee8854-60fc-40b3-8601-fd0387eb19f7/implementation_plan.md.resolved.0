@@ -1,0 +1,126 @@
+# TD GAMES BILLING — Multi-Module Platform (Invoice + Expense)
+
+Restructure the existing Invoice app into a multi-module **TD GAMES BILLING** platform. Add a new **Expense** module for cost tracking alongside the existing **Invoice** module for revenue tracking.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Architecture Decision: Module Switcher vs Router**
+> I propose a **top-level module switcher** (dropdown/tabs in Navbar) instead of adding a full React Router. This keeps the app lightweight and avoids a major refactor. The Navbar will have an "Invoice" | "Expense" toggle at the top, and each module will have its own internal tabs.
+
+> [!IMPORTANT]
+> **Client Data Sharing**
+> Both modules share the same NocoDB `Thông tin khách hàng` table. Changes to client info in either module will be reflected in both. No duplication needed.
+
+> [!WARNING]
+> **Scope Clarification**
+> The Dashboard module (Revenue vs Expense overview) will be built later as a separate 3rd module per user's request. This plan only covers Invoice + Expense.
+
+---
+
+## Proposed Changes
+
+### App Shell — Module Navigation
+
+#### [MODIFY] [Navbar.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/Navbar.tsx)
+- Add a **module switcher** (styled dropdown/tabs) near the logo: `📄 Invoice` | `💰 Expense`
+- Each module has its own set of internal tabs
+- Invoice tabs: `edit`, `preview`, `history`, `dashboard`, `activity`, `recurring`
+- Expense tabs: `expenses`, `categories`, `recurring`, `activity`
+
+#### [MODIFY] [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
+- Add `activeModule` state: `'invoice' | 'expense'`
+- Conditionally render Invoice module or Expense module based on `activeModule`
+- Keep all existing Invoice logic intact (zero changes to Invoice behavior)
+
+#### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
+- Add Expense-related types: `ExpenseRecord`, `ExpenseCategory`, `Vendor`, `RecurringExpense`
+
+---
+
+### Expense Module — Components
+
+#### [NEW] [ExpenseApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/expense/ExpenseApp.tsx)
+- Main container for the Expense module (analogous to the Invoice editor flow in App.tsx)
+- Manages its own internal tab state: expenses list, add/edit expense, categories, recurring
+
+#### [NEW] [ExpenseList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/expense/ExpenseList.tsx)
+- Table view of all expenses with sorting and filtering
+- Filters: category, project, client, date range, status
+- Quick stats: total this month, by category breakdown
+
+#### [NEW] [ExpenseForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/expense/ExpenseForm.tsx)
+- Add/Edit expense form with fields:
+  - Description, Amount, Currency (USD/VND), Date
+  - Category (dropdown from categories table)
+  - Project, Client (synced from shared client table)
+  - Payment method, Vendor/Payee
+  - Notes, Attachments (receipt images)
+  - Is Recurring toggle → frequency settings
+
+#### [NEW] [ExpenseCategoryManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/expense/ExpenseCategoryManager.tsx)
+- CRUD for expense categories with color coding
+- Default categories: Freelancer, Tool/License, Server Hosting, Tax, Salary, Equipment, Office Rent
+
+#### [NEW] [ExpenseRecurring.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/expense/ExpenseRecurring.tsx)
+- Manage recurring expenses (monthly server fees, salaries, rent, etc.)
+- Show next due date, auto-generate reminders
+
+---
+
+### Expense Module — Data Layer
+
+#### [NEW] [expenseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/services/expenseService.ts)
+- NocoDB CRUD operations for expense records
+- Uses existing `TDC_Finace` base (id: `p95wenplq8hbmjr`)
+- Will create new NocoDB tables:
+  - `Expenses` — main expense records
+  - `Expense Categories` — category management
+  - `Expense_Recurring` — recurring expense templates
+
+#### [NEW] [useExpenseState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/hooks/useExpenseState.ts)
+- Similar pattern to [useInvoiceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/hooks/useInvoiceState.ts)
+- Manages expense list, filters, categories, form state, CRUD operations
+
+---
+
+### NocoDB Tables (TDC_Finace base)
+
+**Expenses table:**
+| Column | Type | Notes |
+|--------|------|-------|
+| Title | SingleLineText | Expense description |
+| Amount | Decimal | Expense amount |
+| Currency | SingleSelect | USD, VND |
+| Date | Date | Expense date |
+| Category | SingleSelect | Linked categories |
+| Project | SingleLineText | Project name |
+| Client | SingleLineText | Client name (synced) |
+| Vendor | SingleLineText | Who was paid |
+| Payment Method | SingleSelect | Cash, Bank Transfer, Card, Other |
+| Status | SingleSelect | Pending, Approved, Paid |
+| Notes | LongText | Additional notes |
+| Receipt | Attachment | Receipt images |
+| Is Recurring | Checkbox | Recurring flag |
+| Recurring Frequency | SingleSelect | Monthly, Quarterly, Yearly |
+| Created By | SingleLineText | User who created |
+| Created At | DateTime | Auto timestamp |
+
+---
+
+## Verification Plan
+
+### Browser Testing
+1. Start server with `npm run dev`
+2. Navigate to `http://localhost:3000`
+3. Verify module switcher appears in Navbar (Invoice / Expense toggle)
+4. Switch to Expense module → verify Expense UI loads
+5. Switch back to Invoice → verify all Invoice functionality still works unchanged
+6. Add a new expense record in Expense module
+7. Verify category management CRUD
+8. Verify client dropdown shows shared client data
+
+### Manual Verification
+- User confirms the module switcher UX is intuitive
+- User tests adding real expense data
+- User verifies client data appears in both modules

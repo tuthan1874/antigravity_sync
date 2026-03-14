@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_TASK",
+  "summary": "Task list for restructuring TD GAMES BILLING into a multi-module platform with Invoice (existing) and Expense (new) modules. Covers architecture refactoring, database setup, UI creation, and testing.",
+  "updatedAt": "2026-03-14T16:41:10.007648200Z"
+}
