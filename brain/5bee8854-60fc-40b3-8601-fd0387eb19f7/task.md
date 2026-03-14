@@ -1,24 +1,29 @@
-# TD GAMES BILLING — Multi-Module Platform
+# TD GAMES Platform — App Launcher
 
-## Phase 1: Architecture Refactoring
-- [ ] Restructure app into multi-module platform (Invoice + Expense)
-- [ ] Add top-level module switcher to Navbar
-- [ ] Move Invoice code into `modules/invoice/` folder
-- [ ] Create `modules/expense/` folder for Expense app
+## Phase 1: Restructure Folders (Option A)
+- [ ] Create `apps/invoice/components/`, `apps/invoice/hooks/`, `apps/invoice/services/`
+- [ ] Move Invoice components → `apps/invoice/components/`
+- [ ] Move `useInvoiceState.ts` → `apps/invoice/hooks/`
+- [ ] Move Invoice services → `apps/invoice/services/`
+- [ ] Keep `supabaseClient.ts` in root `services/` (shared)
+- [ ] Keep `LoginScreen.tsx`, `FormElements.tsx`, `Button.tsx`, `ToastNotification.tsx` in root `components/` (shared)
+- [ ] Update ALL import paths in moved files
+- [ ] Build test — 0 errors
 
-## Phase 2: Expense Module — Database
-- [ ] Create NocoDB tables for expenses in TDC_Finace base
-- [ ] Set up expense categories, projects, vendors
-- [ ] Enable client data bi-directional sync between modules
+## Phase 2: Home Screen + App Router
+- [ ] Create `config/apps.ts` (app registry)
+- [ ] Create `components/HomeScreen.tsx` (app launcher grid)
+- [ ] Modify `App.tsx` for activeApp routing
+- [ ] Modify Invoice Navbar for ← Back button
+- [ ] Build + browser test
 
-## Phase 3: Expense Module — Core UI
-- [ ] Expense list/table with filters
-- [ ] Expense entry form (add/edit)
-- [ ] Category management
-- [ ] Recurring expenses
-- [ ] File attachments (receipts)
+## Phase 3: Expense App
+- [ ] Create Supabase tables (expense_categories, expense_expenses, expense_recurring)
+- [ ] Create `apps/expense/services/expenseService.ts`
+- [ ] Create `apps/expense/hooks/useExpenseState.ts`
+- [ ] Create Expense components (ExpenseApp, List, Form, Categories, Recurring)
+- [ ] Build + browser test
 
-## Phase 4: Testing & Polish
-- [ ] Verify both modules work independently
-- [ ] Verify shared client data syncs
-- [ ] Commit and push to GitHub
+## Phase 4: Final Verification
+- [ ] Full flow test: Login → Home → Invoice → Back → Expense → Back
+- [ ] Commit + Push to GitHub

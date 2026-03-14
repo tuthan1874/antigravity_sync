@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_TASK",
-  "summary": "Task list for restructuring TD GAMES BILLING into a multi-module platform with Invoice (existing) and Expense (new) modules. Covers architecture refactoring, database setup, UI creation, and testing.",
-  "updatedAt": "2026-03-14T16:41:10.007648200Z"
+  "summary": "Task checklist for restructuring TD GAMES BILLING into App Launcher platform with Option A folder structure. Phase 1 moves Invoice into apps/invoice/, Phase 2 creates Home Screen + App Router, Phase 3 creates Expense app with Supabase tables.",
+  "updatedAt": "2026-03-14T17:02:13.406303700Z",
+  "version": "1"
 }
