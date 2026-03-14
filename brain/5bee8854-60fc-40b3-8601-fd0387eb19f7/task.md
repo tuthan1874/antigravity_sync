@@ -1,29 +1,30 @@
-# TD GAMES Platform — Restructure & Expense Module
+# Workforce App — Phase 1
 
-## Phase 1: Folder Restructure (Option A)
-- [x] Create `apps/invoice/` folder structure
-- [x] Move Invoice components (10 files) to `apps/invoice/components/`
-- [x] Move Invoice hook to `apps/invoice/hooks/`
-- [x] Create `config/apps.ts` with app registry
-- [x] Create `HomeScreen.tsx` with iPhone-style App Launcher
-- [x] Create `InvoiceApp.tsx` wrapper with back button
-- [x] Update `App.tsx` with app router logic
-- [x] Fix all import paths
-- [x] Verify TypeScript build — 0 errors
-- [x] Browser test — Home → Invoice → Back all working
-- [x] Match HomeScreen background to LoginScreen
+## Database
+- [ ] Create `wf_workers` table
+- [ ] Create `wf_contracts` table
+- [ ] Create `wf_tasks` table
+- [ ] Create `wf_settlements` + `wf_settlement_tasks` tables
+- [ ] Enable RLS on all tables
 
-## Phase 2: Expense Module
-- [x] Create Supabase tables (categories, expenses, recurring)
-- [x] Seed 7 default categories
-- [x] Add Expense types to `types.ts`
-- [x] Create `expenseService.ts` (full CRUD)
-- [x] Create `useExpenseState.ts` hook
-- [x] Create `ExpenseApp.tsx` main container
-- [x] Create `ExpenseList.tsx` with summary cards + filters + table
-- [x] Create `ExpenseForm.tsx` add/edit form
-- [x] Create `ExpenseRecurring.tsx` recurring templates
-- [x] Create `ExpenseCategoryManager.tsx` with icon/color pickers
-- [x] Wire into `App.tsx` router
-- [x] TypeScript build — 0 errors
-- [x] Browser test — full CRUD flow verified
+## Frontend — Types & Services
+- [ ] Add Workforce types to `types.ts`
+- [ ] Create `workforceService.ts` (Supabase CRUD)
+
+## Frontend — Components
+- [ ] Create `WorkforceApp.tsx` (shell + shared Navbar)
+- [ ] Create `WorkerList.tsx` (danh sách nhân sự)
+- [ ] Create `WorkerForm.tsx` (thêm/sửa nhân sự + hợp đồng)
+- [ ] Create `TaskList.tsx` (danh sách task)
+- [ ] Create `SettlementManager.tsx` (nghiệm thu tháng)
+
+## App Registration
+- [ ] Add to `config/apps.ts`
+- [ ] Add route in `App.tsx`
+
+## Hooks
+- [ ] Create `useWorkforceState.ts`
+
+## Verification
+- [ ] TypeScript build passes
+- [ ] Browser test: full flow

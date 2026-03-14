@@ -1,162 +1,186 @@
-# TD GAMES Platform — App Launcher Architecture
+# Workforce App — Quản lý Freelancer & Nghiệm thu
 
-Build the **TD GAMES** ecosystem as a single platform with an iPhone-style **Home Screen** after login. Each module is an independent "app" with its own icon, UI, and data.
-
-## Architecture Overview
-
-```
-Login → Home Screen (App Grid) → Click App → Full App View (with ← Back)
-```
-
-```mermaid
-graph TD
-    A[Login Screen] --> B[🏠 Home Screen]
-    B --> C[📄 Invoice App]
-    B --> D[💰 Expense App]
-    B --> E[📊 Dashboard App - future]
-    B --> F[... more apps]
-    C --> B
-    D --> B
-    E --> B
-```
+App mới trong hệ sinh thái TD Games Platform, quản lý nhân sự freelancer/inhouse, đồng bộ task từ ClickUp, nghiệm thu tháng, và theo dõi chi phí theo project/client.
 
 ## User Review Required
 
 > [!IMPORTANT]
-> **Home Screen replaces the old Navbar tabs**
-> After login, user lands on a beautiful Home Screen with app icons in a grid. The Navbar module-switcher idea is scrapped. Each app has its own internal Navbar with a ← Back button.
+> **ClickUp API Token**: App cần ClickUp API token. Bạn có muốn mỗi user tự nhập token hay dùng 1 token chung (admin config)?
 
 > [!IMPORTANT]
-> **App Registry Pattern**
-> Apps are registered in a simple array config. Adding a new app in the future = adding 1 entry to the config + the app component. Very extensible.
+> **ClickUp Space/List**: Bạn muốn sync từ Space/List nào? Cần cung cấp Space ID và List ID(s) cần sync.
+
+> [!WARNING]
+> **Scope lớn** — Plan chia thành **3 phase** để ship từng phần. Phase 1 (cơ bản) có thể dùng được ngay, không cần chờ ClickUp integration.
+
+---
+
+## Database Schema (Supabase — cùng project `fifuhkupaqcfjwyouwpa`)
+
+```sql
+-- Nhân sự (freelancer / inhouse)
+CREATE TABLE wf_workers (
+  id         uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  full_name  text NOT NULL,
+  email      text,
+  phone      text,
+  type       text NOT NULL DEFAULT 'freelancer'  -- freelancer | inhouse
+               CHECK (type IN ('freelancer','inhouse')),
+  bank_name  text DEFAULT '',
+  bank_account text DEFAULT '',
+  tax_code   text DEFAULT '',
+  notes      text DEFAULT '',
+  is_active  boolean DEFAULT true,
+  created_at timestamptz DEFAULT now()
+);
+
+-- Hợp đồng
+CREATE TABLE wf_contracts (
+  id          uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  worker_id   uuid NOT NULL REFERENCES wf_workers(id) ON DELETE CASCADE,
+  title       text NOT NULL,                      -- "HĐ tháng 3/2026"
+  start_date  date NOT NULL,
+  end_date    date,
+  rate_type   text DEFAULT 'per_task'             -- per_task | monthly | hourly
+                CHECK (rate_type IN ('per_task','monthly','hourly')),
+  rate_amount numeric DEFAULT 0,                  -- mức giá mặc định
+  currency    text DEFAULT 'VND',
+  status      text DEFAULT 'active'               -- active | completed | terminated
+                CHECK (status IN ('active','completed','terminated')),
+  notes       text DEFAULT '',
+  created_at  timestamptz DEFAULT now()
+);
+
+-- Task (sync từ ClickUp hoặc nhập tay)
+CREATE TABLE wf_tasks (
+  id             uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  worker_id      uuid REFERENCES wf_workers(id),
+  project        text DEFAULT '',                 -- tên project
+  client_name    text DEFAULT '',                 -- tên khách hàng
+  title          text NOT NULL,
+  clickup_task_id text,                           -- ID task trên ClickUp (nullable)
+  clickup_list_id text,
+  clickup_status  text,                           -- status trên ClickUp
+  status         text DEFAULT 'in_progress'       -- in_progress | completed | approved | rejected
+                   CHECK (status IN ('in_progress','completed','approved','rejected')),
+  price          numeric DEFAULT 0,               -- giá task này
+  currency       text DEFAULT 'VND',
+  completed_at   date,
+  approved_at    date,
+  notes          text DEFAULT '',
+  synced_at      timestamptz,                     -- lần sync gần nhất
+  created_at     timestamptz DEFAULT now(),
+  updated_at     timestamptz DEFAULT now()
+);
+
+-- Nghiệm thu tháng
+CREATE TABLE wf_settlements (
+  id           uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  worker_id    uuid NOT NULL REFERENCES wf_workers(id),
+  period       text NOT NULL,                     -- "2026-03" (YYYY-MM)
+  total_tasks  integer DEFAULT 0,
+  total_amount numeric DEFAULT 0,
+  currency     text DEFAULT 'VND',
+  status       text DEFAULT 'draft'               -- draft | sent | accepted | paid
+                 CHECK (status IN ('draft','sent','accepted','paid')),
+  expense_id   uuid,                              -- link → expense_expenses (auto-created)
+  notes        text DEFAULT '',
+  created_at   timestamptz DEFAULT now()
+);
+
+-- Settlement ↔ Task (nhiều task → 1 settlement)
+CREATE TABLE wf_settlement_tasks (
+  id            uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  settlement_id uuid NOT NULL REFERENCES wf_settlements(id) ON DELETE CASCADE,
+  task_id       uuid NOT NULL REFERENCES wf_tasks(id),
+  UNIQUE(settlement_id, task_id)
+);
+```
 
 ---
 
 ## Proposed Changes
 
-### Phase 1: Platform Shell (Home Screen + App Router)
+### Phase 1 — Core CRUD (không cần ClickUp)
 
-#### [NEW] `components/HomeScreen.tsx`
-- Beautiful grid layout of app icons (like iPhone)
-- Each app card: icon (emoji/SVG), name, brief description
-- Dark theme matching existing design (`#0F0F0F` background)
-- Smooth animations on hover/click
-- Shows user info + logout button at top
-- Initial apps:
-  - 📄 **Invoice** — "Quản lý hoá đơn & doanh thu"
-  - 💰 **Expense** — "Quản lý chi phí & thanh toán"
+#### [NEW] [apps/workforce/](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/)
 
-#### [MODIFY] [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
-- Add `activeApp` state: `null` (home) | `'invoice'` | `'expense'`
-- `activeApp === null` → render `<HomeScreen />`
-- `activeApp === 'invoice'` → render existing Invoice module
-- `activeApp === 'expense'` → render new Expense module
-- Pass `onBack={() => setActiveApp(null)}` to each app
+Cấu trúc folder giống Expense:
 
-#### [MODIFY] [Navbar.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/Navbar.tsx)
-- Add a ← **Back to Home** button (left side) when inside an app
-- Keep existing tab navigation for each app's internal tabs
-- Show current app name in the navbar title area
-
-#### [NEW] `config/apps.ts`
-- App registry config array:
-```ts
-export const APPS = [
-  { id: 'invoice', name: 'Invoice', icon: '📄', desc: 'Quản lý hoá đơn & doanh thu', color: '#FF9500' },
-  { id: 'expense', name: 'Expense', icon: '💰', desc: 'Quản lý chi phí & thanh toán', color: '#34C759' },
-  // Future: { id: 'dashboard', name: 'Dashboard', icon: '📊', ... }
-];
+```
+apps/workforce/
+├── components/
+│   ├── WorkforceApp.tsx         — Shell (shared Navbar, tab router)
+│   ├── WorkerList.tsx           — Danh sách nhân sự + hồ sơ + CRUD
+│   ├── WorkerForm.tsx           — Form thêm/sửa nhân sự
+│   ├── ContractManager.tsx      — Quản lý hợp đồng theo worker
+│   ├── TaskList.tsx             — Danh sách task (nhập tay hoặc synced)
+│   └── SettlementManager.tsx    — Tạo nghiệm thu tháng + export
+├── hooks/
+│   └── useWorkforceState.ts     — State management (giống useExpenseState)
+└── services/
+    └── workforceService.ts      — Supabase CRUD cho wf_* tables
 ```
 
----
+#### [MODIFY] [apps.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/config/apps.ts)
+Thêm Workforce vào app registry (icon 👷, color `#5856D6` — tím).
 
-### Phase 2: Supabase Schema for Expense
-
-Same project `fifuhkupaqcfjwyouwpa`. Migration creates 3 new tables:
-
-**`expense_categories`** — default: Freelancer, Tool/License, Server Hosting, Tax, Salary, Equipment, Office Rent
-
-| Column | Type | Notes |
-|--------|------|-------|
-| id | uuid PK | gen_random_uuid() |
-| name | text | Category name |
-| color | text | Hex color |
-| icon | text | Emoji |
-| created_at | timestamptz | now() |
-
-**`expense_expenses`** — main expense records
-
-| Column | Type | Notes |
-|--------|------|-------|
-| id | uuid PK | gen_random_uuid() |
-| title | text | Description |
-| amount | numeric | Amount |
-| currency | text | USD/VND |
-| expense_date | date | When it occurred |
-| category_id | uuid FK | → expense_categories |
-| project | text | Project name |
-| client_name | text | Client (from shared invoice_clients) |
-| vendor | text | Who was paid |
-| payment_method | text | Cash/Transfer/Card |
-| status | text | pending/approved/paid |
-| notes | text | Notes |
-| receipt_url | text | Receipt file URL |
-| is_recurring | boolean | Recurring flag |
-| recurring_frequency | text | monthly/quarterly/yearly |
-| created_by | text | Username |
-| created_at | timestamptz | now() |
-
-**`expense_recurring`** — recurring expense templates
-
-| Column | Type | Notes |
-|--------|------|-------|
-| id | uuid PK | gen_random_uuid() |
-| title | text | Template name |
-| amount | numeric | Amount |
-| currency | text | USD/VND |
-| category_id | uuid FK | → expense_categories |
-| project | text | Project |
-| vendor | text | Payee |
-| frequency | text | monthly/quarterly/yearly |
-| next_run | date | Next date |
-| is_active | boolean | Active flag |
-| created_at | timestamptz | now() |
-
----
-
-### Phase 3: Expense Module — Components & Services
-
-#### [NEW] `components/expense/ExpenseApp.tsx`
-Main container, internal tab routing
-
-#### [NEW] `components/expense/ExpenseList.tsx`
-Table view + filters + monthly totals
-
-#### [NEW] `components/expense/ExpenseForm.tsx`
-Add/Edit expense form with all fields
-
-#### [NEW] `components/expense/ExpenseCategoryManager.tsx`
-Category CRUD with color/icon
-
-#### [NEW] `components/expense/ExpenseRecurring.tsx`
-Recurring expense template management
-
-#### [NEW] `services/expenseService.ts`
-Supabase CRUD for all expense_* tables
-
-#### [NEW] `hooks/useExpenseState.ts`
-State management (same pattern as useInvoiceState.ts)
+#### [MODIFY] [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
+Thêm route `workforce` → `WorkforceApp`.
 
 #### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
-Add: `ExpenseRecord`, `ExpenseCategory`, `RecurringExpense`, `AppConfig`
+Thêm interfaces: `Worker`, `WorkerContract`, `WorkforceTask`, `Settlement`, `SettlementTask`.
+
+---
+
+### Phase 2 — ClickUp Sync (sau Phase 1)
+
+#### [NEW] [clickupService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/clickupService.ts)
+- Gọi ClickUp API qua Edge Function proxy (tránh expose token ở frontend)
+- `fetchTasks(listId)` → lấy tasks, map `status`, `assignee`, `date_done`
+- `syncToDatabase()` → upsert vào `wf_tasks` bằng `clickup_task_id`
+
+#### [NEW] Edge Function `clickup-sync-proxy`
+- Nhận `{ listId, apiToken }` → gọi ClickUp API → trả về tasks
+- Proxy để bảo mật API token
+
+#### [MODIFY] TaskList.tsx
+- Thêm nút "🔄 Sync ClickUp" → gọi `clickupService.syncToDatabase()`
+- Hiển thị badge "Synced" / "Manual" trên mỗi task
+
+---
+
+### Phase 3 — Auto Settlement → Expense (sau Phase 2)
+
+#### [MODIFY] SettlementManager.tsx
+- Khi settlement đạt status `paid` → auto insert vào `expense_expenses`:
+  - `title` = "Nghiệm thu [worker_name] — [period]"
+  - `vendor` = worker.full_name
+  - `category_id` = category "Freelancer" (auto-create nếu chưa có)
+  - `project` & `client_name` = từ tasks
+- Hiển thị link "Xem trong Expense" nếu đã có `expense_id`
+
+---
+
+## UI Tabs (Phase 1)
+
+| Navbar Tab    | Component             | Chức năng |
+|---------------|-----------------------|-----------|
+| **HISTORY**   | `WorkerList`          | DS nhân sự, filter theo type/status |
+| **EDIT**      | `WorkerForm`          | Thêm/sửa nhân sự + hợp đồng |
+| **RECURRING** | `TaskList`            | DS task, filter theo worker/project/status |
+| **ACTIVITY**  | `SettlementManager`   | Tạo nghiệm thu tháng, xem lịch sử |
 
 ---
 
 ## Verification Plan
 
-1. Login → Home Screen displays with app icons grid
-2. Click Invoice → Invoice app loads (all existing features work)
-3. Click ← Back → returns to Home Screen
-4. Click Expense → Expense app loads
-5. Add expense → saves to Supabase
-6. Back to Home → smooth transition
+### Automated Tests
+1. `npm run build` — 0 TypeScript errors
+2. Browser test: navigate to Workforce from Home Screen
+3. CRUD test: thêm/sửa/xóa worker, contract, task
+4. Settlement test: tạo nghiệm thu, verify tính tổng đúng
+
+### Manual Verification
+- So sánh UI style giữa Workforce và Invoice/Expense — phải giống nhau
+- Test full flow: Thêm worker → Thêm hợp đồng → Thêm task → Tạo nghiệm thu

@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Redesigned architecture: TD GAMES Platform with iPhone-style App Launcher home screen. After login, users see a beautiful grid of app icons. Clicking an app opens it full-screen with a back button. First two apps: Invoice (existing) and Expense (new). Covers HomeScreen component, AppShell wrapper, Supabase schema for expenses, and all Expense module components.",
-  "updatedAt": "2026-03-14T16:51:48.219893500Z",
-  "version": "2"
+  "summary": "Implementation plan for the Workforce app — a new module in TD Games Platform for managing freelancers/inhouse workers, contracts, task tracking (with future ClickUp sync), and monthly settlements. Covers 3 phases: Phase 1 (Core CRUD with 6 Supabase tables and 6 React components), Phase 2 (ClickUp API sync via Edge Function proxy), Phase 3 (auto-create Expense records from paid settlements). Includes DB schema, folder structure, UI tab mapping, and verification plan.",
+  "updatedAt": "2026-03-14T17:58:56.852313400Z",
+  "version": "3"
 }
