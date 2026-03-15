@@ -1,0 +1,11 @@
+# Browser Testing: CRM Document List Drag-Drop and Preview
+
+## Checklist
+- [ ] Navigate to http://localhost:3000/#crm
+- [ ] Verify "TÀI LIỆU" tab content
+- [ ] Verify "Xem" and "Tải" buttons on existing documents
+- [ ] Verify "＋ Thêm tài liệu" form with drag-drop area
+- [ ] Test preview modal functionality
+
+## Findings
+- (To be updated)

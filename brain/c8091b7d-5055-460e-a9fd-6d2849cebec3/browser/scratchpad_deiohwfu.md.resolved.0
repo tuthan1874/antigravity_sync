@@ -1,0 +1,11 @@
+# Task: Debug file URL for CRM documents
+
+## Plan
+1. Navigate to http://localhost:3000/#crm
+2. Click "TÀI LIỆU" tab
+3. Identify the file URL for an existing document
+4. Verify if it's using the S3 API endpoint or the Public URL
+5. Report findings
+
+## Findings
+- 
