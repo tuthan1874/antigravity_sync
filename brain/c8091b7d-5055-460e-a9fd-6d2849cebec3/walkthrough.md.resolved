@@ -1,28 +1,33 @@
-# Expense App Enhancements
+# Expense App Enhancements — Session Summary
 
 ## 1. Exchange Rate Display ✅
-
 Tỉ giá VCB USD → VND hiển thị trên navbar, giống Invoice/Workforce.
 
 ## 2. Receipt File Upload → Cloudflare R2 ✅
-
-Thay ô nhập URL bằng file upload qua Edge Function `r2-expense-upload`. File lưu trực tiếp lên **Cloudflare R2** (dùng credentials có sẵn).
-
+Thay ô nhập URL bằng file upload qua Edge Function `r2-expense-upload`.
 - Hỗ trợ: PDF, JPG, PNG, WEBP (tối đa 10MB)
-- Upload xong: hiện preview (ảnh thumbnail / icon PDF) + nút xoá
-- Danh sách expense: hiện link 📎 "Xem hoá đơn"
+- Lightweight: dùng native Web Crypto API để ký S3 request, không cần AWS SDK (tránh cold start timeout)
+- Upload xong: hiện preview + nút xoá. Danh sách hiện 📎 link
 
-![Expense form with R2 upload](file:///C:/Users/dangt/.gemini/antigravity/brain/c8091b7d-5055-460e-a9fd-6d2849cebec3/expense_add_form_initial_1773563763131.png)
+## 3. UI Restructure ✅
+- Bỏ tab "Thêm mới" khỏi navbar
+- Thêm nút **"+ THÊM CHI PHÍ"** trên trang Danh sách
+- Form hiện inline khi bấm, quay về danh sách khi lưu/huỷ
 
-### Files Changed
+````carousel
+![List view with add button](file:///C:/Users/dangt/.gemini/antigravity/brain/c8091b7d-5055-460e-a9fd-6d2849cebec3/expense_list_initial_1773566333236.png)
+<!-- slide -->
+![Form appears inline](file:///C:/Users/dangt/.gemini/antigravity/brain/c8091b7d-5055-460e-a9fd-6d2849cebec3/expense_form_appeared_1773566343979.png)
+````
+
+## Files Changed
 
 | File | Change |
 |------|--------|
-| [ExpenseApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseApp.tsx) | Added VCB exchange rate fetch |
+| [ExpenseApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseApp.tsx) | Exchange rate + removed add tab + inline form toggle |
 | [ExpenseForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseForm.tsx) | File upload via R2 Edge Function |
-| [ExpenseList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseList.tsx) | Added 📎 receipt link on cards |
+| [ExpenseList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseList.tsx) | Added onAdd button + receipt link |
 
-### Backend
-- Deployed Edge Function `r2-expense-upload` (POST upload, DELETE remove)
-- Uses existing R2 secrets: `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_URL`
-- Files stored under `expense-receipts/` prefix in R2 bucket
+## Backend
+- Edge Function `r2-expense-upload` (POST upload, DELETE remove) — zero dependencies
+- Uses secrets: `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_URL`

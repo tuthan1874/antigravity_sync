@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough documenting Expense app enhancements: VCB exchange rate in navbar and file upload to Cloudflare R2 via Edge Function.",
-  "updatedAt": "2026-03-15T08:36:48.050593700Z",
-  "version": "4"
+  "summary": "Complete walkthrough of Expense app session: exchange rate display, R2 file upload (lightweight, no AWS SDK), and UI restructure (removed add tab, added inline form button).",
+  "updatedAt": "2026-03-15T09:59:11.329226400Z",
+  "version": "5"
 }
