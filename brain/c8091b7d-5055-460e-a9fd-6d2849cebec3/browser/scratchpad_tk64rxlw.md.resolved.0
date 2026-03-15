@@ -1,0 +1,9 @@
+# CRM App Testing Plan
+
+- [ ] Navigate to http://localhost:3000/#crm
+- [ ] Wait for data to load and screenshot Client List
+- [ ] Test "Dự án" tab and screenshot
+- [ ] Test "Tài liệu" tab and screenshot
+- [ ] Test "Thanh toán" tab and screenshot (Check invoice sync)
+- [ ] Test "Thống kê" tab and screenshot
+- [ ] Report results

@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough of CRM app creation: database setup, data migration, frontend components, app integration, and verification results.",
-  "updatedAt": "2026-03-15T14:35:19.708539Z",
-  "version": "6"
+  "summary": "Walkthrough of CRM enhancements: lead source tracking, project management, document storage, payment sync from Invoice app, and enhanced stats.",
+  "updatedAt": "2026-03-15T14:59:36.997118200Z",
+  "version": "7"
 }
