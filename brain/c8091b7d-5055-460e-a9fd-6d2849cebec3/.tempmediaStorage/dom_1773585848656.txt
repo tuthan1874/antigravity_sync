@@ -1,0 +1,67 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	CRM
+	USD
+	→
+	VND
+	26.318
+	₫
+	VCB •
+	15/03, 21:33
+	[2] (856,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all bg-primary text-black shadow-btn-glow'>Khách hàng />
+	[3] (911,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Thống kê />
+	admin
+	admin
+	[4] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	Khách hàng
+	Quản lý thông tin khách hàng tập trung
+	[5] (669,141)<button class='inline-flex items-center justify-center font-bold uppercase tracking-wider rounded-xl transition-all duration-300 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-primary text-white shadow-btn-glow hover:shadow-btn-glow-hover hover:-translate-y-0.5 active:bg-gradient-to-br active:from-primary-deep active:to-primary-dark px-4 py-2 text-xs '>＋ Thêm khách hàng />
+	[6] (732,141)<button class='inline-flex items-center justify-center font-bold uppercase tracking-wider rounded-xl transition-all duration-300 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20 px-4 py-2 text-xs '>🔄 Refresh />
+	Tổng khách hàng
+	2
+	Đang hoạt động
+	0
+	Tiềm năng
+	2
+	Ngừng HĐ
+	0
+	[7] (435,292)<input placeholder='🔍 Tìm theo tên, email, liên hệ, SĐT...' />
+	[8] (661,292)<select  />
+	[9] (725,292)<select  />
+	[10] (500,359)<div  />
+		[11] (472,359)<div  />
+			[12] (472,356)<div  />
+				[13] (273,356)<span >Dace Marsh />
+				[14] (315,356)<span >Tiềm năng />
+				[15] (350,356)<span >👤 Cá nhân />
+		[16] (722,359)<div  />
+			[17] (711,359)<button >✏️ Sửa />
+			[18] (738,359)<button >🗑️ />
+	[19] (500,432)<div  />
+		[20] (472,432)<div  />
+			[21] (472,422)<div  />
+				[22] (287,422)<span >KABAM GAMES, INC />
+				[23] (342,422)<span >Tiềm năng />
+				[24] (377,422)<span >👥
+1
+liên hệ />
+			[25] (472,443)<div  />
+				[26] (345,443)<span  />
+					[27] (257,443)<span >👤 />
+					[28] (284,443)<span >Acounts Payable />
+					[29] (326,443)<span >(
+Main Contact
+) />
+					[30] (391,443)<span >·
+accountspayable@kabaminc.com />
+		[31] (722,432)<div  />
+			[32] (711,432)<button >✏️ Sửa />
+			[33] (738,432)<button >🗑️ />
+	TD Consulting • Enterprise Billing Engine • v2.1
+
+</current_dom>
