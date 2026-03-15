@@ -1,0 +1,50 @@
+[0] (500,500)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	Expense
+	USD
+	→
+	VND
+	26.318
+	₫
+	VCB •
+	15/03, 15:25
+	[2] (762,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Danh sách />
+	[3] (814,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all bg-primary text-black shadow-btn-glow'>Thêm mới />
+	[4] (861,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Định kỳ />
+	[5] (910,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Danh mục />
+	admin
+	admin
+	[6] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	New Expense
+	Nhập thông tin chi phí mới
+	[7] (500,205)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Mô tả chi phí * />
+	[8] (500,235)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all' placeholder='Ví dụ: Thuê freelancer design...' />
+	[9] (377,276)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Số tiền * />
+	[10] (377,305)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all' placeholder='0' />
+	[11] (623,276)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Đơn vị tiền tệ />
+	[12] (623,305)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all' />
+	[13] (377,347)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Ngày chi />
+	[14] (377,377)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all' />
+	[15] (623,347)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Danh mục />
+	[16] (623,375)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all' />
+	[17] (377,419)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Dự án />
+	[18] (377,449)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all' placeholder='Tên dự án...' />
+	[19] (623,419)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Khách hàng />
+	[20] (623,449)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all' placeholder='Tên khách hàng...' />
+	[21] (377,490)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Chi cho (Vendor) />
+	[22] (377,519)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all' placeholder='Người / Công ty nhận tiền...' />
+	[23] (623,490)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Phương thức thanh toán />
+	[24] (623,519)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all' />
+	[25] (377,561)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Trạng thái />
+	[26] (377,589)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all' />
+	[27] (623,561)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Hoá đơn / Receipt />
+	[28] (623,594)<label class='flex items-center justify-center gap-3 w-full py-4 rounded-xl border-2 border-dashed cursor-pointer transition-all border-primary/10 hover:border-primary/30 hover:bg-primary/5' />
+		[29] (630,594)<span >Chọn file PDF, JPG, PNG (tối đa
+10
+MB) />
+	[30] (500,640)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2'>Ghi chú />
+	[31] (500,684)<textarea class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all resize-none' placeholder='Ghi chú thêm...' />
+	[32] (378,767)<button class='flex-1 py-4 rounded-2xl text-sm font-black uppercase tracking-widest border border-white/10 text-white/60 hover:text-white hover:border-white/30 transition-all hover:scale-[1.01]'>Huỷ />
+	[33] (622,767)<button class='flex-1 py-4 rounded-2xl text-sm font-black uppercase tracking-widest bg-primary text-black transition-all hover:scale-[1.01] shadow-btn-glow'>➕ Thêm chi phí />
+	TD Consulting • Enterprise Billing Engine • v2.1

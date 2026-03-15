@@ -1,0 +1,11 @@
+# Task: Test R2 Expense Upload Edge Function
+
+## Plan
+- [ ] Navigate to http://localhost:3000/#expense/add
+- [ ] Execute test JavaScript in console
+- [ ] Wait for response and capture console logs
+- [ ] Take screenshot of the result
+- [ ] Report final result
+
+## Progress
+- [ ] Initializing plan...
