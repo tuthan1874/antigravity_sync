@@ -1,90 +1,74 @@
-# Workforce Task Sync: Dates & Payment Tracking
+# Redesign Nghiệm Thu (Settlement) — Professional Version
 
-Thêm `start_date`, `closed_date`, `payment_status` vào `wf_tasks` để nghiệm thu theo tháng chính xác hơn, và cộng dồn task chưa thanh toán.
+Nâng cấp hệ thống Nghiệm Thu từ dạng card sơ sài → view chuyên nghiệp với chi tiết task, PDF export, chỉnh sửa, và xóa.
 
 ## Proposed Changes
 
-### Database Migration
-
-#### [MODIFY] Supabase `wf_tasks` table
-
-Add 3 columns:
-- `start_date DATE` — ngày bắt đầu task (từ `date_created` trên ClickUp)
-- `closed_date DATE` — ngày đóng task (từ `date_done` trên ClickUp)
-- `payment_status TEXT DEFAULT 'unpaid'` — trạng thái thanh toán: `unpaid` | `paid`
-
-```sql
-ALTER TABLE wf_tasks ADD COLUMN IF NOT EXISTS start_date date;
-ALTER TABLE wf_tasks ADD COLUMN IF NOT EXISTS closed_date date;
-ALTER TABLE wf_tasks ADD COLUMN IF NOT EXISTS payment_status text DEFAULT 'unpaid'
-  CHECK (payment_status IN ('unpaid', 'paid'));
-```
-
----
-
-### TypeScript Types
-
-#### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
-
-Add to `WorkforceTask`:
-```diff
-+ start_date: string | null;
-+ closed_date: string | null;
-+ payment_status: 'unpaid' | 'paid';
-```
-
----
-
-### Sync Logic
-
-#### [MODIFY] [TaskList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/TaskList.tsx)
-
-**Sync handler changes:**
-- Map ClickUp `date_created` → `start_date`
-- Map ClickUp `date_done` → `closed_date`
-- Update both on insert and update
-
-**UI changes:**
-- Show `start_date` and `closed_date` on task cards
-- Show `payment_status` badge (Unpaid/Paid)
-- Add filter for payment status
-
----
-
-### Settlement Logic
-
-#### [MODIFY] [SettlementManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/SettlementManager.tsx)
-
-**Core logic changes — eligible tasks khi tạo nghiệm thu:**
-
-```
-Eligible = tasks WHERE:
-  - worker_id = selected worker
-  - payment_status = 'unpaid'
-  - closed_date IS NOT NULL
-  - closed_date <= end of selected period (tháng đang chọn)
-```
-
-Điều này tự động thực hiện **cộng dồn**: task closed từ tháng trước mà chưa thanh toán → vẫn xuất hiện trong kỳ nghiệm thu hiện tại.
-
----
+### 1. Backend / Service Layer
 
 #### [MODIFY] [workforceService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts)
 
-**`createSettlement`**: Khi tạo nghiệm thu, đánh dấu task `payment_status = 'paid'` thay vì chỉ set `status = 'approved'`.
+- **`createSettlement()`** — Loại bỏ tự động mark task = `paid`. Chỉ create settlement + link tasks. Task sẽ giữ `payment_status: 'unpaid'` cho đến khi user bấm "Đã thanh toán"
+- **`deleteSettlement()`** — Khi xóa: reset các task liên quan về `payment_status: 'unpaid'`, `status` giữ nguyên. Xóa link tasks trước rồi xóa settlement
+- **`updateSettlement()`** — Khi status chuyển thành `paid` → mark tất cả task liên quan = `payment_status: 'paid'`
 
 ---
 
-### Edge Function
+### 2. UI Component (Complete Rewrite)
 
-> [!NOTE]
-> Edge Function `clickup-sync` **không cần thay đổi** — đã trả về `date_created` và `date_done`.
+#### [MODIFY] [SettlementManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/SettlementManager.tsx)
+
+Rewrite toàn bộ component thành 2 views:
+
+**A. List View** (default):
+- Summary cards: Tổng nghiệm thu, Đã TT, Chưa TT, Tổng chi
+- Settlement cards hiện: Worker name, Period, # tasks, Total amount, Status badge
+- Click vào card → mở **Detail View**
+- Nút "Tạo nghiệm thu" → mở form
+- Delete button (bất kỳ trạng thái nào, hiện confirm rõ ràng)
+
+**B. Detail View** (click vào 1 settlement):
+- Header: Worker name, Period, Status badge
+- Controls: Status workflow buttons, Edit, Xóa, Export PDF
+- **Task Table** đầy đủ:
+
+| # | Task | Client | Project | List | Closed | Price | Currency | VNĐ Equiv | Bonus | Bonus Note | Notes |
+|---|------|--------|---------|------|--------|-------|----------|-----------|-------|------------|-------|
+
+- Footer summary: subtotal, bonus total, grand total
+- Nút "Export PDF"
+
+**C. Create Form** (nâng cấp):
+- Chọn nhân sự, kỳ nghiệm thu
+- Task selection (checkbox) hiện nhiều info hơn: price, currency, bonus, hierarchy breadcrumb
+- Preview tổng tiền + bonus trước khi tạo
+- VNĐ conversion preview nếu task USD
+
+---
+
+### 3. PDF Export
+
+#### [NEW] PDF generation function (trong `SettlementManager.tsx`)
+- Sử dụng `window.print()` với CSS `@media print` hoặc tạo HTML mới rồi in
+- PDF chứa: header (TD Games logo, tiêu đề), bảng task chi tiết, tổng tiền, ngày tạo
+- Đơn giản, chuyên nghiệp, in-browser (không cần backend)
+
+---
+
+### 4. Props & Wiring
+
+#### [MODIFY] [WorkforceApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/WorkforceApp.tsx)
+- Pass `vcbSellRate` cho `SettlementManager` để convert USD → VNĐ trong detail/PDF
+
+#### [MODIFY] [useWorkforceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/hooks/useWorkforceState.ts)
+- `handleDeleteSettlement()` → sau khi xóa, refresh tasks để cập nhật `payment_status`
+- `handleCreateSettlement()` → sau khi tạo, refresh tasks (đã có)
 
 ## Verification Plan
 
 ### Browser Testing
-1. Mở app → Workforce → Tab Task → Nhấn **Sync ClickUp**
-2. Verify task cards hiển thị `start_date`, `closed_date`, `payment_status`
-3. Vào tab Nghiệm Thu → chọn worker, chọn kỳ → phải thấy chỉ task đã closed & chưa thanh toán
-4. Tạo nghiệm thu → verify task được đánh dấu `paid`
-5. Quay lại danh sách → task đã paid không còn trong eligible list của kỳ tiếp theo
+- Tạo nghiệm thu → confirm task **KHÔNG** chuyển paid ngay
+- Click vào settlement → xem detail view + bảng task
+- Click Export PDF → xem print preview
+- Xóa nghiệm thu → confirm task rollback về unpaid
+- Bấm "Đã thanh toán" → confirm task chuyển paid

@@ -1,0 +1,9 @@
+# Redesign Nghiệm Thu (Settlement)
+
+- [ ] Backend: Fix [createSettlement](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts#107-149) — không auto-mark paid
+- [ ] Backend: Fix [deleteSettlement](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts#156-160) — rollback tasks to unpaid
+- [ ] Backend: Fix [updateSettlement](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts#150-155) — mark paid khi status=paid
+- [ ] UI: Rewrite [SettlementManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/SettlementManager.tsx) — List View + Detail View + Create Form
+- [ ] UI: Add PDF export (window.print)
+- [ ] Wiring: Pass `vcbSellRate` + refresh tasks on delete
+- [ ] Verify in browser

@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Implementation plan for adding start_date, closed_date, and payment tracking to the Workforce module. Covers database migration, type updates, sync logic, UI changes, and settlement accumulation logic.",
-  "updatedAt": "2026-03-15T03:48:50.361395200Z"
+  "summary": "Implementation plan for redesigning Settlement (Nghiệm Thu) system: rewrite SettlementManager with list+detail views, full task table, PDF export, edit/delete capabilities. Fix backend to not auto-mark tasks as paid on creation.",
+  "updatedAt": "2026-03-15T05:54:12.128967700Z",
+  "version": "1"
 }

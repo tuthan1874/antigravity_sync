@@ -1,0 +1,6 @@
+# Task Plan: Verify Settlement Redesign
+
+1. [ ] Navigate to workforce page and settlement tab
+2. [ ] Open an existing settlement detail
+3. [ ] Verify "Khách hàng" column is removed from detail view
+4. [ ] Export PDF and verify logo and removed "Khách hàng" column

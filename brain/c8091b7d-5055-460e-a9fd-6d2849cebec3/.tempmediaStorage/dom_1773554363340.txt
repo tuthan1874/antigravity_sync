@@ -1,0 +1,170 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	Workforce
+	USD
+	→
+	VND
+	26.318
+	₫
+	VCB •
+	15/03, 12:49
+	[2] (771,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Nhân sự />
+	[3] (812,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Task />
+	[4] (858,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all bg-primary text-black shadow-btn-glow'>Nghiệm thu />
+	[5] (911,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Cấu hình />
+	admin
+	admin
+	[6] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	[7] (252,112)<button class='p-2 rounded-xl hover:bg-white/5 text-neutral-medium hover:text-white transition-all' />
+	Tạo Nghiệm Thu
+	[8] (335,169)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Nhân sự * />
+	[9] (335,197)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[10] (500,169)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Kỳ nghiệm thu />
+	[11] (500,199)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[12] (665,169)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ghi chú />
+	[13] (665,198)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='Ghi chú...' />
+	Chọn task (
+	0
+	/
+	11
+	)
+	[14] (731,238)<button class='text-xs text-primary hover:text-primary-dark transition-colors font-bold'>Chọn tất cả />
+	[15] (500,407)<div class='space-y-2 max-h-[400px] overflow-y-auto pr-1' scrollable='true' />
+		[16] (496,278)<label class='flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all border-primary/10 hover:border-primary/20' />
+			[17] (263,278)<input class='accent-primary w-4 h-4 shrink-0' />
+			[18] (480,278)<div  />
+				[19] (480,271)<p >[2D Animation] [Character] Bugs Bunny />
+				[20] (480,286)<div  />
+					[21] (290,286)<span >KABAM_COMPANY />
+					[22] (311,286)<span >| />
+					[23] (327,286)<span >Orca_Project />
+					[24] (363,286)<span >• Closed:
+2026-02-28 />
+			[25] (713,278)<div  />
+				[26] (713,272)<p >150,150 />
+					[27] (728,272)<span >USD />
+				[28] (713,286)<p >≈
+3,951,647,700
+VNĐ />
+		[29] (496,337)<label class='flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all border-primary/10 hover:border-primary/20' />
+			[30] (263,337)<input class='accent-primary w-4 h-4 shrink-0' />
+			[31] (484,337)<div  />
+				[32] (484,330)<p >[2D Animation] [Character] BMO />
+				[33] (484,345)<div  />
+					[34] (290,345)<span >KABAM_COMPANY />
+					[35] (311,345)<span >| />
+					[36] (327,345)<span >Orca_Project />
+					[37] (363,345)<span >• Closed:
+2026-03-06 />
+			[38] (717,337)<div  />
+				[39] (717,325)<p >100 />
+					[40] (728,326)<span >USD />
+				[41] (717,339)<p >≈
+2,631,800
+VNĐ />
+				[42] (717,351)<p >+
+20
+bonus />
+		[43] (496,396)<label class='flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all border-primary/10 hover:border-primary/20' />
+			[44] (263,396)<input class='accent-primary w-4 h-4 shrink-0' />
+			[45] (491,396)<div  />
+				[46] (491,390)<p >[2D Animation] [Boss] Lich />
+				[47] (491,405)<div  />
+					[48] (290,405)<span >KABAM_COMPANY />
+					[49] (311,405)<span >| />
+					[50] (327,405)<span >Orca_Project />
+					[51] (363,405)<span >• Closed:
+2026-02-28 />
+			[52] (724,396)<div  />
+				[53] (724,396)<p >— />
+					[54] (728,397)<span >VND />
+		[55] (496,450)<label class='flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all border-primary/10 hover:border-primary/20' />
+			[56] (263,450)<input class='accent-primary w-4 h-4 shrink-0' />
+			[57] (491,450)<div  />
+				[58] (491,444)<p >[2D Animation] [Character] Garnet />
+				[59] (491,459)<div  />
+					[60] (290,459)<span >KABAM_COMPANY />
+					[61] (311,459)<span >| />
+					[62] (327,459)<span >Orca_Project />
+					[63] (363,459)<span >• Closed:
+2026-02-28 />
+			[64] (724,450)<div  />
+				[65] (724,450)<p >— />
+					[66] (728,450)<span >VND />
+		[67] (496,504)<label class='flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all border-primary/10 hover:border-primary/20' />
+			[68] (263,504)<input class='accent-primary w-4 h-4 shrink-0' />
+			[69] (491,504)<div  />
+				[70] (491,498)<p >[2D Animation] [Character] Tasmanian Devil (Taz) />
+				[71] (491,513)<div  />
+					[72] (290,513)<span >KABAM_COMPANY />
+					[73] (311,513)<span >| />
+					[74] (327,513)<span >Orca_Project />
+					[75] (363,513)<span >• Closed:
+2026-02-28 />
+			[76] (724,504)<div  />
+				[77] (724,504)<p >— />
+					[78] (728,504)<span >VND />
+		[79] (496,558)<label class='flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all border-primary/10 hover:border-primary/20' />
+			[80] (263,558)<input class='accent-primary w-4 h-4 shrink-0' />
+			[81] (491,558)<div  />
+				[82] (491,551)<p >[2D Animation] [Character] Tweety Bird />
+				KABAM_COMPANY
+				|
+				Orca_Project
+				• Closed:
+				2026-02-28
+			[83] (724,558)<div  />
+				[84] (724,558)<p >— />
+					[85] (728,558)<span >VND />
+		[2D Animation] [Character] Finn the Human
+		KABAM_COMPANY
+		|
+		Orca_Project
+		• Closed:
+		2026-02-28
+		—
+		VND
+		[2D Animation] [Character] Ice King Finn
+		KABAM_COMPANY
+		|
+		Orca_Project
+		• Closed:
+		2026-02-28
+		—
+		VND
+		[2D Animation] [Enemies] Metropolis Enemies- Brainiac Robot
+		KABAM_COMPANY
+		|
+		Orca_Project
+		• Closed:
+		2026-03-11
+		—
+		VND
+		[2D Animation] [Enemies] Metropolis Enemies- Robot Guard
+		KABAM_COMPANY
+		|
+		Orca_Project
+		• Closed:
+		2026-03-11
+		—
+		VND
+		[2D Modeling] [Character] Aquamarine
+		KABAM_COMPANY
+		|
+		Orca_Project
+		• Closed:
+		2026-03-02
+		—
+		VND
+	Tổng nghiệm thu
+	0
+	USD
+	✚ Tạo nghiệm thu
+	TD Consulting • Enterprise Billing Engine • v2.1
+
+</current_dom>

@@ -1,0 +1,16 @@
+# Testing Plan for Settlement Manager Redesign
+
+- [ ] Navigate to http://localhost:3000/
+- [ ] Click on "WORKFORCE" card
+- [ ] Click on "NGHIỆM THU" tab
+- [ ] Screenshot empty list view
+- [ ] Click "✚ Tạo nghiệm thu"
+- [ ] Screenshot create form
+- [ ] Select worker and tasks
+- [ ] Screenshot selected tasks
+- [ ] Create settlement
+- [ ] Screenshot list view with new settlement
+- [ ] Open settlement detail view
+- [ ] Screenshot detail view
+- [ ] Test PDF export
+- [ ] Screenshot PDF preview

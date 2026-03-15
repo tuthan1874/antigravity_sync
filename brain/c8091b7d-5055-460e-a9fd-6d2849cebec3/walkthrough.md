@@ -1,39 +1,35 @@
-# Walkthrough: Workforce Task Sync Enhancement
+# Nghiệm Thu Redesign — Walkthrough
 
 ## Changes Made
 
-### 1. Database Migration
-Added 3 columns to `wf_tasks`:
-- `start_date DATE` — ngày bắt đầu (từ ClickUp `date_created`)
-- `closed_date DATE` — ngày đóng (từ ClickUp `date_done`, fallback `date_updated`)
-- `payment_status TEXT` — `'unpaid'` | `'paid'`
+### Backend (`workforceService.ts`)
+- **`createSettlement`** — No longer auto-marks tasks as `paid`. Tasks stay `unpaid` until user explicitly marks the settlement as "Đã thanh toán"
+- **`deleteSettlement`** — Rollbacks all linked tasks to `unpaid`, deletes link records, then deletes settlement
+- **`updateSettlement`** — When status transitions to `paid`, marks all linked tasks as `payment_status: 'paid'`
 
-### 2. Files Modified
+### Hook (`useWorkforceState.ts`)
+- Added task state refresh after `handleUpdateSettlement` (when status changes) and `handleDeleteSettlement`
 
-| File | Changes |
-|------|---------|
-| [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts) | Added `start_date`, `closed_date`, `payment_status` to `WorkforceTask` |
-| [TaskList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/TaskList.tsx) | Sync logic maps dates; UI shows 🟢 start / 🔴 closed dates + payment badge |
-| [SettlementManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/SettlementManager.tsx) | Eligible filter: `closed_date ≤ period end` + `payment_status = 'unpaid'` (accumulation) |
-| [workforceService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts) | `createSettlement` now marks tasks `payment_status = 'paid'` |
+### UI (`SettlementManager.tsx`) — Complete Rewrite
+3 views replacing the old single-view component:
 
-### 3. Settlement Accumulation Logic
+**List View** — Summary cards (Total, Paid, Unpaid, Amount) + settlement cards with click-to-detail
 
-```
-Eligible tasks = WHERE:
-  worker_id = selected worker
-  AND payment_status = 'unpaid'
-  AND closed_date IS NOT NULL
-  AND closed_date ≤ last day of selected period
-```
+**Detail View** — Full task table with all columns (#, Task, Client, Project, Closed Date, Price, Currency, VNĐ Equiv, Bonus, Bonus Note, Notes). Action bar with status workflow, PDF export, delete
 
-Task closed tháng 2 mà chưa thanh toán → vẫn hiện khi chọn kỳ tháng 3 → cộng dồn đến khi paid.
+**Create View** — Worker/period selection, task selection with price/bonus preview, breadcrumb hierarchy, VNĐ conversion preview
 
-## Verification
+### PDF Export
+In-browser `window.open` + `print` with professional layout: header, metadata, full task table, totals, signature areas
 
-![Task list after sync — showing dates and payment status](C:\Users\dangt\.gemini\antigravity\brain\c8091b7d-5055-460e-a9fd-6d2849cebec3\task_list_post_sync_1773546915379.png)
+## Screenshots
 
-- ✅ 12 tasks synced with start/closed dates
-- ✅ Payment badges (⏳ Chưa TT) on all task cards
-- ✅ Summary: Đã đóng 12, Chưa thanh toán 12
-- ✅ Edge Function unchanged — already returns `date_created`/`date_done`
+````carousel
+![List View](C:\Users\dangt\.gemini\antigravity\brain\c8091b7d-5055-460e-a9fd-6d2849cebec3\settlement_list_view_with_card_1773554387172.png)
+<!-- slide -->
+![Detail View](C:\Users\dangt\.gemini\antigravity\brain\c8091b7d-5055-460e-a9fd-6d2849cebec3\settlement_detail_view_1773554401759.png)
+<!-- slide -->
+![PDF Export](C:\Users\dangt\.gemini\antigravity\brain\c8091b7d-5055-460e-a9fd-6d2849cebec3\settlement_pdf_preview_1773554482221.png)
+````
+
+![Demo Recording](C:\Users\dangt\.gemini\antigravity\brain\c8091b7d-5055-460e-a9fd-6d2849cebec3\settlement_redesign_test_1773554308442.webp)

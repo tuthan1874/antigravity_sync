@@ -1,0 +1,146 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	Đã tạo nghiệm thu
+	[1] (567,954)<button class='opacity-60 hover:opacity-100 font-bold'>✕ />
+	[2] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	Workforce
+	USD
+	→
+	VND
+	26.318
+	₫
+	VCB •
+	15/03, 12:49
+	[3] (771,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Nhân sự />
+	[4] (812,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Task />
+	[5] (858,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all bg-primary text-black shadow-btn-glow'>Nghiệm thu />
+	[6] (911,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Cấu hình />
+	admin
+	admin
+	[7] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	[8] (252,120)<button class='p-2 rounded-xl hover:bg-white/5 text-neutral-medium hover:text-white transition-all' />
+	Nghiệm Thu
+	Đặng Thế Toàn
+	— Kỳ
+	2026-03
+	Bản nháp
+	[9] (282,174)<button class='px-5 py-2.5 rounded-xl font-black text-xs uppercase tracking-widest bg-gradient-primary text-white shadow-btn-glow hover:shadow-btn-glow-hover transition-all hover:scale-[1.02]'>📤 Gửi nghiệm thu />
+	[10] (354,174)<button class='px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest border border-primary/20 text-primary hover:bg-primary/10 transition-all'>📄 Export PDF />
+	[11] (738,174)<button class='px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest border border-red-500/20 text-red-400 hover:bg-red-500/10 transition-all ml-auto'>🗑 Xóa />
+	Số task
+	11
+	Tổng giá
+	150,250
+	Tổng Bonus
+	20
+	Quy đổi VNĐ
+	3,954,279,500
+	#
+	Task
+	Khách hàng
+	Project
+	Ngày đóng
+	Giá
+	Tiền tệ
+	VNĐ
+	Bonus
+	Lý do Bonus
+	Ghi chú
+	1
+	[2D Animation] [Character] Finn the Human
+	KABAM_COMPANY
+	Orca_Project
+	2026-02-28
+	—
+	VND
+	2
+	[2D Animation] [Character] BMO
+	KABAM_COMPANY
+	Orca_Project
+	2026-03-06
+	100
+	USD
+	2,631,800
+	20
+	Fix 1
+	khong có gi
+	3
+	[2D Animation] [Character] Ice King Finn
+	KABAM_COMPANY
+	Orca_Project
+	2026-02-28
+	—
+	VND
+	4
+	[2D Animation] [Character] Tasmanian Devil (Taz)
+	KABAM_COMPANY
+	Orca_Project
+	2026-02-28
+	—
+	VND
+	5
+	[2D Animation] [Character] Tweety Bird
+	KABAM_COMPANY
+	Orca_Project
+	2026-02-28
+	—
+	VND
+	6
+	[2D Animation] [Enemies] Metropolis Enemies- Brainiac Robot
+	KABAM_COMPANY
+	Orca_Project
+	2026-03-11
+	—
+	VND
+	7
+	[2D Animation] [Boss] Lich
+	KABAM_COMPANY
+	Orca_Project
+	2026-02-28
+	—
+	VND
+	8
+	[2D Animation] [Character] Garnet
+	KABAM_COMPANY
+	Orca_Project
+	2026-02-28
+	—
+	VND
+	9
+	[2D Animation] [Character] Bugs Bunny
+	KABAM_COMPANY
+	Orca_Project
+	2026-02-28
+	150,150
+	USD
+	3,951,647,700
+	10
+	[2D Animation] [Enemies] Metropolis Enemies- Robot Guard
+	KABAM_COMPANY
+	Orca_Project
+	2026-03-11
+	—
+	VND
+	11
+	[2D Modeling] [Character] Aquamarine
+	KABAM_COMPANY
+	Orca_Project
+	2026-03-02
+	—
+	VND
+	TỔNG CỘNG
+	150,250
+	3,954,279,500
+	20
+	GRAND TOTAL (Giá + Bonus)
+	150,270
+	VND
+	Tạo lúc:
+	12:59:41 15/3/2026
+	TD Consulting • Enterprise Billing Engine • v2.1
+
+</current_dom>
