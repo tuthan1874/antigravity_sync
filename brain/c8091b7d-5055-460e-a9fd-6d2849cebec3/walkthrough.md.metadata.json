@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Complete walkthrough of Expense app session: exchange rate display, R2 file upload (lightweight, no AWS SDK), and UI restructure (removed add tab, added inline form button).",
-  "updatedAt": "2026-03-15T09:59:11.329226400Z",
-  "version": "5"
+  "summary": "Walkthrough of CRM app creation: database setup, data migration, frontend components, app integration, and verification results.",
+  "updatedAt": "2026-03-15T14:35:19.708539Z",
+  "version": "6"
 }

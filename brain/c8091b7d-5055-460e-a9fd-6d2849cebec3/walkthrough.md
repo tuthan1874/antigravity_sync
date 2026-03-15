@@ -1,33 +1,36 @@
-# Expense App Enhancements — Session Summary
+# CRM App — Walkthrough
 
-## 1. Exchange Rate Display ✅
-Tỉ giá VCB USD → VND hiển thị trên navbar, giống Invoice/Workforce.
+## What was built
+App CRM quản lý khách hàng tập trung — app thứ 4 trên TD Games Platform.
 
-## 2. Receipt File Upload → Cloudflare R2 ✅
-Thay ô nhập URL bằng file upload qua Edge Function `r2-expense-upload`.
-- Hỗ trợ: PDF, JPG, PNG, WEBP (tối đa 10MB)
-- Lightweight: dùng native Web Crypto API để ký S3 request, không cần AWS SDK (tránh cold start timeout)
-- Upload xong: hiện preview + nút xoá. Danh sách hiện 📎 link
+## Database
+- Bảng `crm_clients`: 17 columns (name, type, contact, email, phone, address, country, tax_code, website, industry, status, tags, notes...)
+- RLS enabled with open policy
+- Migrated 3 records từ `invoice_clients` (2) + `fb_clients` (1, deduped)
 
-## 3. UI Restructure ✅
-- Bỏ tab "Thêm mới" khỏi navbar
-- Thêm nút **"+ THÊM CHI PHÍ"** trên trang Danh sách
-- Form hiện inline khi bấm, quay về danh sách khi lưu/huỷ
+## Frontend Files
+| File | Purpose |
+|------|---------|
+| `apps/crm/services/crmService.ts` | Supabase CRUD |
+| `apps/crm/hooks/useCrmState.ts` | State + filtering + search |
+| `apps/crm/components/ClientList.tsx` | List + stats cards + search/filter |
+| `apps/crm/components/ClientForm.tsx` | Add/edit form with tags |
+| `apps/crm/components/CrmApp.tsx` | App shell with navbar |
+
+## Integration
+- `config/apps.ts`: CRM entry (👥, blue gradient)
+- `App.tsx`: CRM route `#crm`
+- `types.ts`: `CrmClient` interface
+
+## Verification
 
 ````carousel
-![List view with add button](file:///C:/Users/dangt/.gemini/antigravity/brain/c8091b7d-5055-460e-a9fd-6d2849cebec3/expense_list_initial_1773566333236.png)
+![Home screen — CRM as 4th app](file:///C:/Users/dangt/.gemini/antigravity/brain/c8091b7d-5055-460e-a9fd-6d2849cebec3/home_screen_with_crm_1773585255929.png)
 <!-- slide -->
-![Form appears inline](file:///C:/Users/dangt/.gemini/antigravity/brain/c8091b7d-5055-460e-a9fd-6d2849cebec3/expense_form_appeared_1773566343979.png)
+![CRM client list with 3 migrated records](file:///C:/Users/dangt/.gemini/antigravity/brain/c8091b7d-5055-460e-a9fd-6d2849cebec3/crm_client_list_1773585273516.png)
 ````
 
-## Files Changed
-
-| File | Change |
-|------|--------|
-| [ExpenseApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseApp.tsx) | Exchange rate + removed add tab + inline form toggle |
-| [ExpenseForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseForm.tsx) | File upload via R2 Edge Function |
-| [ExpenseList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseList.tsx) | Added onAdd button + receipt link |
-
-## Backend
-- Edge Function `r2-expense-upload` (POST upload, DELETE remove) — zero dependencies
-- Uses secrets: `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_URL`
+- ✅ TypeScript compile clean
+- ✅ 3 clients loaded from migration
+- ✅ Navbar with exchange rate + "Khách hàng" / "Thống kê" tabs
+- ✅ Stats cards, search, filter, inline CRUD
