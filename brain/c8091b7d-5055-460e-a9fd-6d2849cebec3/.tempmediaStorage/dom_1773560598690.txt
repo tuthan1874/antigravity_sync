@@ -1,0 +1,241 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,677)<div  />
+	Đã cập nhật task
+	[1] (526,951)<button class='opacity-60 hover:opacity-100 font-bold'>✕ />
+	[2] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	Workforce
+	USD
+	→
+	VND
+	26.318
+	₫
+	VCB •
+	15/03, 14:35
+	[3] (771,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Nhân sự />
+	[4] (812,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all bg-primary text-black shadow-btn-glow'>Task />
+	[5] (858,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Nghiệm thu />
+	[6] (911,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Cấu hình />
+	admin
+	admin
+	[7] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	Task
+	Đồng bộ task từ ClickUp theo email nhân sự
+	[8] (720,132)<button class='px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest bg-gradient-primary text-white shadow-btn-glow hover:shadow-btn-glow-hover transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed'>🔄 Sync ClickUp />
+	Tổng task
+	17
+	Đã đóng
+	5
+	Chưa thanh toán
+	5
+	Tổng giá trị
+	1,300,000
+	[9] (278,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[10] (354,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[11] (433,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[12] (503,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[13] (562,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	17
+	/
+	17
+	tasks
+	[14] (709,290)<button class='px-3 h-[44px] text-sm font-bold transition-all flex items-center gap-1.5 text-neutral-medium hover:text-white' title='Board View'>Board />
+	[15] (740,290)<button class='px-3 h-[44px] text-sm font-bold transition-all flex items-center gap-1.5 bg-primary/20 text-primary' title='List View'>List />
+	#
+	Task
+	Nhân sự
+	Trạng thái
+	Thanh toán
+	Giá
+	Ngày tạo
+	Ngày đóng
+	[16] (500,398)<tr  />
+		[17] (257,398)<td >1 />
+		[18] (350,398)<td  />
+			[19] (350,390)<p >[2D Animation] [Character] Aquamarine />
+			[20] (350,406)<p >KABAM_COMPANY › Orca_Project › Animation />
+		[21] (466,398)<td >Nguyễn Quang Huy />
+		[22] (525,398)<td  />
+			[23] (523,399)<span >Đang làm />
+		[24] (576,398)<td  />
+			[25] (568,398)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>Chưa TT />
+		[26] (631,398)<td  />
+			[27] (638,397)<span >— />
+			[28] (647,398)<span >VND />
+		[29] (683,398)<td >2026-03-02 />
+		[30] (730,398)<td >— />
+	[31] (500,449)<tr  />
+		[32] (257,449)<td >2 />
+		[33] (350,449)<td  />
+			[34] (350,440)<p >[2D Animation] [Character] Robin />
+			[35] (350,457)<p >KABAM_COMPANY › Orca_Project › Animation />
+		[36] (466,449)<td >Nguyễn Quang Huy />
+		[37] (525,449)<td  />
+			[38] (523,449)<span >Đang làm />
+		[39] (576,449)<td  />
+			[40] (566,449)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30' title='Click để đổi trạng thái thanh toán'>Đã TT />
+		[41] (631,449)<td  />
+			[42] (638,448)<span >— />
+			[43] (647,449)<span >VND />
+		[44] (683,449)<td >2026-03-03 />
+		[45] (730,449)<td >— />
+	[46] (500,499)<tr  />
+		[47] (257,499)<td >3 />
+		[48] (350,499)<td  />
+			[49] (350,491)<p >[2D Animation] [Character] Steven Universe />
+			[50] (350,507)<p >KABAM_COMPANY › Orca_Project › Animation />
+		[51] (466,499)<td >Nguyễn Quang Huy />
+		[52] (525,499)<td  />
+			[53] (523,500)<span >Đang làm />
+		[54] (576,499)<td  />
+			[55] (566,499)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30' title='Click để đổi trạng thái thanh toán'>Đã TT />
+		[56] (631,499)<td  />
+			[57] (638,498)<span >— />
+			[58] (647,499)<span >VND />
+		[59] (683,499)<td >2026-03-03 />
+		[60] (730,499)<td >— />
+	[61] (500,550)<tr  />
+		[62] (257,550)<td >4 />
+		[63] (350,550)<td  />
+			[64] (350,541)<p >[2D Animation] [Character] Duck Dodgers />
+			[65] (350,558)<p >KABAM_COMPANY › Orca_Project › Animation />
+		[66] (466,550)<td >Nguyễn Quang Huy />
+		[67] (525,550)<td  />
+			[68] (523,550)<span >Đang làm />
+		[69] (576,550)<td  />
+			[70] (566,550)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30' title='Click để đổi trạng thái thanh toán'>Đã TT />
+		[71] (631,550)<td  />
+			[72] (638,549)<span >— />
+			[73] (647,550)<span >VND />
+		[74] (683,550)<td >2026-03-12 />
+		[75] (730,550)<td >— />
+	[76] (500,600)<tr  />
+		[77] (257,600)<td >5 />
+		[78] (350,600)<td  />
+			[79] (350,592)<p >[2D Modeling] [Character] Marvin the Martian />
+			[80] (350,608)<p >KABAM_COMPANY › Orca_Project › Art />
+		[81] (466,600)<td >Nguyễn Ngọc Anh />
+		[82] (525,600)<td  />
+			[83] (523,601)<span >Đang làm />
+		[84] (576,600)<td  />
+			[85] (568,600)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>Chưa TT />
+		[86] (631,600)<td  />
+			[87] (638,599)<span >— />
+			[88] (647,600)<span >VND />
+		[89] (683,600)<td >2026-02-28 />
+		[90] (730,600)<td >— />
+	[91] (500,651)<tr  />
+		[92] (257,651)<td >6 />
+		[93] (350,651)<td  />
+			[94] (350,642)<p >[2D Modeling] [Character] Finn the Human />
+			[95] (350,659)<p >KABAM_COMPANY › Orca_Project › Art />
+		[96] (466,651)<td >Nguyễn Ngọc Anh />
+		[97] (525,651)<td  />
+			[98] (522,651)<span >Đã duyệt />
+		[99] (576,651)<td  />
+			[100] (568,651)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>Chưa TT />
+		[101] (631,651)<td  />
+			[102] (638,650)<span >— />
+			[103] (647,651)<span >VND />
+		[104] (683,651)<td >2026-02-28 />
+		[105] (730,651)<td >2026-02-28 />
+	[106] (500,701)<tr  />
+		[107] (257,701)<td >7 />
+		[108] (350,701)<td  />
+			[109] (350,693)<p >[2D Modeling] [Character] Ice King Finn />
+			[110] (350,709)<p >KABAM_COMPANY › Orca_Project › Art />
+		[111] (466,701)<td >Nguyễn Ngọc Anh />
+		[112] (525,701)<td  />
+			[113] (522,702)<span >Đã duyệt />
+		[114] (576,701)<td  />
+			[115] (568,701)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>Chưa TT />
+		[116] (631,701)<td  />
+			[117] (638,700)<span >— />
+			[118] (647,702)<span >VND />
+		[119] (683,701)<td >2026-02-28 />
+		[120] (730,701)<td >2026-02-28 />
+	[121] (500,752)<tr  />
+		[122] (257,752)<td >8 />
+		[123] (350,752)<td  />
+			[124] (350,743)<p >[2D Modeling] [Character] Sylvester />
+			[125] (350,760)<p >KABAM_COMPANY › Orca_Project › Art />
+		[126] (466,752)<td >Nguyễn Ngọc Anh />
+		[127] (525,752)<td  />
+			[128] (522,752)<span >Đã duyệt />
+		[129] (576,752)<td  />
+			[130] (568,752)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>Chưa TT />
+		[131] (631,752)<td  />
+			[132] (638,751)<span >— />
+			[133] (647,752)<span >VND />
+		[134] (683,752)<td >2026-02-28 />
+		[135] (730,752)<td >2026-02-28 />
+	[136] (500,802)<tr  />
+		[137] (257,802)<td >9 />
+		[138] (350,802)<td  />
+			[139] (350,794)<p >[2D Modeling] [Character] Aquamarine />
+			[140] (350,810)<p >KABAM_COMPANY › Orca_Project › Art />
+		[141] (466,802)<td >Nguyễn Ngọc Anh />
+		[142] (525,802)<td  />
+			[143] (522,803)<span >Đã duyệt />
+		[144] (576,802)<td  />
+			[145] (568,802)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>Chưa TT />
+		[146] (631,802)<td  />
+			[147] (638,802)<span >— />
+			[148] (647,803)<span >VND />
+		[149] (683,802)<td >2026-02-28 />
+		[150] (730,802)<td >2026-03-02 />
+	[151] (500,853)<tr  />
+		[152] (257,853)<td >10 />
+		[153] (350,853)<td  />
+			[154] (350,844)<p >[2D Modeling] [Character] Duck Dodgers />
+			[155] (350,861)<p >KABAM_COMPANY › Orca_Project › Art />
+		[156] (466,853)<td >Nguyễn Ngọc Anh />
+		[157] (525,853)<td  />
+			[158] (523,853)<span >Đang làm />
+		[159] (576,853)<td  />
+			[160] (568,853)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>Chưa TT />
+		[161] (631,853)<td  />
+			[162] (638,852)<span >— />
+			[163] (647,853)<span >VND />
+		[164] (683,853)<td >2026-02-28 />
+		[165] (730,853)<td >— />
+	[166] (500,903)<tr  />
+		[167] (257,903)<td >11 />
+		[168] (350,903)<td  />
+			[169] (350,895)<p >[2D Modeling] [Character] Tasmanian Devil (Taz) />
+			[170] (350,911)<p >KABAM_COMPANY › Orca_Project › Art />
+		[171] (466,903)<td >Nguyễn Ngọc Anh />
+		[172] (525,903)<td  />
+			[173] (522,904)<span >Đã duyệt />
+		[174] (576,903)<td  />
+			[175] (568,903)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>Chưa TT />
+		[176] (631,903)<td  />
+			[177] (628,903)<span >1,300,000 />
+			[178] (647,904)<span >VND />
+		[179] (683,903)<td >2026-02-28 />
+		[180] (730,903)<td >2026-02-28 />
+	[181] (257,954)<td >12 />
+	[182] (350,954)<td  />
+		[183] (350,945)<p >[2D Modeling] [Character] Amethyst />
+		[184] (350,962)<p >KABAM_COMPANY › Orca_Project › Art />
+	Nguyễn Ngọc Anh
+	Đang làm
+	[185] (576,954)<td  />
+		[186] (568,954)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>Chưa TT />
+	[187] (631,954)<td  />
+		[188] (638,953)<span >— />
+		[189] (647,954)<span >VND />
+	[190] (683,954)<td >2026-03-05 />
+	[191] (730,954)<td >— />
+	13
+	[192] (350,996)<p >[2D Modeling] [Character] Starfire />
+	Nguyễn Ngọc Anh
+	—
+	VND
+	2026-03-05
+	—
+
+</current_dom>

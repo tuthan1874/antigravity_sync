@@ -1,0 +1,275 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,767)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	Workforce
+	USD
+	→
+	VND
+	26.318
+	₫
+	VCB •
+	15/03, 14:35
+	[2] (771,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Nhân sự />
+	[3] (812,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all bg-primary text-black shadow-btn-glow'>Task />
+	[4] (858,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Nghiệm thu />
+	[5] (911,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Cấu hình />
+	admin
+	admin
+	[6] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	Task
+	Đồng bộ task từ ClickUp theo email nhân sự
+	[7] (720,132)<button class='px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest bg-gradient-primary text-white shadow-btn-glow hover:shadow-btn-glow-hover transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed'>🔄 Sync ClickUp />
+	Tổng task
+	17
+	Đã đóng
+	5
+	Chưa thanh toán
+	5
+	Tổng giá trị
+	1,300,000
+	[8] (278,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[9] (354,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[10] (433,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[11] (503,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[12] (562,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	17
+	/
+	17
+	tasks
+	[13] (709,290)<button class='px-3 h-[44px] text-sm font-bold transition-all flex items-center gap-1.5 bg-primary/20 text-primary' title='Board View'>Board />
+	[14] (740,290)<button class='px-3 h-[44px] text-sm font-bold transition-all flex items-center gap-1.5 text-neutral-medium hover:text-white' title='List View'>List />
+	[2D Animation] [Character] Aquamarine
+	Đang làm
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Animation
+	👤
+	Nguyễn Quang Huy
+	🟢
+	2026-03-02
+	client_review
+	[15] (299,427)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30' title='Click để đổi trạng thái thanh toán'>💰 Đã TT />
+	🔄
+	14:14 15-03
+	[16] (328,458)<div  />
+		[17] (328,458)<p >— />
+			[18] (268,458)<span >VND />
+			[19] (284,459)<span  />
+	[2D Animation] [Character] Robin
+	Đang làm
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Animation
+	👤
+	Nguyễn Quang Huy
+	🟢
+	2026-03-03
+	client_review
+	[20] (474,427)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>⏳ Chưa TT />
+	🔄
+	14:14 15-03
+	[21] (500,458)<div  />
+		[22] (500,458)<p >— />
+			[23] (440,458)<span >VND />
+			[24] (456,459)<span  />
+	[2D Animation] [Character] Steven Universe
+	Đang làm
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Animation
+	👤
+	Nguyễn Quang Huy
+	🟢
+	2026-03-03
+	client_review
+	[25] (646,440)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>⏳ Chưa TT />
+	🔄
+	14:14 15-03
+	[26] (672,471)<div  />
+		[27] (672,471)<p >— />
+			[28] (613,472)<span >VND />
+			[29] (628,472)<span  />
+	[2D Animation] [Character] Duck Dodgers
+	Đang làm
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Animation
+	👤
+	Nguyễn Quang Huy
+	🟢
+	2026-03-12
+	in progess
+	[30] (296,624)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>⏳ Chưa TT />
+	🔄
+	14:14 15-03
+	[31] (328,656)<div  />
+		[32] (328,656)<p >— />
+			[33] (268,656)<span >VND />
+			[34] (284,656)<span  />
+	[2D Modeling] [Character] Marvin the Martian
+	Đang làm
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Art
+	👤
+	Nguyễn Ngọc Anh
+	🟢
+	2026-02-28
+	in progess
+	[35] (468,624)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>⏳ Chưa TT />
+	🔄
+	14:14 15-03
+	[36] (500,656)<div  />
+		[37] (500,656)<p >— />
+			[38] (440,656)<span >VND />
+			[39] (456,656)<span  />
+	[2D Modeling] [Character] Finn the Human
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Art
+	👤
+	Nguyễn Ngọc Anh
+	🟢
+	2026-02-28
+	🔴
+	2026-02-28
+	Closed
+	[40] (634,624)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>⏳ Chưa TT />
+	🔄
+	14:14 15-03
+	[41] (672,656)<div  />
+		[42] (672,656)<p >— />
+			[43] (613,656)<span >VND />
+			[44] (628,656)<span  />
+	[2D Modeling] [Character] Ice King Finn
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Art
+	👤
+	Nguyễn Ngọc Anh
+	🟢
+	2026-02-28
+	🔴
+	2026-02-28
+	Closed
+	[45] (289,796)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>⏳ Chưa TT />
+	🔄
+	14:14 15-03
+	[46] (328,827)<div  />
+		[47] (328,827)<p >— />
+			[48] (268,828)<span >VND />
+			[49] (284,828)<span  />
+	[2D Modeling] [Character] Sylvester
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Art
+	👤
+	Nguyễn Ngọc Anh
+	🟢
+	2026-02-28
+	🔴
+	2026-02-28
+	Closed
+	[50] (462,796)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>⏳ Chưa TT />
+	🔄
+	14:14 15-03
+	[51] (500,827)<div  />
+		[52] (500,827)<p >— />
+			[53] (440,828)<span >VND />
+			[54] (456,828)<span  />
+	[2D Modeling] [Character] Aquamarine
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Art
+	👤
+	Nguyễn Ngọc Anh
+	🟢
+	2026-02-28
+	🔴
+	2026-03-02
+	Closed
+	[55] (634,796)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>⏳ Chưa TT />
+	🔄
+	14:14 15-03
+	[56] (672,827)<div  />
+		[57] (672,827)<p >— />
+			[58] (613,828)<span >VND />
+			[59] (628,828)<span  />
+	[2D Modeling] [Character] Duck Dodgers
+	Đang làm
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Art
+	👤
+	Nguyễn Ngọc Anh
+	🟢
+	2026-02-28
+	client_review
+	[60] (301,981)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>⏳ Chưa TT />
+	🔄
+	14:14 15-03
+	[2D Modeling] [Character] Tasmanian Devil (Taz)
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Art
+	👤
+	Nguyễn Ngọc Anh
+	🟢
+	2026-02-28
+	🔴
+	2026-02-28
+	Closed
+	⏳ Chưa TT
+	🔄
+	14:14 15-03
+	[2D Modeling] [Character] Amethyst
+	Đang làm
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Art
+	👤
+	Nguyễn Ngọc Anh
+	🟢
+	2026-03-05
+	client_review
+	[61] (646,968)<button class='text-[9px] font-bold px-2 py-0.5 rounded-md cursor-pointer hover:scale-105 transition-all bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' title='Click để đổi trạng thái thanh toán'>⏳ Chưa TT />
+	🔄
+	14:14 15-03
+	[62] (672,999)<div  />
+		[63] (672,999)<p >— />
+			[64] (613,999)<span >VND />
+
+</current_dom>
