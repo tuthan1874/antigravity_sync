@@ -1,75 +1,38 @@
-# Realtime Sync — ClickUp Webhook + Supabase Realtime
+# Expense App Enhancements
 
-## Vấn đề hiện tại
-Mỗi lần sync phải fetch **toàn bộ tasks** từ ClickUp → upsert vào Supabase. Khi số lượng task tăng sẽ:
-- Tốn nhiều API calls
-- Chậm (30s+ cho >100 tasks)
-- Không cập nhật tự động khi task thay đổi trên ClickUp
+## 1. Add Exchange Rate Display to Expense Navbar
 
-## Giải pháp đề xuất: 2 tầng
+Copy the same pattern from WorkforceApp — load VCB rate on mount, pass to Navbar.
 
-### Tầng 1: ClickUp Webhook → Supabase Edge Function (Push)
-Khi task thay đổi trên ClickUp → webhook tự động gọi Edge Function → cập nhật DB
+### [MODIFY] [ExpenseApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseApp.tsx)
+- Import `fetchExchangeRate`, `ExchangeRateData` from Invoice service
+- Add `vcbRate` / `vcbRateLoading` states + `useEffect` to fetch rate (same as WorkforceApp)
+- Pass real `vcbRate` / `vcbRateLoading` to Navbar (currently `null` / `false`)
 
-### Tầng 2: Supabase Realtime → UI auto-refresh (Subscribe)
-App subscribe vào bảng `wf_tasks` → khi DB thay đổi → UI tự cập nhật, không cần F5
+---
 
-```
-ClickUp (task thay đổi)
-  │ webhook POST
-  ▼
-Supabase Edge Function (clickup-webhook)
-  │ upsert wf_tasks
-  ▼
-Supabase Realtime
-  │ broadcast change
-  ▼
-App UI (auto-refresh)
-```
-
-## User Review Required
+## 2. Replace Receipt URL with File Upload
 
 > [!IMPORTANT]
-> **ClickUp Webhook yêu cầu endpoint public** — sẽ dùng Supabase Edge Function (đã có sẵn infrastructure). Webhook sẽ được đăng ký tự động từ trang Cấu hình ClickUp.
+> Cloudflare R2 requires account credentials (Account ID, Access Key, Secret Key, bucket name). Since no R2 config exists in `.env.local`, I will use **Supabase Storage** instead — it's already integrated and zero-config. Files will be stored in a `expense-receipts` bucket. If you specifically need R2, I'll need your R2 credentials.
 
-> [!WARNING] 
-> **Sync cũ vẫn giữ lại** làm "Full Sync" backup. Webhook chỉ bắt thay đổi incremental.
+### [NEW] Supabase Storage bucket `expense-receipts`
+- Create via migration: public bucket for receipt files
 
-## Proposed Changes
+### [MODIFY] [ExpenseForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseForm.tsx)
+- Replace URL text input with file upload input (`<input type="file">`)
+- Accept: `.pdf, .jpg, .jpeg, .png, .webp`
+- Upload file to Supabase Storage → get public URL → save to `receipt_url`
+- Show upload preview (image thumbnail or PDF icon) + delete button
+- If editing expense with existing `receipt_url`, show it as a preview link
 
-### Edge Function — `clickup-webhook`
-
-#### [NEW] `clickup-webhook` Edge Function
-- Nhận POST từ ClickUp webhook khi task thay đổi
-- Events: `taskCreated`, `taskUpdated`, `taskStatusUpdated`, `taskDeleted`
-- Parse payload → tìm worker bằng email → upsert `wf_tasks`
-- Trả về 200 OK cho ClickUp
-
----
-
-### Frontend — ClickUp Config
-
-#### [MODIFY] [clickupService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/clickupService.ts)
-- Thêm `registerWebhook(token, teamId, endpointUrl)` — đăng ký webhook
-- Thêm `listWebhooks(token, teamId)` — kiểm tra webhook đã đăng ký chưa
-- Thêm `deleteWebhook(token, webhookId)` — xóa webhook
-
-#### [MODIFY] [ClickUpConfig.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/ClickUpConfig.tsx)
-- Thêm UI toggle "Bật Realtime Sync" 
-- Tự động đăng ký/xóa webhook khi toggle
-
----
-
-### Frontend — Supabase Realtime Subscription
-
-#### [MODIFY] [useWorkforceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/hooks/useWorkforceState.ts)
-- Subscribe `supabase.channel('wf_tasks')` lắng nghe INSERT/UPDATE/DELETE
-- Khi có thay đổi → merge vào state thay vì full reload
-- Cleanup subscription on unmount
+### [MODIFY] [ExpenseList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseList.tsx)
+- Display receipt attachment icon/link for expenses that have `receipt_url`
 
 ## Verification Plan
 
-### Automated Tests
-1. Thay đổi task status trên ClickUp → kiểm tra DB tự cập nhật
-2. Kiểm tra UI tự refresh khi task thay đổi (không cần bấm sync)
-3. Full Sync button vẫn hoạt động bình thường
+### Manual Verification
+- Confirm exchange rate shows in Expense navbar on page load
+- Upload a test PDF and image file in the expense form
+- Verify files appear in Supabase Storage
+- Verify receipt link renders correctly in the expense list

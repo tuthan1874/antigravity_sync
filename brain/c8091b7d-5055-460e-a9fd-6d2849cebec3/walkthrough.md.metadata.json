@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough of Realtime Sync implementation including ClickUp Webhooks, Supabase Edge Function, and frontend Realtime subscription.",
-  "updatedAt": "2026-03-15T07:12:23.701343900Z",
-  "version": "2"
+  "summary": "Walkthrough documenting Expense app enhancements: VCB exchange rate in navbar and file upload to Cloudflare R2 via Edge Function.",
+  "updatedAt": "2026-03-15T08:36:48.050593700Z",
+  "version": "4"
 }

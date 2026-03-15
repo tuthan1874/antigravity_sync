@@ -1,0 +1,25 @@
+# Expense App Enhancements
+
+## 1. Exchange Rate Display ✅
+
+Tỉ giá VCB USD → VND đã hiển thị trên navbar, giống như Invoice và Workforce.
+
+![Expense navbar with exchange rate](file:///C:/Users/dangt/.gemini/antigravity/brain/c8091b7d-5055-460e-a9fd-6d2849cebec3/expense_app_navbar_exchange_rate_1773563453915.png)
+
+## 2. Receipt File Upload ✅
+
+Thay thế ô nhập URL bằng file upload. Hỗ trợ PDF, JPG, PNG, WEBP (tối đa 10MB).
+
+![Upload area in form](file:///C:/Users/dangt/.gemini/antigravity/brain/c8091b7d-5055-460e-a9fd-6d2849cebec3/expense_form_file_upload_area_1773563467154.png)
+
+### Files Changed
+
+| File | Change |
+|------|--------|
+| [ExpenseApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseApp.tsx) | Added VCB exchange rate fetch + pass to Navbar |
+| [ExpenseForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseForm.tsx) | Replaced URL input with file upload to Supabase Storage |
+| [ExpenseList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseList.tsx) | Added 📎 receipt link on expense cards |
+
+### Backend
+- Created Supabase Storage bucket `expense-receipts` (public)
+- Added RLS policies: public read, authenticated upload/delete

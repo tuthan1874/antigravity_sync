@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Proposes a two-tier realtime sync: ClickUp Webhooks push task changes to a new Supabase Edge Function, and Supabase Realtime subscriptions auto-update the frontend UI without manual sync.",
-  "updatedAt": "2026-03-15T07:05:00.201046300Z",
-  "version": "2"
+  "summary": "Plan to add VCB exchange rate display to Expense navbar and replace receipt URL input with file upload using Supabase Storage.",
+  "updatedAt": "2026-03-15T08:27:35.542383700Z",
+  "version": "3"
 }

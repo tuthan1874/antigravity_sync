@@ -1,0 +1,9 @@
+# Expense App Verification Checklist
+
+- [ ] Open `http://localhost:3000/#expense` and wait for load
+- [ ] Verify exchange rate display in navbar
+- [ ] Capture screenshot of navbar area
+- [ ] Navigate to "Thêm mới" (Add) tab
+- [ ] Verify file upload area for "Hoá đơn / Receipt"
+- [ ] Capture screenshot of the upload area
+- [ ] Report findings

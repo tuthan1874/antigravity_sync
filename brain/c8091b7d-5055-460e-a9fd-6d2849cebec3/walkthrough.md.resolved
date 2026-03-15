@@ -1,43 +1,28 @@
-# Realtime Sync — Walkthrough
+# Expense App Enhancements
 
-## Tổng quan
-Triển khai hệ thống sync realtime giữa ClickUp và app, gồm 2 tầng:
+## 1. Exchange Rate Display ✅
 
-1. **ClickUp Webhook → Supabase Edge Function**: Khi task thay đổi → webhook tự gọi Edge Function → cập nhật DB
-2. **Supabase Realtime → UI**: Khi DB thay đổi → UI auto-refresh, không cần bấm sync
+Tỉ giá VCB USD → VND hiển thị trên navbar, giống Invoice/Workforce.
 
-## Các thay đổi
+## 2. Receipt File Upload → Cloudflare R2 ✅
 
-### Backend (Supabase)
-| Thay đổi | Chi tiết |
-|----------|----------|
-| Realtime enabled | `wf_tasks` table được bật `postgres_changes` |
-| Replica identity | `FULL` — cho phép DELETE events trả dữ liệu cũ |
-| `webhook_id` column | Thêm vào `wf_clickup_config` để lưu webhook ID |
-| Edge Function | `clickup-webhook` — nhận events từ ClickUp, upsert tasks |
+Thay ô nhập URL bằng file upload qua Edge Function `r2-expense-upload`. File lưu trực tiếp lên **Cloudflare R2** (dùng credentials có sẵn).
 
-### Frontend
-| File | Thay đổi |
-|------|----------|
-| [clickupService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/clickupService.ts) | Thêm [registerWebhook](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/clickupService.ts#143-162), [listWebhooks](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/clickupService.ts#138-142), [deleteWebhook](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/clickupService.ts#163-166), [saveWebhookId](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/clickupService.ts#167-175) |
-| [ClickUpConfig.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/ClickUpConfig.tsx) | Thêm toggle "⚡ Realtime Sync" |
-| [useWorkforceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/hooks/useWorkforceState.ts) | Subscribe `wf_tasks_realtime` channel |
+- Hỗ trợ: PDF, JPG, PNG, WEBP (tối đa 10MB)
+- Upload xong: hiện preview (ảnh thumbnail / icon PDF) + nút xoá
+- Danh sách expense: hiện link 📎 "Xem hoá đơn"
 
-## Kết quả
+![Expense form with R2 upload](file:///C:/Users/dangt/.gemini/antigravity/brain/c8091b7d-5055-460e-a9fd-6d2849cebec3/expense_add_form_initial_1773563763131.png)
 
-![Realtime Sync Toggle đã bật](file:///C:/Users/dangt/.gemini/antigravity/brain/c8091b7d-5055-460e-a9fd-6d2849cebec3/realtime_sync_on_after_reload_1773558700156.png)
+### Files Changed
 
-- ✅ Toggle bật/tắt hoạt động
-- ✅ Webhook đã đăng ký thành công với ClickUp
-- ✅ Supabase Realtime subscription active
-- ✅ Nút Full Sync vẫn hoạt động bình thường
+| File | Change |
+|------|--------|
+| [ExpenseApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseApp.tsx) | Added VCB exchange rate fetch |
+| [ExpenseForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseForm.tsx) | File upload via R2 Edge Function |
+| [ExpenseList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseList.tsx) | Added 📎 receipt link on cards |
 
-## Cách hoạt động
-
-```
-ClickUp (thay đổi task) 
-  → webhook POST → clickup-webhook Edge Function 
-  → upsert wf_tasks 
-  → Supabase Realtime 
-  → UI auto-refresh ⚡
-```
+### Backend
+- Deployed Edge Function `r2-expense-upload` (POST upload, DELETE remove)
+- Uses existing R2 secrets: `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_URL`
+- Files stored under `expense-receipts/` prefix in R2 bucket

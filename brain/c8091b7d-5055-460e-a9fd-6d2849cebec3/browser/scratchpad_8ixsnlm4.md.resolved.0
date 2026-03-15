@@ -1,0 +1,7 @@
+# R2 Expense Upload Test Plan
+
+- [ ] Navigate to http://localhost:3000/#expense/add
+- [ ] Execute test JavaScript
+- [ ] Wait for execution (12s)
+- [ ] Capture console logs
+- [ ] Report result status and body

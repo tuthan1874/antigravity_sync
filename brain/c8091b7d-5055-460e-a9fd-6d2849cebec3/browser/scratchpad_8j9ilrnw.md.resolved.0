@@ -1,0 +1,7 @@
+# Task Checklist - Expense Upload Feature Testing
+- [ ] Navigate to http://localhost:3000/#expense/add
+- [ ] Take a screenshot of the form state showing the upload area
+- [ ] Find the "Hoá đơn / Receipt" section with the file upload area
+- [ ] Click on the upload area to test interactivity
+- [ ] Take a final screenshot of the state
+- [ ] Verify if the UI elements are present and interactive
