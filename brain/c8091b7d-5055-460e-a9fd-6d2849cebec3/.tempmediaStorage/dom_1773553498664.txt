@@ -1,0 +1,290 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,599)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	Workforce
+	USD
+	→
+	VND
+	26.318
+	₫
+	VCB •
+	15/03, 12:33
+	[2] (771,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Nhân sự />
+	[3] (812,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all bg-primary text-black shadow-btn-glow'>Task />
+	[4] (858,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Nghiệm thu />
+	[5] (911,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Cấu hình />
+	admin
+	admin
+	[6] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	Task
+	Đồng bộ task từ ClickUp theo email nhân sự
+	[7] (720,132)<button class='px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest bg-gradient-primary text-white shadow-btn-glow hover:shadow-btn-glow-hover transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed'>🔄 Sync ClickUp />
+	Tổng task
+	12
+	Đã đóng
+	11
+	Chưa thanh toán
+	11
+	Tổng giá trị
+	150,250
+	[8] (278,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[9] (347,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[10] (420,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[11] (490,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[12] (549,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	12
+	/
+	12
+	tasks
+	[2D Animation] [Character] Bugs Bunny
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Animation
+	👤
+	Đặng Thế Toàn
+	🟢
+	2026-02-28
+	🔴
+	2026-02-28
+	Closed
+	⏳ Chưa TT
+	🔄
+	12:31 15-03
+	[13] (328,463)<div  />
+		[14] (328,457)<p >150,150 />
+			[15] (286,457)<span >USD />
+			[16] (302,458)<span  />
+		[17] (328,474)<p >=
+3,951,647,700
+VNĐ (tỉ giá:
+26,318
+) />
+	[2D Animation] [Character] BMO
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Animation
+	👤
+	Đặng Thế Toàn
+	🟢
+	2026-02-28
+	🔴
+	2026-03-06
+	Closed
+	⏳ Chưa TT
+	🔄
+	12:31 15-03
+	[18] (500,475)<div  />
+		[19] (500,457)<p >100 />
+			[20] (446,457)<span >USD />
+			[21] (461,458)<span  />
+		[22] (500,474)<p >=
+2,631,800
+VNĐ (tỉ giá:
+26,318
+) />
+		[23] (500,486)<p >+ Bonus:
+20
+USD
+— Fix 1 />
+		[24] (500,499)<p >📝
+khong có gi />
+	[2D Animation] [Boss] Lich
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Animation
+	👤
+	Đặng Thế Toàn
+	🟢
+	2026-02-28
+	🔴
+	2026-02-28
+	Closed
+	⏳ Chưa TT
+	🔄
+	12:31 15-03
+	[25] (672,457)<div  />
+		[26] (672,457)<p >— />
+			[27] (613,457)<span >VND />
+			[28] (628,458)<span  />
+	[2D Animation] [Character] Garnet
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Animation
+	👤
+	Đặng Thế Toàn
+	🟢
+	2026-02-28
+	🔴
+	2026-02-28
+	Closed
+	⏳ Chưa TT
+	🔄
+	12:31 15-03
+	[29] (328,665)<div  />
+		[30] (328,665)<p >— />
+			[31] (268,665)<span >VND />
+			[32] (284,665)<span  />
+	[2D Animation] [Character] Tasmanian Devil (Taz)
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Animation
+	👤
+	Đặng Thế Toàn
+	🟢
+	2026-02-28
+	🔴
+	2026-02-28
+	Closed
+	⏳ Chưa TT
+	🔄
+	12:30 15-03
+	[33] (500,678)<div  />
+		[34] (500,678)<p >— />
+			[35] (440,678)<span >VND />
+			[36] (456,678)<span  />
+	[2D Animation] [Character] Tweety Bird
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Animation
+	👤
+	Đặng Thế Toàn
+	🟢
+	2026-02-28
+	🔴
+	2026-02-28
+	Closed
+	⏳ Chưa TT
+	🔄
+	12:30 15-03
+	[37] (672,665)<div  />
+		[38] (672,665)<p >— />
+			[39] (613,665)<span >VND />
+			[40] (628,665)<span  />
+	[2D Animation] [Character] Finn the Human
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Animation
+	👤
+	Đặng Thế Toàn
+	🟢
+	2026-02-28
+	🔴
+	2026-02-28
+	Closed
+	⏳ Chưa TT
+	🔄
+	12:30 15-03
+	[41] (328,862)<div  />
+		[42] (328,862)<p >— />
+			[43] (268,863)<span >VND />
+			[44] (284,863)<span  />
+	[2D Animation] [Character] Ice King Finn
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Animation
+	👤
+	Đặng Thế Toàn
+	🟢
+	2026-02-28
+	🔴
+	2026-02-28
+	Closed
+	⏳ Chưa TT
+	🔄
+	12:30 15-03
+	[45] (500,862)<div  />
+		[46] (500,862)<p >— />
+			[47] (440,863)<span >VND />
+			[48] (456,863)<span  />
+	[2D Animation] [Enemies] Metropolis Enemies- Brainiac Robot
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Animation
+	👤
+	Đặng Thế Toàn
+	🟢
+	2026-03-05
+	🔴
+	2026-03-11
+	approved
+	⏳ Chưa TT
+	🔄
+	12:30 15-03
+	[49] (672,862)<div  />
+		[50] (672,862)<p >— />
+			[51] (613,863)<span >VND />
+			[52] (628,863)<span  />
+	[2D Animation] [Enemies] Metropolis Enemies- Robot Guard
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Animation
+	👤
+	Đặng Thế Toàn
+	🟢
+	2026-03-05
+	🔴
+	2026-03-11
+	[2D Animation] [Enemies] Metropolis Enemies- Tentacle
+	Đang làm
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Animation
+	👤
+	Đặng Thế Toàn
+	🟢
+	2026-03-05
+	[2D Modeling] [Character] Aquamarine
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	Orca_Project
+	|
+	Art
+	👤
+	Đặng Thế Toàn
+	🟢
+	2026-02-28
+	🔴
+	2026-03-02
+	Closed
+	⏳ Chưa TT
+	🔄
+	12:30 15-03
+
+</current_dom>

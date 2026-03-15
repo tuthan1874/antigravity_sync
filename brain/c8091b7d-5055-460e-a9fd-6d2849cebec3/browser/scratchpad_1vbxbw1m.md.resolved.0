@@ -1,0 +1,14 @@
+# Workforce App Layout Verification
+
+## Task Checklist
+- [ ] Navigate to http://localhost:3000/
+- [ ] Enter Workforce app
+- [ ] Navigate to TASK tab
+- [ ] Take screenshots of the redesigned task card layout
+- [ ] Verify hierarchy breadcrumb (`|` separators)
+- [ ] Verify worker and dates on the same row
+- [ ] Verify ClickUp status badge replacing the "ClickUp" badge
+- [ ] Verify overall distribution of text
+
+## Observations
+- 
