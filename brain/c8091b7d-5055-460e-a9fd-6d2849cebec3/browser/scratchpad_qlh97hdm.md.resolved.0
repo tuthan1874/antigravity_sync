@@ -1,0 +1,15 @@
+# Task: Test Inline Price Editor in Workforce App
+
+## Checklist
+- [ ] Navigate to Workforce App and TASK tab
+- [ ] Open inline price editor on a task card
+- [ ] Type price (150)
+- [ ] Toggle currency to USD
+- [ ] Set exchange rate (25500)
+- [ ] Take screenshot of USD price with exchange preview
+- [ ] Save changes
+- [ ] Verify saved price on the card
+- [ ] Final report
+
+## Findings
+- 

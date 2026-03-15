@@ -1,0 +1,10 @@
+# Workforce App Verification Plan
+
+- [ ] Navigate to http://localhost:3000/
+- [ ] Enter Workforce app via "WORKFORCE" card
+- [ ] Go to "TASK" tab
+- [ ] Verify exchange rate in navbar
+- [ ] Open task price editor
+- [ ] Verify bonus, bonus note, and notes fields
+- [ ] Toggle to USD and verify exchange rate auto-fill
+- [ ] Capture screenshots at key steps

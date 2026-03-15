@@ -1,0 +1,248 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,678)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	Workforce
+	USD
+	→
+	VND
+	—
+	[2] (771,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Nhân sự />
+	[3] (812,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all bg-primary text-black shadow-btn-glow'>Task />
+	[4] (858,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Nghiệm thu />
+	[5] (911,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Cấu hình />
+	admin
+	admin
+	[6] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	Task
+	Đồng bộ task từ ClickUp theo email nhân sự
+	[7] (720,132)<button class='px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest bg-gradient-primary text-white shadow-btn-glow hover:shadow-btn-glow-hover transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed'>🔄 Sync ClickUp />
+	Tổng task
+	12
+	Đã đóng
+	11
+	Chưa thanh toán
+	11
+	Tổng giá trị
+	0
+	[8] (278,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[9] (347,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[10] (420,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[11] (490,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[12] (549,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	12
+	/
+	12
+	tasks
+	[2D Animation] [Character] Bugs Bunny
+	Đã duyệt
+	👤
+	Đặng Thế Toàn
+	🏢
+	KABAM_COMPANY
+	📁
+	Orca_Project
+	📝
+	Animation
+	🟢
+	2026-02-28
+	🔴
+	2026-02-28
+	ClickUp
+	Closed
+	⏳ Chưa TT
+	[13] (328,489)<div  />
+		[14] (328,489)<p >— />
+			[15] (268,489)<span >VND />
+			[16] (287,490)<span  />
+	🔄
+	11:36:47 15/3/2026
+	[2D Animation] [Character] BMO
+	Đã duyệt
+	👤
+	Đặng Thế Toàn
+	🏢
+	KABAM_COMPANY
+	📁
+	Orca_Project
+	📝
+	Animation
+	🟢
+	2026-02-28
+	🔴
+	2026-03-06
+	ClickUp
+	Closed
+	⏳ Chưa TT
+	[17] (500,489)<div  />
+		[18] (500,489)<p >— />
+			[19] (440,489)<span >VND />
+			[20] (460,490)<span  />
+	🔄
+	11:36:47 15/3/2026
+	[2D Animation] [Boss] Lich
+	Đã duyệt
+	👤
+	Đặng Thế Toàn
+	🏢
+	KABAM_COMPANY
+	📁
+	Orca_Project
+	📝
+	Animation
+	🟢
+	2026-02-28
+	🔴
+	2026-02-28
+	ClickUp
+	Closed
+	⏳ Chưa TT
+	[21] (672,489)<div  />
+		[22] (672,489)<p >— />
+			[23] (613,489)<span >VND />
+			[24] (632,490)<span  />
+	🔄
+	11:36:47 15/3/2026
+	[2D Animation] [Character] Garnet
+	Đã duyệt
+	👤
+	Đặng Thế Toàn
+	🏢
+	KABAM_COMPANY
+	📁
+	Orca_Project
+	📝
+	Animation
+	🟢
+	2026-02-28
+	🔴
+	2026-02-28
+	ClickUp
+	Closed
+	⏳ Chưa TT
+	[25] (328,707)<div  />
+		[26] (328,707)<p >— />
+			[27] (268,707)<span >VND />
+			[28] (287,708)<span  />
+	🔄
+	11:36:47 15/3/2026
+	[2D Animation] [Character] Tasmanian Devil (Taz)
+	Đã duyệt
+	👤
+	Đặng Thế Toàn
+	🏢
+	KABAM_COMPANY
+	📁
+	Orca_Project
+	📝
+	Animation
+	🟢
+	2026-02-28
+	🔴
+	2026-02-28
+	ClickUp
+	Closed
+	⏳ Chưa TT
+	[29] (500,722)<div  />
+		[30] (500,722)<p >— />
+			[31] (440,723)<span >VND />
+			[32] (460,723)<span  />
+	🔄
+	11:36:47 15/3/2026
+	[2D Animation] [Character] Tweety Bird
+	Đã duyệt
+	👤
+	Đặng Thế Toàn
+	🏢
+	KABAM_COMPANY
+	📁
+	Orca_Project
+	📝
+	Animation
+	🟢
+	2026-02-28
+	🔴
+	2026-02-28
+	ClickUp
+	Closed
+	⏳ Chưa TT
+	[33] (672,707)<div  />
+		[34] (672,707)<p >— />
+			[35] (613,707)<span >VND />
+			[36] (632,708)<span  />
+	🔄
+	11:36:47 15/3/2026
+	[2D Animation] [Character] Finn the Human
+	Đã duyệt
+	👤
+	Đặng Thế Toàn
+	🏢
+	KABAM_COMPANY
+	📁
+	Orca_Project
+	📝
+	Animation
+	🟢
+	2026-02-28
+	🔴
+	2026-02-28
+	ClickUp
+	Closed
+	⏳ Chưa TT
+	[37] (328,955)<div  />
+		[38] (328,955)<p >— />
+			[39] (268,956)<span >VND />
+			[40] (287,956)<span  />
+	🔄
+	11:36:47 15/3/2026
+	[2D Animation] [Character] Ice King Finn
+	Đã duyệt
+	👤
+	Đặng Thế Toàn
+	🏢
+	KABAM_COMPANY
+	📁
+	Orca_Project
+	📝
+	Animation
+	🟢
+	2026-02-28
+	🔴
+	2026-02-28
+	ClickUp
+	Closed
+	⏳ Chưa TT
+	[41] (500,940)<div  />
+		[42] (500,940)<p >— />
+			[43] (440,941)<span >VND />
+			[44] (460,941)<span  />
+	🔄
+	11:36:47 15/3/2026
+	[2D Animation] [Enemies] Metropolis Enemies- Brainiac Robot
+	Đã duyệt
+	👤
+	Đặng Thế Toàn
+	🏢
+	KABAM_COMPANY
+	📁
+	Orca_Project
+	📝
+	Animation
+	🟢
+	2026-03-05
+	🔴
+	2026-03-11
+	ClickUp
+	approved
+	⏳ Chưa TT
+	[45] (672,955)<div  />
+		[46] (672,955)<p >— />
+			[47] (613,956)<span >VND />
+			[48] (632,956)<span  />
+	🔄
+	11:36:46 15/3/2026
+
+</current_dom>
