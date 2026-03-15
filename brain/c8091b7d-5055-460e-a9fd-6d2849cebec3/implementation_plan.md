@@ -1,0 +1,90 @@
+# Workforce Task Sync: Dates & Payment Tracking
+
+Thêm `start_date`, `closed_date`, `payment_status` vào `wf_tasks` để nghiệm thu theo tháng chính xác hơn, và cộng dồn task chưa thanh toán.
+
+## Proposed Changes
+
+### Database Migration
+
+#### [MODIFY] Supabase `wf_tasks` table
+
+Add 3 columns:
+- `start_date DATE` — ngày bắt đầu task (từ `date_created` trên ClickUp)
+- `closed_date DATE` — ngày đóng task (từ `date_done` trên ClickUp)
+- `payment_status TEXT DEFAULT 'unpaid'` — trạng thái thanh toán: `unpaid` | `paid`
+
+```sql
+ALTER TABLE wf_tasks ADD COLUMN IF NOT EXISTS start_date date;
+ALTER TABLE wf_tasks ADD COLUMN IF NOT EXISTS closed_date date;
+ALTER TABLE wf_tasks ADD COLUMN IF NOT EXISTS payment_status text DEFAULT 'unpaid'
+  CHECK (payment_status IN ('unpaid', 'paid'));
+```
+
+---
+
+### TypeScript Types
+
+#### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
+
+Add to `WorkforceTask`:
+```diff
++ start_date: string | null;
++ closed_date: string | null;
++ payment_status: 'unpaid' | 'paid';
+```
+
+---
+
+### Sync Logic
+
+#### [MODIFY] [TaskList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/TaskList.tsx)
+
+**Sync handler changes:**
+- Map ClickUp `date_created` → `start_date`
+- Map ClickUp `date_done` → `closed_date`
+- Update both on insert and update
+
+**UI changes:**
+- Show `start_date` and `closed_date` on task cards
+- Show `payment_status` badge (Unpaid/Paid)
+- Add filter for payment status
+
+---
+
+### Settlement Logic
+
+#### [MODIFY] [SettlementManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/SettlementManager.tsx)
+
+**Core logic changes — eligible tasks khi tạo nghiệm thu:**
+
+```
+Eligible = tasks WHERE:
+  - worker_id = selected worker
+  - payment_status = 'unpaid'
+  - closed_date IS NOT NULL
+  - closed_date <= end of selected period (tháng đang chọn)
+```
+
+Điều này tự động thực hiện **cộng dồn**: task closed từ tháng trước mà chưa thanh toán → vẫn xuất hiện trong kỳ nghiệm thu hiện tại.
+
+---
+
+#### [MODIFY] [workforceService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts)
+
+**`createSettlement`**: Khi tạo nghiệm thu, đánh dấu task `payment_status = 'paid'` thay vì chỉ set `status = 'approved'`.
+
+---
+
+### Edge Function
+
+> [!NOTE]
+> Edge Function `clickup-sync` **không cần thay đổi** — đã trả về `date_created` và `date_done`.
+
+## Verification Plan
+
+### Browser Testing
+1. Mở app → Workforce → Tab Task → Nhấn **Sync ClickUp**
+2. Verify task cards hiển thị `start_date`, `closed_date`, `payment_status`
+3. Vào tab Nghiệm Thu → chọn worker, chọn kỳ → phải thấy chỉ task đã closed & chưa thanh toán
+4. Tạo nghiệm thu → verify task được đánh dấu `paid`
+5. Quay lại danh sách → task đã paid không còn trong eligible list của kỳ tiếp theo

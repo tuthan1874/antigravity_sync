@@ -1,0 +1,12 @@
+# Workforce Task Sync Enhancement
+
+## Tasks
+- [/] Plan changes: add start_date, closed_date, payment tracking to wf_tasks
+- [ ] Database migration: add `start_date`, `closed_date`, `payment_status` columns to `wf_tasks`
+- [ ] Update TypeScript types ([WorkforceTask](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts#152-172) in [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts))
+- [ ] Update [clickupService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/clickupService.ts) SyncedTask interface to include `start_date`
+- [ ] Update [TaskList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/TaskList.tsx) sync logic to populate `start_date` and `closed_date`
+- [ ] Update [TaskList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/TaskList.tsx) UI to show start/closed dates + payment status
+- [ ] Update [SettlementManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/SettlementManager.tsx) to filter by closed_date and accumulate unpaid tasks
+- [ ] Update [workforceService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts) [createSettlement](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts#107-149) to mark tasks as `paid`
+- [ ] Verify in browser

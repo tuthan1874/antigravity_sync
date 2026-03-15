@@ -1,0 +1,39 @@
+# Walkthrough: Workforce Task Sync Enhancement
+
+## Changes Made
+
+### 1. Database Migration
+Added 3 columns to `wf_tasks`:
+- `start_date DATE` — ngày bắt đầu (từ ClickUp `date_created`)
+- `closed_date DATE` — ngày đóng (từ ClickUp `date_done`, fallback `date_updated`)
+- `payment_status TEXT` — `'unpaid'` | `'paid'`
+
+### 2. Files Modified
+
+| File | Changes |
+|------|---------|
+| [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts) | Added `start_date`, `closed_date`, `payment_status` to [WorkforceTask](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts#152-175) |
+| [TaskList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/TaskList.tsx) | Sync logic maps dates; UI shows 🟢 start / 🔴 closed dates + payment badge |
+| [SettlementManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/SettlementManager.tsx) | Eligible filter: `closed_date ≤ period end` + `payment_status = 'unpaid'` (accumulation) |
+| [workforceService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts) | [createSettlement](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts#107-149) now marks tasks `payment_status = 'paid'` |
+
+### 3. Settlement Accumulation Logic
+
+```
+Eligible tasks = WHERE:
+  worker_id = selected worker
+  AND payment_status = 'unpaid'
+  AND closed_date IS NOT NULL
+  AND closed_date ≤ last day of selected period
+```
+
+Task closed tháng 2 mà chưa thanh toán → vẫn hiện khi chọn kỳ tháng 3 → cộng dồn đến khi paid.
+
+## Verification
+
+![Task list after sync — showing dates and payment status](C:\Users\dangt\.gemini\antigravity\brain\c8091b7d-5055-460e-a9fd-6d2849cebec3\task_list_post_sync_1773546915379.png)
+
+- ✅ 12 tasks synced with start/closed dates
+- ✅ Payment badges (⏳ Chưa TT) on all task cards
+- ✅ Summary: Đã đóng 12, Chưa thanh toán 12
+- ✅ Edge Function unchanged — already returns `date_created`/`date_done`
