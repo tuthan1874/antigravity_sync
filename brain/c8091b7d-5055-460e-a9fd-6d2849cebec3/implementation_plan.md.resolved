@@ -1,74 +1,75 @@
-# Redesign Nghiệm Thu (Settlement) — Professional Version
+# Realtime Sync — ClickUp Webhook + Supabase Realtime
 
-Nâng cấp hệ thống Nghiệm Thu từ dạng card sơ sài → view chuyên nghiệp với chi tiết task, PDF export, chỉnh sửa, và xóa.
+## Vấn đề hiện tại
+Mỗi lần sync phải fetch **toàn bộ tasks** từ ClickUp → upsert vào Supabase. Khi số lượng task tăng sẽ:
+- Tốn nhiều API calls
+- Chậm (30s+ cho >100 tasks)
+- Không cập nhật tự động khi task thay đổi trên ClickUp
+
+## Giải pháp đề xuất: 2 tầng
+
+### Tầng 1: ClickUp Webhook → Supabase Edge Function (Push)
+Khi task thay đổi trên ClickUp → webhook tự động gọi Edge Function → cập nhật DB
+
+### Tầng 2: Supabase Realtime → UI auto-refresh (Subscribe)
+App subscribe vào bảng `wf_tasks` → khi DB thay đổi → UI tự cập nhật, không cần F5
+
+```
+ClickUp (task thay đổi)
+  │ webhook POST
+  ▼
+Supabase Edge Function (clickup-webhook)
+  │ upsert wf_tasks
+  ▼
+Supabase Realtime
+  │ broadcast change
+  ▼
+App UI (auto-refresh)
+```
+
+## User Review Required
+
+> [!IMPORTANT]
+> **ClickUp Webhook yêu cầu endpoint public** — sẽ dùng Supabase Edge Function (đã có sẵn infrastructure). Webhook sẽ được đăng ký tự động từ trang Cấu hình ClickUp.
+
+> [!WARNING] 
+> **Sync cũ vẫn giữ lại** làm "Full Sync" backup. Webhook chỉ bắt thay đổi incremental.
 
 ## Proposed Changes
 
-### 1. Backend / Service Layer
+### Edge Function — `clickup-webhook`
 
-#### [MODIFY] [workforceService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts)
-
-- **[createSettlement()](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts#107-149)** — Loại bỏ tự động mark task = `paid`. Chỉ create settlement + link tasks. Task sẽ giữ `payment_status: 'unpaid'` cho đến khi user bấm "Đã thanh toán"
-- **[deleteSettlement()](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts#156-160)** — Khi xóa: reset các task liên quan về `payment_status: 'unpaid'`, `status` giữ nguyên. Xóa link tasks trước rồi xóa settlement
-- **[updateSettlement()](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts#150-155)** — Khi status chuyển thành `paid` → mark tất cả task liên quan = `payment_status: 'paid'`
-
----
-
-### 2. UI Component (Complete Rewrite)
-
-#### [MODIFY] [SettlementManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/SettlementManager.tsx)
-
-Rewrite toàn bộ component thành 2 views:
-
-**A. List View** (default):
-- Summary cards: Tổng nghiệm thu, Đã TT, Chưa TT, Tổng chi
-- Settlement cards hiện: Worker name, Period, # tasks, Total amount, Status badge
-- Click vào card → mở **Detail View**
-- Nút "Tạo nghiệm thu" → mở form
-- Delete button (bất kỳ trạng thái nào, hiện confirm rõ ràng)
-
-**B. Detail View** (click vào 1 settlement):
-- Header: Worker name, Period, Status badge
-- Controls: Status workflow buttons, Edit, Xóa, Export PDF
-- **Task Table** đầy đủ:
-
-| # | Task | Client | Project | List | Closed | Price | Currency | VNĐ Equiv | Bonus | Bonus Note | Notes |
-|---|------|--------|---------|------|--------|-------|----------|-----------|-------|------------|-------|
-
-- Footer summary: subtotal, bonus total, grand total
-- Nút "Export PDF"
-
-**C. Create Form** (nâng cấp):
-- Chọn nhân sự, kỳ nghiệm thu
-- Task selection (checkbox) hiện nhiều info hơn: price, currency, bonus, hierarchy breadcrumb
-- Preview tổng tiền + bonus trước khi tạo
-- VNĐ conversion preview nếu task USD
+#### [NEW] `clickup-webhook` Edge Function
+- Nhận POST từ ClickUp webhook khi task thay đổi
+- Events: `taskCreated`, `taskUpdated`, `taskStatusUpdated`, `taskDeleted`
+- Parse payload → tìm worker bằng email → upsert `wf_tasks`
+- Trả về 200 OK cho ClickUp
 
 ---
 
-### 3. PDF Export
+### Frontend — ClickUp Config
 
-#### [NEW] PDF generation function (trong [SettlementManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/SettlementManager.tsx))
-- Sử dụng `window.print()` với CSS `@media print` hoặc tạo HTML mới rồi in
-- PDF chứa: header (TD Games logo, tiêu đề), bảng task chi tiết, tổng tiền, ngày tạo
-- Đơn giản, chuyên nghiệp, in-browser (không cần backend)
+#### [MODIFY] [clickupService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/clickupService.ts)
+- Thêm `registerWebhook(token, teamId, endpointUrl)` — đăng ký webhook
+- Thêm `listWebhooks(token, teamId)` — kiểm tra webhook đã đăng ký chưa
+- Thêm `deleteWebhook(token, webhookId)` — xóa webhook
+
+#### [MODIFY] [ClickUpConfig.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/ClickUpConfig.tsx)
+- Thêm UI toggle "Bật Realtime Sync" 
+- Tự động đăng ký/xóa webhook khi toggle
 
 ---
 
-### 4. Props & Wiring
-
-#### [MODIFY] [WorkforceApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/WorkforceApp.tsx)
-- Pass `vcbSellRate` cho [SettlementManager](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/SettlementManager.tsx#30-264) để convert USD → VNĐ trong detail/PDF
+### Frontend — Supabase Realtime Subscription
 
 #### [MODIFY] [useWorkforceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/hooks/useWorkforceState.ts)
-- [handleDeleteSettlement()](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/hooks/useWorkforceState.ts#184-193) → sau khi xóa, refresh tasks để cập nhật `payment_status`
-- [handleCreateSettlement()](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/hooks/useWorkforceState.ts#153-173) → sau khi tạo, refresh tasks (đã có)
+- Subscribe `supabase.channel('wf_tasks')` lắng nghe INSERT/UPDATE/DELETE
+- Khi có thay đổi → merge vào state thay vì full reload
+- Cleanup subscription on unmount
 
 ## Verification Plan
 
-### Browser Testing
-- Tạo nghiệm thu → confirm task **KHÔNG** chuyển paid ngay
-- Click vào settlement → xem detail view + bảng task
-- Click Export PDF → xem print preview
-- Xóa nghiệm thu → confirm task rollback về unpaid
-- Bấm "Đã thanh toán" → confirm task chuyển paid
+### Automated Tests
+1. Thay đổi task status trên ClickUp → kiểm tra DB tự cập nhật
+2. Kiểm tra UI tự refresh khi task thay đổi (không cần bấm sync)
+3. Full Sync button vẫn hoạt động bình thường

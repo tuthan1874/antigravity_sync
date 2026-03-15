@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough for the professional settlement redesign: backend fixes, UI rewrite with List/Detail/Create views, PDF export, and delete with rollback.",
-  "updatedAt": "2026-03-15T06:02:20.200707600Z",
-  "version": "1"
+  "summary": "Walkthrough of Realtime Sync implementation including ClickUp Webhooks, Supabase Edge Function, and frontend Realtime subscription.",
+  "updatedAt": "2026-03-15T07:12:23.701343900Z",
+  "version": "2"
 }

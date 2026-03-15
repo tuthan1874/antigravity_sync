@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Implementation plan for redesigning Settlement (Nghiệm Thu) system: rewrite SettlementManager with list+detail views, full task table, PDF export, edit/delete capabilities. Fix backend to not auto-mark tasks as paid on creation.",
-  "updatedAt": "2026-03-15T05:54:12.128967700Z",
-  "version": "1"
+  "summary": "Proposes a two-tier realtime sync: ClickUp Webhooks push task changes to a new Supabase Edge Function, and Supabase Realtime subscriptions auto-update the frontend UI without manual sync.",
+  "updatedAt": "2026-03-15T07:05:00.201046300Z",
+  "version": "2"
 }

@@ -1,35 +1,43 @@
-# Nghiệm Thu Redesign — Walkthrough
+# Realtime Sync — Walkthrough
 
-## Changes Made
+## Tổng quan
+Triển khai hệ thống sync realtime giữa ClickUp và app, gồm 2 tầng:
 
-### Backend (`workforceService.ts`)
-- **`createSettlement`** — No longer auto-marks tasks as `paid`. Tasks stay `unpaid` until user explicitly marks the settlement as "Đã thanh toán"
-- **`deleteSettlement`** — Rollbacks all linked tasks to `unpaid`, deletes link records, then deletes settlement
-- **`updateSettlement`** — When status transitions to `paid`, marks all linked tasks as `payment_status: 'paid'`
+1. **ClickUp Webhook → Supabase Edge Function**: Khi task thay đổi → webhook tự gọi Edge Function → cập nhật DB
+2. **Supabase Realtime → UI**: Khi DB thay đổi → UI auto-refresh, không cần bấm sync
 
-### Hook (`useWorkforceState.ts`)
-- Added task state refresh after `handleUpdateSettlement` (when status changes) and `handleDeleteSettlement`
+## Các thay đổi
 
-### UI (`SettlementManager.tsx`) — Complete Rewrite
-3 views replacing the old single-view component:
+### Backend (Supabase)
+| Thay đổi | Chi tiết |
+|----------|----------|
+| Realtime enabled | `wf_tasks` table được bật `postgres_changes` |
+| Replica identity | `FULL` — cho phép DELETE events trả dữ liệu cũ |
+| `webhook_id` column | Thêm vào `wf_clickup_config` để lưu webhook ID |
+| Edge Function | `clickup-webhook` — nhận events từ ClickUp, upsert tasks |
 
-**List View** — Summary cards (Total, Paid, Unpaid, Amount) + settlement cards with click-to-detail
+### Frontend
+| File | Thay đổi |
+|------|----------|
+| [clickupService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/clickupService.ts) | Thêm `registerWebhook`, `listWebhooks`, `deleteWebhook`, `saveWebhookId` |
+| [ClickUpConfig.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/ClickUpConfig.tsx) | Thêm toggle "⚡ Realtime Sync" |
+| [useWorkforceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/hooks/useWorkforceState.ts) | Subscribe `wf_tasks_realtime` channel |
 
-**Detail View** — Full task table with all columns (#, Task, Client, Project, Closed Date, Price, Currency, VNĐ Equiv, Bonus, Bonus Note, Notes). Action bar with status workflow, PDF export, delete
+## Kết quả
 
-**Create View** — Worker/period selection, task selection with price/bonus preview, breadcrumb hierarchy, VNĐ conversion preview
+![Realtime Sync Toggle đã bật](file:///C:/Users/dangt/.gemini/antigravity/brain/c8091b7d-5055-460e-a9fd-6d2849cebec3/realtime_sync_on_after_reload_1773558700156.png)
 
-### PDF Export
-In-browser `window.open` + `print` with professional layout: header, metadata, full task table, totals, signature areas
+- ✅ Toggle bật/tắt hoạt động
+- ✅ Webhook đã đăng ký thành công với ClickUp
+- ✅ Supabase Realtime subscription active
+- ✅ Nút Full Sync vẫn hoạt động bình thường
 
-## Screenshots
+## Cách hoạt động
 
-````carousel
-![List View](C:\Users\dangt\.gemini\antigravity\brain\c8091b7d-5055-460e-a9fd-6d2849cebec3\settlement_list_view_with_card_1773554387172.png)
-<!-- slide -->
-![Detail View](C:\Users\dangt\.gemini\antigravity\brain\c8091b7d-5055-460e-a9fd-6d2849cebec3\settlement_detail_view_1773554401759.png)
-<!-- slide -->
-![PDF Export](C:\Users\dangt\.gemini\antigravity\brain\c8091b7d-5055-460e-a9fd-6d2849cebec3\settlement_pdf_preview_1773554482221.png)
-````
-
-![Demo Recording](C:\Users\dangt\.gemini\antigravity\brain\c8091b7d-5055-460e-a9fd-6d2849cebec3\settlement_redesign_test_1773554308442.webp)
+```
+ClickUp (thay đổi task) 
+  → webhook POST → clickup-webhook Edge Function 
+  → upsert wf_tasks 
+  → Supabase Realtime 
+  → UI auto-refresh ⚡
+```
