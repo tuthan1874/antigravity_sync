@@ -1,0 +1,241 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,677)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	Workforce
+	USD
+	→
+	VND
+	26.318
+	₫
+	VCB •
+	15/03, 14:20
+	[2] (771,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Nhân sự />
+	[3] (812,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all bg-primary text-black shadow-btn-glow'>Task />
+	[4] (858,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Nghiệm thu />
+	[5] (911,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Cấu hình />
+	admin
+	admin
+	[6] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	Task
+	Đồng bộ task từ ClickUp theo email nhân sự
+	[7] (720,132)<button class='px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest bg-gradient-primary text-white shadow-btn-glow hover:shadow-btn-glow-hover transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed'>🔄 Sync ClickUp />
+	Tổng task
+	17
+	Đã đóng
+	5
+	Chưa thanh toán
+	5
+	Tổng giá trị
+	0
+	[8] (278,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[9] (354,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[10] (433,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[11] (503,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[12] (562,290)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	17
+	/
+	17
+	tasks
+	[13] (709,290)<button class='px-3 h-[44px] text-sm font-bold transition-all flex items-center gap-1.5 text-neutral-medium hover:text-white' title='Board View'>Board />
+	[14] (740,290)<button class='px-3 h-[44px] text-sm font-bold transition-all flex items-center gap-1.5 bg-primary/20 text-primary' title='List View'>List />
+	#
+	Task
+	Nhân sự
+	Trạng thái
+	Thanh toán
+	Giá
+	Ngày tạo
+	Ngày đóng
+	[15] (500,398)<tr  />
+		[16] (257,398)<td >1 />
+		[17] (355,398)<td  />
+			[18] (355,390)<p >[2D Animation] [Character] Aquamarine />
+			[19] (355,406)<p >KABAM_COMPANY › Orca_Project › Animation />
+		[20] (477,398)<td >Nguyễn Quang Huy />
+		[21] (538,398)<td  />
+			[22] (535,399)<span >Đang làm />
+		[23] (592,398)<td  />
+			[24] (583,399)<span >Chưa TT />
+		[25] (637,398)<td  />
+			[26] (634,397)<span >— />
+			[27] (643,398)<span >VND />
+		[28] (679,398)<td >2026-03-02 />
+		[29] (729,398)<td >— />
+	[30] (500,449)<tr  />
+		[31] (257,449)<td >2 />
+		[32] (355,449)<td  />
+			[33] (355,440)<p >[2D Animation] [Character] Robin />
+			[34] (355,457)<p >KABAM_COMPANY › Orca_Project › Animation />
+		[35] (477,449)<td >Nguyễn Quang Huy />
+		[36] (538,449)<td  />
+			[37] (535,449)<span >Đang làm />
+		[38] (592,449)<td  />
+			[39] (583,449)<span >Chưa TT />
+		[40] (637,449)<td  />
+			[41] (634,448)<span >— />
+			[42] (643,449)<span >VND />
+		[43] (679,449)<td >2026-03-03 />
+		[44] (729,449)<td >— />
+	[45] (500,499)<tr  />
+		[46] (257,499)<td >3 />
+		[47] (355,499)<td  />
+			[48] (355,491)<p >[2D Animation] [Character] Steven Universe />
+			[49] (355,507)<p >KABAM_COMPANY › Orca_Project › Animation />
+		[50] (477,499)<td >Nguyễn Quang Huy />
+		[51] (538,499)<td  />
+			[52] (535,500)<span >Đang làm />
+		[53] (592,499)<td  />
+			[54] (583,500)<span >Chưa TT />
+		[55] (637,499)<td  />
+			[56] (634,498)<span >— />
+			[57] (643,499)<span >VND />
+		[58] (679,499)<td >2026-03-03 />
+		[59] (729,499)<td >— />
+	[60] (500,550)<tr  />
+		[61] (257,550)<td >4 />
+		[62] (355,550)<td  />
+			[63] (355,541)<p >[2D Animation] [Character] Duck Dodgers />
+			[64] (355,558)<p >KABAM_COMPANY › Orca_Project › Animation />
+		[65] (477,550)<td >Nguyễn Quang Huy />
+		[66] (538,550)<td  />
+			[67] (535,550)<span >Đang làm />
+		[68] (592,550)<td  />
+			[69] (583,550)<span >Chưa TT />
+		[70] (637,550)<td  />
+			[71] (634,549)<span >— />
+			[72] (643,550)<span >VND />
+		[73] (679,550)<td >2026-03-12 />
+		[74] (729,550)<td >— />
+	[75] (500,600)<tr  />
+		[76] (257,600)<td >5 />
+		[77] (355,600)<td  />
+			[78] (355,592)<p >[2D Modeling] [Character] Marvin the Martian />
+			[79] (355,608)<p >KABAM_COMPANY › Orca_Project › Art />
+		[80] (477,600)<td >Nguyễn Ngọc Anh />
+		[81] (538,600)<td  />
+			[82] (535,601)<span >Đang làm />
+		[83] (592,600)<td  />
+			[84] (583,601)<span >Chưa TT />
+		[85] (637,600)<td  />
+			[86] (634,599)<span >— />
+			[87] (643,600)<span >VND />
+		[88] (679,600)<td >2026-02-28 />
+		[89] (729,600)<td >— />
+	[90] (500,651)<tr  />
+		[91] (257,651)<td >6 />
+		[92] (355,651)<td  />
+			[93] (355,642)<p >[2D Modeling] [Character] Finn the Human />
+			[94] (355,659)<p >KABAM_COMPANY › Orca_Project › Art />
+		[95] (477,651)<td >Nguyễn Ngọc Anh />
+		[96] (538,651)<td  />
+			[97] (535,651)<span >Đã duyệt />
+		[98] (592,651)<td  />
+			[99] (583,651)<span >Chưa TT />
+		[100] (637,651)<td  />
+			[101] (634,650)<span >— />
+			[102] (643,651)<span >VND />
+		[103] (679,651)<td >2026-02-28 />
+		[104] (729,651)<td >2026-02-28 />
+	[105] (500,701)<tr  />
+		[106] (257,701)<td >7 />
+		[107] (355,701)<td  />
+			[108] (355,693)<p >[2D Modeling] [Character] Ice King Finn />
+			[109] (355,709)<p >KABAM_COMPANY › Orca_Project › Art />
+		[110] (477,701)<td >Nguyễn Ngọc Anh />
+		[111] (538,701)<td  />
+			[112] (535,702)<span >Đã duyệt />
+		[113] (592,701)<td  />
+			[114] (583,702)<span >Chưa TT />
+		[115] (637,701)<td  />
+			[116] (634,700)<span >— />
+			[117] (643,702)<span >VND />
+		[118] (679,701)<td >2026-02-28 />
+		[119] (729,701)<td >2026-02-28 />
+	[120] (500,752)<tr  />
+		[121] (257,752)<td >8 />
+		[122] (355,752)<td  />
+			[123] (355,743)<p >[2D Modeling] [Character] Sylvester />
+			[124] (355,760)<p >KABAM_COMPANY › Orca_Project › Art />
+		[125] (477,752)<td >Nguyễn Ngọc Anh />
+		[126] (538,752)<td  />
+			[127] (535,752)<span >Đã duyệt />
+		[128] (592,752)<td  />
+			[129] (583,752)<span >Chưa TT />
+		[130] (637,752)<td  />
+			[131] (634,751)<span >— />
+			[132] (643,752)<span >VND />
+		[133] (679,752)<td >2026-02-28 />
+		[134] (729,752)<td >2026-02-28 />
+	[135] (500,802)<tr  />
+		[136] (257,802)<td >9 />
+		[137] (355,802)<td  />
+			[138] (355,794)<p >[2D Modeling] [Character] Aquamarine />
+			[139] (355,810)<p >KABAM_COMPANY › Orca_Project › Art />
+		[140] (477,802)<td >Nguyễn Ngọc Anh />
+		[141] (538,802)<td  />
+			[142] (535,803)<span >Đã duyệt />
+		[143] (592,802)<td  />
+			[144] (583,803)<span >Chưa TT />
+		[145] (637,802)<td  />
+			[146] (634,802)<span >— />
+			[147] (643,803)<span >VND />
+		[148] (679,802)<td >2026-02-28 />
+		[149] (729,802)<td >2026-03-02 />
+	[150] (500,853)<tr  />
+		[151] (257,853)<td >10 />
+		[152] (355,853)<td  />
+			[153] (355,844)<p >[2D Modeling] [Character] Duck Dodgers />
+			[154] (355,861)<p >KABAM_COMPANY › Orca_Project › Art />
+		[155] (477,853)<td >Nguyễn Ngọc Anh />
+		[156] (538,853)<td  />
+			[157] (535,853)<span >Đang làm />
+		[158] (592,853)<td  />
+			[159] (583,853)<span >Chưa TT />
+		[160] (637,853)<td  />
+			[161] (634,852)<span >— />
+			[162] (643,853)<span >VND />
+		[163] (679,853)<td >2026-02-28 />
+		[164] (729,853)<td >— />
+	[165] (500,903)<tr  />
+		[166] (257,903)<td >11 />
+		[167] (355,903)<td  />
+			[168] (355,895)<p >[2D Modeling] [Character] Tasmanian Devil (Taz) />
+			[169] (355,911)<p >KABAM_COMPANY › Orca_Project › Art />
+		[170] (477,903)<td >Nguyễn Ngọc Anh />
+		[171] (538,903)<td  />
+			[172] (535,904)<span >Đã duyệt />
+		[173] (592,903)<td  />
+			[174] (583,904)<span >Chưa TT />
+		[175] (637,903)<td  />
+			[176] (634,903)<span >— />
+			[177] (643,904)<span >VND />
+		[178] (679,903)<td >2026-02-28 />
+		[179] (729,903)<td >2026-02-28 />
+	[180] (500,954)<tr  />
+		[181] (257,954)<td >12 />
+		[182] (355,954)<td  />
+			[183] (355,945)<p >[2D Modeling] [Character] Amethyst />
+			[184] (355,962)<p >KABAM_COMPANY › Orca_Project › Art />
+		[185] (477,954)<td >Nguyễn Ngọc Anh />
+		[186] (538,954)<td  />
+			[187] (535,954)<span >Đang làm />
+		[188] (592,954)<td  />
+			[189] (583,954)<span >Chưa TT />
+		[190] (637,954)<td  />
+			[191] (634,953)<span >— />
+			[192] (643,954)<span >VND />
+		[193] (679,954)<td >2026-03-05 />
+		[194] (729,954)<td >— />
+	13
+	[195] (355,996)<p >[2D Modeling] [Character] Starfire />
+	Nguyễn Ngọc Anh
+	—
+	VND
+	2026-03-05
+	—
+
+</current_dom>

@@ -1,0 +1,9 @@
+# Verification Plan for Task List View
+
+- [ ] Open http://localhost:3000/
+- [ ] Click "WORKFORCE" card
+- [ ] Click "TASK" tab
+- [ ] Capture screenshot of Board view
+- [ ] Find and click "List" view toggle
+- [ ] Capture screenshot of List view
+- [ ] Verify columns and data in List view
