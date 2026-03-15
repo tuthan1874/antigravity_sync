@@ -1,38 +1,92 @@
-# Expense App Enhancements
+# CRM App — Quản lý Khách hàng Tập trung
 
-## 1. Add Exchange Rate Display to Expense Navbar
+Xây dựng app CRM làm nguồn dữ liệu chính cho thông tin khách hàng. Tất cả app khác (Invoice, Expense, Workforce) sẽ lấy dữ liệu khách hàng từ CRM.
 
-Copy the same pattern from WorkforceApp — load VCB rate on mount, pass to Navbar.
+## User Review Required
 
-### [MODIFY] [ExpenseApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseApp.tsx)
-- Import `fetchExchangeRate`, `ExchangeRateData` from Invoice service
-- Add `vcbRate` / `vcbRateLoading` states + `useEffect` to fetch rate (same as WorkforceApp)
-- Pass real `vcbRate` / `vcbRateLoading` to Navbar (currently `null` / `false`)
+> [!IMPORTANT]
+> **Tạo bảng `crm_clients` mới** trên Supabase — sẽ hợp nhất dữ liệu từ `invoice_clients` (2 records), `fb_clients` (1 record), và các `client_name` text field rải rác.
+
+> [!WARNING]  
+> Sau khi CRM hoạt động, các app khác sẽ chọn client từ CRM thay vì nhập tay. Dữ liệu cũ (text) vẫn giữ nguyên, không bị mất.
+
+## Proposed Changes
+
+### Database (Supabase)
+
+#### [NEW] Table `crm_clients`
+| Column | Type | Description |
+|--------|------|-------------|
+| id | uuid PK | |
+| name | text, NOT NULL | Tên công ty/cá nhân |
+| client_type | text | `company` / `individual` |
+| contact_person | text | Người liên hệ chính |
+| email | text | Email |
+| phone | text | Số điện thoại |
+| address | text | Địa chỉ |
+| country | text | Quốc gia |
+| tax_code | text | Mã số thuế |
+| website | text | Website |
+| industry | text | Ngành nghề |
+| status | text | `active` / `inactive` / `lead` |
+| notes | text | Ghi chú tự do |
+| tags | text[] | Tags phân loại |
+| created_at | timestamptz | |
+| updated_at | timestamptz | |
+
+#### Data migration
+- Import 2 records từ `invoice_clients` + 1 record từ `fb_clients` → `crm_clients`
 
 ---
 
-## 2. Replace Receipt URL with File Upload
+### Frontend — CRM App
 
-> [!IMPORTANT]
-> Cloudflare R2 requires account credentials (Account ID, Access Key, Secret Key, bucket name). Since no R2 config exists in [.env.local](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/.env.local), I will use **Supabase Storage** instead — it's already integrated and zero-config. Files will be stored in a `expense-receipts` bucket. If you specifically need R2, I'll need your R2 credentials.
+#### [NEW] `apps/crm/` — Cấu trúc thư mục
+```
+apps/crm/
+├── components/
+│   ├── CrmApp.tsx          # App shell + routing
+│   ├── ClientList.tsx       # Danh sách + tìm kiếm + filter
+│   ├── ClientForm.tsx       # Form thêm/sửa khách hàng
+│   └── ClientDetail.tsx     # Chi tiết khách hàng
+├── hooks/
+│   └── useCrmState.ts       # State management
+└── services/
+    └── crmService.ts        # Supabase CRUD
+```
 
-### [NEW] Supabase Storage bucket `expense-receipts`
-- Create via migration: public bucket for receipt files
+#### Tabs
+| Tab | Chức năng |
+|-----|-----------|
+| Khách hàng | Danh sách + button thêm mới (inline form giống Expense) |
+| Thống kê | Dashboard tổng quan (số lượng, phân loại) |
 
-### [MODIFY] [ExpenseForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseForm.tsx)
-- Replace URL text input with file upload input (`<input type="file">`)
-- Accept: `.pdf, .jpg, .jpeg, .png, .webp`
-- Upload file to Supabase Storage → get public URL → save to `receipt_url`
-- Show upload preview (image thumbnail or PDF icon) + delete button
-- If editing expense with existing `receipt_url`, show it as a preview link
+#### Tính năng
+- Danh sách client: tìm kiếm, filter theo status/industry/country
+- Thêm/sửa/xoá client
+- Chi tiết client: xem tất cả thông tin + liên kết với invoice/expense/workforce
 
-### [MODIFY] [ExpenseList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseList.tsx)
-- Display receipt attachment icon/link for expenses that have `receipt_url`
+---
+
+### Integration — App Registry
+
+#### [MODIFY] [apps.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/config/apps.ts)
+- Thêm CRM entry vào `APPS` registry
+
+#### [MODIFY] [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
+- Import `CrmApp`, thêm route `#crm`
+
+#### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
+- Thêm `CrmClient` type
+
+---
 
 ## Verification Plan
 
+### Automated Tests
+- TypeScript compile check (`npx tsc --noEmit`)
+- Browser test: tạo, sửa, xoá client
+
 ### Manual Verification
-- Confirm exchange rate shows in Expense navbar on page load
-- Upload a test PDF and image file in the expense form
-- Verify files appear in Supabase Storage
-- Verify receipt link renders correctly in the expense list
+- Upload xong → reload trang vẫn giữ data
+- Kiểm tra danh sách, filter, search
