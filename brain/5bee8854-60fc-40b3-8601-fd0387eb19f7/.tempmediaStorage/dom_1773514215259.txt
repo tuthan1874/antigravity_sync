@@ -1,0 +1,23 @@
+[0] (500,500)<div  />
+	TD GAMES Platform
+	admin
+	admin
+	[1] (974,25)<button class='p-2 rounded-xl text-white/30 hover:text-red-400 hover:bg-red-500/10 transition-all hover:scale-110' title='Logout' />
+	TD Games
+	Enterprise Management Platform
+	[2] (384,519)<button class='group flex flex-col items-center gap-4 p-8 rounded-[28px] border transition-all duration-300 hover:scale-[1.04] active:scale-[0.98] cursor-pointer' />
+		[3] (384,492)<div >📄 />
+		[4] (384,556)<div  />
+			[5] (384,542)<h3 >Invoice />
+			[6] (384,565)<p >Quản lý hoá đơn & doanh thu />
+	[7] (461,519)<button class='group flex flex-col items-center gap-4 p-8 rounded-[28px] border transition-all duration-300 hover:scale-[1.04] active:scale-[0.98] cursor-pointer' />
+		[8] (461,492)<div >💰 />
+		[9] (461,556)<div  />
+			[10] (461,542)<h3 >Expense />
+			[11] (461,565)<p >Quản lý chi phí & thanh toán />
+	[12] (539,519)<button class='group flex flex-col items-center gap-4 p-8 rounded-[28px] border transition-all duration-300 hover:scale-[1.04] active:scale-[0.98] cursor-pointer' />
+		[13] (539,492)<div >👷 />
+		[14] (539,556)<div  />
+			[15] (539,542)<h3 >Workforce />
+			[16] (539,565)<p >Quản lý nhân sự & nghiệm thu />
+	TD Consulting • Enterprise Platform • v3.0

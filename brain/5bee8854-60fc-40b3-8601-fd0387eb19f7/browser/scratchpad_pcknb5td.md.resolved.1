@@ -1,0 +1,15 @@
+# Debugging Worker Delete Button
+
+- [x] Navigate to Workforce app
+- [x] Locate a worker in the Worker List
+- [x] Hover over a worker card and try to click the delete button
+- [x] Observe UI behavior (does confirm dialog appear?) -> **Confirmed: Action worked when confirm was bypassed. Toast "Đã xóa" appeared.**
+- [ ] Check console for errors
+- [ ] Document findings
+
+## Current Findings
+1. The delete button *does* work when clicked via JavaScript with `window.confirm` overridden.
+2. The second worker "Nguy" was successfully deleted.
+3. The toast message "Đã xóa" appeared correctly.
+4. It's possible the standard `window.confirm` dialog is not appearing correctly for the user, or they are expecting a different behavior.
+5. The UI might be blocking the click event if not hovered correctly?

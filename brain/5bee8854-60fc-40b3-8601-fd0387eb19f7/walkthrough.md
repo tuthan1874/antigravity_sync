@@ -1,83 +1,42 @@
-# Workforce App — ClickUp Sync Walkthrough
+# Workforce App — ClickUp Sync — Session 15/03/2026
 
-## What Was Built
+## Tổng quan phiên làm việc
 
-Replaced manual task creation with **ClickUp sync** — tasks now only come from ClickUp, matched by **email** between ClickUp assignee and worker profile.
+Tích hợp **ClickUp sync** vào Workforce app: task chỉ đồng bộ từ ClickUp (không tạo thủ công), match bằng email assignee.
 
 ---
 
-## Architecture
+## Đã hoàn thành ✅
 
-```mermaid
-graph LR
-    A["Frontend<br/>🔄 Sync ClickUp"] --> B["Edge Function<br/>clickup-sync"]
-    B --> C["ClickUp API"]
-    C --> B
-    B --> A
-    A --> D["Match by Email<br/>Assignee ↔ Worker"]
-    D --> E["Supabase<br/>wf_tasks"]
-```
+### 1. Database
+- Tạo bảng `wf_clickup_config` (token, team_id, spaces/lists, last_synced)
+- Fix FK constraints: `wf_tasks` + `wf_settlements` → `ON DELETE CASCADE` (cho phép xóa worker)
 
-## Changes Made
+### 2. Edge Function `clickup-sync`
+- Deploy thành công, 4 actions: `get_teams`, `get_spaces`, `get_lists`, `sync_tasks`
+- Proxy ClickUp API qua Supabase Edge Function (giấu token)
 
-### Database
-- **`wf_clickup_config`** table — stores API token, team_id, selected spaces/lists
+### 3. Frontend
 
-### Edge Function (`clickup-sync`)
-4 actions via POST proxy:
-| Action | Description |
+| File | Thay đổi |
 |---|---|
-| `get_teams` | Fetch workspaces |
-| `get_spaces` | Fetch spaces in a team |
-| `get_lists` | Fetch lists + folders in a space |
-| `sync_tasks` | Fetch tasks + resolve assignee emails via team members |
+| [clickupService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/clickupService.ts) | NEW — gọi Edge Function + CRUD config |
+| [ClickUpConfig.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/ClickUpConfig.tsx) | NEW — wizard: Token → Team → auto-load ALL Spaces & Lists |
+| [TaskList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/TaskList.tsx) | Xóa form thủ công, thêm Sync button, bỏ nút xóa task |
+| [WorkerList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/WorkerList.tsx) | Fix nút xóa: custom inline confirm thay vì `window.confirm()` |
+| [WorkforceApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/WorkforceApp.tsx) | Thêm tab CẤU HÌNH |
+| [useWorkforceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/hooks/useWorkforceState.ts) | Thêm 'config' tab type |
 
-### Frontend Files
-
-| File | Change |
-|---|---|
-| [clickupService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/clickupService.ts) | NEW — Edge Function proxy calls + config CRUD |
-| [ClickUpConfig.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/ClickUpConfig.tsx) | NEW — Multi-step wizard (Token → Team → Spaces/Lists) |
-| [TaskList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/TaskList.tsx) | REWRITTEN — Removed add form, added Sync button |
-| [WorkforceApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/WorkforceApp.tsx) | MODIFIED — Added Config tab |
-| [useWorkforceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/hooks/useWorkforceState.ts) | MODIFIED — Added 'config' tab type |
+### 4. Bug fixes
+- Fix nút xóa worker bị che bởi status dot → dời dot xuống inline
+- Thay `confirm()` bằng custom overlay trên card
+- Fix FK constraint chặn xóa worker có tasks
 
 ---
 
-## Sync Flow
+## Cần làm tiếp 🔜
 
-1. Admin enters ClickUp API Token → selects Team → selects Spaces/Lists → saves
-2. On Task tab, clicks **"🔄 Sync ClickUp"**
-3. Edge Function fetches team members (for email mapping) + tasks from selected lists
-4. Frontend matches `assignee email` ↔ `worker.email` in database
-5. Matched tasks are **upserted** into `wf_tasks` (new → insert, existing → update)
-6. Unmatched tasks (no email match) are skipped with count shown
-
----
-
-## Verification
-
-### Build
-`npx tsc --noEmit` — **0 errors** ✅
-
-### Browser Test
-
-````carousel
-![Task tab — Sync ClickUp button replaces manual add](C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/workforce_task_tab_1773512756870.png)
-<!-- slide -->
-![Config tab — ClickUp setup wizard](C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/workforce_config_tab_1773512770250.png)
-````
-
-![Full test recording](C:/Users/dangt/.gemini/antigravity/brain/5bee8854-60fc-40b3-8601-fd0387eb19f7/clickup_sync_test_1773512721020.webp)
-
-### Verified
-- ✅ 5 tabs: NHÂN SỰ / THÊM/SỬA / TASK / NGHIỆM THU / CẤU HÌNH
-- ✅ Task tab has "🔄 Sync ClickUp" button (no manual add form)
-- ✅ Config tab shows step wizard (Token → Team → Spaces → Lists)
-- ✅ Edge Function deployed and responding
-
----
-
-## Next Steps
-- Test with real ClickUp API token to verify full sync flow
-- Phase 3: Auto-create Expense record when settlement is paid
+1. **Test ClickUp sync thực tế** — nhập Personal API Token (`pk_...`) → chọn team → sync tasks
+2. **Kiểm tra xóa nhân sự** — xác nhận fix inline confirm hoạt động OK
+3. **Phase 3**: Auto-tạo Expense record khi settlement được thanh toán
+4. **Cải thiện UX**: hiển thị giá task, filter nâng cao, export báo cáo

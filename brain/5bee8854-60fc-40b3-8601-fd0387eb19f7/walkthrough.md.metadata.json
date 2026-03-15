@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough for ClickUp sync implementation: Edge Function proxy, config wizard, sync-only task list, email-based matching. Includes screenshots of all new UI elements.",
-  "updatedAt": "2026-03-14T18:27:03.076858800Z",
-  "version": "4"
+  "summary": "Session summary for March 15, 2026. Covers ClickUp sync implementation (Edge Function, config wizard, sync-only TaskList, email matching), bug fixes (worker delete FK cascade, inline confirm overlay), and next steps.",
+  "updatedAt": "2026-03-14T18:55:06.360125500Z",
+  "version": "5"
 }

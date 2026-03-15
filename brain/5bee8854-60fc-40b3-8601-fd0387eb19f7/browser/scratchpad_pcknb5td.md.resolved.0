@@ -1,0 +1,8 @@
+# Debugging Worker Delete Button
+
+- [ ] Navigate to Workforce app
+- [ ] Locate a worker in the Worker List
+- [ ] Hover over a worker card and try to click the delete button
+- [ ] Observe UI behavior (does confirm dialog appear?)
+- [ ] Check console for errors
+- [ ] Document findings
