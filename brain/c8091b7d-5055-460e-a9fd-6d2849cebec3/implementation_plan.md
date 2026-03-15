@@ -1,92 +1,78 @@
-# CRM App — Quản lý Khách hàng Tập trung
-
-Xây dựng app CRM làm nguồn dữ liệu chính cho thông tin khách hàng. Tất cả app khác (Invoice, Expense, Workforce) sẽ lấy dữ liệu khách hàng từ CRM.
-
-## User Review Required
-
-> [!IMPORTANT]
-> **Tạo bảng `crm_clients` mới** trên Supabase — sẽ hợp nhất dữ liệu từ `invoice_clients` (2 records), `fb_clients` (1 record), và các `client_name` text field rải rác.
-
-> [!WARNING]  
-> Sau khi CRM hoạt động, các app khác sẽ chọn client từ CRM thay vì nhập tay. Dữ liệu cũ (text) vẫn giữ nguyên, không bị mất.
+# CRM Enhancements — Lead Source, Documents, Projects, Payments
 
 ## Proposed Changes
 
-### Database (Supabase)
+### 1) Database
 
-#### [NEW] Table `crm_clients`
+#### [MODIFY] `crm_clients` — thêm cột lead source
 | Column | Type | Description |
 |--------|------|-------------|
-| id | uuid PK | |
-| name | text, NOT NULL | Tên công ty/cá nhân |
-| client_type | text | `company` / `individual` |
-| contact_person | text | Người liên hệ chính |
-| email | text | Email |
-| phone | text | Số điện thoại |
-| address | text | Địa chỉ |
-| country | text | Quốc gia |
-| tax_code | text | Mã số thuế |
-| website | text | Website |
-| industry | text | Ngành nghề |
-| status | text | `active` / `inactive` / `lead` |
-| notes | text | Ghi chú tự do |
-| tags | text[] | Tags phân loại |
-| created_at | timestamptz | |
-| updated_at | timestamptz | |
+| lead_source | text | Nền tảng tiếp cận: Facebook, Behance, LinkedIn, Referral, Website, Email, Other |
+| lead_direction | text | `inbound` (khách tìm mình) / `outbound` (mình tìm khách) |
+| lead_source_detail | text | Chi tiết (link profile, tên người giới thiệu...) |
 
-#### Data migration
-- Import 2 records từ `invoice_clients` + 1 record từ `fb_clients` → `crm_clients`
+#### [NEW] `crm_documents` — Hợp đồng, NDA, Invoice (file trên R2)
+| Column | Type |
+|--------|------|
+| id | uuid PK |
+| client_id | uuid FK → crm_clients |
+| doc_type | text: `contract`, `nda`, `invoice`, `proposal`, `other` |
+| title | text |
+| file_url | text (R2 URL) |
+| file_name | text |
+| file_size | int |
+| notes | text |
+| created_at | timestamptz |
 
----
+#### [NEW] `crm_projects` — Dự án của khách hàng
+| Column | Type |
+|--------|------|
+| id | uuid PK |
+| client_id | uuid FK → crm_clients |
+| name | text |
+| description | text |
+| status | text: `active`, `completed`, `paused`, `cancelled` |
+| start_date | date |
+| end_date | date |
+| budget | numeric |
+| currency | text |
+| notes | text |
+| created_at / updated_at | timestamptz |
 
-### Frontend — CRM App
+#### [NEW] `crm_project_files` — Tài liệu/link dự án
+| Column | Type |
+|--------|------|
+| id | uuid PK |
+| project_id | uuid FK → crm_projects |
+| title | text |
+| file_url | text (R2 hoặc link ngoài) |
+| file_type | text: `document`, `image`, `link`, `other` |
+| file_name | text |
+| notes | text |
+| created_at | timestamptz |
 
-#### [NEW] `apps/crm/` — Cấu trúc thư mục
-```
-apps/crm/
-├── components/
-│   ├── CrmApp.tsx          # App shell + routing
-│   ├── ClientList.tsx       # Danh sách + tìm kiếm + filter
-│   ├── ClientForm.tsx       # Form thêm/sửa khách hàng
-│   └── ClientDetail.tsx     # Chi tiết khách hàng
-├── hooks/
-│   └── useCrmState.ts       # State management
-└── services/
-    └── crmService.ts        # Supabase CRUD
-```
+### 2) Frontend — CRM Tabs mới
 
-#### Tabs
-| Tab | Chức năng |
-|-----|-----------|
-| Khách hàng | Danh sách + button thêm mới (inline form giống Expense) |
-| Thống kê | Dashboard tổng quan (số lượng, phân loại) |
+| Tab | Nội dung |
+|-----|----------|
+| **Khách hàng** | Danh sách + form (đã có) + thêm Lead Source section |
+| **Dự án** | Danh sách dự án theo khách hàng + file/link đính kèm |
+| **Tài liệu** | Upload/quản lý hợp đồng, NDA, invoice (R2) |
+| **Thanh toán** | Đồng bộ invoice từ app Invoice (read-only, match bằng `client_name`) |
+| **Thống kê** | Dashboard tổng quan |
 
-#### Tính năng
-- Danh sách client: tìm kiếm, filter theo status/industry/country
-- Thêm/sửa/xoá client
-- Chi tiết client: xem tất cả thông tin + liên kết với invoice/expense/workforce
+### 3) Files mới/sửa
 
----
+#### Backend
+- `crmService.ts` — thêm CRUD cho documents, projects, project_files + query invoice
 
-### Integration — App Registry
+#### Frontend Components
+- `ClientForm.tsx` — thêm Lead Source section
+- [NEW] `ProjectList.tsx` — danh sách dự án + file management
+- [NEW] `DocumentList.tsx` — upload/quản lý tài liệu R2
+- [NEW] `PaymentTracker.tsx` — hiển thị invoices theo khách (từ invoice_invoices)
+- `CrmApp.tsx` — thêm 3 tabs mới
 
-#### [MODIFY] [apps.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/config/apps.ts)
-- Thêm CRM entry vào `APPS` registry
-
-#### [MODIFY] [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
-- Import `CrmApp`, thêm route `#crm`
-
-#### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
-- Thêm `CrmClient` type
-
----
-
-## Verification Plan
-
-### Automated Tests
-- TypeScript compile check (`npx tsc --noEmit`)
-- Browser test: tạo, sửa, xoá client
-
-### Manual Verification
-- Upload xong → reload trang vẫn giữ data
-- Kiểm tra danh sách, filter, search
+## Verification
+- TypeScript compile check
+- Browser test: tạo dự án, upload tài liệu, xem payment

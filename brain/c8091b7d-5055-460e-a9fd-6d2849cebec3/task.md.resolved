@@ -1,22 +1,26 @@
-# CRM App — Task List
+# CRM Enhancements — Task List
 
 ## Database
-- [x] Create `crm_clients` table in Supabase
-- [x] Migrate data from `invoice_clients` + `fb_clients`
-- [x] Enable RLS policies
+- [ ] Add lead_source columns to crm_clients
+- [ ] Create crm_documents table
+- [ ] Create crm_projects table
+- [ ] Create crm_project_files table
 
-## Frontend
-- [x] Add [CrmClient](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts#204-222) type to [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
-- [x] Create [apps/crm/services/crmService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/services/crmService.ts)
-- [x] Create [apps/crm/hooks/useCrmState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/hooks/useCrmState.ts)
-- [x] Create [apps/crm/components/ClientList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/components/ClientList.tsx)
-- [x] Create [apps/crm/components/ClientForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/components/ClientForm.tsx)
-- [x] Create [apps/crm/components/CrmApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/components/CrmApp.tsx)
+## Types & Service
+- [ ] Add types: CrmDocument, CrmProject, CrmProjectFile
+- [ ] Add CRUD functions for documents, projects, project_files
+- [ ] Add invoice query function (payment tracking)
+
+## Frontend Components
+- [ ] Update ClientForm with Lead Source section
+- [ ] Create ProjectList.tsx (projects + files)
+- [ ] Create DocumentList.tsx (R2 upload)
+- [ ] Create PaymentTracker.tsx (invoice sync)
 
 ## Integration
-- [x] Register CRM in [config/apps.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/config/apps.ts)
-- [x] Add CRM route in [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
+- [ ] Update CrmApp.tsx with new tabs (5 tabs total)
+- [ ] Update useCrmState.ts with new state/handlers
 
 ## Verification
-- [x] TypeScript compile check — clean, no errors
-- [x] Browser test — 3 clients loaded, CRUD functional
+- [ ] TypeScript compile
+- [ ] Browser test

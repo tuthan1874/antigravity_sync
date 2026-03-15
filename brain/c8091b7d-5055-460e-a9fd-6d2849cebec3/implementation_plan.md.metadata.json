@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Plan for CRM app: new crm_clients table in Supabase, frontend app with client list/form/detail, integration with app registry and router. Data migration from existing invoice_clients and fb_clients.",
-  "updatedAt": "2026-03-15T14:23:27.864045700Z",
-  "version": "4"
+  "summary": "Plan for CRM enhancements: lead source, documents (R2), projects with files, payment tracking from Invoice app. 4 new tables + 3 new UI tabs.",
+  "updatedAt": "2026-03-15T14:52:22.591585300Z",
+  "version": "5"
 }
