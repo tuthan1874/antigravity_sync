@@ -1,0 +1,11 @@
+# HR App Salary Structure Verification Plan
+
+- [ ] Navigate to `http://localhost:3000/#hr/employeeForm`
+- [ ] Verify "Cấu trúc lương" tab is NOT in the navbar
+- [ ] Select "Fulltime" employee type (if not already selected)
+- [ ] Verify "Cấu trúc lương" section exists with 6 fixed components
+- [ ] Verify component details (name, category, flags, amount input)
+- [ ] Verify "Tổng Gross" calculation
+- [ ] Verify old "Lương" field is gone
+- [ ] Capture screenshot of salary section
+- [ ] Check console for errors
