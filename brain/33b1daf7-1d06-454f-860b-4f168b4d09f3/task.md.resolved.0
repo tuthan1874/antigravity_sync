@@ -1,0 +1,37 @@
+# HR Management App — Task List
+
+## Phase 1: Planning
+- [x] Analyze existing codebase patterns (WorkforceApp, CrmApp, etc.)
+- [x] Identify Supabase backend & existing Worker model
+- [/] Write implementation plan
+- [ ] Get user approval on plan
+
+## Phase 2: Database Setup
+- [ ] Create Supabase migration — all `hr_*` tables
+- [ ] Set up RLS policies
+
+## Phase 3: Frontend — Core Structure
+- [ ] Define TypeScript types in [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
+- [ ] Create `apps/hr/services/hrService.ts`
+- [ ] Create `apps/hr/hooks/useHrState.ts`
+- [ ] Create `apps/hr/components/HrApp.tsx` (shell + tabs)
+
+## Phase 4: Frontend — Components
+- [ ] `EmployeeList.tsx` — danh sách + tìm kiếm/lọc
+- [ ] `EmployeeForm.tsx` — form thêm/sửa nhân sự
+- [ ] `EmployeeDetail.tsx` — xem chi tiết hồ sơ
+- [ ] `ContractManager.tsx` — quản lý hợp đồng
+- [ ] `DepartmentManager.tsx` — quản lý phòng ban
+- [ ] `ReminderDashboard.tsx` — cảnh báo & nhắc việc
+
+## Phase 5: Integration
+- [ ] Register app in [config/apps.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/config/apps.ts) & [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
+- [ ] Migrate Workforce `wf_workers` → use `hr_employees`
+- [ ] Create shared service for cross-module employee data
+
+## Phase 6: Verification
+- [ ] Browser test all tabs
+- [ ] CRUD test employees (fulltime + freelancer)
+- [ ] Contract lifecycle test
+- [ ] Reminder system test
+- [ ] Workforce integration test

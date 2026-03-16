@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Comprehensive implementation plan for the HR Management App module. Covers database schema (8 Supabase tables), frontend architecture (6 components, 1 hook, 1 service), integration with Workforce module, and browser-based verification plan. Includes detailed field lists for fulltime vs freelancer, contract management, position history, evaluations, and reminder system.",
+  "updatedAt": "2026-03-16T10:47:11.535486900Z"
+}
