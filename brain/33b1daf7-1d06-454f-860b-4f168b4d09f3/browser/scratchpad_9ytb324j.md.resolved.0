@@ -1,0 +1,8 @@
+# Browser Verification Plan - Add Employee Form
+
+- [ ] Navigate to http://localhost:3000/#hr/activity
+- [ ] Click "+ THÊM NHÂN SỰ" button
+- [ ] Scroll to "🪪 CMND / CCCD & ẢNH NHÂN SỰ" section
+- [ ] Verify fields: "Số CMND/CCCD", "Ngày cấp", "Nơi cấp"
+- [ ] Verify upload zones: "Ảnh nhân sự", "CCCD Mặt trước", "CCCD Mặt sau"
+- [ ] Take screenshot for confirmation
