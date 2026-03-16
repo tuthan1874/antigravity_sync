@@ -1,0 +1,7 @@
+# HR App Verification Plan
+
+- [ ] Navigate to `http://localhost:3000/#hr/activity`
+- [ ] Verify department cards visibility
+- [ ] Check console for errors
+- [ ] Capture screenshot
+- [ ] Report findings

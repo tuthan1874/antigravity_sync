@@ -1,0 +1,17 @@
+# HR App Verification Progress
+
+## Tasks
+- [ ] Navigate to `http://localhost:3000/#hr/departments`, hard refresh, wait 3s.
+- [ ] Count and list department names in "Phòng ban" tab.
+- [ ] Verify "Nhân sự" tab loads (summary, search, filters).
+- [ ] Check "Tất cả phòng ban" filter dropdown content.
+- [ ] Verify "Thêm nhân sự" form (Fulltime) and department dropdown.
+- [ ] Verify "Nhắc việc" tab loads.
+- [ ] Check for console errors.
+
+## Findings
+- Departments: 
+- Personnel Tab: 
+- Add Personnel Form: 
+- Reminders Tab: 
+- Console Errors: 

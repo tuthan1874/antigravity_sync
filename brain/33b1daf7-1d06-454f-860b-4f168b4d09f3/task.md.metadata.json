@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_TASK",
-  "summary": "Task tracking list for the HR Management App, broken into 6 phases: Planning, Database Setup, Core Structure, Components, Integration, and Verification.",
-  "updatedAt": "2026-03-16T10:45:59.267870400Z"
+  "summary": "Task checklist — all 8 phases complete.",
+  "updatedAt": "2026-03-16T11:18:07.613194400Z",
+  "version": "4"
 }

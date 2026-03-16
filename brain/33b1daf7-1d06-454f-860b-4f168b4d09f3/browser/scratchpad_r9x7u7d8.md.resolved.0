@@ -1,0 +1,20 @@
+# HR App Investigation Scratchpad
+
+## Current Status
+- Navigated to `http://localhost:3000/#hr/departments`.
+- Hard reload performed.
+- UI shows **zero** department cards, despite 9 departments existing in the database.
+- Error toast observed: "Could not embed because more than one relationship was found for 'hr_employees' and 'hr_departments'".
+
+## Findings
+- **API Request 344 (GET `hr_employees`) failed with 300 (Multiple Choices)**.
+  - Reason: PostgREST PGRST201. Ambiguous relationship between `hr_employees` and `hr_departments`.
+  - Multiple FKs: `hr_employees.department_id` and `hr_departments.manager_id`.
+- **API Request 345 (GET `hr_departments`) succeeded with 200**.
+  - Returned 9 departments (Animation, Art, Finance, HR, Management, Production, R&D, Test Dept, VFX).
+- **UI Issue**: The departments are likely not being rendered because the `loadAll` function in `useHrState.ts` probably uses `Promise.all`, which rejects if `hr_employees` fetch fails, preventing the departments state from being updated.
+
+## Next Steps
+- Report the specific fix needed for the Supabase query.
+- Report that departments are actually in the DB but blocked by the employee fetch error.
+- Verify if other tabs (Activity, Employees) are also broken.

@@ -1,0 +1,52 @@
+# HR Management App — Walkthrough
+
+## Overview
+Built a full HR Management module for the TD Games Platform. The app manages fulltime and freelancer personnel data, serving as the centralized source of truth for the ecosystem.
+
+## What Was Built
+
+### Database (Supabase)
+8 new tables with RLS, auto-trigger for employee codes, and seeded department data:
+- `hr_employees`, `hr_departments`, `hr_contracts`, `hr_position_history`
+- `hr_evaluations`, `hr_project_history`, `hr_documents`, `hr_reminders`
+
+### Frontend Components
+
+| Component | Purpose |
+|-----------|---------|
+| [HrApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/HrApp.tsx) | Main shell with 3 tabs |
+| [EmployeeList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/EmployeeList.tsx) | Search, filter, summary cards |
+| [EmployeeForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/EmployeeForm.tsx) | Conditional fulltime/freelancer form |
+| [EmployeeDetail.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/EmployeeDetail.tsx) | Detail view with sub-tabs |
+| [DepartmentManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/DepartmentManager.tsx) | CRUD for departments |
+| [ReminderDashboard.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/ReminderDashboard.tsx) | Auto-scan reminders |
+| [hrService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/services/hrService.ts) | Supabase CRUD service |
+| [useHrState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/hooks/useHrState.ts) | State management hook |
+
+### Integration
+- Registered in [apps.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/config/apps.ts) and [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
+- File storage: **Cloudflare R2** (confirmed, to be implemented for document uploads)
+
+## Bug Fixed During Testing
+PostgREST returned **PGRST201** (ambiguous FK) because `hr_employees` and `hr_departments` have two FK relationships (`department_id` and `manager_id`). Fixed by using explicit FK hint: `!hr_employees_department_id_fkey`. Also switched `Promise.all` → `Promise.allSettled` in `loadAll` for resilient parallel loading.
+
+## Verification Results
+
+### Home Screen — HR card visible
+![HR card on home screen](C:/Users/dangt/.gemini/antigravity/brain/33b1daf7-1d06-454f-860b-4f168b4d09f3/hr_homescreen.png)
+
+### Nhân sự Tab — Employee list with filters
+![Employee list](C:/Users/dangt/.gemini/antigravity/brain/33b1daf7-1d06-454f-860b-4f168b4d09f3/hr_nhansut.png)
+
+### Phòng ban Tab — 9 departments loaded
+![Departments](C:/Users/dangt/.gemini/antigravity/brain/33b1daf7-1d06-454f-860b-4f168b4d09f3/hr_phongban.png)
+
+### Employee Form — Fulltime fields
+![Employee form](C:/Users/dangt/.gemini/antigravity/brain/33b1daf7-1d06-454f-860b-4f168b4d09f3/hr_form.png)
+
+### Browser Recording
+![HR App Testing](C:/Users/dangt/.gemini/antigravity/brain/33b1daf7-1d06-454f-860b-4f168b4d09f3/hr_final_verification_1773659124345.webp)
+
+## Pending Items
+- Document upload feature with **Cloudflare R2** integration
+- Data migration from `wf_workers` (Workforce) → `hr_employees` (if needed)

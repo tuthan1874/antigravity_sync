@@ -1,0 +1,9 @@
+# HR Verification Checklist (Phase 7)
+
+- [ ] Navigate to http://localhost:3000/#hr/activity
+- [ ] Verify summary cards (TỔNG NV, FULLTIME, FREELANCER, ĐANG LÀM VIỆC) show non-zero counts.
+- [ ] Verify employee cards for: "Lê Văn Khiêm", "Nguyễn Ngọc Anh", "Nguyễn Quang Huy".
+- [ ] Open employee detail view and verify tabs (Thông tin, Hợp đồng, Đánh giá, Dự án, Hồ sơ).
+- [ ] Verify "🗂️ Hồ sơ" tab loads document manager.
+- [ ] Verify "+ Upload" button opens the upload form with required fields.
+- [ ] Capture screenshots.
