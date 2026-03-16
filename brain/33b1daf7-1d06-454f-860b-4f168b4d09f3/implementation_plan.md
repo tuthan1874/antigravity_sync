@@ -1,282 +1,210 @@
-# HR Management App — Implementation Plan
+# App Chấm công (Time & Attendance)
 
-Xây dựng module quản lý nhân sự toàn diện cho TD Games Platform, hỗ trợ cả fulltime và freelancer. Module này sẽ là **nguồn dữ liệu nhân sự trung tâm** cho toàn bộ hệ sinh thái app.
+Tạo app Chấm công mới trong hệ sinh thái TD Games, tích hợp dữ liệu nhân sự từ HR app, hỗ trợ quản lý ca làm việc, chấm công QR/WiFi, đơn từ, và báo cáo công.
 
-## User Review Required
+## Phân loại tính năng
 
-> [!IMPORTANT]
-> **Tích hợp với Workforce:** Module Workforce hiện quản lý nhân sự qua bảng `wf_workers`. Sau khi HR App hoàn thành, Workforce sẽ cần chuyển sang đọc dữ liệu từ `hr_employees`. Đề xuất triển khai HR App trước, tích hợp sau để tránh phá vỡ Workforce hiện tại.
-
-> [!WARNING]
-> **Migration dữ liệu:** 3 workers hiện tại trong `wf_workers` sẽ cần migrate sang `hr_employees`. Plan này sẽ xử lý migration sau khi HR App stable.
+| Tính năng | Trạng thái | Lý do |
+|---|---|---|
+| Chấm công QR Code | ✅ Phase 1 | Web-based, triển khai được ngay |
+| Chấm công WiFi | ✅ Phase 1 | Kiểm tra SSID qua JS API |
+| Thiết lập ca làm việc | ✅ Phase 1 | CRUD cơ bản |
+| Đơn nghỉ phép / đi muộn / về sớm / quên chấm công / tăng ca | ✅ Phase 1 | Workflow duyệt đơn |
+| Báo cáo công (ngày/tuần/tháng/phòng ban) | ✅ Phase 1 | Query + UI |
+| Chấm công vân tay | ⏸️ Pending | Cần phần cứng + driver |
+| Chấm công khuôn mặt | ⏸️ Pending | Cần AI model + camera |
+| Chấm công GPS | ⏸️ Pending | Cần mobile app |
+| Đồng bộ máy chấm công | ⏸️ Pending | Cần tích hợp SDK máy |
 
 ---
 
-## Proposed Changes
+## Database Schema (Supabase Migration)
 
-### Database — Supabase Migration
-
-Tạo 8 bảng mới trong Supabase project `Workflow` (`fifuhkupaqcfjwyouwpa`):
-
-#### `hr_employees` — Bảng chính, lưu thông tin nhân sự
-
+### Bảng `att_shifts` — Ca làm việc
 ```sql
--- Thông tin chung (cả fulltime + freelancer)
-id              uuid PK DEFAULT gen_random_uuid()
-employee_code   text UNIQUE          -- Mã nhân sự tự sinh: FT-001, FL-001
-type            text NOT NULL         -- 'fulltime' | 'freelancer' | 'parttime'
-status          text DEFAULT 'active' -- 'active' | 'inactive' | 'offboarded' | 'blacklist'
-full_name       text NOT NULL
-avatar_url      text
-email           text
-phone           text
-date_of_birth   date
-gender          text                  -- 'male' | 'female' | 'other'
-nationality     text DEFAULT 'Vietnam'
-address         text
-
--- Fulltime-specific
-id_number       text      -- CMND/CCCD
-id_issue_date   date
-id_issue_place  text
-tax_code        text      -- MST cá nhân
-insurance_number text     -- Số sổ bảo hiểm
-department_id   uuid FK → hr_departments
-position        text      -- Chức danh
-level           text      -- Junior/Mid/Senior/Lead/Manager
-salary          numeric
-salary_currency text DEFAULT 'VND'
-start_date      date      -- Ngày bắt đầu làm việc
-probation_end   date      -- Ngày hết thử việc
-
--- Freelancer-specific
-portfolio_url   text
-specializations text[]    -- ['2D', '3D', 'VFX', 'Concept Art', ...]
-timezone        text      -- 'UTC+7', 'UTC+9'...
-rate_type       text      -- 'hourly' | 'per_shot' | 'per_deliverable' | 'per_task'
-rate_amount     numeric
-rate_currency   text DEFAULT 'USD'
-payment_method  text      -- 'bank_transfer' | 'paypal' | 'wise' | 'other'
-payment_details jsonb     -- { paypal_email, wise_id, etc. }
-
--- Banking (shared)
-bank_name       text
-bank_account    text
-bank_branch     text
-
--- Meta
-notes           text
-tags            text[]
-created_at      timestamptz DEFAULT now()
-updated_at      timestamptz DEFAULT now()
+CREATE TABLE att_shifts (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name TEXT NOT NULL,                    -- "Ca sáng", "Ca chiều"
+  shift_type TEXT DEFAULT 'fixed',       -- fixed | rotating | project
+  start_time TIME NOT NULL,              -- 08:00
+  end_time TIME NOT NULL,                -- 17:00
+  break_minutes INT DEFAULT 60,
+  late_threshold_minutes INT DEFAULT 15, -- trễ bao nhiêu phút tính đi muộn
+  early_threshold_minutes INT DEFAULT 15,
+  overtime_after_minutes INT DEFAULT 0,  -- tính OT sau X phút
+  applicable_days TEXT[] DEFAULT '{mon,tue,wed,thu,fri}',
+  is_active BOOLEAN DEFAULT true,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
 ```
 
-#### `hr_departments` — Phòng ban
-
-```
-id, name, code, description, manager_id (FK → hr_employees), is_active, created_at
-```
-
-Seed data: Art, Animation, VFX, R&D, Production, Management, HR, Finance
-
-#### `hr_contracts` — Hợp đồng
-
-```
-id, employee_id (FK), contract_type ('labor'|'service'|'nda'|'appendix'),
-title, contract_number, start_date, end_date,
-salary, currency, rate_type, rate_amount,
-file_url, status ('active'|'expired'|'terminated'),
-notes, created_at
+### Bảng `att_employee_shifts` — Phân ca cho nhân viên
+```sql
+CREATE TABLE att_employee_shifts (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  employee_id UUID REFERENCES hr_employees(id) ON DELETE CASCADE,
+  shift_id UUID REFERENCES att_shifts(id) ON DELETE CASCADE,
+  effective_from DATE NOT NULL,
+  effective_to DATE,                     -- NULL = vô thời hạn
+  created_at TIMESTAMPTZ DEFAULT now(),
+  UNIQUE(employee_id, shift_id, effective_from)
+);
 ```
 
-#### `hr_position_history` — Lịch sử thay đổi
-
-```
-id, employee_id (FK), change_type ('position'|'department'|'salary'|'level'),
-old_value, new_value, effective_date, reason, created_at
-```
-
-#### `hr_evaluations` — Đánh giá năng lực
-
-```
-id, employee_id (FK), period (text: 'Q1-2026'),
-evaluator, score (1-5), strengths, weaknesses, notes,
-next_evaluation_date, status ('pending'|'completed'), created_at
-```
-
-#### `hr_project_history` — Lịch sử dự án
-
-```
-id, employee_id (FK), project_name, role, start_date, end_date,
-performance_note, created_at
-```
-
-#### `hr_documents` — Tài liệu số hóa
-
-```
-id, employee_id (FK), doc_type ('id_card'|'contract'|'diploma'|'certificate'|'other'),
-title, file_url, file_name, file_size, notes, created_at
+### Bảng `att_records` — Bản ghi chấm công
+```sql
+CREATE TABLE att_records (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  employee_id UUID REFERENCES hr_employees(id) ON DELETE CASCADE,
+  date DATE NOT NULL,
+  check_in TIMESTAMPTZ,
+  check_out TIMESTAMPTZ,
+  method TEXT DEFAULT 'manual',          -- qr | wifi | manual | (future: fingerprint, face, gps)
+  shift_id UUID REFERENCES att_shifts(id),
+  status TEXT DEFAULT 'present',         -- present | late | early_leave | absent | half_day
+  late_minutes INT DEFAULT 0,
+  early_minutes INT DEFAULT 0,
+  overtime_minutes INT DEFAULT 0,
+  note TEXT DEFAULT '',
+  approved_by UUID,
+  created_at TIMESTAMPTZ DEFAULT now(),
+  UNIQUE(employee_id, date)
+);
 ```
 
-#### `hr_reminders` — Nhắc nhở
-
+### Bảng `att_requests` — Đơn từ (nghỉ phép, đi muộn, về sớm, quên CC, tăng ca)
+```sql
+CREATE TABLE att_requests (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  employee_id UUID REFERENCES hr_employees(id) ON DELETE CASCADE,
+  request_type TEXT NOT NULL,            -- leave | late | early | forgot | overtime
+  date_from DATE NOT NULL,
+  date_to DATE NOT NULL,
+  reason TEXT DEFAULT '',
+  status TEXT DEFAULT 'pending',         -- pending | approved | rejected
+  approved_by TEXT,
+  approved_at TIMESTAMPTZ,
+  reviewer_note TEXT DEFAULT '',
+  created_at TIMESTAMPTZ DEFAULT now()
+);
 ```
-id, employee_id (FK), type ('contract_expiry'|'birthday'|'evaluation'|
-  'work_permit'|'freelancer_payment'|'probation_end'|'anniversary'),
-title, due_date, status ('pending'|'notified'|'dismissed'),
-notes, created_at
+
+### Bảng `att_qr_sessions` — Phiên QR chấm công
+```sql
+CREATE TABLE att_qr_sessions (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  token TEXT NOT NULL UNIQUE,
+  shift_id UUID REFERENCES att_shifts(id),
+  valid_from TIMESTAMPTZ NOT NULL,
+  valid_to TIMESTAMPTZ NOT NULL,
+  wifi_ssid TEXT,                        -- WiFi SSID cho xác thực
+  created_by TEXT,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
 ```
 
 ---
 
-### Frontend — New Files
+## Frontend Structure
 
-#### [NEW] [hrService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/services/hrService.ts)
-
-Supabase CRUD service cho tất cả 8 bảng. Theo pattern của `workforceService.ts` / `crmService.ts`.
-
-Các function chính:
-- `fetchEmployees()`, `saveEmployee()`, `updateEmployee()`, `deleteEmployee()`
-- `fetchDepartments()`, `saveDepartment()`, `updateDepartment()`, `deleteDepartment()`
-- `fetchContracts(employeeId)`, `saveContract()`, `updateContract()`, `deleteContract()`
-- `fetchPositionHistory(employeeId)`, `addPositionChange()`
-- `fetchEvaluations(employeeId)`, `saveEvaluation()`, `updateEvaluation()`
-- `fetchProjectHistory(employeeId)`
-- `fetchDocuments(employeeId)`, `uploadDocument()`, `deleteDocument()`
-- `fetchReminders()`, `generateReminders()`, `dismissReminder()`
-
----
-
-#### [NEW] [useHrState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/hooks/useHrState.ts)
-
-Custom hook quản lý state toàn bộ HR module. Theo pattern của `useWorkforceState.ts`.
-
-Tabs: `employees` | `employeeForm` | `departments` | `reminders`
-
-State: employees, departments, contracts, filters (type, status, department, search), editing state, toast.
-
----
-
-#### [NEW] [HrApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/HrApp.tsx)
-
-Shell component + tab router. Reuse shared `Navbar`. 4 tabs chính:
-- **Nhân sự** — Danh sách + tìm kiếm/lọc
-- **Hồ sơ** — Thêm/sửa/xem chi tiết
-- **Phòng ban** — Quản lý departments
-- **Nhắc việc** — Dashboard cảnh báo
-
----
-
-#### [NEW] [EmployeeList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/EmployeeList.tsx)
-
-Danh sách nhân sự với:
-- Summary cards (tổng, fulltime, freelancer, active, inactive)
-- Search bar (tìm theo tên, email, mã NV)
-- Filters: loại (fulltime/freelancer/parttime), trạng thái, phòng ban, chuyên môn
-- Card view (tương tự WorkerList nhưng chi tiết hơn)
-- Quick actions: xem chi tiết, sửa, toggle active, xóa
-
----
-
-#### [NEW] [EmployeeForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/EmployeeForm.tsx)
-
-Form nhập liệu phân chia theo section:
-- **Thông tin cá nhân** — Tên, email, SĐT, ngày sinh, giới tính, quốc tịch, ảnh
-- **Fulltime fields** — (conditional) CCCD, MST, bảo hiểm, phòng ban, chức vụ, lương
-- **Freelancer fields** — (conditional) Portfolio, chuyên môn, rate card, timezone, payment method
-- **Ngân hàng** — Bank info
-- **Hợp đồng** — (khi editing) Danh sách hợp đồng + thêm mới
-- **Lịch sử** — (khi editing) Position changes, evaluations, project history
-
----
-
-#### [NEW] [EmployeeDetail.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/EmployeeDetail.tsx)
-
-Trang chi tiết hồ sơ nhân viên (read-only view + inline edit):
-- Header card: avatar, tên, mã NV, type badge, status
-- Tabs con: Thông tin | Hợp đồng | Lịch sử | Đánh giá | Dự án | Tài liệu
-- Timeline view cho lịch sử thay đổi
-
----
-
-#### [NEW] [DepartmentManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/DepartmentManager.tsx)
-
-Quản lý phòng ban:
-- CRUD phòng ban
-- Xem số nhân sự trong mỗi phòng ban
-- Chọn manager cho mỗi phòng ban
-
----
-
-#### [NEW] [ReminderDashboard.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/ReminderDashboard.tsx)
-
-Dashboard cảnh báo:
-- Auto-generate reminders (hợp đồng hết hạn 30/15/7 ngày, sinh nhật, evaluation đến hạn, v.v.)
-- Filter theo loại, theo thời gian
-- Mark as dismissed
-- Color-coded urgency (red: ≤7 days, orange: ≤15 days, yellow: ≤30 days)
-
----
-
-### App Registration
-
-#### [MODIFY] [apps.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/config/apps.ts)
-
-Thêm entry cho HR app:
-
-```diff
-+  {
-+    id: 'hr',
-+    name: 'HR',
-+    icon: '🧑‍💼',
-+    description: 'Quản lý nhân sự toàn diện',
-+    color: '#FF375F',
-+    gradient: 'linear-gradient(135deg, #FF375F 0%, #FF6B81 100%)',
-+  },
+```
+apps/attendance/
+├── components/
+│   ├── AttendanceApp.tsx       — Main app shell + Navbar + tab router
+│   ├── Dashboard.tsx           — Tổng quan công hôm nay, check-in/out nhanh
+│   ├── AttendanceLog.tsx       — Danh sách bản ghi chấm công (filter ngày/NV/trạng thái)
+│   ├── ShiftManager.tsx        — Quản lý ca làm việc (CRUD)
+│   ├── ShiftAssignment.tsx     — Phân ca cho nhân viên
+│   ├── RequestManager.tsx      — Quản lý đơn từ (tạo + duyệt)
+│   ├── QrCheckIn.tsx           — Màn hình scan QR chấm công
+│   ├── QrGenerator.tsx         — Admin tạo QR session
+│   └── AttendanceReport.tsx    — Báo cáo công (bảng tổng hợp + biểu đồ)
+├── hooks/
+│   └── useAttendanceState.ts   — Central state hook (giống useHrState)
+└── services/
+    └── attendanceService.ts    — Supabase queries cho tất cả tables trên
 ```
 
-#### [MODIFY] [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
+---
 
-```diff
-+import HrApp from './apps/hr/components/HrApp';
- const VALID_APPS = ['invoice', 'expense', 'workforce', 'crm'];
-+const VALID_APPS = ['invoice', 'expense', 'workforce', 'crm', 'hr'];
- ...
-+  if (activeApp === 'hr') {
-+    return <HrApp currentUser={currentUser} onBack={handleBack} initialTab={initialTab} />;
-+  }
+## App Registration
+
+### [MODIFY] [apps.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/config/apps.ts)
+Thêm app `attendance` vào registry:
+```ts
+{
+  id: 'attendance',
+  name: 'Chấm công',
+  icon: '⏰',
+  description: 'Chấm công & quản lý ca làm việc',
+  color: '#FF6B35',
+  gradient: 'linear-gradient(135deg, #FF6B35 0%, #F7C948 100%)',
+}
 ```
 
-#### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
+### [MODIFY] [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
+Thêm route `attendance` + import `AttendanceApp`.
 
-Thêm các type definitions cho HR module: `HrEmployee`, `HrDepartment`, `HrContract`, `HrPositionHistory`, `HrEvaluation`, `HrProjectHistory`, `HrDocument`, `HrReminder`.
+### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
+Thêm interfaces: `AttShift`, `AttEmployeeShift`, `AttRecord`, `AttRequest`, `AttQrSession`.
+
+---
+
+## UI Tabs (5 tabs)
+
+| Tab | Icon | Mô tả |
+|---|---|---|
+| **Dashboard** | 📊 | Tổng quan hôm nay: ai đã check-in, ai chưa, trễ, vắng. Quick check-in/out |
+| **Chấm công** | ✅ | Log chấm công chi tiết, filter ngày/NV/trạng thái |
+| **Ca làm việc** | 🔄 | CRUD ca, phân ca cho nhân viên |
+| **Đơn từ** | 📝 | Tạo + duyệt đơn nghỉ / đi muộn / tăng ca |
+| **Báo cáo** | 📈 | Tổng hợp công theo ngày/tuần/tháng/phòng ban, export |
+
+---
+
+## Quy trình chấm công QR
+
+```mermaid
+sequenceDiagram
+    Admin->>QrGenerator: Tạo QR session (ca + WiFi SSID)
+    QrGenerator->>DB: Lưu att_qr_sessions (token, valid_from/to)
+    QrGenerator-->>Admin: Hiển thị QR code
+    Employee->>QrCheckIn: Scan QR
+    QrCheckIn->>DB: Validate token + thời gian
+    QrCheckIn->>DB: Kiểm tra WiFi SSID (nếu có)
+    QrCheckIn->>DB: Insert att_records (check_in/check_out)
+    QrCheckIn-->>Employee: ✅ Chấm công thành công
+```
+
+---
+
+## Phân Phase triển khai
+
+### Phase 1a — Foundation (ưu tiên)
+1. DB migration (5 bảng)
+2. Types + Service layer
+3. `AttendanceApp.tsx` shell + App registration
+4. `ShiftManager.tsx` — CRUD ca làm việc
+5. `Dashboard.tsx` — Tổng quan + manual check-in/out
+
+### Phase 1b — Core Features
+6. `AttendanceLog.tsx` — Xem log chấm công
+7. `ShiftAssignment.tsx` — Phân ca cho nhân viên
+8. `RequestManager.tsx` — Đơn từ + duyệt
+9. `QrGenerator.tsx` + `QrCheckIn.tsx` — Chấm công QR
+
+### Phase 1c — Reports
+10. `AttendanceReport.tsx` — Báo cáo tổng hợp công
 
 ---
 
 ## Verification Plan
 
-### Browser Tests
+### Automated Tests
+- TypeScript build: `npx tsc --noEmit`
+- Browser verification cho từng component qua browser tool
 
-Không có unit tests trong project hiện tại (Vite dev server only, không có test framework). Toàn bộ verification sẽ thông qua browser testing:
-
-1. **Chạy dev server:** `npm run dev` → http://localhost:3000
-2. **Kiểm tra Home Screen:**  
-   - Đăng nhập → Confirm thấy card "HR" mới trên trang chủ → Click vào để mở
-3. **Tab Nhân sự — CRUD:**  
-   - Thêm 1 nhân sự fulltime (điền đầy đủ CCCD, phòng ban, lương)
-   - Thêm 1 nhân sự freelancer (điền portfolio, chuyên môn, rate card)
-   - Verify danh sách hiển thị đúng, filter theo loại/trạng thái hoạt động
-   - Sửa thông tin → Verify cập nhật đúng
-   - Xóa → Verify đã xóa
-4. **Tab Phòng ban:**  
-   - Kiểm tra seed data hiển thị (Art, Animation, VFX, …)
-   - Thêm/sửa/xóa phòng ban
-5. **Chi tiết nhân viên:**  
-   - Click vào nhân viên → Verify hiển thị đầy đủ thông tin
-   - Thêm hợp đồng → Verify hiện trong tab Hợp đồng
-   - Thêm đánh giá → Verify hiện trong tab Đánh giá
-6. **Tab Nhắc việc:**  
-   - Tạo nhân sự có hợp đồng hết hạn trong 15 ngày tới
-   - Verify reminder được tự động tạo và hiển thị đúng màu urgency
-   - Dismiss reminder → Verify đã ẩn
-7. **Build check:** `npm run build` — verify không có lỗi TypeScript
+### Manual Verification
+- Tạo ca → phân ca → chấm công manual → kiểm tra dashboard
+- Tạo QR session → scan → verify record
+- Tạo đơn nghỉ → duyệt → kiểm tra báo cáo

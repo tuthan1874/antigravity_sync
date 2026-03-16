@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_TASK",
-  "summary": "Task checklist — all 8 phases complete, adding CCCD upload fields as Phase 9.",
-  "updatedAt": "2026-03-16T12:48:33.224345Z",
-  "version": "5"
+  "summary": "Checklist for implementing the Attendance (Chấm công) app across 3 phases: Foundation (DB + types + shell), Core Features (log, shifts, requests, QR), and Reports.",
+  "updatedAt": "2026-03-16T14:31:37.064154400Z",
+  "version": "6"
 }
