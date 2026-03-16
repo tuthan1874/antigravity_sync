@@ -1,11 +1,11 @@
 # Payroll App Implementation
 
-- [ ] Database migration (pay_payroll_sheets + pay_payroll_records)
-- [ ] TypeScript types (PayPayrollSheet, PayPayrollRecord)
-- [ ] Service layer (payrollService.ts + calculatePayroll)
-- [ ] Hook (usePayrollState.ts)
-- [ ] UI: PayrollApp shell + tabs
-- [ ] UI: PayrollSheet (bảng lương chi tiết)
-- [ ] UI: PayrollDetail (8 bước tính 1 NV)
-- [ ] App registration (App.tsx + HomeScreen)
-- [ ] Verification & browser testing
+- [x] Database migration (pay_payroll_sheets + pay_payroll_records)
+- [x] TypeScript types (PayPayrollSheet, PayPayrollRecord)
+- [x] Service layer (payrollService.ts + calculatePayroll)
+- [x] Hook (usePayrollState.ts)
+- [x] UI: PayrollApp shell + tabs
+- [x] UI: PayrollSheet (bảng lương chi tiết)
+- [x] UI: PayrollDetail (8 bước tính 1 NV) — integrated into PayrollSheet as expand rows
+- [x] App registration (App.tsx + HomeScreen)
+- [/] Verification & browser testing

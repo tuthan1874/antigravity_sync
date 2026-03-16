@@ -1,0 +1,52 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (502,951)<button class='opacity-60 hover:opacity-100 font-bold'>✕ />
+	[2] (236,27)<button class='text-neutral-medium hover:text-white transition-colors text-lg'>← />
+	Bảng lương Tháng 3/2026
+	Nháp
+	1
+	nhân viên
+	[3] (721,27)<button class='px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest text-white transition-all hover:opacity-80'>✅ Xác nhận bảng lương />
+	Tổng Gross thực tế
+	18.917.186
+	Tổng BH nhân viên
+	521.056
+	Tổng thuế TNCN
+	0
+	Tổng Net thực lĩnh
+	18.396.130
+	Tổng chi phí công ty
+	19.984.110
+	Nhân viên
+	Ngày công
+	Gross TK
+	TC phát sinh
+	Gross thực
+	BH NV
+	Thuế
+	Net thực lĩnh
+	[4] (500,186)<div  />
+		[5] (301,185)<div  />
+			[6] (242,185)<span >▶ />
+			[7] (269,185)<span >Đặng Thế Toàn />
+		[8] (388,185)<div  />
+			[9] (404,186)<span >20.56
+/
+22 />
+		[10] (444,185)<span >20.000.000 />
+		[11] (500,185)<div  />
+			[12] (522,186)<span >5h />
+		[13] (556,185)<span >18.917.186 />
+		[14] (612,185)<span >521.056 />
+		[15] (661,185)<span >0 />
+		[16] (723,185)<span >18.396.130 />
+	Tổng cộng
+	18.917.186
+	521.056
+	0
+	18.396.130
+
+</current_dom>

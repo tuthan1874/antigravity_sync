@@ -1,0 +1,10 @@
+# Payroll App Verification Plan
+
+- [ ] Navigate to `http://localhost:3000/#payroll` and verify load
+- [ ] Take screenshot of initial state
+- [ ] Create a new payroll sheet (Tháng 3/2026)
+- [ ] Verify calculation result and take screenshot
+- [ ] Expand an employee record to view 8-step details
+- [ ] Take screenshot of detailed view
+- [ ] Check console for errors
+- [ ] Summarize findings

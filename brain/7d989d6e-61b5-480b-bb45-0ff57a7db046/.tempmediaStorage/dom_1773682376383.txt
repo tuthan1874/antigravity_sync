@@ -1,0 +1,25 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	Payroll
+	[2] (906,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all bg-primary text-black shadow-btn-glow'>Bảng lương />
+	admin
+	admin
+	[3] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	💰 Bảng lương
+	Tạo và quản lý bảng lương hàng tháng
+	[4] (672,107)<button class='px-5 py-2.5 rounded-xl text-sm font-black uppercase tracking-widest text-white transition-all hover:opacity-80'>✕ Đóng />
+	[5] (336,176)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-1'>Tháng />
+	[6] (336,198)<select class='px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm outline-none' />
+	[7] (382,175)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-1'>Năm />
+	[8] (382,198)<input class='w-24 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm outline-none' />
+	[9] (443,198)<button class='px-5 py-2 rounded-xl bg-emerald-500 text-white text-sm font-bold hover:bg-emerald-600 transition-all disabled:opacity-30'>🚀 Tạo & tính lương />
+	💰
+	Chưa có bảng lương nào
+	Bấm "+ Tạo bảng lương" để bắt đầu
+
+</current_dom>
