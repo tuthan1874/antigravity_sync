@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Implementation plan for adding salary components (cấu trúc lương) to the HR module. Covers 2 new DB tables (hr_salary_components, hr_employee_salary), TypeScript types, service layer CRUD functions, a new SalaryComponentManager admin UI, and a salary tab in EmployeeDetail. Includes seed data for 6 standard VN salary components and a browser-based verification plan.",
-  "updatedAt": "2026-03-16T15:50:23.998741300Z"
+  "summary": "Implementation plan for adding dependents management to the HR module. Covers database schema (hr_dependents + hr_dependent_documents tables), TypeScript types, service layer CRUD functions, and UI components in EmployeeForm with document upload support via R2.",
+  "updatedAt": "2026-03-16T16:16:28.555075500Z",
+  "version": "1"
 }

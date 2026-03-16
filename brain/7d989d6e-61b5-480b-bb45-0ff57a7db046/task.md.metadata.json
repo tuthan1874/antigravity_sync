@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_TASK",
-  "summary": "Task checklist for implementing salary components in the HR module: DB migration, types, service layer, UI components, and verification.",
-  "updatedAt": "2026-03-16T15:51:05.776685300Z"
+  "summary": "Task checklist for dependents feature — all items completed.",
+  "updatedAt": "2026-03-16T16:25:07.660342800Z",
+  "version": "3"
 }

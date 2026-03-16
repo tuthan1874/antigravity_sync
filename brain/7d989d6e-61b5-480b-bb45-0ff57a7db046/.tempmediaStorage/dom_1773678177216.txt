@@ -1,0 +1,76 @@
+[0] (500,16)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	HR
+	[2] (805,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Nhân sự />
+	[3] (856,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Phòng ban />
+	[4] (910,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Nhắc việc />
+	admin
+	admin
+	[5] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	Lương cơ bản
+	CĐ
+	BHXH ✓
+	Thuế TNCN ✓
+	Lương tối thiểu vùng I: 5,310,000đ (NĐ 293/2025)
+	VNĐ
+	Phụ cấp ăn trưa
+	CĐ
+	Trần miễn thuế 730K/tháng từ 15/6/2025 (TT 003/2025/TT-BNV)
+	[6] (690,96)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+	Phụ cấp xăng xe, điện thoại
+	CĐ
+	Miễn thuế
+	Khoán chi theo quy chế nội bộ DN, miễn thuế TNCN
+	[7] (690,155)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+	Phụ cấp trang phục
+	CĐ
+	Tối đa 5 triệu/năm ÷ 12 (TT 96/2015/TT-BTC)
+	[8] (690,214)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+	Phụ cấp năng suất (KPI)
+	BĐ
+	Thuế TNCN ✓
+	Không thường xuyên, theo KQ công việc. Đổi thành lương tăng ca + lương hiệu suất
+	[9] (690,273)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+	Tăng ca
+	BĐ
+	Lương tăng ca miễn thuế TNCN, không giới hạn mức trần
+	[10] (690,332)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+	Tổng Gross
+	20,000,000
+	VNĐ
+	👨‍👩‍👧‍👦 Người phụ thuộc
+	Giảm trừ:
+	0
+	x 4.4tr
+	=
+	0
+	VNĐ/tháng
+	[11] (724,496)<button class='px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest text-white transition-all hover:opacity-80'>✕ Đóng />
+	[12] (341,545)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-1'>Họ tên * />
+	[13] (341,572)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='Nguyễn Văn B' />
+	[14] (500,545)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-1'>Quan hệ * />
+	[15] (500,571)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[16] (659,545)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-1'>Ngày sinh />
+	[17] (659,572)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[18] (341,608)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-1'>CMND/CCCD />
+	[19] (341,635)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[20] (500,608)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-1'>MST (nếu có) />
+	[21] (500,635)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[22] (659,608)<label class='block text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-1'>Giảm trừ từ />
+	[23] (659,635)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[24] (279,675)<button class='px-4 py-2 rounded-lg bg-emerald-500 text-white text-xs font-bold'>💾 Lưu />
+	[25] (308,675)<button class='px-4 py-2 rounded-lg bg-white/10 text-neutral-medium text-xs font-bold'>Hủy />
+	🏦 Thông tin Ngân hàng
+	[26] (336,839)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ngân hàng />
+	[27] (336,868)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='MB Bank' />
+	[28] (500,839)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Số tài khoản />
+	[29] (500,868)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[30] (664,839)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Tên chủ tài khoản />
+	[31] (664,868)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	📝 Ghi chú & Tags

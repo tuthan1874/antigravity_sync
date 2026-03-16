@@ -1,0 +1,10 @@
+# Plan for verifying "Người phụ thuộc" (Dependents) section
+
+- [ ] Navigate to http://localhost:3000/#hr
+- [ ] Verify app loads
+- [ ] Find and click an existing FULLTIME employee
+- [ ] Locate "Người phụ thuộc" section
+- [ ] Add a dependent (Nguyễn Văn Minh, Con, 2020-01-15)
+- [ ] Verify dependent appears in list
+- [ ] Expand dependent and verify documents section
+- [ ] Take a screenshot

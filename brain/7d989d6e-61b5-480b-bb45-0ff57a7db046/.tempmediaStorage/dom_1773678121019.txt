@@ -1,0 +1,83 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,217)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	HR
+	[2] (805,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Nhân sự />
+	[3] (856,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Phòng ban />
+	[4] (910,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Nhắc việc />
+	admin
+	admin
+	[5] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	Ngày hết thử việc
+	[6] (336,78)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	💰 Cấu trúc lương
+	Nhập số tiền VNĐ cho mỗi khoản. Tổng sẽ được tính tự động.
+	Lương cơ bản
+	CĐ
+	BHXH ✓
+	Thuế TNCN ✓
+	Lương tối thiểu vùng I: 5,310,000đ (NĐ 293/2025)
+	[7] (690,267)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+	Phụ cấp ăn trưa
+	CĐ
+	Trần miễn thuế 730K/tháng từ 15/6/2025 (TT 003/2025/TT-BNV)
+	[8] (690,326)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+	Phụ cấp xăng xe, điện thoại
+	CĐ
+	Miễn thuế
+	Khoán chi theo quy chế nội bộ DN, miễn thuế TNCN
+	[9] (690,385)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+	Phụ cấp trang phục
+	CĐ
+	Tối đa 5 triệu/năm ÷ 12 (TT 96/2015/TT-BTC)
+	[10] (690,444)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+	Phụ cấp năng suất (KPI)
+	BĐ
+	Thuế TNCN ✓
+	Không thường xuyên, theo KQ công việc. Đổi thành lương tăng ca + lương hiệu suất
+	[11] (690,503)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+	Tăng ca
+	BĐ
+	Lương tăng ca miễn thuế TNCN, không giới hạn mức trần
+	[12] (690,562)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+	Tổng Gross
+	20,000,000
+	VNĐ
+	👨‍👩‍👧‍👦 Người phụ thuộc
+	Giảm trừ:
+	1
+	x 4.4tr
+	=
+	4,400,000
+	VNĐ/tháng
+	[13] (718,726)<button class='px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest text-white transition-all hover:opacity-80'>+ Thêm NPT />
+	[14] (500,785)<div  />
+		[15] (294,785)<div  />
+			[16] (269,785)<span >👤 />
+			[17] (301,785)<div  />
+				[18] (301,777)<p >Nguy />
+				[19] (301,793)<div  />
+					[20] (288,793)<span >Khác />
+					[21] (312,793)<span >Đang GT />
+		[22] (721,785)<div  />
+			[23] (717,785)<span >0
+giấy tờ />
+			[24] (733,785)<span >▲ />
+	[25] (289,833)<select class='px-2 py-1.5 rounded-lg bg-black/30 border border-primary/10 text-white text-[11px] outline-none' />
+	[26] (341,833)<button class='px-3 py-1.5 rounded-lg bg-blue-500/20 text-blue-400 text-[11px] font-bold hover:bg-blue-500/30 transition-all disabled:opacity-30'>📎 Upload giấy tờ />
+	[27] (287,868)<button class='text-[10px] font-bold px-3 py-1 rounded-lg transition-all bg-orange-500/20 text-orange-400 hover:bg-orange-500/30'>⏸ Tạm ngưng GT />
+	[28] (698,868)<button class='px-3 py-1 rounded-lg bg-red-500 text-white text-[10px] font-bold'>Xác nhận xóa />
+	[29] (727,868)<button class='px-3 py-1 rounded-lg bg-white/10 text-neutral-medium text-[10px] font-bold'>Hủy />
+	🏦 Thông tin Ngân hàng
+
+</current_dom>
