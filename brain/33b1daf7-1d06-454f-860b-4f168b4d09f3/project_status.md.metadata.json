@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Báo cáo tổng quan dự án TD Games Billing Platform đã cập nhật: 4 module hoàn thiện, 40 component files, 17 bảng Supabase (project Workflow), không dùng NocoDB. Dự án ở phase bảo trì + cải tiến.",
+  "updatedAt": "2026-03-16T10:40:52.825367500Z",
+  "version": "1"
+}

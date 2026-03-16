@@ -1,0 +1,137 @@
+# TD Games Billing Platform — Tổng quan triển khai
+
+## Kiến trúc tổng quan
+
+| Thành phần | Công nghệ |
+|---|---|
+| Frontend | Vite + React 19 + TypeScript |
+| Backend / DB | **NocoDB** (base `TD_App`) |
+| Auth | Custom login → NocoDB `INV_Accounts` |
+| Routing | Hash-based (`#invoice`, `#crm/payment`, …) |
+| Deploy | VPS (build → scp) |
+
+---
+
+## 4 Module chính
+
+### 1. 📄 Invoice — Quản lý hoá đơn & doanh thu ✅ Hoàn thiện
+
+| Component | Chức năng | Trạng thái |
+|---|---|---|
+| [InvoiceApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/components/InvoiceApp.tsx) | Shell + tab router | ✅ |
+| [InvoiceEditor.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/components/InvoiceEditor.tsx) | Tạo/sửa hoá đơn | ✅ |
+| [InvoicePreview.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/components/InvoicePreview.tsx) | Xem trước & xuất PDF | ✅ |
+| [DashboardTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/components/DashboardTab.tsx) | Thống kê doanh thu | ✅ |
+| [HistoryTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/components/HistoryTab.tsx) | Lịch sử hoá đơn | ✅ |
+| [RecurringTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/components/RecurringTab.tsx) | Hoá đơn định kỳ | ✅ |
+| [ActivityLogTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/components/ActivityLogTab.tsx) | Nhật ký hoạt động | ✅ |
+| [FilterBar.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/components/FilterBar.tsx) | Bộ lọc | ✅ |
+| [Navbar.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/components/Navbar.tsx) | Navigation + tỷ giá USD/VND | ✅ |
+| [EInvoiceModals.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/components/EInvoiceModals.tsx) | Hoá đơn điện tử | ✅ |
+| [EmailModal.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/components/EmailModal.tsx) | Gửi email hoá đơn | ✅ |
+
+**Services:** [supabaseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/services/supabaseService.ts), [exchangeRateService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/services/exchangeRateService.ts), [exportService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/services/exportService.ts), [sePayService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/services/sePayService.ts)
+
+---
+
+### 2. 💰 Expense — Quản lý chi phí ✅ Hoàn thiện
+
+| Component | Chức năng | Trạng thái |
+|---|---|---|
+| [ExpenseApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseApp.tsx) | Shell + tab router | ✅ |
+| [ExpenseForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseForm.tsx) | Thêm/sửa chi phí | ✅ |
+| [ExpenseList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseList.tsx) | Danh sách chi phí | ✅ |
+| [ExpenseCategoryManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseCategoryManager.tsx) | Quản lý danh mục | ✅ |
+| [ExpenseRecurring.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseRecurring.tsx) | Chi phí định kỳ | ✅ |
+
+**Services:** [expenseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/services/expenseService.ts)
+
+---
+
+### 3. 👷 Workforce — Quản lý nhân sự & nghiệm thu ✅ Hoàn thiện
+
+| Component | Chức năng | Trạng thái |
+|---|---|---|
+| [WorkforceApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/WorkforceApp.tsx) | Shell + tab router | ✅ |
+| [WorkerList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/WorkerList.tsx) | Danh sách nhân sự | ✅ |
+| [WorkerForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/WorkerForm.tsx) | Thêm/sửa nhân sự | ✅ |
+| [TaskList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/TaskList.tsx) | Danh sách task (sync ClickUp) | ✅ |
+| [SettlementManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/SettlementManager.tsx) | Nghiệm thu & thanh toán | ✅ |
+| [ClickUpConfig.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/ClickUpConfig.tsx) | Cấu hình ClickUp sync | ✅ |
+
+**Services:** [workforceService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts), [clickupService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/clickupService.ts)
+
+---
+
+### 4. 👥 CRM — Quản lý khách hàng ✅ Hoàn thiện
+
+| Component | Chức năng | Trạng thái |
+|---|---|---|
+| [CrmApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/components/CrmApp.tsx) | Shell + tab router | ✅ |
+| [ClientList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/components/ClientList.tsx) | Danh sách khách hàng | ✅ |
+| [ClientForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/components/ClientForm.tsx) | Thêm/sửa khách hàng | ✅ |
+| [ProjectList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/components/ProjectList.tsx) | Dự án theo khách hàng | ✅ |
+| [DocumentList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/components/DocumentList.tsx) | Tài liệu (R2 storage) | ✅ |
+| [PaymentTracker.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/components/PaymentTracker.tsx) | Theo dõi thanh toán | ✅ |
+
+**Services:** [crmService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/services/crmService.ts)
+
+---
+
+## NocoDB Database (`TD_App` — 16 bảng)
+
+| Bảng | Module |
+|---|---|
+| `INV_Accounts` | Auth (đăng nhập) |
+| `INV_Invoices` | Invoice |
+| `INV_Banks` | Invoice (thông tin ngân hàng) |
+| `td_invoice_clients` | Invoice (khách hàng) |
+| `td_invoice_studios` | Invoice (thông tin studio) |
+| `Customers` | CRM |
+| `Projects` | CRM |
+| [Account](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts#74-79) | CRM / Shared |
+| `PM_Tasks_Tracking` | Workforce (tasks) |
+| `PM_Tracking_Configs` | Workforce (cấu hình) |
+| `ListMappings` | Workforce (ClickUp mapping) |
+| `SyncConfigs` | Workforce (ClickUp sync config) |
+| `SyncMessages` | Workforce (sync log) |
+| `DriveConfigs` | Workforce (Google Drive) |
+| `NameMappings` | Workforce (mapping tên) |
+| `Settings` | Global settings |
+
+---
+
+## Shared Components
+
+| Component | Chức năng |
+|---|---|
+| [LoginScreen.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/LoginScreen.tsx) | Đăng nhập (15KB — full featured) |
+| [HomeScreen.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/HomeScreen.tsx) | Trang chủ — chọn module |
+| [Button.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/Button.tsx) | Button tái sử dụng |
+| [FormElements.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/FormElements.tsx) | Input, Select, Label, … |
+| [ToastNotification.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/ToastNotification.tsx) | Thông báo toast |
+
+---
+
+## Các tính năng đã triển khai gần đây
+
+Dựa trên lịch sử conversation:
+
+| Thời gian | Tính năng | Trạng thái |
+|---|---|---|
+| 15/03 | CRM Payment View — hiển thị tất cả hoá đơn mặc định | ✅ |
+| 15/03 | Fix R2 Public URL — preview/download file từ Cloudflare R2 | ✅ |
+| 14/03 | Fix Worker Delete — xoá nhân sự + cascade data | ✅ |
+| 13/03 | Tỷ giá USD/VND — hiển thị trên Navbar | ✅ |
+| 12/03 | PDF Export — Supabase Edge Function | ✅ |
+| 12/03 | Fix Sync Config Cascade — liên kết ListMapping → SyncConfig | ✅ |
+| 11/03 | Debug Invoice Deploy — fix deployment VPS | ✅ |
+| 10/03 | Improve Invoice UI/UX — chỉ tính task có Closed_Date | ✅ |
+
+---
+
+## Tóm tắt
+
+> **Tất cả 4 module (Invoice, Expense, Workforce, CRM) đều đã được triển khai đầy đủ.** Dự án đang ở trạng thái production — chạy ổn định, có 40 component files, 16 bảng NocoDB, và nhiều tính năng nâng cao (ClickUp sync, e-invoice, PDF export, Cloudflare R2, SePay integration, exchange rate API).
+>
+> Các công việc gần đây tập trung vào **bug fixing** và **UX improvements** — cho thấy dự án đã qua giai đoạn phát triển chính và đang ở phase **bảo trì + cải tiến**.
