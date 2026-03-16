@@ -1,44 +1,61 @@
-# Người phụ thuộc (Dependents) — HR Module
+# App Tính Lương (Payroll)
 
-Thêm quản lý người phụ thuộc cho nhân viên fulltime — phục vụ tính giảm trừ gia cảnh (4.4tr/tháng/người) khi tính thuế TNCN.
+Thêm app mới `payroll` vào hệ thống, tính lương theo đúng `tinh_luong.md`.
 
 ## Proposed Changes
 
 ### Database
 
-#### [NEW] Migration: `hr_dependents` table
+#### [NEW] Table `pay_payroll_sheets` — Bảng lương tháng
 
 ```sql
-CREATE TABLE hr_dependents (
+CREATE TABLE pay_payroll_sheets (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  employee_id UUID NOT NULL REFERENCES hr_employees(id) ON DELETE CASCADE,
-  full_name TEXT NOT NULL,
-  relationship TEXT NOT NULL,        -- 'parent' | 'child' | 'spouse' | 'other'
-  date_of_birth DATE,
-  id_number TEXT,                    -- CCCD/CMND
-  tax_code TEXT,                     -- MST người phụ thuộc (nếu có)
-  deduction_from DATE,               -- Ngày bắt đầu giảm trừ
-  deduction_to DATE,                 -- Ngày kết thúc
-  status TEXT DEFAULT 'active',      -- 'active' | 'inactive'
-  notes TEXT DEFAULT '',
-  created_at TIMESTAMPTZ DEFAULT now()
-);
-
-CREATE TABLE hr_dependent_documents (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  dependent_id UUID NOT NULL REFERENCES hr_dependents(id) ON DELETE CASCADE,
-  doc_type TEXT NOT NULL,            -- 'cccd' | 'birth_cert' | 'residence' | 'student_card' | 'disability_cert' | 'adoption' | 'income_cert' | 'other'
-  file_url TEXT NOT NULL,
-  file_name TEXT DEFAULT '',
-  notes TEXT DEFAULT '',
-  created_at TIMESTAMPTZ DEFAULT now()
+  month INT NOT NULL,           -- 1-12
+  year INT NOT NULL,
+  title TEXT,                   -- "Bảng lương Tháng 3/2026"
+  status TEXT DEFAULT 'draft',  -- draft | confirmed | paid
+  created_at TIMESTAMPTZ DEFAULT now(),
+  UNIQUE(month, year)
 );
 ```
 
-RLS: `FOR ALL USING (true)` (consistent with existing tables).
+#### [NEW] Table `pay_payroll_records` — Chi tiết lương từng nhân viên
 
-> [!NOTE]
-> Mỗi người phụ thuộc có thể có nhiều giấy tờ đính kèm (CCCD, giấy khai sinh, thẻ SV, v.v.)
+Mỗi row = 1 nhân viên trong 1 bảng lương tháng. Lưu cả input + output để có thể audit.
+
+```sql
+CREATE TABLE pay_payroll_records (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  sheet_id UUID NOT NULL REFERENCES pay_payroll_sheets(id) ON DELETE CASCADE,
+  employee_id UUID NOT NULL REFERENCES hr_employees(id),
+
+  -- INPUT (snapshot from HR + monthly sheet)
+  work_days NUMERIC(5,2) NOT NULL DEFAULT 22,  -- ngày công thực tế
+  base_salary NUMERIC(15,0) DEFAULT 0,          -- lương CB tham chiếu
+  lunch_allowance NUMERIC(15,0) DEFAULT 0,
+  transport_allowance NUMERIC(15,0) DEFAULT 0,
+  clothing_allowance NUMERIC(15,0) DEFAULT 0,
+  kpi_allowance NUMERIC(15,0) DEFAULT 0,
+  default_ot NUMERIC(15,0) DEFAULT 0,            -- tăng ca mặc định
+  extra_ot NUMERIC(15,0) DEFAULT 0,              -- tăng ca phát sinh (HR nhập tay)
+  dependents_count INT DEFAULT 0,                -- số NPT active
+
+  -- OUTPUT (tính toán)
+  gross_ref NUMERIC(15,0) DEFAULT 0,             -- Gross tham chiếu (tổng 6 khoản)
+  gross_actual NUMERIC(15,0) DEFAULT 0,          -- Gross thực tế
+  employee_bhxh NUMERIC(15,0) DEFAULT 0,         -- BH nhân viên
+  taxable_income NUMERIC(15,0) DEFAULT 0,        -- TNCT
+  assessable_income NUMERIC(15,0) DEFAULT 0,     -- TNTT
+  pit NUMERIC(15,0) DEFAULT 0,                   -- Thuế TNCN
+  net_salary NUMERIC(15,0) DEFAULT 0,            -- Net thực lĩnh
+  company_bhxh NUMERIC(15,0) DEFAULT 0,          -- BH công ty đóng thêm
+  total_company_cost NUMERIC(15,0) DEFAULT 0,    -- Chi phí thực tế công ty
+
+  note TEXT DEFAULT '',
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+```
 
 ---
 
@@ -46,50 +63,102 @@ RLS: `FOR ALL USING (true)` (consistent with existing tables).
 
 #### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
 
-Add `HrDependent` and `HrDependentDocument` interfaces.
+Thêm `PayPayrollSheet`, `PayPayrollRecord`.
 
 ---
 
-### Service Layer
+### App Structure — `apps/payroll/`
 
-#### [MODIFY] [hrService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/services/hrService.ts)
+#### [NEW] [payrollService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/payroll/services/payrollService.ts)
 
-Add CRUD functions:
-- `fetchDependents(employeeId)` — with joined documents
-- `saveDependent(data)` / `updateDependent(id, updates)` / `deleteDependent(id)`
-- `saveDependentDocument(data)` / `deleteDependentDocument(id)`
+CRUD cho payroll sheets + records, cộng **hàm tính lương** (`calculatePayroll`) implement đúng 8 bước trong `tinh_luong.md`:
+
+```
+functions:
+  - fetchPayrollSheets()
+  - createPayrollSheet(month, year) → auto-populate records cho tất cả NV fulltime
+  - fetchPayrollRecords(sheetId)
+  - updatePayrollRecord(id, updates)    -- chỉ update extra_ot + work_days
+  - recalculateRecord(record)           -- chạy lại 8 bước, update output fields
+  - recalculateAll(sheetId)             -- chạy lại toàn bộ sheet
+  - confirmSheet(sheetId)               -- đổi status → confirmed
+  - deletePayrollSheet(sheetId)
+  - calculatePayroll(inputs) → outputs  -- pure function, 8 bước
+```
+
+**Key: `createPayrollSheet`** sẽ:
+1. Lấy tất cả NV fulltime từ `hr_employees`
+2. Lấy salary components từ `hr_employee_salary` cho mỗi NV
+3. Lấy `work_days` từ `att_monthly_records` (nếu có bảng công tháng đó)
+4. Lấy `dependents_count` từ `hr_dependents` (status = active)
+5. Chạy `calculatePayroll` cho mỗi NV → insert records
 
 ---
 
-### UI Components
+#### [NEW] [usePayrollState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/payroll/hooks/usePayrollState.ts)
 
-#### [MODIFY] [EmployeeForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/EmployeeForm.tsx)
+State management + handlers cho UI.
 
-Add section **"👨‍👩‍👧‍👦 Người phụ thuộc"** (fulltime only, after salary section):
-- List existing dependents as expandable cards
-- Each card shows: name, relationship, DOB, ID number, status
-- Expand → shows document list with upload button
-- Button to add new dependent (inline form)
-- Documents: upload to R2 using existing `uploadFileToR2`
+---
 
-Document types dropdown:
-| Code | Label |
-|---|---|
-| `cccd` | CMND/CCCD |
-| `birth_cert` | Giấy khai sinh |
-| `residence` | Giấy xác nhận cư trú |
-| `student_card` | Thẻ sinh viên |
-| `disability_cert` | Giấy xác nhận khuyết tật |
-| `adoption` | Quyết định nhận nuôi |
-| `income_cert` | Xác nhận thu nhập |
-| `other` | Khác |
+#### [NEW] [PayrollApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/payroll/components/PayrollApp.tsx)
+
+App shell với 2 tabs:
+- **Bảng lương** (danh sách sheets theo tháng/năm)
+- **Chi tiết** (khi click vào 1 sheet → xem/sửa từng NV)
+
+---
+
+#### [NEW] [PayrollSheet.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/payroll/components/PayrollSheet.tsx)
+
+UI chính — bảng lương chi tiết:
+
+| Nhân viên | Ngày công | Gross TK | TC phát sinh | Gross thực | BH NV | Thuế | **Net** |
+|-----------|-----------|----------|--------------|------------|-------|------|---------|
+
+- **Inline edit**: work_days (default từ monthly sheet), extra_ot (HR nhập tay)
+- Nút **"🔄 Tính lại"** → recalculate toàn bộ
+- **Summary row** tổng cộng cuối bảng
+- **Expand row** → xem chi tiết 8 bước tính cho 1 NV
+
+---
+
+#### [NEW] [PayrollDetail.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/payroll/components/PayrollDetail.tsx)
+
+Modal/drawer hiển thị chi tiết 8 bước tính lương 1 nhân viên (giống bảng ví dụ trong `tinh_luong.md`).
+
+---
+
+### App Registration
+
+#### [MODIFY] [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
+
+Thêm `payroll` vào `VALID_APPS`, import `PayrollApp`, thêm route.
+
+#### [MODIFY] [HomeScreen.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/HomeScreen.tsx)
+
+Thêm card "💰 Tính lương" vào dashboard.
+
+---
+
+## Data Flow
+
+```mermaid
+graph LR
+    A["HR: hr_employees<br/>hr_employee_salary<br/>hr_dependents"] -->|auto-populate| C["pay_payroll_records"]
+    B["Attendance:<br/>att_monthly_records<br/>(work_days)"] -->|auto-populate| C
+    C -->|calculatePayroll()| D["Output: Gross, BH,<br/>Thuế, Net, Chi phí CT"]
+    E["HR nhập tay:<br/>extra_ot, work_days"] -->|inline edit| C
+```
 
 ---
 
 ## Verification Plan
 
+### Automated
+- Tạo bảng lương tháng 3/2026 → verify auto-populate đúng NV fulltime
+- Verify con số match ví dụ trong `tinh_luong.md` (Gross 20tr, 20/22 ngày, 1 NPT, TC phát sinh 1.5tr → Net = 19,174,954đ)
+- Inline edit extra_ot → recalculate → verify Net thay đổi
+
 ### Browser Testing
-- Navigate to employee form → verify "Người phụ thuộc" section appears for fulltime
-- Add a dependent with documents → verify save to DB
-- Edit/delete dependent → verify CRUD works
-- Verify document upload to R2 works
+- Tạo sheet, xem danh sách, xem chi tiết, sửa inline, tính lại

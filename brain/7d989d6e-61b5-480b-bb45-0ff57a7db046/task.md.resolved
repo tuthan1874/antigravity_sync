@@ -1,7 +1,11 @@
-# Dependents Feature Implementation
+# Payroll App Implementation
 
-- [x] Database migration (hr_dependents + hr_dependent_documents)
-- [x] TypeScript types (HrDependent, HrDependentDocument)
-- [x] Service layer CRUD functions
-- [x] UI: Dependents section in EmployeeForm
-- [x] Verification & browser testing
+- [ ] Database migration (pay_payroll_sheets + pay_payroll_records)
+- [ ] TypeScript types (PayPayrollSheet, PayPayrollRecord)
+- [ ] Service layer (payrollService.ts + calculatePayroll)
+- [ ] Hook (usePayrollState.ts)
+- [ ] UI: PayrollApp shell + tabs
+- [ ] UI: PayrollSheet (bảng lương chi tiết)
+- [ ] UI: PayrollDetail (8 bước tính 1 NV)
+- [ ] App registration (App.tsx + HomeScreen)
+- [ ] Verification & browser testing

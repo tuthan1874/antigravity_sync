@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Implementation plan for adding dependents management to the HR module. Covers database schema (hr_dependents + hr_dependent_documents tables), TypeScript types, service layer CRUD functions, and UI components in EmployeeForm with document upload support via R2.",
-  "updatedAt": "2026-03-16T16:16:28.555075500Z",
-  "version": "1"
+  "summary": "Implementation plan for the Payroll (Tính Lương) app. Covers 2 new DB tables (pay_payroll_sheets + pay_payroll_records), TypeScript types, service layer with calculatePayroll implementing the 8-step formula from tinh_luong.md, UI components (PayrollApp, PayrollSheet, PayrollDetail), and integration with HR salary data + attendance monthly sheets.",
+  "updatedAt": "2026-03-16T17:18:52.057700100Z",
+  "version": "2"
 }
