@@ -1,0 +1,18 @@
+# Bổ sung Cấu trúc lương vào HR
+
+## Database
+- [x] Migration: tạo `hr_salary_components` + `hr_employee_salary` + RLS + seed data
+
+## TypeScript Types
+- [x] Thêm [HrSalaryComponent](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts#423-437) + [HrEmployeeSalary](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts#438-450) vào [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
+
+## Service Layer
+- [x] Thêm CRUD functions vào [hrService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/services/hrService.ts)
+
+## UI Components
+- [x] [SalaryComponentManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/SalaryComponentManager.tsx) — admin quản lý khoản lương mẫu
+- [x] Thêm tab "Cấu trúc lương" vào [HrApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/HrApp.tsx) + [useHrState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/hooks/useHrState.ts)
+- [x] Thêm sub-tab "💰 Cấu trúc lương" vào [EmployeeDetail.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/EmployeeDetail.tsx)
+
+## Verification
+- [/] Browser test: CRUD khoản lương + gán cho nhân viên

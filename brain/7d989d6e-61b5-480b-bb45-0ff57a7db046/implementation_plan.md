@@ -1,0 +1,93 @@
+# Bổ sung cấu trúc lương vào HR
+
+Thêm hệ thống quản lý các khoản lương (salary components) cho nhân viên, hỗ trợ cấu trúc lương VN chuẩn: lương cơ bản, phụ cấp ăn trưa, xăng xe, trang phục, KPI, tăng ca... với cờ đóng BHXH / thuế TNCN.
+
+## Proposed Changes
+
+### Database (Supabase Migration)
+
+#### [NEW] `hr_salary_components` — Bảng định nghĩa các khoản lương
+| Column | Type | Mô tả |
+|---|---|---|
+| `id` | uuid PK | |
+| `name` | text | Tên khoản (Lương cơ bản, PC ăn trưa...) |
+| `code` | text unique | Mã khoản: `base_salary`, `lunch`, `transport`, `clothing`, `kpi`, `overtime` |
+| `category` | text | `fixed` \| `variable` |
+| `is_bhxh` | boolean | Có đóng BHXH không |
+| `is_taxable` | boolean | Có tính thuế TNCN không |
+| `is_tax_exempt` | boolean | Được miễn thuế (xăng xe khoán chi) |
+| `tax_cap_yearly` | numeric | Trần miễn thuế/năm (VD: 5M cho trang phục) |
+| `description` | text | Ghi chú, căn cứ pháp lý |
+| `sort_order` | int | Thứ tự hiển thị |
+| `is_active` | boolean | |
+| `created_at` | timestamptz | |
+
+Seed 6 khoản mặc định theo bảng lương mẫu user cung cấp.
+
+#### [NEW] `hr_employee_salary` — Gán khoản lương cho từng nhân viên
+| Column | Type | Mô tả |
+|---|---|---|
+| `id` | uuid PK | |
+| `employee_id` | uuid FK → hr_employees | |
+| `component_id` | uuid FK → hr_salary_components | |
+| `amount` | numeric | Số tiền (VND) |
+| `note` | text | Ghi chú riêng |
+| `effective_from` | date | Áp dụng từ ngày |
+| `effective_to` | date | Hết hiệu lực (null = vô thời hạn) |
+| `created_at` | timestamptz | |
+
+RLS: `Allow all` policy cho cả 2 bảng.
+
+---
+
+### TypeScript Types
+
+#### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
+Thêm 2 interfaces:
+- `HrSalaryComponent` — khoản lương template
+- `HrEmployeeSalary` — khoản lương gán cho nhân viên (joined với component)
+
+---
+
+### Service Layer
+
+#### [MODIFY] [hrService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/services/hrService.ts)
+Thêm 6 functions:
+- `fetchSalaryComponents()` — lấy danh sách khoản lương
+- `saveSalaryComponent()` / `updateSalaryComponent()` / `deleteSalaryComponent()`
+- `fetchEmployeeSalary(employeeId)` — lấy cấu trúc lương của 1 nhân viên
+- `saveEmployeeSalary()` / `updateEmployeeSalary()` / `deleteEmployeeSalary()`
+
+---
+
+### UI Components
+
+#### [MODIFY] [EmployeeDetail.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/EmployeeDetail.tsx)
+Thêm sub-tab **"💰 Cấu trúc lương"** vào chi tiết nhân viên:
+- Bảng hiển thị các khoản lương đang áp dụng (tên khoản, số tiền, BHXH, TNCN, ghi chú)
+- Dòng tổng cộng (Tổng gross)
+- Nút "Thêm khoản" → chọn từ danh sách components + nhập số tiền
+- Inline edit số tiền và ghi chú
+- Xóa khoản lương
+
+#### [NEW] [SalaryComponentManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/SalaryComponentManager.tsx)
+Tab quản lý **danh sách khoản lương mẫu** (admin):
+- CRUD khoản lương (tên, mã, loại, cờ BHXH/TNCN, trần thuế)
+- Hiện ở tab mới trong HR App
+
+#### [MODIFY] [HrApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/HrApp.tsx)
+Thêm tab **"Cấu trúc lương"** vào navbar (chỉ admin nhìn thấy).
+
+#### [MODIFY] [useHrState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/hooks/useHrState.ts)
+Thêm state + handlers cho salary components.
+
+---
+
+## Verification Plan
+
+### Browser Verification
+1. Mở `http://localhost:3000/#hr/activity` → tab "Cấu trúc lương" → kiểm tra 6 khoản mặc định hiển thị
+2. Thêm/sửa/xóa khoản lương mẫu
+3. Vào chi tiết nhân viên → tab "💰 Cấu trúc lương" → thêm khoản lương, nhập số tiền → kiểm tra tổng gross
+4. Sửa inline số tiền → kiểm tra auto-save
+5. Xóa khoản → kiểm tra UI cập nhật
