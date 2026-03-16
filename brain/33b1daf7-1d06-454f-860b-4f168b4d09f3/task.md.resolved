@@ -2,9 +2,9 @@
 
 - [x] Phase 1-6: DB + Frontend + Integration + Verification
 - [x] Phase 7: Cloudflare R2 document upload
-  - [x] R2 upload functions in hrService.ts
-  - [x] DocumentManager component (drag-drop, preview, delete)
-  - [x] Documents tab in EmployeeDetail
 - [x] Phase 8: Data migration from wf_workers
-  - [x] 3 freelancers → hr_employees (FL-001, FL-002, FL-003)
-  - [x] Verified in browser — cards + detail + documents tab
+- [/] Phase 9: Fixed CCCD upload fields (front/back)
+  - [ ] Add `id_card_front_url`, `id_card_back_url` columns to hr_employees
+  - [ ] Update HrEmployee TypeScript type
+  - [ ] Add CCCD upload UI in EmployeeDetail info tab
+  - [ ] Browser verification
