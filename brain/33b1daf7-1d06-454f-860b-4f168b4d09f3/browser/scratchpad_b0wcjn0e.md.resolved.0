@@ -1,0 +1,8 @@
+# Attendance App Verification Plan
+
+- [ ] Navigate to http://localhost:3000 and verify the "Chấm công" app card.
+- [ ] Click on "Chấm công" and verify the dashboard.
+- [ ] Verify the "CA LÀM VIỆC" tab.
+- [ ] Verify the "ĐƠN TỪ" tab.
+- [ ] Verify the "BÁO CÁO" tab.
+- [ ] Report findings.

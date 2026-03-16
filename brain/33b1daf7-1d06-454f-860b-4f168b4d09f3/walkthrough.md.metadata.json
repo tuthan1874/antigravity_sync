@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Complete walkthrough of the HR Management app including Phase 7 (R2 document upload) and Phase 8 (data migration). Includes screenshots of all verified features.",
-  "updatedAt": "2026-03-16T11:18:07.591912800Z",
-  "version": "1"
+  "summary": "Walkthrough documenting the attendance app implementation: 5 DB tables, 9 code files, app registration, and browser verification across all 5 tabs.",
+  "updatedAt": "2026-03-16T14:42:11.840827300Z",
+  "version": "2"
 }

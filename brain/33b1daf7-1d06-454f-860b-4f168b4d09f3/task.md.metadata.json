@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_TASK",
-  "summary": "Checklist for implementing the Attendance (Chấm công) app across 3 phases: Foundation (DB + types + shell), Core Features (log, shifts, requests, QR), and Reports.",
-  "updatedAt": "2026-03-16T14:31:37.064154400Z",
-  "version": "6"
+  "summary": "Task checklist for attendance app. Phase 1a (Foundation) complete: DB migration, types, service, hook, app shell, all 5 components, app registration. All items checked off.",
+  "updatedAt": "2026-03-16T14:42:11.828237100Z",
+  "version": "7"
 }
