@@ -1,0 +1,101 @@
+# HR Contract Generation & Export
+
+Generate 3 types of printable HR contracts (HĐLĐ, HĐTV, Cam kết bảo mật) from employee data already stored in the HR module, ready for employees to sign.
+
+## Proposed Changes
+
+### Database – Add missing employee fields
+
+The contract templates require `current_address` (chỗ ở hiện tại) and `id_issue_date/id_issue_place` which exist in [HrEmployee](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts#291-343) type but may be empty. No schema change needed – these fields already exist in the table. HR just needs to fill them.
+
+---
+
+### Contract Service
+
+#### [NEW] [contractService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/services/contractService.ts)
+
+Creates the contract generation logic using `jspdf` (already installed in [package.json](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/package.json)).
+
+**Approach:** Build each contract as structured HTML rendered in an invisible iframe, then use the browser's `window.print()` to produce a clean PDF. This avoids jsPDF's poor Vietnamese font support.
+
+> [!IMPORTANT]
+> Using **HTML + `window.print()`** instead of jsPDF's text API because:
+> - Vietnamese characters (dấu) render perfectly with system fonts
+> - CSS `@page` rules give precise A4 layout control
+> - Tables, margins, signatures all work natively
+> - jsPDF requires embedding custom fonts (~500KB+) and still struggles with complex diacritics
+
+Each contract function receives [HrEmployee](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts#291-343), [HrDepartment](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts#281-290), and `HrEmployeeSalary[]` as inputs and returns an HTML string.
+
+**3 functions:**
+- `generateHDLD(employee, department, salaryComponents)` → HĐLĐ (Labour Contract, 5 pages)
+- `generateHDTV(employee, department, salaryComponents)` → HĐTV (Probation Contract, 4 pages)
+- `generateNDA(employee, department)` → Cam kết bảo mật (Confidentiality Agreement, 3 pages)
+
+**Data mapping from HR:**
+
+| Contract Field | Source |
+|---|---|
+| Họ và tên | `employee.full_name` |
+| Ngày sinh | `employee.date_of_birth` |
+| Giới tính | `employee.gender` |
+| Quốc tịch | `employee.nationality` |
+| CMND/CCCD | `employee.id_number` |
+| Ngày cấp | `employee.id_issue_date` |
+| Nơi cấp | `employee.id_issue_place` |
+| Hộ khẩu / Địa chỉ | `employee.address` |
+| Bộ phận | `department.name` |
+| Chức danh | `employee.position` |
+| Ngày bắt đầu | `employee.start_date` |
+| Hết thử việc | `employee.probation_end` |
+| Lương cơ bản | salary component `base_salary` |
+| Phụ cấp ăn trưa | salary component `lunch` |
+| Phụ cấp xăng xe, ĐT | salary component `transport` |
+| Phụ cấp trang phục | salary component `clothing` |
+| Phụ cấp KPI | salary component `kpi` |
+
+**Fixed data (Company info):**
+- Công ty: CÔNG TY TNHH TD GAMES
+- Đại diện: Đặng Thế Toàn – Giám đốc
+- Giờ làm: 8:30 – 17:30
+- Ngày trả lương: Ngày 3~5 hàng tháng
+
+---
+
+### UI Component
+
+#### [NEW] [ContractGenerator.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/ContractGenerator.tsx)
+
+A modal/drawer triggered from [EmployeeDetail](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/EmployeeDetail.tsx#17-372) with:
+1. **Contract type selector**: 3 cards (HĐLĐ, HĐTV, NDA) with icons
+2. **Contract metadata form**: Signing date, contract number prefix
+3. **Preview area**: Rendered HTML preview of the contract in an iframe
+4. **Action buttons**: "🖨️ In / Xuất PDF" (triggers `window.print()` on the iframe)
+
+Design follows the existing dark theme with `bg-surface`, `border-primary/10`, glassmorphism cards.
+
+---
+
+### Integration
+
+#### [MODIFY] [EmployeeDetail.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/EmployeeDetail.tsx)
+
+- Add a "📝 Xuất hợp đồng" button in the header alongside "✏️ Sửa"
+- When clicked, show the `ContractGenerator` modal
+- Only show for `employee.type === 'fulltime'`
+- Load salary components data for the selected employee
+
+---
+
+## Verification Plan
+
+### Manual Testing (Browser)
+1. Run `npm run dev` → open `http://localhost:3000`
+2. Navigate to HR → click on a fulltime employee (Đặng Thế Toàn)
+3. Click "📝 Xuất hợp đồng" button
+4. Select each of the 3 contract types and verify:
+   - Employee data is filled correctly 
+   - Salary and allowances match the DB values
+   - Vietnamese text renders without issues  
+   - "In / Xuất PDF" opens the browser print dialog with correct A4 layout
+5. Confirm print preview shows proper page breaks and formatting

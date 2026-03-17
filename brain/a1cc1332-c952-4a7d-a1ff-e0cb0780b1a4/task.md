@@ -1,0 +1,22 @@
+# HR Contract Generation Feature
+
+## Planning
+- [x] Examine 3 PDF contract templates (HĐLĐ, HĐTV, Cam kết bảo mật)
+- [x] Review HR data model (types, services, DB)
+- [x] Map contract fields to HR employee data
+- [x] Check salary components mapping
+- [/] Write implementation plan
+- [ ] Get user approval
+
+## Implementation
+- [ ] Create `contractService.ts` with HTML→PDF generation for 3 contract types
+- [ ] Create `ContractGenerator.tsx` component with contract type selector, preview & export
+- [ ] Add "Xuất hợp đồng" button to `EmployeeDetail.tsx` 
+- [ ] Add missing employee fields to DB if needed (current_address, id_issue_date, id_issue_place)
+- [ ] Test PDF generation with existing employee data
+
+## Verification
+- [ ] Open HR → select fulltime employee → export each contract type
+- [ ] Verify all data fields are populated correctly
+- [ ] Verify PDF download works
+- [ ] Verify Vietnamese text renders correctly
