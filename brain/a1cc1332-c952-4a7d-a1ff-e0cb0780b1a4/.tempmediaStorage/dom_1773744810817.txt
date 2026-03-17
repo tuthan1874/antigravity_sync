@@ -1,0 +1,84 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,906)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	Invoice
+	USD
+	→
+	VND
+	26.321
+	₫
+	VCB •
+	17/03, 17:40
+	[2] (668,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all bg-primary text-black shadow-btn-glow'>edit />
+	[3] (708,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>preview />
+	[4] (755,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>history />
+	[5] (806,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>dashboard />
+	[6] (858,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>activity />
+	[7] (909,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>recurring />
+	admin
+	admin
+	[8] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	Actions
+	[9] (324,173)<button class='inline-flex items-center justify-center font-bold uppercase tracking-wider rounded-xl transition-all duration-300 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-primary text-white shadow-btn-glow hover:shadow-btn-glow-hover hover:-translate-y-0.5 active:bg-gradient-to-br active:from-primary-deep active:to-primary-dark px-8 py-4 text-sm w-full text-sm py-4 shadow-btn-glow'>EXPORT PDF />
+	[10] (324,192)<button class='inline-flex items-center justify-center font-bold uppercase tracking-wider rounded-xl transition-all duration-300 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20 px-8 py-4 text-sm w-full !py-4 border border-primary/20 hover:bg-primary/5'>Save Invoice />
+	[11] (324,220)<button class='w-full py-4 rounded-2xl text-sm font-black uppercase tracking-widest border-2 border-dashed border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/60 transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2'>Create eInvoice />
+	Config
+	[12] (383,322)<button class='p-2 rounded-lg transition-all text-primary hover:bg-primary/10' />
+	[13] (324,362)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Banking Profile />
+	[14] (324,396)<select class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all appearance-none cursor-pointer flex items-center leading-none' />
+	[15] (324,436)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Invoice Theme />
+	[16] (324,470)<select class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all appearance-none cursor-pointer flex items-center leading-none' />
+	[17] (324,509)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Status />
+	[18] (324,543)<select class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all appearance-none cursor-pointer flex items-center leading-none' />
+	[19] (289,583)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Currency />
+	[20] (289,617)<select class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all appearance-none cursor-pointer flex items-center leading-none' />
+	[21] (358,583)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Invoice # />
+	[22] (358,617)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	[23] (289,669)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Issue Date />
+	[24] (289,703)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none pr-12 date-input-custom' />
+	[25] (310,703)<button class='absolute right-3 w-8 h-8 flex items-center justify-center rounded-lg text-primary hover:bg-primary/15 transition-all cursor-pointer' />
+	[26] (358,669)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Due Date />
+	[27] (358,703)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none pr-12 date-input-custom' />
+	[28] (379,703)<button class='absolute right-3 w-8 h-8 flex items-center justify-center rounded-lg text-primary hover:bg-primary/15 transition-all cursor-pointer' />
+	Studios
+	[29] (383,823)<button class='p-2 rounded-lg transition-all text-primary hover:bg-primary/10' />
+	01
+	Client Details
+	[30] (713,167)<button class='flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black uppercase text-primary border border-primary/30 hover:bg-primary/10 transition-all'>Save Client />
+	[31] (466,222)<button class='px-5 py-2.5 rounded-lg text-[11px] font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Individual />
+	[32] (511,222)<button class='px-5 py-2.5 rounded-lg text-[11px] font-black uppercase tracking-widest transition-all bg-primary text-black shadow-btn-glow'>Company />
+	[33] (588,266)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Company Name
+* />
+		*
+	[34] (588,299)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	[35] (512,357)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Contact Person />
+	[36] (512,391)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' />
+	[37] (664,357)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Contact Email />
+	[38] (664,391)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' placeholder='example@company.com' />
+	[39] (512,449)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Tax ID />
+	[40] (512,483)<input class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 h-[52px] font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-neutral-medium/50 flex items-center leading-none' placeholder='e.g. 0123456789' />
+	[41] (588,541)<label class='text-neutral-light text-sm font-semibold mb-2 flex items-center'>Billing Address />
+	[42] (588,601)<textarea class='w-full bg-surface/80 text-neutral-light border border-primary/20 rounded-xl px-4 py-4 font-montserrat focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all min-h-[120px] resize-y placeholder:text-neutral-medium/50 leading-relaxed' />
+	02
+	Service Items
+	[43] (719,766)<button class='flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black uppercase text-primary border border-primary/30 hover:bg-primary/10 transition-all'>Add Item />
+		[44] (705,766)<span >+ />
+	Description
+	Qty
+	Unit Price
+	Total
+	01
+	[45] (512,844)<textarea class='w-full bg-transparent text-sm font-bold outline-none border-b border-transparent focus:border-primary/40 transition-colors pb-0.5 resize-none overflow-hidden text-white placeholder-white/20' placeholder='Service description...' />
+	[46] (600,844)<input class='w-full bg-transparent text-sm font-bold text-center outline-none border-b border-transparent focus:border-primary/40 transition-colors pb-0.5 text-white' />
+	[47] (643,844)<input class='w-full bg-transparent text-sm font-bold text-right outline-none border-b border-transparent focus:border-primary/40 transition-colors pb-0.5 text-white' />
+	$2,500.00
+	Subtotal
+	$2,500.00
+	03
+	Discount & Tax
+
+</current_dom>
