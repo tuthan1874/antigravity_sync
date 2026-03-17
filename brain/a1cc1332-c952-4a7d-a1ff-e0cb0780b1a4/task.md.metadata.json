@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_TASK",
-  "summary": "Task checklist for implementing the HR contract generation feature. Covers planning (template analysis, data mapping), implementation (contract service, UI component, integration), and verification phases.",
-  "updatedAt": "2026-03-17T11:09:57.037493500Z"
+  "summary": "Completed task checklist for implementing the HR contract generation feature. All planning, implementation, and verification tasks are marked complete.",
+  "updatedAt": "2026-03-17T11:31:29.960380900Z",
+  "version": "1"
 }

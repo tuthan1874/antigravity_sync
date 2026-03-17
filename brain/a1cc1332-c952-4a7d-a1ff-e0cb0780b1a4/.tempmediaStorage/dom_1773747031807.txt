@@ -1,0 +1,236 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+TD Games
+HR
+Nhân sự
+Phòng ban
+Nhắc việc
+admin
+admin
+Đ
+Đặng Thế Toàn
+FT-001
+fulltime
+active
+•
+Animation
+📝 Xuất hợp đồng
+✏️ Sửa
+← Quay lại
+📋 Thông tin
+📄 Hợp đồng (
+0
+)
+⭐ Đánh giá (
+0
+)
+📁 Dự án (
+0
+)
+🗂️ Hồ sơ
+Thông tin cá nhân
+Email
+tdgames.vn@gmail.com
+Điện thoại
+0362608491
+Ngày sinh
+1994-07-18
+Giới tính
+Nam
+Quốc tịch
+Vietnam
+Fulltime
+Phòng ban
+Animation
+Cấp bậc
+Senior
+Lương
+20,000,000 VND
+Ngày bắt đầu
+2026-03-16
+Ngân hàng
+🪪 CMND / CCCD
+Mặt trước
+📷
+Upload mặt trước
+Mặt sau
+📷
+Upload mặt sau
+📝 Xuất Hợp Đồng
+Đặng Thế Toàn
+•
+N/A
+[0] (920,21)<button >🖨️ In / Xuất PDF />
+[1] (974,21)<button >✕ Đóng />
+[2] (62,64)<label >Loại hợp đồng />
+[3] (62,102)<button  />
+	[4] (62,95)<div >📋
+Hợp đồng Lao động />
+	[5] (62,111)<div >HĐLĐ – Hợp đồng chính thức 12 tháng />
+[6] (62,159)<button  />
+	[7] (62,151)<div >📝
+Hợp đồng Thử việc />
+	[8] (62,167)<div >HĐTV – Thử việc 2 tháng, 85% lương />
+[9] (62,214)<button  />
+	[10] (62,207)<div >🔒
+Cam kết Bảo mật />
+	[11] (62,223)<div >NDA – Bảo mật thông tin dự án />
+[12] (62,260)<label >Thông tin hợp đồng />
+Số hợp đồng
+[13] (62,302)<input placeholder='001' />
+Ngày ký
+[14] (62,354)<input  />
+[15] (62,390)<label >Dữ liệu lương />
+Lương cơ bản
+5.310.000
+đ
+Phụ cấp ăn trưa
+2.000.000
+đ
+Phụ cấp xăng xe, điện thoại
+1.000.000
+đ
+Phụ cấp trang phục
+416.000
+đ
+Phụ cấp năng suất (KPI)
+7.000.000
+đ
+Tăng ca
+4.274.000
+đ
+[16] (62,565)<label >Kiểm tra dữ liệu />
+Họ tên
+Đặng Thế Toàn
+CMND/CCCD
+⚠️ Thiếu
+Ngày sinh
+1994-07-18
+Ngày cấp CMND
+⚠️ Thiếu
+Nơi cấp
+⚠️ Thiếu
+Địa chỉ
+⚠️ Thiếu
+Phòng ban
+Animation
+Chức danh
+⚠️ Thiếu
+CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+Độc lập – Tự do – Hạnh phúc
+***
+HỢP ĐỒNG LAO ĐỘNG
+Số: 0012024-ABC/HĐLĐ/TDG-Đặng Thế Toàn
+Hôm nay, ngày 17 tháng 03 năm 2026, tại Công ty TNHH TD GAMES, chúng tôi gồm:
+BÊN A: CÔNG TY TNHH TD GAMES
+Đại diện
+:
+Ông ĐẶNG THẾ TOÀN
+Chức vụ
+:
+Tổng giám đốc
+Địa chỉ
+:
+Xóm Ngoài, xã Đông Anh, Thành phố Hà Nội, Việt Nam
+Mã số thuế
+:
+0111386856
+Sau đây gọi là "Người Sử Dụng Lao Động"
+BÊN B:
+Họ và tên
+:
+Đặng Thế Toàn
+Ngày tháng năm sinh
+:
+18/07/1994
+Quốc tịch
+:
+Vietnam
+Giới tính
+:
+Nam
+Địa chỉ thường trú
+:
+..........
+Số CMND
+:
+..........
+Ngày cấp
+:
+....../....../..........
+Nơi cấp
+:
+..........
+Sau đây gọi là "Người Lao Động"
+Thỏa thuận ký kết hợp đồng lao động này ("Hợp Đồng") và cam kết thực hiện những điều khoản theo sau:
+Điều 1: Thời hạn và công việc hợp đồng
+1.1. Loại hợp đồng lao động: Hợp đồng lao động
+1.2. Thời hạn hợp đồng: 12 tháng kể từ ngày ký
+1.3. Vị trí:
+..........
+1.4. Mô tả Công việc: Theo bản mô tả công việc được cấp phát bởi Công Ty.
+Điều 2: Chế độ làm việc
+2.1. Thời giờ làm việc: 8h30 đến 17h30 (Nghỉ trưa 1 tiếng) từ thứ 2 đến thứ 6
+2.2. Những dụng cụ làm việc được cấp phát bao gồm:
+Theo quy định pháp luật về lao động hiện hành và theo yêu cầu bản chất công việc theo thỏa thuận tại Hợp Đồng này.
+CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+Độc lập – Tự do – Hạnh phúc
+***
+HỢP ĐỒNG LAO ĐỘNG
+Số: 0012024-ABC/HĐLĐ/TDG-Đặng Thế Toàn
+Hôm nay, ngày 17 tháng 03 năm 2026, tại Công ty TNHH TD GAMES, chúng tôi gồm:
+BÊN A: CÔNG TY TNHH TD GAMES
+Đại diện
+:
+Ông ĐẶNG THẾ TOÀN
+Chức vụ
+:
+Tổng giám đốc
+Địa chỉ
+:
+Xóm Ngoài, xã Đông Anh, Thành phố Hà Nội, Việt Nam
+Mã số thuế
+:
+0111386856
+Sau đây gọi là "Người Sử Dụng Lao Động"
+BÊN B:
+Họ và tên
+:
+Đặng Thế Toàn
+Ngày tháng năm sinh
+:
+18/07/1994
+Quốc tịch
+:
+Vietnam
+Giới tính
+:
+Nam
+Địa chỉ thường trú
+:
+..........
+Số CMND
+:
+..........
+Ngày cấp
+:
+....../....../..........
+Nơi cấp
+:
+..........
+Sau đây gọi là "Người Lao Động"
+Thỏa thuận ký kết hợp đồng lao động này ("Hợp Đồng") và cam kết thực hiện những điều khoản theo sau:
+Điều 1: Thời hạn và công việc hợp đồng
+1.1. Loại hợp đồng lao động: Hợp đồng lao động
+1.2. Thời hạn hợp đồng: 12 tháng kể từ ngày ký
+1.3. Vị trí:
+..........
+1.4. Mô tả Công việc: Theo bản mô tả công việc được cấp phát bởi Công Ty.
+Điều 2: Chế độ làm việc
+2.1. Thời giờ làm việc: 8h30 đến 17h30 (Nghỉ trưa 1 tiếng) từ thứ 2 đến thứ 6
+2.2. Những dụng cụ làm việc được cấp phát bao gồm:
+Theo quy định pháp luật về lao động hiện hành và theo yêu cầu bản chất công việc theo thỏa thuận tại Hợp Đồng này.
+
+</current_dom>

@@ -1,0 +1,155 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+TD Games
+HR
+Nhân sự
+Phòng ban
+Nhắc việc
+admin
+admin
+Đ
+Đặng Thế Toàn
+FT-001
+fulltime
+active
+•
+Animation
+📝 Xuất hợp đồng
+✏️ Sửa
+← Quay lại
+📋 Thông tin
+📄 Hợp đồng (
+0
+)
+⭐ Đánh giá (
+0
+)
+📁 Dự án (
+0
+)
+🗂️ Hồ sơ
+Thông tin cá nhân
+Email
+tdgames.vn@gmail.com
+Điện thoại
+0362608491
+Ngày sinh
+1994-07-18
+Giới tính
+Nam
+Quốc tịch
+Vietnam
+Fulltime
+Phòng ban
+Animation
+Cấp bậc
+Senior
+Lương
+20,000,000 VND
+Ngày bắt đầu
+2026-03-16
+Ngân hàng
+🪪 CMND / CCCD
+Mặt trước
+📷
+Upload mặt trước
+Mặt sau
+📷
+Upload mặt sau
+📝 Xuất Hợp Đồng
+Đặng Thế Toàn
+•
+N/A
+[0] (920,21)<button >🖨️ In / Xuất PDF />
+[1] (974,21)<button >✕ Đóng />
+[2] (62,64)<label >Loại hợp đồng />
+[3] (62,102)<button  />
+	[4] (62,95)<div >📋
+Hợp đồng Lao động />
+	[5] (62,111)<div >HĐLĐ – Hợp đồng chính thức 12 tháng />
+[6] (62,159)<button  />
+	[7] (62,151)<div >📝
+Hợp đồng Thử việc />
+	[8] (62,167)<div >HĐTV – Thử việc 2 tháng, 85% lương />
+[9] (62,214)<button  />
+	[10] (62,207)<div >🔒
+Cam kết Bảo mật />
+	[11] (62,223)<div >NDA – Bảo mật thông tin dự án />
+[12] (62,260)<label >Thông tin hợp đồng />
+Số hợp đồng
+[13] (62,302)<input placeholder='001' />
+Ngày ký
+[14] (62,354)<input  />
+[15] (62,390)<label >Dữ liệu lương />
+Lương cơ bản
+5.310.000
+đ
+Phụ cấp ăn trưa
+2.000.000
+đ
+Phụ cấp xăng xe, điện thoại
+1.000.000
+đ
+Phụ cấp trang phục
+416.000
+đ
+Phụ cấp năng suất (KPI)
+7.000.000
+đ
+Tăng ca
+4.274.000
+đ
+[16] (62,565)<label >Kiểm tra dữ liệu />
+Họ tên
+Đặng Thế Toàn
+CMND/CCCD
+⚠️ Thiếu
+Ngày sinh
+1994-07-18
+Ngày cấp CMND
+⚠️ Thiếu
+Nơi cấp
+⚠️ Thiếu
+Địa chỉ
+⚠️ Thiếu
+Phòng ban
+Animation
+Chức danh
+⚠️ Thiếu
+CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+Độc lập – Tự do – Hạnh phúc
+***
+CAM KẾT BẢO MẬT THÔNG TIN
+(Outsource Art/ Animation/VFX)
+Hôm nay, ngày 17 tháng 03 năm 2026, chúng tôi gồm:
+BÊN TIẾP NHẬN CAM KẾT:
+Công ty
+:
+CÔNG TY TNHH TD GAMES
+Đại Diện
+:
+Đặng Thế Toàn
+Chức vụ
+:
+Tổng Giám Đốc
+BÊN CAM KẾT:
+Ông/Bà
+:
+Đặng Thế Toàn
+Vị trí
+:
+..........
+Bên cam kết đồng ý và cam kết thực hiện nghiêm túc các quy định sau:
+1. Bảo mật thông tin:
+- Không tiết lộ, chia sẻ hoặc cung cấp bất kỳ thông tin nào liên quan đến dự án, tài sản sáng tạo (concept art, model 3D, texture, animation, VFX, storyboard...), thông tin khách hàng quốc tế, yêu cầu kỹ thuật, quy trình sản xuất nội bộ và dữ liệu bảo mật của công ty dưới bất kỳ hình thức nào, trừ khi có sự đồng ý bằng văn bản từ công ty.
+2. Bảo mật tài sản sáng tạo và quyền sở hữu trí tuệ:
+- Tất cả tài sản được tạo ra trong quá trình làm việc tại TD GAMES (bao gồm artwork, animation, VFX, file dự án, bản demo, prototype...) đều là tài sản thuộc sở hữu của công ty và/hoặc khách hàng. Bên cam kết không được sử dụng, đăng tải, chia sẻ hoặc khai thác vì mục đích cá nhân khi chưa có sự chấp thuận bằng văn bản.
+- Không sử dụng tài sản dự án (bao gồm cả phần chưa hoàn thiện) để làm portfolio cá nhân, tham gia cuộc thi, hoặc phục vụ mục đích quảng bá cá nhân mà không có văn bản cho phép của công ty.
+3. Không làm việc song song hoặc xung đột lợi ích:
+- Cam kết không thực hiện bất kỳ hoạt động nghệ thuật, animation hoặc VFX nào cho đối thủ cạnh tranh hoặc các dự án có nội dung tương tự trong thời gian hợp tác với công ty mà không được sự chấp thuận trước bằng văn bản.
+- Nếu có hoạt động freelance bên ngoài, nhân viên cần khai báo và được phê duyệt bằng văn bản từ quản lý trực tiếp trước khi tiến hành.
+4. Quản lý tài liệu và dữ liệu dự án:
+
+</current_dom>

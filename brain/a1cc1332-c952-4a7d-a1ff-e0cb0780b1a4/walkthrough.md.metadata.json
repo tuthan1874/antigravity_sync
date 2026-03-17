@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Comprehensive deployment status report for the TD Games Invoice/Billing App. Covers all 7 modules (Invoice, CRM, Expense, Workforce, HR, Attendance, Payroll) with file counts, database tables, data rows, feature completion, and infrastructure status. Overall assessment: ~65% complete.",
-  "updatedAt": "2026-03-17T10:55:14.730172Z"
+  "summary": "Walkthrough documenting the HR contract generation feature: 3 contract types (HĐLĐ, HĐTV, NDA) generated from employee data with professional formatting, preview iframe, and browser print export. Includes screenshots of all 3 contract types.",
+  "updatedAt": "2026-03-17T11:31:29.966090900Z",
+  "version": "1"
 }
