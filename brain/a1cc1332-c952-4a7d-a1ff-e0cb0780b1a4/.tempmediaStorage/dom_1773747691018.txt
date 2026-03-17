@@ -1,0 +1,178 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+TD Games
+HR
+Nhân sự
+Phòng ban
+Nhắc việc
+admin
+admin
+Đ
+Đặng Thế Toàn
+FT-001
+fulltime
+active
+•
+Animation
+📝 Xuất hợp đồng
+✏️ Sửa
+← Quay lại
+📋 Thông tin
+📄 Hợp đồng (
+0
+)
+⭐ Đánh giá (
+0
+)
+📁 Dự án (
+0
+)
+🗂️ Hồ sơ
+Thông tin cá nhân
+Email
+tdgames.vn@gmail.com
+Điện thoại
+0362608491
+Ngày sinh
+1994-07-18
+Giới tính
+Nam
+Quốc tịch
+Vietnam
+Fulltime
+Phòng ban
+Animation
+Cấp bậc
+Senior
+Lương
+20,000,000 VND
+Ngày bắt đầu
+2026-03-16
+Ngân hàng
+🪪 CMND / CCCD
+Mặt trước
+📷
+Upload mặt trước
+Mặt sau
+📷
+Upload mặt sau
+📝 Xuất Hợp Đồng
+Đặng Thế Toàn
+•
+N/A
+[0] (920,21)<button >🖨️ In / Xuất PDF />
+[1] (974,21)<button >✕ Đóng />
+[2] (62,64)<label >Loại hợp đồng />
+[3] (62,101)<button  />
+	[4] (62,94)<div >📋
+Hợp đồng Lao động />
+	[5] (62,110)<div >HĐLĐ – Hợp đồng chính thức 12 tháng />
+[6] (62,157)<button  />
+	[7] (62,150)<div >📝
+Hợp đồng Thử việc />
+	[8] (62,166)<div >HĐTV – Thử việc 2 tháng, 85% lương />
+[9] (62,213)<button  />
+	[10] (62,206)<div >🔒
+Cam kết Bảo mật />
+	[11] (62,222)<div >NDA – Bảo mật thông tin dự án />
+[12] (62,259)<label >Thông tin hợp đồng />
+Số hợp đồng
+[13] (62,301)<input placeholder='001' />
+Ngày ký
+[14] (62,353)<input  />
+[15] (62,389)<label >Dữ liệu lương />
+Lương cơ bản
+5.310.000
+đ
+Phụ cấp ăn trưa
+2.000.000
+đ
+Phụ cấp xăng xe, điện thoại
+1.000.000
+đ
+Phụ cấp trang phục
+416.000
+đ
+Phụ cấp năng suất (KPI)
+7.000.000
+đ
+Tăng ca
+4.274.000
+đ
+[16] (62,564)<label >Kiểm tra dữ liệu />
+Họ tên
+Đặng Thế Toàn
+CMND/CCCD
+⚠️ Thiếu
+Ngày sinh
+1994-07-18
+Ngày cấp CMND
+⚠️ Thiếu
+Nơi cấp
+⚠️ Thiếu
+Địa chỉ
+⚠️ Thiếu
+Phòng ban
+Animation
+Chức danh
+⚠️ Thiếu
+Địa chỉ thường trú
+:
+..........
+Số CMND
+:
+..........
+Ngày cấp
+:
+....../....../..........
+Nơi cấp
+:
+..........
+Sau đây gọi là "Người Lao Động"
+Thỏa thuận ký kết hợp đồng lao động này ("Hợp Đồng") và cam kết thực hiện những điều khoản theo sau:
+Điều 1: Thời hạn và công việc hợp đồng
+1.1. Loại hợp đồng lao động: Hợp đồng lao động
+1.2. Thời hạn hợp đồng: 12 tháng kể từ ngày ký
+1.3. Vị trí:
+..........
+1.4. Mô tả Công việc: Theo bản mô tả công việc được cấp phát bởi Công Ty.
+Điều 2: Chế độ làm việc
+2.1. Thời giờ làm việc: 8h30 đến 17h30 (Nghỉ trưa 1 tiếng) từ thứ 2 đến thứ 6
+2.2. Những dụng cụ làm việc được cấp phát bao gồm:
+Theo quy định pháp luật về lao động hiện hành và theo yêu cầu bản chất công việc theo thỏa thuận tại Hợp Đồng này.
+Điều 3: Nghĩa vụ, quyền lợi, và lợi ích của Người Lao Động
+3.1. Quyền lợi
+a) Mức lương cơ bản:
+5.310.000
+đồng/tháng
+b) Phương thức trả lương: ngày 3 đến ngày 5 hàng tháng
+c) Hình thức trả lương: Chuyển khoản
+d) Các khoản tiền thưởng: Theo chính sách của Công Ty và các quy định pháp luật về lao động hiện hành.
+e) Chế độ nâng mức lương: Theo chính sách của Công Ty
+f) Việc cung cấp trang bị bảo hộ cá nhân gồm:
+Theo quy định pháp luật về lao động hiện hành và theo như yêu cầu bản chất công việc được thỏa thuận tại Hợp Đồng này.
+g) Thời gian nghỉ ngơi (phép tháng, phép năm, và các ngày Lễ chính) theo quy định pháp luật về lao động hiện hành.
+Bảo hiểm theo luật định: Hưởng các chế độ BHXH, BHYT và BHTN theo quy định pháp luật hiện hành.
+h) Chế độ đào tạo nghề: Phụ thuộc vào yêu cầu công việc. Trong thời gian huấn luyện, Người Lao Động phải nghiêm túc hoàn thành mỗi khóa huấn luyện đúng thời hạn và yêu cầu.
+i) Những thỏa thuận khác:
+Công Ty sẽ khấu trừ và kê khai thay cho Người Lao Động này về thuế thu nhập cá nhân (nếu có) phát sinh từ tiền lương, phụ cấp, tiền thưởng do Công Ty chi trả theo quy định pháp luật hiện hành của Việt Nam.
+k) Người Lao Động sẽ không nhận được số tiền lương tính theo ngày làm việc tương ứng nếu đơn phương hoặc tự ý chấm dứt hợp đồng trước thời hạn mà không báo trước cho Công ty theo thời hạn luật định hoặc không bàn giao đầy đủ công việc và tài sản cho Công Ty cấp phát (nếu có).
+3.2. Nghĩa vụ của Người Lao Động
+a) Hoàn thành công việc đã cam kết trong Hợp đồng Lao động này và các Phụ lục được lập vào từng thời điểm (nếu có).
+b) Tuân thủ các nghĩa vụ đóng Bảo hiểm Xã hội (BHXH), Bảo hiểm Y tế (BHYT), Bảo hiểm Thất nghiệp (BHTN) (nếu có) và Thuế Thu nhập Cá nhân theo pháp luật hiện hành.
+c) Tuân thủ các chỉ dẫn hợp pháp của người quản lý hoặc người phụ trách có thẩm quyền, nội quy lao động và các quy định nội bộ khác của Công ty và bên thứ ba có liên quan đến công việc thực hiện theo Hợp đồng này.
+d) Bồi thường cho Công Ty do (i) Người Lao Động làm hư hỏng dụng cụ, thiết bị hoặc có hành vi khác gây thiệt hại tài sản của Công Ty thì phải bồi thường theo quy định của pháp luật; và/hoặc (ii) vi phạm kỷ luật lao động hoặc trách nhiệm pháp lý khác căn cứ theo nội quy lao động, Bộ Luật Lao Động Việt Nam hoặc theo các thỏa thuận giữa Công ty và Người Lao Động.
+Điều 4: Nghĩa vụ và quyền hạn của người sử dụng lao động
+4.1. Nghĩa vụ
+a) Bảo đảm việc làm và đáp ứng những nghĩa vụ theo Hợp đồng Lao động này và pháp luật hiện hành.
+b) Đóng BHXH, BHYT và BHTN theo pháp luật hiện hành. Công ty thực hiện đóng BHXH, BHYT và BHTN cho người lao động trong thời gian thử việc
+c) Thanh toán đầy đủ và đúng thời hạn tất cả các chế độ và quyền lợi khác cho Người Lao Động này theo Hợp đồng Lao động này và thỏa thuận chung, nếu có.
+4.2. Quyền hạn
+a) Quản lý Người Lao Động này để đảm bảo rằng các nghĩa vụ của anh/chị ấy được hoàn tất theo hợp đồng lao động này
+b) Tạm hoãn hoặc chấm dứt Hợp đồng Lao động này, và áp dụng các hình thức xử lý kỷ luật theo Bộ Luật Lao Động Việt Nam, Thỏa Thuận Chung (nếu có) và các nội quy của Công ty.
+Điều 5: Các nội dung khác
+- Ngoài các khoản tiền lương và phụ cấp mà người lao động nhận được tại Điều 3 của hợp đồng lao động này, người lao động còn được nhận các khoản khác như sau:
+
+</current_dom>

@@ -1,0 +1,204 @@
+TD Games
+HR
+Nhân sự
+Phòng ban
+Nhắc việc
+admin
+admin
+Đ
+Đặng Thế Toàn
+FT-001
+fulltime
+active
+•
+Animation
+📝 Xuất hợp đồng
+✏️ Sửa
+← Quay lại
+📋 Thông tin
+📄 Hợp đồng (
+0
+)
+⭐ Đánh giá (
+0
+)
+📁 Dự án (
+0
+)
+🗂️ Hồ sơ
+Thông tin cá nhân
+Email
+tdgames.vn@gmail.com
+Điện thoại
+0362608491
+Ngày sinh
+1994-07-18
+Giới tính
+Nam
+Quốc tịch
+Vietnam
+Fulltime
+Phòng ban
+Animation
+Cấp bậc
+Senior
+Lương
+20,000,000 VND
+Ngày bắt đầu
+2026-03-16
+Ngân hàng
+🪪 CMND / CCCD
+Mặt trước
+📷
+Upload mặt trước
+Mặt sau
+📷
+Upload mặt sau
+📝 Xuất Hợp Đồng
+Đặng Thế Toàn
+•
+N/A
+[0] (920,21)<button >🖨️ In / Xuất PDF />
+[1] (974,21)<button >✕ Đóng />
+[2] (62,64)<label >Loại hợp đồng />
+[3] (62,101)<button  />
+	[4] (62,94)<div >📋
+Hợp đồng Lao động />
+	[5] (62,110)<div >HĐLĐ – Hợp đồng chính thức 12 tháng />
+[6] (62,158)<button  />
+	[7] (62,150)<div >📝
+Hợp đồng Thử việc />
+	[8] (62,166)<div >HĐTV – Thử việc 2 tháng, 85% lương />
+[9] (62,214)<button  />
+	[10] (62,207)<div >🔒
+Cam kết Bảo mật />
+	[11] (62,223)<div >NDA – Bảo mật thông tin dự án />
+[12] (62,260)<label >Thông tin hợp đồng />
+Số hợp đồng
+[13] (62,302)<input placeholder='001' />
+Ngày ký
+[14] (62,354)<input  />
+[15] (62,390)<label >Dữ liệu lương />
+Lương cơ bản
+5.310.000
+đ
+Phụ cấp ăn trưa
+2.000.000
+đ
+Phụ cấp xăng xe, điện thoại
+1.000.000
+đ
+Phụ cấp trang phục
+416.000
+đ
+Phụ cấp năng suất (KPI)
+7.000.000
+đ
+Tăng ca
+4.274.000
+đ
+[16] (62,565)<label >Kiểm tra dữ liệu />
+Họ tên
+Đặng Thế Toàn
+CMND/CCCD
+⚠️ Thiếu
+Ngày sinh
+1994-07-18
+Ngày cấp CMND
+⚠️ Thiếu
+Nơi cấp
+⚠️ Thiếu
+Địa chỉ
+⚠️ Thiếu
+Phòng ban
+Animation
+Chức danh
+⚠️ Thiếu
+CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+Độc lập – Tự do – Hạnh phúc
+***
+HỢP ĐỒNG THỬ VIỆC
+Số HĐTV: 001-HĐTV/TDG-Đặng Thế Toàn
+- Căn cứ Bộ luật Lao động nước Cộng hòa xã hội chủ nghĩa Việt Nam năm 2019;
+- Căn cứ nhu cầu và năng lực của hai bên;
+Hôm nay, ngày 17 tháng 03 năm 2026 tại công ty TNHH TD GAMES, chúng tôi gồm:
+BÊN A: CÔNG TY TNHH TD GAMES
+Đại diện
+:
+Ông ĐẶNG THẾ TOÀN
+Chức vụ
+:
+Tổng giám đốc
+Địa chỉ
+:
+Xóm Ngoài, xã Đông Anh, Thành phố Hà Nội, Việt Nam
+Mã số thuế
+:
+0111386856
+Sau đây gọi là "Người Sử Dụng Lao Động"
+BÊN B:
+Họ và tên
+:
+Đặng Thế Toàn
+Ngày tháng năm sinh
+:
+18/07/1994
+Quốc tịch
+:
+Vietnam
+Giới tính
+:
+Nam
+Địa chỉ thường trú
+:
+..........
+Số CMND
+:
+..........
+Ngày cấp
+:
+....../....../..........
+Nơi cấp
+:
+..........
+Sau đây gọi là "Người Lao Động"
+Sau khi thỏa thuận, hai bên thống nhất ký Hợp đồng thử việc với các điều khoản sau đây:
+Điều 1: Điều khoản chung
+1. Loại hợp đồng: Hợp đồng thử việc.
+2. Thời hạn hợp đồng: 02 tháng kể từ ngày ký
+3. Thời điểm bắt đầu:
+16/03/2026
+4. Thời điểm kết thúc:
+16/05/2026
+5. Địa điểm làm việc: Văn phòng công ty
+6. Bộ phận công tác:
+Animation
+7. Chức danh chuyên môn (vị trí công tác):
+..........
+8. Nhiệm vụ công việc như sau:
+- Thực hiện công việc theo đúng chức danh chuyên môn của mình dưới sự quản lý, điều hành của người có thẩm quyền.
+- Phối hợp cùng với các bộ phận, phòng ban khác trong Công ty để đạt hiệu quả cao nhất trong thời gian thử việc.
+- Những công việc khác theo nhu cầu của Công ty.
+Điều 2: Chế độ làm việc
+1. Thời gian làm việc: 8:30 đến 17:30 từ thứ 2 đến thứ 6
+2. Thời gian nghỉ ngơi: 12:00 - 13:00
+3. Thiết bị và công cụ làm việc sẽ được Công ty cấp phát tùy theo nhu cầu của công việc.
+4. Điều kiện an toàn và vệ sinh lao động tại nơi làm việc theo quy định của pháp luật hiện hành.
+Điều 3: Quyền và nghĩa vụ của người lao động
+1. Quyền của người lao động
+1.1. Quyền lợi:
+- Mức lương cơ bản:
+5.310.000
+đồng/tháng
+- Mức lương thử việc: 85% lương cơ bản
+- Hình thức trả lương: chuyển khoản
+- Thời hạn trả lương: từ ngày 03 đến ngày 05 hàng tháng
+1.2. Hỗ trợ:
+- Ăn trưa
+:
+2.000.000 đồng/tháng
+Tính theo ngày công thực tế
+- Điện thoại
+:
+1.000.000 đồng/tháng
+Tính theo ngày công thực tế
