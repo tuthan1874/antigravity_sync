@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough documenting the HR contract generation feature: 3 contract types (HĐLĐ, HĐTV, NDA) generated from employee data with professional formatting, preview iframe, and browser print export. Includes screenshots of all 3 contract types.",
-  "updatedAt": "2026-03-17T11:31:29.966090900Z",
-  "version": "1"
+  "summary": "Walkthrough documenting the freelancer contract generation feature implementation, including HĐKV and NDA CTV templates, dynamic project name input, and verification results with screenshots.",
+  "updatedAt": "2026-03-17T14:46:16.644851200Z",
+  "version": "2"
 }

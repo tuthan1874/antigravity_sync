@@ -1,0 +1,122 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+TD Games
+HR
+Nhân sự
+Phòng ban
+Nhắc việc
+admin
+admin
+L
+Lê Văn Khiêm
+FL-003
+freelancer
+active
+📝 Xuất hợp đồng
+✏️ Sửa
+← Quay lại
+📋 Thông tin
+📄 Hợp đồng (
+0
+)
+⭐ Đánh giá (
+0
+)
+📁 Dự án (
+0
+)
+🗂️ Hồ sơ
+Thông tin cá nhân
+Email
+khiemlv.tdconsulting@gmail.com
+Quốc tịch
+Vietnam
+Freelancer
+Múi giờ
+UTC+7
+Ngân hàng
+🪪 CMND / CCCD
+Mặt trước
+📷
+Upload mặt trước
+Mặt sau
+📷
+Upload mặt sau
+TD Consulting • Enterprise Billing Engine • v2.1
+📝 Xuất Hợp Đồng
+(Freelancer)
+Lê Văn Khiêm
+•
+Freelancer
+[0] (920,21)<button >🖨️ In / Xuất PDF />
+[1] (974,21)<button >✕ Đóng />
+[2] (62,64)<label >Loại hợp đồng />
+[3] (62,101)<button  />
+	[4] (62,94)<div >📄
+Hợp đồng Khoán việc />
+	[5] (62,110)<div >HĐKV – Hợp đồng dịch vụ CTV/Freelancer />
+[6] (62,158)<button  />
+	[7] (62,150)<div >🔐
+Thỏa thuận Bảo mật />
+	[8] (62,166)<div >NDA CTV – Bảo mật thông tin chi tiết />
+[9] (62,204)<label >Thông tin hợp đồng />
+Số hợp đồng
+[10] (62,246)<input placeholder='001' />
+Ngày ký
+[11] (62,299)<input  />
+[12] (62,334)<label >Thông tin thù lao />
+Rate type
+N/A
+Rate amount
+N/A
+Thanh toán
+N/A
+[13] (62,448)<label >Kiểm tra dữ liệu />
+Họ tên
+Lê Văn Khiêm
+CMND/CCCD
+⚠️ Thiếu
+Ngày sinh
+⚠️ Thiếu
+Giới tính
+⚠️ Thiếu
+Địa chỉ
+⚠️ Thiếu
+SĐT
+⚠️ Thiếu
+Email
+khiemlv.tdconsulting@gmail.com
+Định nghĩa: Thuật ngữ "Thông tin mật" được dùng trong Thỏa thuận này được hiểu là bất kỳ hoặc tất cả mọi thông tin và các tài liệu khác do Bên cung cấp thông tin cung cấp và truyền đạt cho Bên nhận thông tin và giám đốc, cán bộ, nhân viên, đại diện hoặc đại lý của Bên nhận thông tin (sau đây gọi chung là "Người đại diện"), được quy định, chỉ rõ hoặc ghi chú "mật" hoặc những thông tin mà mục đích của nó chỉ dành cho Bên nhận thông tin. Để tránh hiểu nhầm, Thông tin mật được xem như bao gồm (nhưng không giới hạn) (a) các loại thông tin sau, hoặc các thông tin khác có bản chất tương tự, được trình bày hoặc không được trình bày dưới dạng văn bản: phát kiến, ý tưởng, khái niệm, giấy tờ, phần mềm tại mọi giai đoạn phát triển, thiết kế, bản vẽ, thông số kỹ thuật, quy cách kỹ thuật, kiểu dáng, nguyên mẫu, dữ liệu, mã nguồn, mã đối tượng, tài liệu, sách hướng dẫn, sơ đồ, biểu đồ phát triển, lược đồ, nghiên cứu, quy trình, thủ tục, chức năng, "bí quyết", kỹ thuật và tài liệu marketing, kế hoạch marketing và phát triển, tên khách hàng và các thông tin liên quan đến khách hàng, báo giá, chính sách giá và các thông tin tài chính; (b) bất kỳ thông tin nào do bên thứ ba tiết lộ cho Bên cung cấp thông tin có ràng buộc bởi nghĩa vụ bảo mật; cũng như (c) các thông tin do Bên nhận thông tin và/hoặc Người đại diện soạn thảo và phát triển có sử dụng bất kỳ phần nào của Thông tin mật.
+Định nghĩa trên không bao gồm: Ngay cả trong trường hợp Thỏa thuận này có quy định khác đi, các Bên thừa nhận rằng Thông tin bí mật không bao gồm các thông tin:
+Đã hoặc sẽ được phổ biến rộng rãi không do vi phạm Thỏa thuận này;
+Không kèm theo nghĩa vụ bảo mật, đã thuộc sở hữu của Bên nhận thông tin từ trước đó, không phải do Bên cung cấp thông tin trao, cung cấp, chuyển giao, bán hoặc tiết lộ bằng cách khác (trực tiếp hoặc gián tiếp), mà Bên nhận thông tin có thể chứng minh bằng các tài liệu văn bản;
+Do Bên nhận thông tin nhận được một cách hợp pháp không kèm theo nghĩa vụ bảo mật từ bên thứ ba – thông tin mà trước đó cũng được cung cấp cho bên thứ ba không đòi hỏi nghĩa vụ bảo mật; hoặc phải được công khai theo quy định của pháp luật.
+Điều 3. NGHĨA VỤ BẢO MẬT
+Nghĩa vụ chung:
+Trên cơ sở xem xét việc tiết lộ Thông tin mật của Bên cung cấp thông tin, Bên nhận thông tin cam kết và đảm bảo rằng Người đại diện của mình sẽ tuyệt đối giữ bí mật đối với các Thông tin mật đó và tuân thủ nghiêm ngặt những quy định của Thỏa thuận này.
+Mục đích:
+Bên nhận thông tin cam kết rằng bản thân Bên nhận thông tin và Người đại diện của Bên nhận thông tin chỉ sử dụng Thông tin mật cho mục đích thực hiện Dự án.
+Người đại diện:
+Bên nhận thông tin sẽ áp dụng mọi biện pháp và cách thức để hạn chế đến mức thấp nhất rủi ro đối với việc bị lộ Thông tin mật bằng cách đảm bảo rằng chỉ duy nhất Người đại diện – người trực tiếp liên quan đến Dự án và có nghĩa vụ nắm bắt toàn bộ hoặc một phần Thông tin mật - được tiếp cận phần Thông tin mật liên quan phù hợp với yêu cầu công việc.
+Quản lý, Lưu giữ và Hoàn trả:
+Bên nhận thông tin phải lưu giữ các Thông tin mật riêng rẽ với các tài liệu và sổ sách khác của mình. Đồng thời, Bên nhận thông tin phải bảo đảm an toàn và kiểm soát Thông tin mật được lưu giữ dưới dạng tài liệu hoặc hình thức hữu hình khác. Theo yêu cầu của Bên cung cấp thông tin vào bất kỳ thời điểm nào, hoặc khi Hai Bên quyết định không tham gia dự án, hoặc khi chấm dứt dự án, tùy theo điều kiện nào xảy ra trước, Bên nhận thông tin phải nhanh chóng hoàn trả cho Bên cung cấp thông tin (đồng thời ngừng sử dụng) toàn bộ Thông tin mật và toàn bộ các tài liệu, giấy tờ chứa hoặc tạo thành Thông tin mật, bao gồm các bản sao hoặc mô phỏng của các tài liệu đó.
+Không tiết lộ thông tin cho bên thứ ba:
+Bên nhận thông tin cam kết không được tiết lộ, cung cấp, chuyển giao, công bố hoặc làm lộ trực tiếp hay gián tiếp toàn bộ hoặc một phần Thông tin mật cho bất kỳ bên thứ ba nào dưới bất kỳ hình thức nào nếu không có sự chấp thuận trước bằng văn bản của Bên cung cấp thông tin, trừ các trường hợp theo Điều 6.
+Trong thời hạn hiệu lực của Thỏa thuận và trong vòng 24 tháng kể từ ngày chấm dứt Thỏa thuận hợp tác, Bên nhận thông tin cam kết không trực tiếp hoặc gián tiếp, tự mình hoặc thông qua bất kỳ bên thứ ba nào, tiếp cận, liên hệ, chào mời, thiết lập quan hệ hợp tác, ký kết hợp đồng, tuyển dụng, lôi kéo hoặc có bất kỳ hành vi nào nhằm thiết lập quan hệ kinh doanh hoặc quan hệ lao động với khách hàng, đối tác hoặc nhân sự của Bên cung cấp thông tin mà Bên nhận biết được thông qua Thỏa thuận này.
+Không cạnh tranh và không sử dụng Thông tin mật gây bất lợi cho Bên cung cấp thông tin:
+Bên nhận thông tin không được sử dụng Thông tin mật, danh sách khách hàng, thông tin dự án, đơn giá, mô hình kinh doanh hoặc bất kỳ thông tin kinh doanh nào của Bên cung cấp thông tin nhằm mục đích cạnh tranh hoặc gây ảnh hưởng bất lợi đến hoạt động kinh doanh của Bên cung cấp thông tin.
+Điều 4. TÀI SẢN CỦA CÁC BÊN
+Toàn bộ Thông tin mật được tiết lộ theo Thỏa thuận này vẫn thuộc sở hữu của Bên cung cấp thông tin. Dù được quy định rõ ràng, ngụ ý hoặc bằng cách khác, không điều khoản nào trong Thỏa thuận này được hiểu là việc trao quyền hoặc cấp giấy phép của Bên cung cấp thông tin đối với việc sử dụng bất cứ Thông tin mật nào (bao gồm nhưng không giới hạn tới quyền sở hữu trí tuệ) cho Bên nhận thông tin.
+Điều 5. TIẾT LỘ THEO Ý MUỐN CỦA BÊN CUNG CẤP THÔNG TIN
+Không điều khoản nào trong Thỏa thuận này được hiểu là có quy định buộc Bên cung cấp thông tin phải tiết lộ bất kỳ Thông tin mật nào cho Bên nhận thông tin hoặc Người đại diện.
+Điều 6. TIẾT LỘ THEO LỆNH CỦA TÒA ÁN/YÊU CẦU CỦA CƠ QUAN CÓ THẨM QUYỀN
+Trong trường hợp Bên nhận thông tin hoặc Người đại diện của Bên nhận thông tin buộc phải tiết lộ Thông tin mật theo lệnh của tòa án hoặc yêu cầu của cơ quan nhà nước có thẩm quyền hoặc quy định khác của pháp luật, Bên nhận thông tin phải thông báo ngay cho Bên cung cấp thông tin để Bên cung cấp thông tin có cơ hội bác bỏ việc tiết lộ thông tin đó. Nếu không thể bác bỏ được, Bên nhận thông tin và/hoặc Người đại diện chỉ được tiết lộ Thông tin mật trong phạm vi cần thiết theo lệnh của tòa án và yêu cầu của chính phủ.
+Điều 7. THÔNG BÁO VỀ VIỆC CÔNG BỐ TRÁI PHÉP, LẠM DỤNG HOẶC SỬ DỤNG SAI MỤC ĐÍCH ĐỐI VỚI THÔNG TIN MẬT
+Khi được thông báo hoặc được biết về việc sử dụng trái phép hoặc tiết lộ, lạm dụng và sử dụng sai mục đích đối với Thông tin mật, Bên nhận thông tin và Người đại diện phải thông báo ngay cho Bên cung cấp thông tin.
+Điều 8. KHÔNG CAM KẾT, BẢO ĐẢM HOẶC BẢO LÃNH
+Bất kỳ Thông tin mật nào được Bên cung cấp thông tin tiết lộ cũng không tạo thành cam kết, bảo đảm hoặc bảo lãnh cho Bên nhận thông tin; đồng thời, Bên cung cấp thông tin không có trách nhiệm hay nghĩa vụ về việc bảo đảm hoặc bảo lãnh nào đối với Bên nhận thông tin.
+Điều 9. CHUYỂN NHƯỢNG
+
+</current_dom>

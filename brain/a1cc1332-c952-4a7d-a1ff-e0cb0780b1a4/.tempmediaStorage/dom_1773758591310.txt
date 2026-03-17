@@ -1,0 +1,170 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+TD Games
+HR
+Nhân sự
+Phòng ban
+Nhắc việc
+admin
+admin
+L
+Lê Văn Khiêm
+FL-003
+freelancer
+active
+📝 Xuất hợp đồng
+✏️ Sửa
+← Quay lại
+📋 Thông tin
+📄 Hợp đồng (
+0
+)
+⭐ Đánh giá (
+0
+)
+📁 Dự án (
+0
+)
+🗂️ Hồ sơ
+Thông tin cá nhân
+Email
+khiemlv.tdconsulting@gmail.com
+Quốc tịch
+Vietnam
+Freelancer
+Múi giờ
+UTC+7
+Ngân hàng
+🪪 CMND / CCCD
+Mặt trước
+📷
+Upload mặt trước
+Mặt sau
+📷
+Upload mặt sau
+TD Consulting • Enterprise Billing Engine • v2.1
+📝 Xuất Hợp Đồng
+(Freelancer)
+Lê Văn Khiêm
+•
+Freelancer
+[0] (920,21)<button >🖨️ In / Xuất PDF />
+[1] (974,21)<button >✕ Đóng />
+[2] (62,64)<label >Loại hợp đồng />
+[3] (62,102)<button  />
+	[4] (62,95)<div >📄
+Hợp đồng Khoán việc />
+	[5] (62,111)<div >HĐKV – Hợp đồng dịch vụ CTV/Freelancer />
+[6] (62,159)<button  />
+	[7] (62,151)<div >🔐
+Thỏa thuận Bảo mật />
+	[8] (62,167)<div >NDA CTV – Bảo mật thông tin chi tiết />
+[9] (62,204)<label >Thông tin hợp đồng />
+Số hợp đồng
+[10] (62,246)<input placeholder='001' />
+Ngày ký
+[11] (62,299)<input  />
+🎯 Tên dự án (V/v)
+[12] (62,351)<input placeholder='VD: Thiết kế nhân vật game ABC...' />
+💡 Mỗi freelancer có thể có nhiều HĐ cho từng dự án
+[13] (62,401)<label >Thông tin thù lao />
+Rate type
+N/A
+Rate amount
+N/A
+Thanh toán
+N/A
+[14] (62,514)<label >Kiểm tra dữ liệu />
+Họ tên
+Lê Văn Khiêm
+CMND/CCCD
+⚠️ Thiếu
+Ngày sinh
+⚠️ Thiếu
+Giới tính
+⚠️ Thiếu
+Địa chỉ
+⚠️ Thiếu
+SĐT
+⚠️ Thiếu
+Email
+khiemlv.tdconsulting@gmail.com
+CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+Độc lập – Tự do – Hạnh phúc
+***
+HỢP ĐỒNG KHOÁN VIỆC
+(V/v: Thiết kế và thực hiện Animation cho phần mềm game 2D)
+Số: 001/HĐKV-Lê Văn Khiêm
+Căn cứ Bộ luật Dân sự số 91/2015/QH13 ngày 24/11/2015;
+Căn cứ Luật Sở hữu trí tuệ số 50/2005/QH11, được sửa đổi bổ sung năm 2022;
+Căn cứ Nhu cầu hợp tác sản xuất nội dung Animation cho dự án sản xuất phần mềm game của Bên A và năng lực chuyên môn của Bên B.
+Hôm nay, ngày 17 tháng 03 năm 2026, tại TD Consulting, hai bên gồm có:
+I. THÔNG TIN CÁC BÊN
+BÊN A (Bên thuê dịch vụ):
+Tên công ty
+:
+Công ty TNHH TD Games
+Địa chỉ
+:
+Xóm Ngoài, Xã Đông Anh, TP Hà Nội
+Mã số thuế
+:
+0111386856
+Đại diện
+:
+Ông Đặng Thế Toàn
+Chức vụ
+:
+Giám đốc
+(Sau đây gọi tắt là "Bên A")
+BÊN B (Cá nhân cung cấp dịch vụ):
+Họ và tên
+:
+Lê Văn Khiêm
+Ngày sinh
+:
+....../....../..........
+Giới tính
+:
+..........
+Số CCCD/CMND
+:
+..........
+Ngày cấp
+:
+....../....../..........
+Nơi cấp
+:
+..........
+Địa chỉ
+:
+..........
+Số điện thoại/Email
+:
+.......... / khiemlv.tdconsulting@gmail.com
+(Sau đây gọi tắt là "Bên B")
+II. NỘI DUNG VÀ PHẠM VI DỊCH VỤ
+Bên B cung cấp các thiết kế hoặc thực hiện các công việc liên quan đến hoạt hình 2D theo yêu cầu của từng Phụ lục Hợp đồng được ký kèm.
+Mỗi Phụ lục sẽ mô tả cụ thể:
+Tên dự án, hạng mục công việc;
+Thời hạn hoàn thành;
+Yêu cầu kỹ thuật và sản phẩm bàn giao;
+Mức thù lao, phương thức thanh toán.
+Bên B tự chịu trách nhiệm về phương tiện, thiết bị, thời gian và cách thức thực hiện để hoàn thành đúng tiến độ, chất lượng đã thỏa thuận.
+Bên A có quyền yêu cầu chỉnh sửa trong phạm vi hợp lý để đảm bảo sản phẩm đáp ứng yêu cầu của khách hàng.
+III. NGHIỆM THU VÀ THANH TOÁN
+Sau khi Bên B hoàn thành công việc, hai bên tiến hành nghiệm thu sản phẩm.
+Bên A thanh toán thù lao cho Bên B sau khi có kết quả nghiệm thu.
+Mức thù lao, hình thức chuyển khoản hoặc tiền mặt được ghi rõ trong từng Phụ lục.
+Thuế TNCN (nếu có) sẽ được bên A kê khai và nộp hộ bên B.
+IV. QUYỀN VÀ NGHĨA VỤ CỦA CÁC BÊN
+1. Quyền và nghĩa vụ của Bên A
+a, Quyền của Bên A
+Yêu cầu chỉnh sửa trong phạm vi hợp lý theo mục II; phạm vi cụ thể, số vòng và tiêu chí đánh giá do từng Phụ lục quy định.
+Yêu cầu Bên B tuân thủ tiến độ, chất lượng, tiêu chuẩn kỹ thuật và brand guideline.
+Tạm dừng, thay đổi, bổ sung yêu cầu công việc; mọi phát sinh ngoài phạm vi Phụ lục sẽ được hai bên thống nhất chi phí và thời hạn bằng văn bản.
+Từ chối nghiệm thu đối với sản phẩm không đáp ứng yêu cầu đã thỏa thuận, kèm nêu rõ nội dung cần khắc phục.
+
+</current_dom>

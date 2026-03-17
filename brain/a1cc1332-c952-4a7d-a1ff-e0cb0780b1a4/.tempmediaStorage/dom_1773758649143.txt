@@ -1,0 +1,116 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+TD Games
+HR
+Nhân sự
+Phòng ban
+Nhắc việc
+admin
+admin
+L
+Lê Văn Khiêm
+FL-003
+freelancer
+active
+📝 Xuất hợp đồng
+✏️ Sửa
+← Quay lại
+📋 Thông tin
+📄 Hợp đồng (
+0
+)
+⭐ Đánh giá (
+0
+)
+📁 Dự án (
+0
+)
+🗂️ Hồ sơ
+Thông tin cá nhân
+Email
+khiemlv.tdconsulting@gmail.com
+Quốc tịch
+Vietnam
+Freelancer
+Múi giờ
+UTC+7
+Ngân hàng
+🪪 CMND / CCCD
+Mặt trước
+📷
+Upload mặt trước
+Mặt sau
+📷
+Upload mặt sau
+TD Consulting • Enterprise Billing Engine • v2.1
+📝 Xuất Hợp Đồng
+(Freelancer)
+Lê Văn Khiêm
+•
+Freelancer
+[0] (920,21)<button >🖨️ In / Xuất PDF />
+[1] (974,21)<button >✕ Đóng />
+[2] (62,64)<label >Loại hợp đồng />
+[3] (62,101)<button  />
+	[4] (62,94)<div >📄
+Hợp đồng Khoán việc />
+	[5] (62,110)<div >HĐKV – Hợp đồng dịch vụ CTV/Freelancer />
+[6] (62,158)<button  />
+	[7] (62,150)<div >🔐
+Thỏa thuận Bảo mật />
+	[8] (62,166)<div >NDA CTV – Bảo mật thông tin chi tiết />
+[9] (62,204)<label >Thông tin hợp đồng />
+Số hợp đồng
+[10] (62,246)<input placeholder='001' />
+Ngày ký
+[11] (62,299)<input  />
+[12] (62,334)<label >Thông tin thù lao />
+Rate type
+N/A
+Rate amount
+N/A
+Thanh toán
+N/A
+[13] (62,448)<label >Kiểm tra dữ liệu />
+Họ tên
+Lê Văn Khiêm
+CMND/CCCD
+⚠️ Thiếu
+Ngày sinh
+⚠️ Thiếu
+Giới tính
+⚠️ Thiếu
+Địa chỉ
+⚠️ Thiếu
+SĐT
+⚠️ Thiếu
+Email
+khiemlv.tdconsulting@gmail.com
+Điều 9. CHUYỂN NHƯỢNG
+Bên nhận thông tin không được phép chuyển nhượng Thỏa thuận này (hoặc một phần của Thỏa thuận) mà không được Bên cung cấp thông tin chấp thuận trước bằng văn bản.
+Điều 10. BỒI THƯỜNG THIỆT HẠI
+Trong bất kỳ trường hợp nào, nếu Bên Tiết Lộ và/hoặc khách hàng của Bên Tiết Lộ phát hiện ra Thông tin mật bị tiết lộ ra bên ngoài hoặc sử dụng sai mục đích bởi Bên Nhận hoặc bất kỳ nhân viên hiện thời hay nhân viên cũ của Bên Nhận, gây thiệt hại lập tức hoặc có thể xảy ra trong tương lai mà thiệt hại đó có thể xác định được, thì Bên Nhận phải bồi thường thiệt hại cũng như chịu các trách nhiệm pháp lý có liên quan. Cụ thể như sau: Tùy vào tính chất và mức độ vi phạm, Bên vi phạm còn phải chịu trách nhiệm bồi thường toàn bộ thiệt hại cho Bên Tiết Lộ, bao gồm nhưng không giới hạn các thiệt hại về chi phí đầu tư, doanh thu, uy tín, chi phí cho việc khắc phục hậu quả và những thiệt hại mà lẽ ra Bên Tiết Lộ sẽ có được nếu như Thông tin mật không bị tiết lộ.
+Các bên đồng ý rằng nếu bất cứ bên nào vi phạm bất cứ nghĩa vụ nào trong Thỏa thuận này, ngoài chế tài phạt vi phạm, bồi thường thiệt hại trên đây, Bên vi phạm còn phải chịu các chế tài về việc xử lý hành vi cạnh tranh không lành mạnh theo quy định của pháp luật cạnh tranh.
+Điều 11. KHẮC PHỤC VI PHẠM
+Bên nhận thông tin hiểu rằng bất kỳ vi phạm nào đối với nghĩa vụ bảo mật quy định trong Thỏa thuận này cũng có thể gây ra những thiệt hại và mất mát không thể bù đắp cho Bên cung cấp thông tin – những thiệt hại khó có thể tính toán được và không thể bù đắp bằng tiền. Theo đó, ngoài những biện pháp khắc phục mà Bên cung cấp thông tin có thể yêu cầu thực hiện theo pháp luật, Bên cung cấp thông tin được phép thực hiện các biện pháp phù hợp khác để ngăn chặn việc Bên nhận thông tin tiếp tục vi phạm các nghĩa vụ của mình.
+Điều 12. THỜI HẠN THỎA THUẬN
+Thỏa thuận này có hiệu lực sau khi được ký kết và sẽ được kéo dài cho đến khi mà Thông Tin vẫn còn là Thông Tin Mật theo như định nghĩa của từ này ở Điều 2 trên đây.
+Điều 13. THÔNG BÁO
+Các thư tín gửi theo Thỏa thuận này sẽ được lập thành văn bản và được gửi đến trực tiếp, hoặc qua thư bảo đảm có xác nhận của người nhận, fax hoặc thư điện tử (việc nhận thông báo qua fax hoặc thư điện tử phải được xác nhận bằng điện thoại hay hình thức khác theo thỏa thuận giữa các bên) đến địa chỉ ghi ở phần đầu Thỏa thuận.
+Điều 14. TỪ BỎ QUYỀN
+Việc Bên cung cấp thông tin không thực hiện, trì hoãn hoặc bỏ qua bất kỳ điều khoản nào của Thỏa thuận này không được hiểu hoặc được xem là việc Bên cung cấp thông tin từ bỏ bất kỳ quyền nào của mình theo Thỏa thuận này, cũng không ảnh hưởng đến hiệu lực của toàn bộ hay một phần nào của Thỏa thuận.
+Điều 15. HIỆU LỰC TỪNG PHẦN
+Nếu một điều khoản (hoặc một phần) của Thỏa thuận này bị xem là vi phạm pháp luật hiện hành, điều khoản (hoặc phần) đó sẽ bị xóa bỏ khỏi Thỏa thuận (không có hiệu lực áp dụng đối với các Bên). Từ thời điểm đó, Thỏa thuận này vẫn có hiệu lực đầy đủ và xem như điều khoản (hoặc phần) đó chưa từng được quy định trong Thỏa thuận.
+Điều 16. TOÀN BỘ THỎA THUẬN VÀ KHÔNG HỦY NGANG
+Thỏa thuận này (bao gồm các Phụ lục) tạo thành Toàn bộ thỏa thuận giữa các Bên liên quan đến đối tượng của Thỏa thuận, đồng thời thay thế toàn bộ các thỏa thuận, cam kết và biên bản (bằng văn bản hoặc bằng lời nói) trước đây giữa các bên về vấn đề liên quan. Thỏa thuận này (bao gồm các Phụ lục) có thể được sửa đổi và các quyền quy định tại Thỏa thuận có thể bị từ bỏ theo văn bản ký kết giữa các Bên. Thỏa thuận này là một giao dịch dân sự độc lập với các Hợp đồng, phụ lục hoặc thỏa thuận khác mà Các Bên đã và sẽ ký kết với nhau. Thỏa thuận này không hủy ngang, trừ khi được người có thẩm quyền ký Thỏa thuận của Hai Bên thống nhất bằng văn bản.
+Điều 17. LUẬT ĐIỀU CHỈNH VÀ THẨM QUYỀN XÉT XỬ
+Thỏa thuận này được điều chỉnh và hiểu theo quy định của pháp luật Việt Nam, bao gồm: Bộ Luật dân sự 2015, Luật Cạnh tranh 2018, pháp luật sở hữu trí tuệ và pháp luật có liên quan hiện hành. Nếu có tranh chấp phát sinh Tòa án có thẩm quyền của Việt Nam giải quyết theo quy định.
+Thỏa thuận này được lập thành 02 bản, mỗi bên giữ 01 bản.
+ĐẠI DIỆN BÊN A
+(Ký, ghi rõ họ tên, đóng dấu)
+ĐẠI DIỆN BÊN B
+(Ký, ghi rõ họ tên)
+
+</current_dom>

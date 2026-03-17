@@ -1,0 +1,148 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+TD Games
+HR
+Nhân sự
+Phòng ban
+Nhắc việc
+admin
+admin
+L
+Lê Văn Khiêm
+FL-003
+freelancer
+active
+📝 Xuất hợp đồng
+✏️ Sửa
+← Quay lại
+📋 Thông tin
+📄 Hợp đồng (
+0
+)
+⭐ Đánh giá (
+0
+)
+📁 Dự án (
+0
+)
+🗂️ Hồ sơ
+Thông tin cá nhân
+Email
+khiemlv.tdconsulting@gmail.com
+Quốc tịch
+Vietnam
+Freelancer
+Múi giờ
+UTC+7
+Ngân hàng
+🪪 CMND / CCCD
+Mặt trước
+📷
+Upload mặt trước
+Mặt sau
+📷
+Upload mặt sau
+TD Consulting • Enterprise Billing Engine • v2.1
+📝 Xuất Hợp Đồng
+(Freelancer)
+Lê Văn Khiêm
+•
+Freelancer
+[0] (920,21)<button >🖨️ In / Xuất PDF />
+[1] (974,21)<button >✕ Đóng />
+[2] (62,64)<label >Loại hợp đồng />
+[3] (62,101)<button  />
+	[4] (62,94)<div >📄
+Hợp đồng Khoán việc />
+	[5] (62,110)<div >HĐKV – Hợp đồng dịch vụ CTV/Freelancer />
+[6] (62,158)<button  />
+	[7] (62,150)<div >🔐
+Thỏa thuận Bảo mật />
+	[8] (62,166)<div >NDA CTV – Bảo mật thông tin chi tiết />
+[9] (62,204)<label >Thông tin hợp đồng />
+Số hợp đồng
+[10] (62,246)<input placeholder='001' />
+Ngày ký
+[11] (62,299)<input  />
+[12] (62,334)<label >Thông tin thù lao />
+Rate type
+N/A
+Rate amount
+N/A
+Thanh toán
+N/A
+[13] (62,448)<label >Kiểm tra dữ liệu />
+Họ tên
+Lê Văn Khiêm
+CMND/CCCD
+⚠️ Thiếu
+Ngày sinh
+⚠️ Thiếu
+Giới tính
+⚠️ Thiếu
+Địa chỉ
+⚠️ Thiếu
+SĐT
+⚠️ Thiếu
+Email
+khiemlv.tdconsulting@gmail.com
+CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+Độc lập – Tự do – Hạnh phúc
+***
+THỎA THUẬN BẢO MẬT THÔNG TIN
+THỎA THUẬN BẢO MẬT THÔNG TIN này ("Thỏa thuận") được lập vào ngày 17 tháng 03 năm 2026, GIỮA:
+BÊN A: CÔNG TY TNHH TD GAMES
+Địa chỉ
+:
+Xóm Ngoài, Xã Đông Anh, TP Hà Nội
+Mã số thuế
+:
+0111386856
+Đại diện bởi
+:
+Ông Đặng Thế Toàn
+Chức vụ
+:
+Giám đốc
+(Sau đây gọi tắt là "Bên A")
+BÊN B:
+Họ và tên
+:
+Lê Văn Khiêm
+Ngày tháng năm sinh
+:
+....../....../..........
+Giới tính
+:
+..........
+Địa chỉ
+:
+..........
+Điện thoại
+:
+..........
+Số CCCD/CMT/Passport
+:
+..........
+(Sau đây gọi tắt là "Bên B")
+XÉT VÌ:
+Các Bên dự định tiến hành bàn bạc hoặc đàm phán về việc hợp tác kinh doanh ("Dự án" này có phạm vi bao hàm tất cả các mối quan hệ hình thành trên cơ sở bàn bạc hoặc đàm phán đó).
+Để thực hiện mục tiêu của Dự án, Các Bên đồng ý tiết lộ một số Thông tin mật (như định nghĩa dưới đây) liên quan đến Dự án kèm theo yêu cầu bảo mật tuyệt đối và trên cơ sở các điều khoản và điều kiện sau.
+Các Bên thống nhất Thỏa thuận này với điều khoản và điều kiện như sau:
+Điều 1. BÊN CUNG CẤP THÔNG TIN VÀ BÊN NHẬN THÔNG TIN
+Liên quan đến mục đích của Thỏa thuận này, các bên cung cấp tất cả thông tin liên quan đến Thỏa thuận sẽ được gọi là "Bên cung cấp thông tin/ Bên Tiết Lộ" và bên nhận tất cả những thông tin đó sẽ được gọi là "Bên nhận thông tin/Bên Nhận".
+Điều 2. XÁC NHẬN THÔNG TIN
+Định nghĩa: Thuật ngữ "Thông tin mật" được dùng trong Thỏa thuận này được hiểu là bất kỳ hoặc tất cả mọi thông tin và các tài liệu khác do Bên cung cấp thông tin cung cấp và truyền đạt cho Bên nhận thông tin và giám đốc, cán bộ, nhân viên, đại diện hoặc đại lý của Bên nhận thông tin (sau đây gọi chung là "Người đại diện"), được quy định, chỉ rõ hoặc ghi chú "mật" hoặc những thông tin mà mục đích của nó chỉ dành cho Bên nhận thông tin. Để tránh hiểu nhầm, Thông tin mật được xem như bao gồm (nhưng không giới hạn) (a) các loại thông tin sau, hoặc các thông tin khác có bản chất tương tự, được trình bày hoặc không được trình bày dưới dạng văn bản: phát kiến, ý tưởng, khái niệm, giấy tờ, phần mềm tại mọi giai đoạn phát triển, thiết kế, bản vẽ, thông số kỹ thuật, quy cách kỹ thuật, kiểu dáng, nguyên mẫu, dữ liệu, mã nguồn, mã đối tượng, tài liệu, sách hướng dẫn, sơ đồ, biểu đồ phát triển, lược đồ, nghiên cứu, quy trình, thủ tục, chức năng, "bí quyết", kỹ thuật và tài liệu marketing, kế hoạch marketing và phát triển, tên khách hàng và các thông tin liên quan đến khách hàng, báo giá, chính sách giá và các thông tin tài chính; (b) bất kỳ thông tin nào do bên thứ ba tiết lộ cho Bên cung cấp thông tin có ràng buộc bởi nghĩa vụ bảo mật; cũng như (c) các thông tin do Bên nhận thông tin và/hoặc Người đại diện soạn thảo và phát triển có sử dụng bất kỳ phần nào của Thông tin mật.
+Định nghĩa trên không bao gồm: Ngay cả trong trường hợp Thỏa thuận này có quy định khác đi, các Bên thừa nhận rằng Thông tin bí mật không bao gồm các thông tin:
+Đã hoặc sẽ được phổ biến rộng rãi không do vi phạm Thỏa thuận này;
+Không kèm theo nghĩa vụ bảo mật, đã thuộc sở hữu của Bên nhận thông tin từ trước đó, không phải do Bên cung cấp thông tin trao, cung cấp, chuyển giao, bán hoặc tiết lộ bằng cách khác (trực tiếp hoặc gián tiếp), mà Bên nhận thông tin có thể chứng minh bằng các tài liệu văn bản;
+Do Bên nhận thông tin nhận được một cách hợp pháp không kèm theo nghĩa vụ bảo mật từ bên thứ ba – thông tin mà trước đó cũng được cung cấp cho bên thứ ba không đòi hỏi nghĩa vụ bảo mật; hoặc phải được công khai theo quy định của pháp luật.
+Điều 3. NGHĨA VỤ BẢO MẬT
+Nghĩa vụ chung:
+Trên cơ sở xem xét việc tiết lộ Thông tin mật của Bên cung cấp thông tin, Bên nhận thông tin cam kết và đảm bảo rằng Người đại diện của mình sẽ tuyệt đối giữ bí mật đối với các Thông tin mật đó và tuân thủ nghiêm ngặt những quy định của Thỏa thuận này.
+Mục đích:
+Bên nhận thông tin cam kết rằng bản thân Bên nhận thông tin và Người đại diện của Bên nhận thông tin chỉ sử dụng Thông tin mật cho mục đích thực hiện Dự án.
+
+</current_dom>
