@@ -1,0 +1,132 @@
+TD Games
+HR
+Nhân sự
+Phòng ban
+Nhắc việc
+admin
+admin
+L
+Lê Văn Khiêm
+FL-003
+freelancer
+active
+📝 Xuất hợp đồng
+✏️ Sửa
+← Quay lại
+📋 Thông tin
+📄 Hợp đồng (
+0
+)
+⭐ Đánh giá (
+0
+)
+📁 Dự án (
+0
+)
+🗂️ Hồ sơ
+Thông tin cá nhân
+Email
+khiemlv.tdconsulting@gmail.com
+Quốc tịch
+Vietnam
+Freelancer
+Múi giờ
+UTC+7
+Ngân hàng
+🪪 CMND / CCCD
+Mặt trước
+📷
+Upload mặt trước
+Mặt sau
+📷
+Upload mặt sau
+TD Consulting • Enterprise Billing Engine • v2.1
+📝 Xuất Hợp Đồng
+(Freelancer)
+Lê Văn Khiêm
+•
+Freelancer
+[0] (920,21)<button >🖨️ In / Xuất PDF />
+[1] (974,21)<button >✕ Đóng />
+[2] (62,64)<label >Loại hợp đồng />
+[3] (62,102)<button  />
+	[4] (62,95)<div >📄
+Hợp đồng Khoán việc />
+	[5] (62,111)<div >HĐKV – Hợp đồng dịch vụ CTV/Freelancer />
+[6] (62,159)<button  />
+	[7] (62,151)<div >🔐
+Thỏa thuận Bảo mật />
+	[8] (62,167)<div >NDA CTV – Bảo mật thông tin chi tiết />
+[9] (62,204)<label >Thông tin hợp đồng />
+Số hợp đồng
+[10] (62,246)<input placeholder='001' />
+Ngày ký
+[11] (62,299)<input  />
+🎯 Tên dự án
+*
+[12] (62,351)<input placeholder='VD: Game XYZ, Dự án ABC...' />
+🛠️ Loại công việc
+*
+[13] (62,402)<input placeholder='VD: hoạt hình 2D, Concept 2D, VFX...' />
+💡 Mỗi freelancer có thể có nhiều HĐ cho từng dự án
+[14] (62,457)<label >Thông tin thù lao />
+Rate type
+N/A
+Rate amount
+N/A
+Thanh toán
+N/A
+[15] (62,570)<label >Kiểm tra dữ liệu />
+Họ tên
+Lê Văn Khiêm
+CMND/CCCD
+⚠️ Thiếu
+Ngày sinh
+⚠️ Thiếu
+Giới tính
+⚠️ Thiếu
+Địa chỉ
+⚠️ Thiếu
+SĐT
+⚠️ Thiếu
+Email
+khiemlv.tdconsulting@gmail.com
+Thời hạn phản hồi/duyệt của Bên A cho từng mốc (kịch bản, storyboard, animatic, bản nháp, bản final) sẽ được quy định trong Phụ lục; chậm phản hồi dẫn đến điều chỉnh tương ứng mốc tiến độ.
+Việc nghiệm thu thực hiện theo mục IV; nếu Sản phẩm chưa đạt, Bên B khắc phục theo phản hồi hợp lý của Bên A và bàn giao lại để nghiệm thu.
+V. QUYỀN SỞ HỮU TRÍ TUỆ
+1. Đối tượng chuyển giao
+Sản phẩm: Thiết kế nhân vật game, bao gồm toàn bộ bản vẽ, tạo hình, ý tưởng, file gốc, bản thảo, tài liệu mô tả, hiệu ứng, câu chuyện, tài sản hình thành trong quá trình làm việc theo yêu cầu của Bên A.
+2. Phạm vi chuyển giao
+Bên B cam kết chuyển giao toàn bộ, vĩnh viễn, không điều kiện và trên phạm vi toàn cầu cho Bên A toàn bộ quyền tài sản đối với sản phẩm thiết kế nhân vật hoạt hình quy định tại Điều 2 của Hợp đồng. Quyền sở hữu trí tuệ được chuyển giao độc lập với việc thanh toán và không phụ thuộc vào việc Bên B còn hoặc không hợp tác với Bên A, kể từ thời điểm sản phẩm được tạo ra theo yêu cầu của bên A.
+Phạm vi chuyển giao bao gồm cả các sản phẩm chưa hoàn thiện, bản nháp, bản thử nghiệm, ý tưởng dang dở, phác thảo, phiên bản trung gian dù đã hoặc chưa được nghiệm thu và mọi cải tiến, chỉnh sửa, nâng cấp tiếp theo của sản phẩm được tạo ra bởi bên B trong thời gian hợp tác, kể cả sau khi cam kết này chấm dứt nếu các cải tiến đó dựa trên hoặc phát sinh từ sản phẩm gốc.
+Quyền tài sản bao gồm nhưng không giới hạn:
+Quyền làm chủ sở hữu tác phẩm;
+Quyền khai thác, sử dụng, sao chép, sửa đổi, cải biên, phát triển, kết hợp, phân phối, truyền đạt, chuyển nhượng, cấp phép lại, thương mại hóa;
+Quyền tạo ra tác phẩm phái sinh, bao gồm nhưng không giới hạn: các phiên bản 2D, 3D, animation, game asset, merchandise, hình ảnh quảng bá, bản mở rộng và các phiên bản phát triển tiếp theo của nhân vật;
+Quyền sử dụng cho mọi mục đích hợp pháp, không giới hạn phương tiện, nền tảng và hình thức khai thác.
+Bên B cam kết không giữ lại bất kỳ quyền, lợi ích hay quyền sử dụng nào đối với sản phẩm; đồng thời từ bỏ và không thực hiện quyền phản đối, khiếu nại hoặc yêu cầu hạn chế đối với việc Bên A sử dụng, sửa đổi, phát triển sản phẩm dưới bất kỳ hình thức nào.
+Đối với quyền nhân thân theo Điều 19 Luật Sở hữu trí tuệ:
+Bên B cam kết không thực hiện các quyền nhân thân theo Điều 19 Luật Sở hữu trí tuệ, trong phạm vi pháp luật cho phép, ngoại trừ quyền được nêu tên (nếu có).
+Bên B uỷ quyền không huỷ ngang và không điều kiện cho Bên A toàn quyền quyết định việc đặt tên tác phẩm, công bố tác phẩm, sửa đổi, cắt xén, phát triển tác phẩm trong phạm vi pháp luật cho phép.
+Bên B cam kết và bảo đảm rằng:
+Sản phẩm là tác phẩm do chính Bên B trực tiếp sáng tạo, không sao chép, không vi phạm quyền sở hữu trí tuệ của bất kỳ bên thứ ba nào;
+Mọi tài nguyên, asset, công cụ, phần mềm, dữ liệu sử dụng (nếu có) đều hợp pháp và cho phép chuyển giao quyền sử dụng thương mại;
+Bên B chịu hoàn toàn trách nhiệm và bồi thường cho Bên A nếu phát sinh bất kỳ khiếu nại, tranh chấp nào liên quan đến quyền sở hữu trí tuệ của sản phẩm.
+Trừ khi có thoả thuận bằng văn bản của Bên A, Bên B không được phép sử dụng sản phẩm cho mục đích portfolio, quảng bá, trưng bày, đào tạo AI, phát hành NFT, hoặc cung cấp cho bất kỳ bên thứ ba nào.
+3. Cam kết về tính hợp pháp
+Bên B cam kết mọi sản phẩm bàn giao là do chính mình sáng tạo, không sao chép hoặc vi phạm quyền sở hữu trí tuệ của bất kỳ tổ chức, cá nhân nào khác.
+Trường hợp Bên A bị khiếu kiện, tranh chấp liên quan đến quyền sở hữu trí tuệ với sản phẩm do Bên B bàn giao, Bên B chịu hoàn toàn trách nhiệm và bồi thường mọi thiệt hại phát sinh.
+4. Bảo mật & hạn chế sử dụng
+Bên B cam kết không được tiết lộ, sử dụng, chuyển giao, phát triển riêng sản phẩm cho bên thứ ba ngoài phạm vi hợp đồng/hướng dẫn của Bên A.
+VI. HIỆU LỰC HỢP ĐỒNG
+Hợp đồng này có hiệu lực kể từ ngày ký và kéo dài cho đến khi hai bên hoàn thành nghĩa vụ theo các Phụ lục.
+Các Phụ lục được ký sau là bộ phận không tách rời của Hợp đồng này.
+Hai bên có thể chấm dứt hợp đồng trước thời hạn bằng văn bản, với điều kiện hoàn thành mọi nghĩa vụ thanh toán hoặc bàn giao dở dang.
+VII. GIẢI QUYẾT TRANH CHẤP
+Mọi tranh chấp phát sinh được hai bên ưu tiên giải quyết bằng thương lượng.
+Trường hợp không đạt được thỏa thuận, tranh chấp sẽ được giải quyết tại Tòa án có thẩm quyền nơi Bên A đặt trụ sở.
+VIII. ĐIỀU KHOẢN CHUNG
+Hai bên cam kết đã đọc kỹ, hiểu rõ nội dung và tự nguyện ký kết hợp đồng.
+Hợp đồng này có hiệu lực từ ngày ký, ràng buộc nghĩa vụ đối với các bên theo quy định pháp luật.
+Hợp đồng có thể được sửa đổi, bổ sung bằng văn bản có sự nhất trí của cả hai bên.
+Hợp đồng được lập thành 02 bản có giá trị pháp lý như nhau, mỗi bên giữ 01 bản.

@@ -1,0 +1,12 @@
+# Freelancer Contract Generation Testing Plan
+
+- [ ] Navigate to http://localhost:3000
+- [ ] Go to HR app
+- [ ] Select a freelancer employee
+- [ ] Click "📝 Xuất hợp đồng"
+- [ ] Verify required fields and disabled export button
+- [ ] Take screenshot of disabled state
+- [ ] Fill in "Tên dự án" and "Loại công việc" via JS
+- [ ] Verify export button is enabled
+- [ ] Verify "Concept 2D" in contract preview
+- [ ] Take screenshot of enabled state
