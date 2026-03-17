@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Implementation plan for generating 3 types of HR contracts (HĐLĐ, HĐTV, Cam kết bảo mật) from employee data. Uses jspdf (already installed) to generate Vietnamese PDF contracts. Covers new service, new UI component, database field additions, and integration into EmployeeDetail.",
-  "updatedAt": "2026-03-17T11:10:34.568322900Z"
+  "summary": "Plan to add 2 freelancer contract types (HĐKV and NDA CTV) to the existing contract generation system. Includes project name input field, employee type detection in ContractGenerator, and EmployeeDetail button filter update.",
+  "updatedAt": "2026-03-17T14:35:21.867558200Z",
+  "version": "1"
 }

@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_TASK",
-  "summary": "Completed task checklist for implementing the HR contract generation feature. All planning, implementation, and verification tasks are marked complete.",
-  "updatedAt": "2026-03-17T11:31:29.960380900Z",
-  "version": "1"
+  "summary": "Task checklist for freelancer contract generation feature: add HĐKV and NDA CTV templates, update ContractGenerator for employee type detection, and update EmployeeDetail button.",
+  "updatedAt": "2026-03-17T14:35:49.539301800Z",
+  "version": "2"
 }

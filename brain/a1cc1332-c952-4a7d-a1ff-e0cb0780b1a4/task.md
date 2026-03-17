@@ -1,22 +1,18 @@
-# HR Contract Generation Feature
+# Freelancer Contract Generation
 
 ## Planning
-- [x] Examine 3 PDF contract templates (HĐLĐ, HĐTV, Cam kết bảo mật)
-- [x] Review HR data model (types, services, DB)
-- [x] Map contract fields to HR employee data
-- [x] Check salary components mapping
-- [x] Write implementation plan
-- [x] Get user approval
+- [x] Extract text from freelancer PDF templates
+- [x] Review HR data model for freelancer fields
+- [x] Write implementation plan → approved
 
 ## Implementation
-- [x] Create `contractService.ts` with HTML→PDF generation for 3 contract types
-- [x] Create `ContractGenerator.tsx` component with contract type selector, preview & export
-- [x] Add "Xuất hợp đồng" button to `EmployeeDetail.tsx` 
-- [x] Test PDF generation with existing employee data
+- [ ] Add `generateHDKV()` to `contractService.ts`
+- [ ] Add `generateNDA_CTV()` to `contractService.ts`
+- [ ] Add freelancer types to `CONTRACT_TYPES`
+- [ ] Update `ContractGenerator.tsx` for employee type detection + project name input
+- [ ] Update `EmployeeDetail.tsx` button to include freelancer
 
 ## Verification
-- [x] Open HR → select fulltime employee → export each contract type
-- [x] Verify all data fields are populated correctly
-- [x] Verify Vietnamese text renders correctly
-- [x] Verify salary/allowance data loads from DB
-- [x] Verify employee data validation checklist works
+- [ ] Test HĐKV preview with freelancer employee
+- [ ] Test NDA CTV preview
+- [ ] Verify print/export works
