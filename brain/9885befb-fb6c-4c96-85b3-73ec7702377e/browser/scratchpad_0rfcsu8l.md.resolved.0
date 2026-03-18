@@ -1,0 +1,8 @@
+# Employee Portal Verification
+
+## Task Checklist
+- [ ] Navigate to `http://localhost:5018/#portal`
+- [ ] Log in with `tdgames.vn@gmail.com` if necessary (Password: `TDGames2026!`)
+- [ ] Verify Navbar tabs: "Thông tin công ty", "Bảng lương", "Chấm công"
+- [ ] Verify Employee Directory content
+- [ ] Take a screenshot of the portal page
