@@ -59,7 +59,7 @@
 > **Lý do:** DB đã có `hr_documents` và `hr_dependent_documents` nhưng chưa có UI — dữ liệu nhân sự thiếu hồ sơ đính kèm.
 
 ### 10. Phân quyền theo module `Platform`
-- [ ] Cấu hình quyền truy cập từng app theo role
+- [x] Cấu hình quyền truy cập từng app theo role (director/accountant/hr/employee)
 - [ ] Audit log toàn hệ thống (ai làm gì, khi nào)
 > **Lý do:** Khi nhiều người dùng, nhân viên bình thường không nên xem được Payroll/HR. Hiện ai đăng nhập cũng thấy hết.
 
