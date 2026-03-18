@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_TASK",
-  "summary": "Completed task checklist for Expense Dashboard + Upload implementation.",
-  "updatedAt": "2026-03-18T10:23:38.930854900Z",
-  "version": "1"
+  "summary": "Master checklist for TD Games Billing App. Items 1-4 completed (Payroll export, Home Dashboard, Expense Dashboard + Upload, Invoice↔CRM client merge). Items 5-18 remain.",
+  "updatedAt": "2026-03-18T10:34:38.924727500Z",
+  "version": "3"
 }

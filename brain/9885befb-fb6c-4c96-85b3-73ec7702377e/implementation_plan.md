@@ -1,73 +1,56 @@
-# Expense Dashboard + Upload Biên Lai
+# Thống nhất khách hàng Invoice ↔ CRM
 
 ## Summary
 
-Thêm tab **Dashboard** vào module Expense với biểu đồ thống kê chi phí theo tháng và theo danh mục. Upload biên lai đã được build sẵn trong `ExpenseForm.tsx` (sử dụng R2 edge function đã deploy) — chỉ cần verify hoạt động.
+Merge `invoice_clients` (8 cols, 2 records) vào `crm_clients` (19 cols, 3 records) — CRM là superset. Invoice sẽ đọc/ghi trực tiếp vào `crm_clients`. Bảng `invoice_clients` sẽ bị xoá sau khi migrate.
 
 ## Current State
 
-- ✅ **Receipt upload**: Đã hoàn chỉnh trong `ExpenseForm.tsx` (R2 upload, preview, delete)
-- ✅ **R2 edge function**: `r2-expense-upload` đã deploy v16 trên Workflow project
-- ✅ **DB schema**: `expense_expenses`, `expense_categories`, `expense_recurring` đều tồn tại
-- ❌ **Dashboard tab**: Chưa có — cần tạo mới
+| Table | Columns | Records | FKs |
+|-------|---------|---------|-----|
+| `invoice_clients` | 8 (id, name, client_type, contact_person, email, address, tax_code, created_at) | 2 (Dace Marsh, KABAM) | **None** — invoices store `client_info` as JSONB |
+| `crm_clients` | 19 (same 8 + phone, country, website, industry, status, notes, tags, lead_source, lead_direction, lead_source_detail, updated_at) | 3 (same 2 + TD CONSULTING) | `crm_contacts`, `crm_documents`, `crm_projects` all FK here |
+
+> [!IMPORTANT]
+> `invoice_invoices` does NOT FK to `invoice_clients`. It stores client info as JSONB in `client_info` column. This makes the migration safe — no FK to update.
 
 ## Proposed Changes
 
-### Expense Dashboard Component
+### Database Migration
 
-#### [NEW] [ExpenseDashboard.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseDashboard.tsx)
+#### Supabase Migration: `merge_invoice_clients_to_crm`
 
-Component Dashboard thống kê chi phí, sử dụng **pure CSS/SVG** charts (không thêm dependency mới). Bao gồm:
-
-1. **KPI Cards Row** (consistent with existing ExpenseList cards):
-   - Tổng chi VND tháng hiện tại
-   - Tổng chi USD tháng hiện tại
-   - Số giao dịch tháng hiện tại
-   - So sánh % vs tháng trước
-
-2. **Monthly Bar Chart** (6 tháng gần nhất):
-   - Bar chart thuần CSS (horizontal bars) hiển thị tổng chi phí VND mỗi tháng
-   - Animated bars on load
-   - Tooltip hiển thị số liệu
-
-3. **Category Breakdown** (Donut chart / stacked bar):
-   - Phân bổ chi phí theo danh mục (dùng category color)
-   - Hiển thị % và số tiền cho mỗi danh mục
-   - Legend bên cạnh
-
-4. **Top Expenses Table**:
-   - 5 chi phí lớn nhất trong kỳ
-   - Hiển thị receipt icon nếu có biên lai đính kèm
-
-5. **Receipt Coverage Stat**:
-   - % giao dịch có đính kèm biên lai (receipt_url không rỗng)
-   - Khuyến khích kế toán upload biên lai
+1. **Migrate data**: INSERT any `invoice_clients` records into `crm_clients` that don't already exist (match by `name`)
+2. **Drop table**: `DROP TABLE invoice_clients`
 
 ---
 
-### Navigation Updates
+### Invoice Service Layer
 
-#### [MODIFY] [ExpenseApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseApp.tsx)
+#### [MODIFY] [supabaseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/services/supabaseService.ts)
 
-- Thêm `'dashboard'` vào `TAB_MAP`, `TAB_LABELS`, `REVERSE_TAB`
-- Render `ExpenseDashboard` khi `activeTab === 'dashboard'`
-- Dashboard là tab mặc định khi mở Expense app
+Change 3 functions to use `crm_clients` instead of `invoice_clients`:
+- `fetchClientsFromCloud()` → read from `crm_clients`
+- `saveClientToCloud()` → insert into `crm_clients`
+- `updateClientInCloud()` → update `crm_clients`
 
-#### [MODIFY] [useExpenseState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/hooks/useExpenseState.ts)
+The `ClientRecord` type stays the same (Invoice only uses: name, clientType, contactPerson, email, address, taxCode). CRM extra fields (phone, status, tags, etc.) will get default values on insert.
 
-- Thêm `'dashboard'` vào `ExpenseTab` type
-- Thêm `'dashboard'` vào `VALID_TABS`
-- Đổi default tab thành `'dashboard'`
+---
+
+### Dashboard Service
+
+#### [MODIFY] [dashboardService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/dashboard/services/dashboardService.ts)
+
+Already uses `crm_clients` — no change needed.
 
 ## Verification Plan
 
-### Automated / Browser Tests
+### Automated
+1. `tsc --noEmit` — check no type errors
+2. `vite build` — verify build succeeds
 
-1. Chạy `npm run dev` từ thư mục project
-2. Mở browser tại `http://localhost:5173`
-3. Đăng nhập và vào Expense app
-4. Verify:
-   - Dashboard tab hiển thị mặc định khi vào app
-   - Charts render đúng (dù 0 records cũng hiển thị empty state)
-   - Navigation giữa Dashboard ↔ Danh sách ↔ Định kỳ ↔ Danh mục hoạt động
-   - Upload biên lai khi tạo/edit chi phí: chọn file → upload → preview hiển thị → save → record có receipt_url
+### Manual
+1. Open Invoice app → create/edit form → verify client autocomplete still works
+2. Save a new client from Invoice → verify it appears in CRM client list
+3. Open CRM → verify existing clients intact

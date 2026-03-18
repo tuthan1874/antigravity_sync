@@ -7,7 +7,7 @@
 
 ## 🔴 KHẨN CẤP — Cần triển khai ngay
 
-### 1. Export bảng lương Excel/PDF + Phiếu lương cá nhân `Payroll`
+### 1. Export bảng lương Excel/PDF + Phiếu lương cá nhân [Payroll](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts#588-596)
 - [x] Export bảng lương ra Excel/PDF
 - [x] Phiếu lương cá nhân (pay slip) cho từng nhân viên
 > **Lý do:** Payroll đã có logic tính lương nhưng kế toán không thể sử dụng nếu không in/export được. Đây là blocker lớn nhất — module chưa dùng được trên thực tế.
@@ -23,7 +23,7 @@
 > **Lý do:** Expense hiện là module cơ bản nhất (0 records) — thiếu dashboard và biên lai khiến kế toán không thể dùng thực tế. Cần biên lai để phục vụ kiểm toán.
 
 ### 4. Thống nhất khách hàng Invoice ↔ CRM `Invoice + CRM`
-- [x] Merge `invoice_clients` và `crm_clients` thành 1 nguồn dữ liệu duy nhất
+- [ ] Merge `invoice_clients` và `crm_clients` thành 1 nguồn dữ liệu duy nhất
 > **Lý do:** 2 bảng khách hàng riêng rẽ = duplicate data, mất đồng bộ. Càng nhiều data đổ vào càng khó merge sau này — phải sửa sớm.
 
 ### 5. Chuyển sang Supabase Auth `Platform`

@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough of the Expense Dashboard implementation and Upload verification, including all changes made and verification results.",
-  "updatedAt": "2026-03-18T10:23:38.944647700Z"
+  "summary": "Walkthrough of two completed features: Expense Dashboard + Upload biên lai, and Invoice↔CRM client unification.",
+  "updatedAt": "2026-03-18T10:34:38.953930400Z",
+  "version": "1"
 }

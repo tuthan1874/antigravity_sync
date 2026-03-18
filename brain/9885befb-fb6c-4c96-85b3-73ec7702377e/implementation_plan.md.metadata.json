@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Implementation plan for adding an Expense Dashboard tab with monthly/category charts and verifying the existing receipt upload functionality.",
-  "updatedAt": "2026-03-18T10:15:18.141568700Z"
+  "summary": "Plan to unify invoice_clients and crm_clients into a single crm_clients table. The Invoice module will be updated to read/write from crm_clients instead. Includes DB migration, service layer changes, and data migration.",
+  "updatedAt": "2026-03-18T10:33:11.011064400Z",
+  "version": "1"
 }
