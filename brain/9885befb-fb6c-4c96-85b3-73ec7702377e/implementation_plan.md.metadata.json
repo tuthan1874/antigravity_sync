@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Plan for CRM Activity Timeline: new crm_activities table, TypeScript type, service layer CRUD, ActivityTimeline component embedded in ClientForm, and a global ActivityFeed component for the CRM app.",
-  "updatedAt": "2026-03-18T10:59:12.586180400Z",
-  "version": "3"
+  "summary": "Plan for Employee Portal app and role-based access control. Expands AccountUser role to 4 types (giam_doc, ke_toan, hr, nhan_vien). Creates EmployeePortal app with 3 tabs. Adds role-to-apps mapping in apps.ts. Links auth users to hr_employees via employee_id in user_metadata.",
+  "updatedAt": "2026-03-18T12:56:24.303109700Z",
+  "version": "4"
 }

@@ -1,72 +1,96 @@
-# CRM Activity Timeline
+# Employee Portal + Phân quyền theo Module
 
 ## Summary
 
-Thêm lịch sử tương tác cho mỗi khách hàng (gọi điện, email, meeting, ghi chú). Hiển thị timeline trong trang chi tiết khách hàng + tab "Hoạt động" tổng quan toàn bộ activities.
+1. **Mở rộng hệ thống role** từ `admin|member` → `giam_doc|ke_toan|hr|nhan_vien`
+2. **Tạo Employee Portal app** cho nhân viên với 3 tabs (danh bạ, lương, chấm công)
+3. **Phân quyền hiển thị app** trên HomeScreen theo role
+
+## Current State
+
+- **Auth users**: admin, member (Supabase Auth, `user_metadata.role`)
+- **HR employees**: 4 records (Toàn, Khiêm, Anh, Huy)
+- **Payroll tables**: `hr_employee_salary`, `hr_salary_components` exist — nhưng chưa có payroll sheets
+- **Attendance tables**: Chưa có
+
+> [!IMPORTANT]
+> Employee Portal link auth user → employee record qua `user_metadata.employee_id`. Cần tạo thêm Supabase Auth accounts cho nhân viên hoặc map auth user hiện tại.
 
 ## Proposed Changes
 
-### Database
+### 1. Role System
 
-#### Supabase Migration: `create_crm_activities`
+#### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
 
-```sql
-CREATE TABLE crm_activities (
-  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
-  client_id uuid NOT NULL REFERENCES crm_clients(id) ON DELETE CASCADE,
-  activity_type text NOT NULL, -- 'call' | 'email' | 'meeting' | 'note' | 'status_change'
-  title text NOT NULL,
-  description text DEFAULT '',
-  outcome text DEFAULT '',  -- 'positive' | 'neutral' | 'negative' | ''
-  activity_date timestamptz DEFAULT now(),
-  actor text DEFAULT '',
-  created_at timestamptz DEFAULT now()
-);
-CREATE INDEX idx_crm_activities_client ON crm_activities(client_id);
-CREATE INDEX idx_crm_activities_date ON crm_activities(activity_date DESC);
+Mở rộng `AccountUser.role`:
+```typescript
+role: 'giam_doc' | 'ke_toan' | 'hr' | 'nhan_vien';
+```
+
+#### [MODIFY] [apps.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/config/apps.ts)
+
+Thêm `roles` vào `AppConfig` + thêm Employee Portal app:
+
+| App | Roles có quyền |
+|-----|----------------|
+| Dashboard | giam_doc |
+| Invoice | giam_doc, ke_toan |
+| Expense | giam_doc, ke_toan |
+| Workforce | giam_doc, ke_toan |
+| CRM | giam_doc, ke_toan |
+| HR | giam_doc, hr |
+| Chấm công | giam_doc, hr |
+| Tính lương | giam_doc, ke_toan, hr |
+| **Employee Portal** | **nhan_vien** |
+
+---
+
+### 2. HomeScreen Filter
+
+#### [MODIFY] [HomeScreen.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/HomeScreen.tsx)
+
+Filter `APPS` theo `currentUser.role`:
+```typescript
+const visibleApps = APPS.filter(app => !app.roles || app.roles.includes(currentUser.role));
 ```
 
 ---
 
-### Types
+### 3. Auth & Router Updates
 
-#### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
+#### [MODIFY] [supabaseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/services/supabaseService.ts)
 
-Add `CrmActivity` interface after `CrmProjectFile`.
+Update `loginWithCredentials` + `getAuthUser` to handle new role types.
 
----
+#### [MODIFY] [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
 
-### Service Layer
+Add Employee Portal route + update `onAuthStateChange` for new roles.
 
-#### [MODIFY] [crmService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/services/crmService.ts)
+#### DB: Update admin user metadata
 
-Add CRUD functions: `fetchActivities(clientId?)`, `createActivity()`, `deleteActivity()`.
-
----
-
-### Components
-
-#### [NEW] `ActivityTimeline.tsx`
-
-Timeline component showing per-client activities with:
-- Add activity form (type selector, title, description, outcome)
-- Chronological list with activity-type icons (📞 call, 📧 email, 🤝 meeting, 📝 note)
-- Delete capability
-- Used inside ClientForm when editing a client
-
-#### [MODIFY] [CrmApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/components/CrmApp.tsx)
-
-- Replace "Thống kê" tab with "Hoạt động" tab showing all recent activities across all clients
+```sql
+-- Update admin user role to giam_doc
+UPDATE auth.users SET raw_user_meta_data = '{"username":"admin","role":"giam_doc"}'
+WHERE email = 'admin@tdgames.local';
+```
 
 ---
 
-### Navigation Update
+### 4. Employee Portal App
 
-| Navbar slot | Before | After |
-|---|---|---|
-| `board` | Thống kê | Hoạt động |
+#### [NEW] `apps/portal/components/PortalApp.tsx`
+
+3 tabs:
+- **Thông tin công ty**: Grid danh bạ nhân viên (ảnh, tên, vị trí, SĐT, email) — read fromm `hr_employees`
+- **Bảng lương**: Payslip theo tháng — filter by `employee_id` from auth user (empty state nếu chưa có data)
+- **Chấm công**: Attendance theo tháng — filter by `employee_id` (empty state)
+
+#### [NEW] `apps/portal/services/portalService.ts`
+
+Service functions: `fetchEmployeeDirectory()`, `fetchMyPayslips(employeeId)`, `fetchMyAttendance(employeeId)`
 
 ## Verification
 
 1. `tsc --noEmit` + `vite build` pass
-2. Manual: open CRM → edit client → see timeline, add activity → verify it appears
+2. Login as admin → thấy tất cả app trừ Employee Portal
+3. Login as nhân viên → chỉ thấy Employee Portal
