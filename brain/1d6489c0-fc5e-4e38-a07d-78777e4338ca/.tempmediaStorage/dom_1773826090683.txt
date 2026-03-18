@@ -1,0 +1,87 @@
+[0] (500,500)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	Dashboard
+	[2] (908,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all bg-primary text-black shadow-btn-glow'>Tổng quan />
+	admin
+	admin
+	[3] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	📊 CEO Dashboard
+	Xin chào
+	admin
+	— tổng quan hệ thống TD Games
+	📄
+	Doanh thu Invoice
+	14k
+	đ
+	5 hoá đơn
+	💰
+	Tổng chi phí
+	0
+	đ
+	0 khoản chi
+	🧑‍💼
+	Nhân sự
+	0
+	người
+	9 phòng ban
+	💵
+	Quỹ lương
+	20.0 tr
+	đ
+	Bảng lương Tháng 3/2026
+	📄
+	Hoá đơn
+	Đã thanh toán
+	4
+	/
+	5
+	Chờ thanh toán
+	1
+	/
+	5
+	Tổng doanh thu
+	14.205
+	đ
+	👷
+	Workforce
+	Workers
+	3
+	Tasks hoàn thành
+	13
+	/
+	31
+	Tasks đang làm
+	18
+	/
+	31
+	Tổng giá trị task
+	1.300.000
+	đ
+	👥
+	CRM
+	Khách hàng
+	3
+	👥
+	Dự án
+	1
+	📁
+	🧑‍💼
+	Phòng ban & Nhân sự
+	Chưa có dữ liệu
+	Tổng nhân sự
+	0
+	người
+	💵
+	Bảng lương gần nhất
+	Bảng lương Tháng 3/2026
+	Đã xác nhận
+	Nhân viên
+	1
+	Net thực lĩnh
+	18.4 tr
+	Chi phí CT
+	20.0 tr
+	Tổng chi phí công ty
+	19.984.110
+	đ

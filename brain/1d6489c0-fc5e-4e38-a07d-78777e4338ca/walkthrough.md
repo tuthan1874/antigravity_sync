@@ -1,36 +1,36 @@
-# Task 1: Export Bảng Lương & Phiếu Lương — Hoàn thành ✅
+# Walkthrough — Task 1 & 2
 
-## Đã triển khai
+## Task 1: Export Bảng Lương + Phiếu Lương ✅
 
-### 1. Export bảng lương ra Excel
-- Nút **"📥 Export Excel"** trên header PayrollSheet
-- File `.xlsx` tải về với đầy đủ:
-  - Header công ty + tiêu đề tháng/năm
-  - 22 cột: STT, Mã NV, Họ tên, Ngày công, tất cả phụ cấp, Gross, BH, Thuế, Net, Chi phí CT
-  - Dòng tổng cộng cuối bảng
-  - Column widths tự động
+### Đã triển khai
+- **Excel Export** — `payrollExportService.ts`: export toàn bộ bảng lương + phiếu lương cá nhân
+- **PaySlip UI** — `PaySlip.tsx`: phiếu lương A4 in được, có nút In/PDF + Excel
+- **Rollback** — Nút "↩️ Huỷ xác nhận" để revert confirmed → draft
+- **Tên công ty** — "TD GAMES COMPANY LIMITED"
+- **Fix print**: compact layout vừa 1 trang A4
 
-### 2. Phiếu lương cá nhân (Pay Slip)
-- Nút **"📄 Phiếu lương"** hiện khi hover vào mỗi dòng nhân viên
-- Overlay hiển thị phiếu lương A4 trắng với:
-  - Logo + Tên công ty
-  - Thông tin: Mã NV, Họ tên, Phòng ban, Chức vụ
-  - Bảng 8 bước tính lương (tham chiếu vs thực tế)
-  - NET thực lĩnh highlight xanh lá
-  - Ô chữ ký: Người nhận / Kế toán / Giám đốc
-- Nút **"📥 Excel"** export phiếu lương ra file Excel cá nhân
-- Nút **"🖨️ In / PDF"** in trực tiếp hoặc save PDF qua trình duyệt
+---
 
-## Files changed
+## Task 2: CEO Dashboard App ✅
 
-| Action | File |
-|--------|------|
-| NEW | [payrollExportService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/payroll/services/payrollExportService.ts) |
-| NEW | [PaySlip.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/payroll/components/PaySlip.tsx) |
-| MODIFIED | [PayrollSheet.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/payroll/components/PayrollSheet.tsx) |
+### Files tạo mới
+- [dashboardService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/dashboard/services/dashboardService.ts) — Query parallel 7 modules Supabase
+- [DashboardApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/dashboard/components/DashboardApp.tsx) — UI Dashboard
 
-## Cách sử dụng
+### Files sửa
+- [apps.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/config/apps.ts) — Thêm "📊 Dashboard" đầu danh sách
+- [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) — Route cho Dashboard app
 
-1. Vào **Payroll** → Mở bảng lương bất kỳ
-2. Bấm **📥 Export Excel** ở header → tải file `Bang_Luong_T{month}_{year}.xlsx`
-3. Hover vào 1 nhân viên → bấm **📄 Phiếu lương** → xem/in/export phiếu lương cá nhân
+### Dashboard hiển thị
+
+| Row | Panel | Dữ liệu |
+|-----|-------|----------|
+| 1 | KPI Cards | Doanh thu Invoice, Tổng chi phí, Nhân sự, Quỹ lương |
+| 2 | Detail Panels | Hoá đơn (paid/pending), Workforce (tasks), CRM (clients/projects) |
+| 3 | Bottom Panels | Phòng ban & Nhân sự (headcount chart), Bảng lương gần nhất |
+
+### Screenshot xác nhận
+
+![CEO Dashboard](file:///C:/Users/dangt/.gemini/antigravity/brain/1d6489c0-fc5e-4e38-a07d-78777e4338ca/ceo_dashboard_full_view_1773826098664.png)
+
+![Dashboard recording](file:///C:/Users/dangt/.gemini/antigravity/brain/1d6489c0-fc5e-4e38-a07d-78777e4338ca/dashboard_test_1773826034364.webp)

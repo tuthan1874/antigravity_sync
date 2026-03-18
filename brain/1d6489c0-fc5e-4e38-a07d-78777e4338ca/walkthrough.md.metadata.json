@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough documenting Task 1 completion: Export bảng lương Excel and Phiếu lương cá nhân for the Payroll module. Covers the 3 files created/modified, features implemented, and how to use them.",
-  "updatedAt": "2026-03-18T08:37:48.533973600Z",
-  "version": "1"
+  "summary": "Walkthrough covering Task 1 (Payroll Export/PaySlip) and Task 2 (CEO Dashboard App) implementations with screenshots and details.",
+  "updatedAt": "2026-03-18T09:31:21.269227Z",
+  "version": "2"
 }

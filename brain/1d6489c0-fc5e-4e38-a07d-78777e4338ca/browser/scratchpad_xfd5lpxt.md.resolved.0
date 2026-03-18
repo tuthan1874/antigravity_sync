@@ -1,0 +1,15 @@
+# CEO Dashboard Verification
+
+## Checklist
+- [ ] Navigate to http://localhost:3000/#dashboard
+- [ ] Wait for page to load (3 seconds)
+- [ ] Capture screenshot of full dashboard
+- [ ] Verify "Nhân sự" KPI card is > 0 (expecting 4)
+- [ ] Verify "Phòng ban & Nhân sự" has headcount data
+
+## Observations
+- KPI Card: "Nhân sự" = ?
+- KPI Card: "Thu nhập thực tế (Revenue)" = ?
+- KPI Card: "Chi phí nhân sự (Monthly)" = ?
+- KPI Card: "Chi phí nhân sự (Last 3m total)" = ?
+- "Phòng ban & Nhân sự" section: ?
