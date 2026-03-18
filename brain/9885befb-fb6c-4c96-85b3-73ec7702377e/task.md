@@ -58,8 +58,10 @@
 - [ ] UI upload giấy tờ người phụ thuộc
 > **Lý do:** DB đã có `hr_documents` và `hr_dependent_documents` nhưng chưa có UI — dữ liệu nhân sự thiếu hồ sơ đính kèm.
 
-### 10. Phân quyền theo module `Platform`
-- [ ] Cấu hình quyền truy cập từng app theo role
+### 10. Phân quyền theo module + Employee Portal `Platform`
+- [x] Cấu hình quyền truy cập từng app theo role (admin/ke_toan/hr/member)
+- [x] Employee Portal app (3 tabs: danh bạ, bảng lương, chấm công)
+- [x] Auto-create auth khi tạo nhân viên mới
 - [ ] Audit log toàn hệ thống (ai làm gì, khi nào)
 > **Lý do:** Khi nhiều người dùng, nhân viên bình thường không nên xem được Payroll/HR. Hiện ai đăng nhập cũng thấy hết.
 

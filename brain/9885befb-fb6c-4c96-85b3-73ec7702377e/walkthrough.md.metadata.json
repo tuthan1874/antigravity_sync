@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough of 3 completed items: Expense Dashboard, Invoice-CRM client merge, and Supabase Auth migration.",
-  "updatedAt": "2026-03-18T10:55:46.111457200Z",
-  "version": "2"
+  "summary": "Walkthrough of completed features: CRM Activity Timeline (#6), Role-based Access Control + Employee Portal (#10). Details all changes made, files modified/created, and verification results.",
+  "updatedAt": "2026-03-18T13:07:38.583702600Z",
+  "version": "3"
 }
