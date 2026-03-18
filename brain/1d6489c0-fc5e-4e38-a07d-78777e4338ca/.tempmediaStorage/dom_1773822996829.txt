@@ -1,0 +1,51 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+🌍 Thông tin Freelancer
+[0] (336,96)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Portfolio URL />
+[1] (336,125)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='https://artstation.com/...' />
+[2] (500,96)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Chức danh />
+[3] (500,125)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='VFX Artist, Concept Artist...' />
+[4] (664,96)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Múi giờ />
+[5] (664,125)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='UTC+7' />
+[6] (336,167)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Loại rate />
+[7] (336,195)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[8] (500,167)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Mức giá />
+[9] (480,196)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm flex-1' />
+[10] (559,196)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm w-24' />
+[11] (664,167)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Thanh toán />
+[12] (664,195)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[13] (500,237)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Chuyên môn />
+[14] (266,260)<button class='px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white/5 text-neutral-medium border border-transparent hover:border-white/10'>2D />
+[15] (286,260)<button class='px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white/5 text-neutral-medium border border-transparent hover:border-white/10'>3D />
+[16] (307,260)<button class='px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white/5 text-neutral-medium border border-transparent hover:border-white/10'>VFX />
+[17] (340,260)<button class='px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white/5 text-neutral-medium border border-transparent hover:border-white/10'>Concept Art />
+[18] (381,260)<button class='px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white/5 text-neutral-medium border border-transparent hover:border-white/10'>Animation />
+[19] (420,260)<button class='px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white/5 text-neutral-medium border border-transparent hover:border-white/10'>Storyboard />
+[20] (463,260)<button class='px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white/5 text-neutral-medium border border-transparent hover:border-white/10'>Compositing />
+[21] (501,260)<button class='px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white/5 text-neutral-medium border border-transparent hover:border-white/10'>Rigging />
+[22] (535,260)<button class='px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white/5 text-neutral-medium border border-transparent hover:border-white/10'>Modeling />
+[23] (572,260)<button class='px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white/5 text-neutral-medium border border-transparent hover:border-white/10'>Texturing />
+[24] (607,260)<button class='px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white/5 text-neutral-medium border border-transparent hover:border-white/10'>Lighting />
+[25] (650,260)<button class='px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white/5 text-neutral-medium border border-transparent hover:border-white/10'>Motion Graphics />
+🏦 Thông tin Ngân hàng
+[26] (336,392)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ngân hàng />
+[27] (336,421)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='MB Bank' />
+[28] (500,392)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Số tài khoản />
+[29] (500,421)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[30] (664,392)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Tên chủ tài khoản />
+[31] (664,421)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+📝 Ghi chú & Tags
+[32] (500,559)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ghi chú />
+[33] (500,601)<textarea class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm min-h-[80px] resize-none' placeholder='Ghi chú thêm...' />
+[34] (500,661)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Tags />
+[35] (491,690)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm flex-1' placeholder='Nhập tag rồi Enter...' />
+[36] (734,690)<button class='px-4 py-3 rounded-xl bg-white/5 text-neutral-medium hover:text-white text-sm font-bold transition-all'>+ />
+⚠️ Vui lòng điền đầy đủ các trường bắt buộc:
+Họ tên, Email, SĐT, Ngày sinh, Địa chỉ, CMND/CCCD
+[37] (371,858)<button class='flex-1 py-4 rounded-2xl font-black text-sm uppercase tracking-widest border border-primary/10 text-neutral-medium hover:text-white hover:border-primary/30 transition-all'>Huỷ />
+[38] (629,858)<button class='flex-1 py-4 rounded-2xl font-black text-sm uppercase tracking-widest text-white shadow-btn-glow hover:shadow-btn-glow-hover transition-all hover:scale-[1.02] active:scale-[0.98]'>✚ Thêm nhân sự />
+TD Consulting • Enterprise Billing Engine • v2.1
+
+</current_dom>

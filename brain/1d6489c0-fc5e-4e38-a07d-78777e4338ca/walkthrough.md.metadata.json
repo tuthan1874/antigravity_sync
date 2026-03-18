@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Comprehensive deployment status walkthrough of the TD Games Billing App. Covers all 7 app modules (Invoice, Expense, Workforce, CRM, HR, Attendance, Payroll), their features, database tables with row counts, and shared infrastructure (auth, theming, routing, exchange rates, R2 storage, SePay eInvoice).",
-  "updatedAt": "2026-03-18T07:56:33.693519600Z"
+  "summary": "Walkthrough documenting Task 1 completion: Export bảng lương Excel and Phiếu lương cá nhân for the Payroll module. Covers the 3 files created/modified, features implemented, and how to use them.",
+  "updatedAt": "2026-03-18T08:37:48.533973600Z",
+  "version": "1"
 }

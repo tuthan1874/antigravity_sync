@@ -1,0 +1,108 @@
+# TD Games Billing App — Checklist Triển Khai Tính Năng
+
+> Cập nhật lần cuối: 2026-03-18
+> Quy ước: `[ ]` = Chưa làm | `[/]` = Đang làm | `[x]` = Hoàn thành
+
+---
+
+## 📄 Invoice
+- [ ] Dashboard nâng cao (biểu đồ doanh thu tháng/quý, tỷ lệ paid vs pending)
+- [ ] Search & Sort trong History (theo invoice number, sort ngày/giá trị)
+- [ ] Multi-currency dashboard (tổng USD & VND, tổng quy đổi)
+- [ ] Reminder hoá đơn quá hạn (overdue alerts)
+- [ ] Bulk actions (chọn nhiều hoá đơn xoá / mark paid)
+
+---
+
+## 💰 Expense
+- [ ] Dashboard/Thống kê (biểu đồ chi phí theo tháng, theo danh mục)
+- [ ] Upload biên lai/attachment đính kèm chi phí
+- [ ] Export báo cáo chi phí ra Excel/PDF
+- [ ] Auto-generate chi phí từ recurring mỗi tháng
+- [ ] Budget/Ngân sách cho từng danh mục + cảnh báo vượt
+- [ ] Workflow phê duyệt chi phí (nhân viên → quản lý → kế toán)
+- [ ] Liên kết Expense ↔ Invoice để tính lợi nhuận ròng
+
+---
+
+## 👷 Workforce
+- [ ] Dashboard tổng quan (freelancer active, tổng task, tổng chi phí)
+- [ ] Báo cáo chi phí freelancer theo tháng/quý
+- [ ] Export bảng nghiệm thu ra Excel/PDF
+- [ ] Task deadline & overdue alerts
+- [ ] Timesheet (theo dõi giờ làm từng task)
+- [ ] Contract expiry alert (cảnh báo hợp đồng hết hạn)
+
+---
+
+## 👥 CRM
+- [ ] Activity timeline / Ghi chú tương tác (gọi điện, email, meeting)
+- [ ] Pipeline / Sales funnel (Kanban: Lead → Qualified → Proposal → Won/Lost)
+- [ ] Reminder / Follow-up cho sales
+- [ ] Export danh sách khách hàng ra Excel
+- [ ] Liên kết CRM clients ↔ Invoice clients (thống nhất dữ liệu)
+- [ ] Email templates (gửi email follow-up từ CRM)
+- [ ] Revenue per client (biểu đồ doanh thu theo khách hàng)
+
+---
+
+## 🧑‍💼 HR
+- [ ] Salary history chart (biến động lương theo thời gian)
+- [ ] Document upload (UI quản lý tài liệu nhân viên: CMND, bằng cấp)
+- [ ] Evaluation/KPI (trang đánh giá nhân viên định kỳ)
+- [ ] Position history (UI ghi nhận thăng chức/chuyển phòng)
+- [ ] Org chart (sơ đồ tổ chức theo phòng ban)
+- [ ] Dependent documents upload (giấy tờ người phụ thuộc)
+- [ ] Onboarding checklist (danh sách bước nhân viên mới)
+- [ ] Export danh sách nhân sự ra Excel (có thông tin lương)
+
+---
+
+## ⏰ Chấm Công (Attendance)
+- [ ] GPS/Location check-in
+- [ ] Overtime tracking tự động (tính giờ OT từ check-in/check-out)
+- [ ] Auto-calculate work hours (tổng giờ vs ca scheduled)
+- [ ] Bảng công tự tổng hợp từ attendance records
+- [ ] Calendar view (hiển thị chấm công dạng lịch)
+- [ ] QR Code check-in (UI cho `att_qr_sessions`)
+- [ ] Biometric / Face ID check-in (dài hạn)
+
+---
+
+## 💵 Tính Lương (Payroll)
+- [ ] Export bảng lương ra Excel/PDF
+- [ ] Phiếu lương cá nhân (pay slip) cho từng nhân viên
+- [ ] Lịch sử/so sánh bảng lương giữa các tháng
+- [ ] Auto-sync ngày công & OT từ Attendance
+- [ ] Hiển thị thuế TNCN chi tiết từng bước
+- [ ] Bank transfer file (format MB/VCB/ACB)
+- [ ] Payroll approval workflow (Kế toán → Manager → Giám đốc)
+
+---
+
+## 🌐 Hệ Thống Chung (Cross-cutting)
+
+### 🔐 Bảo mật & Phân quyền
+- [ ] Chuyển sang Supabase Auth (hash password, session token)
+- [ ] Phân quyền theo module (kế toán chỉ xem Invoice+Expense+Payroll)
+- [ ] Audit log toàn hệ thống (ai làm gì, khi nào — mọi module)
+
+### 📊 Dashboard & Analytics
+- [ ] Home Dashboard tổng quan (doanh thu, chi phí, nhân sự, task)
+- [ ] Cross-module reports (Doanh thu - Chi phí = Lợi nhuận)
+
+### 🔗 Tích hợp Module
+- [ ] Thống nhất `invoice_clients` ↔ `crm_clients`
+- [ ] Auto-sync Attendance → Payroll (ngày công, OT)
+- [ ] Thống nhất HR ↔ Workforce (freelancer vs full-time)
+
+### 🎨 UX & Performance
+- [ ] Loading skeleton thay thế spinner
+- [ ] React Error Boundary (tránh crash toàn app)
+- [ ] Keyboard shortcuts (Ctrl+S, Ctrl+N)
+- [ ] Dark/Light toggle cho tất cả module
+- [ ] PWA / Offline support
+- [ ] Mobile responsive cho bảng dữ liệu lớn
+
+### 📤 Export
+- [ ] Thêm export Excel/PDF cho Expense, Workforce, CRM, HR, Attendance

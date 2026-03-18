@@ -1,0 +1,126 @@
+# TD Games Billing App — Checklist Triển Khai (Theo Ưu Tiên)
+
+> Cập nhật: 2026-03-18
+> `[ ]` Chưa làm · `[/]` Đang làm · `[x]` Hoàn thành
+
+---
+
+## 🔴 KHẨN CẤP — Cần triển khai ngay
+
+### 1. Export bảng lương Excel/PDF + Phiếu lương cá nhân `Payroll`
+- [x] Export bảng lương ra Excel/PDF
+- [x] Phiếu lương cá nhân (pay slip) cho từng nhân viên
+> **Lý do:** Payroll đã có logic tính lương nhưng kế toán không thể sử dụng nếu không in/export được. Đây là blocker lớn nhất — module chưa dùng được trên thực tế.
+
+### 2. Home Dashboard tổng quan `Platform`
+- [ ] Dashboard trên HomeScreen (doanh thu tháng, chi phí, số nhân viên, task pending)
+> **Lý do:** Hiện tại HomeScreen chỉ là grid app cards trống. CEO/Manager cần nhìn thấy số liệu quan trọng ngay khi đăng nhập — không phải click vào từng app một.
+
+### 3. Expense Dashboard + Upload biên lai `Expense`
+- [ ] Dashboard/Thống kê (biểu đồ chi phí theo tháng, danh mục)
+- [ ] Upload biên lai/attachment đính kèm chi phí
+> **Lý do:** Expense hiện là module cơ bản nhất (0 records) — thiếu dashboard và biên lai khiến kế toán không thể dùng thực tế. Cần biên lai để phục vụ kiểm toán.
+
+### 4. Thống nhất khách hàng Invoice ↔ CRM `Invoice + CRM`
+- [ ] Merge `invoice_clients` và `crm_clients` thành 1 nguồn dữ liệu duy nhất
+> **Lý do:** 2 bảng khách hàng riêng rẽ = duplicate data, mất đồng bộ. Càng nhiều data đổ vào càng khó merge sau này — phải sửa sớm.
+
+### 5. Chuyển sang Supabase Auth `Platform`
+- [ ] Dùng Supabase Auth thay vì check password plaintext trong DB
+- [ ] Hash password, session token, refresh token
+> **Lý do:** Hiện password lưu plaintext trong `invoice_accounts` — rủi ro bảo mật nghiêm trọng. Nếu DB bị leak thì toàn bộ password lộ.
+
+---
+
+## 🟡 QUAN TRỌNG — Nên triển khai sớm
+
+### 6. CRM Activity Timeline `CRM`
+- [ ] Lịch sử tương tác cho mỗi khách (gọi điện, email, meeting, ghi chú)
+> **Lý do:** CRM hiện chỉ là danh bạ — không có interaction history thì không thể track được sales pipeline.
+
+### 7. Export đa module `All`
+- [ ] Export Excel/PDF cho Expense
+- [ ] Export Excel/PDF cho Workforce (nghiệm thu)
+- [ ] Export Excel/PDF cho CRM (khách hàng)
+- [ ] Export Excel/PDF cho HR (nhân sự + lương)
+- [ ] Export Excel/PDF cho Attendance (bảng công)
+> **Lý do:** Chỉ Invoice có export — 6 module còn lại đều bị "khoá" dữ liệu trong web app, kế toán/manager không thể lấy data báo cáo.
+
+### 8. OT tracking + Auto-sync Attendance → Payroll `Attendance + Payroll`
+- [ ] Overtime tracking tự động (tính OT từ check-in/check-out)
+- [ ] Auto-sync ngày công & OT từ Attendance sang Payroll
+> **Lý do:** Payroll cần dữ liệu công chính xác. Hiện tại phải nhập thủ công — dễ sai, tốn thời gian.
+
+### 9. HR Document upload `HR`
+- [ ] UI upload tài liệu nhân viên (CMND, bằng cấp, hợp đồng scan)
+- [ ] UI upload giấy tờ người phụ thuộc
+> **Lý do:** DB đã có `hr_documents` và `hr_dependent_documents` nhưng chưa có UI — dữ liệu nhân sự thiếu hồ sơ đính kèm.
+
+### 10. Phân quyền theo module `Platform`
+- [ ] Cấu hình quyền truy cập từng app theo role
+- [ ] Audit log toàn hệ thống (ai làm gì, khi nào)
+> **Lý do:** Khi nhiều người dùng, nhân viên bình thường không nên xem được Payroll/HR. Hiện ai đăng nhập cũng thấy hết.
+
+---
+
+## 🟢 CẢI THIỆN — Triển khai khi có thời gian
+
+### 11. Invoice nâng cao
+- [ ] Dashboard doanh thu (biểu đồ tháng/quý, paid vs pending)
+- [ ] Search & Sort trong History
+- [ ] Multi-currency dashboard (USD & VND)
+- [ ] Reminder hoá đơn quá hạn
+- [ ] Bulk actions (chọn nhiều hoá đơn)
+
+### 12. Expense nâng cao
+- [ ] Export báo cáo chi phí ra Excel/PDF
+- [ ] Auto-generate chi phí từ recurring
+- [ ] Budget/Ngân sách + cảnh báo vượt
+- [ ] Workflow phê duyệt chi phí
+- [ ] Liên kết Expense ↔ Invoice (tính lợi nhuận)
+
+### 13. Workforce nâng cao
+- [ ] Dashboard tổng quan (freelancer, task, chi phí)
+- [ ] Báo cáo chi phí freelancer tháng/quý
+- [ ] Export bảng nghiệm thu
+- [ ] Task deadline & overdue alerts
+- [ ] Timesheet (giờ làm từng task)
+- [ ] Contract expiry alert
+
+### 14. CRM nâng cao
+- [ ] Pipeline / Kanban (Lead → Qualified → Proposal → Won/Lost)
+- [ ] Reminder / Follow-up
+- [ ] Export khách hàng ra Excel
+- [ ] Email templates
+- [ ] Revenue per client chart
+
+### 15. HR nâng cao
+- [ ] Salary history chart
+- [ ] Evaluation/KPI
+- [ ] Position history UI
+- [ ] Org chart (sơ đồ tổ chức)
+- [ ] Onboarding checklist
+- [ ] Export nhân sự ra Excel
+
+### 16. Attendance nâng cao
+- [ ] GPS/Location check-in
+- [ ] Auto-calculate work hours
+- [ ] Calendar view
+- [ ] QR Code check-in
+- [ ] Bảng công tự tổng hợp từ records
+
+### 17. Payroll nâng cao
+- [ ] So sánh bảng lương giữa các tháng
+- [ ] Thuế TNCN chi tiết từng bước
+- [ ] Bank transfer file (MB/VCB/ACB)
+- [ ] Payroll approval workflow
+
+### 18. UX & Platform
+- [ ] Loading skeleton
+- [ ] React Error Boundary
+- [ ] Keyboard shortcuts (Ctrl+S, Ctrl+N)
+- [ ] Dark/Light toggle tất cả module
+- [ ] PWA / Offline support
+- [ ] Mobile responsive bảng dữ liệu
+- [ ] Cross-module reports (Doanh thu - Chi phí = Lợi nhuận)
+- [ ] Thống nhất HR ↔ Workforce

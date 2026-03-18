@@ -1,0 +1,57 @@
+# Task 1: Export Bảng Lương Excel/PDF + Phiếu Lương Cá Nhân
+
+## Mục tiêu
+Thêm 2 tính năng cho module Payroll:
+1. **Export toàn bộ bảng lương** ra file Excel (`.xlsx`) — dữ liệu đầy đủ các cột
+2. **Phiếu lương cá nhân** (Pay Slip) — xem chi tiết 8 bước tính lương của 1 nhân viên, có thể in/export PDF
+
+## Proposed Changes
+
+### Payroll Export Service
+#### [NEW] [payrollExportService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/payroll/services/payrollExportService.ts)
+
+Export function sử dụng thư viện `xlsx` (đã có trong project):
+- `exportPayrollToExcel(sheet, records)` — tạo file `.xlsx` với:
+  - Header: tên công ty, tiêu đề bảng lương, tháng/năm
+  - Bảng chính: STT, Mã NV, Họ tên, Ngày công, Lương CB, các phụ cấp, Tăng ca, Gross, BH NV, Thuế TNCN, Net thực lĩnh, BH công ty, Chi phí công ty
+  - Dòng tổng cộng ở cuối
+  - Column widths tự động
+
+---
+
+### Pay Slip Component
+#### [NEW] [PaySlip.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/payroll/components/PaySlip.tsx)
+
+Component phiếu lương cá nhân:
+- Layout A4 dọc, nền trắng, dùng cho in ấn
+- Header: Logo + Tên công ty + "PHIẾU LƯƠNG"
+- Thông tin NV: Mã NV, Họ tên, Phòng ban, Chức vụ
+- Bảng 8 bước tính lương chi tiết (tái sử dụng logic từ [PayrollSheet](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/payroll/components/PayrollSheet.tsx#18-248) expanded detail)
+- Tổng Net thực lĩnh highlight
+- Footer: Chữ ký Kế toán + Giám đốc
+- Nút "🖨️ In phiếu lương" (window.print) và "📥 Tải PDF"
+
+---
+
+### Wire Up Buttons
+#### [MODIFY] [PayrollSheet.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/payroll/components/PayrollSheet.tsx)
+
+- Import `exportPayrollToExcel` và thêm nút "📥 Export Excel" vào header (cạnh nút "Xác nhận")
+- Thêm nút "📄 Phiếu lương" trên mỗi row nhân viên → mở `PaySlip` overlay
+- State: `paySlipRecord: PayPayrollRecord | null` để toggle hiện PaySlip
+
+---
+
+## Verification Plan
+
+### Browser Testing
+1. Mở app → vào Payroll → mở 1 bảng lương existing
+2. Bấm **"📥 Export Excel"** → verify file `.xlsx` tải về, mở bằng Excel kiểm tra:
+   - Đủ header thông tin công ty
+   - Đủ cột (STT tới Chi phí công ty)
+   - Dữ liệu khớp với hiển thị trên web
+   - Dòng tổng cộng cuối
+3. Click vào biểu tượng **"📄 Phiếu lương"** trên 1 nhân viên → verify:
+   - Phiếu lương overlay hiển thị đúng thông tin
+   - 8 bước tính lương chi tiết
+   - Nút In/PDF hoạt động

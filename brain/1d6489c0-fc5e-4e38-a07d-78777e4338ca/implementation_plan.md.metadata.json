@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Plan to add Excel export for payroll sheets and an individual pay slip component with PDF print capability. Creates payrollExportService.ts with Excel builder, adds PaySlip.tsx component showing 8-step breakdown in a printable format, and wires export/payslip buttons into the existing PayrollSheet header.",
+  "updatedAt": "2026-03-18T08:29:32.503030500Z"
+}

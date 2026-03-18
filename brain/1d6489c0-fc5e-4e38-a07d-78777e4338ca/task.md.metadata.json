@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_TASK",
+  "summary": "Prioritized master checklist for all missing features in the TD Games Billing App. Organized into 3 tiers: 🔴 KHẨN CẤP (5 critical items with urgency notes), 🟡 QUAN TRỌNG (5 important items), 🟢 CẢI THIỆN (8 groups of nice-to-have improvements). Each item includes reasoning for its priority level.",
+  "updatedAt": "2026-03-18T08:26:18.932423600Z",
+  "version": "1"
+}
