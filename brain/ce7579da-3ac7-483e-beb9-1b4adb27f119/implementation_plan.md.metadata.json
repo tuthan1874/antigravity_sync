@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Implementation plan for the leave request (nghỉ phép) system. Covers: (1) Database schema — leave_balances table + att_requests columns, (2) TypeScript types, (3) leaveService.ts with balance calculation logic, (4) Employee Portal UI — new Leave tab with balance cards and request form, (5) Admin approval UI — new tab in Attendance app for approving/rejecting leave requests. Business rules: 1 month = 1 leave day for fulltime employees, accrued quarterly, usable in the next quarter, expires if unused.",
-  "updatedAt": "2026-03-18T14:38:30.271940400Z"
+  "summary": "Implementation plan for changing employee onboarding from temp-password to email invite flow. Covers Edge Function change (inviteUserByEmail), new SetPasswordScreen component, App.tsx token detection, and Supabase config requirements.",
+  "updatedAt": "2026-03-18T16:53:17.036175100Z",
+  "version": "1"
 }

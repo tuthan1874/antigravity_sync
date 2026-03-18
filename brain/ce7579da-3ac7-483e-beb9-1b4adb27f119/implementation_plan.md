@@ -1,106 +1,39 @@
-# Luồng Xin Nghỉ Phép — Employee Portal + Admin Approval
+# Employee Invite Flow via Email
 
-## Mô tả
-
-Triển khai hệ thống xin nghỉ phép (leave request) cho nhân viên qua Employee Portal, với Giám đốc (admin) phê duyệt. Tự động tính toán ngày phép dựa trên quy tắc:
-- Nhân viên chính thức (fulltime), sau khi hết thử việc, mỗi tháng làm đủ = +1 ngày phép
-- Phép cộng dồn đến cuối năm, **chỉ được sử dụng bù vào quý tiếp theo**
-- Nếu không dùng hết → mất
-
-### Ví dụ minh họa
-- NV bắt đầu chính thức tháng 1/2026 → Q1 (01–03): tích luỹ 3 ngày → dùng được ở Q2
-- Q2 (04–06): tích luỹ thêm 3 → tổng có 6 → Q2 dùng bù max 3 (từ Q1), phần Q2 dùng ở Q3
-- Nếu Q2 không dùng hết 3 ngày Q1 → 3 ngày Q1 **mất**
+## Luồng mới
+1. Admin tạo nhân viên → Hệ thống gửi **email invite** tới work_email của nhân viên
+2. Nhân viên nhận email → Click link → Được redirect về app
+3. App phát hiện invite token trong URL → Hiện **trang đặt mật khẩu**
+4. Nhân viên đặt mật khẩu → Tự động đăng nhập vào Portal
 
 ## Proposed Changes
 
-### 1. Database — Leave Balance & Leave Requests
+### Edge Function
+#### [MODIFY] `create-employee-auth`
+- Thay `createUser()` bằng `inviteUserByEmail()` 
+- Supabase sẽ gửi email invite tự động (dùng built-in SMTP hoặc custom SMTP nếu đã cấu hình)
+- `redirectTo` sẽ trỏ về URL deploy của app (e.g. `https://your-app.vercel.app`)
 
-#### [NEW] Migration: `leave_balances` table
+### Frontend
+#### [NEW] `SetPasswordScreen.tsx`
+- Trang mới cho nhân viên đặt mật khẩu khi click invite link
+- Có 2 ô: Mật khẩu + Xác nhận mật khẩu  
+- Gọi `supabase.auth.updateUser({ password })` để set password
+- Dark theme matching LoginScreen
 
-```sql
-CREATE TABLE leave_balances (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  employee_id UUID REFERENCES hr_employees(id) ON DELETE CASCADE,
-  year INT NOT NULL,
-  quarter INT NOT NULL CHECK (quarter BETWEEN 1 AND 4),
-  accrued_days DECIMAL(4,1) DEFAULT 0,    -- Ngày phép tích luỹ trong quý này
-  used_days DECIMAL(4,1) DEFAULT 0,       -- Ngày đã dùng (từ quý trước)
-  expired_days DECIMAL(4,1) DEFAULT 0,    -- Ngày bị mất (không dùng)
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  UNIQUE(employee_id, year, quarter)
-);
-```
+#### [MODIFY] `App.tsx`
+- Detect invite token từ URL hash (`#access_token=...&type=invite`)
+- Nếu có invite token → show `SetPasswordScreen` thay vì `LoginScreen`
 
-> [!NOTE]
-> Bảng `att_requests` đã tồn tại với `request_type = 'leave'`. Ta sẽ thêm 2 cột mới: `leave_type` (phép năm / không lương / ốm) và `leave_days` (số ngày xin).
+### Supabase Config  
+- Cần cấu hình **Site URL** trong Supabase Dashboard → Auth → URL Configuration  
+  - Trỏ về URL deploy thực tế (ví dụ `https://tdgames-billing.vercel.app`)
 
-#### [MODIFY] `att_requests` — thêm cột
+> [!IMPORTANT]
+> App cần đã được deploy (có URL public). Supabase cần có Site URL chính xác để redirect đúng.
+> Nếu đang dùng SMTP mặc định của Supabase thì giới hạn **3 email/giờ** cho free plan. Cân nhắc cấu hình custom SMTP (Resend, SendGrid, v.v.) nếu cần gửi nhiều.
 
-```sql
-ALTER TABLE att_requests ADD COLUMN leave_type TEXT DEFAULT 'annual';
-ALTER TABLE att_requests ADD COLUMN leave_days DECIMAL(4,1) DEFAULT 1;
-```
-
----
-
-### 2. Types — TypeScript
-
-#### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
-- Thêm `LeaveBalance` interface
-- Cập nhật `AttRequest`: thêm `leave_type`, `leave_days`
-
----
-
-### 3. Service Layer
-
-#### [NEW] [leaveService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/portal/services/leaveService.ts)
-
-Các hàm chính:
-- `calculateLeaveBalance(employeeId, year)` — Tính phép dựa trên `start_date`, `probation_end`, loại nhân viên
-- `fetchLeaveBalances(employeeId, year)` — Lấy balance từ DB
-- `upsertLeaveBalance(...)` — Tạo/cập nhật balance
-- `fetchMyLeaveRequests(employeeId)` — Lấy danh sách đơn xin nghỉ
-- `submitLeaveRequest(...)` — Gửi đơn xin nghỉ (validate số phép còn)
-- `fetchAllPendingLeaves()` — Admin: lấy tất cả đơn pending
-- `approveLeave(id, approverNote)` — Duyệt + trừ balance
-- `rejectLeave(id, approverNote)` — Từ chối
-
----
-
-### 4. Employee Portal UI
-
-#### [MODIFY] [PortalApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/portal/components/PortalApp.tsx)
-- Thêm tab **"Nghỉ phép"** (tab thứ 4) 
-- Hiển thị: Balance card (tổng phép, đã dùng, còn lại) + Form xin nghỉ + Lịch sử đơn
-
-#### [NEW] [LeaveTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/portal/components/LeaveTab.tsx)
-- **Balance Overview**: Card hiển thị phép tích luỹ, phép đã dùng, phép khả dụng (quý hiện tại)
-- **Form xin nghỉ**: Chọn ngày từ/đến, loại phép, lý do → Submit
-- **Danh sách đơn**: Lịch sử các đơn xin nghỉ, trạng thái (pending/approved/rejected)
-
----
-
-### 5. Admin Approval UI
-
-#### [NEW] [LeaveApproval.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/attendance/components/LeaveApproval.tsx)
-- Hiển thị danh sách đơn xin nghỉ pending 
-- Nút Duyệt / Từ chối + ghi chú
-- Tích hợp vào Attendance app dưới dạng tab mới "Nghỉ phép"
-
-#### [MODIFY] [AttendanceApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/attendance/components/AttendanceApp.tsx)
-- Thêm tab "Nghỉ phép" cho admin/hr
-
----
-
-## Verification Plan
-
-### Browser Testing
-1. **Đăng nhập member** → Portal → tab "Nghỉ phép" → xem balance → gửi đơn xin nghỉ
-2. **Đăng nhập admin** → Chấm công → tab "Nghỉ phép" → thấy đơn pending → duyệt/từ chối
-3. **Kiểm tra balance**: sau duyệt, balance updated đúng
-
-### Manual Verification
-- Chạy `npm run dev`, mở `http://localhost:3000`
-- Login `admin@tdgames.local` → Chấm công → tab Nghỉ phép → thấy danh sách đơn
-- Login `tdgames.vn@gmail.com` (member) → Portal → tab Nghỉ phép → balance + form
+## Verification
+- Tạo nhân viên test → Check email nhận được invite link
+- Click link → App hiện trang đặt mật khẩu
+- Đặt mật khẩu → Tự động đăng nhập thành công
