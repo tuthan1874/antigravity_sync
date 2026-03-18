@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough documenting the freelancer contract generation feature implementation, including HĐKV and NDA CTV templates, dynamic project name input, and verification results with screenshots.",
-  "updatedAt": "2026-03-17T14:46:16.644851200Z",
-  "version": "2"
+  "summary": "Walkthrough documenting all changes made on 17/03/2026: freelancer contracts with dynamic fields, page break optimization, auto probation date, required employee fields, unified app backgrounds, and Workforce description update.",
+  "updatedAt": "2026-03-17T15:28:28.043598600Z",
+  "version": "3"
 }

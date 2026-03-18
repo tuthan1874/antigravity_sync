@@ -1,38 +1,42 @@
-# Freelancer Contract Generation — Walkthrough
+# Session Walkthrough — 17/03/2026
 
-## Changes Made
+## Tóm tắt công việc hôm nay
 
-### 1. `contractService.ts` — 2 New Template Generators
+### 1. Hợp đồng Freelancer (HĐKV + NDA CTV)
+- Thêm trường **Loại công việc** và **Tên dự án** — bắt buộc điền mới export được
+- Validation: kiểm tra cả dữ liệu nhân viên (CMND, ngày sinh, địa chỉ...) trước khi cho export
+- Nút export bị disable + cảnh báo đỏ khi thiếu thông tin
 
-Added `generateHDKV()` (Hợp đồng Khoán việc, 8 sections) and `generateNDA_CTV()` (Thỏa thuận Bảo mật, 17 articles). Content matches original PDFs exactly.
+### 2. Tối ưu Page Break hợp đồng
+- Sửa CSS `page-break-inside: avoid` trên `.article` → thay bằng `break-after: avoid` cho titles + `orphans/widows`
+- Giảm khoảng trống thừa khi xuất PDF
 
-**Key additions:**
-- `CONTRACT_TYPES_FULLTIME` / `CONTRACT_TYPES_FREELANCER` arrays for type-based filtering
-- `generateHDKV(employee, signingDate, contractNumber, projectName)` — accepts a **project name** for the V/v header
-- `generateNDA_CTV(employee, signingDate)` — comprehensive confidentiality agreement
+### 3. Auto-tính ngày hết thử việc
+- Khi điền **Ngày bắt đầu** → **Ngày hết thử việc** tự động = start + 2 tháng
+- Vẫn cho phép sửa tay
 
-### 2. `ContractGenerator.tsx` — Employee Type Detection
+### 4. Required Fields khi tạo nhân sự
+- **Chung**: Họ tên, Email, SĐT, Ngày sinh, Giới tính, Địa chỉ, CMND/CCCD
+- **Fulltime thêm**: Ngày cấp CMND, Nơi cấp, Phòng ban, Chức danh, Ngày bắt đầu
+- Viền đỏ + banner cảnh báo khi bấm submit mà thiếu
 
-Rewrote to auto-detect employee type and show appropriate contract options:
-- **Fulltime** → HĐLĐ, HĐTV, NDA (unchanged)
-- **Freelancer** → HĐKV, NDA CTV (new)
+### 5. Unified Background cho tất cả app
+- Tạo `AppBackground.tsx` chứa glow blobs + grid pattern (giống HomeScreen)
+- Áp dụng cho: HR, CRM, Expense, Attendance, Workforce, Invoice (dark), Payroll
 
-Added **project name input** for HĐKV with hint "Mỗi freelancer có thể có nhiều HĐ cho từng dự án". Also added a "Thông tin thù lao" panel showing rate info for freelancers.
+### 6. Sửa text mô tả app Workforce
+- "Quản lý nhân sự & nghiệm thu" → **"Quản lý Task và nghiệm thu"**
 
-### 3. `EmployeeDetail.tsx` — Button Filter
+## Files chính đã thay đổi
+| File | Thay đổi |
+|------|----------|
+| `components/AppBackground.tsx` | **[NEW]** Shared background component |
+| `config/apps.ts` | Sửa description Workforce |
+| `apps/hr/components/EmployeeForm.tsx` | Required fields + auto probation |
+| `apps/hr/components/ContractGenerator.tsx` | Validation + dynamic fields |
+| `apps/hr/services/contractService.ts` | Print CSS fix + workScope |
+| `apps/*/components/*App.tsx` (7 files) | Thêm AppBackground |
+| `apps/payroll/components/PayrollSheet.tsx` | Thêm AppBackground |
 
-Changed from `employee.type === 'fulltime'` to `(employee.type === 'fulltime' || employee.type === 'freelancer')` with blue gradient for freelancers.
-
-## Verification
-
-### HĐKV with Project Name
-![HĐKV contract preview with "Project XYZ" in the V/v header](file:///C:/Users/dangt/.gemini/antigravity/brain/a1cc1332-c952-4a7d-a1ff-e0cb0780b1a4/hdkv_preview_final_project_name_1773758713834.png)
-
-### NDA CTV (17 Articles)
-![NDA CTV preview showing Điều 1-2 and detailed confidentiality terms](file:///C:/Users/dangt/.gemini/antigravity/brain/a1cc1332-c952-4a7d-a1ff-e0cb0780b1a4/nda_ctv_preview_top_1773758637296.png)
-
-### Full Flow Recording
-![Browser recording of testing the freelancer contract flow](file:///C:/Users/dangt/.gemini/antigravity/brain/a1cc1332-c952-4a7d-a1ff-e0cb0780b1a4/freelancer_contract_test_1773758518795.webp)
-
-## Result
-✅ All contracts render correctly with employee data populated, project name is dynamic, and A4 layout is optimized.
+## Git
+- Commit: `ae3faf6` — pushed to `main` on GitHub ✅
