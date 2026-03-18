@@ -1,0 +1,44 @@
+# Walkthrough — Luồng Xin Nghỉ Phép
+
+## Tổng quan
+
+Triển khai hệ thống xin nghỉ phép hoàn chỉnh: nhân viên xin qua Employee Portal → Giám đốc duyệt/từ chối qua Chấm công app → Balance tự động cập nhật.
+
+## Business Rules
+
+| Quy tắc | Chi tiết |
+|---------|----------|
+| Ai được phép? | Nhân viên chính thức (fulltime), đã hết thử việc |
+| Tích luỹ | 1 tháng làm đủ = 1 ngày phép |
+| Sử dụng | Phép Q(N) chỉ dùng được ở Q(N+1) |
+| Hết hạn | Không dùng hết ở Q(N+1) → mất |
+| Phê duyệt | Giám đốc (admin) duyệt/từ chối |
+
+---
+
+## Files Changed
+
+### Database
+- **Migration**: `leave_balances` table (employee_id, year, quarter, accrued/used/expired)
+- **`att_requests`**: thêm `leave_type` (annual/unpaid/sick) + `leave_days` (decimal)
+
+### Types & Service
+| File | Change |
+|------|--------|
+| [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts) | `LeaveBalance` interface + `AttRequest.leave_type/leave_days` |
+| **[NEW]** [leaveService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/portal/services/leaveService.ts) | Balance calc, CRUD, approval logic |
+
+### Employee Portal
+| File | Change |
+|------|--------|
+| **[NEW]** [LeaveTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/portal/components/LeaveTab.tsx) | Balance cards + form xin nghỉ + history |
+| [PortalApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/portal/components/PortalApp.tsx) | Tab "Nghỉ phép" (4th tab) |
+
+### Admin Approval
+| File | Change |
+|------|--------|
+| **[NEW]** [LeaveApproval.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/attendance/components/LeaveApproval.tsx) | Approval panel + filter + approve/reject |
+| [AttendanceApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/attendance/components/AttendanceApp.tsx) | Tab "Nghỉ phép" (6th tab) |
+| [useAttendanceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/attendance/hooks/useAttendanceState.ts) | `AttTab` + `'leaves'` |
+
+### Build: `tsc --noEmit` ✅ (zero errors)
