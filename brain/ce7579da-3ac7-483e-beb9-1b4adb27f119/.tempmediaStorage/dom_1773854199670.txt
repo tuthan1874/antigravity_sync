@@ -1,0 +1,118 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (10,18)<a class='items-center justify-center flex-shrink-0 flex' href='/dashboard/organizations' />
+		[2] (10,18)<img  />
+	[3] (881,18)<span class='relative justify-center cursor-pointer inline-flex items-center space-x-2 text-center font-regular ease-out duration-200 outline-none transition-all outline-0 focus-visible:outline-4 focus-visible:outline-offset-1 border hover:bg-surface-300 shadow-none focus-visible:outline-border-strong data-[state=open]:bg-surface-300 data-[state=open]:outline-border-strong border-transparent text-xs px-2.5 py-1 rounded-full h-[32px] text-foreground-light hover:text-foreground' />
+		[4] (881,18)<span >Feedback />
+	[5] (923,18)<button class='px-4 py-2 whitespace-nowrap border-input text-sm hover:bg-accent hover:text-accent-foreground ring-offset-background disabled:pointer-events-none disabled:opacity-50 group flex-grow h-[30px] pl-1.5 md:pl-2 pr-1 items-center justify-between text-foreground-lighter border hover:bg-opacity-100 hover:border-stronger focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-border-strong focus-visible:ring-offset-1 focus-visible:ring-offset-background transition hidden md:flex md:min-w-32 xl:min-w-32 rounded-full bg-transparent [&_.command-shortcut>div]:border-none [&_.command-shortcut>div]:pr-2 [&_.command-shortcut>div]:bg-transparent [&_.command-shortcut>div]:text-foreground-lighter' />
+		[6] (917,18)<div  />
+			[7] (921,18)<p >Search... />
+		[8] (940,18)<div  />
+			[9] (940,18)<div  />
+				[10] (942,18)<span >K />
+	[11] (958,18)<button class='relative cursor-pointer space-x-2 text-center font-regular ease-out duration-200 outline-none transition-all outline-0 focus-visible:outline-4 focus-visible:outline-offset-1 border text-foreground bg-transparent border-strong hover:border-foreground-muted focus-visible:outline-border-strong data-[state=open]:border-stronger data-[state=open]:outline-border-strong text-xs rounded-full w-[32px] h-[32px] flex items-center justify-center p-0 group pointer-events-auto' id='help-dropdown-button' />
+		[12] (958,18)<span  />
+	[13] (973,18)<button class='relative cursor-pointer space-x-2 text-center font-regular ease-out duration-200 outline-none transition-all outline-0 focus-visible:outline-4 focus-visible:outline-offset-1 border text-foreground bg-transparent border-strong hover:border-foreground-muted focus-visible:outline-border-strong data-[state=open]:border-stronger data-[state=open]:outline-border-strong text-xs rounded-full w-[32px] h-[32px] flex items-center justify-center p-0 group pointer-events-auto' id='advisor-center-trigger' />
+		[14] (973,18)<span  />
+	[15] (989,18)<button class='relative justify-center cursor-pointer items-center space-x-2 text-center font-regular ease-out duration-200 outline-none transition-all outline-0 focus-visible:outline-4 focus-visible:outline-offset-1 text-foreground bg-alternative dark:bg-muted hover:bg-selection border-strong hover:border-stronger focus-visible:outline-brand-600 data-[state=open]:bg-selection data-[state=open]:outline-brand-600 data-[state=open]:border-button-hover text-xs border flex-shrink-0 hidden md:flex [&>span]:flex px-0 py-0 rounded-full overflow-hidden h-8 w-8' id='radix-:rb:' />
+		[16] (989,18)<span  />
+			[17] (989,18)<div  />
+	[18] (9,984)<button class='relative justify-center cursor-pointer inline-flex items-center space-x-2 text-center font-regular ease-out duration-200 rounded-md outline-none transition-all outline-0 focus-visible:outline-4 focus-visible:outline-offset-1 border text-foreground hover:bg-surface-300 shadow-none focus-visible:outline-border-strong data-[state=open]:bg-surface-300 data-[state=open]:outline-border-strong border-transparent text-xs py-1 h-[26px] w-min px-1.5 mx-0.5' id='radix-:rq:' />
+		[19] (9,984)<div  />
+	Authentication
+	Manage
+	[20] (69,118)<a class='block' href='/dashboard/project/undefined/auth/users' />
+		[21] (69,118)<li class='cursor-pointer flex space-x-3 items-center outline-none focus-visible:ring-1 ring-foreground-muted focus-visible:z-10 group px-3 py-1 font-normal border-default group-hover:border-foreground-muted' role='menuitem' />
+			[22] (69,118)<span  />
+				[23] (69,118)<div  />
+					[24] (69,118)<div  />
+						[25] (69,118)<span >Users />
+	[26] (69,139)<a class='block' href='/dashboard/project/undefined/auth/oauth-apps' />
+		[27] (69,139)<li class='cursor-pointer flex space-x-3 items-center outline-none focus-visible:ring-1 ring-foreground-muted focus-visible:z-10 group px-3 py-1 font-normal border-default group-hover:border-foreground-muted' role='menuitem' />
+			[28] (69,139)<span  />
+				[29] (69,139)<div  />
+					[30] (69,139)<div  />
+						[31] (69,139)<span >OAuth Apps />
+	Notifications
+	[32] (69,208)<a class='block' href='/dashboard/project/undefined/auth/templates' />
+		[33] (69,208)<li class='cursor-pointer flex space-x-3 items-center outline-none focus-visible:ring-1 ring-foreground-muted focus-visible:z-10 group px-3 py-1 font-normal border-default group-hover:border-foreground-muted' role='menuitem' />
+			[34] (69,208)<span  />
+				[35] (69,208)<div  />
+					[36] (69,208)<div  />
+						[37] (69,208)<span >Email />
+	Configuration
+	[38] (69,276)<a class='block' href='/dashboard/project/undefined/auth/policies' />
+		[39] (69,276)<li class='cursor-pointer flex space-x-3 items-center outline-none focus-visible:ring-1 ring-foreground-muted focus-visible:z-10 group px-3 py-1 font-normal border-default group-hover:border-foreground-muted' role='menuitem' />
+			[40] (69,276)<span  />
+				[41] (69,276)<div  />
+					[42] (69,276)<div  />
+						[43] (69,276)<span >Policies />
+	[44] (69,297)<a class='block' href='/dashboard/project/undefined/auth/providers' />
+		[45] (69,297)<li class='cursor-pointer flex space-x-3 items-center outline-none focus-visible:ring-1 ring-foreground-muted focus-visible:z-10 group px-3 py-1 font-normal border-default group-hover:border-foreground-muted' role='menuitem' />
+			[46] (69,297)<span  />
+				[47] (69,297)<div  />
+					[48] (69,297)<div  />
+						[49] (69,297)<span >Sign In / Providers />
+	[50] (69,319)<a class='block' href='/dashboard/project/undefined/auth/oauth-server' />
+		[51] (69,319)<li class='cursor-pointer flex space-x-3 items-center outline-none focus-visible:ring-1 ring-foreground-muted focus-visible:z-10 group px-3 py-1 font-normal border-default group-hover:border-foreground-muted' role='menuitem' />
+			[52] (69,319)<span  />
+				[53] (69,319)<div  />
+					[54] (69,319)<div  />
+						[55] (61,319)<span >OAuth Server />
+						[56] (102,319)<div >Beta />
+	[57] (69,340)<a class='block' href='/dashboard/project/undefined/auth/sessions' />
+		[58] (69,340)<li class='cursor-pointer flex space-x-3 items-center outline-none focus-visible:ring-1 ring-foreground-muted focus-visible:z-10 group px-3 py-1 font-normal border-default group-hover:border-foreground-muted' role='menuitem' />
+			[59] (69,340)<span  />
+				[60] (69,340)<div  />
+					[61] (69,340)<div  />
+						[62] (69,340)<span >Sessions />
+	[63] (69,362)<a class='block' href='/dashboard/project/undefined/auth/rate-limits' />
+		[64] (69,362)<li class='cursor-pointer flex space-x-3 items-center outline-none focus-visible:ring-1 ring-foreground-muted focus-visible:z-10 group px-3 py-1 font-normal border-default group-hover:border-foreground-muted' role='menuitem' />
+			[65] (69,362)<span  />
+				[66] (69,362)<div  />
+					[67] (69,362)<div  />
+						[68] (69,362)<span >Rate Limits />
+	[69] (69,383)<a class='block' href='/dashboard/project/undefined/auth/mfa' />
+		[70] (69,383)<li class='cursor-pointer flex space-x-3 items-center outline-none focus-visible:ring-1 ring-foreground-muted focus-visible:z-10 group px-3 py-1 font-normal border-default group-hover:border-foreground-muted' role='menuitem' />
+			[71] (69,383)<span  />
+				[72] (69,383)<div  />
+					[73] (69,383)<div  />
+						[74] (69,383)<span >Multi-Factor />
+	[75] (69,405)<a class='block' href='/dashboard/project/undefined/auth/url-configuration' />
+		[76] (69,405)<li class='cursor-pointer flex space-x-3 items-center outline-none focus-visible:ring-1 ring-foreground-muted focus-visible:z-10 group px-3 py-1 font-semibold bg-sidebar-accent text-foreground-lighter z-10 rounded-md' role='menuitem' />
+			[77] (69,405)<span  />
+				[78] (69,405)<div  />
+					[79] (69,405)<div  />
+						[80] (69,405)<span >URL Configuration />
+	[81] (69,426)<a class='block' href='/dashboard/project/undefined/auth/protection' />
+		[82] (69,426)<li class='cursor-pointer flex space-x-3 items-center outline-none focus-visible:ring-1 ring-foreground-muted focus-visible:z-10 group px-3 py-1 font-normal border-default group-hover:border-foreground-muted' role='menuitem' />
+			[83] (69,426)<span  />
+				[84] (69,426)<div  />
+					[85] (69,426)<div  />
+						[86] (69,426)<span >Attack Protection />
+	[87] (69,448)<a class='block' href='/dashboard/project/undefined/auth/hooks' />
+		[88] (69,448)<li class='cursor-pointer flex space-x-3 items-center outline-none focus-visible:ring-1 ring-foreground-muted focus-visible:z-10 group px-3 py-1 font-normal border-default group-hover:border-foreground-muted' role='menuitem' />
+			[89] (69,448)<span  />
+				[90] (69,448)<div  />
+					[91] (69,448)<div  />
+						[92] (61,448)<span >Auth Hooks />
+						[93] (102,448)<div >Beta />
+	[94] (69,469)<a class='block' href='/dashboard/project/undefined/auth/audit-logs' />
+		[95] (69,469)<li class='cursor-pointer flex space-x-3 items-center outline-none focus-visible:ring-1 ring-foreground-muted focus-visible:z-10 group px-3 py-1 font-normal border-default group-hover:border-foreground-muted' role='menuitem' />
+			[96] (69,469)<span  />
+				[97] (69,469)<div  />
+					[98] (69,469)<div  />
+						[99] (69,469)<span >Audit Logs />
+	[100] (69,490)<a class='block' href='/dashboard/project/undefined/auth/performance' />
+		[101] (69,490)<li class='cursor-pointer flex space-x-3 items-center outline-none focus-visible:ring-1 ring-foreground-muted focus-visible:z-10 group px-3 py-1 font-normal border-default group-hover:border-foreground-muted' role='menuitem' />
+			[102] (69,490)<span  />
+				[103] (69,490)<div  />
+					[104] (69,490)<div  />
+						[105] (69,490)<span >Performance />
+	URL Configuration
+	Configure site URL and redirect URLs for authentication
+
+</current_dom>

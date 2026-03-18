@@ -1,0 +1,52 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,517)<div  />
+	We are investigating a technical issue
+	·
+	Follow the
+	[1] (554,17)<a class='underline transition underline-offset-2 decoration-foreground-lighter hover:decoration-foreground text-inherit hover:text-foreground' href='https://status.supabase.com'>status page />
+	for updates
+	[2] (37,92)<a href='https://supabase.com' />
+		[3] (37,92)<img  />
+	[4] (956,92)<a class='relative justify-center cursor-pointer inline-flex items-center space-x-2 text-center font-regular ease-out duration-200 rounded-md outline-none transition-all outline-0 focus-visible:outline-4 focus-visible:outline-offset-1 border text-foreground bg-alternative dark:bg-muted hover:bg-selection border-strong hover:border-stronger focus-visible:outline-brand-600 data-[state=open]:bg-selection data-[state=open]:outline-brand-600 data-[state=open]:border-button-hover text-xs px-2.5 py-1 h-[26px]' href='https://supabase.com/docs' />
+		[5] (939,92)<div  />
+		[6] (961,92)<span >Documentation />
+	Welcome back
+	Sign in to your account
+	Last used
+	[7] (191,425)<button class='relative cursor-pointer space-x-2 text-center font-regular ease-out duration-200 rounded-md outline-none transition-all outline-0 focus-visible:outline-4 focus-visible:outline-offset-1 border text-foreground bg-alternative dark:bg-muted hover:bg-selection border-strong hover:border-stronger focus-visible:outline-brand-600 data-[state=open]:bg-selection data-[state=open]:outline-brand-600 data-[state=open]:border-button-hover w-full flex items-center justify-center text-base px-4 py-2 h-[42px]' />
+		[8] (159,425)<div  />
+		[9] (197,425)<span >Continue with GitHub />
+	[10] (191,472)<a class='relative cursor-pointer space-x-2 text-center font-regular ease-out duration-200 rounded-md outline-none transition-all outline-0 focus-visible:outline-4 focus-visible:outline-offset-1 border text-foreground bg-transparent border-strong hover:border-foreground-muted focus-visible:outline-border-strong data-[state=open]:border-stronger data-[state=open]:outline-border-strong w-full flex items-center justify-center text-base px-4 py-2 h-[42px]' href='/dashboard/sign-in-sso?returnTo=%2Fproject%2Ffifuhkupaqcfjwyouwpa%2Fauth%2Furl-configuration' />
+		[11] (163,472)<div  />
+		[12] (197,472)<span >Continue with SSO />
+	or
+	[13] (123,542)<label class='text peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm transition-colors text-foreground flex gap-2 items-center break-all leading-normal'>Email />
+		Email
+	[14] (191,570)<input class='flex w-full rounded-md border border-control read-only:border-button bg-foreground/[.026] file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-foreground-muted read-only:text-foreground-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background-control focus-visible:ring-offset-2 focus-visible:ring-offset-foreground-muted disabled:cursor-not-allowed disabled:text-foreground-muted aria-[] aria-[invalid=true]:bg-destructive-200 aria-[invalid=true]:border-destructive-400 aria-[invalid=true]:focus:border-destructive aria-[invalid=true]:focus-visible:border-destructive text-sm leading-4 px-3 py-2 h-[34px]' id='email' placeholder='you@example.com' />
+	[15] (128,603)<label class='text peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm transition-colors text-foreground flex gap-2 items-center break-all leading-normal'>Password />
+		Password
+	[16] (191,630)<input class='flex w-full rounded-md border border-control read-only:border-button bg-foreground/[.026] file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-foreground-muted read-only:text-foreground-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background-control focus-visible:ring-offset-2 focus-visible:ring-offset-foreground-muted disabled:cursor-not-allowed disabled:text-foreground-muted aria-[] aria-[invalid=true]:bg-destructive-200 aria-[invalid=true]:border-destructive-400 aria-[invalid=true]:focus:border-destructive aria-[invalid=true]:focus-visible:border-destructive text-sm leading-4 px-3 py-2 h-[34px] pr-10' id='password' placeholder='••••••••' />
+	[17] (259,630)<button aria-label='Show password' class='justify-center cursor-pointer inline-flex items-center space-x-2 text-center font-regular ease-out duration-200 rounded-md outline-none transition-all outline-0 focus-visible:outline-4 focus-visible:outline-offset-1 border text-foreground bg-alternative dark:bg-muted hover:bg-selection border-strong hover:border-stronger focus-visible:outline-brand-600 data-[state=open]:bg-selection data-[state=open]:outline-brand-600 data-[state=open]:border-button-hover text-xs py-1 h-[26px] absolute right-1 top-1 px-1.5' title='Show password' />
+		[18] (259,630)<div  />
+	[19] (244,603)<a class='absolute top-0 right-0 text-sm text-foreground-lighter' href='/dashboard/forgot-password?returnTo=%2Fproject%2Ffifuhkupaqcfjwyouwpa%2Fauth%2Furl-configuration'>Forgot password? />
+	[20] (191,684)<button class='relative cursor-pointer space-x-2 text-center font-regular ease-out duration-200 rounded-md outline-none transition-all outline-0 focus-visible:outline-4 focus-visible:outline-offset-1 border bg-brand-400 dark:bg-brand-500 hover:bg-brand/80 dark:hover:bg-brand/50 text-foreground border-brand-500/75 dark:border-brand/30 hover:border-brand-600 dark:hover:border-brand focus-visible:outline-brand-600 data-[state=open]:bg-brand-400/80 dark:data-[state=open]:bg-brand-500/80 data-[state=open]:outline-brand-600 w-full flex items-center justify-center text-base px-4 py-2 h-[42px]' />
+		[21] (191,684)<span >Sign in />
+	Don’t have an account?
+	[22] (221,732)<a class='underline transition text-foreground hover:text-foreground-light' href='/dashboard/sign-up?returnTo=%2Fproject%2Ffifuhkupaqcfjwyouwpa%2Fauth%2Furl-configuration'>Sign up />
+	By continuing, you agree to Supabase’s
+	[23] (228,992)<a class='underline hover:text-foreground-light' href='https://supabase.com/terms'>Terms of Service />
+	and
+	Privacy Policy
+	, and to receive periodic emails with updates.
+	“
+	Okay, I finally tried Supabase today and wow... why did I wait so long? 😅 Went from 'how do I even start' to having auth + database + real-time updates working in like 20 minutes. Sometimes the hype is actually justified! #Supabase
+	[24] (691,640)<a class='flex items-center gap-4' href='https://x.com/Aliahsan_sfv/status/1967167095894098210' />
+		[25] (601,640)<img  />
+		[26] (637,640)<div  />
+			[27] (637,640)<cite >@
+Aliahsan_sfv />
+
+</current_dom>

@@ -1,0 +1,29 @@
+Skip to content
+Sign in to
+GitHub
+to continue to
+Supabase
+[0] (500,193)<label >Username or email address />
+[1] (500,220)<input class='form-control  js-login-field' id='login_field' />
+[2] (500,256)<label >Password />
+[3] (500,282)<input class='form-control form-control js-password-field' id='password' />
+[4] (547,256)<a class='label-link position-absolute top-0 right-0' href='/password_reset' id='forgot-password'>Forgot password? />
+[5] (500,325)<input class='btn btn-primary btn-block js-sign-in-button' />
+or
+[6] (500,402)<button class='Button--secondary Button--medium Button Button--fullWidth mt-2' />
+	[7] (500,402)<span  />
+		[8] (505,402)<span >Continue with Google />
+[9] (500,439)<button class='Button--secondary Button--medium Button Button--fullWidth mt-2' />
+	[10] (500,439)<span  />
+		[11] (505,439)<span >Continue with Apple />
+New to GitHub?
+[12] (520,477)<a href='/join?return_to=%2Flogin%2Foauth%2Fauthorize%3Fclient_id%3D60b7a7e2418b90251417%26redirect_to%3Dhttps%253A%252F%252Fsupabase.com%252Fdashboard%252Fsign-in-mfa%253FreturnTo%253D%25252Fproject%25252Ffifuhkupaqcfjwyouwpa%25252Fauth%25252Furl-configuration%2526method%253Dgithub%26redirect_uri%3Dhttps%253A%252F%252Falt.supabase.io%252Fauth%252Fv1%252Fcallback%26response_type%3Dcode%26scope%3Duser%253Aemail%26state%3D42e51e77-4035-4461-8f21-c79df25c3d97&source=oauth'>Create an account />
+[13] (500,506)<button class='Button--link Button--medium Button' />
+	[14] (500,506)<span  />
+		[15] (500,506)<span >Sign in with a passkey />
+[16] (369,981)<a class='Link--secondary Link' href='https://docs.github.com/site-policy/github-terms/github-terms-of-service'>Terms />
+[17] (395,981)<a class='Link--secondary Link' href='https://docs.github.com/site-policy/privacy-policies/github-privacy-statement'>Privacy />
+[18] (420,981)<a class='Link--secondary Link' href='https://docs.github.com'>Docs />
+[19] (462,981)<a class='Link--secondary Link' href='https://support.github.com'>Contact GitHub Support />
+[20] (520,981)<button class='Link--secondary underline-on-hover border-0 p-0 color-bg-transparent'>Manage cookies />
+[21] (595,981)<button class='Link--secondary underline-on-hover border-0 p-0 color-bg-transparent text-left'>Do not share my personal information />

@@ -1,44 +1,47 @@
-# Walkthrough — Luồng Xin Nghỉ Phép
+# Employee Invite Flow — Walkthrough
 
-## Tổng quan
+## Tóm tắt thay đổi
 
-Triển khai hệ thống xin nghỉ phép hoàn chỉnh: nhân viên xin qua Employee Portal → Giám đốc duyệt/từ chối qua Chấm công app → Balance tự động cập nhật.
+### 1. Edge Function `create-employee-auth` (v2)
+- Thay `createUser(password)` → `inviteUserByEmail(email, { redirectTo })`
+- Supabase tự động gửi email invite tới nhân viên
+- `redirectTo` = `https://app.tdgamestudio.com`
+- Nếu email đã tồn tại → chỉ update metadata, không lỗi
 
-## Business Rules
+### 2. `SetPasswordScreen.tsx` (NEW)
+- Giao diện đặt mật khẩu mới (theme xanh để phân biệt với login)
+- Có validate: min 6 ký tự, xác nhận khớp
+- Gọi `supabase.auth.updateUser({ password })` để set password
 
-| Quy tắc | Chi tiết |
-|---------|----------|
-| Ai được phép? | Nhân viên chính thức (fulltime), đã hết thử việc |
-| Tích luỹ | 1 tháng làm đủ = 1 ngày phép |
-| Sử dụng | Phép Q(N) chỉ dùng được ở Q(N+1) |
-| Hết hạn | Không dùng hết ở Q(N+1) → mất |
-| Phê duyệt | Giám đốc (admin) duyệt/từ chối |
+### 3. `App.tsx`
+- Detect invite token via `onAuthStateChange` event (`SIGNED_IN` + `type=invite` in URL hash)
+- Hiện `SetPasswordScreen` thay vì redirect về login/home
+- Sau khi set password → member role tự động vào Portal
 
----
+### 4. `hrService.ts`
+- Update response handling: log invite status thay vì temp password
 
-## Files Changed
+## Luồng hoàn chỉnh
 
-### Database
-- **Migration**: `leave_balances` table (employee_id, year, quarter, accrued/used/expired)
-- **`att_requests`**: thêm `leave_type` (annual/unpaid/sick) + `leave_days` (decimal)
+```mermaid
+sequenceDiagram
+    Admin->>HR App: Tạo nhân viên (work_email)
+    HR App->>Edge Function: POST /create-employee-auth
+    Edge Function->>Supabase: inviteUserByEmail(email)
+    Supabase->>Employee Email: Gửi email invite link
+    Employee->>Browser: Click invite link
+    Browser->>App: Redirect tới app.tdgamestudio.com#access_token=...&type=invite
+    App->>SetPasswordScreen: Detect invite → hiện trang đặt mật khẩu
+    Employee->>SetPasswordScreen: Nhập mật khẩu mới
+    SetPasswordScreen->>Supabase: updateUser({ password })
+    App->>Portal: Auto-navigate vào Portal
+```
 
-### Types & Service
-| File | Change |
-|------|--------|
-| [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts) | `LeaveBalance` interface + `AttRequest.leave_type/leave_days` |
-| **[NEW]** [leaveService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/portal/services/leaveService.ts) | Balance calc, CRUD, approval logic |
+## ⚠️ Cấu hình cần thiết trên Supabase Dashboard
 
-### Employee Portal
-| File | Change |
-|------|--------|
-| **[NEW]** [LeaveTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/portal/components/LeaveTab.tsx) | Balance cards + form xin nghỉ + history |
-| [PortalApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/portal/components/PortalApp.tsx) | Tab "Nghỉ phép" (4th tab) |
-
-### Admin Approval
-| File | Change |
-|------|--------|
-| **[NEW]** [LeaveApproval.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/attendance/components/LeaveApproval.tsx) | Approval panel + filter + approve/reject |
-| [AttendanceApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/attendance/components/AttendanceApp.tsx) | Tab "Nghỉ phép" (6th tab) |
-| [useAttendanceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/attendance/hooks/useAttendanceState.ts) | `AttTab` + `'leaves'` |
-
-### Build: `tsc --noEmit` ✅ (zero errors)
+> [!IMPORTANT]
+> Bạn cần vào **Supabase Dashboard** → **Authentication** → **URL Configuration** và cấu hình:
+> 1. **Site URL**: `https://app.tdgamestudio.com`
+> 2. **Redirect URLs**: Thêm `https://app.tdgamestudio.com`
+> 
+> Nếu không cấu hình, link trong email invite sẽ redirect sai URL.
