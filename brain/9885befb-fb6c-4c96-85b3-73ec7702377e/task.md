@@ -36,7 +36,8 @@
 ## 🟡 QUAN TRỌNG — Nên triển khai sớm
 
 ### 6. CRM Activity Timeline `CRM`
-- [ ] Lịch sử tương tác cho mỗi khách (gọi điện, email, meeting, ghi chú)
+- [x] Bảng `crm_activities` (loại: call/email/meeting/note)
+- [x] Timeline view trong Client detail + tab Hoạt động tổng quan
 > **Lý do:** CRM hiện chỉ là danh bạ — không có interaction history thì không thể track được sales pipeline.
 
 ### 7. Export đa module `All`
