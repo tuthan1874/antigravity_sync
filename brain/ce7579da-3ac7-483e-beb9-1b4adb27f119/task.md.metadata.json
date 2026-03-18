@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_TASK",
+  "summary": "Task checklist for implementing the leave request system. Covers database migration, TypeScript types, service layer, Employee Portal UI, Leave tab component, Admin approval UI, and browser testing.",
+  "updatedAt": "2026-03-18T14:38:30.272959800Z"
+}

@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough of completed features: CRM Activity Timeline (#6), Role-based Access Control + Employee Portal (#10). Details all changes made, files modified/created, and verification results.",
-  "updatedAt": "2026-03-18T13:07:38.583702600Z",
-  "version": "3"
+  "summary": "Complete walkthrough of session 2026-03-18: CRM Activity Timeline, Role-based Access Control (4 roles), Employee Portal app, auto-create auth on employee creation, and all bug fixes.",
+  "updatedAt": "2026-03-18T14:09:50.971057800Z",
+  "version": "4"
 }

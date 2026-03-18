@@ -1,13 +1,10 @@
-# Walkthrough — Session 2026-03-18 (Part 2)
+# Walkthrough — Session 2026-03-18
 
 ## 1. CRM Activity Timeline ✅ (#6)
 
-### Changes
-- **[DB]** New table `crm_activities` (type, title, description, outcome, actor, date)
-- **[NEW]** [ActivityTimeline.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/components/ActivityTimeline.tsx) — Per-client timeline with add form (📞/📧/🤝/📝), outcome tracking, delete
-- **[MODIFY]** [crmService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/services/crmService.ts) — CRUD: `fetchActivities`, `createActivity`, `deleteActivity`
-- **[MODIFY]** [ClientForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/components/ClientForm.tsx) — ActivityTimeline integrated below contacts
-- **[MODIFY]** [CrmApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/components/CrmApp.tsx) — "Thống kê" tab → "Hoạt động" tab with `GlobalActivityFeed` + type filter
+- **DB**: `crm_activities` table (type, title, description, outcome, actor, date)
+- **[NEW]** `ActivityTimeline.tsx` — Per-client timeline + add form
+- **[MODIFY]** `CrmApp.tsx` — "Thống kê" → "Hoạt động" tab with `GlobalActivityFeed`
 
 ---
 
@@ -15,34 +12,39 @@
 
 ### Role System
 
-| Role | Tên | Apps |
-|------|-----|------|
-| `admin` | Giám đốc | Dashboard, Invoice, Expense, Workforce, CRM, HR, Chấm công, Tính lương |
-| `ke_toan` | Kế toán | Invoice, Expense, Workforce, CRM, Tính lương |
-| `hr` | HR | HR, Chấm công, Tính lương |
-| `member` | Nhân viên | Employee Portal |
+| Role | Apps |
+|------|------|
+| `admin` | Dashboard, Invoice, Expense, Workforce, CRM, HR, Chấm công, Tính lương |
+| `ke_toan` | Invoice, Expense, Workforce, CRM, Tính lương |
+| `hr` | HR, Chấm công, Tính lương |
+| `member` | Employee Portal |
 
-### Changes
+### Files Changed
 
-**Core:**
-- **[MODIFY]** [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts) — `AccountUser.role` expanded: `admin | ke_toan | hr | member` + `employee_id`
-- **[MODIFY]** [apps.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/config/apps.ts) — `roles[]` field per app, 9th app: Employee Portal
-- **[MODIFY]** [HomeScreen.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/HomeScreen.tsx) — Filter apps by `currentUser.role`
-- **[MODIFY]** [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) — Portal route + `parseRole()` helper for all 4 roles
+| File | Change |
+|------|--------|
+| [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts) | `AccountUser.role` → 4 roles + `employee_id` |
+| [apps.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/config/apps.ts) | `roles[]` per app + Portal entry |
+| [HomeScreen.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/HomeScreen.tsx) | Filter apps by role |
+| [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) | Portal route + `parseRole()` |
+| [supabaseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/services/supabaseService.ts) | Email login + 4-role parsing + employee_id |
+| [LoginScreen.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/LoginScreen.tsx) | Updated placeholder |
+| [hrService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/services/hrService.ts) | `saveEmployee()` auto-creates auth |
+| **[NEW]** [PortalApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/portal/components/PortalApp.tsx) | 3 tabs: danh bạ, lương, chấm công |
+| **[NEW]** [portalService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/portal/services/portalService.ts) | Directory + payslip + attendance queries |
+| **Edge Function** `create-employee-auth` | Auto-create auth when HR adds employee |
 
-**Auth:**
-- **[MODIFY]** [supabaseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/services/supabaseService.ts) — Email login support (username OR email), 4-role parsing, `employee_id` from metadata
-- **[MODIFY]** [LoginScreen.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/LoginScreen.tsx) — Updated placeholder text
-- **[DB]** Admin user → role `admin`, member user → role `ke_toan`
+### Auth Accounts
 
-**Employee Portal:**
-- **[NEW]** [PortalApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/portal/components/PortalApp.tsx) — 3 tabs: Thông tin công ty (employee grid), Bảng lương, Chấm công
-- **[NEW]** [portalService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/portal/services/portalService.ts) — `fetchEmployeeDirectory()`, `fetchMyPayslips()`, `fetchMyAttendance()`
+| Email | Role | Ghi chú |
+|-------|------|---------|
+| `admin@tdgames.local` | `admin` | Login: `admin` / password cũ |
+| `member@tdgames.local` | `ke_toan` | Login: `member` / password cũ |
+| `tdgames.vn@gmail.com` | `member` | Login: email / `TDGames2026!` — Đặng Thế Toàn |
 
-**Auto-Auth:**
-- **[NEW]** Edge Function `create-employee-auth` — Auto-creates Supabase Auth account when HR adds a fulltime/parttime employee
-- **[MODIFY]** [hrService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/services/hrService.ts) — `saveEmployee()` calls Edge Function to create auth account
+### Bug Fixes
+- Portal blank screen: `AppBackground` dùng sai (wrapper → self-closing)
+- Navbar missing `theme` + `onLogout` props
+- Directory filter: chỉ hiện fulltime/parttime, ẩn freelancer
 
-### Verification
-- ✅ `tsc --noEmit` — 0 errors
-- ✅ `vite build` — passes
+### Build: `tsc` + `vite build` ✅
