@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough of two completed features: Expense Dashboard + Upload biên lai, and Invoice↔CRM client unification.",
-  "updatedAt": "2026-03-18T10:34:38.953930400Z",
-  "version": "1"
+  "summary": "Walkthrough of 3 completed items: Expense Dashboard, Invoice-CRM client merge, and Supabase Auth migration.",
+  "updatedAt": "2026-03-18T10:55:46.111457200Z",
+  "version": "2"
 }

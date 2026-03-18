@@ -27,8 +27,8 @@
 > **Lý do:** 2 bảng khách hàng riêng rẽ = duplicate data, mất đồng bộ. Càng nhiều data đổ vào càng khó merge sau này — phải sửa sớm.
 
 ### 5. Chuyển sang Supabase Auth `Platform`
-- [ ] Dùng Supabase Auth thay vì check password plaintext trong DB
-- [ ] Hash password, session token, refresh token
+- [x] Dùng Supabase Auth thay vì check password plaintext trong DB
+- [x] Hash password, session token, refresh token
 > **Lý do:** Hiện password lưu plaintext trong `invoice_accounts` — rủi ro bảo mật nghiêm trọng. Nếu DB bị leak thì toàn bộ password lộ.
 
 ---

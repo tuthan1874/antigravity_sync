@@ -1,0 +1,79 @@
+# Chuyển sang Supabase Auth
+
+## Summary
+
+Thay thế login flow hiện tại (RPC `invoice_verify_login` + localStorage) bằng Supabase Auth (`supabase.auth.signInWithPassword` + managed sessions). Giữ `invoice_accounts` làm fallback.
+
+## Current Flow vs New Flow
+
+| | Current | New (Supabase Auth) |
+|---|---|---|
+| **Login** | RPC `invoice_verify_login` | `supabase.auth.signInWithPassword()` |
+| **Session** | `localStorage.invoice_user` + 30-day manual expiry | Supabase managed JWT + auto refresh |
+| **User info** | `{id, username, role}` from RPC | `user.user_metadata.username/role` |
+| **Logout** | `localStorage.removeItem()` | `supabase.auth.signOut()` |
+| **State restore** | Manual localStorage parse | `supabase.auth.getSession()` |
+
+## Proposed Changes
+
+### Phase 1: Create Supabase Auth Users (DB only)
+
+Create 2 auth users via Supabase Admin API with matching credentials:
+- `admin@tdgames.local` / same password → metadata: `{username: "admin", role: "admin"}`
+- `member@tdgames.local` / same password → metadata: `{username: "member", role: "member"}`
+
+> [!IMPORTANT]
+> Cần biết password gốc của 2 user để tạo Supabase Auth user. Passwords trong DB là bcrypt hashes — không decrypt được. **Bạn cần cung cấp password cho tôi, hoặc tôi sẽ set password mới.**
+
+---
+
+### Phase 2: Update Frontend (4 files)
+
+#### [MODIFY] [supabaseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/services/supabaseService.ts)
+
+Replace [loginWithCredentials](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/services/supabaseService.ts#395-407):
+```typescript
+export const loginWithCredentials = async (username: string, password: string): Promise<AccountUser> => {
+  const email = `${username}@tdgames.local`;
+  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+  if (error) throw new Error('Đăng nhập thất bại.');
+  const meta = data.user.user_metadata;
+  return { id: data.user.id, username: meta.username || username, role: meta.role || 'member' };
+};
+```
+
+Add `logoutFromAuth`:
+```typescript
+export const logoutFromAuth = async () => { await supabase.auth.signOut(); };
+```
+
+#### [MODIFY] [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx)
+
+- Replace localStorage session logic with `supabase.auth.getSession()` + `onAuthStateChange()`
+- [handleLogout](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/hooks/useInvoiceState.ts#687-691) → call `supabase.auth.signOut()`
+- Remove manual 30-day expiry logic
+
+#### [MODIFY] [useInvoiceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/hooks/useInvoiceState.ts)
+
+- Remove duplicate localStorage auth logic (lines 35-52)
+- Accept `currentUser` as parameter instead of managing own session
+
+#### [MODIFY] [LoginScreen.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/LoginScreen.tsx)
+
+- No structural changes — [loginWithCredentials](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/services/supabaseService.ts#395-407) keeps same signature
+- Username field stays (maps to `username@tdgames.local` internally)
+
+---
+
+### Phase 3: Keep Fallback
+
+- `invoice_accounts` table preserved — no DROP
+- RPC `invoice_verify_login` preserved
+- Can revert by reverting the 4 file changes
+
+## Verification Plan
+
+1. `tsc --noEmit` — zero errors  
+2. `vite build` — passes  
+3. Browser: login with admin/member credentials → verify session persists on refresh
+4. Browser: logout → verify redirected to login screen

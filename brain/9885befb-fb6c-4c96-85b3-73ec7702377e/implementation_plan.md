@@ -1,56 +1,72 @@
-# Thống nhất khách hàng Invoice ↔ CRM
+# CRM Activity Timeline
 
 ## Summary
 
-Merge `invoice_clients` (8 cols, 2 records) vào `crm_clients` (19 cols, 3 records) — CRM là superset. Invoice sẽ đọc/ghi trực tiếp vào `crm_clients`. Bảng `invoice_clients` sẽ bị xoá sau khi migrate.
-
-## Current State
-
-| Table | Columns | Records | FKs |
-|-------|---------|---------|-----|
-| `invoice_clients` | 8 (id, name, client_type, contact_person, email, address, tax_code, created_at) | 2 (Dace Marsh, KABAM) | **None** — invoices store `client_info` as JSONB |
-| `crm_clients` | 19 (same 8 + phone, country, website, industry, status, notes, tags, lead_source, lead_direction, lead_source_detail, updated_at) | 3 (same 2 + TD CONSULTING) | `crm_contacts`, `crm_documents`, `crm_projects` all FK here |
-
-> [!IMPORTANT]
-> `invoice_invoices` does NOT FK to `invoice_clients`. It stores client info as JSONB in `client_info` column. This makes the migration safe — no FK to update.
+Thêm lịch sử tương tác cho mỗi khách hàng (gọi điện, email, meeting, ghi chú). Hiển thị timeline trong trang chi tiết khách hàng + tab "Hoạt động" tổng quan toàn bộ activities.
 
 ## Proposed Changes
 
-### Database Migration
+### Database
 
-#### Supabase Migration: `merge_invoice_clients_to_crm`
+#### Supabase Migration: `create_crm_activities`
 
-1. **Migrate data**: INSERT any `invoice_clients` records into `crm_clients` that don't already exist (match by `name`)
-2. **Drop table**: `DROP TABLE invoice_clients`
+```sql
+CREATE TABLE crm_activities (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  client_id uuid NOT NULL REFERENCES crm_clients(id) ON DELETE CASCADE,
+  activity_type text NOT NULL, -- 'call' | 'email' | 'meeting' | 'note' | 'status_change'
+  title text NOT NULL,
+  description text DEFAULT '',
+  outcome text DEFAULT '',  -- 'positive' | 'neutral' | 'negative' | ''
+  activity_date timestamptz DEFAULT now(),
+  actor text DEFAULT '',
+  created_at timestamptz DEFAULT now()
+);
+CREATE INDEX idx_crm_activities_client ON crm_activities(client_id);
+CREATE INDEX idx_crm_activities_date ON crm_activities(activity_date DESC);
+```
 
 ---
 
-### Invoice Service Layer
+### Types
 
-#### [MODIFY] [supabaseService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/invoice/services/supabaseService.ts)
+#### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
 
-Change 3 functions to use `crm_clients` instead of `invoice_clients`:
-- `fetchClientsFromCloud()` → read from `crm_clients`
-- `saveClientToCloud()` → insert into `crm_clients`
-- `updateClientInCloud()` → update `crm_clients`
-
-The `ClientRecord` type stays the same (Invoice only uses: name, clientType, contactPerson, email, address, taxCode). CRM extra fields (phone, status, tags, etc.) will get default values on insert.
+Add `CrmActivity` interface after `CrmProjectFile`.
 
 ---
 
-### Dashboard Service
+### Service Layer
 
-#### [MODIFY] [dashboardService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/dashboard/services/dashboardService.ts)
+#### [MODIFY] [crmService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/services/crmService.ts)
 
-Already uses `crm_clients` — no change needed.
+Add CRUD functions: `fetchActivities(clientId?)`, `createActivity()`, `deleteActivity()`.
 
-## Verification Plan
+---
 
-### Automated
-1. `tsc --noEmit` — check no type errors
-2. `vite build` — verify build succeeds
+### Components
 
-### Manual
-1. Open Invoice app → create/edit form → verify client autocomplete still works
-2. Save a new client from Invoice → verify it appears in CRM client list
-3. Open CRM → verify existing clients intact
+#### [NEW] `ActivityTimeline.tsx`
+
+Timeline component showing per-client activities with:
+- Add activity form (type selector, title, description, outcome)
+- Chronological list with activity-type icons (📞 call, 📧 email, 🤝 meeting, 📝 note)
+- Delete capability
+- Used inside ClientForm when editing a client
+
+#### [MODIFY] [CrmApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/components/CrmApp.tsx)
+
+- Replace "Thống kê" tab with "Hoạt động" tab showing all recent activities across all clients
+
+---
+
+### Navigation Update
+
+| Navbar slot | Before | After |
+|---|---|---|
+| `board` | Thống kê | Hoạt động |
+
+## Verification
+
+1. `tsc --noEmit` + `vite build` pass
+2. Manual: open CRM → edit client → see timeline, add activity → verify it appears
