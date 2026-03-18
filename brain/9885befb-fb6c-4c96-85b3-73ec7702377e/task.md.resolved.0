@@ -1,0 +1,20 @@
+# Expense Dashboard + Upload Biên Lai
+
+## Tasks
+
+### Research
+- [x] Explore existing expense app structure
+- [x] Check Supabase tables & schema
+- [x] Check R2 upload edge function status
+- [x] Verify receipt upload already works in ExpenseForm
+
+### Implementation
+- [ ] Create `ExpenseDashboard.tsx` component with charts
+- [ ] Add "dashboard" tab to [ExpenseApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseApp.tsx) and navigation
+- [ ] Update [useExpenseState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/hooks/useExpenseState.ts) to support new tab
+- [ ] Install recharts or build pure CSS/SVG charts
+
+### Verification
+- [ ] Run `npm run dev` and test in browser
+- [ ] Verify dashboard charts render with data
+- [ ] Verify receipt upload works end-to-end

@@ -1,0 +1,758 @@
+# Expense Dashboard + Upload Biên Lai — Walkthrough
+
+## Summary
+
+Thêm tab **Dashboard** vào module Expense với biểu đồ thống kê chi phí theo tháng và theo danh mục. Upload biên lai đã được xác nhận hoạt động sẵn.
+
+## Changes Made
+
+### [NEW] [ExpenseDashboard.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseDashboard.tsx)
+
+Component Dashboard hoàn chỉnh, bao gồm:
+
+| Section | Mô tả |
+|---------|-------|
+| **KPI Cards** | 4 cards: Chi VND tháng này (vs tháng trước %), Chi USD, Số giao dịch, % có biên lai |
+| **Monthly Bar Chart** | 6 tháng gần nhất — bar chart thuần CSS với animation |
+| **Category Breakdown** | Stacked bar + legend — phân bổ chi phí theo danh mục |
+| **Top 5 Expenses** | 5 chi phí lớn nhất với receipt link |
+
+> [!NOTE]
+> Không thêm library mới — tất cả charts đều dùng CSS animations + inline styles.
+
+---
+
+### [MODIFY] [ExpenseApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseApp.tsx)
+
+```diff:ExpenseApp.tsx
+import React, { useState, useEffect } from 'react';
+import AppBackground from '@/components/AppBackground';
+import { AccountUser } from '@/types';
+import { ToastNotification } from '@/components/ToastNotification';
+import { Navbar } from '@/apps/invoice/components/Navbar';
+import { useExpenseState, ExpenseTab } from '../hooks/useExpenseState';
+import { fetchExchangeRate, ExchangeRateData } from '@/apps/invoice/services/exchangeRateService';
+import ExpenseList from './ExpenseList';
+import ExpenseForm from './ExpenseForm';
+import ExpenseRecurring from './ExpenseRecurring';
+import ExpenseCategoryManager from './ExpenseCategoryManager';
+
+interface ExpenseAppProps {
+  currentUser: AccountUser;
+  onBack: () => void;
+  initialTab?: string | null;
+}
+
+const TAB_MAP: Record<ExpenseTab, string> = {
+  list: 'history',
+  add: 'history',
+  recurring: 'recurring',
+  categories: 'activity',
+};
+
+const TAB_LABELS: Record<string, string> = {
+  history: 'Danh sách',
+  recurring: 'Định kỳ',
+  activity: 'Danh mục',
+};
+
+const REVERSE_TAB: Record<string, ExpenseTab> = {
+  history: 'list',
+  recurring: 'recurring',
+  activity: 'categories',
+};
+
+const ExpenseApp: React.FC<ExpenseAppProps> = ({ currentUser, onBack, initialTab }) => {
+  const state = useExpenseState(currentUser.username, initialTab);
+  const [showForm, setShowForm] = useState(false);
+
+  // ── Live VCB Exchange Rate ──
+  const [vcbRate, setVcbRate] = useState<ExchangeRateData | null>(null);
+  const [vcbRateLoading, setVcbRateLoading] = useState(false);
+
+  useEffect(() => {
+    const loadRate = async () => {
+      setVcbRateLoading(true);
+      try {
+        const data = await fetchExchangeRate();
+        setVcbRate(data);
+      } catch (err) {
+        console.warn('[VCB Rate] Failed to fetch:', err);
+      } finally {
+        setVcbRateLoading(false);
+      }
+    };
+    loadRate();
+    const interval = setInterval(loadRate, 60 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const navbarTab = TAB_MAP[state.activeTab];
+  const accessibleTabs = (['history', 'recurring', 'activity'] as const).map(t => t);
+
+  return (
+    <div className="min-h-screen flex flex-col relative overflow-hidden transition-colors duration-500" style={{ backgroundColor: '#0F0F0F' }}>
+      <AppBackground />
+      {/* Toast */}
+      {state.toast && (
+        <ToastNotification
+          message={{ text: state.toast.message, type: state.toast.type }}
+          onDismiss={() => state.setToast(null)}
+        />
+      )}
+
+      {/* Shared Navbar — same as Invoice */}
+      <Navbar
+        theme="dark"
+        currentUser={currentUser}
+        activeTab={navbarTab as any}
+        accessibleTabs={accessibleTabs as any}
+        onTabChange={(tab) => {
+          const expTab = REVERSE_TAB[tab];
+          if (expTab) {
+            setShowForm(false);
+            state.setEditingExpense(null);
+            state.setActiveTab(expTab);
+          }
+        }}
+        onLogout={onBack}
+        vcbRate={vcbRate}
+        vcbRateLoading={vcbRateLoading}
+        onBack={onBack}
+        appName="Expense"
+        tabLabels={TAB_LABELS}
+      />
+
+      {/* Main Content */}
+      <main className="flex-1 p-6 md:p-12 max-w-[1400px] mx-auto w-full">
+        {state.activeTab === 'list' && (
+          <>
+            {showForm || state.editingExpense ? (
+              <ExpenseForm
+                categories={state.categories}
+                editingExpense={state.editingExpense}
+                onSave={(data) => { state.handleSaveExpense(data); setShowForm(false); }}
+                onUpdate={(id, data) => { state.handleUpdateExpense(id, data); setShowForm(false); state.setEditingExpense(null); }}
+                onCancel={() => { setShowForm(false); state.setEditingExpense(null); }}
+              />
+            ) : (
+              <ExpenseList
+                expenses={state.filteredExpenses}
+                categories={state.categories}
+                isLoading={state.isLoading}
+                filterCategory={state.filterCategory} setFilterCategory={state.setFilterCategory}
+                filterDateFrom={state.filterDateFrom} setFilterDateFrom={state.setFilterDateFrom}
+                filterDateTo={state.filterDateTo} setFilterDateTo={state.setFilterDateTo}
+                filterStatus={state.filterStatus} setFilterStatus={state.setFilterStatus}
+                totalVND={state.totalVND} totalUSD={state.totalUSD}
+                onEdit={(exp) => { state.setEditingExpense(exp); }}
+                onDelete={state.handleDeleteExpense}
+                onToggleStatus={state.handleToggleStatus}
+                onRefresh={state.loadAll}
+                onAdd={() => { state.setEditingExpense(null); setShowForm(true); }}
+              />
+            )}
+          </>
+        )}
+        {state.activeTab === 'recurring' && (
+          <ExpenseRecurring
+            recurring={state.recurring}
+            categories={state.categories}
+            onSave={state.handleSaveRecurring}
+            onUpdate={state.handleUpdateRecurring}
+            onDelete={state.handleDeleteRecurring}
+          />
+        )}
+        {state.activeTab === 'categories' && (
+          <ExpenseCategoryManager
+            categories={state.categories}
+            onSave={state.handleSaveCategory}
+            onUpdate={state.handleUpdateCategory}
+            onDelete={state.handleDeleteCategory}
+          />
+        )}
+      </main>
+
+      <footer className="py-12 border-t text-center opacity-30 text-[9px] font-black uppercase tracking-[0.5em]">
+        TD Consulting • Enterprise Billing Engine • v2.1
+      </footer>
+    </div>
+  );
+};
+
+export default ExpenseApp;
+===
+import React, { useState, useEffect } from 'react';
+import AppBackground from '@/components/AppBackground';
+import { AccountUser } from '@/types';
+import { ToastNotification } from '@/components/ToastNotification';
+import { Navbar } from '@/apps/invoice/components/Navbar';
+import { useExpenseState, ExpenseTab } from '../hooks/useExpenseState';
+import { fetchExchangeRate, ExchangeRateData } from '@/apps/invoice/services/exchangeRateService';
+import ExpenseList from './ExpenseList';
+import ExpenseForm from './ExpenseForm';
+import ExpenseRecurring from './ExpenseRecurring';
+import ExpenseCategoryManager from './ExpenseCategoryManager';
+import ExpenseDashboard from './ExpenseDashboard';
+
+interface ExpenseAppProps {
+  currentUser: AccountUser;
+  onBack: () => void;
+  initialTab?: string | null;
+}
+
+const TAB_MAP: Record<ExpenseTab, string> = {
+  dashboard: 'overview',
+  list: 'history',
+  add: 'history',
+  recurring: 'recurring',
+  categories: 'activity',
+};
+
+const TAB_LABELS: Record<string, string> = {
+  overview: 'Dashboard',
+  history: 'Danh sách',
+  recurring: 'Định kỳ',
+  activity: 'Danh mục',
+};
+
+const REVERSE_TAB: Record<string, ExpenseTab> = {
+  overview: 'dashboard',
+  history: 'list',
+  recurring: 'recurring',
+  activity: 'categories',
+};
+
+const ExpenseApp: React.FC<ExpenseAppProps> = ({ currentUser, onBack, initialTab }) => {
+  const state = useExpenseState(currentUser.username, initialTab);
+  const [showForm, setShowForm] = useState(false);
+
+  // ── Live VCB Exchange Rate ──
+  const [vcbRate, setVcbRate] = useState<ExchangeRateData | null>(null);
+  const [vcbRateLoading, setVcbRateLoading] = useState(false);
+
+  useEffect(() => {
+    const loadRate = async () => {
+      setVcbRateLoading(true);
+      try {
+        const data = await fetchExchangeRate();
+        setVcbRate(data);
+      } catch (err) {
+        console.warn('[VCB Rate] Failed to fetch:', err);
+      } finally {
+        setVcbRateLoading(false);
+      }
+    };
+    loadRate();
+    const interval = setInterval(loadRate, 60 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const navbarTab = TAB_MAP[state.activeTab];
+  const accessibleTabs = (['overview', 'history', 'recurring', 'activity'] as const).map(t => t);
+
+  return (
+    <div className="min-h-screen flex flex-col relative overflow-hidden transition-colors duration-500" style={{ backgroundColor: '#0F0F0F' }}>
+      <AppBackground />
+      {/* Toast */}
+      {state.toast && (
+        <ToastNotification
+          message={{ text: state.toast.message, type: state.toast.type }}
+          onDismiss={() => state.setToast(null)}
+        />
+      )}
+
+      {/* Shared Navbar — same as Invoice */}
+      <Navbar
+        theme="dark"
+        currentUser={currentUser}
+        activeTab={navbarTab as any}
+        accessibleTabs={accessibleTabs as any}
+        onTabChange={(tab) => {
+          const expTab = REVERSE_TAB[tab];
+          if (expTab) {
+            setShowForm(false);
+            state.setEditingExpense(null);
+            state.setActiveTab(expTab);
+          }
+        }}
+        onLogout={onBack}
+        vcbRate={vcbRate}
+        vcbRateLoading={vcbRateLoading}
+        onBack={onBack}
+        appName="Expense"
+        tabLabels={TAB_LABELS}
+      />
+
+      {/* Main Content */}
+      <main className="flex-1 p-6 md:p-12 max-w-[1400px] mx-auto w-full">
+        {state.activeTab === 'dashboard' && (
+          <ExpenseDashboard
+            expenses={state.expenses}
+            categories={state.categories}
+            isLoading={state.isLoading}
+            onNavigateToList={() => state.setActiveTab('list')}
+          />
+        )}
+        {state.activeTab === 'list' && (
+          <>
+            {showForm || state.editingExpense ? (
+              <ExpenseForm
+                categories={state.categories}
+                editingExpense={state.editingExpense}
+                onSave={(data) => { state.handleSaveExpense(data); setShowForm(false); }}
+                onUpdate={(id, data) => { state.handleUpdateExpense(id, data); setShowForm(false); state.setEditingExpense(null); }}
+                onCancel={() => { setShowForm(false); state.setEditingExpense(null); }}
+              />
+            ) : (
+              <ExpenseList
+                expenses={state.filteredExpenses}
+                categories={state.categories}
+                isLoading={state.isLoading}
+                filterCategory={state.filterCategory} setFilterCategory={state.setFilterCategory}
+                filterDateFrom={state.filterDateFrom} setFilterDateFrom={state.setFilterDateFrom}
+                filterDateTo={state.filterDateTo} setFilterDateTo={state.setFilterDateTo}
+                filterStatus={state.filterStatus} setFilterStatus={state.setFilterStatus}
+                totalVND={state.totalVND} totalUSD={state.totalUSD}
+                onEdit={(exp) => { state.setEditingExpense(exp); }}
+                onDelete={state.handleDeleteExpense}
+                onToggleStatus={state.handleToggleStatus}
+                onRefresh={state.loadAll}
+                onAdd={() => { state.setEditingExpense(null); setShowForm(true); }}
+              />
+            )}
+          </>
+        )}
+        {state.activeTab === 'recurring' && (
+          <ExpenseRecurring
+            recurring={state.recurring}
+            categories={state.categories}
+            onSave={state.handleSaveRecurring}
+            onUpdate={state.handleUpdateRecurring}
+            onDelete={state.handleDeleteRecurring}
+          />
+        )}
+        {state.activeTab === 'categories' && (
+          <ExpenseCategoryManager
+            categories={state.categories}
+            onSave={state.handleSaveCategory}
+            onUpdate={state.handleUpdateCategory}
+            onDelete={state.handleDeleteCategory}
+          />
+        )}
+      </main>
+
+      <footer className="py-12 border-t text-center opacity-30 text-[9px] font-black uppercase tracking-[0.5em]">
+        TD Consulting • Enterprise Billing Engine • v2.1
+      </footer>
+    </div>
+  );
+};
+
+export default ExpenseApp;
+```
+
+---
+
+### [MODIFY] [useExpenseState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/hooks/useExpenseState.ts)
+
+```diff:useExpenseState.ts
+import { useState, useEffect, useCallback } from 'react';
+import { ExpenseCategory, ExpenseRecord, RecurringExpense } from '@/types';
+import {
+  fetchCategories,
+  fetchExpenses,
+  saveExpense,
+  updateExpense,
+  deleteExpense,
+  fetchRecurringExpenses,
+  saveRecurringExpense,
+  updateRecurringExpense,
+  deleteRecurringExpense,
+  saveCategory,
+  updateCategory,
+  deleteCategory,
+} from '../services/expenseService';
+import { setHashTab } from '@/App';
+
+export type ExpenseTab = 'list' | 'add' | 'recurring' | 'categories';
+
+const VALID_TABS: ExpenseTab[] = ['list', 'add', 'recurring', 'categories'];
+
+export function useExpenseState(currentUser: string, initialTab?: string | null) {
+  const [activeTab, _setActiveTab] = useState<ExpenseTab>(() => {
+    if (initialTab && VALID_TABS.includes(initialTab as ExpenseTab)) return initialTab as ExpenseTab;
+    return 'list';
+  });
+  const setActiveTab = useCallback((tab: ExpenseTab) => {
+    _setActiveTab(tab);
+    setHashTab(tab);
+  }, []);
+  const [categories, setCategories] = useState<ExpenseCategory[]>([]);
+  const [expenses, setExpenses] = useState<ExpenseRecord[]>([]);
+  const [recurring, setRecurring] = useState<RecurringExpense[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+
+  // ── Filters ──
+  const [filterCategory, setFilterCategory] = useState('');
+  const [filterDateFrom, setFilterDateFrom] = useState('');
+  const [filterDateTo, setFilterDateTo] = useState('');
+  const [filterStatus, setFilterStatus] = useState('');
+
+  // ── Editing ──
+  const [editingExpense, setEditingExpense] = useState<ExpenseRecord | null>(null);
+
+  // ── Load Data ──
+  const loadAll = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      const [cats, exps, recs] = await Promise.all([
+        fetchCategories(),
+        fetchExpenses(),
+        fetchRecurringExpenses(),
+      ]);
+      setCategories(cats);
+      setExpenses(exps);
+      setRecurring(recs);
+    } catch (err: any) {
+      notify(err.message || 'Lỗi tải dữ liệu', 'error');
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { loadAll(); }, [loadAll]);
+
+  // ── Notify ──
+  const notify = (message: string, type: 'success' | 'error' = 'success') => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 3000);
+  };
+
+  // ── Expense CRUD ──
+  const handleSaveExpense = async (data: Omit<ExpenseRecord, 'id' | 'created_at' | 'updated_at' | 'category'>) => {
+    try {
+      await saveExpense({ ...data, created_by: currentUser });
+      await loadAll();
+      notify('Đã lưu chi phí');
+      setActiveTab('list');
+    } catch (err: any) { notify(err.message, 'error'); }
+  };
+
+  const handleUpdateExpense = async (id: string, data: Partial<ExpenseRecord>) => {
+    try {
+      await updateExpense(id, data);
+      await loadAll();
+      notify('Đã cập nhật');
+      setEditingExpense(null);
+      setActiveTab('list');
+    } catch (err: any) { notify(err.message, 'error'); }
+  };
+
+  const handleDeleteExpense = async (id: string) => {
+    try {
+      await deleteExpense(id);
+      await loadAll();
+      notify('Đã xoá');
+    } catch (err: any) { notify(err.message, 'error'); }
+  };
+
+  const handleToggleStatus = async (exp: ExpenseRecord) => {
+    const next = exp.status === 'pending' ? 'approved' : exp.status === 'approved' ? 'paid' : 'pending';
+    await handleUpdateExpense(exp.id!, { status: next });
+  };
+
+  // ── Recurring CRUD ──
+  const handleSaveRecurring = async (data: Omit<RecurringExpense, 'id' | 'created_at' | 'category'>) => {
+    try {
+      await saveRecurringExpense(data);
+      await loadAll();
+      notify('Đã lưu mẫu chi phí định kỳ');
+    } catch (err: any) { notify(err.message, 'error'); }
+  };
+
+  const handleUpdateRecurring = async (id: string, data: Partial<RecurringExpense>) => {
+    try {
+      await updateRecurringExpense(id, data);
+      await loadAll();
+      notify('Đã cập nhật');
+    } catch (err: any) { notify(err.message, 'error'); }
+  };
+
+  const handleDeleteRecurring = async (id: string) => {
+    try {
+      await deleteRecurringExpense(id);
+      await loadAll();
+      notify('Đã xoá');
+    } catch (err: any) { notify(err.message, 'error'); }
+  };
+
+  // ── Category CRUD ──
+  const handleSaveCategory = async (data: Omit<ExpenseCategory, 'id'>) => {
+    try {
+      await saveCategory(data);
+      await loadAll();
+      notify('Đã thêm danh mục');
+    } catch (err: any) { notify(err.message, 'error'); }
+  };
+
+  const handleUpdateCategory = async (id: string, data: Partial<ExpenseCategory>) => {
+    try {
+      await updateCategory(id, data);
+      await loadAll();
+      notify('Đã cập nhật danh mục');
+    } catch (err: any) { notify(err.message, 'error'); }
+  };
+
+  const handleDeleteCategory = async (id: string) => {
+    try {
+      await deleteCategory(id);
+      await loadAll();
+      notify('Đã xoá danh mục');
+    } catch (err: any) { notify(err.message, 'error'); }
+  };
+
+  // ── Filtered list ──
+  const filteredExpenses = expenses.filter((exp) => {
+    if (filterCategory && exp.category_id !== filterCategory) return false;
+    if (filterStatus && exp.status !== filterStatus) return false;
+    if (filterDateFrom && exp.expense_date < filterDateFrom) return false;
+    if (filterDateTo && exp.expense_date > filterDateTo) return false;
+    return true;
+  });
+
+  // ── Totals ──
+  const totalVND = filteredExpenses.filter(e => e.currency === 'VND').reduce((s, e) => s + e.amount, 0);
+  const totalUSD = filteredExpenses.filter(e => e.currency === 'USD').reduce((s, e) => s + e.amount, 0);
+
+  return {
+    activeTab, setActiveTab,
+    categories, expenses, filteredExpenses, recurring,
+    isLoading, toast, setToast,
+    filterCategory, setFilterCategory,
+    filterDateFrom, setFilterDateFrom,
+    filterDateTo, setFilterDateTo,
+    filterStatus, setFilterStatus,
+    editingExpense, setEditingExpense,
+    totalVND, totalUSD,
+    handleSaveExpense, handleUpdateExpense, handleDeleteExpense, handleToggleStatus,
+    handleSaveRecurring, handleUpdateRecurring, handleDeleteRecurring,
+    handleSaveCategory, handleUpdateCategory, handleDeleteCategory,
+    notify, loadAll,
+  };
+}
+===
+import { useState, useEffect, useCallback } from 'react';
+import { ExpenseCategory, ExpenseRecord, RecurringExpense } from '@/types';
+import {
+  fetchCategories,
+  fetchExpenses,
+  saveExpense,
+  updateExpense,
+  deleteExpense,
+  fetchRecurringExpenses,
+  saveRecurringExpense,
+  updateRecurringExpense,
+  deleteRecurringExpense,
+  saveCategory,
+  updateCategory,
+  deleteCategory,
+} from '../services/expenseService';
+import { setHashTab } from '@/App';
+
+export type ExpenseTab = 'dashboard' | 'list' | 'add' | 'recurring' | 'categories';
+
+const VALID_TABS: ExpenseTab[] = ['dashboard', 'list', 'add', 'recurring', 'categories'];
+
+export function useExpenseState(currentUser: string, initialTab?: string | null) {
+  const [activeTab, _setActiveTab] = useState<ExpenseTab>(() => {
+    if (initialTab && VALID_TABS.includes(initialTab as ExpenseTab)) return initialTab as ExpenseTab;
+    return 'dashboard';
+  });
+  const setActiveTab = useCallback((tab: ExpenseTab) => {
+    _setActiveTab(tab);
+    setHashTab(tab);
+  }, []);
+  const [categories, setCategories] = useState<ExpenseCategory[]>([]);
+  const [expenses, setExpenses] = useState<ExpenseRecord[]>([]);
+  const [recurring, setRecurring] = useState<RecurringExpense[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+
+  // ── Filters ──
+  const [filterCategory, setFilterCategory] = useState('');
+  const [filterDateFrom, setFilterDateFrom] = useState('');
+  const [filterDateTo, setFilterDateTo] = useState('');
+  const [filterStatus, setFilterStatus] = useState('');
+
+  // ── Editing ──
+  const [editingExpense, setEditingExpense] = useState<ExpenseRecord | null>(null);
+
+  // ── Load Data ──
+  const loadAll = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      const [cats, exps, recs] = await Promise.all([
+        fetchCategories(),
+        fetchExpenses(),
+        fetchRecurringExpenses(),
+      ]);
+      setCategories(cats);
+      setExpenses(exps);
+      setRecurring(recs);
+    } catch (err: any) {
+      notify(err.message || 'Lỗi tải dữ liệu', 'error');
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { loadAll(); }, [loadAll]);
+
+  // ── Notify ──
+  const notify = (message: string, type: 'success' | 'error' = 'success') => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 3000);
+  };
+
+  // ── Expense CRUD ──
+  const handleSaveExpense = async (data: Omit<ExpenseRecord, 'id' | 'created_at' | 'updated_at' | 'category'>) => {
+    try {
+      await saveExpense({ ...data, created_by: currentUser });
+      await loadAll();
+      notify('Đã lưu chi phí');
+      setActiveTab('list');
+    } catch (err: any) { notify(err.message, 'error'); }
+  };
+
+  const handleUpdateExpense = async (id: string, data: Partial<ExpenseRecord>) => {
+    try {
+      await updateExpense(id, data);
+      await loadAll();
+      notify('Đã cập nhật');
+      setEditingExpense(null);
+      setActiveTab('list');
+    } catch (err: any) { notify(err.message, 'error'); }
+  };
+
+  const handleDeleteExpense = async (id: string) => {
+    try {
+      await deleteExpense(id);
+      await loadAll();
+      notify('Đã xoá');
+    } catch (err: any) { notify(err.message, 'error'); }
+  };
+
+  const handleToggleStatus = async (exp: ExpenseRecord) => {
+    const next = exp.status === 'pending' ? 'approved' : exp.status === 'approved' ? 'paid' : 'pending';
+    await handleUpdateExpense(exp.id!, { status: next });
+  };
+
+  // ── Recurring CRUD ──
+  const handleSaveRecurring = async (data: Omit<RecurringExpense, 'id' | 'created_at' | 'category'>) => {
+    try {
+      await saveRecurringExpense(data);
+      await loadAll();
+      notify('Đã lưu mẫu chi phí định kỳ');
+    } catch (err: any) { notify(err.message, 'error'); }
+  };
+
+  const handleUpdateRecurring = async (id: string, data: Partial<RecurringExpense>) => {
+    try {
+      await updateRecurringExpense(id, data);
+      await loadAll();
+      notify('Đã cập nhật');
+    } catch (err: any) { notify(err.message, 'error'); }
+  };
+
+  const handleDeleteRecurring = async (id: string) => {
+    try {
+      await deleteRecurringExpense(id);
+      await loadAll();
+      notify('Đã xoá');
+    } catch (err: any) { notify(err.message, 'error'); }
+  };
+
+  // ── Category CRUD ──
+  const handleSaveCategory = async (data: Omit<ExpenseCategory, 'id'>) => {
+    try {
+      await saveCategory(data);
+      await loadAll();
+      notify('Đã thêm danh mục');
+    } catch (err: any) { notify(err.message, 'error'); }
+  };
+
+  const handleUpdateCategory = async (id: string, data: Partial<ExpenseCategory>) => {
+    try {
+      await updateCategory(id, data);
+      await loadAll();
+      notify('Đã cập nhật danh mục');
+    } catch (err: any) { notify(err.message, 'error'); }
+  };
+
+  const handleDeleteCategory = async (id: string) => {
+    try {
+      await deleteCategory(id);
+      await loadAll();
+      notify('Đã xoá danh mục');
+    } catch (err: any) { notify(err.message, 'error'); }
+  };
+
+  // ── Filtered list ──
+  const filteredExpenses = expenses.filter((exp) => {
+    if (filterCategory && exp.category_id !== filterCategory) return false;
+    if (filterStatus && exp.status !== filterStatus) return false;
+    if (filterDateFrom && exp.expense_date < filterDateFrom) return false;
+    if (filterDateTo && exp.expense_date > filterDateTo) return false;
+    return true;
+  });
+
+  // ── Totals ──
+  const totalVND = filteredExpenses.filter(e => e.currency === 'VND').reduce((s, e) => s + e.amount, 0);
+  const totalUSD = filteredExpenses.filter(e => e.currency === 'USD').reduce((s, e) => s + e.amount, 0);
+
+  return {
+    activeTab, setActiveTab,
+    categories, expenses, filteredExpenses, recurring,
+    isLoading, toast, setToast,
+    filterCategory, setFilterCategory,
+    filterDateFrom, setFilterDateFrom,
+    filterDateTo, setFilterDateTo,
+    filterStatus, setFilterStatus,
+    editingExpense, setEditingExpense,
+    totalVND, totalUSD,
+    handleSaveExpense, handleUpdateExpense, handleDeleteExpense, handleToggleStatus,
+    handleSaveRecurring, handleUpdateRecurring, handleDeleteRecurring,
+    handleSaveCategory, handleUpdateCategory, handleDeleteCategory,
+    notify, loadAll,
+  };
+}
+```
+
+---
+
+## Upload Biên Lai — Already Working
+
+Upload biên lai đã được build sẵn hoàn chỉnh:
+
+- **Frontend**: [ExpenseForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseForm.tsx) — drag/drop upload, preview ảnh/PDF, xoá file
+- **Backend**: Edge function `r2-expense-upload` v16 đang active trên Supabase Workflow project
+- **Storage**: Cloudflare R2 bucket, public URL: `pub-dad8a9bea8cb47c7ac0a03614d43b5b1.r2.dev`
+- **DB column**: `expense_expenses.receipt_url` (text, nullable)
+
+## Verification
+
+| Test | Result |
+|------|--------|
+| `tsc --noEmit` | ✅ Pass — no errors |
+| `vite build` | ✅ Pass — 148 modules, built in 1.74s |
+| Browser test | ⏳ Browser subagent unavailable — manual test recommended |
+
+### Manual Test Steps
+
+1. `npm run dev` → open `http://localhost:3001/`
+2. Login → click **Expense** card
+3. Dashboard tab should load by default
+4. Navigate between tabs: Dashboard → Danh sách → Định kỳ → Danh mục
+5. Danh sách → + Thêm chi phí → chọn file upload biên lai

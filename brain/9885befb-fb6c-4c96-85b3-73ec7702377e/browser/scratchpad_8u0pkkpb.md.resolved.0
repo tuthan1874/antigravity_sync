@@ -1,0 +1,8 @@
+# Task: Test Expense Dashboard and Receipt Upload
+
+## Progress Checklist
+- [ ] Navigate to localhost:3001 and login <!-- id: 0 -->
+- [ ] Access Expense app from home screen <!-- id: 1 -->
+- [ ] Verify Dashboard tab (default) and take screenshot <!-- id: 2 -->
+- [ ] Verify navigation through tabs: Danh sách, Định kỳ, Danh mục, Dashboard <!-- id: 3 -->
+- [ ] Go to Danh sách -> + Thêm chi phí and take screenshot of receipt upload area <!-- id: 4 -->

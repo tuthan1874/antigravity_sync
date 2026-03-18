@@ -1,0 +1,14 @@
+# Test Expense Dashboard Task
+
+## Checklist
+- [ ] Navigate to http://localhost:3001/
+- [ ] Login as admin (username: admin, password: admin)
+- [ ] Navigate to the Expense app
+- [ ] Verify Dashboard tab elements:
+    - [ ] KPI cards (VND, USD, Giao dịch, Biên lai)
+    - [ ] 6-month bar chart
+    - [ ] Category breakdown
+    - [ ] Top 5 expenses
+- [ ] Test navigation tabs (Dashboard, Danh sách, Định kỳ, Danh mục)
+- [ ] Verify "Danh sách" tab and "+ Thêm chi phí" form (Receipt upload UI)
+- [ ] Capture screenshots and check for console errors
