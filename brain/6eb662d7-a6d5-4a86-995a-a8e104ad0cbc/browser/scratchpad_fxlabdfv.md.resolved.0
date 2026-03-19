@@ -1,0 +1,9 @@
+# Verification Task: Settlement Delete Functionality
+
+- [ ] Navigate to `http://localhost:3000/#workforce/settlements`
+- [ ] Verify settlements are visible.
+- [ ] Click "Xóa" on a settlement card.
+- [ ] Confirm custom modal "Xóa nghiệm thu?" appears.
+- [ ] Click "Hủy" and verify modal closes.
+- [ ] Click "Xóa" again and then "Xác nhận".
+- [ ] Verify settlement is deleted and success toast appears.

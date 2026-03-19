@@ -1,0 +1,88 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	Workforce
+	USD
+	→
+	VND
+	26.325
+	₫
+	VCB •
+	19/03, 18:24
+	[2] (746,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Nhân sự />
+	[3] (787,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Task />
+	[4] (834,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all bg-primary text-black shadow-btn-glow'>Nghiệm thu />
+	[5] (887,30)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Cấu hình />
+	Dang The Toan
+	admin
+	[6] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	[7] (252,112)<button class='p-2 rounded-xl hover:bg-white/5 text-neutral-medium hover:text-white transition-all' />
+	Tạo Nghiệm Thu
+	[8] (335,169)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Nhân sự * />
+	[9] (335,197)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[10] (500,169)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Kỳ nghiệm thu />
+	[11] (500,199)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[12] (665,169)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ghi chú />
+	[13] (665,198)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='Ghi chú...' />
+	Chọn task (
+	0
+	/
+	3
+	)
+	[14] (731,238)<button class='text-xs text-primary hover:text-primary-dark transition-colors font-bold'>Chọn tất cả />
+	[15] (499,278)<label class='flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all border-primary/10 hover:border-primary/20' />
+		[16] (263,278)<input class='accent-primary w-4 h-4 shrink-0' />
+		[17] (494,278)<div  />
+			[18] (494,271)<p >Buff_Moki_Ground />
+			[19] (494,286)<div  />
+				[20] (286,286)<span >KYMAVIS_Client />
+				[21] (305,286)<span >| />
+				[22] (317,286)<span >Accessory />
+				[23] (350,286)<span >• Closed:
+2025-10-29 />
+		[24] (730,278)<div  />
+			[25] (730,278)<p >— />
+				[26] (734,278)<span >VND />
+	[27] (499,331)<label class='flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all border-primary/10 hover:border-primary/20' />
+		[28] (263,331)<input class='accent-primary w-4 h-4 shrink-0' />
+		[29] (494,331)<div  />
+			[30] (494,325)<p >Kappa Fishing />
+			[31] (494,340)<div  />
+				[32] (286,340)<span >KYMAVIS_Client />
+				[33] (305,340)<span >| />
+				[34] (323,340)<span >Card Animation />
+				[35] (361,340)<span >• Closed:
+2025-10-13 />
+		[36] (730,331)<div  />
+			[37] (730,331)<p >— />
+				[38] (734,332)<span >VND />
+	[39] (499,385)<label class='flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all border-primary/10 hover:border-primary/20' />
+		[40] (263,385)<input class='accent-primary w-4 h-4 shrink-0' />
+		[41] (494,385)<div  />
+			[42] (494,379)<p >Painting />
+			[43] (494,394)<div  />
+				[44] (286,394)<span >KYMAVIS_Client />
+				[45] (305,394)<span >| />
+				[46] (323,394)<span >Card Animation />
+				[47] (361,394)<span >• Closed:
+2025-10-22 />
+		[48] (730,385)<div  />
+			[49] (730,385)<p >— />
+				[50] (734,386)<span >VND />
+	💰 Bonus & Thuế TNCN
+	[51] (339,461)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Loại Bonus />
+	[52] (339,490)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[53] (500,461)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Bonus (số tiền) />
+	[54] (500,491)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='VD: 500000' />
+	[55] (661,461)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Thuế TNCN (%) />
+	Thực nhận
+	0
+	VND
+	✚ Tạo nghiệm thu
+	TD Consulting • Enterprise Billing Engine • v2.1
+
+</current_dom>

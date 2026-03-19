@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Plan to add 10% TNCN tax auto-deduction and bonus (by % or fixed amount) to Workforce settlements. Covers DB migration, type changes, service layer, UI (create/detail/list/PDF), and browser testing.",
+  "updatedAt": "2026-03-19T11:30:54.260200900Z"
+}

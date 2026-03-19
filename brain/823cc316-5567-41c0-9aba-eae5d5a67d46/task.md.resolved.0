@@ -1,0 +1,10 @@
+# Workforce Settlement: Thuế TNCN + Bonus
+
+- [ ] DB Migration — thêm cột bonus/tax/net vào `wf_settlements`
+- [ ] TypeScript types — update [Settlement](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts#183-197) interface
+- [ ] Service layer — update [createSettlement()](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts#107-142) + [updateSettlement()](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/workforceService.ts#143-160)
+- [ ] UI: Create View — form bonus + preview tính toán
+- [ ] UI: Detail View — summary cards + footer tổng
+- [ ] UI: List View — hiển thị thực nhận
+- [ ] UI: PDF Export — thêm dòng bonus/thuế/thực nhận
+- [ ] Browser testing
