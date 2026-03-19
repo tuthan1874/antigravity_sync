@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough of the employee invite flow implementation. Covers Edge Function v2, SetPasswordScreen, App.tsx token detection, and HR service update. Includes a sequence diagram and required Supabase Dashboard configuration steps.",
-  "updatedAt": "2026-03-18T17:12:02.157330400Z",
-  "version": "1"
+  "summary": "Complete session walkthrough for 2026-03-18/19 covering Portal payslip/attendance fixes, payroll logic improvements, employee invite flow via email (Resend SMTP), and R2 public URL fix for avatars on production.",
+  "updatedAt": "2026-03-18T17:46:58.652379900Z",
+  "version": "2"
 }

@@ -1,47 +1,44 @@
-# Employee Invite Flow — Walkthrough
+# Session Walkthrough — 2026-03-18/19
 
-## Tóm tắt thay đổi
+## Tổng kết công việc đã hoàn thành
 
-### 1. Edge Function `create-employee-auth` (v2)
-- Thay `createUser(password)` → `inviteUserByEmail(email, { redirectTo })`
-- Supabase tự động gửi email invite tới nhân viên
-- `redirectTo` = `https://app.tdgamestudio.com`
-- Nếu email đã tồn tại → chỉ update metadata, không lỗi
+### 1. Portal: Payslip & Attendance hiển thị đúng
+- Fixed `portalService.ts` — query đúng bảng `pay_payroll_records` + `att_monthly_records`
+- Payslip hiển thị chi tiết 8 bước tính lương (giống admin app)
+- Attendance hiển thị tổng hợp tháng (ngày công, OT, đi trễ, vắng)
+- Filter: chỉ hiển thị payslip đã confirmed, attendance đã finalized
 
-### 2. `SetPasswordScreen.tsx` (NEW)
-- Giao diện đặt mật khẩu mới (theme xanh để phân biệt với login)
-- Có validate: min 6 ký tự, xác nhận khớp
-- Gọi `supabase.auth.updateUser({ password })` để set password
+### 2. Payroll: Block nếu chấm công chưa chốt
+- `usePayrollState.ts` — check attendance sheet finalized trước khi tạo payroll
+- Fix Portal hiển thị sai status attendance ("Nháp" → "Đã chốt")
 
-### 3. `App.tsx`
-- Detect invite token via `onAuthStateChange` event (`SIGNED_IN` + `type=invite` in URL hash)
-- Hiện `SetPasswordScreen` thay vì redirect về login/home
-- Sau khi set password → member role tự động vào Portal
+### 3. Employee Invite Flow qua Email ✨
+- **Edge Function** `create-employee-auth` v2 → dùng `inviteUserByEmail()` thay vì `createUser(password)`
+- **`SetPasswordScreen.tsx`** (NEW) — trang đặt mật khẩu cho nhân viên mới (theme xanh)
+- **`App.tsx`** — detect invite token (`type=invite`) → show SetPasswordScreen → auto-navigate Portal
+- **`hrService.ts`** — update response handling cho invite flow
+- **Supabase config** — Site URL + Redirect URL = `https://app.tdgamestudio.com`
+- **Resend SMTP** — `noreply@tdgamestudio.com` qua `smtp.resend.com`
 
-### 4. `hrService.ts`
-- Update response handling: log invite status thay vì temp password
+### 4. Fix Avatar lỗi trên production
+- Thêm `VITE_R2_PUBLIC_URL=https://pub-dad8a9bea8cb47c7ac0a03614d43b5b1.r2.dev` vào `.env`
+- `toPublicUrl()` cần biến này để chuyển S3 URL → Public URL
 
-## Luồng hoàn chỉnh
+## Files đã thay đổi
 
-```mermaid
-sequenceDiagram
-    Admin->>HR App: Tạo nhân viên (work_email)
-    HR App->>Edge Function: POST /create-employee-auth
-    Edge Function->>Supabase: inviteUserByEmail(email)
-    Supabase->>Employee Email: Gửi email invite link
-    Employee->>Browser: Click invite link
-    Browser->>App: Redirect tới app.tdgamestudio.com#access_token=...&type=invite
-    App->>SetPasswordScreen: Detect invite → hiện trang đặt mật khẩu
-    Employee->>SetPasswordScreen: Nhập mật khẩu mới
-    SetPasswordScreen->>Supabase: updateUser({ password })
-    App->>Portal: Auto-navigate vào Portal
-```
+| File | Thay đổi |
+|---|---|
+| `App.tsx` | Import SetPasswordScreen, detect invite token |
+| `components/SetPasswordScreen.tsx` | NEW — trang đặt mật khẩu |
+| `apps/portal/services/portalService.ts` | Query đúng bảng, filter by status |
+| `apps/portal/components/PortalApp.tsx` | Payslip chi tiết, attendance tổng hợp |
+| `apps/payroll/hooks/usePayrollState.ts` | Block payroll nếu attendance chưa chốt |
+| `apps/hr/services/hrService.ts` | Invite response handling |
+| `.env` | Thêm `VITE_R2_PUBLIC_URL` |
+| Edge Function `create-employee-auth` | v2: `inviteUserByEmail()` + Resend SMTP |
 
-## ⚠️ Cấu hình cần thiết trên Supabase Dashboard
-
-> [!IMPORTANT]
-> Bạn cần vào **Supabase Dashboard** → **Authentication** → **URL Configuration** và cấu hình:
-> 1. **Site URL**: `https://app.tdgamestudio.com`
-> 2. **Redirect URLs**: Thêm `https://app.tdgamestudio.com`
-> 
-> Nếu không cấu hình, link trong email invite sẽ redirect sai URL.
+## Supabase Dashboard Config (đã làm thủ công)
+- ✅ Site URL: `https://app.tdgamestudio.com`
+- ✅ Redirect URLs: `https://app.tdgamestudio.com`
+- ✅ Custom SMTP: Resend (`smtp.resend.com:465`, user `resend`)
+- ✅ Sender: `noreply@tdgamestudio.com` / `TD Games`

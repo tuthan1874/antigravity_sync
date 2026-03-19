@@ -1,0 +1,11 @@
+# Task: Verify app at http://localhost:3000/ and report status
+
+## Checklist
+- [ ] Open http://localhost:3000/
+- [ ] Wait for page to load (3s+)
+- [ ] Take screenshot
+- [ ] Read DOM content
+- [ ] Update status summary
+
+## Findings
+- 
