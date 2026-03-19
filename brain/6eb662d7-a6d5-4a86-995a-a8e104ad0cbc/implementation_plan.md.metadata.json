@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan for employee onboarding flow. Covers: QuickAddEmployee form for HR (simplified onboarding), ProfileTab for employee self-service in Portal (with read-only vs editable field definitions), portalService additions, and PortalApp integration. Includes detailed field-level permissions table and browser verification steps.",
+  "updatedAt": "2026-03-19T16:00:33.357135800Z"
+}

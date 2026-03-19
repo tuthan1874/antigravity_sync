@@ -1,0 +1,31 @@
+# Employee Onboarding Flow
+
+## 1. Planning
+- [x] Research existing codebase (HR module, Portal, Auth, Types)
+- [/] Write implementation plan
+- [ ] Get user approval
+
+## 2. Quick Add Employee (HR Side)
+- [ ] Create `QuickAddEmployee.tsx` — simplified form with only onboarding fields
+- [ ] Add "Quick Add" button in `EmployeeList.tsx` alongside existing "Add"
+- [ ] Wire up Quick Add in `HrApp.tsx` as new tab/view
+- [ ] Ensure `saveEmployee()` auto-invite flow works (already exists)
+
+## 3. Employee Profile Tab (Portal Side)
+- [ ] Add `fetchMyProfile()` and `updateMyProfile()` to `portalService.ts`
+- [ ] Create `ProfileTab.tsx` — employee self-service profile view/edit
+  - [ ] Show all employee fields grouped by section
+  - [ ] Read-only for HR-set fields: work_email, department, position, level, start_date, probation_end, salary, type, status
+  - [ ] Editable for personal fields: full_name, email, phone, gender, date_of_birth, nationality, address, temp_address, id_number, id_issue_date, id_issue_place, id_card_front/back, tax_code, insurance_number, bank info, avatar
+  - [ ] Profile completion progress indicator
+- [ ] Register `ProfileTab` in `PortalApp.tsx` as new "Hồ sơ" tab
+
+## 4. Profile Completion Check
+- [ ] In `App.tsx`, after password set and for member role, check if profile is incomplete
+- [ ] If incomplete, auto-navigate to Portal → Profile tab
+
+## 5. Verification
+- [ ] Test HR Quick Add → invite email sent
+- [ ] Test Employee login → password set → profile completion
+- [ ] Test read-only enforcement on HR fields
+- [ ] Test profile update saves correctly
