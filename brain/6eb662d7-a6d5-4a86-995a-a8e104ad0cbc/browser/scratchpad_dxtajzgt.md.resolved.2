@@ -1,0 +1,20 @@
+# Verification Plan: Employee Portal - "Hồ sơ" Tab
+
+- [x] Navigate to `http://localhost:3000/#portal`
+- [x] Verify "Hồ sơ" tab presence in navigation
+- [x] Click on "Hồ sơ" tab
+- [ ] Verify profile data loading (Currently blocked by "Tài khoản chưa liên kết nhân viên" error)
+- [ ] Verify header "📋 Hồ sơ của tôi"
+- [ ] Verify profile completion progress bar
+- [ ] Verify read-only section "🏢 Thông tin công việc" (HR-managed fields with 🔒 icons)
+- [ ] Verify editable section "👤 Thông tin cá nhân"
+- [ ] Verify editable section "🪪 CMND / CCCD & Ảnh"
+- [ ] Verify editable section "📄 Thuế & Bảo hiểm"
+- [ ] Verify editable section "🏦 Thông tin ngân hàng"
+- [ ] Check for console errors
+- [ ] Scroll down and take screenshots of each section
+
+### Current Status
+- Created a new employee "Dang The Toan Test" with email `toan.dang@tdgamestudio.com` using the Quick Add feature.
+- The "Hồ sơ" tab shows an error because the current user is not linked.
+- I will attempt to bypass the check by mocking the state in the browser.

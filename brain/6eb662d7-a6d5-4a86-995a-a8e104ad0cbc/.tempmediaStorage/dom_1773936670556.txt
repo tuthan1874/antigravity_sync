@@ -1,0 +1,60 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (336,1)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ngày sinh
+* />
+[1] (336,31)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[2] (500,1)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Giới tính
+* />
+[3] (500,29)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[4] (664,1)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Quốc tịch />
+[5] (664,30)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[6] (500,73)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Địa chỉ thường trú
+* />
+[7] (500,102)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='Số nhà, đường, quận, TP...' />
+[8] (500,144)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Địa chỉ tạm trú
+* />
+[9] (500,173)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='Nếu giống thường trú, điền lại' />
+🪪 CMND / CCCD & Ảnh nhân sự
+[10] (336,310)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Số CMND/CCCD
+* />
+[11] (336,340)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[12] (500,310)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ngày cấp
+* />
+[13] (500,340)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[14] (664,310)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Nơi cấp
+* />
+[15] (664,340)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[16] (336,383)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ảnh nhân sự />
+[17] (336,547)<div  />
+	[18] (336,547)<div  />
+		[19] (336,547)<span  />
+[20] (500,383)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>CCCD Mặt trước />
+[21] (500,490)<div  />
+	[22] (500,480)<span >📷 />
+	[23] (500,507)<span >Upload mặt trước />
+[24] (664,383)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>CCCD Mặt sau />
+[25] (664,490)<div  />
+	[26] (664,480)<span >📷 />
+	[27] (664,507)<span >Upload mặt sau />
+🏢 Thông tin Fulltime
+[28] (336,819)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Mã số thuế cá nhân />
+[29] (336,848)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[30] (500,819)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Số sổ bảo hiểm />
+[31] (500,848)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[32] (664,819)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Phòng ban
+* />
+[33] (664,847)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[34] (336,890)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Chức danh
+* />
+[35] (336,919)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='Senior Artist' />
+[36] (500,890)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Cấp bậc />
+[37] (500,918)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[38] (664,890)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ngày bắt đầu
+* />
+[39] (664,920)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[40] (336,962)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ngày hết thử việc />
+[41] (336,992)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+
+</current_dom>

@@ -1,0 +1,42 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,96)<div  />
+	[1] (500,22)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Địa chỉ thường trú />
+	[2] (500,51)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' placeholder='Số nhà, đường, quận, TP...' />
+	[3] (500,93)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Địa chỉ tạm trú />
+	[4] (500,122)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' placeholder='Nếu giống thường trú, điền lại' />
+	🪪 CMND / CCCD & Ảnh
+	[5] (351,260)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Số CMND/CCCD />
+	[6] (351,289)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' />
+	[7] (500,260)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ngày cấp />
+	[8] (500,290)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' />
+	[9] (649,260)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Nơi cấp />
+	[10] (649,289)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' />
+	[11] (351,332)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ảnh đại diện />
+	[12] (351,481)<div  />
+		[13] (351,481)<div  />
+			[14] (351,481)<span  />
+	[15] (500,332)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>CCCD Mặt trước />
+	[16] (500,429)<div  />
+		[17] (500,420)<span >📷 />
+		[18] (500,446)<span >Upload mặt trước />
+	[19] (649,332)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>CCCD Mặt sau />
+	[20] (649,429)<div  />
+		[21] (649,420)<span >📷 />
+		[22] (649,446)<span >Upload mặt sau />
+	📄 Thuế & Bảo hiểm
+	[23] (388,737)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Mã số thuế cá nhân />
+	[24] (388,767)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' />
+	[25] (612,737)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Số sổ bảo hiểm />
+	[26] (612,767)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' />
+	🏦 Thông tin ngân hàng
+	[27] (351,904)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Tên ngân hàng />
+	[28] (351,934)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' placeholder='VCB, ACB, MB...' />
+	[29] (500,904)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Số tài khoản />
+	[30] (649,904)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Chi nhánh />
+	[31] (649,934)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' />
+	[32] (502,951)<button class='opacity-60 hover:opacity-100 font-bold'>✕ />
+
+</current_dom>

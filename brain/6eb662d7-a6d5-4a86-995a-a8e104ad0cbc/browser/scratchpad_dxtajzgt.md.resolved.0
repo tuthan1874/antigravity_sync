@@ -1,0 +1,15 @@
+# Verification Plan: Employee Portal - "Hồ sơ" Tab
+
+- [ ] Navigate to `http://localhost:3000/#portal`
+- [ ] Verify "Hồ sơ" tab presence in navigation
+- [ ] Click on "Hồ sơ" tab
+- [ ] Verify profile data loading
+- [ ] Verify header "📋 Hồ sơ của tôi"
+- [ ] Verify profile completion progress bar
+- [ ] Verify read-only section "🏢 Thông tin công việc" (HR-managed fields with 🔒 icons)
+- [ ] Verify editable section "👤 Thông tin cá nhân"
+- [ ] Verify editable section "🪪 CMND / CCCD & Ảnh"
+- [ ] Verify editable section "📄 Thuế & Bảo hiểm"
+- [ ] Verify editable section "🏦 Thông tin ngân hàng"
+- [ ] Check for console errors
+- [ ] Scroll down and take screenshots of each section

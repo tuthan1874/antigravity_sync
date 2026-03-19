@@ -1,0 +1,12 @@
+# Browser Task: Test Portal Profile Tab
+
+## Checklist
+- [x] Read Portal DOM and verify "Hồ sơ" tab existence <!-- id: 0 -->
+- [x] Take screenshot of initial Portal view <!-- id: 1 -->
+- [ ] Attempt to link an employee ID via JS for testing <!-- id: 3 -->
+- [ ] Verify profile data editing workflow <!-- id: 4 -->
+- [ ] Final report <!-- id: 5 -->
+
+## Findings
+- Initial Portal view confirmed "Hồ sơ" tab is present and active by default.
+- Shows "Tài khoản chưa liên kết nhân viên" as expected for admin user.

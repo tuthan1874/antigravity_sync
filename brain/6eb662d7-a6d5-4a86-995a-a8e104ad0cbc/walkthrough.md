@@ -1,0 +1,83 @@
+# Employee Onboarding Flow — Walkthrough
+
+## What was implemented
+
+### 1. ⚡ Quick Add Employee (HR Side)
+
+**New file:** [QuickAddEmployee.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/QuickAddEmployee.tsx)
+
+Form đơn giản cho HR thêm nhanh nhân viên với các trường:
+- Họ tên, Email công việc
+- Phòng ban, Chức danh, Cấp bậc
+- Ngày bắt đầu (auto-tính hết thử việc +2 tháng)
+- Cấu trúc lương (tất cả components)
+
+Sau submit → `saveEmployee()` auto-invite qua `create-employee-auth` Edge Function → gửi email mời.
+
+**Modified files:**
+- [EmployeeList.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/EmployeeList.tsx) — thêm nút ⚡ Thêm nhanh
+- [HrApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/HrApp.tsx) — thêm tab `quickAdd` + render
+- [useHrState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/hooks/useHrState.ts) — thêm `quickAdd` vào HrTab type
+
+---
+
+### 2. 📋 Profile Tab (Portal Side)
+
+**New file:** [ProfileTab.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/portal/components/ProfileTab.tsx)
+
+Tab "Hồ sơ của tôi" cho nhân viên tự xem/chỉnh sửa thông tin:
+- **Read-only** (🔒): employee code, work email, department, position, level, start date, probation end, type, status
+- **Editable**: personal info, CCCD, photos, tax/insurance, bank
+- Profile completion progress bar
+
+**Modified files:**
+- [portalService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/portal/services/portalService.ts) — thêm `fetchMyProfile()`, `updateMyProfile()`
+- [PortalApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/portal/components/PortalApp.tsx) — thêm tab "Hồ sơ"
+
+---
+
+## Verification
+
+### HR Quick Add — ✅ Working
+
+````carousel
+![HR Employee List with Quick Add button](C:/Users/dangt/.gemini/antigravity/brain/6eb662d7-a6d5-4a86-995a-a8e104ad0cbc/.system_generated/click_feedback/click_feedback_1773936492620.png)
+<!-- slide -->
+![Quick Add form rendering](C:/Users/dangt/.gemini/antigravity/brain/6eb662d7-a6d5-4a86-995a-a8e104ad0cbc/.system_generated/click_feedback/click_feedback_1773936700944.png)
+````
+
+- ⚡ Thêm nhanh button hiển thị đúng (màu xanh lá) bên cạnh nút Thêm nhân sự (đỏ)
+- Form render đầy đủ các section: Thông tin cơ bản, Vị trí công việc, Ngày làm việc, Cấu trúc lương
+- Submit tạo nhân viên thành công ("Dang The Toan Test" xuất hiện trong danh sách)
+
+### Portal Profile Tab — ✅ Working
+
+![Portal with Hồ sơ tab visible](C:/Users/dangt/.gemini/antigravity/brain/6eb662d7-a6d5-4a86-995a-a8e104ad0cbc/.system_generated/click_feedback/click_feedback_1773937035051.png)
+
+- Tab "Hồ sơ" hiển thị đúng trong navigation bar
+- Admin account (không có employee_id) → hiện message "Tài khoản chưa liên kết nhân viên" (expected)
+- Employee accounts (tạo qua Quick Add) sẽ có employee_id → hiển thị full profile form
+
+### Demo Recording
+
+![Quick Add flow recording](C:/Users/dangt/.gemini/antigravity/brain/6eb662d7-a6d5-4a86-995a-a8e104ad0cbc/test_quick_add_1773936445080.webp)
+
+## Luồng end-to-end
+
+```mermaid
+sequenceDiagram
+    participant HR as HR / Admin
+    participant System as Hệ thống
+    participant Email as Email
+    participant NV as Nhân viên mới
+
+    HR->>System: ⚡ Thêm nhanh (tên, email, dept, vị trí, lương)
+    System->>System: saveEmployee() + create-employee-auth
+    System->>Email: Gửi email mời đăng nhập
+    Email->>NV: Link đăng nhập
+    NV->>System: Click link → SetPasswordScreen
+    NV->>System: Đặt password mới
+    System->>NV: Chuyển tới Portal → Tab Hồ sơ
+    NV->>System: Điền thông tin cá nhân (CCCD, ngân hàng, ảnh...)
+    System->>System: updateMyProfile() — chỉ lưu trường editable
+```

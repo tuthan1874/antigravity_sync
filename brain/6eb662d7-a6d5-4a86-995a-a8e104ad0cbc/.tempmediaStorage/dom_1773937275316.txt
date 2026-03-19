@@ -1,0 +1,36 @@
+[0] (497,96)<div  />
+	[1] (497,22)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Địa chỉ thường trú />
+	[2] (497,51)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' placeholder='Số nhà, đường, quận, TP...' />
+	[3] (497,93)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Địa chỉ tạm trú />
+	[4] (497,122)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' placeholder='Nếu giống thường trú, điền lại' />
+	🪪 CMND / CCCD & Ảnh
+	[5] (348,260)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Số CMND/CCCD />
+	[6] (348,289)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' />
+	[7] (497,260)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ngày cấp />
+	[8] (497,290)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' />
+	[9] (646,260)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Nơi cấp />
+	[10] (646,289)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' />
+	[11] (348,332)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ảnh đại diện />
+	[12] (348,481)<div  />
+		[13] (348,481)<div  />
+			[14] (348,481)<span  />
+	[15] (497,332)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>CCCD Mặt trước />
+	[16] (497,429)<div  />
+		[17] (497,420)<span >📷 />
+		[18] (497,446)<span >Upload mặt trước />
+	[19] (646,332)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>CCCD Mặt sau />
+	[20] (646,429)<div  />
+		[21] (646,420)<span >📷 />
+		[22] (646,446)<span >Upload mặt sau />
+	📄 Thuế & Bảo hiểm
+	[23] (385,737)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Mã số thuế cá nhân />
+	[24] (385,767)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' />
+	[25] (609,737)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Số sổ bảo hiểm />
+	[26] (609,767)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' />
+	🏦 Thông tin ngân hàng
+	[27] (348,904)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Tên ngân hàng />
+	[28] (348,934)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' placeholder='VCB, ACB, MB...' />
+	[29] (497,904)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Số tài khoản />
+	[30] (646,904)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Chi nhánh />
+	[31] (646,934)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' />
+	[32] (499,951)<button class='opacity-60 hover:opacity-100 font-bold'>✕ />

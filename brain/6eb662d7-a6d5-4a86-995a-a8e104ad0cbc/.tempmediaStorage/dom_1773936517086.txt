@@ -1,0 +1,46 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,353)<div  />
+	[1] (377,9)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='Nguyễn Văn A' />
+	[2] (623,9)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='ten@tdgamestudio.com' />
+	🏢 Vị trí công việc
+	[3] (336,146)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Phòng ban * />
+	[4] (336,175)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[5] (500,146)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Chức danh * />
+	[6] (500,176)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='Senior Artist' />
+	[7] (664,146)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Cấp bậc />
+	[8] (664,175)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	📅 Ngày làm việc
+	[9] (377,313)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ngày bắt đầu * />
+	[10] (377,343)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[11] (623,313)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ngày hết thử việc />
+	[12] (623,343)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	Tự động = ngày bắt đầu + 2 tháng
+	💰 Cấu trúc lương
+	Lương cơ bản
+	[13] (690,514)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+	Phụ cấp ăn trưa
+	[14] (690,572)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+	Phụ cấp xăng xe, điện thoại
+	[15] (690,629)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+	Phụ cấp trang phục
+	[16] (690,686)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+	Phụ cấp năng suất (KPI)
+	[17] (690,743)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+	Tăng ca
+	[18] (690,801)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+	Tổng Gross
+	0
+	VNĐ
+	[19] (302,948)<button class='flex items-center gap-2 px-8 py-4 rounded-2xl text-white font-black text-sm uppercase tracking-widest hover:opacity-90 transition-all hover:scale-105 disabled:opacity-50 disabled:hover:scale-100'>✅ Thêm & Gửi email mời />
+	[20] (382,948)<button class='px-6 py-4 rounded-2xl border border-primary/10 text-neutral-medium font-black text-sm uppercase tracking-widest hover:text-white hover:border-primary/30 transition-all'>Hủy />
+
+</current_dom>
