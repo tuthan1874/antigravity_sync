@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_TASK",
-  "summary": "Completed task checklist for employee onboarding flow implementation.",
-  "updatedAt": "2026-03-19T16:18:40.405158300Z",
-  "version": "2"
+  "summary": "Progress notes for employee onboarding flow. Completed: Quick Add form, Profile tab, loading overlay, invite email fix. Remaining: end-to-end testing of invite email flow.",
+  "updatedAt": "2026-03-19T16:40:02.121459800Z",
+  "version": "3"
 }

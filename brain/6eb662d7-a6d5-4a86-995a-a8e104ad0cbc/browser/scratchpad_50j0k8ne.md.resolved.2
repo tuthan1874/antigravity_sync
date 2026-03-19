@@ -1,0 +1,15 @@
+# Debugging Quick Add Employee Invite Flow
+
+## Task Checklist
+- [x] Open http://localhost:3000 and navigate to the HR app
+- [x] Open browser console and network tab
+- [ ] Fill the Quick Add form with test data
+- [ ] Submit form and check for loading overlay
+- [x] Monitor console and network for `create-employee-auth`
+- [ ] Report findings
+
+## Observations
+- Navigated to HR app successfully.
+- **Found Error:** `create-employee-auth` edge function returns **401 Unauthorized**.
+- The employee is added to the database locally, but the invite email flow fails due to this 401 error.
+- Planning to re-verify the "loading overlay" (freeze issue) in a second test.
