@@ -1,0 +1,7 @@
+# GitHub Actions Failure Investigation
+
+- [ ] Navigate to GitHub Actions: https://github.com/tdgamesvn/tdgames_billing/actions
+- [ ] Identify the most recent failed workflow run
+- [ ] Inspect the failure details and error messages
+- [ ] Capture a screenshot of the error
+- [ ] Report the specific error causing the failure

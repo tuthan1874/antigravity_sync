@@ -1,0 +1,244 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Skip to content
+Navigation Menu
+[0] (19,28)<a aria-label='Homepage' class='tmp-mr-lg-3 color-fg-inherit flex-order-2 js-prevent-focus-on-mobile-nav' href='/' />
+[1] (50,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Platform />
+[2] (89,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Solutions />
+[3] (129,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Resources />
+[4] (175,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Open Source />
+[5] (221,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Enterprise />
+[6] (254,28)<a class='NavLink-module__link__EG3d4 MarketingNavigation-module__navLink__hUomM' href='https://github.com/pricing' />
+	[7] (254,28)<span >Pricing />
+[8] (844,28)<button aria-label='Search or jump to…' class='header-search-button placeholder input-button form-control d-flex flex-1 flex-self-stretch flex-items-center no-wrap width-full py-0 pl-2 pr-0 text-left border-0 box-shadow-none' placeholder='Search or jump to...' />
+	[9] (788,28)<div  />
+	[10] (844,28)<span >Search or jump to... />
+	[11] (902,28)<div  />
+[12] (924,28)<a class='HeaderMenu-link HeaderMenu-link--sign-in HeaderMenu-button flex-shrink-0 no-underline d-none d-lg-inline-flex border border-lg-0 rounded px-2 py-1' href='/login?return_to=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Ftdgames_billing%2Factions'>Sign in />
+[13] (956,28)<a class='HeaderMenu-link HeaderMenu-link--sign-up HeaderMenu-button flex-shrink-0 d-flex d-lg-inline-flex no-underline border color-border-default rounded px-2 py-1' href='/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Factions%2Findex&source=header-repo&source_repo=tdgamesvn%2Ftdgames_billing'>Sign up />
+[14] (981,28)<button class='Button Button--iconOnly Button--invisible Button--medium AppHeader-button HeaderMenu-link border' id='icon-button-4aaf0a12-75a3-4c74-8071-e518ad492b98' />
+[15] (41,79)<a class='url fn' href='/tdgamesvn'>tdgamesvn />
+/
+[16] (94,79)<a href='/tdgamesvn/tdgames_billing'>tdgames_billing />
+Public
+[17] (881,78)<a aria-label='You must be signed in to change notification settings' class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' id='repository-details-watch-button'>Notifications />
+[18] (926,78)<a class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' id='fork-button'>Fork />
+	[19] (937,78)<span >0 />
+[20] (968,78)<a aria-label='You must be signed in to star a repository' class='tooltipped tooltipped-sw btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' />
+	[21] (969,78)<span >Star />
+	[22] (979,78)<span >0 />
+[23] (27,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing' id='code-tab' />
+	[24] (31,121)<span >Code />
+[25] (59,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/issues' id='issues-tab' />
+	[26] (64,121)<span >Issues />
+[27] (101,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/pulls' id='pull-requests-tab' />
+	[28] (106,121)<span >Pull requests />
+[29] (145,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected' href='/tdgamesvn/tdgames_billing/actions' id='actions-tab' />
+	[30] (150,121)<span >Actions />
+[31] (183,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/projects' id='projects-tab' />
+	[32] (188,121)<span >Projects />
+[33] (221,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/security' id='security-tab' />
+	[34] (226,121)<span >Security />
+[35] (260,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/pulse' id='insights-tab' />
+	[36] (265,121)<span >Insights />
+Actions: tdgamesvn/tdgames_billing
+Actions
+[37] (65,197)<a class='ActionListContent' href='/tdgamesvn/tdgames_billing/actions' id='item-9c0ffd13-f8bc-48ff-b718-1a66d4535e62' />
+	[38] (65,197)<span >All workflows />
+[39] (65,234)<a class='ActionListContent' href='/tdgamesvn/tdgames_billing/actions/workflows/deploy.yml' id='item-59dab289-42fa-4eab-8565-490b9e0a7a43' />
+	[40] (65,234)<span >🚀 Deploy to VPS />
+Management
+[41] (65,296)<a class='ActionListContent ActionListContent--visual16' href='/tdgamesvn/tdgames_billing/actions/caches' id='item-4c87c61a-1054-4607-a6f8-552d8b6c39d1' />
+	[42] (70,296)<span >Caches />
+All workflows
+[43] (691,164)<input aria-label='Filter workflow runs' class='form-control subnav-search-input width-full f5 tmp-pr-5 flex-auto js-navigation-enable actions-tab-filter-input' placeholder='Filter workflow runs' role='combobox' />
+Showing runs from all workflows
+26 workflow runs
+[44] (636,235)<button class='Button--invisible Button--medium Button color-fg-muted text-normal' id='actions_events_filter-button' />
+	[45] (633,235)<span  />
+		[46] (633,235)<span >Event />
+[47] (666,235)<button class='Button--invisible Button--medium Button color-fg-muted text-normal' id='actions_status_filter-button' />
+	[48] (663,235)<span  />
+		[49] (663,235)<span >Status />
+[50] (698,235)<button class='Button--invisible Button--medium Button color-fg-muted text-normal' id='actions_branch_filter-button' />
+	[51] (695,235)<span  />
+		[52] (695,235)<span >Branch />
+[53] (729,235)<button class='Button--invisible Button--medium Button color-fg-muted text-normal' id='actions_actors_filter-button' />
+	[54] (726,235)<span  />
+		[55] (726,235)<span >Actor />
+[56] (378,281)<a aria-label='failed:  Run 27 of 🚀 Deploy to VPS. fix: check profile completion from DB on every session load (prevent …' class='d-flex flex-items-center width-full mb-1' href='/tdgamesvn/tdgames_billing/actions/runs/23352808328' />
+	[57] (260,281)<div  />
+	[58] (378,281)<span >fix: check profile completion from DB on every session load (prevent … />
+🚀 Deploy to VPS
+#27:
+Commit
+[59] (341,300)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn/tdgames_billing/commit/589201f7a764708f32993872ed4f38f520e1dd0f'>589201f />
+pushed
+            by
+[60] (385,300)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn'>tdgamesvn />
+[61] (514,290)<a class='d-inline-block branch-name css-truncate css-truncate-target my-0 my-md-1' href='/tdgamesvn/tdgames_billing/tree/refs/heads/main' title='main'>main />
+10s
+[62] (739,290)<details class='details-overlay details-reset position-relative d-inline-block ' />
+	[63] (739,290)<summary class='timeline-comment-action btn-link' />
+[64] (378,341)<a aria-label='failed:  Run 26 of 🚀 Deploy to VPS. fix: expanded profile completion fields, avatar required, no skip button' class='d-flex flex-items-center width-full mb-1' href='/tdgamesvn/tdgames_billing/actions/runs/23352682884' />
+	[65] (260,341)<div  />
+	[66] (378,341)<span >fix: expanded profile completion fields, avatar required, no skip button />
+🚀 Deploy to VPS
+#26:
+Commit
+[67] (342,360)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn/tdgames_billing/commit/8b6f9b5d7756b217d15aee0eca955f38d02a2ac7'>8b6f9b5 />
+pushed
+            by
+[68] (386,360)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn'>tdgamesvn />
+[69] (514,349)<a class='d-inline-block branch-name css-truncate css-truncate-target my-0 my-md-1' href='/tdgamesvn/tdgames_billing/tree/refs/heads/main' title='main'>main />
+12s
+[70] (739,349)<details class='details-overlay details-reset position-relative d-inline-block ' />
+	[71] (739,349)<summary class='timeline-comment-action btn-link' />
+[72] (378,400)<a aria-label='failed:  Run 25 of 🚀 Deploy to VPS. feat: mandatory profile completion, re-invite and reset password butt…' class='d-flex flex-items-center width-full mb-1' href='/tdgamesvn/tdgames_billing/actions/runs/23348959842' />
+	[73] (260,400)<div  />
+	[74] (378,400)<span >feat: mandatory profile completion, re-invite and reset password butt… />
+🚀 Deploy to VPS
+#25:
+Commit
+[75] (342,419)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn/tdgames_billing/commit/4a8dee55490e2c65f0986f75856517a8fdd598c4'>4a8dee5 />
+pushed
+            by
+[76] (386,419)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn'>tdgamesvn />
+[77] (514,409)<a class='d-inline-block branch-name css-truncate css-truncate-target my-0 my-md-1' href='/tdgamesvn/tdgames_billing/tree/refs/heads/main' title='main'>main />
+4m 34s
+[78] (739,409)<details class='details-overlay details-reset position-relative d-inline-block ' />
+	[79] (739,409)<summary class='timeline-comment-action btn-link' />
+[80] (378,460)<a aria-label='completed successfully:  Run 24 of 🚀 Deploy to VPS. fix: metadata-driven invite onboarding flow with password + profile c…' class='d-flex flex-items-center width-full mb-1' href='/tdgamesvn/tdgames_billing/actions/runs/23348652187' />
+	[81] (260,460)<div  />
+	[82] (378,460)<span >fix: metadata-driven invite onboarding flow with password + profile c… />
+🚀 Deploy to VPS
+#24:
+Commit
+[83] (342,479)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn/tdgames_billing/commit/9b969509e16543c56dbbdbc63e488636b87ca931'>9b96950 />
+pushed
+            by
+[84] (387,479)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn'>tdgamesvn />
+[85] (514,468)<a class='d-inline-block branch-name css-truncate css-truncate-target my-0 my-md-1' href='/tdgamesvn/tdgames_billing/tree/refs/heads/main' title='main'>main />
+23s
+[86] (739,468)<details class='details-overlay details-reset position-relative d-inline-block ' />
+	[87] (739,468)<summary class='timeline-comment-action btn-link' />
+[88] (378,519)<a aria-label='completed successfully:  Run 23 of 🚀 Deploy to VPS. fix: remove .env from tracking, add set -e to deploy script' class='d-flex flex-items-center width-full mb-1' href='/tdgamesvn/tdgames_billing/actions/runs/23347489258' />
+	[89] (260,519)<div  />
+	[90] (378,519)<span >fix: remove .env from tracking, add set -e to deploy script />
+🚀 Deploy to VPS
+#23:
+Commit
+[91] (342,538)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn/tdgames_billing/commit/d34905a01e872843fa50703085720fd78a90c290'>d34905a />
+pushed
+            by
+[92] (387,538)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn'>tdgamesvn />
+[93] (514,528)<a class='d-inline-block branch-name css-truncate css-truncate-target my-0 my-md-1' href='/tdgamesvn/tdgames_billing/tree/refs/heads/main' title='main'>main />
+26s
+[94] (739,528)<details class='details-overlay details-reset position-relative d-inline-block ' />
+	[95] (739,528)<summary class='timeline-comment-action btn-link' />
+[96] (378,579)<a aria-label='completed successfully:  Run 22 of 🚀 Deploy to VPS. chore: trigger redeploy' class='d-flex flex-items-center width-full mb-1' href='/tdgamesvn/tdgames_billing/actions/runs/23346390974' />
+	[97] (260,579)<div  />
+	[98] (378,579)<span >chore: trigger redeploy />
+🚀 Deploy to VPS
+#22:
+Commit
+[99] (342,598)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn/tdgames_billing/commit/b5dd91c88d345c4de034f05ac902329b0f5b12c4'>b5dd91c />
+pushed
+            by
+[100] (387,598)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn'>tdgamesvn />
+[101] (514,587)<a class='d-inline-block branch-name css-truncate css-truncate-target my-0 my-md-1' href='/tdgamesvn/tdgames_billing/tree/refs/heads/main' title='main'>main />
+22s
+[102] (739,587)<details class='details-overlay details-reset position-relative d-inline-block ' />
+	[103] (739,587)<summary class='timeline-comment-action btn-link' />
+[104] (378,638)<a aria-label='completed successfully:  Run 21 of 🚀 Deploy to VPS. fix: PKCE invite flow detection + Navbar tab overflow' class='d-flex flex-items-center width-full mb-1' href='/tdgamesvn/tdgames_billing/actions/runs/23341062613' />
+	[105] (260,638)<div  />
+	[106] (378,638)<span >fix: PKCE invite flow detection + Navbar tab overflow />
+🚀 Deploy to VPS
+#21:
+Commit
+[107] (342,657)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn/tdgames_billing/commit/00815e15470aedadc8d3cb5c3553ec791cb9d08e'>00815e1 />
+pushed
+            by
+[108] (386,657)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn'>tdgamesvn />
+[109] (514,647)<a class='d-inline-block branch-name css-truncate css-truncate-target my-0 my-md-1' href='/tdgamesvn/tdgames_billing/tree/refs/heads/main' title='main'>main />
+20s
+[110] (739,647)<details class='details-overlay details-reset position-relative d-inline-block ' />
+	[111] (739,647)<summary class='timeline-comment-action btn-link' />
+[112] (378,698)<a aria-label='completed successfully:  Run 20 of 🚀 Deploy to VPS. feat: employee onboarding flow - Quick Add form, Profile tab, invite …' class='d-flex flex-items-center width-full mb-1' href='/tdgamesvn/tdgames_billing/actions/runs/23306038578' />
+	[113] (260,698)<div  />
+	[114] (378,698)<span >feat: employee onboarding flow - Quick Add form, Profile tab, invite … />
+🚀 Deploy to VPS
+#20:
+Commit
+[115] (342,717)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn/tdgames_billing/commit/93dd366b9cd4baf32ac2863baf4dc689cee3bca6'>93dd366 />
+pushed
+            by
+[116] (387,717)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn'>tdgamesvn />
+[117] (514,706)<a class='d-inline-block branch-name css-truncate css-truncate-target my-0 my-md-1' href='/tdgamesvn/tdgames_billing/tree/refs/heads/main' title='main'>main />
+22s
+[118] (739,706)<details class='details-overlay details-reset position-relative d-inline-block ' />
+	[119] (739,706)<summary class='timeline-comment-action btn-link' />
+[120] (378,757)<a aria-label='completed successfully:  Run 19 of 🚀 Deploy to VPS. fix: add VITE_R2_PUBLIC_URL for avatar/file public access' class='d-flex flex-items-center width-full mb-1' href='/tdgamesvn/tdgames_billing/actions/runs/23258136023' />
+	[121] (260,757)<div  />
+	[122] (378,757)<span >fix: add VITE_R2_PUBLIC_URL for avatar/file public access />
+🚀 Deploy to VPS
+#19:
+Commit
+[123] (341,776)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn/tdgames_billing/commit/af6402552e6e5a2959b2a620b1d442dbf5aec601'>af64025 />
+pushed
+            by
+[124] (385,776)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn'>tdgamesvn />
+[125] (514,766)<a class='d-inline-block branch-name css-truncate css-truncate-target my-0 my-md-1' href='/tdgamesvn/tdgames_billing/tree/refs/heads/main' title='main'>main />
+23s
+[126] (739,766)<details class='details-overlay details-reset position-relative d-inline-block ' />
+	[127] (739,766)<summary class='timeline-comment-action btn-link' />
+[128] (378,817)<a aria-label='completed successfully:  Run 18 of 🚀 Deploy to VPS. feat: employee invite flow via email, portal/dashboard/payroll improv…' class='d-flex flex-items-center width-full mb-1' href='/tdgamesvn/tdgames_billing/actions/runs/23257834589' />
+	[129] (260,817)<div  />
+	[130] (378,817)<span >feat: employee invite flow via email, portal/dashboard/payroll improv… />
+🚀 Deploy to VPS
+#18:
+Commit
+[131] (342,836)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn/tdgames_billing/commit/30cd3bd49ee589fb1cb24960f097f51eb6199314'>30cd3bd />
+pushed
+            by
+[132] (387,836)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn'>tdgamesvn />
+[133] (514,825)<a class='d-inline-block branch-name css-truncate css-truncate-target my-0 my-md-1' href='/tdgamesvn/tdgames_billing/tree/refs/heads/main' title='main'>main />
+24s
+[134] (739,825)<details class='details-overlay details-reset position-relative d-inline-block ' />
+	[135] (739,825)<summary class='timeline-comment-action btn-link' />
+[136] (378,876)<a aria-label='completed successfully:  Run 17 of 🚀 Deploy to VPS. feat: HR improvements + unified app backgrounds' class='d-flex flex-items-center width-full mb-1' href='/tdgamesvn/tdgames_billing/actions/runs/23202116353' />
+	[137] (260,876)<div  />
+	[138] (378,876)<span >feat: HR improvements + unified app backgrounds />
+🚀 Deploy to VPS
+#17:
+Commit
+[139] (341,895)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn/tdgames_billing/commit/ae3faf69798ff16cc41fbad1429bf2ccaef8c941'>ae3faf6 />
+pushed
+            by
+[140] (384,895)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn'>tdgamesvn />
+[141] (514,885)<a class='d-inline-block branch-name css-truncate css-truncate-target my-0 my-md-1' href='/tdgamesvn/tdgames_billing/tree/refs/heads/main' title='main'>main />
+22s
+[142] (739,885)<details class='details-overlay details-reset position-relative d-inline-block ' />
+	[143] (739,885)<summary class='timeline-comment-action btn-link' />
+[144] (378,936)<a aria-label='completed successfully:  Run 16 of 🚀 Deploy to VPS. feat: add Payroll app (Tinh Luong) - 8-step salary calculation' class='d-flex flex-items-center width-full mb-1' href='/tdgamesvn/tdgames_billing/actions/runs/23157781749' />
+	[145] (260,936)<div  />
+	[146] (378,936)<span >feat: add Payroll app (Tinh Luong) - 8-step salary calculation />
+🚀 Deploy to VPS
+#16:
+Commit
+[147] (342,955)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn/tdgames_billing/commit/6badf71f0217b561fb1fae1663c36e70a7ef07d9'>6badf71 />
+pushed
+            by
+[148] (386,955)<a class='Link--muted Link--inTextBlock' href='/tdgamesvn'>tdgamesvn />
+[149] (514,944)<a class='d-inline-block branch-name css-truncate css-truncate-target my-0 my-md-1' href='/tdgamesvn/tdgames_billing/tree/refs/heads/main' title='main'>main />
+21s
+[150] (739,944)<details class='details-overlay details-reset position-relative d-inline-block ' />
+	[151] (739,944)<summary class='timeline-comment-action btn-link' />
+[152] (378,995)<a aria-label='completed successfully:  Run 15 of 🚀 Deploy to VPS. feat(crm): add edit project, expanded client pipeline, remove exchang…' class='d-flex flex-items-center width-full mb-1' href='/tdgamesvn/tdgames_billing/actions/runs/23114611968' />
+	[153] (260,995)<div  />
+	[154] (378,995)<span >feat(crm): add edit project, expanded client pipeline, remove exchang… />
+main
+
+</current_dom>

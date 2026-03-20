@@ -1,0 +1,83 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Skip to content
+Navigation Menu
+[0] (19,28)<a aria-label='Homepage' class='tmp-mr-lg-3 color-fg-inherit flex-order-2 js-prevent-focus-on-mobile-nav' href='/' />
+[1] (50,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Platform />
+[2] (89,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Solutions />
+[3] (129,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Resources />
+[4] (175,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Open Source />
+[5] (221,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Enterprise />
+[6] (254,28)<a class='NavLink-module__link__EG3d4 MarketingNavigation-module__navLink__hUomM' href='https://github.com/pricing' />
+	[7] (254,28)<span >Pricing />
+[8] (844,28)<button aria-label='Search or jump to…' class='header-search-button placeholder input-button form-control d-flex flex-1 flex-self-stretch flex-items-center no-wrap width-full py-0 pl-2 pr-0 text-left border-0 box-shadow-none' placeholder='Search or jump to...' />
+	[9] (788,28)<div  />
+	[10] (844,28)<span >Search or jump to... />
+	[11] (902,28)<div  />
+[12] (924,28)<a class='HeaderMenu-link HeaderMenu-link--sign-in HeaderMenu-button flex-shrink-0 no-underline d-none d-lg-inline-flex border border-lg-0 rounded px-2 py-1' href='/login?return_to=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Ftdgames_billing%2Factions%2Fruns%2F23348959842%2Fjob%2F67922009328'>Sign in />
+[13] (956,28)<a class='HeaderMenu-link HeaderMenu-link--sign-up HeaderMenu-button flex-shrink-0 d-flex d-lg-inline-flex no-underline border color-border-default rounded px-2 py-1' href='/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Factions%2Fjob%2Findex&source=header-repo&source_repo=tdgamesvn%2Ftdgames_billing'>Sign up />
+[14] (981,28)<button class='Button Button--iconOnly Button--invisible Button--medium AppHeader-button HeaderMenu-link border' id='icon-button-a8dde825-2fc7-4419-ad02-09a7eba046b5' />
+[15] (41,79)<a class='url fn' href='/tdgamesvn'>tdgamesvn />
+/
+[16] (94,79)<a href='/tdgamesvn/tdgames_billing'>tdgames_billing />
+Public
+[17] (881,78)<a aria-label='You must be signed in to change notification settings' class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' id='repository-details-watch-button'>Notifications />
+[18] (926,78)<a class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' id='fork-button'>Fork />
+	[19] (937,78)<span >0 />
+[20] (968,78)<a aria-label='You must be signed in to star a repository' class='tooltipped tooltipped-sw btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' />
+	[21] (969,78)<span >Star />
+	[22] (979,78)<span >0 />
+[23] (27,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing' id='code-tab' />
+	[24] (31,121)<span >Code />
+[25] (59,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/issues' id='issues-tab' />
+	[26] (64,121)<span >Issues />
+[27] (101,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/pulls' id='pull-requests-tab' />
+	[28] (106,121)<span >Pull requests />
+[29] (145,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected' href='/tdgamesvn/tdgames_billing/actions' id='actions-tab' />
+	[30] (150,121)<span >Actions />
+[31] (183,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/projects' id='projects-tab' />
+	[32] (188,121)<span >Projects />
+[33] (221,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/security' id='security-tab' />
+	[34] (226,121)<span >Security />
+[35] (260,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/pulse' id='insights-tab' />
+	[36] (265,121)<span >Insights />
+[37] (38,161)<a class='Link' href='/tdgamesvn/tdgames_billing/actions/workflows/deploy.yml' />
+	[38] (42,161)<span >🚀 Deploy to VPS />
+feat: mandatory profile completion, re-invite and reset password butt…
+#25
+[39] (960,183)<a class='btn' href='/login?return_to=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Ftdgames_billing%2Factions%2Fruns%2F23348959842%2Fjob%2F67922009328'>Sign in to view logs />
+[40] (66,314)<div  />
+	[41] (66,238)<a class='prc-ActionList-ActionListContent-KBb8- prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/actions/runs/23348959842' id='_r_2_' />
+		[42] (70,238)<span  />
+			[43] (70,238)<span >Summary />
+	All jobs
+	[44] (113,266)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' id='_r_3_' />
+	[45] (66,306)<a class='prc-ActionList-ActionListContent-KBb8- prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/actions/runs/23348959842/job/67922009328' id='_r_f_' />
+		[46] (70,306)<span  />
+			[47] (70,306)<span >Deploy Invoice App />
+	Run details
+	[48] (66,366)<a class='prc-ActionList-ActionListContent-KBb8- prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/actions/runs/23348959842/usage' id='_r_9_' />
+		[49] (70,366)<span  />
+			[50] (70,366)<span >Usage />
+	[51] (66,390)<a class='prc-ActionList-ActionListContent-KBb8- prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/actions/runs/23348959842/workflow' id='_r_a_' />
+		[52] (70,390)<span  />
+			[53] (70,390)<span >Workflow file />
+[54] (150,250)<button aria-label='Open job annotations' class='Button--link Button--medium Button color-fg-muted' />
+	[55] (150,250)<span  />
+		[56] (150,250)<span  />
+Annotations
+1 error
+[57] (567,320)<a class='text-bold no-underline Link--inTextBlock' href='#logs' id='check-step-header-title' />
+	[58] (567,320)<span >Deploy Invoice App />
+failed
+in 2m 16s
+Set up job
+2s
+🔐 SSH & Deploy
+3s
+Complete job
+0s
+
+</current_dom>
