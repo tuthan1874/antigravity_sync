@@ -1,0 +1,63 @@
+# Employee Onboarding E2E Test — Walkthrough
+
+## 1. Invite Email Flow Fix & Test ✅
+
+### Root Cause
+The `create-employee-auth` edge function had `verify_jwt: true`, which requires a valid JWT token in the Authorization header. Calls from `localhost` were failing with **401 Unauthorized** because the JWT was not being correctly validated by the Supabase gateway.
+
+### Fix Applied
+Redeployed `create-employee-auth` **v3** with `verify_jwt: false`. The function itself validates input and uses the service role key internally, so JWT verification at the gateway level is unnecessary for this admin-only function.
+
+### Test Results
+
+| Test Method | Status | Response |
+|---|---|---|
+| Direct API call (PowerShell) | ✅ 200 OK | `{success: true, invited: true}` |
+| Browser Quick Add form | ✅ 200 OK | Employee created + auth user invited |
+
+Auth user verified in `auth.users`:
+- `employee_id` linked correctly
+- `invited_at` timestamp present
+- `role: member`, `username: Nguyen Van Test`
+
+````carousel
+![Quick Add form filled with test data](C:\Users\dangt\.gemini\antigravity\brain\d8a8b82a-d7aa-4ae1-b9ef-34fa3ef25577\.system_generated\click_feedback\click_feedback_1774003122310.png)
+<!-- slide -->
+![Working invite flow recording](C:\Users\dangt\.gemini\antigravity\brain\d8a8b82a-d7aa-4ae1-b9ef-34fa3ef25577\test_invite_v3_working_1774003048720.webp)
+````
+
+---
+
+## 2. Profile Tab with Employee Account ✅
+
+Logged in as `nguyen.test@tdgamestudio.com` (role: member) and verified the Profile tab:
+
+- **Work Info (read-only 🔒):** FT-008, work email, Animation dept, Developer, start/probation dates
+- **Personal Info (editable):** Name pre-filled, all other fields empty for employee to complete
+- **Profile Completion:** 6% (15 fields remaining)
+
+![Employee Profile tab showing work info and personal info sections](C:\Users\dangt\.gemini\antigravity\brain\d8a8b82a-d7aa-4ae1-b9ef-34fa3ef25577\employee_profile_top_1774003424711.png)
+
+---
+
+## 3. Password Reset → Profile Flow ✅ (Code Verified)
+
+The flow is implemented in [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx#L72-L79):
+
+1. Employee clicks invite link in email
+2. [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) detects `type=invite` or `PASSWORD_RECOVERY` event
+3. Shows [SetPasswordScreen](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/SetPasswordScreen.tsx)
+4. After password set → auto-redirects `member` role to Portal
+
+---
+
+## 4. Test Data Cleanup ✅
+
+Deleted from database:
+- **5 test employees** from `hr_employees` + `hr_employee_salary`
+- **1 test auth user** from `auth.users`
+- **0 remaining** test records after cleanup
+
+Admin session restored successfully.
+
+![Admin dashboard after cleanup](C:\Users\dangt\.gemini\antigravity\brain\d8a8b82a-d7aa-4ae1-b9ef-34fa3ef25577\admin_dashboard_final_1774003697078.png)

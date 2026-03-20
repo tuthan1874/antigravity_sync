@@ -1,0 +1,19 @@
+# Employee Onboarding — Test & Cleanup
+
+## 1. Test invite email flow E2E
+- [/] Quick Add nhân viên mới → verify invite email gửi thành công
+- [ ] Kiểm tra email nhận được đúng format, link redirect đúng
+
+## 2. Test Profile tab with real employee account
+- [ ] Login bằng tài khoản nhân viên (có employee_id linked)
+- [ ] Verify tab Hồ sơ hiển thị đúng data
+- [ ] Test chỉnh sửa + lưu thông tin cá nhân
+
+## 3. Verify password reset → profile completion flow
+- [ ] Nhân viên mới click link email → SetPasswordScreen
+- [ ] Đặt mật khẩu → redirect tới Portal
+- [ ] Vào tab Hồ sơ → điền thông tin
+
+## 4. Clean up test employees
+- [ ] Xóa nhân viên test trong DB
+- [ ] Xóa auth user test trong Supabase

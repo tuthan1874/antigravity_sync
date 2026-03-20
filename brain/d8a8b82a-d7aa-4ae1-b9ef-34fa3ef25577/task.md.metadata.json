@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_TASK",
+  "summary": "Checklist for testing employee onboarding flow (invite email, profile tab, password reset) and cleaning up test data.",
+  "updatedAt": "2026-03-20T10:28:26.542500600Z"
+}

@@ -1,0 +1,15 @@
+# Test Plan: Quick Add Employee Invite Flow
+
+1. [ ] Navigate to http://localhost:3000/ and ensure HR module is selected.
+2. [ ] Open DevTools (monitoring via `capture_browser_console_logs`).
+3. [ ] Click "⚡ Thêm nhanh" button.
+4. [ ] Fill in employee details:
+   - Họ tên: "Test Email V3"
+   - Email công việc: "test.v3@tdgamestudio.com"
+   - Phòng ban: (select first available)
+   - Chức danh: "QA Tester"
+   - Ngày bắt đầu: "2026-03-20"
+5. [ ] Submit "✅ Thêm & Gửi email mời".
+6. [ ] Wait for 5-10 seconds.
+7. [ ] Capture console logs and screenshot.
+8. [ ] Report findings (status code, auth messages, success/error).

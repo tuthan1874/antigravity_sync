@@ -1,0 +1,13 @@
+# Task: Log back into TD Games app as Admin
+
+## Progress Checklist
+- [x] Logout from current employee session <!-- id: 0 -->
+- [x] Navigate to login page <!-- id: 1 -->
+- [/] Login with admin credentials (toan.dang@tdgamestudio.com) <!-- id: 2 -->
+- [ ] Verify 8 module cards on dashboard <!-- id: 3 -->
+- [ ] Take final screenshot <!-- id: 4 -->
+
+## Notes
+- Current state: Credentials entered, clicking login.
+- Admin Email: toan.dang@tdgamestudio.com
+- Admin Password: 123456

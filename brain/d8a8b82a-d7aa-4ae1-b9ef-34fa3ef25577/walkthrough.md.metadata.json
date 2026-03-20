@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Walkthrough documenting the end-to-end testing of the Employee Invite Email Flow, Profile Tab, Password Reset flow, and cleanup of test data. Includes the root cause fix (verify_jwt), browser test recordings, and screenshots.",
+  "updatedAt": "2026-03-20T10:49:01.033534Z"
+}

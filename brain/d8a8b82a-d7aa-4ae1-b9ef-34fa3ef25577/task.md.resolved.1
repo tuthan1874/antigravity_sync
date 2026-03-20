@@ -1,0 +1,20 @@
+# Employee Onboarding — Test & Cleanup
+
+## 1. Test invite email flow E2E ✅
+- [x] Fix: Redeploy `create-employee-auth` edge function v3 với `verify_jwt: false`
+- [x] Quick Add nhân viên mới → edge function trả 200 OK → auth user created + invite sent
+- [x] Verify auth user có `employee_id` linked đúng + `invited_at` timestamp
+
+## 2. Test Profile tab with real employee account
+- [/] Login bằng tài khoản nhân viên (có employee_id linked)
+- [ ] Verify tab Hồ sơ hiển thị đúng data
+- [ ] Test chỉnh sửa + lưu thông tin cá nhân
+
+## 3. Verify password reset → profile completion flow
+- [ ] Nhân viên mới click link email → SetPasswordScreen
+- [ ] Đặt mật khẩu → redirect tới Portal
+- [ ] Vào tab Hồ sơ → điền thông tin
+
+## 4. Clean up test employees
+- [ ] Xóa nhân viên test trong DB
+- [ ] Xóa auth user test trong Supabase

@@ -1,0 +1,246 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,479)<div  />
+	Nhân sự
+	Quản lý hồ sơ nhân sự toàn diện
+	[1] (626,88)<button class='flex items-center gap-2 px-5 py-3 rounded-2xl text-white font-black text-xs uppercase tracking-widest hover:opacity-90 transition-all hover:scale-105'>Thêm nhanh />
+	[2] (698,88)<button class='flex items-center gap-2 px-5 py-3 rounded-2xl text-white font-black text-xs uppercase tracking-widest hover:opacity-90 transition-all hover:scale-105'>Thêm nhân sự />
+	[3] (746,88)<button class='p-3 rounded-2xl border border-primary/10 text-neutral-medium hover:text-primary hover:border-primary/30 transition-all hover:scale-105' />
+	Tổng NV
+	10
+	Fulltime
+	7
+	Freelancer
+	3
+	Đang làm việc
+	10
+	[4] (386,248)<input class='w-full bg-surface border border-primary/10 text-neutral-light rounded-xl pl-10 pr-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' placeholder='Tìm theo tên, email, mã NV...' />
+	[5] (557,248)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[6] (619,248)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[7] (692,248)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	10
+	kết quả
+	[8] (328,373)<div  />
+		[9] (328,291)<div  />
+		[10] (328,374)<div  />
+			[11] (328,333)<div  />
+				[12] (262,325)<div  />
+					[13] (262,325)<img  />
+				[14] (339,333)<div  />
+					[15] (329,317)<h3 >Đặng Thanh Ngọc Diệp />
+					[16] (329,333)<p >FT-002 />
+					[17] (329,351)<div  />
+						[18] (289,351)<span >fulltime />
+						[19] (317,351)<span >active />
+			[20] (328,403)<div  />
+				[21] (328,373)<p >💼
+Artist
+• Junior />
+				[22] (328,388)<p >🏢
+Art />
+				[23] (328,403)<p >💼
+dangthetoan1994@gmail.com />
+				[24] (328,419)<p >📧
+dangthetoan1994@gmail.com />
+				[25] (328,434)<p >📱
+0362608491 />
+		[26] (392,311)<div  />
+			[27] (385,311)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[28] (399,311)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	[29] (500,373)<div  />
+		[30] (500,291)<div  />
+		[31] (500,374)<div  />
+			[32] (500,333)<div  />
+				[33] (434,325)<div  />
+					[34] (434,325)<img  />
+				[35] (511,333)<div  />
+					[36] (502,317)<h3 >Đặng Thế Toàn />
+					[37] (502,333)<p >FT-001 />
+					[38] (502,351)<div  />
+						[39] (461,351)<span >fulltime />
+						[40] (489,351)<span >active />
+			[41] (500,403)<div  />
+				[42] (500,373)<p >💼
+Senior Animator
+• Senior />
+				[43] (500,388)<p >🏢
+Animation />
+				[44] (500,403)<p >💼
+info@tdgamestudio.com />
+				[45] (500,419)<p >📧
+tdgames.vn@gmail.com />
+				[46] (500,434)<p >📱
+0362608491 />
+		[47] (564,311)<div  />
+			[48] (557,311)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[49] (571,311)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	[50] (672,373)<div  />
+		[51] (672,291)<div  />
+		[52] (672,359)<div  />
+			[53] (672,333)<div  />
+				[54] (607,325)<div  />
+					[55] (607,325)<div >D />
+				[56] (683,333)<div  />
+					[57] (674,317)<h3 >Dang The Toan Test />
+					[58] (674,333)<p >FT-003 />
+					[59] (674,351)<div  />
+						[60] (634,351)<span >fulltime />
+						[61] (661,351)<span >active />
+			[62] (672,388)<div  />
+				[63] (672,373)<p >💼
+QA Tester />
+				[64] (672,388)<p >🏢
+Animation />
+				[65] (672,403)<p >💼
+toan.dang@tdgamestudio.com />
+		[66] (736,311)<div  />
+			[67] (729,311)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[68] (743,311)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	[69] (328,524)<div  />
+		[70] (328,473)<div  />
+		[71] (328,525)<div  />
+			[72] (328,515)<div  />
+				[73] (262,507)<div  />
+					[74] (262,507)<div >L />
+				[75] (339,515)<div  />
+					[76] (329,499)<h3 >Lê Văn Khiêm />
+					[77] (329,515)<p >FL-003 />
+					[78] (329,533)<div  />
+						[79] (293,533)<span >freelancer />
+						[80] (324,533)<span >active />
+			[81] (328,555)<div  />
+				[82] (328,555)<p >📧
+khiemlv.tdconsulting@gmail.com />
+		[83] (392,493)<div  />
+			[84] (385,493)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[85] (399,493)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	[86] (500,524)<div  />
+		[87] (500,473)<div  />
+		[88] (500,525)<div  />
+			[89] (500,515)<div  />
+				[90] (434,507)<div  />
+					[91] (434,507)<img  />
+				[92] (511,515)<div  />
+					[93] (502,499)<h3 >Nguyễn Ngọc Anh />
+					[94] (502,515)<p >FL-001 />
+					[95] (502,533)<div  />
+						[96] (465,533)<span >freelancer />
+						[97] (496,533)<span >active />
+			[98] (500,555)<div  />
+				[99] (500,555)<p >📧
+93ngocnguyen@gmail.com />
+		[100] (564,493)<div  />
+			[101] (557,493)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[102] (571,493)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	[103] (672,524)<div  />
+		[104] (672,473)<div  />
+		[105] (672,525)<div  />
+			[106] (672,515)<div  />
+				[107] (607,507)<div  />
+					[108] (607,507)<div >N />
+				[109] (683,515)<div  />
+					[110] (674,499)<h3 >Nguyễn Quang Huy />
+					[111] (674,515)<p >FL-002 />
+					[112] (674,533)<div  />
+						[113] (637,533)<span >freelancer />
+						[114] (669,533)<span >active />
+			[115] (672,555)<div  />
+				[116] (672,555)<p >📧
+nqhuy17@gmail.com />
+		[117] (736,493)<div  />
+			[118] (729,493)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[119] (743,493)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	[120] (328,660)<div  />
+		[121] (328,594)<div  />
+		[122] (328,661)<div  />
+			[123] (328,635)<div  />
+				[124] (262,628)<div  />
+					[125] (262,628)<div >T />
+				[126] (339,635)<div  />
+					[127] (329,620)<h3 >Test Email Flow />
+					[128] (329,635)<p >FT-007 />
+					[129] (329,653)<div  />
+						[130] (289,653)<span >fulltime />
+						[131] (317,653)<span >active />
+			[132] (328,690)<div  />
+				[133] (328,675)<p >💼
+Tester />
+				[134] (328,690)<p >🏢
+Animation />
+				[135] (328,706)<p >💼
+toantest@tdgamestudio.com />
+		[136] (392,614)<div  />
+			[137] (385,614)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[138] (399,614)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	[139] (500,660)<div  />
+		[140] (500,594)<div  />
+		[141] (500,661)<div  />
+			[142] (500,635)<div  />
+				[143] (434,628)<div  />
+					[144] (434,628)<div >T />
+				[145] (511,635)<div  />
+					[146] (502,620)<h3 >Test Invite User />
+					[147] (502,635)<p >FT-005 />
+					[148] (502,653)<div  />
+						[149] (461,653)<span >fulltime />
+						[150] (489,653)<span >active />
+			[151] (500,690)<div  />
+				[152] (500,675)<p >💼
+Tester />
+				[153] (500,690)<p >🏢
+Art />
+				[154] (500,706)<p >💼
+test.invite@tdgamestudio.com />
+		[155] (564,614)<div  />
+			[156] (557,614)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[157] (571,614)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	[158] (672,660)<div  />
+		[159] (672,594)<div  />
+		[160] (672,661)<div  />
+			[161] (672,635)<div  />
+				[162] (607,628)<div  />
+					[163] (607,628)<div >T />
+				[164] (683,635)<div  />
+					[165] (674,620)<h3 >Test Invite User 2 />
+					[166] (674,635)<p >FT-006 />
+					[167] (674,653)<div  />
+						[168] (634,653)<span >fulltime />
+						[169] (661,653)<span >active />
+			[170] (672,690)<div  />
+				[171] (672,675)<p >💼
+Developer />
+				[172] (672,690)<p >🏢
+Art />
+				[173] (672,706)<p >💼
+test2@tdgamestudio.com />
+		[174] (736,614)<div  />
+			[175] (729,614)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[176] (743,614)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	[177] (328,811)<div  />
+		[178] (328,745)<div  />
+		[179] (328,813)<div  />
+			[180] (328,786)<div  />
+				[181] (262,779)<div  />
+					[182] (262,779)<div >T />
+				[183] (339,786)<div  />
+					[184] (329,771)<h3 >Thuỳ Dung />
+					[185] (329,787)<p >FT-004 />
+					[186] (329,804)<div  />
+						[187] (289,804)<span >fulltime />
+						[188] (317,804)<span >active />
+			[189] (328,842)<div  />
+				[190] (328,826)<p >💼
+Kế Toán trưởng
+• Mid />
+				[191] (328,842)<p >🏢
+Finance />
+				[192] (328,857)<p >💼
+dangthetoan1874@gmail.com />
+		[193] (392,765)<div  />
+			[194] (385,765)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[195] (399,765)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	TD Consulting • Enterprise Billing Engine • v2.1
+
+</current_dom>

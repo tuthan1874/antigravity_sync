@@ -1,0 +1,16 @@
+# Test Quick Add Employee Flow
+
+## Checklist
+- [ ] Navigate to `http://localhost:3000/`
+- [ ] Click on "HR" module card
+- [ ] Click "⚡ Thêm nhanh" (Quick Add) button
+- [ ] Fill in the form:
+    - Họ tên: "Test Email Flow"
+    - Email công việc: "toantest@tdgamestudio.com"
+    - Phòng ban: select first department
+    - Chức danh: "Tester"
+    - Ngày bắt đầu: "2026-03-20"
+- [ ] Click "✅ Thêm & Gửi email mời"
+- [ ] Observe loading state and final result
+- [ ] Check console logs for `[Auth]`
+- [ ] Capture final screenshot

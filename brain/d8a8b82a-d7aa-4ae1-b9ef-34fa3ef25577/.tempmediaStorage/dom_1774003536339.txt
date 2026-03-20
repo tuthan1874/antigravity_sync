@@ -1,0 +1,67 @@
+[0] (500,893)<div  />
+	[1] (23,19)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	Employee Portal
+	[2] (660,19)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Thông tin công ty />
+	[3] (729,19)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Bảng lương />
+	[4] (787,19)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Chấm công />
+	[5] (841,19)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white'>Nghỉ phép />
+	[6] (886,19)<button class='px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all bg-primary text-black shadow-btn-glow'>Hồ sơ />
+	Nguyen Van Test
+	member
+	[7] (974,19)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	📋 Hồ sơ của tôi
+	Xem và cập nhật thông tin cá nhân
+	Hoàn thiện hồ sơ
+	6
+	%
+	Còn
+	15
+	trường chưa điền. Hãy hoàn thiện để HR có đầy đủ thông tin.
+	🏢 Thông tin công việc
+	HR quản lý
+	Các trường này do HR/Admin thiết lập, bạn không thể chỉnh sửa.
+	[8] (351,367)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Mã nhân viên
+🔒 />
+	FT-008
+	[9] (500,367)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Email công việc
+🔒 />
+	nguyen.test@tdgamestudio.com
+	[10] (649,367)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Phòng ban
+🔒 />
+	Animation
+	[11] (351,438)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Chức danh
+🔒 />
+	Developer
+	[12] (500,438)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Cấp bậc
+🔒 />
+	—
+	[13] (649,438)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Loại
+🔒 />
+	Fulltime
+	[14] (351,509)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ngày bắt đầu
+🔒 />
+	2026-03-20
+	[15] (500,509)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Hết thử việc
+🔒 />
+	2026-05-20
+	[16] (649,509)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Trạng thái
+🔒 />
+	Đang làm việc
+	👤 Thông tin cá nhân
+	[17] (351,675)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Họ tên />
+	[18] (351,705)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' placeholder='Nguyễn Văn A' />
+	[19] (500,675)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Email cá nhân />
+	[20] (500,705)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' placeholder='email@gmail.com' />
+	[21] (649,675)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>SĐT />
+	[22] (649,705)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' placeholder='0912 345 678' />
+	[23] (351,746)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ngày sinh />
+	[24] (351,776)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' />
+	[25] (500,746)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Giới tính />
+	[26] (500,775)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' />
+	[27] (649,746)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Quốc tịch />
+	[28] (649,775)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' />
+	[29] (500,819)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Địa chỉ thường trú />
+	[30] (500,848)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' placeholder='Số nhà, đường, quận, TP...' />
+	[31] (500,889)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Địa chỉ tạm trú />
+	[32] (500,919)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-cyan-500/40 transition-all text-sm' placeholder='Nếu giống thường trú, điền lại' />
