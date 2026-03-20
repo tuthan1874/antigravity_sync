@@ -1,19 +1,19 @@
-# Employee Onboarding — Test & Cleanup
+# Fix Invite Flow + Profile Tab
 
-## 1. Test invite email flow E2E ✅
-- [x] Fix: Redeploy `create-employee-auth` edge function v3 với `verify_jwt: false`
-- [x] Quick Add nhân viên mới → edge function trả 200 OK → auth user created + invite sent
-- [x] Verify auth user có `employee_id` linked đúng + `invited_at` timestamp
+## 1. Fix SetPasswordScreen not showing (PKCE flow) ✅
+- [x] Root cause: `App.tsx` checked `#type=invite` in URL hash, but PKCE uses `?code=` query param
+- [x] Fix: detect `?code=` + check `invited_at` metadata to trigger SetPasswordScreen
+- [x] Kept backward compatibility for legacy implicit flow
 
-## 2. Test Profile tab with real employee account ✅
-- [x] Login bằng tài khoản nhân viên (có employee_id linked)
-- [x] Verify tab Hồ sơ hiển thị đúng data (FT-008, work email, department, title, dates)
-- [x] Profile 6% complete, 15 trường trống để nhân viên tự điền
-## 3. Verify password reset → profile completion flow ✅
-- [x] Code verified: `App.tsx` detects invite token → `SetPasswordScreen`
-- [x] After password set → auto-redirect member to Portal
-- [x] Full flow: email link → set password → Portal → Hồ sơ tab
+## 2. Fix Navbar tabs overflow (Hồ sơ hidden) ✅
+- [x] Root cause: tab container had no overflow handling, 5th tab cut off on narrow screens
+- [x] Fix: added `overflow-x-auto`, `flex-shrink-0`, `whitespace-nowrap` to Navbar
+- [x] Expanded `accessibleTabs` type union to accept `string` (Portal passes `'tasks'`)
 
-## 4. Clean up test employees ✅
-- [x] Deleted 5 test employees (DB `hr_employees` + `hr_employee_salary`)
-- [x] Deleted 1 test auth user from `auth.users`
+## 3. Fix invite email going to spam
+- [/] Need to customize email template in Supabase Dashboard
+- [ ] User action: Update invite template with TD Games branding
+
+## 4. Verify & deploy
+- [ ] Verify build passes
+- [ ] Test invite flow end-to-end

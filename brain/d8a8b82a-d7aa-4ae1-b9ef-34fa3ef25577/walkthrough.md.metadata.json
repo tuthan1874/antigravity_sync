@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough documenting the end-to-end testing of the Employee Invite Email Flow, Profile Tab, Password Reset flow, and cleanup of test data. Includes the root cause fix (verify_jwt), browser test recordings, and screenshots.",
-  "updatedAt": "2026-03-20T10:49:01.033534Z"
+  "summary": "Walkthrough of fixes applied: PKCE invite flow detection in App.tsx, Navbar overflow fix, and instructions for customizing Supabase email template to avoid spam.",
+  "updatedAt": "2026-03-20T11:30:00.509347400Z",
+  "version": "1"
 }

@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Plan to fix three issues: (1) SetPasswordScreen not triggering because PKCE flow doesn't use URL hash type=invite, (2) Hồ sơ tab possibly cut off by Navbar overflow, (3) Invite email going to spam due to default Supabase template.",
+  "updatedAt": "2026-03-20T11:26:37.874492700Z"
+}
