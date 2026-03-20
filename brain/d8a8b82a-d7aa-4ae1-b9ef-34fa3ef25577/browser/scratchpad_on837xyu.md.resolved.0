@@ -1,0 +1,8 @@
+# Task: Check "Thêm nhanh" button in localhost:3000
+
+## Checklist
+- [ ] Navigate to localhost:3000/#hr
+- [ ] Log in if necessary (toandang@tdgamesstudio.com / 123456)
+- [ ] Verify both "Thêm nhanh" (green) and "Thêm nhân sự" (red) buttons exist
+- [ ] Capture screenshot
+- [ ] Report findings
