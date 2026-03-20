@@ -1,0 +1,8 @@
+# Task: Check for "Thêm nhanh" button in production
+
+## Plan:
+1. Navigate to `https://app.tdgamestudio.com/#hr`.
+2. Get the DOM to see if "Thêm nhanh" button is present.
+3. Run JavaScript to search scripts for "Thêm nhanh" and "quickAdd".
+4. Capture screenshot of the UI.
+5. Provide findings to the user.

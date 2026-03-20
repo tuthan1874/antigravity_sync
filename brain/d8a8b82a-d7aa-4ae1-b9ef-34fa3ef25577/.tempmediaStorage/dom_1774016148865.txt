@@ -1,0 +1,1085 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (13,25)<button class='prc-Button-ButtonBase-9n-Xk position-relative ExpandFileTreeButton-module__expandButton__hDOcv fgColor-muted prc-Button-IconButton-fyge7' />
+Files
+[1] (55,61)<button aria-label='main branch' class='prc-Button-ButtonBase-9n-Xk react-repos-tree-pane-ref-selector width-full ref-selector-class RefSelectorAnchoredOverlay-module__RefSelectorOverlayBtn__a3WK3' id='ref-picker-repos-header-ref-selector' />
+	[2] (55,61)<span  />
+		[3] (50,61)<span  />
+			[4] (50,61)<div  />
+				[5] (14,61)<div  />
+				[6] (26,61)<div  />
+					[7] (26,61)<span >main />
+[8] (113,61)<button class='prc-Button-ButtonBase-9n-Xk SearchButton-module__IconButton__SBlqu prc-Button-IconButton-fyge7' />
+[9] (63,92)<span  />
+	[10] (13,92)<span  />
+	[11] (66,92)<input aria-label='Go to file' class='prc-components-Input-IwWrt' placeholder='Go to file' role='combobox' />
+[12] (63,557)<div class='ReposFileTreePane-module__Box_5__Zy_o6' scrollable='true' />
+	[13] (60,655)<div  />
+		.github
+		Sepay_API_Document
+		[14] (60,418)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps-item' role='treeitem' />
+			[15] (60,134)<div  />
+				[16] (9,134)<div  />
+				[17] (63,134)<div  />
+					[18] (19,134)<div  />
+						[19] (19,134)<div  />
+					[20] (67,134)<span  />
+						[21] (31,134)<span >apps />
+			[22] (60,159)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/attendance-item' role='treeitem' />
+				[23] (60,159)<div  />
+					[24] (8,159)<div  />
+						[25] (8,159)<div  />
+							[26] (8,159)<div  />
+					[27] (13,159)<div  />
+					[28] (64,159)<div  />
+						[29] (22,159)<div  />
+							[30] (22,159)<div  />
+						[31] (69,159)<span  />
+							[32] (42,158)<span >attendance />
+			[33] (60,184)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/crm-item' role='treeitem' />
+				[34] (60,184)<div  />
+					[35] (8,184)<div  />
+						[36] (8,184)<div  />
+							[37] (8,184)<div  />
+					[38] (13,184)<div  />
+					[39] (64,184)<div  />
+						[40] (22,183)<div  />
+							[41] (22,183)<div  />
+						[42] (69,184)<span  />
+							[43] (33,183)<span >crm />
+			[44] (60,208)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/dashboard-item' role='treeitem' />
+				[45] (60,208)<div  />
+					[46] (8,208)<div  />
+						[47] (8,208)<div  />
+							[48] (8,208)<div  />
+					[49] (13,208)<div  />
+					[50] (64,208)<div  />
+						[51] (22,208)<div  />
+							[52] (22,208)<div  />
+						[53] (69,208)<span  />
+							[54] (41,208)<span >dashboard />
+			[55] (60,233)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/expense-item' role='treeitem' />
+				[56] (60,233)<div  />
+					[57] (8,233)<div  />
+						[58] (8,233)<div  />
+							[59] (8,233)<div  />
+					[60] (13,233)<div  />
+					[61] (64,233)<div  />
+						[62] (22,233)<div  />
+							[63] (22,233)<div  />
+						[64] (69,233)<span  />
+							[65] (38,232)<span >expense />
+			[66] (60,258)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/hr-item' role='treeitem' />
+				[67] (60,258)<div  />
+					[68] (8,258)<div  />
+						[69] (8,258)<div  />
+							[70] (8,258)<div  />
+					[71] (13,258)<div  />
+					[72] (64,258)<div  />
+						[73] (22,257)<div  />
+							[74] (22,257)<div  />
+						[75] (69,258)<span  />
+							[76] (31,257)<span >hr />
+			[77] (60,455)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice-item' role='treeitem' />
+				[78] (60,282)<div  />
+					[79] (8,282)<div  />
+						[80] (8,282)<div  />
+							[81] (8,282)<div  />
+					[82] (13,282)<div  />
+					[83] (64,282)<div  />
+						[84] (22,282)<div  />
+							[85] (22,282)<div  />
+						[86] (69,282)<span  />
+							[87] (37,282)<span >invoice />
+				[88] (60,443)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components-item' role='treeitem' />
+					[89] (60,307)<div  />
+						[90] (9,307)<div  />
+							[91] (9,307)<div  />
+								[92] (8,307)<div  />
+								[93] (11,307)<div  />
+						[94] (16,307)<div  />
+						[95] (66,307)<div  />
+							[96] (25,307)<div  />
+								[97] (25,307)<div  />
+							[98] (70,307)<span  />
+								[99] (46,306)<span >components />
+					[100] (60,332)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/ActivityLogTab.tsx-item' role='treeitem' />
+						[101] (60,332)<div  />
+							[102] (11,332)<div  />
+								[103] (11,332)<div  />
+									[104] (8,332)<div  />
+									[105] (11,332)<div  />
+									[106] (14,332)<div  />
+							[107] (67,332)<div  />
+								[108] (28,331)<div  />
+								[109] (72,332)<span  />
+									[110] (56,331)<span >ActivityLogTab.tsx />
+					[111] (60,356)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/DashboardTab.tsx-item' role='treeitem' />
+						[112] (60,356)<div  />
+							[113] (11,356)<div  />
+								[114] (11,356)<div  />
+									[115] (8,356)<div  />
+									[116] (11,356)<div  />
+									[117] (14,356)<div  />
+							[118] (67,356)<div  />
+								[119] (28,356)<div  />
+								[120] (72,356)<span  />
+									[121] (56,356)<span >DashboardTab.tsx />
+					[122] (60,381)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/EInvoiceModals.tsx-item' role='treeitem' />
+						[123] (60,381)<div  />
+							[124] (11,381)<div  />
+								[125] (11,381)<div  />
+									[126] (8,381)<div  />
+									[127] (11,381)<div  />
+									[128] (14,381)<div  />
+							[129] (67,381)<div  />
+								[130] (28,381)<div  />
+								[131] (72,381)<span  />
+									[132] (57,380)<span >EInvoiceModals.tsx />
+					[133] (60,406)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/EmailModal.tsx-item' role='treeitem' />
+						[134] (60,406)<div  />
+							[135] (11,406)<div  />
+								[136] (11,406)<div  />
+									[137] (8,406)<div  />
+									[138] (11,406)<div  />
+									[139] (14,406)<div  />
+							[140] (67,406)<div  />
+								[141] (28,405)<div  />
+								[142] (72,406)<span  />
+									[143] (52,405)<span >EmailModal.tsx />
+					[144] (60,430)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/FilterBar.tsx-item' role='treeitem' />
+						[145] (60,430)<div  />
+							[146] (11,430)<div  />
+								[147] (11,430)<div  />
+									[148] (8,430)<div  />
+									[149] (11,430)<div  />
+									[150] (14,430)<div  />
+							[151] (67,430)<div  />
+								[152] (28,430)<div  />
+								[153] (72,430)<span  />
+									[154] (48,430)<span >FilterBar.tsx />
+					[155] (60,455)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/HistoryTab.tsx-item' role='treeitem' />
+						[156] (60,455)<div  />
+							[157] (11,455)<div  />
+								[158] (11,455)<div  />
+									[159] (8,455)<div  />
+									[160] (11,455)<div  />
+									[161] (14,455)<div  />
+							[162] (67,455)<div  />
+								[163] (28,455)<div  />
+								[164] (72,455)<span  />
+									[165] (51,454)<span >HistoryTab.tsx />
+					[166] (60,480)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/InvoiceApp.tsx-item' role='treeitem' />
+						[167] (60,480)<div  />
+							[168] (11,480)<div  />
+								[169] (11,480)<div  />
+									[170] (8,480)<div  />
+									[171] (11,480)<div  />
+									[172] (14,480)<div  />
+							[173] (67,480)<div  />
+								[174] (28,479)<div  />
+								[175] (72,480)<span  />
+									[176] (52,479)<span >InvoiceApp.tsx />
+					[177] (60,504)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/InvoiceEditor.tsx-item' role='treeitem' />
+						[178] (60,504)<div  />
+							[179] (11,504)<div  />
+								[180] (11,504)<div  />
+									[181] (8,504)<div  />
+									[182] (11,504)<div  />
+									[183] (14,504)<div  />
+							[184] (67,504)<div  />
+								[185] (28,504)<div  />
+								[186] (72,504)<span  />
+									[187] (54,504)<span >InvoiceEditor.tsx />
+					[188] (60,529)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/InvoicePreview.tsx-item' role='treeitem' />
+						[189] (60,529)<div  />
+							[190] (11,529)<div  />
+								[191] (11,529)<div  />
+									[192] (8,529)<div  />
+									[193] (11,529)<div  />
+									[194] (14,529)<div  />
+							[195] (67,529)<div  />
+								[196] (28,529)<div  />
+								[197] (72,529)<span  />
+									[198] (56,528)<span >InvoicePreview.tsx />
+					[199] (60,554)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/Navbar.tsx-item' role='treeitem' />
+						[200] (60,554)<div  />
+							[201] (11,554)<div  />
+								[202] (11,554)<div  />
+									[203] (8,554)<div  />
+									[204] (11,554)<div  />
+									[205] (14,554)<div  />
+							[206] (67,554)<div  />
+								[207] (28,553)<div  />
+								[208] (72,554)<span  />
+									[209] (47,553)<span >Navbar.tsx />
+					[210] (60,578)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/RecurringTab.tsx-item' role='treeitem' />
+						[211] (60,578)<div  />
+							[212] (11,578)<div  />
+								[213] (11,578)<div  />
+									[214] (8,578)<div  />
+									[215] (11,578)<div  />
+									[216] (14,578)<div  />
+							[217] (67,578)<div  />
+								[218] (28,578)<div  />
+								[219] (72,578)<span  />
+									[220] (54,578)<span >RecurringTab.tsx />
+				[221] (60,603)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/hooks-item' role='treeitem' />
+					[222] (60,603)<div  />
+						[223] (9,603)<div  />
+							[224] (9,603)<div  />
+								[225] (8,603)<div  />
+								[226] (11,603)<div  />
+						[227] (16,603)<div  />
+						[228] (66,603)<div  />
+							[229] (25,603)<div  />
+								[230] (25,603)<div  />
+							[231] (70,603)<span  />
+								[232] (39,602)<span >hooks />
+				[233] (60,627)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/services-item' role='treeitem' />
+					[234] (60,627)<div  />
+						[235] (9,627)<div  />
+							[236] (9,627)<div  />
+								[237] (8,627)<div  />
+								[238] (11,627)<div  />
+						[239] (16,627)<div  />
+						[240] (66,627)<div  />
+							[241] (25,627)<div  />
+								[242] (25,627)<div  />
+							[243] (70,627)<span  />
+								[244] (41,627)<span >services />
+			[245] (60,652)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/payroll-item' role='treeitem' />
+				[246] (60,652)<div  />
+					[247] (8,652)<div  />
+						[248] (8,652)<div  />
+							[249] (8,652)<div  />
+					[250] (13,652)<div  />
+					[251] (64,652)<div  />
+						[252] (22,652)<div  />
+							[253] (22,652)<div  />
+						[254] (69,652)<span  />
+							[255] (36,652)<span >payroll />
+			[256] (60,677)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/portal-item' role='treeitem' />
+				[257] (60,677)<div  />
+					[258] (8,677)<div  />
+						[259] (8,677)<div  />
+							[260] (8,677)<div  />
+					[261] (13,677)<div  />
+					[262] (64,677)<div  />
+						[263] (22,677)<div  />
+							[264] (22,677)<div  />
+						[265] (69,677)<span  />
+							[266] (35,676)<span >portal />
+			[267] (60,701)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/workforce-item' role='treeitem' />
+				[268] (60,701)<div  />
+					[269] (8,701)<div  />
+						[270] (8,701)<div  />
+							[271] (8,701)<div  />
+					[272] (13,701)<div  />
+					[273] (64,701)<div  />
+						[274] (22,701)<div  />
+							[275] (22,701)<div  />
+						[276] (69,701)<span  />
+							[277] (40,701)<span >workforce />
+		[278] (60,726)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='components-item' role='treeitem' />
+			[279] (60,726)<div  />
+				[280] (9,726)<div  />
+				[281] (63,726)<div  />
+					[282] (19,726)<div  />
+						[283] (19,726)<div  />
+					[284] (67,726)<span  />
+						[285] (40,726)<span >components />
+		[286] (60,751)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='config-item' role='treeitem' />
+			[287] (60,751)<div  />
+				[288] (9,751)<div  />
+				[289] (63,751)<div  />
+					[290] (19,751)<div  />
+						[291] (19,751)<div  />
+					[292] (67,751)<span  />
+						[293] (33,750)<span >config />
+		[294] (60,775)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='hop_dong_nhan_su-item' role='treeitem' />
+			[295] (60,775)<div  />
+				[296] (9,775)<div  />
+				[297] (63,775)<div  />
+					[298] (19,775)<div  />
+						[299] (19,775)<div  />
+					[300] (67,775)<span  />
+						[301] (48,775)<span >hop_dong_nhan_su />
+		[302] (60,800)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='public-item' role='treeitem' />
+			[303] (60,800)<div  />
+				[304] (9,800)<div  />
+				[305] (63,800)<div  />
+					[306] (19,800)<div  />
+						[307] (19,800)<div  />
+					[308] (67,800)<span  />
+						[309] (32,800)<span >public />
+		[310] (60,825)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='services-item' role='treeitem' />
+			[311] (60,825)<div  />
+				[312] (9,825)<div  />
+				[313] (63,825)<div  />
+					[314] (19,825)<div  />
+						[315] (19,825)<div  />
+					[316] (67,825)<span  />
+						[317] (34,824)<span >services />
+		[318] (60,849)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='src-item' role='treeitem' />
+			[319] (60,849)<div  />
+				[320] (9,849)<div  />
+				[321] (63,849)<div  />
+					[322] (19,849)<div  />
+						[323] (19,849)<div  />
+					[324] (67,849)<span  />
+						[325] (28,849)<span >src />
+		[326] (60,874)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.env-item' role='treeitem' />
+			[327] (60,874)<div  />
+				[328] (63,874)<div  />
+					[329] (19,874)<div  />
+					[330] (67,874)<span  />
+						[331] (30,874)<span >.env />
+		[332] (60,899)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.gitignore-item' role='treeitem' />
+			[333] (60,899)<div  />
+				[334] (63,899)<div  />
+					[335] (19,899)<div  />
+					[336] (67,899)<span  />
+						[337] (37,898)<span >.gitignore />
+		[338] (60,923)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='App.tsx-item' role='treeitem' />
+			[339] (60,923)<div  />
+				[340] (63,923)<div  />
+					[341] (19,923)<div  />
+					[342] (67,923)<span  />
+						[343] (34,923)<span >App.tsx />
+		[344] (60,948)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='README.md-item' role='treeitem' />
+			[345] (60,948)<div  />
+				[346] (63,948)<div  />
+					[347] (19,948)<div  />
+					[348] (67,948)<span  />
+						[349] (40,948)<span >README.md />
+		[350] (60,973)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='constants.ts-item' role='treeitem' />
+			[351] (60,973)<div  />
+				[352] (63,973)<div  />
+					[353] (19,973)<div  />
+					[354] (67,973)<span  />
+						[355] (39,972)<span >constants.ts />
+		[356] (60,997)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='index.html-item' role='treeitem' />
+			[357] (60,997)<div  />
+				[358] (63,997)<div  />
+					[359] (19,997)<div  />
+					[360] (67,997)<span  />
+						[361] (38,997)<span >index.html />
+[362] (125,500)<div aria-label='Draggable pane splitter' class='prc-PageLayout-DraggableHandle-9s6B4' role='slider' />
+Breadcrumbs
+[363] (158,16)<a class='Breadcrumb-module__repoLink__O2Nbs prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/tree/main'>tdgames_billing />
+/
+[364] (192,16)<a class='Breadcrumb-module__directoryLink__kQy_t prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/tree/main/apps'>apps />
+/
+[365] (214,16)<a class='Breadcrumb-module__directoryLink__kQy_t prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/tree/main/apps/invoice'>invoice />
+/
+[366] (246,16)<a class='Breadcrumb-module__directoryLink__kQy_t prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/tree/main/apps/invoice/components'>components />
+/
+Navbar.tsx
+[367] (979,17)<button class='prc-Button-ButtonBase-9n-Xk FileNameStickyHeader-module__Button__LSEU_ FileNameStickyHeader-module__GoToTopButton__nxAFn' />
+	[368] (979,17)<span  />
+		[369] (983,17)<span >Top />
+File metadata and controls
+[370] (146,51)<button class='prc-SegmentedControl-Button-E48xz' />
+	[371] (146,51)<span  />
+		[372] (146,51)<div >Code />
+[373] (171,51)<button class='prc-SegmentedControl-Button-E48xz' />
+	[374] (171,51)<span  />
+		[375] (171,51)<div >Blame />
+102 lines (97 loc) · 5.97 KB
+[376] (924,51)<a class='prc-Button-ButtonBase-9n-Xk LinkButton-module__linkButton__nFnov BlobViewHeader-module__LinkButton__X9kx2' href='https://github.com/tdgamesvn/tdgames_billing/raw/refs/heads/main/apps/invoice/components/Navbar.tsx' />
+	[377] (924,51)<span  />
+		[378] (924,51)<span >Raw />
+[379] (936,51)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' />
+[380] (947,51)<button class='prc-Button-ButtonBase-9n-Xk BlobViewHeader-module__downloadButton__ef459 prc-Button-IconButton-fyge7' />
+[381] (971,51)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' id='_r_6f_' />
+[382] (985,51)<button class='prc-Button-ButtonBase-9n-Xk BlobViewHeader-module__IconButton_2__RyjZg prc-Button-IconButton-fyge7' id='symbols-button' />
+[383] (563,605)<textarea aria-label='file content' class='react-blob-textarea react-blob-print-hide' id='read-only-cursor-text-area' scrollable='true' />
+[384] (563,599)<div class='react-code-line-container CodeLines-module__scrollContainerHidden__g7TeZ' scrollable='true' />
+	13
+	14
+	15
+	16
+	[385] (151,70)<div >17 />
+	[386] (151,85)<div >18 />
+	[387] (151,101)<div >19 />
+		[388] (160,101)<div aria-label='Collapse code section' class='LineNumber-module__codeFoldingChevron__sY2Yt' role='button' />
+	[389] (151,116)<div >20 />
+	[390] (151,131)<div >21 />
+	[391] (151,147)<div >22 />
+	[392] (151,162)<div >23 />
+	[393] (151,177)<div >24 />
+	[394] (151,193)<div >25 />
+	[395] (151,208)<div >26 />
+	[396] (151,223)<div >27 />
+	[397] (151,239)<div >28 />
+	[398] (151,254)<div >29 />
+	[399] (151,269)<div >30 />
+	[400] (151,285)<div >31 />
+	[401] (151,300)<div >32 />
+	[402] (151,315)<div >33 />
+	[403] (151,331)<div >34 />
+	[404] (151,346)<div >35 />
+	[405] (151,361)<div >36 />
+	[406] (151,377)<div >37 />
+	[407] (151,392)<div >38 />
+	[408] (151,407)<div >39 />
+	[409] (151,422)<div >40 />
+	[410] (151,438)<div >41 />
+	[411] (151,453)<div >42 />
+	[412] (151,468)<div >43 />
+	[413] (151,484)<div >44 />
+	[414] (151,499)<div >45 />
+	[415] (151,514)<div >46 />
+	[416] (151,530)<div >47 />
+	[417] (151,545)<div >48 />
+	[418] (151,560)<div >49 />
+	[419] (151,576)<div >50 />
+	[420] (151,591)<div >51 />
+	[421] (151,606)<div >52 />
+	[422] (151,622)<div >53 />
+	[423] (151,637)<div >54 />
+	[424] (151,652)<div >55 />
+	[425] (151,668)<div >56 />
+	[426] (151,683)<div >57 />
+	[427] (151,698)<div >58 />
+	[428] (151,714)<div >59 />
+	[429] (151,729)<div >60 />
+	[430] (151,744)<div >61 />
+	[431] (151,760)<div >62 />
+	[432] (151,775)<div >63 />
+	[433] (151,790)<div >64 />
+	[434] (151,806)<div >65 />
+	[435] (151,821)<div >66 />
+	[436] (151,836)<div >67 />
+	[437] (151,852)<div >68 />
+	[438] (151,867)<div >69 />
+	[439] (151,882)<div >70 />
+	[440] (151,898)<div >71 />
+	[441] (151,913)<div >72 />
+	[442] (151,928)<div >73 />
+	[443] (151,944)<div >74 />
+	[444] (151,959)<div >75 />
+	[445] (151,974)<div >76 />
+	77
+	78
+	vcbRateLoading
+	?:
+	boolean
+	;
+	onBack
+	?:
+	(
+	)
+	=>
+	void
+	;
+	appName
+	?:
+	string
+	;
+	tabLabels
+	?:
+	Record
+	<
+	string
+	,
+	string
+	>
+	;
+	}
+	export
+	const
+	Navbar
+	:
+	React
+	.
+	FC
+	<
+	NavbarProps
+	>
+	=
+	(
+	{
+	theme
+	,
+	currentUser
+	,
+	activeTab
+	,
+	accessibleTabs
+	,
+	onTabChange
+	,
+	onLogout
+	,
+	vcbRate
+	,
+	vcbRateLoading
+	,
+	onBack
+	,
+	appName
+	,
+	tabLabels
+	}
+	)
+	=>
+	(
+	<
+	nav
+	className
+	=
+	{
+	`h-20 sticky top-0 backdrop-blur-md border-b flex items-center justify-between px-6 md:px-12 z-50 transition-colors duration-300
+	${
+	theme
+	===
+	'dark'
+	?
+	'bg-[#0F0F0F]/95 border-primary/10'
+	:
+	'bg-white/95 border-gray-200 shadow-sm'
+	}
+	`
+	}
+	>
+	<
+	div
+	className
+	=
+	"flex items-center gap-3"
+	>
+	{
+	onBack
+	&&
+	(
+	<
+	button
+	onClick
+	=
+	{
+	onBack
+	}
+	title
+	=
+	"Back to Home"
+	className
+	=
+	{
+	`p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110
+	${
+	theme
+	===
+	'dark'
+	?
+	'text-neutral-medium hover:text-primary hover:bg-primary/10'
+	:
+	'text-gray-400 hover:text-orange-500 hover:bg-orange-50'
+	}
+	`
+	}
+	>
+	<
+	svg
+	className
+	=
+	"w-5 h-5"
+	fill
+	=
+	"none"
+	stroke
+	=
+	"currentColor"
+	viewBox
+	=
+	"0 0 24 24"
+	>
+	<
+	path
+	strokeLinecap
+	=
+	"round"
+	strokeLinejoin
+	=
+	"round"
+	strokeWidth
+	=
+	"2.5"
+	d
+	=
+	"M15 19l-7-7 7-7"
+	/>
+	</
+	svg
+	>
+	</
+	button
+	>
+	)
+	}
+	<
+	img
+	src
+	=
+	"https://pub-f0ef2ac3b67c4d4da2fe20c73ab57f83.r2.dev/logo_td.png"
+	alt
+	=
+	"Logo"
+	className
+	=
+	"w-10 h-10 object-contain"
+	/>
+	<
+	div
+	className
+	=
+	"flex flex-col"
+	>
+	<
+	span
+	className
+	=
+	{
+	`text-lg font-bold uppercase tracking-widest leading-none
+	${
+	theme
+	===
+	'dark'
+	?
+	'text-white'
+	:
+	'text-black'
+	}
+	`
+	}
+	>
+	TD Games
+	{
+	appName
+	||
+	'Billing'
+	}
+	</
+	span
+	>
+	</
+	div
+	>
+	{
+	/* VCB USD/VND Exchange Rate — only render when props are passed */
+	}
+	{
+	(
+	vcbRate
+	!==
+	undefined
+	||
+	vcbRateLoading
+	)
+	&&
+	(
+	<
+	div
+	className
+	=
+	{
+	`hidden md:flex items-center gap-2.5 ml-3 px-4 py-1.5 rounded-xl border
+	${
+	theme
+	===
+	'dark'
+	?
+	'bg-surface/60 border-primary/15'
+	:
+	'bg-gray-50 border-gray-200'
+	}
+	`
+	}
+	>
+	<
+	div
+	className
+	=
+	"flex items-center gap-1"
+	>
+	<
+	span
+	className
+	=
+	"text-primary text-sm font-black"
+	>
+	USD
+	</
+	span
+	>
+	<
+	span
+	className
+	=
+	{
+	`text-[10px]
+	${
+	theme
+	===
+	'dark'
+	?
+	'text-neutral-medium'
+	:
+	'text-gray-400'
+	}
+	`
+	}
+	>
+	→
+	</
+	span
+	>
+	<
+	span
+	className
+	=
+	{
+	`text-sm font-black
+	${
+	theme
+	===
+	'dark'
+	?
+	'text-emerald-400'
+	:
+	'text-emerald-600'
+	}
+	`
+	}
+	>
+	VND
+	</
+	span
+	>
+	</
+	div
+	>
+	<
+	div
+	className
+	=
+	{
+	`w-px h-6
+	${
+	theme
+	===
+	'dark'
+	?
+	'bg-white/10'
+	:
+	'bg-gray-200'
+	}
+	`
+	}
+	/>
+	{
+	vcbRateLoading
+	?
+	(
+	<
+	span
+	className
+	=
+	"animate-pulse text-xs text-neutral-medium"
+	>
+	loading...
+	</
+	span
+	>
+	)
+	:
+	vcbRate
+	?
+	(
+	<
+	div
+	className
+	=
+	"flex flex-col items-end leading-none"
+	>
+	<
+	span
+	className
+	=
+	{
+	`text-sm font-black tabular-nums
+	${
+	theme
+	===
+	'dark'
+	?
+	'text-white'
+	:
+	'text-black'
+	}
+	`
+	}
+	>
+	{
+	vcbRate
+	.
+	sell
+	.
+	toLocaleString
+	(
+	'vi-VN'
+	)
+	}
+	<
+	span
+	className
+	=
+	{
+	`text-[9px] font-bold
+	${
+	theme
+	===
+	'dark'
+	?
+	'text-neutral-medium'
+	:
+	'text-gray-400'
+	}
+	`
+	}
+	>
+	₫
+	</
+	span
+	>
+	</
+	span
+	>
+	<
+	span
+	className
+	=
+	{
+	`text-[8px] font-bold uppercase tracking-wider mt-0.5
+	${
+	theme
+	===
+	'dark'
+	?
+	'text-neutral-medium'
+	:
+	'text-gray-400'
+	}
+	`
+	}
+	>
+	VCB •
+	{
+	(
+	(
+	)
+	=>
+	{
+	try
+	{
+	const
+	d
+	=
+	new
+	Date
+	(
+	vcbRate
+	.
+	updated_at
+	)
+	;
+	if
+	(
+	isNaN
+	(
+	d
+	.
+	getTime
+	(
+	)
+	)
+	)
+	return
+	vcbRate
+	.
+	updated_at
+	;
+	return
+	d
+	.
+	toLocaleString
+	(
+	'en-GB'
+	,
+	{
+	day
+	:
+	'2-digit'
+	,
+	month
+	:
+	'2-digit'
+	,
+	hour
+	:
+	'2-digit'
+	,
+	minute
+	:
+	'2-digit'
+	,
+	hour12
+	:
+	false
+	}
+	)
+	;
+	}
+	catch
+	{
+	return
+	vcbRate
+	.
+	updated_at
+	;
+	}
+	}
+	)
+	(
+	)
+	}
+	</
+	span
+	>
+	</
+	div
+	>
+	)
+	:
+	(
+	<
+	span
+	className
+	=
+	"text-neutral-medium text-xs"
+	>
+	—
+	</
+	span
+	>
+	)
+	}
+	</
+	div
+	>
+	)
+	}
+	</
+	div
+	>
+	<
+	div
+	className
+	=
+	"flex items-center gap-3"
+	>
+	<
+	div
+	className
+	=
+	{
+	`flex gap-1 p-1 rounded-full border overflow-x-auto scrollbar-hide
+	${
+	theme
+	===
+	'dark'
+	?
+	'bg-surface border-white/5'
+	:
+	'bg-gray-100 border-gray-200'
+	}
+	`
+	}
+	>
+	{
+	accessibleTabs
+	.
+	map
+	(
+	(
+	tab
+	)
+	=>
+	(
+	<
+	button
+	key
+	=
+	{
+	tab
+	}
+	onClick
+	=
+	{
+	(
+	)
+	=>
+	onTabChange
+	(
+	tab
+	)
+	}
+	className
+	=
+	{
+	`flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap
+	${
+	activeTab
+	===
+	tab
+	?
+	'bg-primary text-black shadow-btn-glow'
+	:
+	theme
+	===
+	'dark'
+	?
+	'text-neutral-medium hover:text-white'
+	:
+	'text-gray-500 hover:text-black'
+	}
+	`
+	}
+	>
+	{
+	tabLabels
+	?.
+	[
+	tab
+	]
+	||
+	tab
+	}
+	</
+	button
+	>
+	)
+	)
+	}
+	</
+	div
+	>
+	{
+	/* User info + Logout */
+	}
+[446] (563,994)<div class='CodeLines-module__scrollBarContainer__fsxaw' scrollable='true' />
+
+</current_dom>

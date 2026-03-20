@@ -1,0 +1,406 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Skip to content
+Navigation Menu
+[0] (19,28)<a aria-label='Homepage' class='tmp-mr-lg-3 color-fg-inherit flex-order-2 js-prevent-focus-on-mobile-nav' href='/' />
+[1] (50,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Platform />
+[2] (89,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Solutions />
+[3] (129,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Resources />
+[4] (175,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Open Source />
+[5] (221,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Enterprise />
+[6] (254,28)<a class='NavLink-module__link__EG3d4 MarketingNavigation-module__navLink__hUomM' href='https://github.com/pricing' />
+	[7] (254,28)<span >Pricing />
+[8] (844,28)<button aria-label='Search or jump to…' class='header-search-button placeholder input-button form-control d-flex flex-1 flex-self-stretch flex-items-center no-wrap width-full py-0 pl-2 pr-0 text-left border-0 box-shadow-none' placeholder='Search or jump to...' />
+	[9] (788,28)<div  />
+	[10] (844,28)<span >Search or jump to... />
+	[11] (902,28)<div  />
+[12] (924,28)<a class='HeaderMenu-link HeaderMenu-link--sign-in HeaderMenu-button flex-shrink-0 no-underline d-none d-lg-inline-flex border border-lg-0 rounded px-2 py-1' href='/login?return_to=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Ftdgames_billing%2Fblob%2Fmain%2Fpackage.json'>Sign in />
+[13] (956,28)<a class='HeaderMenu-link HeaderMenu-link--sign-up HeaderMenu-button flex-shrink-0 d-flex d-lg-inline-flex no-underline border color-border-default rounded px-2 py-1' href='/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fblob%2Fshow&source=header-repo&source_repo=tdgamesvn%2Ftdgames_billing'>Sign up />
+[14] (981,28)<button class='Button Button--iconOnly Button--invisible Button--medium AppHeader-button HeaderMenu-link border' id='icon-button-cfed98d7-48e8-43bf-a420-050297d60741' />
+[15] (41,79)<a class='url fn' href='/tdgamesvn'>tdgamesvn />
+/
+[16] (94,79)<a href='/tdgamesvn/tdgames_billing'>tdgames_billing />
+Public
+[17] (881,78)<a aria-label='You must be signed in to change notification settings' class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' id='repository-details-watch-button'>Notifications />
+[18] (926,78)<a class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' id='fork-button'>Fork />
+	[19] (937,78)<span >0 />
+[20] (968,78)<a aria-label='You must be signed in to star a repository' class='tooltipped tooltipped-sw btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' />
+	[21] (969,78)<span >Star />
+	[22] (979,78)<span >0 />
+[23] (27,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected' href='/tdgamesvn/tdgames_billing' id='code-tab' />
+	[24] (31,121)<span >Code />
+[25] (59,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/issues' id='issues-tab' />
+	[26] (64,121)<span >Issues />
+[27] (101,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/pulls' id='pull-requests-tab' />
+	[28] (106,121)<span >Pull requests />
+[29] (145,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/actions' id='actions-tab' />
+	[30] (150,121)<span >Actions />
+[31] (183,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/projects' id='projects-tab' />
+	[32] (188,121)<span >Projects />
+[33] (221,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/security' id='security-tab' />
+	[34] (226,121)<span >Security />
+[35] (260,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/pulse' id='insights-tab' />
+	[36] (265,121)<span >Insights />
+[37] (13,164)<button class='prc-Button-ButtonBase-9n-Xk position-relative ExpandFileTreeButton-module__expandButton__hDOcv fgColor-muted prc-Button-IconButton-fyge7' />
+Files
+[38] (55,201)<button aria-label='main branch' class='prc-Button-ButtonBase-9n-Xk react-repos-tree-pane-ref-selector width-full ref-selector-class RefSelectorAnchoredOverlay-module__RefSelectorOverlayBtn__a3WK3' id='ref-picker-repos-header-ref-selector' />
+	[39] (55,201)<span  />
+		[40] (50,201)<span  />
+			[41] (50,201)<div  />
+				[42] (14,201)<div  />
+				[43] (26,201)<div  />
+					[44] (26,200)<span >main />
+[45] (113,201)<button class='prc-Button-ButtonBase-9n-Xk SearchButton-module__IconButton__SBlqu prc-Button-IconButton-fyge7' />
+[46] (63,231)<span  />
+	[47] (13,231)<span  />
+	[48] (66,231)<input aria-label='Go to file' class='prc-components-Input-IwWrt' placeholder='Go to file' role='combobox' />
+[49] (60,552)<div  />
+	[50] (60,265)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.github-item' role='treeitem' />
+		[51] (60,265)<div  />
+			[52] (9,265)<div  />
+			[53] (63,265)<div  />
+				[54] (19,265)<div  />
+					[55] (19,265)<div  />
+				[56] (67,265)<span  />
+					[57] (33,265)<span >.github />
+	[58] (60,290)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='Sepay_API_Document-item' role='treeitem' />
+		[59] (60,290)<div  />
+			[60] (9,290)<div  />
+			[61] (63,290)<div  />
+				[62] (19,290)<div  />
+					[63] (19,290)<div  />
+				[64] (67,290)<span  />
+					[65] (51,289)<span >Sepay_API_Document />
+	[66] (60,315)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps-item' role='treeitem' />
+		[67] (60,315)<div  />
+			[68] (9,315)<div  />
+			[69] (63,315)<div  />
+				[70] (19,314)<div  />
+					[71] (19,314)<div  />
+				[72] (67,315)<span  />
+					[73] (31,314)<span >apps />
+	[74] (60,339)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='components-item' role='treeitem' />
+		[75] (60,339)<div  />
+			[76] (9,339)<div  />
+			[77] (63,339)<div  />
+				[78] (19,339)<div  />
+					[79] (19,339)<div  />
+				[80] (67,339)<span  />
+					[81] (40,339)<span >components />
+	[82] (60,364)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='config-item' role='treeitem' />
+		[83] (60,364)<div  />
+			[84] (9,364)<div  />
+			[85] (63,364)<div  />
+				[86] (19,364)<div  />
+					[87] (19,364)<div  />
+				[88] (67,364)<span  />
+					[89] (33,363)<span >config />
+	[90] (60,389)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='hop_dong_nhan_su-item' role='treeitem' />
+		[91] (60,389)<div  />
+			[92] (9,389)<div  />
+			[93] (63,389)<div  />
+				[94] (19,388)<div  />
+					[95] (19,388)<div  />
+				[96] (67,389)<span  />
+					[97] (48,388)<span >hop_dong_nhan_su />
+	[98] (60,413)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='public-item' role='treeitem' />
+		[99] (60,413)<div  />
+			[100] (9,413)<div  />
+			[101] (63,413)<div  />
+				[102] (19,413)<div  />
+					[103] (19,413)<div  />
+				[104] (67,413)<span  />
+					[105] (32,413)<span >public />
+	[106] (60,438)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='services-item' role='treeitem' />
+		[107] (60,438)<div  />
+			[108] (9,438)<div  />
+			[109] (63,438)<div  />
+				[110] (19,438)<div  />
+					[111] (19,438)<div  />
+				[112] (67,438)<span  />
+					[113] (34,437)<span >services />
+	[114] (60,463)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='src-item' role='treeitem' />
+		[115] (60,463)<div  />
+			[116] (9,463)<div  />
+			[117] (63,463)<div  />
+				[118] (19,462)<div  />
+					[119] (19,462)<div  />
+				[120] (67,463)<span  />
+					[121] (28,462)<span >src />
+	[122] (60,487)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.env-item' role='treeitem' />
+		[123] (60,487)<div  />
+			[124] (63,487)<div  />
+				[125] (19,487)<div  />
+				[126] (67,487)<span  />
+					[127] (30,487)<span >.env />
+	[128] (60,512)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.gitignore-item' role='treeitem' />
+		[129] (60,512)<div  />
+			[130] (63,512)<div  />
+				[131] (19,512)<div  />
+				[132] (67,512)<span  />
+					[133] (37,511)<span >.gitignore />
+	[134] (60,537)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='App.tsx-item' role='treeitem' />
+		[135] (60,537)<div  />
+			[136] (63,537)<div  />
+				[137] (19,536)<div  />
+				[138] (67,537)<span  />
+					[139] (34,536)<span >App.tsx />
+	[140] (60,561)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='README.md-item' role='treeitem' />
+		[141] (60,561)<div  />
+			[142] (63,561)<div  />
+				[143] (19,561)<div  />
+				[144] (67,561)<span  />
+					[145] (40,561)<span >README.md />
+	[146] (60,586)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='constants.ts-item' role='treeitem' />
+		[147] (60,586)<div  />
+			[148] (63,586)<div  />
+				[149] (19,586)<div  />
+				[150] (67,586)<span  />
+					[151] (39,585)<span >constants.ts />
+	[152] (60,611)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='index.html-item' role='treeitem' />
+		[153] (60,611)<div  />
+			[154] (63,611)<div  />
+				[155] (19,610)<div  />
+				[156] (67,611)<span  />
+					[157] (38,610)<span >index.html />
+	[158] (60,635)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='index.tsx-item' role='treeitem' />
+		[159] (60,635)<div  />
+			[160] (63,635)<div  />
+				[161] (19,635)<div  />
+				[162] (67,635)<span  />
+					[163] (35,635)<span >index.tsx />
+	[164] (60,660)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='metadata.json-item' role='treeitem' />
+		[165] (60,660)<div  />
+			[166] (63,660)<div  />
+				[167] (19,660)<div  />
+				[168] (67,660)<span  />
+					[169] (42,659)<span >metadata.json />
+	[170] (60,685)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='package-lock.json-item' role='treeitem' />
+		[171] (60,685)<div  />
+			[172] (63,685)<div  />
+				[173] (19,684)<div  />
+				[174] (67,685)<span  />
+					[175] (47,684)<span >package-lock.json />
+	[176] (60,709)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='package.json-item' role='treeitem' />
+		[177] (60,709)<div  />
+			[178] (63,709)<div  />
+				[179] (19,709)<div  />
+				[180] (67,709)<span  />
+					[181] (41,709)<span >package.json />
+	[182] (60,734)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='tinh_luong.md-item' role='treeitem' />
+		[183] (60,734)<div  />
+			[184] (63,734)<div  />
+				[185] (19,734)<div  />
+				[186] (67,734)<span  />
+					[187] (42,733)<span >tinh_luong.md />
+	[188] (60,759)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='tsconfig.json-item' role='treeitem' />
+		[189] (60,759)<div  />
+			[190] (63,759)<div  />
+				[191] (19,758)<div  />
+				[192] (67,759)<span  />
+					[193] (40,758)<span >tsconfig.json />
+	[194] (60,783)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='types.ts-item' role='treeitem' />
+		[195] (60,783)<div  />
+			[196] (63,783)<div  />
+				[197] (19,783)<div  />
+				[198] (67,783)<span  />
+					[199] (34,783)<span >types.ts />
+	[200] (60,808)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='vite-env.d.ts-item' role='treeitem' />
+		[201] (60,808)<div  />
+			[202] (63,808)<div  />
+				[203] (19,808)<div  />
+				[204] (67,808)<span  />
+					[205] (40,807)<span >vite-env.d.ts />
+	[206] (60,832)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='vite.config.ts-item' role='treeitem' />
+		[207] (60,832)<div  />
+			[208] (63,832)<div  />
+				[209] (19,832)<div  />
+				[210] (67,832)<span  />
+					[211] (40,832)<span >vite.config.ts />
+[212] (125,640)<div aria-label='Draggable pane splitter' class='prc-PageLayout-DraggableHandle-9s6B4' role='slider' />
+Breadcrumbs
+[213] (154,164)<a class='Breadcrumb-module__repoLink__O2Nbs prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/tree/main'>tdgames_billing />
+/
+package.json
+[214] (231,164)<button class='prc-Button-ButtonBase-9n-Xk ml-2 prc-Button-IconButton-fyge7' />
+[215] (988,164)<button class='prc-Button-ButtonBase-9n-Xk js-blob-dropdown-click NavigationMenu-module__IconButton__HpX3G prc-Button-IconButton-fyge7' id='_R_96dajal1d_' />
+Latest commit
+History
+[216] (975,206)<a class='prc-Button-ButtonBase-9n-Xk d-none d-lg-flex LinkButton-module__linkButton__nFnov flex-items-center fgColor-default' href='/tdgamesvn/tdgames_billing/commits/main/package.json' />
+	[217] (975,206)<span  />
+		[218] (979,206)<span  />
+			[219] (979,206)<span >History />
+File metadata and controls
+[220] (146,253)<button class='prc-SegmentedControl-Button-E48xz' />
+	[221] (146,253)<span  />
+		[222] (146,253)<div >Code />
+[223] (171,253)<button class='prc-SegmentedControl-Button-E48xz' />
+	[224] (171,253)<span  />
+		[225] (171,253)<div >Blame />
+28 lines (28 loc) · 628 Bytes
+[226] (924,253)<a class='prc-Button-ButtonBase-9n-Xk LinkButton-module__linkButton__nFnov BlobViewHeader-module__LinkButton__X9kx2' href='https://github.com/tdgamesvn/tdgames_billing/raw/refs/heads/main/package.json' />
+	[227] (924,253)<span  />
+		[228] (924,253)<span >Raw />
+[229] (936,253)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' />
+[230] (947,253)<button class='prc-Button-ButtonBase-9n-Xk BlobViewHeader-module__downloadButton__ef459 prc-Button-IconButton-fyge7' />
+[231] (971,253)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' id='_r_3j_' />
+[232] (985,253)<button class='prc-Button-ButtonBase-9n-Xk BlobViewHeader-module__IconButton_2__RyjZg prc-Button-IconButton-fyge7' id='symbols-button' />
+[233] (563,498)<textarea aria-label='file content' class='react-blob-textarea react-blob-print-hide' id='read-only-cursor-text-area' />
+[234] (152,285)<div >1 />
+[235] (152,300)<div >2 />
+[236] (152,315)<div >3 />
+[237] (152,331)<div >4 />
+[238] (152,346)<div >5 />
+[239] (152,361)<div >6 />
+[240] (152,377)<div >7 />
+[241] (152,392)<div >8 />
+[242] (152,407)<div >9 />
+[243] (151,422)<div >10 />
+[244] (151,438)<div >11 />
+[245] (151,453)<div >12 />
+[246] (151,468)<div >13 />
+[247] (151,484)<div >14 />
+[248] (151,499)<div >15 />
+[249] (151,514)<div >16 />
+[250] (151,530)<div >17 />
+[251] (151,545)<div >18 />
+[252] (151,560)<div >19 />
+[253] (151,576)<div >20 />
+[254] (151,591)<div >21 />
+[255] (151,606)<div >22 />
+[256] (151,622)<div >23 />
+[257] (151,637)<div >24 />
+[258] (151,652)<div >25 />
+[259] (151,668)<div >26 />
+[260] (151,683)<div >27 />
+[261] (151,698)<div >28 />
+{
+"name"
+:
+"
+td-games-invoice-generator
+"
+,
+"private"
+:
+true
+,
+"version"
+:
+"
+0.0.0
+"
+,
+"type"
+:
+"
+module
+"
+,
+"scripts"
+: {
+"dev"
+:
+"
+vite
+"
+,
+"build"
+:
+"
+vite build
+"
+,
+"lint"
+:
+"
+tsc --noEmit
+"
+,
+"preview"
+:
+"
+vite preview
+"
+},
+"dependencies"
+: {
+"@supabase/supabase-js"
+:
+"
+^2.99.1
+"
+,
+"@types/file-saver"
+:
+"
+^2.0.7
+"
+,
+"file-saver"
+:
+"
+^2.0.5
+"
+,
+"html2canvas"
+:
+"
+^1.4.1
+"
+,
+"jspdf"
+:
+"
+^3.0.4
+"
+,
+"react"
+:
+"
+^19.2.3
+"
+,
+"react-dom"
+:
+"
+^19.2.3
+"
+,
+"xlsx"
+:
+"
+^0.18.5
+"
+},
+"devDependencies"
+: {
+"@types/node"
+:
+"
+^22.14.0
+"
+,
+"@vitejs/plugin-react"
+:
+"
+^5.0.0
+"
+,
+"typescript"
+:
+"
+~5.8.2
+"
+,
+"vite"
+:
+"
+^6.2.0
+"
+}
+}
+
+</current_dom>

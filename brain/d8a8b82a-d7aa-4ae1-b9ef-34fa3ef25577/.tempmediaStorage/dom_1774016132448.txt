@@ -1,0 +1,191 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Skip to content
+Navigation Menu
+[0] (19,28)<a aria-label='Homepage' class='tmp-mr-lg-3 color-fg-inherit flex-order-2 js-prevent-focus-on-mobile-nav' href='/' />
+[1] (50,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Platform />
+[2] (89,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Solutions />
+[3] (129,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Resources />
+[4] (175,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Open Source />
+[5] (221,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Enterprise />
+[6] (254,28)<a class='NavLink-module__link__EG3d4 MarketingNavigation-module__navLink__hUomM' href='https://github.com/pricing' />
+	[7] (254,28)<span >Pricing />
+[8] (844,28)<button aria-label='Search or jump to…' class='header-search-button placeholder input-button form-control d-flex flex-1 flex-self-stretch flex-items-center no-wrap width-full py-0 pl-2 pr-0 text-left border-0 box-shadow-none' placeholder='Search or jump to...' />
+	[9] (788,28)<div  />
+	[10] (844,28)<span >Search or jump to... />
+	[11] (902,28)<div  />
+[12] (924,28)<a class='HeaderMenu-link HeaderMenu-link--sign-in HeaderMenu-button flex-shrink-0 no-underline d-none d-lg-inline-flex border border-lg-0 rounded px-2 py-1' href='/login?return_to=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Ftdgames_billing%2Fcommits%2Fmain'>Sign in />
+[13] (956,28)<a class='HeaderMenu-link HeaderMenu-link--sign-up HeaderMenu-button flex-shrink-0 d-flex d-lg-inline-flex no-underline border color-border-default rounded px-2 py-1' href='/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fcommits%2Fshow&source=header-repo&source_repo=tdgamesvn%2Ftdgames_billing'>Sign up />
+[14] (981,28)<button class='Button Button--iconOnly Button--invisible Button--medium AppHeader-button HeaderMenu-link border' id='icon-button-1c4157ee-0667-4cbe-a7c5-0e6cf873a32c' />
+[15] (41,79)<a class='url fn' href='/tdgamesvn'>tdgamesvn />
+/
+[16] (94,79)<a href='/tdgamesvn/tdgames_billing'>tdgames_billing />
+Public
+[17] (881,78)<a aria-label='You must be signed in to change notification settings' class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' id='repository-details-watch-button'>Notifications />
+[18] (926,78)<a class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' id='fork-button'>Fork />
+	[19] (937,78)<span >0 />
+[20] (968,78)<a aria-label='You must be signed in to star a repository' class='tooltipped tooltipped-sw btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' />
+	[21] (969,78)<span >Star />
+	[22] (979,78)<span >0 />
+[23] (27,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing' id='code-tab' />
+	[24] (31,121)<span >Code />
+[25] (59,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/issues' id='issues-tab' />
+	[26] (64,121)<span >Issues />
+[27] (101,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/pulls' id='pull-requests-tab' />
+	[28] (106,121)<span >Pull requests />
+[29] (145,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/actions' id='actions-tab' />
+	[30] (150,121)<span >Actions />
+[31] (183,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/projects' id='projects-tab' />
+	[32] (188,121)<span >Projects />
+[33] (221,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/security' id='security-tab' />
+	[34] (226,121)<span >Security />
+[35] (260,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/pulse' id='insights-tab' />
+	[36] (265,121)<span >Insights />
+Commits
+Branch selector
+[37] (270,217)<button aria-label='main branch' class='prc-Button-ButtonBase-9n-Xk RefSelectorAnchoredOverlay-module__RefSelectorOverlayBtn__a3WK3' id='ref-picker-commits' />
+	[38] (270,217)<span  />
+		[39] (266,217)<span  />
+			[40] (266,217)<div  />
+				[41] (258,217)<div  />
+				[42] (270,217)<div  />
+					[43] (270,216)<span >main />
+User selector
+[44] (675,217)<button class='prc-Button-ButtonBase-9n-Xk' id='_R_7jl9b_' />
+	[45] (671,217)<span  />
+		[46] (671,217)<span  />
+			[47] (671,217)<div  />
+				[48] (659,217)<div  />
+				[49] (676,217)<div  />
+					[50] (676,216)<span >All users />
+[51] (726,217)<button class='prc-Button-ButtonBase-9n-Xk' />
+	[52] (726,217)<span  />
+		[53] (726,217)<span >All time />
+Commit History
+Commits on Mar 20, 2026
+[54] (305,286)<a class='Title-module__anchor__dBbYy Title-module__inline__YFTZT' href='/tdgamesvn/tdgames_billing/commit/b5dd91c88d345c4de034f05ac902329b0f5b12c4' />
+	[55] (305,286)<span >chore: trigger redeploy />
+[56] (277,305)<a class='Link__StyledLink-sc-1syctfj-0 prc-Link-Link-9ZwDx' href='/tdgamesvn' />
+	[57] (276,305)<img  />
+[58] (294,305)<a aria-label='commits by tdgamesvn' class='Link__StyledLink-sc-1syctfj-0 gwQJTg AuthorAvatar-module__authorHoverableLink__MHTT8 prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/commits?author=tdgamesvn'>tdgamesvn />
+committed
+[59] (705,295)<a class='prc-Button-ButtonBase-9n-Xk' href='/tdgamesvn/tdgames_billing/commit/b5dd91c88d345c4de034f05ac902329b0f5b12c4' />
+	[60] (705,295)<span  />
+		[61] (705,295)<span >b5dd91c />
+[62] (722,295)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' />
+[63] (736,295)<a class='Button Button--iconOnly Button--invisible Button--small' href='/tdgamesvn/tdgames_billing/tree/b5dd91c88d345c4de034f05ac902329b0f5b12c4' />
+[64] (348,338)<a class='Title-module__anchor__dBbYy Title-module__inline__YFTZT' href='/tdgamesvn/tdgames_billing/commit/00815e15470aedadc8d3cb5c3553ec791cb9d08e' />
+	[65] (348,338)<span >fix: PKCE invite flow detection + Navbar tab overflow />
+[66] (430,337)<button class='prc-Button-ButtonBase-9n-Xk Button Button--iconOnly Button--invisible Button--small ml-1 prc-Button-IconButton-fyge7' />
+[67] (277,357)<a class='Link__StyledLink-sc-1syctfj-0 prc-Link-Link-9ZwDx' href='/tdgamesvn' />
+	[68] (276,358)<img  />
+[69] (294,357)<a aria-label='commits by tdgamesvn' class='Link__StyledLink-sc-1syctfj-0 gwQJTg AuthorAvatar-module__authorHoverableLink__MHTT8 prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/commits?author=tdgamesvn'>tdgamesvn />
+committed
+[70] (705,346)<a class='prc-Button-ButtonBase-9n-Xk' href='/tdgamesvn/tdgames_billing/commit/00815e15470aedadc8d3cb5c3553ec791cb9d08e' />
+	[71] (705,346)<span  />
+		[72] (705,346)<span >00815e1 />
+[73] (722,346)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' />
+[74] (736,346)<a class='Button Button--iconOnly Button--invisible Button--small' href='/tdgamesvn/tdgames_billing/tree/00815e15470aedadc8d3cb5c3553ec791cb9d08e' />
+Commits on Mar 19, 2026
+[75] (378,425)<a class='Title-module__anchor__dBbYy Title-module__inline__YFTZT' href='/tdgamesvn/tdgames_billing/commit/93dd366b9cd4baf32ac2863baf4dc689cee3bca6' />
+	[76] (378,425)<span >feat: employee onboarding flow - Quick Add form, Profile tab, invite email />
+[77] (490,424)<button class='prc-Button-ButtonBase-9n-Xk Button Button--iconOnly Button--invisible Button--small ml-1 prc-Button-IconButton-fyge7' />
+[78] (277,445)<a class='Link__StyledLink-sc-1syctfj-0 prc-Link-Link-9ZwDx' href='/tdgamesvn' />
+	[79] (276,446)<img  />
+[80] (294,445)<a aria-label='commits by tdgamesvn' class='Link__StyledLink-sc-1syctfj-0 gwQJTg AuthorAvatar-module__authorHoverableLink__MHTT8 prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/commits?author=tdgamesvn'>tdgamesvn />
+committed
+[81] (704,433)<a class='prc-Button-ButtonBase-9n-Xk' href='/tdgamesvn/tdgames_billing/commit/93dd366b9cd4baf32ac2863baf4dc689cee3bca6' />
+	[82] (704,433)<span  />
+		[83] (704,433)<span >93dd366 />
+[84] (722,433)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' />
+[85] (736,433)<a class='Button Button--iconOnly Button--invisible Button--small' href='/tdgamesvn/tdgames_billing/tree/93dd366b9cd4baf32ac2863baf4dc689cee3bca6' />
+Commits on Mar 18, 2026
+[86] (353,510)<a class='Title-module__anchor__dBbYy Title-module__inline__YFTZT' href='/tdgamesvn/tdgames_billing/commit/af6402552e6e5a2959b2a620b1d442dbf5aec601' />
+	[87] (353,510)<span >fix: add VITE_R2_PUBLIC_URL for avatar/file public access />
+[88] (277,530)<a class='Link__StyledLink-sc-1syctfj-0 prc-Link-Link-9ZwDx' href='/tdgamesvn' />
+	[89] (276,530)<img  />
+[90] (294,530)<a aria-label='commits by tdgamesvn' class='Link__StyledLink-sc-1syctfj-0 gwQJTg AuthorAvatar-module__authorHoverableLink__MHTT8 prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/commits?author=tdgamesvn'>tdgamesvn />
+committed
+[91] (705,520)<a class='prc-Button-ButtonBase-9n-Xk' href='/tdgamesvn/tdgames_billing/commit/af6402552e6e5a2959b2a620b1d442dbf5aec601' />
+	[92] (705,520)<span  />
+		[93] (705,520)<span >af64025 />
+[94] (722,520)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' />
+[95] (736,520)<a class='Button Button--iconOnly Button--invisible Button--small' href='/tdgamesvn/tdgames_billing/tree/af6402552e6e5a2959b2a620b1d442dbf5aec601' />
+[96] (381,560)<a class='Title-module__anchor__dBbYy Title-module__inline__YFTZT' href='/tdgamesvn/tdgames_billing/commit/30cd3bd49ee589fb1cb24960f097f51eb6199314' />
+	[97] (381,560)<span >feat: employee invite flow via email, portal/dashboard/payroll improvements />
+[98] (277,579)<a class='Link__StyledLink-sc-1syctfj-0 prc-Link-Link-9ZwDx' href='/tdgamesvn' />
+	[99] (276,580)<img  />
+[100] (294,579)<a aria-label='commits by tdgamesvn' class='Link__StyledLink-sc-1syctfj-0 gwQJTg AuthorAvatar-module__authorHoverableLink__MHTT8 prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/commits?author=tdgamesvn'>tdgamesvn />
+committed
+[101] (704,569)<a class='prc-Button-ButtonBase-9n-Xk' href='/tdgamesvn/tdgames_billing/commit/30cd3bd49ee589fb1cb24960f097f51eb6199314' />
+	[102] (704,569)<span  />
+		[103] (704,569)<span >30cd3bd />
+[104] (722,569)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' />
+[105] (736,569)<a class='Button Button--iconOnly Button--invisible Button--small' href='/tdgamesvn/tdgames_billing/tree/30cd3bd49ee589fb1cb24960f097f51eb6199314' />
+Commits on Mar 17, 2026
+[106] (344,647)<a class='Title-module__anchor__dBbYy Title-module__inline__YFTZT' href='/tdgamesvn/tdgames_billing/commit/ae3faf69798ff16cc41fbad1429bf2ccaef8c941' />
+	[107] (344,647)<span >feat: HR improvements + unified app backgrounds />
+[108] (423,646)<button class='prc-Button-ButtonBase-9n-Xk Button Button--iconOnly Button--invisible Button--small ml-1 prc-Button-IconButton-fyge7' />
+[109] (277,667)<a class='Link__StyledLink-sc-1syctfj-0 prc-Link-Link-9ZwDx' href='/tdgamesvn' />
+	[110] (276,667)<img  />
+[111] (294,667)<a aria-label='commits by tdgamesvn' class='Link__StyledLink-sc-1syctfj-0 gwQJTg AuthorAvatar-module__authorHoverableLink__MHTT8 prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/commits?author=tdgamesvn'>tdgamesvn />
+committed
+[112] (706,655)<a class='prc-Button-ButtonBase-9n-Xk' href='/tdgamesvn/tdgames_billing/commit/ae3faf69798ff16cc41fbad1429bf2ccaef8c941' />
+	[113] (706,655)<span  />
+		[114] (706,655)<span >ae3faf6 />
+[115] (722,655)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' />
+[116] (736,655)<a class='Button Button--iconOnly Button--invisible Button--small' href='/tdgamesvn/tdgames_billing/tree/ae3faf69798ff16cc41fbad1429bf2ccaef8c941' />
+Commits on Mar 16, 2026
+[117] (358,735)<a class='Title-module__anchor__dBbYy Title-module__inline__YFTZT' href='/tdgamesvn/tdgames_billing/commit/6badf71f0217b561fb1fae1663c36e70a7ef07d9' />
+	[118] (358,735)<span >feat: add Payroll app (Tinh Luong) - 8-step salary calculation />
+[119] (450,734)<button class='prc-Button-ButtonBase-9n-Xk Button Button--iconOnly Button--invisible Button--small ml-1 prc-Button-IconButton-fyge7' />
+[120] (277,754)<a class='Link__StyledLink-sc-1syctfj-0 prc-Link-Link-9ZwDx' href='/tdgamesvn' />
+	[121] (276,755)<img  />
+[122] (294,754)<a aria-label='commits by tdgamesvn' class='Link__StyledLink-sc-1syctfj-0 gwQJTg AuthorAvatar-module__authorHoverableLink__MHTT8 prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/commits?author=tdgamesvn'>tdgamesvn />
+committed
+[123] (705,743)<a class='prc-Button-ButtonBase-9n-Xk' href='/tdgamesvn/tdgames_billing/commit/6badf71f0217b561fb1fae1663c36e70a7ef07d9' />
+	[124] (705,743)<span  />
+		[125] (705,743)<span >6badf71 />
+[126] (722,743)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' />
+[127] (736,743)<a class='Button Button--iconOnly Button--invisible Button--small' href='/tdgamesvn/tdgames_billing/tree/6badf71f0217b561fb1fae1663c36e70a7ef07d9' />
+Commits on Mar 15, 2026
+[128] (407,822)<a class='Title-module__anchor__dBbYy Title-module__inline__YFTZT' href='/tdgamesvn/tdgames_billing/commit/2b5a9012fde1264410094db930b4bb5f3b558be5' />
+	[129] (407,822)<span >feat(crm): add edit project, expanded client pipeline, remove exchange rate, improve payments />
+[130] (548,821)<button class='prc-Button-ButtonBase-9n-Xk Button Button--iconOnly Button--invisible Button--small ml-1 prc-Button-IconButton-fyge7' />
+[131] (277,842)<a class='Link__StyledLink-sc-1syctfj-0 prc-Link-Link-9ZwDx' href='/tdgamesvn' />
+	[132] (276,843)<img  />
+[133] (294,842)<a aria-label='commits by tdgamesvn' class='Link__StyledLink-sc-1syctfj-0 gwQJTg AuthorAvatar-module__authorHoverableLink__MHTT8 prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/commits?author=tdgamesvn'>tdgamesvn />
+committed
+[134] (705,830)<a class='prc-Button-ButtonBase-9n-Xk' href='/tdgamesvn/tdgames_billing/commit/2b5a9012fde1264410094db930b4bb5f3b558be5' />
+	[135] (705,830)<span  />
+		[136] (705,830)<span >2b5a901 />
+[137] (722,830)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' />
+[138] (736,830)<a class='Button Button--iconOnly Button--invisible Button--small' href='/tdgamesvn/tdgames_billing/tree/2b5a9012fde1264410094db930b4bb5f3b558be5' />
+[139] (387,872)<a class='Title-module__anchor__dBbYy Title-module__inline__YFTZT' href='/tdgamesvn/tdgames_billing/commit/8399dd4f1acb8019808d2a3df773832f60ffeb14' />
+	[140] (387,872)<span >feat(expense): add exchange rate, R2 upload, remove add tab, inline form button />
+[141] (277,891)<a class='Link__StyledLink-sc-1syctfj-0 prc-Link-Link-9ZwDx' href='/tdgamesvn' />
+	[142] (276,892)<img  />
+[143] (294,891)<a aria-label='commits by tdgamesvn' class='Link__StyledLink-sc-1syctfj-0 gwQJTg AuthorAvatar-module__authorHoverableLink__MHTT8 prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/commits?author=tdgamesvn'>tdgamesvn />
+committed
+[144] (704,881)<a class='prc-Button-ButtonBase-9n-Xk' href='/tdgamesvn/tdgames_billing/commit/8399dd4f1acb8019808d2a3df773832f60ffeb14' />
+	[145] (704,881)<span  />
+		[146] (704,881)<span >8399dd4 />
+[147] (722,881)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' />
+[148] (736,881)<a class='Button Button--iconOnly Button--invisible Button--small' href='/tdgamesvn/tdgames_billing/tree/8399dd4f1acb8019808d2a3df773832f60ffeb14' />
+Commits on Mar 14, 2026
+[149] (358,959)<a class='Title-module__anchor__dBbYy Title-module__inline__YFTZT' href='/tdgamesvn/tdgames_billing/commit/326a65140b982b28b34b2ed8d9498ed0ca171104' />
+	[150] (358,959)<span >feat: Workforce app + ClickUp sync + Expense app (Phase 2) />
+[151] (450,958)<button class='prc-Button-ButtonBase-9n-Xk Button Button--iconOnly Button--invisible Button--small ml-1 prc-Button-IconButton-fyge7' />
+[152] (277,979)<a class='Link__StyledLink-sc-1syctfj-0 prc-Link-Link-9ZwDx' href='/tdgamesvn' />
+	[153] (276,980)<img  />
+[154] (294,979)<a aria-label='commits by tdgamesvn' class='Link__StyledLink-sc-1syctfj-0 gwQJTg AuthorAvatar-module__authorHoverableLink__MHTT8 prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/commits?author=tdgamesvn'>tdgamesvn />
+committed
+[155] (705,968)<a class='prc-Button-ButtonBase-9n-Xk' href='/tdgamesvn/tdgames_billing/commit/326a65140b982b28b34b2ed8d9498ed0ca171104' />
+	[156] (705,968)<span  />
+		[157] (705,968)<span >326a651 />
+[158] (722,968)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' />
+[159] (736,968)<a class='Button Button--iconOnly Button--invisible Button--small' href='/tdgamesvn/tdgames_billing/tree/326a65140b982b28b34b2ed8d9498ed0ca171104' />
+
+</current_dom>

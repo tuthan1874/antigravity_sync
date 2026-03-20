@@ -1,0 +1,681 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Skip to content
+Navigation Menu
+[0] (19,28)<a aria-label='Homepage' class='tmp-mr-lg-3 color-fg-inherit flex-order-2 js-prevent-focus-on-mobile-nav' href='/' />
+[1] (50,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Platform />
+[2] (89,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Solutions />
+[3] (129,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Resources />
+[4] (175,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Open Source />
+[5] (221,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Enterprise />
+[6] (254,28)<a class='NavLink-module__link__EG3d4 MarketingNavigation-module__navLink__hUomM' href='https://github.com/pricing' />
+	[7] (254,28)<span >Pricing />
+[8] (844,28)<button aria-label='Search or jump to…' class='header-search-button placeholder input-button form-control d-flex flex-1 flex-self-stretch flex-items-center no-wrap width-full py-0 pl-2 pr-0 text-left border-0 box-shadow-none' placeholder='Search or jump to...' />
+	[9] (788,28)<div  />
+	[10] (844,28)<span >Search or jump to... />
+	[11] (902,28)<div  />
+[12] (924,28)<a class='HeaderMenu-link HeaderMenu-link--sign-in HeaderMenu-button flex-shrink-0 no-underline d-none d-lg-inline-flex border border-lg-0 rounded px-2 py-1' href='/login?return_to=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Ftdgames_billing%2Fblob%2Fmain%2Fapps%2Fhr%2Fcomponents%2FHrApp.tsx'>Sign in />
+[13] (956,28)<a class='HeaderMenu-link HeaderMenu-link--sign-up HeaderMenu-button flex-shrink-0 d-flex d-lg-inline-flex no-underline border color-border-default rounded px-2 py-1' href='/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fblob%2Fshow&source=header-repo&source_repo=tdgamesvn%2Ftdgames_billing'>Sign up />
+[14] (981,28)<button class='Button Button--iconOnly Button--invisible Button--medium AppHeader-button HeaderMenu-link border' id='icon-button-62ad7c1f-b176-41e5-aa84-c1729021f19b' />
+[15] (41,79)<a class='url fn' href='/tdgamesvn'>tdgamesvn />
+/
+[16] (94,79)<a href='/tdgamesvn/tdgames_billing'>tdgames_billing />
+Public
+[17] (881,78)<a aria-label='You must be signed in to change notification settings' class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' id='repository-details-watch-button'>Notifications />
+[18] (926,78)<a class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' id='fork-button'>Fork />
+	[19] (937,78)<span >0 />
+[20] (968,78)<a aria-label='You must be signed in to star a repository' class='tooltipped tooltipped-sw btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' />
+	[21] (969,78)<span >Star />
+	[22] (979,78)<span >0 />
+[23] (27,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected' href='/tdgamesvn/tdgames_billing' id='code-tab' />
+	[24] (31,121)<span >Code />
+[25] (59,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/issues' id='issues-tab' />
+	[26] (64,121)<span >Issues />
+[27] (101,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/pulls' id='pull-requests-tab' />
+	[28] (106,121)<span >Pull requests />
+[29] (145,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/actions' id='actions-tab' />
+	[30] (150,121)<span >Actions />
+[31] (183,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/projects' id='projects-tab' />
+	[32] (188,121)<span >Projects />
+[33] (221,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/security' id='security-tab' />
+	[34] (226,121)<span >Security />
+[35] (260,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/pulse' id='insights-tab' />
+	[36] (265,121)<span >Insights />
+[37] (13,164)<button class='prc-Button-ButtonBase-9n-Xk position-relative ExpandFileTreeButton-module__expandButton__hDOcv fgColor-muted prc-Button-IconButton-fyge7' />
+Files
+[38] (55,201)<button aria-label='main branch' class='prc-Button-ButtonBase-9n-Xk react-repos-tree-pane-ref-selector width-full ref-selector-class RefSelectorAnchoredOverlay-module__RefSelectorOverlayBtn__a3WK3' id='ref-picker-repos-header-ref-selector' />
+	[39] (55,201)<span  />
+		[40] (50,201)<span  />
+			[41] (50,201)<div  />
+				[42] (14,201)<div  />
+				[43] (26,201)<div  />
+					[44] (26,200)<span >main />
+[45] (113,201)<button class='prc-Button-ButtonBase-9n-Xk SearchButton-module__IconButton__SBlqu prc-Button-IconButton-fyge7' />
+[46] (63,231)<span  />
+	[47] (13,231)<span  />
+	[48] (66,231)<input aria-label='Go to file' class='prc-components-Input-IwWrt' placeholder='Go to file' role='combobox' />
+[49] (63,696)<div class='ReposFileTreePane-module__Box_5__Zy_o6' scrollable='true' />
+	[50] (60,823)<div  />
+		[51] (60,265)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='.github-item' role='treeitem' />
+			[52] (60,265)<div  />
+				[53] (9,265)<div  />
+				[54] (63,265)<div  />
+					[55] (19,265)<div  />
+						[56] (19,265)<div  />
+					[57] (67,265)<span  />
+						[58] (33,265)<span >.github />
+		[59] (60,290)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='Sepay_API_Document-item' role='treeitem' />
+			[60] (60,290)<div  />
+				[61] (9,290)<div  />
+				[62] (63,290)<div  />
+					[63] (19,290)<div  />
+						[64] (19,290)<div  />
+					[65] (67,290)<span  />
+						[66] (51,289)<span >Sepay_API_Document />
+		[67] (60,586)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps-item' role='treeitem' />
+			[68] (60,315)<div  />
+				[69] (9,315)<div  />
+				[70] (63,315)<div  />
+					[71] (19,314)<div  />
+						[72] (19,314)<div  />
+					[73] (67,315)<span  />
+						[74] (31,314)<span >apps />
+			[75] (60,339)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/attendance-item' role='treeitem' />
+				[76] (60,339)<div  />
+					[77] (8,339)<div  />
+						[78] (8,339)<div  />
+							[79] (8,339)<div  />
+					[80] (13,339)<div  />
+					[81] (64,339)<div  />
+						[82] (22,339)<div  />
+							[83] (22,339)<div  />
+						[84] (69,339)<span  />
+							[85] (42,339)<span >attendance />
+			[86] (60,364)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/crm-item' role='treeitem' />
+				[87] (60,364)<div  />
+					[88] (8,364)<div  />
+						[89] (8,364)<div  />
+							[90] (8,364)<div  />
+					[91] (13,364)<div  />
+					[92] (64,364)<div  />
+						[93] (22,364)<div  />
+							[94] (22,364)<div  />
+						[95] (69,364)<span  />
+							[96] (33,363)<span >crm />
+			[97] (60,389)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/dashboard-item' role='treeitem' />
+				[98] (60,389)<div  />
+					[99] (8,389)<div  />
+						[100] (8,389)<div  />
+							[101] (8,389)<div  />
+					[102] (13,389)<div  />
+					[103] (64,389)<div  />
+						[104] (22,388)<div  />
+							[105] (22,388)<div  />
+						[106] (69,389)<span  />
+							[107] (41,388)<span >dashboard />
+			[108] (60,413)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/expense-item' role='treeitem' />
+				[109] (60,413)<div  />
+					[110] (8,413)<div  />
+						[111] (8,413)<div  />
+							[112] (8,413)<div  />
+					[113] (13,413)<div  />
+					[114] (64,413)<div  />
+						[115] (22,413)<div  />
+							[116] (22,413)<div  />
+						[117] (69,413)<span  />
+							[118] (38,413)<span >expense />
+			[119] (60,598)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/hr-item' role='treeitem' />
+				[120] (60,438)<div  />
+					[121] (8,438)<div  />
+						[122] (8,438)<div  />
+							[123] (8,438)<div  />
+					[124] (13,438)<div  />
+					[125] (64,438)<div  />
+						[126] (22,438)<div  />
+							[127] (22,438)<div  />
+						[128] (69,438)<span  />
+							[129] (31,437)<span >hr />
+				[130] (60,586)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/hr/components-item' role='treeitem' />
+					[131] (60,463)<div  />
+						[132] (9,463)<div  />
+							[133] (9,463)<div  />
+								[134] (8,463)<div  />
+								[135] (11,463)<div  />
+						[136] (16,463)<div  />
+						[137] (66,463)<div  />
+							[138] (25,462)<div  />
+								[139] (25,462)<div  />
+							[140] (70,463)<span  />
+								[141] (46,462)<span >components />
+					[142] (60,487)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/hr/components/ContractGenerator.tsx-item' role='treeitem' />
+						[143] (60,487)<div  />
+							[144] (11,487)<div  />
+								[145] (11,487)<div  />
+									[146] (8,487)<div  />
+									[147] (11,487)<div  />
+									[148] (14,487)<div  />
+							[149] (67,487)<div  />
+								[150] (28,487)<div  />
+								[151] (72,487)<span  />
+									[152] (61,487)<span >ContractGenerator.tsx />
+					[153] (60,512)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/hr/components/DepartmentManager.tsx-item' role='treeitem' />
+						[154] (60,512)<div  />
+							[155] (11,512)<div  />
+								[156] (11,512)<div  />
+									[157] (8,512)<div  />
+									[158] (11,512)<div  />
+									[159] (14,512)<div  />
+							[160] (67,512)<div  />
+								[161] (28,512)<div  />
+								[162] (72,512)<span  />
+									[163] (64,511)<span >DepartmentManager.tsx />
+					[164] (60,537)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/hr/components/DocumentManager.tsx-item' role='treeitem' />
+						[165] (60,537)<div  />
+							[166] (11,537)<div  />
+								[167] (11,537)<div  />
+									[168] (8,537)<div  />
+									[169] (11,537)<div  />
+									[170] (14,537)<div  />
+							[171] (67,537)<div  />
+								[172] (28,536)<div  />
+								[173] (72,537)<span  />
+									[174] (62,536)<span >DocumentManager.tsx />
+					[175] (60,561)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/hr/components/EmployeeDetail.tsx-item' role='treeitem' />
+						[176] (60,561)<div  />
+							[177] (11,561)<div  />
+								[178] (11,561)<div  />
+									[179] (8,561)<div  />
+									[180] (11,561)<div  />
+									[181] (14,561)<div  />
+							[182] (67,561)<div  />
+								[183] (28,561)<div  />
+								[184] (72,561)<span  />
+									[185] (57,561)<span >EmployeeDetail.tsx />
+					[186] (60,586)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/hr/components/EmployeeForm.tsx-item' role='treeitem' />
+						[187] (60,586)<div  />
+							[188] (11,586)<div  />
+								[189] (11,586)<div  />
+									[190] (8,586)<div  />
+									[191] (11,586)<div  />
+									[192] (14,586)<div  />
+							[193] (67,586)<div  />
+								[194] (28,586)<div  />
+								[195] (72,586)<span  />
+									[196] (56,585)<span >EmployeeForm.tsx />
+					[197] (60,611)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/hr/components/EmployeeList.tsx-item' role='treeitem' />
+						[198] (60,611)<div  />
+							[199] (11,611)<div  />
+								[200] (11,611)<div  />
+									[201] (8,611)<div  />
+									[202] (11,611)<div  />
+									[203] (14,611)<div  />
+							[204] (67,611)<div  />
+								[205] (28,610)<div  />
+								[206] (72,611)<span  />
+									[207] (54,610)<span >EmployeeList.tsx />
+					[208] (60,635)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/hr/components/HrApp.tsx-item' role='treeitem' />
+						[209] (60,635)<div  />
+							[210] (11,635)<div  />
+								[211] (11,635)<div  />
+									[212] (8,635)<div  />
+									[213] (11,635)<div  />
+									[214] (14,635)<div  />
+							[215] (67,635)<div  />
+								[216] (28,635)<div  />
+								[217] (72,635)<span  />
+									[218] (46,635)<span >HrApp.tsx />
+					[219] (60,660)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/hr/components/QuickAddEmployee.tsx-item' role='treeitem' />
+						[220] (60,660)<div  />
+							[221] (11,660)<div  />
+								[222] (11,660)<div  />
+									[223] (8,660)<div  />
+									[224] (11,660)<div  />
+									[225] (14,660)<div  />
+							[226] (67,660)<div  />
+								[227] (28,660)<div  />
+								[228] (72,660)<span  />
+									[229] (62,659)<span >QuickAddEmployee.tsx />
+					[230] (60,685)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/hr/components/ReminderDashboard.tsx-item' role='treeitem' />
+						[231] (60,685)<div  />
+							[232] (11,685)<div  />
+								[233] (11,685)<div  />
+									[234] (8,685)<div  />
+									[235] (11,685)<div  />
+									[236] (14,685)<div  />
+							[237] (67,685)<div  />
+								[238] (28,684)<div  />
+								[239] (72,685)<span  />
+									[240] (63,684)<span >ReminderDashboard.tsx />
+					[241] (60,709)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/hr/components/SalaryComponentManager.tsx-item' role='treeitem' />
+						[242] (60,709)<div  />
+							[243] (11,709)<div  />
+								[244] (11,709)<div  />
+									[245] (8,709)<div  />
+									[246] (11,709)<div  />
+									[247] (14,709)<div  />
+							[248] (67,709)<div  />
+								[249] (28,709)<div  />
+								[250] (72,709)<span  />
+									[251] (71,709)<span >SalaryComponentManager.tsx />
+				[252] (60,734)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/hr/hooks-item' role='treeitem' />
+					[253] (60,734)<div  />
+						[254] (9,734)<div  />
+							[255] (9,734)<div  />
+								[256] (8,734)<div  />
+								[257] (11,734)<div  />
+						[258] (16,734)<div  />
+						[259] (66,734)<div  />
+							[260] (25,734)<div  />
+								[261] (25,734)<div  />
+							[262] (70,734)<span  />
+								[263] (39,733)<span >hooks />
+				[264] (60,759)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/hr/services-item' role='treeitem' />
+					[265] (60,759)<div  />
+						[266] (9,759)<div  />
+							[267] (9,759)<div  />
+								[268] (8,759)<div  />
+								[269] (11,759)<div  />
+						[270] (16,759)<div  />
+						[271] (66,759)<div  />
+							[272] (25,758)<div  />
+								[273] (25,758)<div  />
+							[274] (70,759)<span  />
+								[275] (41,758)<span >services />
+			[276] (60,783)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice-item' role='treeitem' />
+				[277] (60,783)<div  />
+					[278] (8,783)<div  />
+						[279] (8,783)<div  />
+							[280] (8,783)<div  />
+					[281] (13,783)<div  />
+					[282] (64,783)<div  />
+						[283] (22,783)<div  />
+							[284] (22,783)<div  />
+						[285] (69,783)<span  />
+							[286] (37,783)<span >invoice />
+			[287] (60,808)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/payroll-item' role='treeitem' />
+				[288] (60,808)<div  />
+					[289] (8,808)<div  />
+						[290] (8,808)<div  />
+							[291] (8,808)<div  />
+					[292] (13,808)<div  />
+					[293] (64,808)<div  />
+						[294] (22,808)<div  />
+							[295] (22,808)<div  />
+						[296] (69,808)<span  />
+							[297] (36,807)<span >payroll />
+			[298] (60,832)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/portal-item' role='treeitem' />
+				[299] (60,832)<div  />
+					[300] (8,832)<div  />
+						[301] (8,832)<div  />
+							[302] (8,832)<div  />
+					[303] (13,832)<div  />
+					[304] (64,832)<div  />
+						[305] (22,832)<div  />
+							[306] (22,832)<div  />
+						[307] (69,832)<span  />
+							[308] (35,832)<span >portal />
+			[309] (60,857)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/workforce-item' role='treeitem' />
+				[310] (60,857)<div  />
+					[311] (8,857)<div  />
+						[312] (8,857)<div  />
+							[313] (8,857)<div  />
+					[314] (13,857)<div  />
+					[315] (64,857)<div  />
+						[316] (22,857)<div  />
+							[317] (22,857)<div  />
+						[318] (69,857)<span  />
+							[319] (40,857)<span >workforce />
+		[320] (60,882)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='components-item' role='treeitem' />
+			[321] (60,882)<div  />
+				[322] (9,882)<div  />
+				[323] (63,882)<div  />
+					[324] (19,882)<div  />
+						[325] (19,882)<div  />
+					[326] (67,882)<span  />
+						[327] (40,881)<span >components />
+		[328] (60,906)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='config-item' role='treeitem' />
+			[329] (60,906)<div  />
+				[330] (9,906)<div  />
+				[331] (63,906)<div  />
+					[332] (19,906)<div  />
+						[333] (19,906)<div  />
+					[334] (67,906)<span  />
+						[335] (33,906)<span >config />
+		[336] (60,931)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='hop_dong_nhan_su-item' role='treeitem' />
+			[337] (60,931)<div  />
+				[338] (9,931)<div  />
+				[339] (63,931)<div  />
+					[340] (19,931)<div  />
+						[341] (19,931)<div  />
+					[342] (67,931)<span  />
+						[343] (48,931)<span >hop_dong_nhan_su />
+		[344] (60,956)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='public-item' role='treeitem' />
+			[345] (60,956)<div  />
+				[346] (9,956)<div  />
+				[347] (63,956)<div  />
+					[348] (19,956)<div  />
+						[349] (19,956)<div  />
+					[350] (67,956)<span  />
+						[351] (32,955)<span >public />
+		[352] (60,980)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='services-item' role='treeitem' />
+			[353] (60,980)<div  />
+				[354] (9,980)<div  />
+				[355] (63,980)<div  />
+					[356] (19,980)<div  />
+						[357] (19,980)<div  />
+					[358] (67,980)<span  />
+						[359] (34,980)<span >services />
+		src
+[360] (125,640)<div aria-label='Draggable pane splitter' class='prc-PageLayout-DraggableHandle-9s6B4' role='slider' />
+Breadcrumbs
+[361] (154,164)<a class='Breadcrumb-module__repoLink__O2Nbs prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/tree/main'>tdgames_billing />
+/
+[362] (192,164)<a class='Breadcrumb-module__directoryLink__kQy_t prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/tree/main/apps'>apps />
+/
+[363] (210,164)<a class='Breadcrumb-module__directoryLink__kQy_t prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/tree/main/apps/hr'>hr />
+/
+[364] (239,164)<a class='Breadcrumb-module__directoryLink__kQy_t prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/tree/main/apps/hr/components'>components />
+/
+HrApp.tsx
+[365] (301,164)<button class='prc-Button-ButtonBase-9n-Xk ml-2 prc-Button-IconButton-fyge7' />
+[366] (988,164)<button class='prc-Button-ButtonBase-9n-Xk js-blob-dropdown-click NavigationMenu-module__IconButton__HpX3G prc-Button-IconButton-fyge7' id='_R_96dajal1d_' />
+Latest commit
+History
+[367] (975,206)<a class='prc-Button-ButtonBase-9n-Xk d-none d-lg-flex LinkButton-module__linkButton__nFnov flex-items-center fgColor-default' href='/tdgamesvn/tdgames_billing/commits/main/apps/hr/components/HrApp.tsx' />
+	[368] (975,206)<span  />
+		[369] (979,206)<span  />
+			[370] (979,206)<span >History />
+File metadata and controls
+[371] (146,253)<button class='prc-SegmentedControl-Button-E48xz' />
+	[372] (146,253)<span  />
+		[373] (146,253)<div >Code />
+[374] (171,253)<button class='prc-SegmentedControl-Button-E48xz' />
+	[375] (171,253)<span  />
+		[376] (171,253)<div >Blame />
+163 lines (145 loc) · 5.58 KB
+[377] (924,253)<a class='prc-Button-ButtonBase-9n-Xk LinkButton-module__linkButton__nFnov BlobViewHeader-module__LinkButton__X9kx2' href='https://github.com/tdgamesvn/tdgames_billing/raw/refs/heads/main/apps/hr/components/HrApp.tsx' />
+	[378] (924,253)<span  />
+		[379] (924,253)<span >Raw />
+[380] (936,253)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' />
+[381] (947,253)<button class='prc-Button-ButtonBase-9n-Xk BlobViewHeader-module__downloadButton__ef459 prc-Button-IconButton-fyge7' />
+[382] (971,253)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' id='_r_6b_' />
+[383] (985,253)<button class='prc-Button-ButtonBase-9n-Xk BlobViewHeader-module__IconButton_2__RyjZg prc-Button-IconButton-fyge7' id='symbols-button' />
+[384] (152,285)<div >1 />
+[385] (152,300)<div >2 />
+[386] (152,315)<div >3 />
+[387] (152,331)<div >4 />
+[388] (152,346)<div >5 />
+[389] (152,361)<div >6 />
+[390] (152,377)<div >7 />
+[391] (152,392)<div >8 />
+[392] (152,407)<div >9 />
+[393] (151,422)<div >10 />
+[394] (151,438)<div >11 />
+[395] (151,453)<div >12 />
+[396] (151,468)<div >13 />
+[397] (151,484)<div >14 />
+	[398] (160,485)<div aria-label='Collapse code section' class='LineNumber-module__codeFoldingChevron__sY2Yt' role='button' />
+[399] (151,499)<div >15 />
+[400] (151,514)<div >16 />
+[401] (151,530)<div >17 />
+[402] (151,545)<div >18 />
+[403] (151,560)<div >19 />
+[404] (151,576)<div >20 />
+[405] (151,591)<div >21 />
+[406] (151,606)<div >22 />
+[407] (151,622)<div >23 />
+[408] (151,637)<div >24 />
+[409] (151,652)<div >25 />
+[410] (151,668)<div >26 />
+[411] (151,683)<div >27 />
+[412] (151,698)<div >28 />
+[413] (151,714)<div >29 />
+[414] (151,729)<div >30 />
+[415] (151,744)<div >31 />
+[416] (151,760)<div >32 />
+[417] (151,775)<div >33 />
+[418] (151,790)<div >34 />
+[419] (151,806)<div >35 />
+[420] (151,821)<div >36 />
+[421] (151,836)<div >37 />
+[422] (151,852)<div >38 />
+[423] (151,867)<div >39 />
+[424] (151,882)<div >40 />
+[425] (151,898)<div >41 />
+[426] (151,913)<div >42 />
+[427] (151,928)<div >43 />
+	[428] (160,929)<div aria-label='Collapse code section' class='LineNumber-module__codeFoldingChevron__sY2Yt' role='button' />
+[429] (151,944)<div >44 />
+[430] (151,959)<div >45 />
+[431] (151,974)<div >46 />
+[432] (151,990)<div >47 />
+48
+import
+React
+from
+'react'
+;
+import
+AppBackground
+from
+'@/components/AppBackground'
+;
+import
+{
+AccountUser
+}
+from
+'@/types'
+;
+import
+{
+ToastNotification
+}
+from
+'@/components/ToastNotification'
+;
+import
+{
+Navbar
+}
+from
+'@/apps/invoice/components/Navbar'
+;
+import
+{
+useHrState
+,
+HrTab
+}
+from
+'../hooks/useHrState'
+;
+import
+EmployeeList
+from
+'./EmployeeList'
+;
+import
+EmployeeForm
+from
+'./EmployeeForm'
+;
+import
+EmployeeDetail
+from
+'./EmployeeDetail'
+;
+import
+DepartmentManager
+from
+'./DepartmentManager'
+;
+import
+ReminderDashboard
+from
+'./ReminderDashboard'
+;
+import
+QuickAddEmployee
+from
+'./QuickAddEmployee'
+;
+interface
+HrAppProps
+{
+currentUser
+:
+AccountUser
+;
+onBack
+:
+(
+)
+=>
+void
+;
+initialTab
+?:
+string
+|
+null
+;
+}
+const
+TAB_MAP
+:
+Record
+<
+HrTab
+,
+string
+>
+=
+{
+employees
+:
+'history'
+,
+employeeForm
+:
+'edit'
+,
+employeeDetail
+:
+'recurring'
+,
+departments
+:
+'activity'
+,
+reminders
+:
+'dashboard'
+,
+quickAdd
+:
+'edit'
+,
+}
+;
+const
+TAB_LABELS
+:
+Record
+<
+string
+,
+string
+>
+=
+{
+history
+:
+'Nhân sự'
+,
+edit
+:
+'Thêm/Sửa'
+,
+activity
+:
+'Phòng ban'
+,
+dashboard
+:
+'Nhắc việc'
+,
+}
+;
+const
+REVERSE_TAB
+:
+Record
+<
+string
+,
+HrTab
+>
+=
+{
+history
+:
+'employees'
+,
+edit
+:
+'employeeForm'
+,
+activity
+:
+'departments'
+,
+dashboard
+:
+'reminders'
+,
+}
+;
+const
+HrApp
+:
+React
+.
+FC
+<
+HrAppProps
+>
+=
+(
+{
+currentUser
+,
+onBack
+,
+initialTab
+}
+)
+=>
+{
+const
+state
+=
+useHrState
+(
+initialTab
+)
+;
+const
+navbarTab
+=
+TAB_MAP
+[
+state
+.
+activeTab
+]
+;
+
+</current_dom>

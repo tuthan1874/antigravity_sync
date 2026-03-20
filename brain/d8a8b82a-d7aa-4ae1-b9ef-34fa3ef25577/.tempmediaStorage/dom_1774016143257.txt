@@ -1,0 +1,958 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Skip to content
+Navigation Menu
+[0] (19,28)<a aria-label='Homepage' class='tmp-mr-lg-3 color-fg-inherit flex-order-2 js-prevent-focus-on-mobile-nav' href='/' />
+[1] (50,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Platform />
+[2] (89,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Solutions />
+[3] (129,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Resources />
+[4] (175,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Open Source />
+[5] (221,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Enterprise />
+[6] (254,28)<a class='NavLink-module__link__EG3d4 MarketingNavigation-module__navLink__hUomM' href='https://github.com/pricing' />
+	[7] (254,28)<span >Pricing />
+[8] (844,28)<button aria-label='Search or jump to…' class='header-search-button placeholder input-button form-control d-flex flex-1 flex-self-stretch flex-items-center no-wrap width-full py-0 pl-2 pr-0 text-left border-0 box-shadow-none' placeholder='Search or jump to...' />
+	[9] (788,28)<div  />
+	[10] (844,28)<span >Search or jump to... />
+	[11] (902,28)<div  />
+[12] (924,28)<a class='HeaderMenu-link HeaderMenu-link--sign-in HeaderMenu-button flex-shrink-0 no-underline d-none d-lg-inline-flex border border-lg-0 rounded px-2 py-1' href='/login?return_to=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Ftdgames_billing%2Fblob%2Fmain%2Fapps%2Finvoice%2Fcomponents%2FNavbar.tsx'>Sign in />
+[13] (956,28)<a class='HeaderMenu-link HeaderMenu-link--sign-up HeaderMenu-button flex-shrink-0 d-flex d-lg-inline-flex no-underline border color-border-default rounded px-2 py-1' href='/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fblob%2Fshow&source=header-repo&source_repo=tdgamesvn%2Ftdgames_billing'>Sign up />
+[14] (981,28)<button class='Button Button--iconOnly Button--invisible Button--medium AppHeader-button HeaderMenu-link border' id='icon-button-1fc525c8-6916-4c43-acdd-3ff4cb5f0162' />
+[15] (41,79)<a class='url fn' href='/tdgamesvn'>tdgamesvn />
+/
+[16] (94,79)<a href='/tdgamesvn/tdgames_billing'>tdgames_billing />
+Public
+[17] (881,78)<a aria-label='You must be signed in to change notification settings' class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' id='repository-details-watch-button'>Notifications />
+[18] (926,78)<a class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' id='fork-button'>Fork />
+	[19] (937,78)<span >0 />
+[20] (968,78)<a aria-label='You must be signed in to star a repository' class='tooltipped tooltipped-sw btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' />
+	[21] (969,78)<span >Star />
+	[22] (979,78)<span >0 />
+[23] (27,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected' href='/tdgamesvn/tdgames_billing' id='code-tab' />
+	[24] (31,121)<span >Code />
+[25] (59,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/issues' id='issues-tab' />
+	[26] (64,121)<span >Issues />
+[27] (101,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/pulls' id='pull-requests-tab' />
+	[28] (106,121)<span >Pull requests />
+[29] (145,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/actions' id='actions-tab' />
+	[30] (150,121)<span >Actions />
+[31] (183,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/projects' id='projects-tab' />
+	[32] (188,121)<span >Projects />
+[33] (221,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/security' id='security-tab' />
+	[34] (226,121)<span >Security />
+[35] (260,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/pulse' id='insights-tab' />
+	[36] (265,121)<span >Insights />
+[37] (13,164)<button class='prc-Button-ButtonBase-9n-Xk position-relative ExpandFileTreeButton-module__expandButton__hDOcv fgColor-muted prc-Button-IconButton-fyge7' />
+Files
+[38] (55,201)<button aria-label='main branch' class='prc-Button-ButtonBase-9n-Xk react-repos-tree-pane-ref-selector width-full ref-selector-class RefSelectorAnchoredOverlay-module__RefSelectorOverlayBtn__a3WK3' id='ref-picker-repos-header-ref-selector' />
+	[39] (55,201)<span  />
+		[40] (50,201)<span  />
+			[41] (50,201)<div  />
+				[42] (14,201)<div  />
+				[43] (26,201)<div  />
+					[44] (26,200)<span >main />
+[45] (113,201)<button class='prc-Button-ButtonBase-9n-Xk SearchButton-module__IconButton__SBlqu prc-Button-IconButton-fyge7' />
+[46] (63,231)<span  />
+	[47] (13,231)<span  />
+	[48] (66,231)<input aria-label='Go to file' class='prc-components-Input-IwWrt' placeholder='Go to file' role='combobox' />
+[49] (63,697)<div class='ReposFileTreePane-module__Box_5__Zy_o6' scrollable='true' />
+	[50] (60,795)<div  />
+		.github
+		Sepay_API_Document
+		[51] (60,557)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps-item' role='treeitem' />
+			[52] (60,274)<div  />
+				[53] (9,274)<div  />
+				[54] (63,274)<div  />
+					[55] (19,274)<div  />
+						[56] (19,274)<div  />
+					[57] (67,274)<span  />
+						[58] (31,273)<span >apps />
+			[59] (60,298)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/attendance-item' role='treeitem' />
+				[60] (60,298)<div  />
+					[61] (8,298)<div  />
+						[62] (8,298)<div  />
+							[63] (8,298)<div  />
+					[64] (13,298)<div  />
+					[65] (64,298)<div  />
+						[66] (22,298)<div  />
+							[67] (22,298)<div  />
+						[68] (69,298)<span  />
+							[69] (42,298)<span >attendance />
+			[70] (60,323)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/crm-item' role='treeitem' />
+				[71] (60,323)<div  />
+					[72] (8,323)<div  />
+						[73] (8,323)<div  />
+							[74] (8,323)<div  />
+					[75] (13,323)<div  />
+					[76] (64,323)<div  />
+						[77] (22,323)<div  />
+							[78] (22,323)<div  />
+						[79] (69,323)<span  />
+							[80] (33,323)<span >crm />
+			[81] (60,348)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/dashboard-item' role='treeitem' />
+				[82] (60,348)<div  />
+					[83] (8,348)<div  />
+						[84] (8,348)<div  />
+							[85] (8,348)<div  />
+					[86] (13,348)<div  />
+					[87] (64,348)<div  />
+						[88] (22,348)<div  />
+							[89] (22,348)<div  />
+						[90] (69,348)<span  />
+							[91] (41,347)<span >dashboard />
+			[92] (60,372)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/expense-item' role='treeitem' />
+				[93] (60,372)<div  />
+					[94] (8,372)<div  />
+						[95] (8,372)<div  />
+							[96] (8,372)<div  />
+					[97] (13,372)<div  />
+					[98] (64,372)<div  />
+						[99] (22,372)<div  />
+							[100] (22,372)<div  />
+						[101] (69,372)<span  />
+							[102] (38,372)<span >expense />
+			[103] (60,397)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/hr-item' role='treeitem' />
+				[104] (60,397)<div  />
+					[105] (8,397)<div  />
+						[106] (8,397)<div  />
+							[107] (8,397)<div  />
+					[108] (13,397)<div  />
+					[109] (64,397)<div  />
+						[110] (22,397)<div  />
+							[111] (22,397)<div  />
+						[112] (69,397)<span  />
+							[113] (31,397)<span >hr />
+			[114] (60,594)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice-item' role='treeitem' />
+				[115] (60,422)<div  />
+					[116] (8,422)<div  />
+						[117] (8,422)<div  />
+							[118] (8,422)<div  />
+					[119] (13,422)<div  />
+					[120] (64,422)<div  />
+						[121] (22,422)<div  />
+							[122] (22,422)<div  />
+						[123] (69,422)<span  />
+							[124] (37,421)<span >invoice />
+				[125] (60,582)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components-item' role='treeitem' />
+					[126] (60,446)<div  />
+						[127] (9,446)<div  />
+							[128] (9,446)<div  />
+								[129] (8,446)<div  />
+								[130] (11,446)<div  />
+						[131] (16,446)<div  />
+						[132] (66,446)<div  />
+							[133] (25,446)<div  />
+								[134] (25,446)<div  />
+							[135] (70,446)<span  />
+								[136] (46,446)<span >components />
+					[137] (60,471)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/ActivityLogTab.tsx-item' role='treeitem' />
+						[138] (60,471)<div  />
+							[139] (11,471)<div  />
+								[140] (11,471)<div  />
+									[141] (8,471)<div  />
+									[142] (11,471)<div  />
+									[143] (14,471)<div  />
+							[144] (67,471)<div  />
+								[145] (28,471)<div  />
+								[146] (72,471)<span  />
+									[147] (56,471)<span >ActivityLogTab.tsx />
+					[148] (60,496)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/DashboardTab.tsx-item' role='treeitem' />
+						[149] (60,496)<div  />
+							[150] (11,496)<div  />
+								[151] (11,496)<div  />
+									[152] (8,496)<div  />
+									[153] (11,496)<div  />
+									[154] (14,496)<div  />
+							[155] (67,496)<div  />
+								[156] (28,496)<div  />
+								[157] (72,496)<span  />
+									[158] (56,495)<span >DashboardTab.tsx />
+					[159] (60,520)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/EInvoiceModals.tsx-item' role='treeitem' />
+						[160] (60,520)<div  />
+							[161] (11,520)<div  />
+								[162] (11,520)<div  />
+									[163] (8,520)<div  />
+									[164] (11,520)<div  />
+									[165] (14,520)<div  />
+							[166] (67,520)<div  />
+								[167] (28,520)<div  />
+								[168] (72,520)<span  />
+									[169] (57,520)<span >EInvoiceModals.tsx />
+					[170] (60,545)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/EmailModal.tsx-item' role='treeitem' />
+						[171] (60,545)<div  />
+							[172] (11,545)<div  />
+								[173] (11,545)<div  />
+									[174] (8,545)<div  />
+									[175] (11,545)<div  />
+									[176] (14,545)<div  />
+							[177] (67,545)<div  />
+								[178] (28,545)<div  />
+								[179] (72,545)<span  />
+									[180] (52,545)<span >EmailModal.tsx />
+					[181] (60,570)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/FilterBar.tsx-item' role='treeitem' />
+						[182] (60,570)<div  />
+							[183] (11,570)<div  />
+								[184] (11,570)<div  />
+									[185] (8,570)<div  />
+									[186] (11,570)<div  />
+									[187] (14,570)<div  />
+							[188] (67,570)<div  />
+								[189] (28,570)<div  />
+								[190] (72,570)<span  />
+									[191] (48,569)<span >FilterBar.tsx />
+					[192] (60,594)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/HistoryTab.tsx-item' role='treeitem' />
+						[193] (60,594)<div  />
+							[194] (11,594)<div  />
+								[195] (11,594)<div  />
+									[196] (8,594)<div  />
+									[197] (11,594)<div  />
+									[198] (14,594)<div  />
+							[199] (67,594)<div  />
+								[200] (28,594)<div  />
+								[201] (72,594)<span  />
+									[202] (51,594)<span >HistoryTab.tsx />
+					[203] (60,619)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/InvoiceApp.tsx-item' role='treeitem' />
+						[204] (60,619)<div  />
+							[205] (11,619)<div  />
+								[206] (11,619)<div  />
+									[207] (8,619)<div  />
+									[208] (11,619)<div  />
+									[209] (14,619)<div  />
+							[210] (67,619)<div  />
+								[211] (28,619)<div  />
+								[212] (72,619)<span  />
+									[213] (52,619)<span >InvoiceApp.tsx />
+					[214] (60,644)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/InvoiceEditor.tsx-item' role='treeitem' />
+						[215] (60,644)<div  />
+							[216] (11,644)<div  />
+								[217] (11,644)<div  />
+									[218] (8,644)<div  />
+									[219] (11,644)<div  />
+									[220] (14,644)<div  />
+							[221] (67,644)<div  />
+								[222] (28,644)<div  />
+								[223] (72,644)<span  />
+									[224] (54,643)<span >InvoiceEditor.tsx />
+					[225] (60,668)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/InvoicePreview.tsx-item' role='treeitem' />
+						[226] (60,668)<div  />
+							[227] (11,668)<div  />
+								[228] (11,668)<div  />
+									[229] (8,668)<div  />
+									[230] (11,668)<div  />
+									[231] (14,668)<div  />
+							[232] (67,668)<div  />
+								[233] (28,668)<div  />
+								[234] (72,668)<span  />
+									[235] (56,668)<span >InvoicePreview.tsx />
+					[236] (60,693)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/Navbar.tsx-item' role='treeitem' />
+						[237] (60,693)<div  />
+							[238] (11,693)<div  />
+								[239] (11,693)<div  />
+									[240] (8,693)<div  />
+									[241] (11,693)<div  />
+									[242] (14,693)<div  />
+							[243] (67,693)<div  />
+								[244] (28,693)<div  />
+								[245] (72,693)<span  />
+									[246] (47,693)<span >Navbar.tsx />
+					[247] (60,718)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/components/RecurringTab.tsx-item' role='treeitem' />
+						[248] (60,718)<div  />
+							[249] (11,718)<div  />
+								[250] (11,718)<div  />
+									[251] (8,718)<div  />
+									[252] (11,718)<div  />
+									[253] (14,718)<div  />
+							[254] (67,718)<div  />
+								[255] (28,718)<div  />
+								[256] (72,718)<span  />
+									[257] (54,717)<span >RecurringTab.tsx />
+				[258] (60,742)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/hooks-item' role='treeitem' />
+					[259] (60,742)<div  />
+						[260] (9,742)<div  />
+							[261] (9,742)<div  />
+								[262] (8,742)<div  />
+								[263] (11,742)<div  />
+						[264] (16,742)<div  />
+						[265] (66,742)<div  />
+							[266] (25,742)<div  />
+								[267] (25,742)<div  />
+							[268] (70,742)<span  />
+								[269] (39,742)<span >hooks />
+				[270] (60,767)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/invoice/services-item' role='treeitem' />
+					[271] (60,767)<div  />
+						[272] (9,767)<div  />
+							[273] (9,767)<div  />
+								[274] (8,767)<div  />
+								[275] (11,767)<div  />
+						[276] (16,767)<div  />
+						[277] (66,767)<div  />
+							[278] (25,767)<div  />
+								[279] (25,767)<div  />
+							[280] (70,767)<span  />
+								[281] (41,767)<span >services />
+			[282] (60,792)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/payroll-item' role='treeitem' />
+				[283] (60,792)<div  />
+					[284] (8,792)<div  />
+						[285] (8,792)<div  />
+							[286] (8,792)<div  />
+					[287] (13,792)<div  />
+					[288] (64,792)<div  />
+						[289] (22,792)<div  />
+							[290] (22,792)<div  />
+						[291] (69,792)<span  />
+							[292] (36,791)<span >payroll />
+			[293] (60,816)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/portal-item' role='treeitem' />
+				[294] (60,816)<div  />
+					[295] (8,816)<div  />
+						[296] (8,816)<div  />
+							[297] (8,816)<div  />
+					[298] (13,816)<div  />
+					[299] (64,816)<div  />
+						[300] (22,816)<div  />
+							[301] (22,816)<div  />
+						[302] (69,816)<span  />
+							[303] (35,816)<span >portal />
+			[304] (60,841)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='apps/workforce-item' role='treeitem' />
+				[305] (60,841)<div  />
+					[306] (8,841)<div  />
+						[307] (8,841)<div  />
+							[308] (8,841)<div  />
+					[309] (13,841)<div  />
+					[310] (64,841)<div  />
+						[311] (22,841)<div  />
+							[312] (22,841)<div  />
+						[313] (69,841)<span  />
+							[314] (40,841)<span >workforce />
+		[315] (60,866)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='components-item' role='treeitem' />
+			[316] (60,866)<div  />
+				[317] (9,866)<div  />
+				[318] (63,866)<div  />
+					[319] (19,866)<div  />
+						[320] (19,866)<div  />
+					[321] (67,866)<span  />
+						[322] (40,865)<span >components />
+		[323] (60,890)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='config-item' role='treeitem' />
+			[324] (60,890)<div  />
+				[325] (9,890)<div  />
+				[326] (63,890)<div  />
+					[327] (19,890)<div  />
+						[328] (19,890)<div  />
+					[329] (67,890)<span  />
+						[330] (33,890)<span >config />
+		[331] (60,915)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='hop_dong_nhan_su-item' role='treeitem' />
+			[332] (60,915)<div  />
+				[333] (9,915)<div  />
+				[334] (63,915)<div  />
+					[335] (19,915)<div  />
+						[336] (19,915)<div  />
+					[337] (67,915)<span  />
+						[338] (48,915)<span >hop_dong_nhan_su />
+		[339] (60,940)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='public-item' role='treeitem' />
+			[340] (60,940)<div  />
+				[341] (9,940)<div  />
+				[342] (63,940)<div  />
+					[343] (19,940)<div  />
+						[344] (19,940)<div  />
+					[345] (67,940)<span  />
+						[346] (32,939)<span >public />
+		[347] (60,964)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='services-item' role='treeitem' />
+			[348] (60,964)<div  />
+				[349] (9,964)<div  />
+				[350] (63,964)<div  />
+					[351] (19,964)<div  />
+						[352] (19,964)<div  />
+					[353] (67,964)<span  />
+						[354] (34,964)<span >services />
+		[355] (60,989)<li class='PRIVATE_TreeView-item prc-TreeView-TreeViewItem-Ter5f' id='src-item' role='treeitem' />
+			[356] (60,989)<div  />
+				[357] (9,989)<div  />
+				[358] (63,989)<div  />
+					[359] (19,989)<div  />
+						[360] (19,989)<div  />
+					[361] (67,989)<span  />
+						[362] (28,989)<span >src />
+[363] (125,640)<div aria-label='Draggable pane splitter' class='prc-PageLayout-DraggableHandle-9s6B4' role='slider' />
+Breadcrumbs
+[364] (154,164)<a class='Breadcrumb-module__repoLink__O2Nbs prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/tree/main'>tdgames_billing />
+/
+[365] (192,164)<a class='Breadcrumb-module__directoryLink__kQy_t prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/tree/main/apps'>apps />
+/
+[366] (217,164)<a class='Breadcrumb-module__directoryLink__kQy_t prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/tree/main/apps/invoice'>invoice />
+/
+[367] (252,164)<a class='Breadcrumb-module__directoryLink__kQy_t prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/tree/main/apps/invoice/components'>components />
+/
+Navbar.tsx
+[368] (316,164)<button class='prc-Button-ButtonBase-9n-Xk ml-2 prc-Button-IconButton-fyge7' />
+[369] (988,164)<button class='prc-Button-ButtonBase-9n-Xk js-blob-dropdown-click NavigationMenu-module__IconButton__HpX3G prc-Button-IconButton-fyge7' id='_R_96dajal1d_' />
+Latest commit
+History
+[370] (975,206)<a class='prc-Button-ButtonBase-9n-Xk d-none d-lg-flex LinkButton-module__linkButton__nFnov flex-items-center fgColor-default' href='/tdgamesvn/tdgames_billing/commits/main/apps/invoice/components/Navbar.tsx' />
+	[371] (975,206)<span  />
+		[372] (979,206)<span  />
+			[373] (979,206)<span >History />
+File metadata and controls
+[374] (146,253)<button class='prc-SegmentedControl-Button-E48xz' />
+	[375] (146,253)<span  />
+		[376] (146,253)<div >Code />
+[377] (171,253)<button class='prc-SegmentedControl-Button-E48xz' />
+	[378] (171,253)<span  />
+		[379] (171,253)<div >Blame />
+102 lines (97 loc) · 5.97 KB
+[380] (924,253)<a class='prc-Button-ButtonBase-9n-Xk LinkButton-module__linkButton__nFnov BlobViewHeader-module__LinkButton__X9kx2' href='https://github.com/tdgamesvn/tdgames_billing/raw/refs/heads/main/apps/invoice/components/Navbar.tsx' />
+	[381] (924,253)<span  />
+		[382] (924,253)<span >Raw />
+[383] (936,253)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' />
+[384] (947,253)<button class='prc-Button-ButtonBase-9n-Xk BlobViewHeader-module__downloadButton__ef459 prc-Button-IconButton-fyge7' />
+[385] (971,253)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' id='_r_6f_' />
+[386] (985,253)<button class='prc-Button-ButtonBase-9n-Xk BlobViewHeader-module__IconButton_2__RyjZg prc-Button-IconButton-fyge7' id='symbols-button' />
+[387] (563,1065)<textarea aria-label='file content' class='react-blob-textarea react-blob-print-hide' id='read-only-cursor-text-area' scrollable='true' />
+[388] (563,1058)<div class='react-code-line-container CodeLines-module__scrollContainerHidden__g7TeZ' scrollable='true' />
+	[389] (152,285)<div >1 />
+	[390] (152,300)<div >2 />
+	[391] (152,315)<div >3 />
+	[392] (152,331)<div >4 />
+	[393] (152,346)<div >5 />
+		[394] (160,347)<div aria-label='Collapse code section' class='LineNumber-module__codeFoldingChevron__sY2Yt' role='button' />
+	[395] (152,361)<div >6 />
+	[396] (152,377)<div >7 />
+	[397] (152,392)<div >8 />
+	[398] (152,407)<div >9 />
+	[399] (151,422)<div >10 />
+	[400] (151,438)<div >11 />
+	[401] (151,453)<div >12 />
+	[402] (151,468)<div >13 />
+	[403] (151,484)<div >14 />
+	[404] (151,499)<div >15 />
+	[405] (151,514)<div >16 />
+	[406] (151,530)<div >17 />
+	[407] (151,545)<div >18 />
+	[408] (151,560)<div >19 />
+		[409] (160,561)<div aria-label='Collapse code section' class='LineNumber-module__codeFoldingChevron__sY2Yt' role='button' />
+	[410] (151,576)<div >20 />
+	[411] (151,591)<div >21 />
+	[412] (151,606)<div >22 />
+	[413] (151,622)<div >23 />
+	[414] (151,637)<div >24 />
+	[415] (151,652)<div >25 />
+	[416] (151,668)<div >26 />
+	[417] (151,683)<div >27 />
+	[418] (151,698)<div >28 />
+	[419] (151,714)<div >29 />
+	[420] (151,729)<div >30 />
+	[421] (151,744)<div >31 />
+	[422] (151,760)<div >32 />
+	[423] (151,775)<div >33 />
+	[424] (151,790)<div >34 />
+	[425] (151,806)<div >35 />
+	[426] (151,821)<div >36 />
+	[427] (151,836)<div >37 />
+	[428] (151,852)<div >38 />
+	[429] (151,867)<div >39 />
+	[430] (151,882)<div >40 />
+	[431] (151,898)<div >41 />
+	[432] (151,913)<div >42 />
+	[433] (151,928)<div >43 />
+	[434] (151,944)<div >44 />
+	[435] (151,959)<div >45 />
+	[436] (151,974)<div >46 />
+	47
+	48
+	import
+	React
+	from
+	'react'
+	;
+	import
+	{
+	AccountUser
+	}
+	from
+	'@/types'
+	;
+	import
+	{
+	ExchangeRateData
+	}
+	from
+	'../services/exchangeRateService'
+	;
+	interface
+	NavbarProps
+	{
+	theme
+	:
+	string
+	;
+	currentUser
+	:
+	AccountUser
+	;
+	activeTab
+	:
+	string
+	;
+	accessibleTabs
+	:
+	Array
+	<
+	'edit'
+	|
+	'preview'
+	|
+	'history'
+	|
+	'dashboard'
+	|
+	'activity'
+	|
+	'recurring'
+	|
+	'tasks'
+	|
+	'overview'
+	|
+	'settings'
+	|
+	'board'
+	|
+	string
+	>
+	;
+	onTabChange
+	:
+	(
+	tab
+	:
+	string
+	)
+	=>
+	void
+	;
+	onLogout
+	:
+	(
+	)
+	=>
+	void
+	;
+	vcbRate
+	?:
+	ExchangeRateData
+	|
+	null
+	;
+	vcbRateLoading
+	?:
+	boolean
+	;
+	onBack
+	?:
+	(
+	)
+	=>
+	void
+	;
+	appName
+	?:
+	string
+	;
+	tabLabels
+	?:
+	Record
+	<
+	string
+	,
+	string
+	>
+	;
+	}
+	export
+	const
+	Navbar
+	:
+	React
+	.
+	FC
+	<
+	NavbarProps
+	>
+	=
+	(
+	{
+	theme
+	,
+	currentUser
+	,
+	activeTab
+	,
+	accessibleTabs
+	,
+	onTabChange
+	,
+	onLogout
+	,
+	vcbRate
+	,
+	vcbRateLoading
+	,
+	onBack
+	,
+	appName
+	,
+	tabLabels
+	}
+	)
+	=>
+	(
+	<
+	nav
+	className
+	=
+	{
+	`h-20 sticky top-0 backdrop-blur-md border-b flex items-center justify-between px-6 md:px-12 z-50 transition-colors duration-300
+	${
+	theme
+	===
+	'dark'
+	?
+	'bg-[#0F0F0F]/95 border-primary/10'
+	:
+	'bg-white/95 border-gray-200 shadow-sm'
+	}
+	`
+	}
+	>
+	<
+	div
+	className
+	=
+	"flex items-center gap-3"
+	>
+	{
+	onBack
+	&&
+	(
+	<
+	button
+	onClick
+	=
+	{
+	onBack
+	}
+	title
+	=
+	"Back to Home"
+	className
+	=
+	{
+	`p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110
+	${
+	theme
+	===
+	'dark'
+	?
+	'text-neutral-medium hover:text-primary hover:bg-primary/10'
+	:
+	'text-gray-400 hover:text-orange-500 hover:bg-orange-50'
+	}
+	`
+	}
+	>
+	<
+	svg
+	className
+	=
+	"w-5 h-5"
+	fill
+	=
+	"none"
+	stroke
+	=
+	"currentColor"
+	viewBox
+	=
+	"0 0 24 24"
+	>
+	<
+	path
+	strokeLinecap
+	=
+	"round"
+	strokeLinejoin
+	=
+	"round"
+	strokeWidth
+	=
+	"2.5"
+	d
+	=
+	"M15 19l-7-7 7-7"
+	/>
+	</
+	svg
+	>
+	</
+	button
+	>
+	)
+	}
+	<
+	img
+	src
+	=
+	"https://pub-f0ef2ac3b67c4d4da2fe20c73ab57f83.r2.dev/logo_td.png"
+	alt
+	=
+	"Logo"
+	className
+	=
+	"w-10 h-10 object-contain"
+	/>
+	<
+	div
+	className
+	=
+	"flex flex-col"
+	>
+	<
+	span
+	className
+	=
+	{
+	`text-lg font-bold uppercase tracking-widest leading-none
+	${
+	theme
+	===
+	'dark'
+	?
+	'text-white'
+	:
+	'text-black'
+	}
+	`
+	}
+	>
+	TD Games
+	{
+	appName
+	||
+	'Billing'
+	}
+	</
+	span
+	>
+	</
+	div
+	>
+	{
+	/* VCB USD/VND Exchange Rate — only render when props are passed */
+	}
+	{
+	(
+	vcbRate
+	!==
+	undefined
+	||
+	vcbRateLoading
+	)
+	&&
+	(
+	<
+	div
+	className
+	=
+	{
+	`hidden md:flex items-center gap-2.5 ml-3 px-4 py-1.5 rounded-xl border
+	${
+	theme
+	===
+	'dark'
+	?
+	'bg-surface/60 border-primary/15'
+	:
+	'bg-gray-50 border-gray-200'
+	}
+	`
+	}
+	>
+	<
+	div
+	className
+	=
+	"flex items-center gap-1"
+	>
+	<
+	span
+	className
+	=
+	"text-primary text-sm font-black"
+	>
+	USD
+	</
+	span
+	>
+	<
+	span
+	className
+	=
+	{
+	`text-[10px]
+	${
+	theme
+	===
+	'dark'
+	?
+	'text-neutral-medium'
+	:
+	'text-gray-400'
+	}
+	`
+	}
+	>
+	→
+	</
+	span
+	>
+	<
+	span
+	className
+	=
+	{
+	`text-sm font-black
+	${
+	theme
+	===
+	'dark'
+	?
+	'text-emerald-400'
+	:
+	'text-emerald-600'
+	}
+	`
+	}
+	>
+	VND
+	</
+	span
+	>
+	</
+	div
+	>
+	<
+	div
+	className
+	=
+	{
+	`w-px h-6
+	${
+	theme
+	===
+	'dark'
+	?
+	'bg-white/10'
+	:
+	'bg-gray-200'
+	}
+	`
+	}
+	/>
+	{
+	vcbRateLoading
+	?
+	(
+	<
+	span
+	className
+	=
+	"animate-pulse text-xs text-neutral-medium"
+	>
+	loading...
+	</
+	span
+	>
+	)
+	:
+	vcbRate
+	?
+	(
+	<
+	div
+	className
+	=
+	"flex flex-col items-end leading-none"
+	>
+	<
+	span
+	className
+	=
+	{
+	`text-sm font-black tabular-nums
+	${
+	theme
+	===
+	'dark'
+	?
+	'text-white'
+	:
+	'text-black'
+	}
+	`
+	}
+	>
+	{
+	vcbRate
+	.
+	sell
+	.
+	toLocaleString
+	(
+	'vi-VN'
+	)
+	}
+	<
+	span
+	className
+	=
+	{
+	`text-[9px] font-bold
+	${
+	theme
+	===
+	'dark'
+	?
+	'text-neutral-medium'
+	:
+	'text-gray-400'
+	}
+	`
+	}
+	>
+	₫
+	</
+	span
+	>
+	</
+	span
+	>
+	<
+	span
+	className
+	=
+	{
+	`text-[8px] font-bold uppercase tracking-wider mt-0.5
+	${
+	theme
+	===
+	'dark'
+	?
+	'text-neutral-medium'
+	:
+	'text-gray-400'
+	}
+	`
+	}
+	>
+[437] (563,994)<div class='CodeLines-module__scrollBarContainer__fsxaw' scrollable='true' />
+
+</current_dom>

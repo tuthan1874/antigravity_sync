@@ -1,0 +1,15 @@
+# Task: Check for "Thêm nhanh" button in production
+
+## Plan:
+1. Navigate to `https://app.tdgamestudio.com/#hr`. [DONE]
+2. Get the DOM to see if "Thêm nhanh" button is present. [DONE - Button MISSING]
+3. Run JavaScript to search scripts for "Thêm nhanh" and "quickAdd". [DONE - Strings MISSING in bundle]
+4. Capture screenshot of the UI. [DONE]
+5. Provide findings to the user. [PENDING]
+
+## Findings:
+- The "Thêm nhanh" button (green with ⚡) is not in the DOM.
+- The string "Thêm nhanh" and "quickAdd" are not present in the main bundle `assets/index-DI_w37Nl.js`.
+- The emoji ⚡ is only found in the context of "Task mới" for the "Nhắc việc" tab.
+- This confirms the code for "Quick Add" is not included in the current production deployment.
+- The version in the footer is `v2.1`.

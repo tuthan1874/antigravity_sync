@@ -1,0 +1,172 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Skip to content
+Navigation Menu
+[0] (19,28)<a aria-label='Homepage' class='tmp-mr-lg-3 color-fg-inherit flex-order-2 js-prevent-focus-on-mobile-nav' href='/' />
+[1] (50,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Platform />
+[2] (89,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Solutions />
+[3] (129,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Resources />
+[4] (175,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Open Source />
+[5] (221,28)<button class='NavDropdown-module__button__PEHWX js-details-target'>Enterprise />
+[6] (254,28)<a class='NavLink-module__link__EG3d4 MarketingNavigation-module__navLink__hUomM' href='https://github.com/pricing' />
+	[7] (254,28)<span >Pricing />
+[8] (838,28)<button aria-label='Search or jump to…' class='header-search-button placeholder input-button form-control d-flex flex-1 flex-self-stretch flex-items-center no-wrap width-full py-0 pl-2 pr-0 text-left border-0 box-shadow-none' placeholder='Search or jump to...' />
+	[9] (782,28)<div  />
+	[10] (838,28)<span >Search or jump to... />
+	[11] (896,28)<div  />
+[12] (918,28)<a class='HeaderMenu-link HeaderMenu-link--sign-in HeaderMenu-button flex-shrink-0 no-underline d-none d-lg-inline-flex border border-lg-0 rounded px-2 py-1' href='/login?return_to=https%3A%2F%2Fgithub.com%2Ftdgamesvn%2Ftdgames_billing%2Fblob%2Fmain%2F.github%2Fworkflows%2Fdeploy.yml'>Sign in />
+[13] (950,28)<a class='HeaderMenu-link HeaderMenu-link--sign-up HeaderMenu-button flex-shrink-0 d-flex d-lg-inline-flex no-underline border color-border-default rounded px-2 py-1' href='/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fblob%2Fshow&source=header-repo&source_repo=tdgamesvn%2Ftdgames_billing'>Sign up />
+[14] (975,28)<button class='Button Button--iconOnly Button--invisible Button--medium AppHeader-button HeaderMenu-link border' id='icon-button-c54cfed9-afc2-4d2e-b7bc-1a1c6599e517' />
+[15] (41,79)<a class='url fn' href='/tdgamesvn'>tdgamesvn />
+/
+[16] (94,79)<a href='/tdgamesvn/tdgames_billing'>tdgames_billing />
+Public
+[17] (875,78)<a aria-label='You must be signed in to change notification settings' class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' id='repository-details-watch-button'>Notifications />
+[18] (920,78)<a class='btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' id='fork-button'>Fork />
+	[19] (931,78)<span >0 />
+[20] (962,78)<a aria-label='You must be signed in to star a repository' class='tooltipped tooltipped-sw btn-sm btn' href='/login?return_to=%2Ftdgamesvn%2Ftdgames_billing' />
+	[21] (963,78)<span >Star />
+	[22] (973,78)<span >0 />
+[23] (27,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected' href='/tdgamesvn/tdgames_billing' id='code-tab' />
+	[24] (31,121)<span >Code />
+[25] (59,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/issues' id='issues-tab' />
+	[26] (64,121)<span >Issues />
+[27] (101,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/pulls' id='pull-requests-tab' />
+	[28] (106,121)<span >Pull requests />
+[29] (145,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/actions' id='actions-tab' />
+	[30] (150,121)<span >Actions />
+[31] (183,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/projects' id='projects-tab' />
+	[32] (188,121)<span >Projects />
+[33] (221,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/security' id='security-tab' />
+	[34] (226,121)<span >Security />
+[35] (260,121)<a class='UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item' href='/tdgamesvn/tdgames_billing/pulse' id='insights-tab' />
+	[36] (265,121)<span >Insights />
+[37] (13,164)<button class='prc-Button-ButtonBase-9n-Xk position-relative ExpandFileTreeButton-module__expandButton__hDOcv ExpandFileTreeButton-module__filesButtonBreakpoint__zEvz3 fgColor-muted prc-Button-IconButton-fyge7' />
+[38] (42,164)<button aria-label='main branch' class='prc-Button-ButtonBase-9n-Xk ref-selector-class RefSelectorAnchoredOverlay-module__RefSelectorOverlayBtn__a3WK3' id='ref-picker-repos-header-ref-selector-wide' />
+	[39] (42,164)<span  />
+		[40] (38,164)<span  />
+			[41] (38,164)<div  />
+				[42] (30,164)<div  />
+				[43] (42,164)<div  />
+					[44] (42,164)<span >main />
+Breadcrumbs
+[45] (91,164)<a class='Breadcrumb-module__repoLink__O2Nbs prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/tree/main'>tdgames_billing />
+/
+[46] (132,164)<a class='Breadcrumb-module__directoryLink__kQy_t prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/tree/main/.github'>.github />
+/
+[47] (165,164)<a class='Breadcrumb-module__directoryLink__kQy_t prc-Link-Link-9ZwDx' href='/tdgamesvn/tdgames_billing/tree/main/.github/workflows'>workflows />
+/
+deploy.yml
+[48] (227,164)<button class='prc-Button-ButtonBase-9n-Xk ml-2 prc-Button-IconButton-fyge7' />
+[49] (865,164)<a class='prc-Button-ButtonBase-9n-Xk' href='/tdgamesvn/tdgames_billing/actions/workflows/deploy.yml' />
+	[50] (865,164)<span  />
+		[51] (865,164)<span >View Runs />
+[52] (929,164)<span  />
+	[53] (894,164)<span  />
+	[54] (932,164)<input aria-label='Go to file' class='prc-components-Input-IwWrt' placeholder='Go to file' role='combobox' />
+[55] (982,164)<button class='prc-Button-ButtonBase-9n-Xk js-blob-dropdown-click NavigationMenu-module__IconButton__HpX3G prc-Button-IconButton-fyge7' id='_R_96dajal1d_' />
+Latest commit
+History
+[56] (969,206)<a class='prc-Button-ButtonBase-9n-Xk d-none d-lg-flex LinkButton-module__linkButton__nFnov flex-items-center fgColor-default' href='/tdgamesvn/tdgames_billing/commits/main/.github/workflows/deploy.yml' />
+	[57] (969,206)<span  />
+		[58] (973,206)<span  />
+			[59] (973,206)<span >History />
+File metadata and controls
+[60] (21,253)<button class='prc-SegmentedControl-Button-E48xz' />
+	[61] (21,253)<span  />
+		[62] (21,253)<div >Code />
+[63] (45,253)<button class='prc-SegmentedControl-Button-E48xz' />
+	[64] (45,253)<span  />
+		[65] (45,253)<div >Blame />
+27 lines (25 loc) · 746 Bytes
+[66] (942,253)<a class='prc-Button-ButtonBase-9n-Xk LinkButton-module__linkButton__nFnov BlobViewHeader-module__LinkButton__X9kx2' href='https://github.com/tdgamesvn/tdgames_billing/raw/refs/heads/main/.github/workflows/deploy.yml' />
+	[67] (942,253)<span  />
+		[68] (942,253)<span >Raw />
+[69] (955,253)<button class='prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7' />
+[70] (965,253)<button class='prc-Button-ButtonBase-9n-Xk BlobViewHeader-module__downloadButton__ef459 prc-Button-IconButton-fyge7' />
+[71] (979,253)<button class='prc-Button-ButtonBase-9n-Xk BlobViewHeader-module__IconButton_2__RyjZg prc-Button-IconButton-fyge7' id='symbols-button' />
+[72] (27,285)<div >1 />
+[73] (27,300)<div >2 />
+[74] (27,315)<div >3 />
+[75] (27,331)<div >4 />
+[76] (27,346)<div >5 />
+[77] (27,361)<div >6 />
+[78] (27,377)<div >7 />
+[79] (27,392)<div >8 />
+[80] (27,407)<div >9 />
+[81] (26,422)<div >10 />
+[82] (26,438)<div >11 />
+[83] (26,453)<div >12 />
+[84] (26,468)<div >13 />
+[85] (26,484)<div >14 />
+[86] (26,499)<div >15 />
+[87] (26,514)<div >16 />
+[88] (26,530)<div >17 />
+[89] (26,545)<div >18 />
+[90] (26,560)<div >19 />
+[91] (26,576)<div >20 />
+[92] (26,591)<div >21 />
+[93] (26,606)<div >22 />
+[94] (26,622)<div >23 />
+[95] (26,637)<div >24 />
+[96] (26,652)<div >25 />
+[97] (26,668)<div >26 />
+[98] (26,683)<div >27 />
+name
+:
+🚀 Deploy to VPS
+on
+:
+push
+:
+branches
+:
+[main]
+jobs
+:
+deploy
+:
+name
+:
+Deploy Invoice App
+runs-on
+:
+ubuntu-latest
+steps
+:
+-
+name
+:
+🔐 SSH & Deploy
+uses
+:
+appleboy/ssh-action@v1
+with
+:
+host
+:
+${{ secrets.VPS_HOST }}
+username
+:
+${{ secrets.VPS_USER }}
+key
+:
+${{ secrets.VPS_SSH_KEY }}
+port
+:
+${{ secrets.VPS_PORT || 22 }}
+script
+:
+|
+cd /opt/td-games-invoice-app
+echo "📥 Pulling latest code..."
+git pull origin main
+echo "📦 Installing dependencies..."
+npm install --production=false
+echo "🔨 Building..."
+npm run build
+echo "✅ Deploy completed at $(date)"
+
+</current_dom>
