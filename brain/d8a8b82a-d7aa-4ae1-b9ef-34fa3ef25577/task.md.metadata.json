@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_TASK",
-  "summary": "Task checklist for fixing invite flow (PKCE detection), Navbar tab overflow, and email template customization.",
-  "updatedAt": "2026-03-20T11:28:50.386527300Z",
-  "version": "3"
+  "summary": "Task checklist for fixing invite onboarding flow and adding HR management actions (re-invite, reset password).",
+  "updatedAt": "2026-03-20T15:02:50.816126600Z",
+  "version": "4"
 }
