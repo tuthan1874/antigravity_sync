@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough of fixes applied: PKCE invite flow detection in App.tsx, Navbar overflow fix, and instructions for customizing Supabase email template to avoid spam.",
-  "updatedAt": "2026-03-20T11:30:00.509347400Z",
-  "version": "1"
+  "summary": "Session progress summary for the invite flow fixes, mandatory profile completion, HR admin actions (re-invite/reset password), deploy script fix, and pending items to test.",
+  "updatedAt": "2026-03-20T17:14:52.326065500Z",
+  "version": "2"
 }

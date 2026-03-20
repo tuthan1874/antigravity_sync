@@ -1,11 +1,26 @@
-# Fix Invite Onboarding & HR Actions
+# Invite Flow & HR Admin — Task Checklist
 
-- [x] Fix invite email not sending (edge function 500 error)
-- [x] Fix re-invite for deleted employees (auth user cleanup)
-- [x] Metadata-driven password detection (App.tsx)
+## Onboarding Flow
+- [x] Metadata-driven invite detection (`invited_at` + `password_set`)
 - [x] SetPasswordScreen marks `password_set: true`
-- [x] ProfileCompletionScreen after password setup
-- [/] Make profile completion mandatory (no skip)
-- [ ] Add "Gửi lại Invite" button per employee in HR
-- [ ] Add "Reset Password" button per employee in HR
-- [ ] Commit & push to deploy
+- [x] ProfileCompletionScreen — mandatory, no skip
+- [x] Grouped into 4 sections (cá nhân, CCCD, ngân hàng, thuế/BH)
+- [x] Avatar required (120×120 square)
+- [x] Single viewport desktop layout, responsive mobile
+- [x] F5 bypass fix — check profile from DB on every session load
+
+## HR Admin Actions
+- [x] `manage-employee-auth` edge function deployed
+- [x] `resendInvite()` + `resetEmployeePassword()` in hrService
+- [x] Re-invite + Reset Password buttons on EmployeeList
+- [x] Toast notifications wired via HrApp → EmployeeList
+
+## Deploy
+- [x] Fixed deploy.yml — git reset --hard with .env backup/restore
+- [x] All commits pushed to main
+
+## Pending
+- [ ] End-to-end test: invite → password → profile → app
+- [ ] Test re-invite and reset password from HR
+- [ ] Verify F5 bypass is fixed on production
+- [ ] Employee deletion → cleanup Auth user

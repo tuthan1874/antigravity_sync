@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_TASK",
-  "summary": "Task checklist for fixing invite onboarding flow and adding HR management actions (re-invite, reset password).",
-  "updatedAt": "2026-03-20T15:02:50.816126600Z",
-  "version": "4"
+  "summary": "Task checklist tracking invite flow fixes, profile completion, HR admin actions, deploy fixes, and pending test items.",
+  "updatedAt": "2026-03-20T17:14:52.332220900Z",
+  "version": "5"
 }
