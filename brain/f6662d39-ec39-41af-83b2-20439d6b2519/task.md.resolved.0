@@ -1,0 +1,6 @@
+# VFX Preview Tool
+
+- [ ] Build index scanner (`tools/build-index.js`)
+- [ ] Build static file server (`tools/server.js`)
+- [ ] Build preview web app (`tools/index.html`)
+- [ ] Test and verify

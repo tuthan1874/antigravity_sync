@@ -1,0 +1,11 @@
+# VFX Preview Verification Plan
+
+- [ ] Navigate to http://localhost:3456 and refresh.
+- [ ] Wait for gallery to load.
+- [ ] Take a screenshot of the gallery.
+- [ ] Hover over a sprite sequence card (e.g. "1001").
+- [ ] Wait 2-3 seconds and take a screenshot while hovering.
+- [ ] Hover over a Spine card (e.g. "chaofeng").
+- [ ] Wait 2-3 seconds and take a screenshot while hovering.
+- [ ] Click a sprite sequence card to open the preview modal.
+- [ ] Verify FPS defaults to 24 and take a screenshot.

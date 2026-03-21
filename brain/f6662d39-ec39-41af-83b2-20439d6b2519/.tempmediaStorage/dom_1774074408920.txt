@@ -1,0 +1,134 @@
+✨
+VFX Preview
+[0] (380,27)<input class='search-input' id='searchInput' placeholder='Tìm kiếm VFX... (ví dụ: bingdong, fire, haki)' />
+[1] (484,27)<button class='filter-btn active'>Tất cả />
+[2] (518,27)<button class='filter-btn'>🦴 Spine />
+[3] (556,27)<button class='filter-btn'>🎞️ Sprite />
+Hiển thị
+86
+/ 86  ·  🦴 35   🎞️ 51
+[4] (286,193)<div class='vfx-card' />
+	[5] (286,171)<div  />
+		[6] (286,171)<img  />
+		[7] (324,87)<div >Spine />
+	[8] (286,291)<div  />
+		[9] (286,285)<div >bingdong />
+		[10] (286,299)<div >bang · 3 textures />
+[11] (393,193)<div class='vfx-card' />
+	[12] (393,171)<div  />
+		[13] (393,171)<img  />
+		[14] (430,87)<div >Spine />
+	[15] (393,291)<div  />
+		[16] (393,285)<div >chaofeng />
+		[17] (393,299)<div >angry · 24 textures />
+[18] (500,193)<div class='vfx-card' />
+	[19] (500,171)<div  />
+		[20] (500,171)<img  />
+		[21] (537,87)<div >Spine />
+	[22] (500,291)<div  />
+		[23] (500,285)<div >citong />
+		[24] (500,299)<div >mat quy · 31 textures />
+[25] (607,193)<div class='vfx-card' />
+	[26] (607,171)<div  />
+		[27] (607,171)<img  />
+		[28] (644,87)<div >Spine />
+	[29] (607,291)<div  />
+		[30] (607,285)<div >counterAttack />
+		[31] (607,299)<div >cong xoay · 2 textures />
+[32] (714,193)<div class='vfx-card' />
+	[33] (714,171)<div  />
+		[34] (714,171)<img  />
+		[35] (751,87)<div >Spine />
+	[36] (714,291)<div  />
+		[37] (714,285)<div >effect_suonike />
+		[38] (714,299)<div >effect_suonike · 13 textures />
+[39] (286,447)<div class='vfx-card' />
+	[40] (286,425)<div  />
+		[41] (286,425)<img  />
+		[42] (324,340)<div >Spine />
+	[43] (286,545)<div  />
+		[44] (286,538)<div >effect_tongyong />
+		[45] (286,553)<div >fx khoi · 29 textures />
+[46] (393,447)<div class='vfx-card' />
+	[47] (393,425)<div  />
+		[48] (393,425)<img  />
+		[49] (430,340)<div >Spine />
+	[50] (393,545)<div  />
+		[51] (393,538)<div >fuhuo />
+		[52] (393,553)<div >hoi mau vang · 25 textures />
+[53] (500,447)<div class='vfx-card' />
+	[54] (500,425)<div  />
+		[55] (500,425)<img  />
+		[56] (537,340)<div >Spine />
+	[57] (500,545)<div  />
+		[58] (500,538)<div >hd />
+		[59] (500,553)<div >nang luong · 16 textures />
+[60] (607,447)<div class='vfx-card' />
+	[61] (607,425)<div  />
+		[62] (607,425)<img  />
+		[63] (644,340)<div >Spine />
+	[64] (607,545)<div  />
+		[65] (607,538)<div >huixue />
+		[66] (607,553)<div >hoi mau · 42 textures />
+[67] (714,447)<div class='vfx-card' />
+	[68] (714,425)<div  />
+		[69] (714,425)<img  />
+		[70] (751,340)<div >Spine />
+	[71] (714,545)<div  />
+		[72] (714,538)<div >hunluan />
+		[73] (714,553)<div >xoay · 2 textures />
+[74] (286,700)<div class='vfx-card' />
+	[75] (286,678)<div  />
+		[76] (286,678)<img  />
+		[77] (324,594)<div >Spine />
+	[78] (286,799)<div  />
+		[79] (286,792)<div >huoyanhudun />
+		[80] (286,806)<div >thien thach · 12 textures />
+[81] (393,700)<div class='vfx-card' />
+	[82] (393,678)<div  />
+		[83] (393,678)<img  />
+		[84] (430,594)<div >Spine />
+	[85] (393,799)<div  />
+		[86] (393,792)<div >jiancihudun />
+		[87] (393,806)<div >giap gai · 31 textures />
+[88] (500,700)<div class='vfx-card' />
+	[89] (500,678)<div  />
+		[90] (500,678)<img  />
+		[91] (537,594)<div >Spine />
+	[92] (500,799)<div  />
+		[93] (500,792)<div >kangfen />
+		[94] (500,806)<div >khi vang · 16 textures />
+[95] (607,700)<div class='vfx-card' />
+	[96] (607,678)<div  />
+		[97] (607,678)<img  />
+		[98] (644,594)<div >Spine />
+	[99] (607,799)<div  />
+		[100] (607,792)<div >mianshanghudun />
+		[101] (607,806)<div >guong · 26 textures />
+[102] (714,700)<div class='vfx-card' />
+	[103] (714,678)<div  />
+		[104] (714,678)<img  />
+		[105] (751,594)<div >Spine />
+	[106] (714,799)<div  />
+		[107] (714,792)<div >qusan />
+		[108] (714,806)<div >buff bling bling · 30 textures />
+[109] (286,954)<div class='vfx-card' />
+	[110] (286,932)<div  />
+		[111] (286,932)<img  />
+		[112] (324,848)<div >Spine />
+[113] (393,954)<div class='vfx-card' />
+	[114] (393,932)<div  />
+		[115] (393,932)<img  />
+		[116] (430,848)<div >Spine />
+[117] (500,954)<div class='vfx-card' />
+	[118] (500,932)<div  />
+		[119] (500,932)<img  />
+		[120] (537,848)<div >Spine />
+[121] (607,954)<div class='vfx-card' />
+	[122] (607,932)<div  />
+		[123] (607,932)<img  />
+		[124] (644,848)<div >Spine />
+[125] (714,954)<div class='vfx-card' />
+	[126] (714,932)<div  />
+		[127] (714,932)<img  />
+		[128] (751,848)<div >Spine />

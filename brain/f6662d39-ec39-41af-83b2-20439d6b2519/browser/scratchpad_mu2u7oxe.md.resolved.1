@@ -1,0 +1,14 @@
+# VFX Preview Verification Plan
+
+- [x] Navigate to http://localhost:3456 and refresh.
+- [x] Wait for gallery to load.
+- [x] Take a screenshot of the gallery.
+- [ ] Hover over a sprite sequence card (e.g. "1001").
+  - **Finding**: Hover doesn't seem to trigger any animation. JS source shows missing `startHoverPreview` logic.
+- [ ] Hover over a Spine card (e.g. "chaofeng").
+  - **Finding**: Same as above.
+- [x] Click a sprite sequence card to open the preview modal.
+- [x] Verify FPS defaults to 24 and take a screenshot.
+  - **Finding**: FPS still defaults to 15. JS source shows `let animFps = 15;`.
+
+**Summary**: The requested changes (Hover Preview and 24 FPS default) are NOT present in the currently running app, despite the planner's claim.

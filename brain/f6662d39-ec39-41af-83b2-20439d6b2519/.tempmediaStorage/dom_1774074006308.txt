@@ -1,0 +1,121 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+✨
+VFX Preview
+[0] (380,27)<input class='search-input' id='searchInput' placeholder='Tìm kiếm VFX... (ví dụ: bingdong, fire, haki)' />
+[1] (484,27)<button class='filter-btn'>Tất cả />
+[2] (518,27)<button class='filter-btn'>🦴 Spine />
+[3] (556,27)<button class='filter-btn active'>🎞️ Sprite />
+Hiển thị
+51
+/ 86  ·  🦴 0   🎞️ 51
+[4] (286,193)<div class='vfx-card' />
+	[5] (286,171)<div  />
+		[6] (286,171)<img  />
+		[7] (322,87)<div >Sprite />
+	[8] (286,291)<div  />
+		[9] (286,285)<div >Skill 1001 />
+		[10] (286,299)<div >3 phases · 90 frames />
+[11] (393,193)<div class='vfx-card' />
+	[12] (393,171)<div  />
+		[13] (429,87)<div >Sprite />
+	[14] (393,291)<div  />
+		[15] (393,285)<div >Skill 1002 />
+		[16] (393,299)<div >3 phases · 98 frames />
+[17] (500,193)<div class='vfx-card' />
+	[18] (500,171)<div  />
+		[19] (536,87)<div >Sprite />
+	[20] (500,291)<div  />
+		[21] (500,285)<div >Skill 1003 />
+		[22] (500,299)<div >4 phases · 107 frames />
+[23] (607,193)<div class='vfx-card' />
+	[24] (607,171)<div  />
+		[25] (643,87)<div >Sprite />
+	[26] (607,291)<div  />
+		[27] (607,285)<div >Skill 1004 />
+		[28] (607,299)<div >7 phases · 378 frames />
+[29] (714,193)<div class='vfx-card' />
+	[30] (714,171)<div  />
+		[31] (750,87)<div >Sprite />
+	[32] (714,291)<div  />
+		[33] (714,285)<div >Skill 1005 />
+		[34] (714,299)<div >5 phases · 181 frames />
+[35] (286,447)<div class='vfx-card' />
+	[36] (286,425)<div  />
+		[37] (322,340)<div >Sprite />
+	[38] (286,545)<div  />
+		[39] (286,538)<div >Skill 1006 />
+		[40] (286,553)<div >4 phases · 157 frames />
+[41] (393,447)<div class='vfx-card' />
+	[42] (393,425)<div  />
+		[43] (429,340)<div >Sprite />
+	[44] (393,545)<div  />
+		[45] (393,538)<div >Skill 1007 />
+		[46] (393,553)<div >2 phases · 103 frames />
+[47] (500,447)<div class='vfx-card' />
+	[48] (500,425)<div  />
+		[49] (536,340)<div >Sprite />
+	[50] (500,545)<div  />
+		[51] (500,538)<div >Skill 1008 />
+		[52] (500,553)<div >4 phases · 138 frames />
+[53] (607,447)<div class='vfx-card' />
+	[54] (607,425)<div  />
+		[55] (643,340)<div >Sprite />
+	[56] (607,545)<div  />
+		[57] (607,538)<div >Skill 1009 />
+		[58] (607,553)<div >2 phases · 74 frames />
+[59] (714,447)<div class='vfx-card' />
+	[60] (714,425)<div  />
+		[61] (750,340)<div >Sprite />
+	[62] (714,545)<div  />
+		[63] (714,538)<div >Skill 1010 />
+		[64] (714,553)<div >6 phases · 214 frames />
+[65] (286,700)<div class='vfx-card' />
+	[66] (286,678)<div  />
+		[67] (322,594)<div >Sprite />
+	[68] (286,799)<div  />
+		[69] (286,792)<div >Skill 1011 />
+		[70] (286,806)<div >6 phases · 300 frames />
+[71] (393,700)<div class='vfx-card' />
+	[72] (393,678)<div  />
+		[73] (429,594)<div >Sprite />
+	[74] (393,799)<div  />
+		[75] (393,792)<div >Skill 1012 />
+		[76] (393,806)<div >4 phases · 152 frames />
+[77] (500,700)<div class='vfx-card' />
+	[78] (500,678)<div  />
+		[79] (536,594)<div >Sprite />
+	[80] (500,799)<div  />
+		[81] (500,792)<div >Skill 1013 />
+		[82] (500,806)<div >2 phases · 86 frames />
+[83] (607,700)<div class='vfx-card' />
+	[84] (607,678)<div  />
+		[85] (643,594)<div >Sprite />
+	[86] (607,799)<div  />
+		[87] (607,792)<div >Skill 1014 />
+		[88] (607,806)<div >3 phases · 88 frames />
+[89] (714,700)<div class='vfx-card' />
+	[90] (714,678)<div  />
+		[91] (750,594)<div >Sprite />
+	[92] (714,799)<div  />
+		[93] (714,792)<div >Skill 1016 />
+		[94] (714,806)<div >2 phases · 76 frames />
+[95] (286,954)<div class='vfx-card' />
+	[96] (286,932)<div  />
+		[97] (322,848)<div >Sprite />
+[98] (393,954)<div class='vfx-card' />
+	[99] (393,932)<div  />
+		[100] (429,848)<div >Sprite />
+[101] (500,954)<div class='vfx-card' />
+	[102] (500,932)<div  />
+		[103] (536,848)<div >Sprite />
+[104] (607,954)<div class='vfx-card' />
+	[105] (607,932)<div  />
+		[106] (643,848)<div >Sprite />
+[107] (714,954)<div class='vfx-card' />
+	[108] (714,932)<div  />
+		[109] (750,848)<div >Sprite />
+
+</current_dom>

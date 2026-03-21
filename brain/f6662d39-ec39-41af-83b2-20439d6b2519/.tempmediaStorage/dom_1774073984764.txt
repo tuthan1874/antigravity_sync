@@ -1,0 +1,140 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+✨
+VFX Preview
+[0] (380,27)<input class='search-input' id='searchInput' placeholder='Tìm kiếm VFX... (ví dụ: bingdong, fire, haki)' />
+[1] (484,27)<button class='filter-btn active'>Tất cả />
+[2] (518,27)<button class='filter-btn'>🦴 Spine />
+[3] (556,27)<button class='filter-btn'>🎞️ Sprite />
+Hiển thị
+86
+/ 86  ·  🦴 35   🎞️ 51
+[4] (286,137)<div  />
+	[5] (286,130)<div >renqi />
+	[6] (286,144)<div >khicam · 16 textures />
+[7] (393,137)<div  />
+	[8] (393,130)<div >shayibodong />
+	[9] (393,144)<div >red eyes · 32 textures />
+[10] (500,137)<div  />
+	[11] (500,130)<div >shenglinghudun />
+	[12] (500,144)<div >lachan · 16 textures />
+[13] (607,137)<div  />
+	[14] (607,130)<div >shihua />
+	[15] (607,144)<div >da · 2 textures />
+[16] (714,137)<div  />
+	[17] (714,130)<div >shufu />
+	[18] (714,144)<div >phong an · 31 textures />
+[19] (286,292)<div class='vfx-card' />
+	[20] (286,270)<div  />
+		[21] (286,270)<img  />
+		[22] (324,186)<div >Spine />
+	[23] (286,390)<div  />
+		[24] (286,384)<div >silie(chay mau />
+		[25] (286,398)<div >chaymau · 31 textures />
+[26] (393,292)<div class='vfx-card' />
+	[27] (393,270)<div  />
+		[28] (393,270)<img  />
+		[29] (430,186)<div >Spine />
+	[30] (393,390)<div  />
+		[31] (393,384)<div >sishenzhili( khi tim ) />
+		[32] (393,398)<div >khi tim · 16 textures />
+[33] (500,292)<div class='vfx-card' />
+	[34] (500,270)<div  />
+		[35] (500,270)<img  />
+		[36] (537,186)<div >Spine />
+	[37] (500,390)<div  />
+		[38] (500,384)<div >siwangyuzhao(trungdoc) />
+		[39] (500,398)<div >trungdoc · 17 textures />
+[40] (607,292)<div class='vfx-card' />
+	[41] (607,270)<div  />
+		[42] (607,270)<img  />
+		[43] (644,186)<div >Spine />
+	[44] (607,390)<div  />
+		[45] (607,384)<div >talousji(eff light ) />
+		[46] (607,398)<div >eff light · 1 textures />
+[47] (714,292)<div class='vfx-card' />
+	[48] (714,270)<div  />
+		[49] (714,270)<img  />
+		[50] (751,186)<div >Spine />
+	[51] (714,390)<div  />
+		[52] (714,384)<div >xiaoyuzhou( khi ) />
+		[53] (714,398)<div >khi xanh · 16 textures />
+[54] (286,546)<div class='vfx-card' />
+	[55] (286,524)<div  />
+		[56] (286,524)<img  />
+		[57] (324,439)<div >Spine />
+	[58] (286,644)<div  />
+		[59] (286,637)<div >xuanyun(choang) />
+		[60] (286,652)<div >choang · 13 textures />
+[61] (393,546)<div class='vfx-card' />
+	[62] (393,524)<div  />
+		[63] (393,524)<img  />
+		[64] (430,439)<div >Spine />
+	[65] (393,644)<div  />
+		[66] (393,637)<div >xuexingbaofa(no) />
+		[67] (393,652)<div >no · 18 textures />
+[68] (500,546)<div class='vfx-card' />
+	[69] (500,524)<div  />
+		[70] (500,524)<img  />
+		[71] (537,439)<div >Spine />
+	[72] (500,644)<div  />
+		[73] (500,637)<div >xuruo( tia tim ) />
+		[74] (500,652)<div >tia tim · 34 textures />
+[75] (607,546)<div class='vfx-card' />
+	[76] (607,524)<div  />
+		[77] (607,524)<img  />
+		[78] (644,439)<div >Spine />
+	[79] (607,644)<div  />
+		[80] (607,637)<div >yazhi(dan lua) />
+		[81] (607,652)<div >danlua · 13 textures />
+[82] (714,546)<div class='vfx-card' />
+	[83] (714,524)<div  />
+		[84] (714,524)<img  />
+		[85] (751,439)<div >Spine />
+	[86] (714,644)<div  />
+		[87] (714,637)<div >zaijuhecheng( energy focus ) />
+		[88] (714,652)<div >energy focus · 13 textures />
+[89] (286,799)<div class='vfx-card' />
+	[90] (286,777)<div  />
+		[91] (286,777)<img  />
+		[92] (324,693)<div >Spine />
+	[93] (286,897)<div  />
+		[94] (286,891)<div >zhanshenzhinu(haki) />
+		[95] (286,905)<div >haki · 16 textures />
+[96] (393,799)<div class='vfx-card' />
+	[97] (393,777)<div  />
+		[98] (393,777)<img  />
+		[99] (430,693)<div >Spine />
+	[100] (393,897)<div  />
+		[101] (393,891)<div >zhimingbingyuan(hatnhan) />
+		[102] (393,905)<div >hatnhan · 32 textures />
+[103] (500,799)<div class='vfx-card' />
+	[104] (500,777)<div  />
+		[105] (500,777)<img  />
+		[106] (537,693)<div >Spine />
+	[107] (500,897)<div  />
+		[108] (500,891)<div >zhongdu(baidoc) />
+		[109] (500,905)<div >baidoc · 31 textures />
+[110] (607,799)<div class='vfx-card' />
+	[111] (607,777)<div  />
+		[112] (607,777)<img  />
+		[113] (644,693)<div >Spine />
+	[114] (607,897)<div  />
+		[115] (607,891)<div >zhuisha(target />
+		[116] (607,905)<div >target · 8 textures />
+[117] (714,799)<div class='vfx-card' />
+	[118] (714,777)<div  />
+		[119] (714,777)<img  />
+		[120] (751,693)<div >Spine />
+	[121] (714,897)<div  />
+		[122] (714,891)<div >zhuoshao(lua) />
+		[123] (714,905)<div >lua · 31 textures />
+[124] (322,947)<div >Sprite />
+[125] (429,947)<div >Sprite />
+Sprite
+[126] (643,947)<div >Sprite />
+[127] (750,947)<div >Sprite />
+
+</current_dom>

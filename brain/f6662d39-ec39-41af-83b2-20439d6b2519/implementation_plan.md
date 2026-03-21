@@ -1,0 +1,49 @@
+# VFX Preview Tool
+
+Build a local web-based VFX preview/browser tool that lets you filter and preview all VFX assets in `f:\Source_Taobao\VFX`.
+
+## VFX Asset Analysis
+
+The directory contains **2 types** of VFX assets:
+
+| Type | Count | Files | Location |
+|------|-------|-------|----------|
+| **Spine Animations** | 35 folders | `.spine`, `.skel`, `.atlas`, `.png` | Root-level folders (e.g., `bingdong/`, `chaofeng/`) |
+| **Sprite Sequences** | 56 folders | Numbered PNG frames (`_0.png`, `_1.png`, ...) | `tx882+游戏技能特效序列图_VFX/游戏技能特效序列图/1001-1057/` |
+
+## Proposed Changes
+
+### [NEW] VFX Preview Web App
+
+A single-page HTML/CSS/JS app served locally via a simple static file server. The app will:
+
+1. **Scan & Index** — A Node.js script scans all VFX folders and generates a `vfx-index.json` manifest
+2. **Gallery View** — Grid of thumbnail cards for each VFX, showing the first frame or atlas PNG
+3. **Filtering** — Search bar + type filter (Spine / Sprite Sequence) to quickly find effects
+4. **Sprite Sequence Preview** — Click a card to play the PNG frame sequence as an animated preview (canvas-based frame animation)
+5. **Spine Preview** — For Spine assets, display the atlas PNG as a static preview (full Spine runtime playback requires the commercial Spine runtime library)
+
+#### Files:
+
+##### [NEW] `f:\Source_Taobao\VFX\tools\build-index.js`
+Node.js script that scans the VFX directory and generates `vfx-index.json` with metadata for each effect (name, type, file paths, frame count, thumbnail path).
+
+##### [NEW] `f:\Source_Taobao\VFX\tools\server.js`
+Simple Express/http static file server to serve the VFX files and the preview app locally.
+
+##### [NEW] `f:\Source_Taobao\VFX\tools\index.html`
+The main preview app — gallery grid with filtering, search, and animated preview player.
+
+> [!IMPORTANT]
+> **Spine Runtime**: Full Spine animation playback requires the official Spine runtime JS library (commercial license). The tool will show the atlas texture as a static preview for Spine effects. If you have a Spine runtime license, we can integrate it later.
+
+## Verification Plan
+
+### Browser Testing
+1. Run `node tools/build-index.js` to generate the index
+2. Run `node tools/server.js` to start the local server
+3. Open the app in browser and verify:
+   - All 35 Spine effects and 56 sprite sequence effects appear in the gallery
+   - Search/filter correctly narrows results
+   - Clicking a sprite sequence card plays the animation
+   - Spine effects show atlas texture preview
