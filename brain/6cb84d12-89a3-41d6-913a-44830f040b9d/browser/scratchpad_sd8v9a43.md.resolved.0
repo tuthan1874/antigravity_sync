@@ -1,0 +1,12 @@
+# Workforce App Verification - Company Selector
+
+## Task Checklist
+- [ ] Navigate to http://localhost:3000/#workforce/settlements
+- [ ] Find and click an existing settlement
+- [ ] Verify "TD Games" and "TD Consulting" buttons are present in detail view
+- [ ] Switch to "TD Consulting" and verify button state (pink/active)
+- [ ] Take screenshots of each step
+- [ ] Report results
+
+## Observations
+- No observations yet.
