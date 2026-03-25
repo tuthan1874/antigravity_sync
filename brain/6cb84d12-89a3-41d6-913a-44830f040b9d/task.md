@@ -26,7 +26,17 @@
 - [x] Update `App.tsx` routing for freelancer-portal
 - [x] Auto-navigate freelancer to portal on login
 
-## 7. Verification
+## 7. Quick Add Freelancer
+- [x] Add mode toggle (Nhân viên / Freelancer) to QuickAddEmployee
+- [x] Simplified freelancer form: name, email, specializations, level
+
+## 8. Email Safety & Auth Cleanup
+- [x] Cross-check email between fulltime `work_email` and freelancer `email`
+- [x] Auto-delete Auth user on HR employee deletion
+- [x] Edge function: add `delete` and `check_email` actions
+- [ ] **Deploy edge function** `create-employee-auth` (manual deploy required)
+
+## 9. Verification
 - [x] Vite production build passes
 - [ ] Deploy edge function & run DB migration
-- [ ] Create test freelancer user and test full flow
+- [ ] Test full flow: create → cross-check → delete → verify auth cleanup
