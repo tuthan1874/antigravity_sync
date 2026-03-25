@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Detailed analysis comparing the employee creation flow for fulltime, freelancer, and parttime types in the HR module. Documents the UI structure (EmployeeForm.tsx), service layer (hrService.ts), and state management (useHrState.ts). Identifies that freelancer and parttime currently share the same form section with identical treatment, and only differ in auth account creation. Includes a comparison table and mermaid flow diagram.",
+  "updatedAt": "2026-03-25T11:32:26.402699300Z"
+}
