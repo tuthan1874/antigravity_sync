@@ -1,0 +1,15 @@
+# Task: Verify Employee Form Changes
+
+## Progress Tracking
+- [ ] Verify Full-time employee form (default)
+- [ ] Verify Freelancer employee form
+    - [ ] Simpler (no photos, no temp address, no nationality)
+    - [ ] "Thông tin Freelancer" section visible
+    - [ ] "Email công việc" is optional
+    - [ ] No "Thông tin Fulltime"
+    - [ ] No salary structure
+    - [ ] No "Người phụ thuộc"
+    - [ ] CCCD is text-only
+- [ ] Verify Part-time employee form
+    - [ ] "Thông tin Part-time" section visible
+    - [ ] Salary structure visible

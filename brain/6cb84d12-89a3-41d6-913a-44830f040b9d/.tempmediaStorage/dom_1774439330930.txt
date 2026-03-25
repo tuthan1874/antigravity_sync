@@ -1,0 +1,61 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Chỉnh sửa nhân sự
+Cập nhật — Nguyễn Quang Huy (FL-002)
+Thông tin cơ bản
+[0] (336,166)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Họ tên
+* />
+[1] (336,195)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='Nguyễn Văn A' />
+[2] (500,166)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Loại nhân sự * />
+[3] (500,194)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[4] (664,166)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Trạng thái />
+[5] (664,194)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[6] (336,236)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Email cá nhân
+* />
+[7] (336,266)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='email.canhan@gmail.com' />
+[8] (500,236)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Email công việc
+* />
+[9] (500,266)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='ten@tdgamestudio.com' />
+[10] (664,236)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Số điện thoại
+* />
+[11] (664,266)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='0912 345 678' />
+[12] (336,307)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ngày sinh
+* />
+[13] (336,337)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[14] (500,307)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Giới tính
+* />
+[15] (500,336)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[16] (664,307)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Quốc tịch />
+[17] (664,336)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[18] (500,379)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Địa chỉ thường trú
+* />
+[19] (500,409)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='Số nhà, đường, quận, TP...' />
+[20] (500,450)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Địa chỉ tạm trú
+* />
+[21] (500,479)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='Nếu giống thường trú, điền lại' />
+🪪 CMND / CCCD & Ảnh nhân sự
+[22] (336,617)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Số CMND/CCCD
+* />
+[23] (336,646)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[24] (500,617)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ngày cấp
+* />
+[25] (500,647)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[26] (664,617)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Nơi cấp
+* />
+[27] (664,646)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+[28] (336,689)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ảnh nhân sự />
+[29] (336,853)<div  />
+	[30] (336,844)<span >👤 />
+	[31] (336,870)<span >Upload ảnh nhân sự />
+[32] (500,689)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>CCCD Mặt trước />
+[33] (500,796)<div  />
+	[34] (500,787)<span >📷 />
+	[35] (500,813)<span >Upload mặt trước />
+[36] (664,689)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>CCCD Mặt sau />
+[37] (664,796)<div  />
+	[38] (664,787)<span >📷 />
+	[39] (664,813)<span >Upload mặt sau />
+
+</current_dom>

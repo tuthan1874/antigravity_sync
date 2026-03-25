@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Plan to redesign the EmployeeForm.tsx to have a simplified freelancer form with only essential fields needed for internal records and outsource contracts (HĐKV). Separates freelancer from parttime which currently share the same section. Lists exact fields to keep/remove per type and updated validation logic.",
+  "updatedAt": "2026-03-25T11:45:25.510105600Z"
+}

@@ -1,0 +1,10 @@
+# Freelancer Form Redesign
+
+- [x] Nghiên cứu luồng tạo nhân sự hiện tại
+- [x] Phân tích fields cần giữ / bỏ cho freelancer
+- [/] Lên implementation plan
+- [ ] Sửa EmployeeForm.tsx — tách freelancer section, redesign layout
+- [ ] Cập nhật required fields validation cho freelancer
+- [ ] Conditional rendering các section theo type
+- [ ] Test trên browser — freelancer, fulltime, parttime
+- [ ] Tạo walkthrough
