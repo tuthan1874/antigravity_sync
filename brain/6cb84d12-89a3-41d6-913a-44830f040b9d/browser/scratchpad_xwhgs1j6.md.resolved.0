@@ -1,0 +1,16 @@
+# Freelancer Portal Testing Progress
+
+## Task List:
+- [ ] Navigate to HR Employee Form (http://localhost:3000/#hr/employeeForm)
+- [ ] Select "Freelancer" / "Cộng tác viên"
+- [ ] Fill in test data:
+    - Họ tên: Test Freelancer Portal
+    - Email cá nhân: testfreelancer.portal@gmail.com
+    - Chức danh: Game VFX Artist
+    - Chuyên môn: Unity VFX, Spine Animation
+- [ ] Submit the form
+- [ ] Verify success toast notification
+- [ ] Check console logs for "[Auth] Freelancer invite"
+
+## Extracted Data:
+- None

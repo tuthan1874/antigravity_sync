@@ -1,0 +1,10 @@
+# Task: Verify Freelancer Flow Implementation
+
+## Checklist
+- [ ] Open login page and login with `dangtrin4@gmail.com`
+- [ ] Verify HomeScreen and app grid (Screenshot needed)
+- [ ] Verify FreelancerPortalApp route `http://localhost:3001/#freelancer-portal` (Screenshot needed)
+- [ ] Verify HR app and freelancer form `http://localhost:3001/#hr` (Screenshot needed)
+
+## Findings
+- (Empty)

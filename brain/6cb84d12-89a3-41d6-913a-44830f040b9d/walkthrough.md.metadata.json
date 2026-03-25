@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Documents the freelancer form redesign changes, including what was modified, what was tested, and the verification results with screenshots.",
-  "updatedAt": "2026-03-25T11:52:43.553436Z"
+  "summary": "Walkthrough documenting the Freelancer Portal implementation: auth/role changes, portal app with Dashboard/Tasks/Settlements/Profile, invite flow via personal email, role-aware profile completion, and deployment steps needed.",
+  "updatedAt": "2026-03-25T14:32:28.416472Z",
+  "version": "1"
 }

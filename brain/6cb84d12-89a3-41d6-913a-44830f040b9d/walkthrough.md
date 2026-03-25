@@ -1,41 +1,57 @@
-# Walkthrough: Freelancer Form Redesign
+# Freelancer Portal — Walkthrough
 
-## Thay đổi
+## Tổng kết
 
-File sửa: [EmployeeForm.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/components/EmployeeForm.tsx)
+Đã triển khai đầy đủ Freelancer Portal cho phép freelancer đăng nhập, hoàn thiện hồ sơ, và xem tasks/nghiệm thu/dashboard thu nhập.
 
-### 1. Tách biệt 3 loại nhân sự
-- **Freelancer**: form gọn ~15 fields, tập trung vào thông tin cần cho HĐKV
-- **Parttime**: tách khỏi freelancer, có phòng ban + salary structure (giống fulltime)
-- **Fulltime**: giữ nguyên
+## Files đã thay đổi
 
-### 2. Freelancer — Fields đã lược bỏ
-- ❌ Upload ảnh (avatar, CCCD trước/sau)
-- ❌ Quốc tịch, địa chỉ tạm trú
-- ❌ Phòng ban, cấp bậc, ngày bắt đầu, thử việc
-- ❌ Số sổ bảo hiểm
-- ❌ Cấu trúc lương, người phụ thuộc
-- ❌ Múi giờ, phương thức thanh toán
+| File | Thay đổi |
+|---|---|
+| [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts) | Thêm role `freelancer` + `worker_id` vào `AccountUser` |
+| [App.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/App.tsx) | Freelancer routing, profile completion role-aware, `worker_id` extraction |
+| [apps.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/config/apps.ts) | Thêm Freelancer Portal app config |
+| [ProfileCompletionScreen.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/components/ProfileCompletionScreen.tsx) | Freelancer-specific fields (bỏ avatar, thêm MST bắt buộc) |
+| [hrService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/hr/services/hrService.ts) | Auto-invite freelancer qua email cá nhân |
+| [FreelancerPortalApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/freelancer-portal/components/FreelancerPortalApp.tsx) | **NEW** — Portal 4 tabs: Dashboard, Tasks, Settlements, Profile |
+| [freelancerPortalService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/freelancer-portal/services/freelancerPortalService.ts) | **NEW** — Service queries cho freelancer portal |
+| [create-employee-auth/index.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/supabase/functions/create-employee-auth/index.ts) | **NEW** — Updated edge function hỗ trợ role + worker_id |
 
-### 3. Freelancer — Fields giữ lại
-- ✅ Họ tên, email, SĐT, ngày sinh, giới tính, địa chỉ thường trú
-- ✅ CCCD (số, ngày cấp, nơi cấp) — text only
-- ✅ Email công việc (**tuỳ chọn** cho freelancer core)
-- ✅ Chức danh, Portfolio URL, Mã số thuế
-- ✅ Rate type/amount/currency, Chuyên môn
-- ✅ Ngân hàng, Ghi chú & Tags
+## Chi tiết triển khai
 
-### 4. Validation
-- Freelancer required: họ tên, email, SĐT, ngày sinh, giới tính, địa chỉ, CCCD + ngày/nơi cấp
-- Fulltime/Parttime required: thêm work_email, temp_address, department, position, start_date
+### 1. Auth & Routing
+- Role `freelancer` thêm vào `AccountUser` và `VALID_ROLES`
+- Login → detect role → redirect đến `#freelancer-portal`
+- Profile completion dùng required fields khác cho freelancer
 
-## Kết quả kiểm tra
+### 2. Freelancer Portal App (4 Tabs)
+- **📊 Dashboard** — KPI cards (tổng task, hoàn thành, thu nhập đã nhận, chờ TT) + bar chart 6 tháng
+- **📋 Tasks** — Danh sách task với filter (Tất cả / Đang làm / Hoàn thành / Đã duyệt)
+- **📑 Nghiệm thu** — Grid phiếu nghiệm thu, click xem chi tiết (bao gồm bảng task, tổng/thuế/thực nhận)
+- **👤 Hồ sơ** — Reuse `ProfileTab` từ Employee Portal
 
-![Form Freelancer đã redesign](C:/Users/dangt/.gemini/antigravity/brain/6cb84d12-89a3-41d6-913a-44830f040b9d/.system_generated/click_feedback/click_feedback_1774439484776.png)
+### 3. Invite Flow
+- HR tạo freelancer → auto gửi invite qua email cá nhân (field `email`)
+- Edge function nhận thêm `role: 'freelancer'` + `worker_id` → set vào user_metadata
+- Freelancer mở link → SetPassword → ProfileCompletion (CTV) → FreelancerPortal
 
-- ✅ Freelancer form gọn, không có section fulltime/salary/dependents/photo upload
-- ✅ Work email hiện "(tuỳ chọn)" cho freelancer
-- ✅ Parttime có section riêng "🏢 Thông tin Part-time" + salary structure
-- ✅ Fulltime giữ nguyên
+### 4. Profile Completion (CTV)
+- Title: "Hoàn Thiện Hồ Sơ CTV" (amber theme)
+- Bỏ: avatar bắt buộc, temp_address, insurance_number
+- Thêm: MST (Mã số thuế) **bắt buộc**
 
-![Recording](C:/Users/dangt/.gemini/antigravity/brain/6cb84d12-89a3-41d6-913a-44830f040b9d/verify_freelancer_form_1774439310310.webp)
+## Build Status
+- ✅ Vite production build passes
+- ✅ App loads correctly, auth guards work
+
+## Cần làm tiếp (Manual Steps)
+
+> [!IMPORTANT]
+> **2 bước cần deploy thủ công:**
+
+1. **DB Migration** — Chạy SQL:
+```sql
+ALTER TABLE hr_employees ADD COLUMN IF NOT EXISTS worker_id UUID REFERENCES wf_workers(id);
+```
+
+2. **Edge Function** — Deploy updated `create-employee-auth` từ `supabase/functions/create-employee-auth/index.ts` lên Supabase

@@ -1,0 +1,10 @@
+# Task: Verify Quick Add Freelancer Feature
+
+## Plan
+- [ ] Navigate to http://localhost:3000/#hr
+- [ ] Open Quick Add modal (click "Thêm nhanh")
+- [ ] Screenshot "Nhân viên" mode
+- [ ] Switch to "Freelancer" mode
+- [ ] Screenshot "Freelancer" mode
+- [ ] Verify fields: Họ tên, Email cá nhân, Chuyên môn, Level
+- [ ] Confirm amber theme for freelancer mode
