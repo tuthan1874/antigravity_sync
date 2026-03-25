@@ -1,0 +1,6 @@
+# Task Checklist
+- [ ] Navigate to `http://localhost:3000/#workforce/settlements`
+- [ ] Click on "Lê Văn Khiêm" settlement card
+- [ ] Verify "🏦 Thông tin thanh toán" section in detail view
+- [ ] Capture screenshot of bank info section
+- [ ] Confirm bank name, account number, and holder name are present

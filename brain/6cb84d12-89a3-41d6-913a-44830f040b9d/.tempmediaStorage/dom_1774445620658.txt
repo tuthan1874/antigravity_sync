@@ -1,0 +1,98 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	TD Games
+	Workforce
+	USD
+	→
+	VND
+	26.359
+	₫
+	VCB •
+	25/03, 20:26
+	Nhân sự
+	Task
+	Nghiệm thu
+	Cấu hình
+	Dang The Toan
+	admin
+	[1] (500,500)<div  />
+		[2] (500,500)<div  />
+			Xóa nghiệm thu này?
+			Task sẽ được rollback về CHƯA THANH TOÁN.
+			[3] (468,557)<button class='flex-1 py-3 rounded-xl border border-primary/20 text-neutral-medium font-black text-xs uppercase tracking-widest hover:text-white hover:border-primary/40 transition-all'>Hủy />
+			[4] (532,557)<button class='flex-1 py-3 rounded-xl bg-red-500 text-white font-black text-xs uppercase tracking-widest hover:bg-red-600 transition-all'>Xác nhận />
+	Nghiệm Thu
+	Lê Văn Khiêm
+	— Kỳ
+	2026-03
+	Bản nháp
+	📤 Gửi nghiệm thu
+	TD Games
+	TD Consulting
+	📄 Export PDF
+	🗑 Xóa
+	Số task
+	3
+	Tổng giá tasks
+	0
+	Bonus (
+	Cố định
+	)
+	+
+	0
+	Thuế TNCN (
+	10
+	%)
+	-
+	0
+	THỰC NHẬN
+	0
+	Quy đổi VNĐ
+	0
+	#
+	Task
+	Project
+	Ngày đóng
+	Giá
+	Tiền tệ
+	VNĐ
+	Bonus
+	Lý do Bonus
+	Ghi chú
+	1
+	Buff_Moki_Ground
+	Accessory
+	2025-10-29
+	—
+	VND
+	2
+	Kappa Fishing
+	Card Animation
+	2025-10-13
+	—
+	VND
+	3
+	Painting
+	Card Animation
+	2025-10-22
+	—
+	VND
+	Tổng giá tasks
+	0
+	− Thuế TNCN (
+	10
+	%)
+	-
+	0
+	VND
+	💰 THỰC NHẬN
+	0
+	VND
+	Tạo lúc:
+	20:33:13 25/3/2026
+	TD Consulting • Enterprise Billing Engine • v2.1
+
+</current_dom>

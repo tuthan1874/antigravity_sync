@@ -1,0 +1,6 @@
+# Task: Verify Bank Information in Workforce Settlement Detail
+
+- [ ] Open http://localhost:3000/#workforce/settlements
+- [ ] Select the first settlement card to view details
+- [ ] Verify "🏦 Thông tin thanh toán" section exists and displays bank name, account number, and account holder
+- [ ] Take a screenshot for verification

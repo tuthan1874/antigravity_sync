@@ -1,0 +1,48 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	Workforce
+	USD
+	→
+	VND
+	26.359
+	₫
+	VCB •
+	25/03, 20:26
+	[2] (746,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Nhân sự />
+	[3] (787,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Task />
+	[4] (834,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Nghiệm thu />
+	[5] (887,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Cấu hình />
+	Dang The Toan
+	admin
+	[6] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	Chỉnh sửa nhân sự
+	Cập nhật thông tin — Lê Văn Khiêm
+	[7] (377,202)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Họ tên * />
+	[8] (377,232)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='Nguyễn Văn A' />
+	[9] (623,202)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Loại nhân sự />
+	[10] (623,231)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[11] (377,273)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Email />
+	[12] (377,302)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='email@example.com' />
+	[13] (623,273)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Số điện thoại />
+	[14] (623,302)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='0912 345 678' />
+	[15] (377,344)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ngân hàng />
+	[16] (377,373)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='MB Bank' />
+	[17] (623,344)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Số tài khoản />
+	[18] (623,373)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='12345678' />
+	[19] (377,415)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Mã số thuế />
+	[20] (377,444)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='MST' />
+	[21] (500,485)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ghi chú />
+	[22] (500,528)<textarea class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm min-h-[80px] resize-none' placeholder='Ghi chú thêm...' />
+	[23] (378,609)<button class='flex-1 py-4 rounded-2xl font-black text-sm uppercase tracking-widest border border-primary/10 text-neutral-medium hover:text-white hover:border-primary/30 transition-all'>Huỷ />
+	[24] (623,609)<button class='flex-1 py-4 rounded-2xl font-black text-sm uppercase tracking-widest bg-gradient-primary text-white shadow-btn-glow hover:shadow-btn-glow-hover transition-all hover:scale-[1.02] active:scale-[0.98]'>💾 Cập nhật />
+	Hợp đồng
+	[25] (727,689)<button class='text-xs font-black uppercase tracking-widest text-primary hover:text-primary-dark transition-colors'>✚ Thêm hợp đồng />
+	Chưa có hợp đồng
+	TD Consulting • Enterprise Billing Engine • v2.1
+
+</current_dom>
