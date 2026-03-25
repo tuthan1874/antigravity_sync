@@ -1,0 +1,18 @@
+# Task: Debug Freelancer Invite Flow
+
+## Checklist
+- [ ] Open http://localhost:3000/#hr
+- [ ] Find and click "Thêm nhanh" button
+- [ ] Toggle to "Freelancer" mode
+- [ ] Fill in:
+    - Họ tên: Test Debug FL
+    - Email cá nhân: testdebugfl@gmail.com
+    - Specialization: VFX
+    - Level: Junior
+- [ ] Click "Thêm & Gửi invite"
+- [ ] Wait for 5 seconds
+- [ ] Capture browser console logs and screenshot
+- [ ] Analyze the logs for "[Auth]", "error", "Failed", or network errors related to "create-employee-auth"
+
+## Findings
+- 
