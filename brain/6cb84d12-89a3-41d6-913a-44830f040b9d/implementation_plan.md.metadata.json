@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Plan to redesign the EmployeeForm.tsx to have a simplified freelancer form with only essential fields needed for internal records and outsource contracts (HĐKV). Separates freelancer from parttime which currently share the same section. Lists exact fields to keep/remove per type and updated validation logic.",
-  "updatedAt": "2026-03-25T11:45:25.510105600Z"
+  "summary": "Implementation plan for the Freelancer Portal feature. Covers 6 areas: Auth/Role system (add 'freelancer' role), Invite flow (auto-invite freelancer via personal email from HR form), Profile completion (freelancer-specific required fields), Freelancer Portal App (Dashboard, Tasks, Settlements, Profile tabs), App config/routing, and Database migration (worker_id link on hr_employees).",
+  "updatedAt": "2026-03-25T14:18:42.088514700Z",
+  "version": "1"
 }
