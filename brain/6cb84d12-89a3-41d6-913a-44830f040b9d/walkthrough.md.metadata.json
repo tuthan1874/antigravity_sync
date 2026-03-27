@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough documenting the Freelancer Portal implementation: auth/role changes, portal app with Dashboard/Tasks/Settlements/Profile, invite flow via personal email, role-aware profile completion, and deployment steps needed.",
-  "updatedAt": "2026-03-25T14:32:28.416472Z",
-  "version": "1"
+  "summary": "Complete walkthrough of freelancer portal implementation, soft delete, email cross-check, and edge function enhancements. Includes file change summary and pending items.",
+  "updatedAt": "2026-03-25T16:36:19.912796900Z",
+  "version": "2"
 }
