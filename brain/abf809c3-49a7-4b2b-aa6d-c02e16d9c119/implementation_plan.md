@@ -1,0 +1,128 @@
+# Nghiệm Thu Theo Dự Án (Project-Based Acceptance)
+
+## Bối cảnh
+
+Hiện tại, Workforce App có tính năng **Nghiệm Thu (Settlement)** dùng để nghiệm thu **theo nhân sự (Freelancer)** — chọn 1 worker, chọn kỳ tháng, chọn task hoàn thành, tính bonus/thuế TNCN, export PDF.
+
+Người dùng cần thêm tính năng **Nghiệm Thu Theo Dự Án** — gom các task hoàn thành **theo Project (ClickUp folder)** thay vì theo Worker, để gửi nghiệm thu cho **khách hàng** (client).
+
+## Sự khác biệt giữa 2 loại nghiệm thu
+
+| | Theo Freelancer (hiện có) | Theo Dự Án (mới) |
+|---|---|---|
+| **Mục đích** | Thanh toán cho freelancer | Gửi cho khách hàng nghiệm thu |
+| **Nhóm theo** | Worker (1 người) | Project/Folder (ClickUp) |
+| **Kỳ** | Tháng | Không bắt buộc theo tháng |
+| **Bao gồm** | Task của 1 worker | Task của nhiều worker trong 1 project |
+| **Tính toán** | Bonus + Thuế TNCN | Chỉ tổng hợp (không thuế) |
+| **PDF** | Gửi freelancer | Gửi khách hàng |
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Câu hỏi cần xác nhận trước khi triển khai:**
+> 1. **Vị trí UI**: Tôi sẽ thêm 1 tab mới **"NT Dự Án"** bên cạnh tab "Nghiệm thu" hiện có. Hoặc bạn muốn gộp vào cùng tab "Nghiệm thu" với toggle chuyển loại?
+> 2. **Project = ClickUp Folder?** Hiện tại task có `clickup_space_name` (= client/KH) và `clickup_folder_name` (= dự án). Tôi sẽ dùng `clickup_folder_name` làm tên dự án. Đúng ý bạn?
+> 3. **Không thuế TNCN**: Nghiệm thu cho khách hàng sẽ **không có** tính bonus/thuế TNCN — chỉ liệt kê task + tổng giá trị. Đúng chứ?
+> 4. **PDF format**: PDF nghiệm thu cho khách hàng sẽ hiển thị logo công ty, danh sách task hoàn thành, tổng giá trị. Có cần thêm thông tin gì đặc biệt không?
+
+## Proposed Changes
+
+### Database (Supabase)
+
+#### [NEW] Table `wf_project_acceptances`
+
+```sql
+CREATE TABLE wf_project_acceptances (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  project_name TEXT NOT NULL,           -- clickup_folder_name
+  client_name TEXT NOT NULL,            -- clickup_space_name
+  period TEXT,                          -- Kỳ nghiệm thu (optional, e.g. "2026-03")
+  total_tasks INT DEFAULT 0,
+  total_amount NUMERIC DEFAULT 0,
+  currency TEXT DEFAULT 'VND',
+  status TEXT DEFAULT 'draft',          -- draft | sent | accepted
+  notes TEXT DEFAULT '',
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+```
+
+#### [NEW] Table `wf_project_acceptance_tasks`
+
+```sql
+CREATE TABLE wf_project_acceptance_tasks (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  acceptance_id uuid REFERENCES wf_project_acceptances(id) ON DELETE CASCADE,
+  task_id uuid REFERENCES wf_tasks(id) ON DELETE CASCADE,
+  UNIQUE(acceptance_id, task_id)
+);
+```
+
+---
+
+### TypeScript Types
+
+#### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
+
+Thêm 2 interface mới:
+- `ProjectAcceptance` — thông tin nghiệm thu dự án
+- `ProjectAcceptanceTask` — link bảng
+
+---
+
+### Service Layer
+
+#### [NEW] [projectAcceptanceService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/services/projectAcceptanceService.ts)
+
+Các function:
+- `fetchProjectAcceptances()` — lấy danh sách
+- `createProjectAcceptance(...)` — tạo mới + link tasks
+- `updateProjectAcceptance(id, updates)` — cập nhật status
+- `deleteProjectAcceptance(id)` — xóa
+- `fetchProjectAcceptanceTasks(acceptanceId)` — lấy tasks của 1 nghiệm thu
+
+---
+
+### UI Components
+
+#### [NEW] [ProjectAcceptanceManager.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/ProjectAcceptanceManager.tsx)
+
+Component chính, tương tự `SettlementManager.tsx` nhưng:
+- **List View**: Hiển thị card cho mỗi nghiệm thu, nhóm theo project/client
+- **Create View**: Filter theo `clickup_space_name` (KH) → `clickup_folder_name` (Dự án), chọn task đã closed/approved, xem tổng
+- **Detail View**: Bảng task, tổng giá, trạng thái, export PDF
+- **PDF Export**: Format gửi khách hàng (không hiển thị bonus/thuế TNCN — đó là thông tin nội bộ)
+
+Flow trạng thái: `draft` → `sent` → `accepted`
+
+---
+
+### Hook & App Integration
+
+#### [MODIFY] [useWorkforceState.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/hooks/useWorkforceState.ts)
+
+- Thêm state `projectAcceptances`
+- Thêm CRUD handlers cho project acceptance
+- Load `fetchProjectAcceptances()` cùng lúc ban đầu
+
+#### [MODIFY] [WorkforceApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/workforce/components/WorkforceApp.tsx)
+
+- Thêm tab mới `'projectAcceptance'` vào `WorkforceTab`
+- Thêm mapping tab → Navbar key
+- Render `ProjectAcceptanceManager` khi chọn tab
+
+## Verification Plan
+
+### Browser Testing
+1. Mở http://localhost:3000 → vào Workforce App
+2. Kiểm tra tab mới "NT Dự Án" hiển thị
+3. Click "Tạo Nghiệm Thu Dự Án":
+   - Chọn client (space) → filter project (folder) → xem tasks
+   - Chọn tasks → xem tổng → Submit
+4. Xem danh sách nghiệm thu → click card → xem chi tiết
+5. Chuyển trạng thái: draft → sent → accepted
+6. Export PDF → verify nội dung PDF
+7. Xóa nghiệm thu → verify danh sách cập nhật
+
+### Manual Verification
+- Yêu cầu user test trực tiếp trên trình duyệt

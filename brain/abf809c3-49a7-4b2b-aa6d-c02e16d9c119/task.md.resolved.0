@@ -1,0 +1,18 @@
+# Project-Based Task Acceptance Feature (Nghiệm Thu Theo Dự Án)
+
+## Planning
+- [/] Research current Workforce App structure (components, services, types, DB schema)
+- [ ] Research current Settlement feature implementation
+- [ ] Research Supabase database schema for workforce tables
+- [ ] Design the Project Acceptance feature architecture
+- [ ] Create implementation plan and get user approval
+
+## Implementation
+- [ ] Create database tables/migrations
+- [ ] Create service layer
+- [ ] Create UI components
+- [ ] Integrate with existing Workforce App
+
+## Verification
+- [ ] Test the feature end-to-end
+- [ ] Create walkthrough

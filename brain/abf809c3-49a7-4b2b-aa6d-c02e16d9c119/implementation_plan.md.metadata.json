@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan for the Project-Based Task Acceptance feature in the Workforce App. Covers new DB tables (wf_project_acceptances, wf_project_acceptance_tasks), new service layer, new UI component (ProjectAcceptanceManager), and integration with existing WorkforceApp. Includes 4 questions requiring user confirmation before proceeding.",
+  "updatedAt": "2026-03-29T03:40:11.659793600Z"
+}
