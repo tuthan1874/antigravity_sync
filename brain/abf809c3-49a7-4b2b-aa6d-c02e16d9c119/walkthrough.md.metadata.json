@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Walkthrough documenting the Project-Based Task Acceptance feature implementation. Covers DB migration, TypeScript types, service layer, UI component, and integration. Includes browser screenshots and recording.",
-  "updatedAt": "2026-03-29T03:48:03.022759900Z"
+  "summary": "Updated walkthrough documenting the client-facing changes: English localization, removed worker info, editable USD pricing.",
+  "updatedAt": "2026-03-29T07:07:10.017168500Z",
+  "version": "1"
 }
