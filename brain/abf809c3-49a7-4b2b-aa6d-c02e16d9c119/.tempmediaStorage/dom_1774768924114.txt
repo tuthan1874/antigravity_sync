@@ -1,0 +1,111 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,274)<div  />
+	3
+	[2D Modeling] [Character] Flash
+	2026-03-27
+	$
+	4
+	[2D Modeling] [Character] Deadshot
+	2026-03-27
+	$
+	[1] (726,38)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	5
+	[2D Animation] [Character] Aquamarine
+	2026-03-19
+	$
+	[2] (726,76)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	6
+	[2D Animation] [Character] Robin
+	2026-03-27
+	$
+	[3] (726,114)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	7
+	[2D Animation] [Character] Steven Universe
+	2026-03-27
+	$
+	[4] (726,153)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	8
+	[2D Animation] [Character] Duck Dodgers
+	2026-03-27
+	$
+	[5] (726,191)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	9
+	[2D Modeling] [Character] Marvin the Martian
+	2026-03-17
+	$
+	[6] (726,229)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	10
+	[2D Modeling] [Character] Finn the Human
+	2026-02-28
+	$
+	[7] (726,268)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	11
+	[2D Modeling] [Character] Ice King Finn
+	2026-02-28
+	$
+	[8] (726,306)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	12
+	[2D Modeling] [Character] Sylvester
+	2026-02-28
+	$
+	[9] (726,344)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	13
+	[2D Modeling] [Character] Aquamarine
+	2026-03-02
+	$
+	[10] (726,383)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	14
+	[2D Modeling] [Character] Duck Dodgers
+	2026-03-16
+	$
+	[11] (726,421)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	15
+	[2D Modeling] [Character] Tasmanian Devil (Taz)
+	2026-02-28
+	$
+	[12] (726,459)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	16
+	[2D Modeling] [Character] Amethyst
+	2026-03-19
+	$
+	[13] (726,497)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	17
+	[2D Modeling] [Character] Starfire
+	2026-03-16
+	$
+	[14] (726,536)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	18
+	[2D Modeling] [Character] Beast Boy
+	2026-03-27
+	$
+	[15] (726,574)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	19
+	[2D Modeling] [Character] Wakko Warner
+	2026-03-16
+	$
+	[16] (726,612)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	20
+	[2D Modeling] [Character] Daffy Hood
+	2026-03-18
+	$
+	[17] (726,651)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	21
+	[2D Animation] [Character] Finn the Human
+	2026-02-28
+	$
+	[18] (726,689)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	Subtotal
+	$500
+	Discount / Chiết khấu
+	[19] (281,819)<button class='px-4 py-2.5 text-xs font-bold tracking-wider transition-all bg-blue-500/20 text-blue-400'>$ Fixed Amount />
+	[20] (333,819)<button class='px-4 py-2.5 text-xs font-bold tracking-wider transition-all text-neutral-medium hover:text-white hover:bg-white/5'>% Percentage />
+	$
+	[21] (396,819)<input class='w-32 bg-transparent border border-primary/10 rounded-lg px-3 py-2 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20' placeholder='0' />
+	Created:
+	3/29/2026, 2:07:34 PM
+	TD Consulting • Enterprise Billing Engine • v2.1
+
+</current_dom>

@@ -1,0 +1,137 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,726)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	Workforce
+	USD
+	→
+	VND
+	26.355
+	₫
+	VCB •
+	29/03, 14:08
+	[2] (698,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Nhân sự />
+	[3] (739,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Task />
+	[4] (785,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Nghiệm thu />
+	[5] (838,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap bg-primary text-black shadow-btn-glow'>NT Dự Án />
+	[6] (887,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Cấu hình />
+	Dang The Toan
+	admin
+	[7] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	[8] (252,120)<button class='p-2 rounded-xl hover:bg-white/5 text-neutral-medium hover:text-white transition-all' />
+	Project Acceptance
+	KABAM_COMPANY
+	—
+	Orca_Project
+	Draft
+	[9] (281,175)<button class='px-5 py-2.5 rounded-xl font-black text-xs uppercase tracking-widest bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]'>📤 Send to Client />
+	[10] (348,175)<button class='px-4 py-2.5 text-xs font-bold tracking-wider transition-all flex items-center gap-2 bg-primary/20 text-primary border-r border-primary/20'>TD Games />
+		[11] (333,175)<img  />
+	[12] (404,175)<button class='px-4 py-2.5 text-xs font-bold tracking-wider transition-all flex items-center gap-2 text-neutral-medium hover:text-white hover:bg-white/5'>TD Consulting />
+		[13] (383,175)<img  />
+	[14] (470,175)<button class='px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest border border-blue-500/20 text-blue-400 hover:bg-blue-500/10 transition-all'>📄 Export PDF />
+	[15] (733,175)<button class='px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest border border-red-500/20 text-red-400 hover:bg-red-500/10 transition-all ml-auto'>🗑 Delete />
+	Client
+	KABAM_COMPANY
+	Project
+	Orca_Project
+	Tasks
+	21
+	NET TOTAL
+	$500
+	Tasks — Client Pricing (USD)
+	Click any price to edit
+	#
+	Task Description
+	Completed
+	Client Price (USD)
+	1
+	[2D Modeling] [Character] Yakko Warner
+	2026-03-28
+	$
+	[16] (726,375)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	2
+	[2D Modeling] [Character] Ice King
+	2026-03-28
+	$
+	[17] (726,414)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	3
+	[2D Modeling] [Character] Flash
+	2026-03-27
+	$
+	[18] (726,452)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	4
+	[2D Modeling] [Character] Deadshot
+	2026-03-27
+	$
+	[19] (726,490)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	5
+	[2D Animation] [Character] Aquamarine
+	2026-03-19
+	$
+	[20] (726,529)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	6
+	[2D Animation] [Character] Robin
+	2026-03-27
+	$
+	[21] (726,567)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	7
+	[2D Animation] [Character] Steven Universe
+	2026-03-27
+	$
+	[22] (726,605)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	8
+	[2D Animation] [Character] Duck Dodgers
+	2026-03-27
+	$
+	[23] (726,644)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	9
+	[2D Modeling] [Character] Marvin the Martian
+	2026-03-17
+	$
+	[24] (726,682)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	10
+	[2D Modeling] [Character] Finn the Human
+	2026-02-28
+	$
+	[25] (726,720)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	11
+	[2D Modeling] [Character] Ice King Finn
+	2026-02-28
+	$
+	[26] (726,758)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	12
+	[2D Modeling] [Character] Sylvester
+	2026-02-28
+	$
+	[27] (726,797)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	13
+	[2D Modeling] [Character] Aquamarine
+	2026-03-02
+	$
+	[28] (726,835)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	14
+	[2D Modeling] [Character] Duck Dodgers
+	2026-03-16
+	$
+	[29] (726,873)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	15
+	[2D Modeling] [Character] Tasmanian Devil (Taz)
+	2026-02-28
+	$
+	[30] (726,912)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	16
+	[2D Modeling] [Character] Amethyst
+	2026-03-19
+	$
+	[31] (726,950)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+	17
+	[2D Modeling] [Character] Starfire
+	2026-03-16
+	$
+	[32] (726,988)<input class='w-28 bg-transparent border border-primary/10 rounded-lg px-3 py-1.5 text-blue-400 font-bold text-sm text-right focus:outline-none focus:border-blue-500/40 transition-all placeholder-neutral-medium/20 hover:border-primary/20' placeholder='0' />
+
+</current_dom>
