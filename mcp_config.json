@@ -30,7 +30,8 @@
         "NOCODB_BASE_URL": "https://nocodb.tdconsulting.vn",
         "NOCODB_API_TOKEN": "ia8adC8RqGkyh9khOzthF9BjOL9Tt0vOWx1HjhPb",
         "NOCODB_BASE_ID": "pjlxcpr5ih0q9y9"
-      }
+      },
+      "disabled": true
     },
     "ClickUp": {
       "command": "npx",
@@ -52,7 +53,8 @@
         "--header",
         "X-Goog-Api-Key: AQ.Ab8RN6Jc99tuXq5w7lJOmLC7e327PARs4ZmsC5VE011XxGUywQ"
       ],
-      "env": {}
+      "env": {},
+      "disabled": true
     }
   }
 }
