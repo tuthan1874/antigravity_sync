@@ -1,0 +1,20 @@
+# Tasks for Spine Preview App
+
+## Phase 1: Setup
+- [ ] Initialize React + TypeScript + Vite project
+- [ ] Install dependencies (`@esotericsoftware/spine-webgl`, `lucide-react`, `react-router-dom`, `@supabase/supabase-js`)
+- [ ] Set up basic folder structure (`src/components`, `src/pages`, `src/services`, `src/types`)
+
+## Phase 2: Core Components
+- [ ] Port `SpineViewer.tsx` from Review_Feedback_App
+- [ ] Create UI Design System in `index.css` (Glassmorphism + Dark Mode)
+- [ ] Create layout components (Sidebar, Topbar)
+
+## Phase 3: Pages
+- [ ] Implement Dashboard / Project List page
+- [ ] Implement Spine Preview page
+- [ ] Wire up Supabase configuration files
+
+## Phase 4: Finalization
+- [ ] Run application to test functionality
+- [ ] Verify Spine animation playback and camera controls

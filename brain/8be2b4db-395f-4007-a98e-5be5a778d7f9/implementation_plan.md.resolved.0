@@ -1,0 +1,53 @@
+# Kế hoạch triển khai: Ứng dụng Lưu trữ & Preview Animation (Spine)
+
+Ứng dụng này sẽ được xây dựng dựa trên nền tảng của app `Review_Feedback_App` hiện tại (sử dụng React, Vite, TypeScript, và `@esotericsoftware/spine-webgl`). App mới sẽ tập trung vào việc lưu trữ danh sách các dự án và cho phép người dùng xem (preview) các file animation Spine.
+
+## Trả lời câu hỏi: Có thể dùng Google Drive làm Storage để preview Spine không?
+
+> [!WARNING]
+> **Câu trả lời ngắn gọn là Không nên và Rất khó khả thi.**
+
+**Lý do chi tiết:**
+1. **Lỗi CORS (Cross-Origin Resource Sharing):** Google Drive không hỗ trợ cấu hình header `Access-Control-Allow-Origin`. Để Spine WebGL hiển thị được animation, trình duyệt cần tải trực tiếp các file `.json`/`.skel`, `.atlas`, và `.png` thông qua Javascript (Fetch/XHR). Trình duyệt sẽ chặn các yêu cầu này vì lý do bảo mật nếu lấy từ Google Drive.
+2. **Không phải CDN:** Các liên kết tải trực tiếp (direct link) của Google Drive thường không ổn định, có thể bị thay đổi, hết hạn token, hoặc bị giới hạn tốc độ nếu có nhiều lượt truy cập.
+3. **Download nhiều file cùng lúc:** Spine yêu cầu tải ít nhất 3 file một cách đồng bộ. Việc bóc tách link Google Drive cho từng file rất thủ công và dễ gặp lỗi.
+
+> [!IMPORTANT]
+> **Giải pháp thay thế:** Chúng ta nên sử dụng một dịch vụ lưu trữ Object Storage tiêu chuẩn hỗ trợ chuẩn CDN và CORS. Vì dự án hiện tại của bạn đã có cài đặt `@supabase/supabase-js`, **Supabase Storage** (hoặc AWS S3, Cloudflare R2) là lựa chọn hoàn hảo nhất để lưu trữ và load file Spine.
+
+---
+
+## 🏗️ Kiến trúc ứng dụng đề xuất
+
+Ứng dụng sẽ được tạo trong một thư mục mới (ví dụ: `e:\TDC_App\TDGAMES_App\Spine_Preview_App`).
+
+### 1. Công nghệ sử dụng
+- **Core:** React 19 + TypeScript + Vite.
+- **Styling:** CSS thuần hoặc TailwindCSS (tuỳ bạn chọn, mặc định sẽ dùng CSS thuần theo chuẩn dự án trước để dễ custom UI cao cấp).
+- **Animation Engine:** `@esotericsoftware/spine-webgl` (Tương tự dự án cũ với Component `SpineViewer`).
+- **Database & Storage (Đề xuất):** Supabase (để quản lý danh sách Project và lưu trữ file `.json`, `.atlas`, `.png`).
+
+### 2. Cấu trúc trang (Pages)
+- **Dashboard / Project List:** Giao diện hiển thị danh sách các dự án Animation. Mỗi dự án là một thẻ (card) đẹp mắt với hiệu ứng hover.
+- **Project Detail / Viewer Page:** Trang chứa `SpineViewer` cho phép:
+  - Load và chạy animation từ URL của Storage.
+  - Chọn animation (Animation list).
+  - Chọn skin (Skin list).
+  - Điều chỉnh tốc độ (Speed control).
+  - Zoom / Pan camera.
+
+## User Review Required
+
+> [!CAUTION]
+> **Vui lòng cho tôi biết các quyết định sau trước khi tiến hành code:**
+
+1. **Vị trí tạo App:** Tôi sẽ tạo app mới tại `e:\TDC_App\TDGAMES_App\Spine_Preview_App`. Bạn có đồng ý với tên thư mục này không?
+2. **Backend / Storage:** Bạn có muốn tích hợp luôn **Supabase** để lưu danh sách dự án và upload các file Spine lên Supabase Storage thay vì dùng Google Drive không? (Hay bạn chỉ muốn tạo khung UI Frontend trước chưa cần Backend?)
+3. **Cài đặt Styling:** Bạn muốn tiếp tục dùng **CSS thuần** (như app hiện tại) với các hiệu ứng Glassmorphism/Dark Mode, hay muốn dùng một framework như TailwindCSS?
+
+## Verification Plan
+1. Khởi tạo bằng `npm create vite@latest` với template React-TS.
+2. Cài đặt các thư viện lõi (như `spine-webgl`, `lucide-react`, `react-router-dom`).
+3. Port component `SpineViewer` từ app cũ sang.
+4. Xây dựng UI hệ thống.
+5. Chạy test thử trên trình duyệt để đảm bảo Spine Preview hoạt động tốt với các tính năng cơ bản.
