@@ -1,20 +1,23 @@
 # Tasks for Spine Preview App
 
-## Phase 1: Setup
-- [ ] Initialize React + TypeScript + Vite project (TailwindCSS) in `e:\TDC_App\TDGAMES_App\Review_Feedback_App\Spine_Preview_App`
-- [ ] Install dependencies (`@esotericsoftware/spine-webgl`, `lucide-react`, `react-router-dom`, `tailwindcss`, `postcss`, `autoprefixer`)
-- [ ] Configure TailwindCSS and folder structure
+## Phase 1: Setup (XONG)
+- [x] Backup existing Review Feedback App to `_backup_old`
+- [x] Initialize React + TypeScript + Vite project directly in `e:\TDC_App\TDGAMES_App\Review_Feedback_App`
+- [x] Install dependencies (`@esotericsoftware/spine-webgl`, `lucide-react`, `react-router-dom`, `@tailwindcss/vite`, `@supabase/supabase-js`)
+- [x] Configure TailwindCSS v4 and `vite.config.ts`
+- [x] Set up basic CSS base (`src/index.css`)
 
-## Phase 2: Core Components
+## Phase 2: Core Components 
 - [ ] Port `SpineViewer.tsx` from Review_Feedback_App
-- [ ] Create UI Design System in `index.css`
-- [ ] Create layout components (Sidebar, Topbar, Glassmorphism container)
+- [ ] Create layout components (Sidebar, Topbar)
+- [ ] Create UI Design System with TailwindCSS (Glassmorphism, Dark Mode)
 
-## Phase 3: Pages & Data
-- [ ] Set up static data source (`src/data/characters.ts`)
+## Phase 3: Supabase & Pages
+- [ ] Initialize Supabase Client (`src/services/supabase.ts`)
+- [ ] Create Database schema definition (`src/types/database.ts`)
 - [ ] Implement Dashboard / Project List page (`src/pages/GalleryPage.tsx`)
 - [ ] Implement Spine Preview page (`src/pages/ViewerPage.tsx`)
 
 ## Phase 4: Finalization
 - [ ] Run application to test functionality
-- [ ] Verify Spine animation playback and camera controls
+- [ ] Verify Spine animation playback with external R2 URLs

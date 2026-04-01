@@ -1,48 +1,40 @@
-# Kế hoạch triển khai: Ứng dụng Lưu trữ & Preview Animation (Spine)
+# Kế hoạch triển khai: Ứng dụng Spine Preview App (Bản nâng cấp Kiến trúc)
 
-Ứng dụng: `Spine_Preview_App` (phục vụ khách hàng xem trước toàn bộ các nhân vật Animation).
+Ứng dụng phục vụ khách hàng xem trước toàn bộ các nhân vật Animation Spine, với giao diện tối ưu (TailwindCSS - Glassmorphism). Nhờ kiến trúc mới, website sẽ tải siêu nhanh và cực kỳ tự động.
 
-## Trả lời các lựa chọn của bạn:
+## 🏗️ Kiến trúc Hệ thống: Supabase + Cloudflare R2
 
-### 1. Về vị trí thư mục và Lỗi quyền truy cập
-Bạn đồng ý tạo tại `e:\TDC_App\TDGAMES_App\Spine_Preview_App`. Tuy nhiên, hiện tại **tôi chỉ được cấp quyền thao tác bên trong thư mục `Review_Feedback_App`**.
-Để tôi có thể tạo thư mục `Spine_Preview_App` nằm cùng cấp, bạn có 2 lựa chọn:
-- **Phương án A:** Bạn vào cài đặt của công cụ AI này, **tắt tính năng "Workspace Validation"** (Kiểm tra không gian làm việc).
-- **Phương án B:** Bạn tự mở Terminal ở `e:\TDC_App\TDGAMES_App\` và gõ lệnh: `npm create vite@latest Spine_Preview_App -- --template react-ts`. Sau đó mở thư mục đó vào IDE và tôi sẽ bắt đầu code.
-
-### 2. Supabase có tác dụng gì? Có bắt buộc không?
-Bởi vì **Google Drive không hỗ trợ load file Spine lên web** (do lỗi CORS chặn bảo mật), bạn **bắt buộc phải có một nơi lưu trữ file chuẩn**. Bạn có 2 hướng đi:
-
-- **Hướng 1 - Không dùng Supabase (Hardcode - Tĩnh):** Bạn copy thủ công các file Spine (`.json`, `.atlas`, `.png`) vào thư mục `public/` của dự án.
-  - *Ưu điểm:* Cực kỳ đơn giản, không cần server, không cần database. Code xong là chạy.
-  - *Nhược điểm:* Mỗi khi có nhân vật mới, bạn phải copy file vào thư mục code, sửa code danh sách và **phải build lại/deploy lại Web**.
-
-- **Hướng 2 - Dùng Supabase (Dynamic - Hiện đại):** Dùng Supabase làm ổ đĩa lưu trữ (Storage) và cơ sở dữ liệu (Database) danh sách nhân vật.
-  - *Ưu điểm:* Bạn có một trang Quản trị (Admin) để ấn nút "Upload nhân vật mới". Web của khách sẽ tự động cập nhật ngay lập tức mà **không cần đụng vào code**.
-  - *Nhược điểm:* Tốn công setup ban đầu hơn một chút.
+Việc kết hợp **Supabase** và **Cloudflare R2** là một nước đi **Vô Cùng Tuyệt Vời và Tối Ưu Nhất** hiện nay đối với các ứng dụng Media/Gaming. 
 
 > [!TIP]
-> **Đề xuất của tôi:** Ban đầu, nếu chưa có nhiều dự án, chúng ta hãy chọn **Hướng 1 (Tĩnh)** để có sản phẩm nhanh, mượt. Sau này lúc nào cần mở rộng thì tích hợp Supabase sau (mất 30 phút).
+> **Cloudflare R2 (Object Storage): Mỏ chứa File**
+> - **Vai trò:** Là cái khiên vững chắc và ổ đĩa khổng lồ chứa các file nặng trực tiếp của nhân vật Spine (`.json`, `.skel`, `.png`, `.atlas`).
+> - **Tại sao lại quá ổn?** R2 **miễn phí hoàn toàn băng thông chiều ra (zero egress fees)**. Một ứng dụng xem animation sẽ tiêu thụ cực nhiều băng thông khi khách hàng tải ảnh `.png` và `.json` liên tục. R2 kết hợp với mạng CDN của Cloudflare giúp load file Spine ở mọi nơi trên thế giới siêu tốc độ mà không tốn phí băng thông, đồng thời tự động xử lý mượt mà vấn đề CORS.
 
-### 3. Về UI/Styling (TailwindCSS)
-Vì bạn muốn phương án tối ưu nhất, tôi sẽ chọn **TailwindCSS**. Đây là tiêu chuẩn hiện tại, giúp code trang Web cực sạch, Load rất nhanh và dễ tạo các hiệu ứng hiện đại siêu đẹp (như Glow, Glassmorphism).
+> [!IMPORTANT]
+> **Supabase (Backend-as-a-Service): Bộ Não Của App**
+> 1. **Cơ sở dữ liệu (PostgreSQL Database):** Lưu "Danh sách nhân vật". Thay vì gõ code bằng tay mỗi khi ra mẫu mới, Supabase lưu các thông tin như:
+>    - `id`: Mã nhân vật
+>    - `name`: Tên nhân vật (VD: "Chiến binh siêu hạng")
+>    - `description`: Mô tả chi tiết
+>    - `thumbnail_url`: Link ảnh cover hiển thị ở dạng lưới (Grid).
+>    - `spine_data_url`: Link trỏ tới Cloudflare R2 nơi chứa bộ file Spine.
+> 2. **Authentication (Bảo mật & Phân quyền):** Supabase cung cấp hệ thống đăng nhập. Để chỉ **admin nội bộ của bạn** mới có quyền thêm/sửa/xoá danh sách nhân vật, còn **khách vãng lai** thì chỉ có quyền XEM (Preview).
+> 3. **Realtime API:** Ứng dụng Frontend (React/Vite) chỉ việc "hỏi" Supabase: "Hãy đưa tôi danh sách các nhân vật mới nhất!". Supabase sẽ trả về lập tức và giao diện tự render. 
+
+### Sơ đồ hoạt động (Workflow)
+1. Team của bạn làm xong 1 con Spine -> Bạn upload 3 file `.json`, `.atlas`, `.png` lên **Cloudflare R2**. R2 sẽ cho bạn 1 đường link URL (VD: `https://my-r2.cdn/hero/hero.json`).
+2. Bạn mở trang Admin của App (có pass Supabase Auth), điền tên Nhân vật và dán link R2 kia vào lưu lại trên Database của **Supabase**.
+3. Khách hàng vào trang Web -> Khách thấy danh sách. Bấm vào nhân vật -> Trình duyệt load file từ R2 và render WebGL lên màn hình. Hoàn toàn tự động!
 
 ---
 
-## 🏗️ Kiến trúc ứng dụng (Hướng 1 - Tĩnh)
-
-- **Công nghệ:** React 19 + TypeScript + Vite + TailwindCSS.
-- **Animation Engine:** `@esotericsoftware/spine-webgl`.
-- **Cấu trúc:**
-  - `public/characters/`: Thư mục lưu file spine (VD: `hero.json`, `hero.atlas`).
-  - `src/data/characters.ts`: File định nghĩa danh sách nhân vật hiển thị trên Web.
-  - `src/pages/GalleryPage.tsx`: Trang lưới grid siêu đẹp trưng bày các Card nhân vật.
-  - `src/pages/ViewerPage.tsx`: Trang chi tiết có cửa sổ 3D để test Spine.
+## Các thành phần Frontend sẽ làm
+- **Trang chủ (Gallery / Grid):** Hiển thị danh sách thẻ (Card) các nhân vật cực lung linh. Gọi API từ Supabase để lấy Data.
+- **Trang Chi Tiết (Spine Viewer):** Cửa sổ 3D để render Animation từ URL của R2.
+- **Trang Admin (Ẩn):** Nơi để team Content vào đăng thêm mô hình mới (Requires Login).
 
 ## User Review Required
 
 > [!CAUTION]
-> **Vui lòng trả lời 2 vấn đề sau để tôi code ngay:**
-
-1. Tôi đã bị chặn quyền tạo thư mục bên ngoài. Bạn sẽ **tắt tính năng "Workspace Validation"** trong Cài đặt (Settings), hay muốn bạn **tự gõ lệnh tạo dự án**?
-2. Chốt lại chúng ta làm theo **Hướng 1 (Không dùng Supabase - để file trong máy tính/thư mục public)** cho nhanh gọn nhất giai đoạn này nhé?
+> 1. Đây là hướng đi **chuyên nghiệp và chuẩn xác nhất**. Bạn có chốt sử dụng kiến trúc này (Supabase cho Database + Auth, R2 cho Storage) không? Việc tạo thư mục mới để code chưa thành công ở bước trước, sau khi bạn chốt hướng kiến trúc này, tôi sẽ hướng dẫn bạn cấp quyền tạo folder cho tôi nhé.
