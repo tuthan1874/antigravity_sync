@@ -1,15 +1,5 @@
 {
   "mcpServers": {
-    "NocoDB_Base__TD_App": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://nocodb.tdconsulting.vn/mcp/nc6csrghltflt5nq",
-        "--header",
-        "xc-mcp-token: FK6W1o5CHiyxEjaE4uu-dMdDrxpDHhq9E"
-      ],
-      "disabled": true
-    },
     "supabase-mcp-server": {
       "$typeName": "exa.cascade_plugins_pb.CascadePluginCommandTemplate",
       "command": "npx",
