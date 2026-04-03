@@ -34,17 +34,6 @@
       },
       "disabled": true
     },
-    "ClickUp": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@taazkareem/clickup-mcp-server"
-      ],
-      "env": {
-        "CLICKUP_API_TOKEN": "pk_152442037_2ZEMMX3SH944CLF7J0VAFS5CJK39R3EM"
-      },
-      "disabled": true
-    },
     "StitchMCP": {
       "$typeName": "exa.cascade_plugins_pb.CascadePluginCommandTemplate",
       "command": "npx",
