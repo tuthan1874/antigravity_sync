@@ -1,0 +1,16 @@
+# Task: Investigate Blank Page at http://localhost:5173/
+
+## Checklist
+- [x] Read current browser state (logs, network, DOM)
+- [x] Identify the cause of the blank page (Potential interference or React not starting)
+- [ ] Fix the issue if it's code-related
+- [ ] Verify the fix by reloading and checking the UI
+
+## Observations
+- User reported "Trắng trơn chả có gì" (completely blank).
+- App uses React + Vite + TailwindCSS 4 + Supabase.
+- Console logs show mysterious "Subagent check" and "Manually updated root content".
+- Manual render via JS works and persists, suggesting React is either not running or rendered nothing and stopped.
+- `main.tsx` looks correct but components are not appearing.
+- `AppLayout` contains a sidebar which should be visible if it rendered.
+- Potential interference from external scripts (Kaspersky) or a previous agent's check script.

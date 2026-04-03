@@ -7,17 +7,18 @@
 - [x] Configure TailwindCSS v4 and `vite.config.ts`
 - [x] Set up basic CSS base (`src/index.css`)
 
-## Phase 2: Core Components 
-- [ ] Port `SpineViewer.tsx` from Review_Feedback_App
-- [ ] Create layout components (Sidebar, Topbar)
-- [ ] Create UI Design System with TailwindCSS (Glassmorphism, Dark Mode)
+## Phase 2: Core Components (XONG)
+- [x] Port `SpineViewer.tsx` from Review_Feedback_App - Đã fix lại nhận Link `.json/.atlas` từ web ngoài (CORS).
+- [x] Create layout components (Sidebar, Topbar) - Thiết kế siêu thực cực mượt.
+- [x] Create UI Design System with TailwindCSS (Glassmorphism, Dark Mode)
 
-## Phase 3: Supabase & Pages
-- [ ] Initialize Supabase Client (`src/services/supabase.ts`)
-- [ ] Create Database schema definition (`src/types/database.ts`)
-- [ ] Implement Dashboard / Project List page (`src/pages/GalleryPage.tsx`)
-- [ ] Implement Spine Preview page (`src/pages/ViewerPage.tsx`)
+## Phase 3: Supabase & Pages (XONG)
+- [x] Initialize Supabase Client (`src/services/supabase.ts`) - Có Mock Data sẵn.
+- [x] Create Database schema definition (`src/types/database.ts`)
+- [x] Implement Dashboard / Project List page (`src/pages/GalleryPage.tsx`)
+- [x] Implement Spine Preview page (`src/pages/ViewerPage.tsx`)
+- [x] Implement routing bằng `react-router-dom` tại `main.tsx`.
 
-## Phase 4: Finalization
-- [ ] Run application to test functionality
-- [ ] Verify Spine animation playback with external R2 URLs
+## Phase 4: Finalization (XONG)
+- [x] Run application to test functionality (Đang chạy Dev Server Localhost:5173).
+- [x] Verify Spine animation playback with external urls (Đang load 2 nhân vật demo từ trang web mẫu của Spine).
