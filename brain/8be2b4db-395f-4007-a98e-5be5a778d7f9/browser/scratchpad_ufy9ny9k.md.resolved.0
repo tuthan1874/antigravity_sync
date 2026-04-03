@@ -1,0 +1,11 @@
+# Task: Verify Superman model rendering at `http://localhost:5173/view/mock-local`
+
+## Plan
+- [ ] Navigate to `http://localhost:5173/view/mock-local`.
+- [ ] Wait for the model to render.
+- [ ] Capture a screenshot to verify rendering.
+- [ ] Capture console logs to check for errors or infinite loops.
+- [ ] Summarize findings.
+
+## Progress
+- [x] Initialized scratchpad.
