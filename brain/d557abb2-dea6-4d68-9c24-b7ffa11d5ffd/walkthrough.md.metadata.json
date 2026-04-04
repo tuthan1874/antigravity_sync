@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary":  "Walkthrough of the generate_mesh_canny_v2.py improvements: grid fallback, adaptive canny, adaptive hull, debug visualization, statistics summary, and output optimization. Includes before/after comparison and debug image examples.",
+  "updatedAt":  "2026-04-04T06:13:47.251845600Z"
+}
