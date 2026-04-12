@@ -1,8 +1,8 @@
 {
   "title": "OpenClaw VPS Setup & Configuration",
-  "summary": "Complete documentation of OpenClaw multi-agent AI gateway installed on VPS 180.93.144.98. Includes 4 agents (main/Tony, TD_CTO, TD_PM, Serena_Nguyen) connected via Telegram (4 bots) and Discord (3 bots). Uses CLIProxyAPI on port 8317 as model proxy with 11 models (Gemini 3, Claude, GPT-5.x). Memory system uses Mem0+Qdrant. Version 2026.4.3, config at /root/.openclaw/openclaw.json. Key issues: outdated version, no systemd autostart for gateway, CLIProxyAPI publicly exposed, cron jobs disabled.",
+  "summary": "Complete documentation of OpenClaw multi-agent AI gateway installed on VPS 180.93.144.98. Includes 4 agents (main/Tony, TD_CTO, TD_PM, Serena_Nguyen) connected via Telegram (4 bots) and Discord (3 bots). Uses CLIProxyAPI on port 8317 (localhost-only) as model proxy with 11 models (Gemini 3, Claude, GPT-5.x). Memory system uses Mem0+Qdrant. Version v2026.4.11 (updated 2026-04-12), config at /root/.openclaw/openclaw.json. Systemd user-level service enabled for autostart. CLIProxyAPI secured to localhost-only binding.",
   "created": "2026-04-12T22:29:00+07:00",
-  "lastAccessed": "2026-04-12T22:29:00+07:00",
+  "lastAccessed": "2026-04-12T22:43:00+07:00",
   "references": [
     {
       "type": "file",
@@ -12,7 +12,12 @@
     {
       "type": "file",
       "path": "/root/CLIProxyAPI/config.yaml",
-      "description": "CLIProxyAPI proxy configuration"
+      "description": "CLIProxyAPI proxy configuration (secured to localhost)"
+    },
+    {
+      "type": "file",
+      "path": "/root/.config/systemd/user/openclaw-gateway.service",
+      "description": "Systemd user service for OpenClaw gateway"
     },
     {
       "type": "file",
@@ -20,5 +25,5 @@
       "description": "Local VPS connection credentials"
     }
   ],
-  "tags": ["openclaw", "vps", "agents", "telegram", "discord", "cliproxy", "ai-gateway"]
+  "tags": ["openclaw", "vps", "agents", "telegram", "discord", "cliproxy", "ai-gateway", "systemd"]
 }

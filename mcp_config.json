@@ -24,6 +24,18 @@
       },
       "disabled": true
     },
+    "VPS_Manager": {
+      "command": "python",
+      "args": [
+        "-m",
+        "vps_manager.server",
+        "--config",
+        "E:\\TDC_App\\TDGAMES_App\\VPS\\vps-mcp\\config\\servers.yaml"
+      ],
+      "env": {
+        "PYTHONPATH": "E:\\TDC_App\\TDGAMES_App\\VPS\\vps-mcp\\src"
+      }
+    },
     "StitchMCP": {
       "$typeName": "exa.cascade_plugins_pb.CascadePluginCommandTemplate",
       "command": "npx",

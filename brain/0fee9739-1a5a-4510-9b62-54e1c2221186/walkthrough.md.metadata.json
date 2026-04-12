@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Walkthrough of OpenClaw VPS audit and improvements. Covers: full system audit findings, 4 high-priority fixes executed (systemd verified, CLIProxyAPI secured, OpenClaw updated to v2026.4.11, junk cleaned), remaining medium-priority items listed for user decision. Knowledge item saved for future reference.",
+  "updatedAt": "2026-04-12T15:43:01.728599500Z"
+}
