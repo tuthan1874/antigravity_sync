@@ -1,0 +1,182 @@
+{
+  "success": true,
+  "operation": "get_system_status",
+  "data": {
+    "cpu_percent": 6.96,
+    "memory_percent": 34.42,
+    "disk_usage": {
+      "total_bytes": 89730437120,
+      "used_bytes": 59876929536,
+      "available_bytes": 29853507584,
+      "usage_percent": 66.73,
+      "filesystems": [
+        {
+          "filesystem": "/dev/vda1",
+          "mount_point": "/",
+          "total_bytes": 89730437120,
+          "used_bytes": 59876929536,
+          "available_bytes": 25273683968,
+          "usage_percent": 71.0
+        },
+        {
+          "filesystem": "overlay",
+          "mount_point": "/var/lib/docker/rootfs/overlayfs/f1b765b5bb43bb4fae2df23038bd2b3276d30a9b2dedf670282d164d26f0ec01",
+          "total_bytes": 89730437120,
+          "used_bytes": 59876929536,
+          "available_bytes": 25273683968,
+          "usage_percent": 71.0
+        },
+        {
+          "filesystem": "overlay",
+          "mount_point": "/var/lib/docker/rootfs/overlayfs/ab981b02b6b677b0ece326fc19feef25f8b36b1c67e0a9f30828acd1b2f12517",
+          "total_bytes": 89730437120,
+          "used_bytes": 59876929536,
+          "available_bytes": 25273683968,
+          "usage_percent": 71.0
+        },
+        {
+          "filesystem": "overlay",
+          "mount_point": "/var/lib/docker/rootfs/overlayfs/9996921bbff17d65c66bf7971f5d8fdaf95f68294c5438e2b32bafde787b3b36",
+          "total_bytes": 89730437120,
+          "used_bytes": 59876929536,
+          "available_bytes": 25273683968,
+          "usage_percent": 71.0
+        }
+      ]
+    },
+    "load_average": [
+      0.15,
+      0.19,
+      0.39
+    ],
+    "uptime_seconds": 7949251,
+    "server": "Megahost_02",
+    "timestamp": "2026-04-12T16:00:11.912177Z",
+    "network": {
+      "interfaces": [
+        {
+          "interface": "lo",
+          "rx_bytes": 2620790078,
+          "tx_bytes": 2620790078
+        },
+        {
+          "interface": "eth0",
+          "rx_bytes": 42376105632,
+          "tx_bytes": 13885876693
+        },
+        {
+          "interface": "docker0",
+          "rx_bytes": 6993815,
+          "tx_bytes": 771302145
+        },
+        {
+          "interface": "br-06452647cfe2",
+          "rx_bytes": 432516666,
+          "tx_bytes": 223971746
+        },
+        {
+          "interface": "br-39e11248d822",
+          "rx_bytes": 1213474802,
+          "tx_bytes": 28126320
+        },
+        {
+          "interface": "vethc8972a3",
+          "rx_bytes": 259087217,
+          "tx_bytes": 106266146
+        },
+        {
+          "interface": "veth2ef0b46",
+          "rx_bytes": 32485805,
+          "tx_bytes": 15609921
+        },
+        {
+          "interface": "vethc99f3d1",
+          "rx_bytes": 896076402,
+          "tx_bytes": 19524458
+        }
+      ]
+    },
+    "processes": {
+      "total_processes": 176,
+      "top_cpu_processes": [
+        {
+          "user": "root",
+          "pid": 3350128,
+          "cpu_percent": 14.4,
+          "memory_percent": 5.7,
+          "command": "openclaw-gateway"
+        },
+        {
+          "user": "moltbot",
+          "pid": 2274076,
+          "cpu_percent": 4.0,
+          "memory_percent": 12.0,
+          "command": "java -Dfile.encoding=UTF-8 -Djava.io.tmpdir=/tmp/s"
+        },
+        {
+          "user": "root",
+          "pid": 3357450,
+          "cpu_percent": 3.3,
+          "memory_percent": 0.0,
+          "command": "sshd: root [priv]"
+        },
+        {
+          "user": "root",
+          "pid": 333656,
+          "cpu_percent": 0.6,
+          "memory_percent": 1.2,
+          "command": "/usr/bin/python3 -m uvicorn app:app --host 127.0.0"
+        },
+        {
+          "user": "root",
+          "pid": 3325819,
+          "cpu_percent": 0.2,
+          "memory_percent": 5.8,
+          "command": "/usr/local/bin/python3 -m uvicorn open_webui.main:"
+        },
+        {
+          "user": "root",
+          "pid": 3325999,
+          "cpu_percent": 0.2,
+          "memory_percent": 0.3,
+          "command": "./qdrant"
+        },
+        {
+          "user": "root",
+          "pid": 3372476,
+          "cpu_percent": 0.2,
+          "memory_percent": 0.3,
+          "command": "/usr/bin/containerd"
+        },
+        {
+          "user": "root",
+          "pid": 3325281,
+          "cpu_percent": 0.1,
+          "memory_percent": 0.5,
+          "command": "/usr/bin/dockerd -H fd:// --containerd=/run/contai"
+        },
+        {
+          "user": "root",
+          "pid": 3346448,
+          "cpu_percent": 0.1,
+          "memory_percent": 0.2,
+          "command": "/root/CLIProxyAPI/cli-proxy-api -config config.yam"
+        },
+        {
+          "user": "root",
+          "pid": 3356974,
+          "cpu_percent": 0.1,
+          "memory_percent": 0.1,
+          "command": "sshd: root@notty"
+        }
+      ]
+    },
+    "system": {
+      "hostname": "vps6core",
+      "os_name": "Ubuntu 22.04.5 LTS",
+      "kernel_version": "5.15.0-164-generic"
+    }
+  },
+  "server_name": "Megahost_02",
+  "message": "Tool 'get_system_status' executed successfully"
+}
