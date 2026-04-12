@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Detailed improvement recommendations for OpenClaw VPS setup, organized into 3 priority tiers: HIGH (systemd service, update version, secure CLIProxyAPI, change weak API key), MEDIUM (create .env file, re-enable crons, add Discord for Serena, fix default Discord, cleanup junk files, use SSH keys), LOW (agent auth, increase maxTokens, monitoring, backup, compaction). Each item includes specific commands and config changes.",
+  "updatedAt": "2026-04-12T15:31:03.917950900Z",
+  "requestFeedback": true
+}

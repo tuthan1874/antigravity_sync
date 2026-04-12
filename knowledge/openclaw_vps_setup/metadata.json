@@ -1,0 +1,24 @@
+{
+  "title": "OpenClaw VPS Setup & Configuration",
+  "summary": "Complete documentation of OpenClaw multi-agent AI gateway installed on VPS 180.93.144.98. Includes 4 agents (main/Tony, TD_CTO, TD_PM, Serena_Nguyen) connected via Telegram (4 bots) and Discord (3 bots). Uses CLIProxyAPI on port 8317 as model proxy with 11 models (Gemini 3, Claude, GPT-5.x). Memory system uses Mem0+Qdrant. Version 2026.4.3, config at /root/.openclaw/openclaw.json. Key issues: outdated version, no systemd autostart for gateway, CLIProxyAPI publicly exposed, cron jobs disabled.",
+  "created": "2026-04-12T22:29:00+07:00",
+  "lastAccessed": "2026-04-12T22:29:00+07:00",
+  "references": [
+    {
+      "type": "file",
+      "path": "/root/.openclaw/openclaw.json",
+      "description": "Main OpenClaw configuration"
+    },
+    {
+      "type": "file",
+      "path": "/root/CLIProxyAPI/config.yaml",
+      "description": "CLIProxyAPI proxy configuration"
+    },
+    {
+      "type": "file",
+      "path": "e:/TDC_App/TDGAMES_App/VPS/.env",
+      "description": "Local VPS connection credentials"
+    }
+  ],
+  "tags": ["openclaw", "vps", "agents", "telegram", "discord", "cliproxy", "ai-gateway"]
+}
