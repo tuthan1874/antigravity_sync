@@ -1,0 +1,230 @@
+{
+  "success": true,
+  "operation": "list_services",
+  "data": {
+    "services": [
+      {
+        "name": "cron.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "Regular background program processing daemon",
+        "running": true
+      },
+      {
+        "name": "dbus.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "D-Bus System Message Bus",
+        "running": true
+      },
+      {
+        "name": "fwupd.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "Firmware update daemon",
+        "running": true
+      },
+      {
+        "name": "getty@tty1.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "Getty on tty1",
+        "running": true
+      },
+      {
+        "name": "irqbalance.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "irqbalance daemon",
+        "running": true
+      },
+      {
+        "name": "kpi-bot.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "Discord KPI Bot for Headhunt Team",
+        "running": true
+      },
+      {
+        "name": "ModemManager.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "Modem Manager",
+        "running": true
+      },
+      {
+        "name": "multipathd.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "Device-Mapper Multipath Device Controller",
+        "running": true
+      },
+      {
+        "name": "networkd-dispatcher.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "Dispatcher daemon for systemd-networkd",
+        "running": true
+      },
+      {
+        "name": "nginx.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "A high performance web server and a reverse proxy server",
+        "running": true
+      },
+      {
+        "name": "packagekit.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "PackageKit Daemon",
+        "running": true
+      },
+      {
+        "name": "pm2-tuln.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "PM2 process manager",
+        "running": true
+      },
+      {
+        "name": "polkit.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "Authorization Manager",
+        "running": true
+      },
+      {
+        "name": "qemu-guest-agent.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "QEMU Guest Agent",
+        "running": true
+      },
+      {
+        "name": "rsyslog.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "System Logging Service",
+        "running": true
+      },
+      {
+        "name": "snapd.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "Snap Daemon",
+        "running": true
+      },
+      {
+        "name": "ssh.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "OpenBSD Secure Shell server",
+        "running": true
+      },
+      {
+        "name": "systemd-journald.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "Journal Service",
+        "running": true
+      },
+      {
+        "name": "systemd-logind.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "User Login Management",
+        "running": true
+      },
+      {
+        "name": "systemd-networkd.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "Network Configuration",
+        "running": true
+      },
+      {
+        "name": "systemd-timesyncd.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "Network Time Synchronization",
+        "running": true
+      },
+      {
+        "name": "systemd-udevd.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "Rule-based Manager for Device Events and Files",
+        "running": true
+      },
+      {
+        "name": "udisks2.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "Disk Manager",
+        "running": true
+      },
+      {
+        "name": "unattended-upgrades.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "Unattended Upgrades Shutdown",
+        "running": true
+      },
+      {
+        "name": "upower.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "Daemon for power management",
+        "running": true
+      },
+      {
+        "name": "user@0.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "User Manager for UID 0",
+        "running": true
+      },
+      {
+        "name": "user@1000.service",
+        "load_state": "loaded",
+        "active_state": "active",
+        "sub_state": "running",
+        "description": "User Manager for UID 1000",
+        "running": true
+      }
+    ],
+    "total_count": 27,
+    "server": "Megahost_01",
+    "timestamp": "2026-04-12T16:10:47.119494Z",
+    "filter_applied": "running_only"
+  },
+  "server_name": "Megahost_01",
+  "message": "Tool 'list_services' executed successfully"
+}
