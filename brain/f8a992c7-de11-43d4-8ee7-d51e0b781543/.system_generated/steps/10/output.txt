@@ -1,0 +1,247 @@
+{
+  "success": true,
+  "operation": "get_system_status",
+  "data": {
+    "cpu_percent": 1.55,
+    "memory_percent": 39.57,
+    "disk_usage": {
+      "total_bytes": 62241562624,
+      "used_bytes": 40383066112,
+      "available_bytes": 21858496512,
+      "usage_percent": 64.88,
+      "filesystems": [
+        {
+          "filesystem": "/dev/sda1",
+          "mount_point": "/",
+          "total_bytes": 62241562624,
+          "used_bytes": 40383066112,
+          "available_bytes": 21841719296,
+          "usage_percent": 65.0
+        },
+        {
+          "filesystem": "/dev/sda15",
+          "mount_point": "/boot/efi",
+          "total_bytes": 109422592,
+          "used_bytes": 6342144,
+          "available_bytes": 103080448,
+          "usage_percent": 6.0
+        },
+        {
+          "filesystem": "overlay",
+          "mount_point": "/var/lib/docker/overlay2/c9cc31bc7ee9765f0b9ce7c27e84817478bcfba3e3783efaa3b1617d2cd6a5e9/merged",
+          "total_bytes": 62241562624,
+          "used_bytes": 40383066112,
+          "available_bytes": 21841719296,
+          "usage_percent": 65.0
+        },
+        {
+          "filesystem": "overlay",
+          "mount_point": "/var/lib/docker/overlay2/ad42088016c27321a7aaa7890a55033ed8c168bbdf508b60184edd6836fff235/merged",
+          "total_bytes": 62241562624,
+          "used_bytes": 40383066112,
+          "available_bytes": 21841719296,
+          "usage_percent": 65.0
+        },
+        {
+          "filesystem": "overlay",
+          "mount_point": "/var/lib/docker/overlay2/31ccd502d91137f0906fea33433020e76caa46ef874ff94e55bd5fa9537dbbf4/merged",
+          "total_bytes": 62241562624,
+          "used_bytes": 40383066112,
+          "available_bytes": 21841719296,
+          "usage_percent": 65.0
+        },
+        {
+          "filesystem": "overlay",
+          "mount_point": "/var/lib/docker/overlay2/859bb387c5af707148b9d991ff06f11566c98651418b0477791b9ae9483bd140/merged",
+          "total_bytes": 62241562624,
+          "used_bytes": 40383066112,
+          "available_bytes": 21841719296,
+          "usage_percent": 65.0
+        },
+        {
+          "filesystem": "overlay",
+          "mount_point": "/var/lib/docker/overlay2/918e51fb042b71f0cb3f702f03b6f860c46730b1c51c9f4471d86e5d9f22398e/merged",
+          "total_bytes": 62241562624,
+          "used_bytes": 40383066112,
+          "available_bytes": 21841719296,
+          "usage_percent": 65.0
+        },
+        {
+          "filesystem": "overlay",
+          "mount_point": "/var/lib/docker/overlay2/b11abe711f39f633510a60eb7ee3d54b7992efa93bc096b00e6530ff1cc98ac9/merged",
+          "total_bytes": 62241562624,
+          "used_bytes": 40383066112,
+          "available_bytes": 21841719296,
+          "usage_percent": 65.0
+        },
+        {
+          "filesystem": "overlay",
+          "mount_point": "/var/lib/docker/overlay2/fc35c7afe7945ad0f174ad278c902cac6b3b14675fc88a6e3b3f097c6a13935c/merged",
+          "total_bytes": 62241562624,
+          "used_bytes": 40383066112,
+          "available_bytes": 21841719296,
+          "usage_percent": 65.0
+        }
+      ]
+    },
+    "load_average": [
+      0.1,
+      0.06,
+      0.01
+    ],
+    "uptime_seconds": 9582316,
+    "server": "VietNix",
+    "timestamp": "2026-04-13T14:27:46.536006Z",
+    "network": {
+      "interfaces": [
+        {
+          "interface": "lo",
+          "rx_bytes": 24102100723,
+          "tx_bytes": 24102100723
+        },
+        {
+          "interface": "eth0",
+          "rx_bytes": 449138712814,
+          "tx_bytes": 38862715423
+        },
+        {
+          "interface": "br-9a3b5c6beca1",
+          "rx_bytes": 12456942527,
+          "tx_bytes": 12633280874
+        },
+        {
+          "interface": "docker0",
+          "rx_bytes": 56271741,
+          "tx_bytes": 80026696
+        },
+        {
+          "interface": "br-d83b148f38e5",
+          "rx_bytes": 84,
+          "tx_bytes": 526
+        },
+        {
+          "interface": "vethe2b7ffc",
+          "rx_bytes": 13899079355,
+          "tx_bytes": 43479122983
+        },
+        {
+          "interface": "vethac2c51a",
+          "rx_bytes": 126,
+          "tx_bytes": 184442
+        },
+        {
+          "interface": "veth840ac85",
+          "rx_bytes": 55992687950,
+          "tx_bytes": 26508956311
+        },
+        {
+          "interface": "vethabadd8d",
+          "rx_bytes": 56233523,
+          "tx_bytes": 65273861
+        },
+        {
+          "interface": "vethb5304da",
+          "rx_bytes": 63139904,
+          "tx_bytes": 23869832
+        },
+        {
+          "interface": "br-eb70bd86fce3",
+          "rx_bytes": 7244169084,
+          "tx_bytes": 1312466677
+        },
+        {
+          "interface": "vethc4978de",
+          "rx_bytes": 1336305200,
+          "tx_bytes": 636892947
+        },
+        {
+          "interface": "veth7ee4fb4",
+          "rx_bytes": 7938994761,
+          "tx_bytes": 2648848345
+        }
+      ]
+    },
+    "processes": {
+      "total_processes": 180,
+      "top_cpu_processes": [
+        {
+          "user": "lxd",
+          "pid": 1525,
+          "cpu_percent": 0.6,
+          "memory_percent": 0.0,
+          "command": "redis-server *:6379"
+        },
+        {
+          "user": "tdgames",
+          "pid": 1831,
+          "cpu_percent": 0.5,
+          "memory_percent": 7.6,
+          "command": "node /usr/local/bin/n8n"
+        },
+        {
+          "user": "root",
+          "pid": 643,
+          "cpu_percent": 0.2,
+          "memory_percent": 0.5,
+          "command": "/usr/bin/containerd"
+        },
+        {
+          "user": "root",
+          "pid": 849,
+          "cpu_percent": 0.2,
+          "memory_percent": 1.8,
+          "command": "node /root/discord-bot/bot.js"
+        },
+        {
+          "user": "root",
+          "pid": 917,
+          "cpu_percent": 0.2,
+          "memory_percent": 0.8,
+          "command": "/usr/bin/dockerd -H fd:// --containerd=/run/contai"
+        },
+        {
+          "user": "root",
+          "pid": 1895,
+          "cpu_percent": 0.2,
+          "memory_percent": 0.8,
+          "command": "./qdrant"
+        },
+        {
+          "user": "root",
+          "pid": 2264864,
+          "cpu_percent": 0.2,
+          "memory_percent": 8.3,
+          "command": "node docker/main.js"
+        },
+        {
+          "user": "root",
+          "pid": 1313,
+          "cpu_percent": 0.1,
+          "memory_percent": 0.1,
+          "command": "/usr/bin/containerd-shim-runc-v2 -namespace moby -"
+        },
+        {
+          "user": "tdgames",
+          "pid": 3759,
+          "cpu_percent": 0.1,
+          "memory_percent": 1.7,
+          "command": "node --disallow-code-generation-from-strings --dis"
+        },
+        {
+          "user": "root",
+          "pid": 2813304,
+          "cpu_percent": 0.1,
+          "memory_percent": 0.1,
+          "command": "/lib/systemd/systemd --user"
+        }
+      ]
+    },
+    "system": {
+      "hostname": "n8n",
+      "os_name": "Ubuntu 22.04.5 LTS",
+      "kernel_version": "5.15.0-164-generic"
+    }
+  },
+  "server_name": "VietNix",
+  "message": "Tool 'get_system_status' executed successfully"
+}

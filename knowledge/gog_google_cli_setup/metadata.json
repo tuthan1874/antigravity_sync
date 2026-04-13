@@ -1,0 +1,14 @@
+{
+  "title": "GOG Google CLI Setup on VPS",
+  "summary": "Complete setup documentation for GOG (Google CLI) on Megahost_02 VPS (180.93.144.98). Account tdconsultingvn@gmail.com authorized with services: gmail, calendar, docs, drive, sheets. Uses OAuth client 'Serena GOG CLI' from Google Cloud project 'open-493116' (client_id: 826412273202-mf1gjubk3bn2js7frg27l9gnv2a2o2p9.apps.googleusercontent.com). Tokens stored in keyring at /root/.config/gogcli/keyring/ with GOG_KEYRING_PASSWORD=SerenaGogKey2026. Credentials file at /root/.gog_serena/client_secret.json. Must always use GOG_KEYRING_PASSWORD env var on headless VPS. Also has legacy token for tdgames.vn@gmail.com (different keyring password, currently broken).",
+  "created_at": "2026-04-13T00:26:00+07:00",
+  "updated_at": "2026-04-13T00:26:00+07:00",
+  "references": [
+    {
+      "type": "conversation",
+      "id": "31c3630d-b44c-4c4a-8c50-efce3ff2fed7",
+      "title": "GOG Google CLI Setup for Bot Serena on Megahost_02"
+    }
+  ],
+  "tags": ["vps", "google", "oauth", "gog", "cli", "megahost_02", "serena", "openclaw"]
+}
