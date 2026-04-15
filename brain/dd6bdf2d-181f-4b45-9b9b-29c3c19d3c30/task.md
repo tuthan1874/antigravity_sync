@@ -1,0 +1,5 @@
+- [x] Clone ZaloCRM repository to `/opt/ZaloCRM`
+- [x] Copy `.env.example` to `.env` and configure
+- [x] Build and start containers using docker compose
+- [x] Configure Nginx Server block for `zalo.tdconsulting.vn`
+- [x] Generate SSL via Certbot

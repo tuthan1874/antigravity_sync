@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan to deploy ZaloCRM on Megahost_02 using Docker, Nginx, and Certbot for SSL.",
+  "updatedAt": "2026-04-15T09:00:34.405348500Z",
+  "requestFeedback": true
+}
