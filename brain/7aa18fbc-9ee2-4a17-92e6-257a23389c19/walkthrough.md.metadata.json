@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Complete walkthrough of the MediaPipe to Spine 2D auto animation pipeline. Covers all 8 files created, their purposes, the bone mapping table (11 bones), CLI usage examples, test results showing successful generation of 510 keyframes across 11 bones in valid Spine 4.2 JSON format, and next steps for production use.",
+  "updatedAt": "2026-04-16T15:06:59.085713600Z"
+}
