@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Báo cáo nghiên cứu đầy đủ về các phương án tự động hóa animation cho Spine 2D skeleton. Phân tích 5 pipeline khả thi: (1) Video Mocap → Spine via MediaPipe/OpenPose, (2) FBX2Spine từ Mixamo/Cascadeur, (3) AI Text-to-Motion rồi retarget, (4) Animation Transfer Learning từ existing animations, (5) Custom Python pipeline. Đánh giá ưu/nhược điểm từng phương án, kèm đánh giá khả thi dựa trên cấu trúc Rig_Base.json hiện tại (Spine 4.2.39, 49 bones, IK + Transform constraints).",
+  "updatedAt": "2026-04-16T14:54:20.671323200Z",
+  "requestFeedback": true
+}

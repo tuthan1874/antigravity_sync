@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan for the MediaPipe to Spine JSON auto-animation pipeline. Covers project structure, 4 core modules (video_processor, pose_converter, spine_writer, smoothing), bone mapping table from MediaPipe to Rig_Base, CLI interface, and verification approach.",
+  "updatedAt": "2026-04-16T14:57:06.145684100Z"
+}
