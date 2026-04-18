@@ -1,0 +1,44 @@
+# Hoàn tất xây dựng luồng lấy Email tự động
+
+Tôi đã hoàn thành việc xây dựng công cụ quét tự động của bạn. Quá trình xử lý sẽ bao gồm 2 file script chính mà tôi vừa phát triển tại thư mục `e:\TDC_App\TDGAMES_App\Client_Data`.
+
+## 1. Dọn dẹp Dữ Liệu (Data Preprocessing)
+Code `data_cleaning_script.py`
+
+- Tự động quét toàn bộ hơn 9 sheet excel của bạn.
+- Bỏ qua các đường dẫn rác từ các hệ thống ATS như Greenhouse, Lever, Workday (vì bạn không thể gửi cold email vào các domain nhân sự này).
+- Gom nhóm và xuất ra danh sách các Studio sạch gọn gàng. Kết quả: lọc được **278 Game Studios độc lập**.
+- Output: `Cleaned_Target_Studios.csv`
+
+## 2. Scraping Bot (Email Discovery) 
+Code `email_discovery_bot.py`
+
+Đây là "cỗ máy" chính của bạn. Trọng tâm của script bao gồm hai phần (hoàn toàn đúng với định hướng miễn phí & dùng SalesQL của bạn):
+
+1. **Free Web Crawling:**
+   - Bot tự truy cập trang web của từng studio (vd: trang `domain.com/contact`, `domain.com/about`).
+   - Tự động dùng Regex dò quét và lưu lại các email `contact@`, `info@` hoặc thậm chí là cá nhân (vd thử nghiệm đã lấy được *rohit.gudipudi@unity3d.com*, hay *nathan@workwithindies.com*).
+
+2. **Tìm Link LinkedIn cho SalesQL:**
+   - SalesQL cần chính xác **đường dẫn tài khoản LinkedIn cá nhân** để cấp email.
+   - Bot sẽ tự động thực hiện truy vấn bằng mẹo Google Dorks: 
+     `site:linkedin.com/in "Tên Studio" ("Product Manager" OR "Animation Lead" OR "Art Director" OR "VFX")`
+   - Phương pháp này tìm ra **đích danh quản lý cấp cao** (các target persona mà bạn yêu cầu) của studio đó. Bạn sẽ có file danh sách các LinkedIn Link này để thả vào nền tảng SalesQL của bạn.
+
+> [!WARNING] 
+> **Lưu ý Cực Kỳ Quan Trọng về Giới hạn (Rate Limit)**
+> Google Search sẽ chặn 429 chặn IP nếu bạn từ động search liên tục. Hiện tại code đã có module nghỉ tự động (`sleep_interval`). Tuy nhiên nếu chạy thật với quy mô hàng trăm url, bạn nên cân nhắc sử dụng API xoay proxy (Rotating Proxies) rẻ tiền hoặc dịch vụ SerpApi để tránh việc IP wifi ở công ty của bạn bị Google chặn thao tác tìm kiếm.
+
+---
+
+### Hướng dẫn cách chạy trên máy của bạn
+Bạn có thể tiếp tục bằng cách mở PowerShell tại vùng làm việc này và gõ lệnh sau để chạy quét toàn bộ 278 Studio.
+
+```powershell
+# 1. Để lọc lại database nếu bạn có update file excel sau này
+python data_cleaning_script.py
+
+# 2. Để chạy quá trình đào và tìm link Linkedin + Email (nhớ mở file code ra và comment dòng df.head(15) nếu muốn chạy toàn bộ)
+python email_discovery_bot.py
+```
+Kết quả cuối cùng sẽ nhả ra bảng `Discovery_Results.csv` gồm: *Tên Studio, Web, Link Gốc, Email Quét Được web, Target Account rò rỉ Linkedin*.
