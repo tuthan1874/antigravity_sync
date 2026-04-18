@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Vạch ra quy trình 4 bước để tự động hóa việc trích xuất domain và thu thập email liên hệ của các công ty trong danh sách, phục vụ cho chiên dịch Cold Email B2B Marketing dịch vụ Outsource. Đưa ra các giải pháp qua API của bên thứ ba (Apollo, Hunter) cũng như Web Scraping.",
+  "updatedAt": "2026-04-18T14:29:43.685188800Z",
+  "requestFeedback": true
+}

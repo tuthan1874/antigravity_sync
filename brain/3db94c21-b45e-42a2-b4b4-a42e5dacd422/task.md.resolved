@@ -1,0 +1,13 @@
+- [ ] **Giai đoạn 1: Chuẩn bị dữ liệu**
+  - [ ] Viết lệnh đọc toàn bộ các URL từ các sheet của `Client_Job.xlsx`.
+  - [ ] Trích xuất Domain chính từ các URL tuyển dụng.
+  - [ ] Lưu thành file CSV `Cleaned_Target_Studios.csv`.
+- [ ] **Giai đoạn 2: Phát triển Tool Web Scraping**
+  - [ ] Viết script Python (dùng `requests` và `BeautifulSoup` hoặc Playwright) để truy cập website dự án.
+  - [ ] Thu thập các email liên hệ chung (info, contact, partner) bằng Regex.
+- [ ] **Giai đoạn 3: Nghiên cứu tích hợp SalesQL API**
+  - [ ] Lên khung logic sử dụng SalesQL API (nếu API Docs hỗ trợ tìm theo Domain + Job Title).
+  - [ ] Tích hợp tính năng lọc theo đối tượng mục tiêu: Product Manager, Animation Lead, Art Director, VFX Lead.
+- [ ] **Giai đoạn 4: Chạy tự động và Xác thực**
+  - [ ] Chạy thử nghiệm trên 10-20 domain.
+  - [ ] Xuất file kết quả `Verified_Outsource_Leads.csv`.
