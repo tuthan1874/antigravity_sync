@@ -1,199 +1,356 @@
-# Tìm Kiếm Doanh Nghiệp Việt Nam Theo Ngành Nghề & Tỉnh Thành
+# TD Consulting — Headhunt Lead Generation Pipeline
 
 ## Mục Tiêu
 
-Xây dựng tool Python tự động tìm kiếm và thu thập thông tin sơ bộ các công ty thuộc **một ngành nghề** tại **một tỉnh/thành phố** ở Việt Nam.
+Xây dựng pipeline tự động **5 giai đoạn** để tìm kiếm và tiếp cận khách hàng tiềm năng cho dịch vụ Headhunt/Tuyển dụng của TD Consulting.
 
-- **Input**: Ngành nghề (VD: "xây dựng", "nhà hàng") + Tỉnh/Thành phố (VD: "Đà Nẵng", "Hà Nội")
-- **Output**: Danh sách công ty với thông tin sơ bộ → xuất ra Excel/CSV
+```mermaid
+graph LR
+    A["📥 Input<br/>Ngành + Tỉnh"] --> B["🔍 Stage 1<br/>Company Discovery"]
+    B --> C["🏢 Stage 2<br/>Company Research"]
+    C --> D["📋 Stage 3<br/>Job Analysis"]
+    D --> E["👤 Stage 4<br/>Leads ID"]
+    E --> F["📞 Stage 5<br/>Outreach Plan"]
+    F --> G["📊 Output<br/>Excel Report"]
+```
+
+**Input:** Ngành nghề + Tỉnh/Thành phố (VD: `"xây dựng"` + `"Đà Nẵng"`)
+**Output:** Excel report với danh sách công ty, phân tích tuyển dụng, contacts HR, và kế hoạch tiếp cận
 
 ---
 
-## Phân Tích Các Nguồn Dữ Liệu
+## Tài Nguyên Đã Có
 
-### So sánh tổng quan
-
-| Tiêu chí | Google Places API (New) | Masothue.com Scraping | dangkykinhdoanh.gov.vn |
-|---|---|---|---|
-| **Dữ liệu** | Tên, địa chỉ, SĐT, website, rating, giờ mở cửa | Tên, MST, đại diện pháp lý, địa chỉ | Tên, MST, ngành nghề, vốn |
-| **Lọc ngành + tỉnh** | ✅ Tự nhiên qua text query | ❌ Chỉ lọc riêng ngành HOẶC tỉnh | ❌ Chỉ tra từng DN |
-| **API chính thức** | ✅ Có | ❌ Không | ❌ Không có API công khai |
-| **Free tier** | 10K req/tháng (Essentials) | Free nhưng có quảng cáo chặn | Free tra cứu đơn lẻ |
-| **Tính pháp lý** | ✅ Hoàn toàn hợp pháp | ⚠️ Rủi ro vi phạm ToS | ⚠️ Không có API |
-| **Độ tin cậy** | ⭐⭐⭐⭐⭐ | ⭐⭐ (dễ bị block) | ⭐⭐ |
-| **Dữ liệu MST** | ❌ Không có | ✅ Có | ✅ Có |
-
-### Chi tiết từng nguồn
-
-#### 1. 🟢 Google Places API (New) — **KHUYẾN NGHỊ LÀM NGUỒN CHÍNH**
-
-**Ưu điểm:**
-- **Text Search** cho phép query tự nhiên: `"nhà hàng tại Đà Nẵng"` → trả về danh sách DN thực tế
-- Dữ liệu phong phú: tên, địa chỉ, SĐT, website, rating, reviews, giờ hoạt động
-- Free tier hào phóng: **10,000 requests/tháng** (Essentials), **5,000 requests/tháng** (Pro)
-- Mỗi request trả ~20 kết quả, hỗ trợ pagination → **tối đa ~200K công ty/tháng miễn phí**
-- API chính thức, ổn định, không lo bị block
-
-**Nhược điểm:**
-- Không có MST (mã số thuế) hay thông tin đăng ký kinh doanh
-- Cần Google Cloud account + billing (dù chỉ dùng free tier)
-- Kết quả thiên về DN đã đăng ký trên Google Maps (có thể thiếu DN nhỏ)
-
-**Chi phí:** FREE cho nhu cầu thông thường. Vượt free tier: ~$32/1000 req (Essentials)
-
-#### 2. 🟡 Masothue.com — **NGUỒN BỔ SUNG (Enrichment)**
-
-**Cấu trúc URL đã xác nhận:**
-```
-Ngành nghề: https://masothue.com/tra-cuu-ma-so-thue-theo-nganh-nghe/{slug}-{id}
-Tỉnh thành: https://masothue.com/tra-cuu-ma-so-thue-theo-tinh/{slug}-{id}
-Pagination:  ?page=N
-Tra cứu MST: https://masothue.com/{mst}
-```
-
-**Dữ liệu mỗi DN:** Tên công ty, MST, người đại diện, địa chỉ
-
-**Rào cản kỹ thuật:**
-- ⚠️ Modal quảng cáo chặn nội dung ("Xem thêm nội dung" - phải xem quảng cáo)
-- ⚠️ Cloudflare protection
-- ⚠️ Không hỗ trợ lọc đồng thời ngành + tỉnh
-- ⚠️ ~20-30 DN/trang
-
-**Kịch bản sử dụng:** Sau khi có danh sách tên DN từ Google Places → tra MST trên masothue → lấy thêm thông tin đăng ký
-
-#### 3. 🟡 Escodata.net API — **NGUỒN BỔ SUNG (Tra MST)**
-
-- API FREE: `GET https://escodata.net/api-mst/{MST}.htm` → JSON
-- Chỉ tra cứu theo MST (không tìm theo ngành/tỉnh)
-- Dùng để enrich dữ liệu sau khi đã có MST
+| Tài nguyên | Chi tiết | Trạng thái |
+|---|---|---|
+| Google Places API | Project `open-493116` | ✅ Có sẵn (cần bật Places API) |
+| Google Custom Search API | Key: `AIzaSyA2...MVI`, CX: `80bd0...3bd` | ✅ Đã cấu hình |
+| SalesQL API | Key: `8NAYAs5j...53e1k` | ✅ Đã cấu hình |
+| Code patterns | [email_discovery_bot.py](file:///e:/TDC_App/TDGAMES_App/Client_Data/email_discovery_bot.py) | ✅ Tái sử dụng |
 
 ---
 
-## Phương Án Đề Xuất: Hybrid 2 Lớp
+## Chi Tiết 5 Giai Đoạn
 
-> [!IMPORTANT]
-> **Phương án tối ưu nhất** là kết hợp Google Places API làm nguồn chính + masothue.com/escodata để bổ sung thông tin MST/đăng ký kinh doanh.
+### Stage 1: Company Discovery 🔍
+**Mục tiêu:** Tìm danh sách công ty theo ngành + tỉnh thành
 
-### Kiến trúc tổng quan
+**Phương pháp:** Google Places API (New) — Text Search
+
+```
+Query: "{ngành nghề} tại {tỉnh/TP}"
+VD:    "công ty xây dựng tại Đà Nẵng"
+```
+
+| Khía cạnh | Chi tiết |
+|---|---|
+| API | `POST https://places.googleapis.com/v1/places:searchText` |
+| Free tier | 10,000 req/tháng (Essentials) — mỗi req ~20 kết quả |
+| Output | Tên, địa chỉ, SĐT, website, rating, Google Maps URL |
+| Pagination | Qua `nextPageToken`, tối đa ~60 kết quả/query |
+
+**Tại sao không dùng masothue.com?**
+- Không hỗ trợ lọc kết hợp ngành + tỉnh
+- Modal quảng cáo chặn nội dung, Cloudflare protection
+- Dễ bị block, không có API → không ổn định cho production
+
+---
+
+### Stage 2: Company Research 🏢
+**Mục tiêu:** Phân tích sơ bộ từng công ty — lĩnh vực, quy mô, online presence
+
+**Phương pháp:** Google Custom Search API (đã có key) + Web Scraping
+
+**Workflow:**
+```mermaid
+graph TD
+    A[Tên công ty từ Stage 1] --> B[Google CSE Search]
+    B --> C1["🌐 Website chính thức"]
+    B --> C2["📘 Facebook Fanpage"]
+    B --> C3["💼 LinkedIn Company"]
+    C1 --> D[Scrape: mô tả, ngành nghề, quy mô]
+    C2 --> D
+    C3 --> D
+    D --> E[Company Profile Summary]
+```
+
+**Google CSE Queries:**
+```python
+# Tìm website
+f'"{company_name}" official website'
+
+# Tìm Facebook  
+f'site:facebook.com "{company_name}" Vietnam'
+
+# Tìm LinkedIn Company
+f'site:linkedin.com/company "{company_name}"'
+```
+
+**Data Fields thu được:**
+
+| Field | Nguồn | Phương pháp |
+|---|---|---|
+| Website URL | Google CSE | Top result |
+| Mô tả công ty | Website | Scrape meta description, about page |
+| Facebook URL | Google CSE | `site:facebook.com` |
+| LinkedIn URL | Google CSE | `site:linkedin.com/company` |
+| Ngành nghề chi tiết | Website/LinkedIn | Text extraction |
+
+**Chi phí:** Google CSE = $5/1000 queries. ~3-4 queries/công ty → ~$0.02/công ty
+
+---
+
+### Stage 3: Job Analysis 📋
+**Mục tiêu:** Quét thông tin tuyển dụng, đánh giá nhu cầu headhunt
+
+**Phương pháp:** Google CSE + Web Scraping (requests/BeautifulSoup)
+
+**Workflow:**
+```mermaid
+graph TD
+    A[Company từ Stage 2] --> B1["Google CSE: '{company}' tuyển dụng"]
+    A --> B2["Google CSE: site:{website}/careers"]
+    A --> B3["Google CSE: site:topcv.vn '{company}'"]
+    A --> B4["Google CSE: site:vietnamworks.com '{company}'"]
+    B1 --> C[Tổng hợp URLs tuyển dụng]
+    B2 --> C
+    B3 --> C
+    B4 --> C
+    C --> D[Scrape: Job titles, requirements]
+    D --> E{Đánh giá Headhunt Score}
+    E -->|Senior/Ngoại ngữ/IT| F["🔥 HIGH Priority"]
+    E -->|Mid-level thông thường| G["⚡ MED Priority"]
+    E -->|Junior/Phổ thông| H["❄️ LOW Priority"]
+```
+
+**Google CSE Queries cho tuyển dụng:**
+```python
+# Tìm trên website chính
+f'site:{company_domain} tuyển dụng OR careers OR "việc làm"'
+
+# Tìm trên các job board VN
+f'site:topcv.vn "{company_name}"'
+f'site:vietnamworks.com "{company_name}"'  
+f'site:vieclam24h.vn "{company_name}"'
+
+# Tìm trên Facebook
+f'site:facebook.com "{company_name}" tuyển dụng'
+```
+
+**Headhunt Score — Công thức đánh giá:**
+
+| Tiêu chí | Điểm | Logic |
+|---|---|---|
+| Có vị trí Senior/Lead/Manager | +3 | Regex match title keywords |
+| Yêu cầu ngoại ngữ (Nhật/Hoa/Hàn) | +3 | Keyword: 日本語, tiếng Nhật, 中文, 한국어 |
+| Vị trí IT/Chuyên ngành cao | +2 | Keywords ngành đặc thù |
+| Nhiều vị trí đang tuyển (>3) | +2 | Count job listings |
+| Có trang careers riêng | +1 | URL pattern detection |
+| **Total Score ≥ 5** | **🔥 HIGH** | Khả năng cần headhunt rất cao |
+| **Total Score 3-4** | **⚡ MED** | Có tiềm năng |
+| **Total Score < 3** | **❄️ LOW** | Ít khả năng cần headhunt |
+
+> [!TIP]
+> Các job board VN (TopCV, VietnamWorks, Vieclam24h) không có API công khai, nhưng Google CSE sẽ index được nội dung của chúng qua `site:` operator — đây là cách tốt nhất để search cross-platform mà chỉ cần 1 API.
+
+---
+
+### Stage 4: Leads Identification 👤
+**Mục tiêu:** Tìm người phụ trách HR/Tuyển dụng + lấy thông tin liên hệ
+
+**Phương pháp:** Google CSE (tìm LinkedIn profile) + SalesQL API (enrich)
+
+> [!NOTE]
+> Tái sử dụng 100% pattern từ [email_discovery_bot.py](file:///e:/TDC_App/TDGAMES_App/Client_Data/email_discovery_bot.py) — đã proven hoạt động tốt.
+
+**Target Titles cho TD Consulting (Headhunt context):**
+```python
+HR_TARGET_TITLES = [
+    # HR Leadership
+    "HR Director", "HR Manager", "Giám đốc Nhân sự", "Trưởng phòng Nhân sự",
+    "Head of HR", "Chief People Officer", "CHRO",
+    # Recruitment specific
+    "Recruitment Manager", "Talent Acquisition", "Hiring Manager",
+    "Trưởng phòng Tuyển dụng", "Talent Manager",
+    # General management (fallback - người ra quyết định)
+    "CEO", "Giám đốc", "Managing Director", "General Director",
+    "COO", "Phó Giám đốc",
+]
+```
+
+**Google CSE Query:**
+```python
+title_query = " OR ".join([f'"{t}"' for t in HR_TARGET_TITLES[:8]])
+query = f'site:linkedin.com/in "{company_name}" ({title_query})'
+```
+
+**SalesQL Enrichment:** LinkedIn URL → Email + Phone + Name + Title
+
+| Data | Nguồn | Ghi chú |
+|---|---|---|
+| Họ tên | SalesQL | Full name |
+| Chức vụ | SalesQL | Current title |
+| Email cá nhân | SalesQL | Verified status |
+| Số điện thoại | SalesQL | **Ưu tiên #1** cho gọi điện/Zalo |
+| LinkedIn URL | Google CSE | Direct profile link |
+
+**Rate Limits:**
+- SalesQL: 600 req/ngày, 50 req/phút
+- Google CSE: 10,000 req/ngày ($5/1000 nếu vượt free tier)
+
+---
+
+### Stage 5: Outreach Strategy 📞
+**Mục tiêu:** Tạo kế hoạch tiếp cận có ưu tiên cho từng lead
+
+**Logic sắp xếp ưu tiên:**
 
 ```mermaid
 graph TD
-    A[📥 Input: Ngành nghề + Tỉnh/TP] --> B[Layer 1: Google Places API]
-    B --> C[Danh sách DN: Tên, SĐT, Địa chỉ, Website, Rating]
-    C --> D{Cần MST / Thông tin ĐKKD?}
-    D -->|Có| E[Layer 2: Masothue Search + Escodata API]
-    E --> F[Enrich: MST, Người đại diện, Ngày thành lập]
-    D -->|Không| G[📊 Export Excel/CSV]
-    F --> G
+    A[Lead Data] --> B{Có SĐT?}
+    B -->|Có| C["🥇 Ưu tiên 1: Gọi điện / Zalo"]
+    B -->|Không| D{Có Email?}
+    C --> E["🥈 Ưu tiên 2: Email follow-up"]
+    D -->|Có| E
+    D -->|Không| F{Có LinkedIn/FB?}
+    E --> F
+    F -->|Có| G["🥉 Ưu tiên 3: Social connect"]
+    F -->|Không| H["❌ Không đủ data"]
 ```
 
-### Data Fields Output
-
-| Field | Nguồn | Ghi chú |
-|---|---|---|
-| Tên công ty | Google Places | Primary |
-| Địa chỉ | Google Places | Formatted address |
-| Số điện thoại | Google Places | International format |
-| Website | Google Places | Nếu có |
-| Rating / Đánh giá | Google Places | 1-5 stars |
-| Số lượng reviews | Google Places | Popularity indicator |
-| Giờ hoạt động | Google Places | Nếu có |
-| Google Maps URL | Google Places | Link trực tiếp |
-| Mã số thuế (MST) | Masothue | Layer 2 - Optional |
-| Người đại diện | Masothue / Escodata | Layer 2 - Optional |
-| Ngày thành lập | Escodata | Layer 2 - Optional |
-| Tình trạng hoạt động | Escodata | Layer 2 - Optional |
+**Output trong Excel:** Mỗi lead sẽ có cột `Outreach_Priority` và `Outreach_Plan`:
+- `P1: Gọi 0912xxx → Zalo giới thiệu dịch vụ → Email follow-up`
+- `P2: Email hr@company.com → LinkedIn connect request`
+- `P3: LinkedIn InMail → Facebook message`
 
 ---
 
 ## User Review Required
 
+> [!IMPORTANT]
+> **Google Places API Key**: Bạn cần tạo thêm API key cho Places API (New) trong project `open-493116`, hoặc có thể dùng chung key `AIzaSyA2...MVI` nếu enable Places API trong console. Bạn muốn cách nào?
+
 > [!WARNING]
-> **Google Cloud Account**: Bạn cần có Google Cloud account với billing enabled. API Key cho Places API (New) cần được tạo. Bạn đã có Google Cloud project `open-493116` (dùng cho GOG CLI). Có muốn dùng lại project này hay tạo project mới?
+> **Giới hạn SalesQL Credits**: SalesQL tính credit mỗi lần enrich thành công. Nếu xử lý 50 công ty × 1-2 leads = 50-100 credits. Bạn đang dùng plan nào của SalesQL và còn bao nhiêu credits?
 
 > [!IMPORTANT]
-> **Chọn phạm vi Layer 2**: Layer 2 (tra MST via masothue/escodata) sẽ tăng thời gian chạy đáng kể do phải tra từng DN. Bạn muốn:
-> - **(A)** Chỉ Layer 1 (Google Places) — nhanh, đủ cho mục đích tiếp cận kinh doanh
-> - **(B)** Layer 1 + Layer 2 — đầy đủ nhưng chậm hơn, có rủi ro bị masothue block
-> - **(C)** Layer 1 + Escodata only — cần có MST trước (hạn chế hơn nhưng ổn định)
+> **Phạm vi chạy**: Mỗi lần chạy tool cho 1 ngành + 1 tỉnh, ước tính:
+> - Stage 1: ~60 công ty (3 pages Google Places)
+> - Stage 2-3: ~60 × 5 queries = 300 Google CSE queries (~$1.5)
+> - Stage 4: ~20-30 leads quan trọng (chỉ enrich HIGH/MED score) = 20-30 SalesQL credits
+> 
+> **Tổng cost mỗi lần chạy: ~$1.5-3** (chủ yếu Google CSE). Chấp nhận được?
 
 ---
 
 ## Proposed Changes
 
-### Component: Company Search Tool
-
-Workspace: `e:\TDC_App\TD_Consulting_App\Client_Search\`
-
-#### [NEW] [config.py](file:///e:/TDC_App/TD_Consulting_App/Client_Search/config.py)
-- Cấu hình API keys, rate limits, output paths
-- Mapping ngành nghề → Google Places types
-- Mapping tỉnh thành → coordinates/region codes
-
-#### [NEW] [google_places_searcher.py](file:///e:/TDC_App/TD_Consulting_App/Client_Search/google_places_searcher.py)
-- Class `GooglePlacesSearcher`:
-  - `search_businesses(industry: str, province: str) -> list[dict]`
-  - Text Search (New) API integration
-  - Auto-pagination qua `nextPageToken`
-  - Field mask optimization để tiết kiệm chi phí
-  - Rate limiting & retry logic
-
-#### [NEW] [masothue_enricher.py](file:///e:/TDC_App/TD_Consulting_App/Client_Search/masothue_enricher.py)
-- Class `MasothueEnricher` (Layer 2 - Optional):
-  - Tìm MST từ tên công ty qua masothue.com search
-  - Lấy thông tin chi tiết qua escodata API
-  - Anti-detection: random delays, user-agent rotation
-  - Graceful degradation nếu bị block
-
-#### [NEW] [exporter.py](file:///e:/TDC_App/TD_Consulting_App/Client_Search/exporter.py)
-- Export kết quả ra Excel (.xlsx) với formatting đẹp
-- Export CSV backup
-- Deduplication logic
-
-#### [NEW] [main.py](file:///e:/TDC_App/TD_Consulting_App/Client_Search/main.py)
-- CLI interface: `python main.py --industry "xây dựng" --province "Đà Nẵng"`
-- Orchestrator kết hợp các layers
-- Progress bar & logging
-- Resume capability nếu bị gián đoạn
-
-#### [NEW] [.env](file:///e:/TDC_App/TD_Consulting_App/Client_Search/.env)
-- `GOOGLE_PLACES_API_KEY=...`
-- `ENABLE_LAYER2=true/false`
-
-#### [NEW] [requirements.txt](file:///e:/TDC_App/TD_Consulting_App/Client_Search/requirements.txt)
-- `requests`, `openpyxl`, `python-dotenv`, `tqdm`, `tenacity`
+### Workspace: `e:\TDC_App\TD_Consulting_App\Client_Search\`
 
 ---
 
-## Ước Tính Chi Phí & Hiệu Suất
+#### [NEW] [.env](file:///e:/TDC_App/TD_Consulting_App/Client_Search/.env)
+Cấu hình API keys (copy từ existing `.env` + thêm Places API key)
+```
+GOOGLE_API_KEY=AIzaSyA2U5gFXVha3B9fpBCp2gQp1C_bnLs5MVI
+GOOGLE_CX_ID=80bd03fb209c243bd
+GOOGLE_PLACES_API_KEY=<same or new key>
+SALESQL_API_KEY=8NAYAs5jqO22WqvgJltSSHPMRJJ53e1k
+```
 
-| Kịch bản | Chi phí | Thời gian | Số DN tối đa |
-|---|---|---|---|
-| Layer 1 only, 1 query | FREE | ~5 giây | ~60 DN (3 pages) |
-| Layer 1 only, 10 queries | FREE | ~1 phút | ~600 DN |
-| Layer 1 + Layer 2, 1 query | FREE | ~5-10 phút | ~60 DN + enriched |
-| Layer 1, full month | FREE | - | ~200K DN |
+#### [NEW] [requirements.txt](file:///e:/TDC_App/TD_Consulting_App/Client_Search/requirements.txt)
+`requests`, `openpyxl`, `beautifulsoup4`, `python-dotenv`, `tqdm`, `tenacity`, `pandas`
+
+---
+
+#### [NEW] [config.py](file:///e:/TDC_App/TD_Consulting_App/Client_Search/config.py)
+- API endpoints, keys, rate limits
+- HR target titles list
+- Headhunt scoring keywords
+- Vietnamese province mapping
+
+#### [NEW] [stage1_discovery.py](file:///e:/TDC_App/TD_Consulting_App/Client_Search/stage1_discovery.py)
+- `GooglePlacesSearcher` class
+- Text Search (New) API integration
+- Auto-pagination, field mask optimization
+- Output: list of company dicts
+
+#### [NEW] [stage2_research.py](file:///e:/TDC_App/TD_Consulting_App/Client_Search/stage2_research.py)
+- `CompanyResearcher` class
+- Google CSE queries to find website, Facebook, LinkedIn
+- Web scraping for company description, industry details
+- Output: enriched company profiles
+
+#### [NEW] [stage3_jobs.py](file:///e:/TDC_App/TD_Consulting_App/Client_Search/stage3_jobs.py)
+- `JobAnalyzer` class
+- Google CSE queries targeting career pages + VN job boards
+- Job listing extraction from HTML
+- Headhunt scoring algorithm
+- Output: job analysis with scores per company
+
+#### [NEW] [stage4_leads.py](file:///e:/TDC_App/TD_Consulting_App/Client_Search/stage4_leads.py)
+- `LeadsIdentifier` class
+- Reuse patterns from `email_discovery_bot.py`
+- Google CSE → LinkedIn HR profiles
+- SalesQL enrichment → email + phone
+- Smart credit management (chỉ enrich HIGH/MED score)
+
+#### [NEW] [stage5_outreach.py](file:///e:/TDC_App/TD_Consulting_App/Client_Search/stage5_outreach.py)
+- `OutreachPlanner` class
+- Priority assignment logic (Phone → Email → Social)
+- Generate outreach script suggestions
+- Output: prioritized contact plan per lead
+
+#### [NEW] [exporter.py](file:///e:/TDC_App/TD_Consulting_App/Client_Search/exporter.py)
+- Export multi-sheet Excel report:
+  - Sheet 1: Company Overview (all companies)
+  - Sheet 2: Job Analysis (scores, positions)
+  - Sheet 3: Hot Leads (HIGH score with contacts)
+  - Sheet 4: Outreach Plan (prioritized action items)
+- Conditional formatting (color-coded scores)
+- CSV backup
+
+#### [NEW] [main.py](file:///e:/TDC_App/TD_Consulting_App/Client_Search/main.py)
+- CLI: `python main.py --industry "xây dựng" --province "Đà Nẵng"`
+- Optional flags: `--skip-stage 4` (skip SalesQL), `--limit 20`
+- Orchestrates all 5 stages sequentially
+- Progress bar, logging, resume capability
+- Saves intermediate results (có thể resume nếu bị gián đoạn)
+
+---
+
+## Ước Tính Chi Phí Tổng Thể
+
+| Hạng mục | Free Tier | Cost nếu vượt |
+|---|---|---|
+| Google Places API | 10K req/tháng | ~$32/1K req |
+| Google Custom Search | 100 req/ngày free | $5/1K req |
+| SalesQL | Tùy plan | ~$0.10-0.30/credit |
+| **1 lần chạy (1 ngành + 1 tỉnh)** | **Phần lớn free** | **~$1.5-3** |
 
 ---
 
 ## Open Questions
 
-1. **Google Cloud Project**: Dùng lại project `open-493116` hay tạo mới?
-2. **Layer 2 scope**: Chọn phương án A, B, hay C (xem phần User Review)?
-3. **Use case cụ thể**: Tool này phục vụ mục đích gì? (Lead generation cho TD Consulting? Nghiên cứu thị trường?) — để tối ưu output format
-4. **Ngành nghề mẫu**: Có ngành nghề + tỉnh thành cụ thể nào muốn test trước không?
+1. **Google Places API**: Dùng chung key cũ hay tạo key mới? Cần confirm đã bật Places API (New) trong Google Cloud Console
+2. **SalesQL plan & credits**: Đang dùng plan gì? Còn bao nhiêu credits?
+3. **Ngành + Tỉnh mẫu**: Cho 1 ví dụ cụ thể để test (VD: "IT" + "Hồ Chí Minh")?
+4. **Output language**: Report bằng tiếng Việt hay tiếng Anh?
+5. **Google CSE free tier**: Google CSE cho 100 queries/ngày miễn phí. Nếu chạy thường xuyên, có cần upgrade không?
 
 ---
 
 ## Verification Plan
 
 ### Automated Tests
-1. Chạy test với query mẫu: `"nhà hàng tại Đà Nẵng"` → verify output có dữ liệu hợp lệ
-2. Verify Excel output mở được và format đúng
-3. Test pagination: query trả >20 kết quả → verify lấy đủ pages
-4. Test error handling: invalid API key, network timeout
+1. **Stage 1**: Query `"nhà hàng tại Đà Nẵng"` → verify ≥20 results với đủ fields
+2. **Stage 2**: Lấy 3 công ty → verify tìm được website/Facebook/LinkedIn URLs
+3. **Stage 3**: Lấy 3 công ty có website → verify detect được job listings
+4. **Stage 4**: Lấy 1 công ty có LinkedIn → verify SalesQL trả contact data
+5. **Stage 5**: Verify Excel output 4 sheets, formatting đúng
 
 ### Manual Verification
-1. Cross-check 5-10 DN trong kết quả với Google Maps trực tiếp
-2. Verify MST data (nếu dùng Layer 2) với masothue.com thủ công
-3. Kiểm tra deduplication hoạt động đúng
+1. Cross-check 5 công ty với Google Maps
+2. Verify Headhunt Score có hợp lý (so sánh với đánh giá manual)
+3. Test gọi thử 1-2 SĐT để verify data quality
+4. Review Excel report format với user

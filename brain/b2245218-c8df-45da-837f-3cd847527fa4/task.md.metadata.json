@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_TASK",
+  "summary": "Task tracking for TD Consulting Headhunt Lead Generation Pipeline implementation. 10 files to create across 5 stages: config, discovery, research, jobs, leads, outreach, exporter, main, .env, requirements.txt.",
+  "updatedAt": "2026-04-18T15:36:06.479357300Z"
+}
