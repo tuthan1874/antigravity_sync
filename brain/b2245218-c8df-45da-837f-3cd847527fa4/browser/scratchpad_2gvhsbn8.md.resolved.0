@@ -1,0 +1,20 @@
+# Research Plan: masothue.com Structure
+
+## Progress Tracking
+- [x] Check robots.txt (Allows everything except /Ajax/*)
+- [x] Explore homepage for Industry and Province links
+- [/] Analyze Industry URL pattern: `https://masothue.com/tra-cuu-ma-so-thue-theo-nganh-nghe/`
+- [/] Analyze Province URL pattern: `https://masothue.com/tra-cuu-ma-so-thue-theo-tinh/`
+- [ ] Analyze Company listing data fields
+- [ ] Analyze Pagination pattern
+- [ ] Look for combined Industry + Province filtering
+- [ ] Identify anti-scraping measures
+
+## Findings
+- **robots.txt**: `User-Agent: * Allow: / Disallow: /Ajax/*`
+- **Homepage**: Contains "Ngành nghề" (Industry) and "Tỉnh / Thành phố" (Province) menu items.
+- **URL Patterns**:
+  - Industry list: `https://masothue.com/tra-cuu-ma-so-thue-theo-nganh-nghe/`
+  - Province list: `https://masothue.com/tra-cuu-ma-so-thue-theo-tinh/`
+- **Anti-scraping noticed**: Persistent modal "Xem thêm nội dung" requiring an ad view to access full site content. This modal appears on both homepage and subpages.
+- **Province links (partial)**: An Giang, Bà Rịa - Vũng Tàu, Bắc Giang, etc. Links likely follow a slug pattern.

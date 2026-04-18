@@ -1,0 +1,226 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Bỏ qua để đến phần nội dung chính
+Hỗ trợ truy cập
+Phản hồi về hỗ trợ truy cập
+[0] (47,40)<a aria-label='Đến trang chủ Google' href='https://www.google.com/webhp?hl=vi&sa=X&ved=0ahUKEwj7oqPT2PeTAxXi78kDHU0OEmkQPAgJ' id='logo' title='Đến trang chủ Google' />
+[1] (211,40)<textarea aria-label='Tìm kiếm' class='gLFyf' id='APjFqb' role='combobox' />
+[2] (342,40)<div  />
+	[3] (341,40)<div aria-label='Xóa' class='vOY7J M2vV3' role='button' />
+		[4] (341,40)<span  />
+	[5] (351,40)<span  />
+[6] (360,40)<div aria-label='Công cụ nhập' class='Umvnrc' role='button' />
+	[7] (360,40)<span  />
+[8] (376,40)<div aria-label='Tìm kiếm bằng giọng nói' class='XDyW0e' role='button' />
+[9] (392,40)<div aria-label='Tìm kiếm bằng hình ảnh' class='nDcEnd' role='button' />
+[10] (410,40)<button aria-label='Tìm kiếm' class='HZVG1b Tg7LZd' />
+	[11] (407,40)<div  />
+		[12] (407,40)<span  />
+[13] (922,40)<div aria-label='Cài đặt' class='fLciMb' id='og-te' role='button' />
+[14] (940,40)<a aria-label='Các ứng dụng của Google' class='gb_C' href='https://www.google.com.vn/intl/vi/about/products?tab=wh' role='button' />
+[15] (968,40)<a aria-label='Đăng nhập' class='gb_A' href='https://accounts.google.com/ServiceLogin?hl=vi&passive=true&continue=https://www.google.com/search%3Fq%3Dsite%253Amasothue.com%2BB%25C3%25ACnh%2BD%25C6%25B0%25C6%25A1ng%2Bt%25C3%25ACm%2Bki%25E1%25BA%25BFm%2Btheo%2Bt%25E1%25BB%2589nh%2Bth%25C3%25A0nh&ec=futura_srp_og_si_72236_p' />
+	[16] (968,39)<span >Đăng nhập />
+[17] (102,87)<a class='XVMlrc C6AK7c' href='/search?q=site:masothue.com+B%C3%ACnh+D%C6%B0%C6%A1ng+t%C3%ACm+ki%E1%BA%BFm+theo+t%E1%BB%89nh+th%C3%A0nh&sca_esv=32ed2d6df950acda&udm=50&fbs=ADc_l-ZXQWBHI_L0epjkf31fijnb8obTC9Cf43rNKvT_8WoTHhsDKWUlVIzTXlsVKxLm56T0Ut-Sik5y2vU82rBwp3gqcKvrykM6Ma8ErflXPc2jEqsY7nJoaQffyv10Tij5KYN7I89-vszOhsB4vDtEY_jrUApcfjHsJuFp54aPidjo2k0AqYmvGjn9N2gI6442bYTqCkROaYTzmMT1xxM1DFtyo-dn5mOt3-w4gLlsuBCQr2MrRYdvSUS5XqZ6jJLekhVvfwfM&aep=1&ntc=1&sa=X&ved=2ahUKEwj7oqPT2PeTAxXi78kDHU0OEmkQ2J8OegQIDRAI' />
+	[18] (102,87)<div  />
+		[19] (102,94)<div  />
+			[20] (102,90)<span >Chế độ AI />
+[21] (131,87)<a class='C6AK7c' role='link' />
+	Tất cả
+[22] (155,87)<a class='C6AK7c' href='/search?sca_esv=32ed2d6df950acda&udm=7&fbs=ADc_l-ZXQWBHI_L0epjkf31fijnb8obTC9Cf43rNKvT_8WoTHhsDKWUlVIzTXlsVKxLm56T0Ut-Sik5y2vU82rBwp3gqcKvrykM6Ma8ErflXPc2jEqsY7nJoaQffyv10Tij5KYN7I89-vszOhsB4vDtEY_jrUApcfjHsJuFp54aPidjo2k0AqYmvGjn9N2gI6442bYTqCkROaYTzmMT1xxM1DFtyo-dn5mOt3-w4gLlsuBCQr2MrRYdvSUS5XqZ6jJLekhVvfwfM&q=site:masothue.com+B%C3%ACnh+D%C6%B0%C6%A1ng+t%C3%ACm+ki%E1%BA%BFm+theo+t%E1%BB%89nh+th%C3%A0nh&sa=X&ved=2ahUKEwj7oqPT2PeTAxXi78kDHU0OEmkQtKgLegQIDxAB' />
+	[23] (155,87)<div  />
+		[24] (155,94)<span >Video />
+[25] (182,87)<a class='C6AK7c' href='/search?sca_esv=32ed2d6df950acda&udm=2&fbs=ADc_l-ZXQWBHI_L0epjkf31fijnb8obTC9Cf43rNKvT_8WoTHhsDKWUlVIzTXlsVKxLm56T0Ut-Sik5y2vU82rBwp3gqcKvrykM6Ma8ErflXPc2jEqsY7nJoaQffyv10Tij5KYN7I89-vszOhsB4vDtEY_jrUApcfjHsJuFp54aPidjo2k0AqYmvGjn9N2gI6442bYTqCkROaYTzmMT1xxM1DFtyo-dn5mOt3-w4gLlsuBCQr2MrRYdvSUS5XqZ6jJLekhVvfwfM&q=site:masothue.com+B%C3%ACnh+D%C6%B0%C6%A1ng+t%C3%ACm+ki%E1%BA%BFm+theo+t%E1%BB%89nh+th%C3%A0nh&sa=X&ved=2ahUKEwj7oqPT2PeTAxXi78kDHU0OEmkQtKgLegQIEBAB' />
+	[26] (182,87)<div  />
+		[27] (182,94)<span >Hình ảnh />
+[28] (214,87)<a class='C6AK7c' href='/search?sca_esv=32ed2d6df950acda&udm=28&fbs=ADc_l-ZXQWBHI_L0epjkf31fijnb8obTC9Cf43rNKvT_8WoTHhsDKWUlVIzTXlsVKxLm56T0Ut-Sik5y2vU82rBwp3gqcKvrykM6Ma8ErflXPc2jEqsY7nJoaQffyv10Tij5KYN7I89-vszOhsB4vDtEY_jrUApcfjHsJuFp54aPidjo2k0AqYmvGjn9N2gI6442bYTqCkROaYTzmMT1xxM1DFtyo-dn5mOt3-w4gLlsuBCQr2MrRYdvSUS5XqZ6jJLekhVvfwfM&q=site:masothue.com+B%C3%ACnh+D%C6%B0%C6%A1ng+t%C3%ACm+ki%E1%BA%BFm+theo+t%E1%BB%89nh+th%C3%A0nh&ved=1t:220175&ictx=111' />
+	[29] (214,87)<div  />
+		[30] (214,94)<span >Mua sắm />
+[31] (243,87)<a class='C6AK7c' href='/search?sca_esv=32ed2d6df950acda&q=site:masothue.com+B%C3%ACnh+D%C6%B0%C6%A1ng+t%C3%ACm+ki%E1%BA%BFm+theo+t%E1%BB%89nh+th%C3%A0nh&tbm=nws&source=lnms&fbs=ADc_l-ZXQWBHI_L0epjkf31fijnb8obTC9Cf43rNKvT_8WoTHhsDKWUlVIzTXlsVKxLm56T0Ut-Sik5y2vU82rBwp3gqcKvrykM6Ma8ErflXPc2jEqsY7nJoaQffyv10Tij5KYN7I89-vszOhsB4vDtEY_jrUApcfjHsJuFp54aPidjo2k0AqYmvGjn9N2gI6442bYTqCkROaYTzmMT1xxM1DFtyo-dn5mOt3-w4gLlsuBCQr2MrRYdvSUS5XqZ6jJLekhVvfwfM&sa=X&ved=2ahUKEwj7oqPT2PeTAxXi78kDHU0OEmkQ0pQJegQIEhAB' />
+	[32] (243,87)<div  />
+		[33] (243,94)<span >Tin tức />
+[34] (275,87)<a class='C6AK7c' href='/search?sca_esv=32ed2d6df950acda&udm=39&fbs=ADc_l-ZXQWBHI_L0epjkf31fijnb8obTC9Cf43rNKvT_8WoTHhsDKWUlVIzTXlsVKxLm56T0Ut-Sik5y2vU82rBwp3gqcKvrykM6Ma8ErflXPc2jEqsY7nJoaQffyv10Tij5KYN7I89-vszOhsB4vDtEY_jrUApcfjHsJuFp54aPidjo2k0AqYmvGjn9N2gI6442bYTqCkROaYTzmMT1xxM1DFtyo-dn5mOt3-w4gLlsuBCQr2MrRYdvSUS5XqZ6jJLekhVvfwfM&q=site:masothue.com+B%C3%ACnh+D%C6%B0%C6%A1ng+t%C3%ACm+ki%E1%BA%BFm+theo+t%E1%BB%89nh+th%C3%A0nh&sa=X&ved=2ahUKEwj7oqPT2PeTAxXi78kDHU0OEmkQs6gLegQIExAB' />
+	[35] (275,87)<div  />
+		[36] (275,94)<span >Video ngắn />
+[37] (308,87)<div class='mTpL7c' role='button' />
+	[38] (308,87)<div  />
+		[39] (308,94)<div  />
+			[40] (305,90)<span >Thêm />
+			[41] (315,90)<span  />
+Kết quả tìm kiếm
+Looking for results in English?
+[42] (974,157)<a href='#' />
+	[43] (974,156)<span  />
+[44] (904,175)<a href='/setprefs?sig=0_ht0BmUZCwXghYNP5mUSy0w0CB1A%3D&source=en_ignored_notification&prev=https://www.google.com/search?q%3Dsite:masothue.com%2BB%25C3%25ACnh%2BD%25C6%25B0%25C6%25A1ng%2Bt%25C3%25ACm%2Bki%25E1%25BA%25BFm%2Btheo%2Bt%25E1%25BB%2589nh%2Bth%25C3%25A0nh&hl=en&sa=X&ved=2ahUKEwj7oqPT2PeTAxXi78kDHU0OEmkQhoQCKAF6BAgMEAQ'>Change to English />
+[45] (917,193)<a href='#'>Tiếp tục sử dụng />
+	[46] (938,193)<span >Tiếng Việt />
+[47] (905,218)<a class='fl' href='/preferences?lang=1&hl=vi&sa=X&ved=2ahUKEwj7oqPT2PeTAxXi78kDHU0OEmkQiIQCKAN6BAgMEAY#languages'>Cài đặt ngôn ngữ />
+Kết quả trên web
+[48] (188,155)<a class='zReHs' href='https://masothue.com/tra-cuu-ma-so-thue-theo-tinh/binh-duong-17' />
+	[49] (188,170)<h3 >Tra cứu mã số thuế và danh sách công ty tại bình dương />
+	[50] (138,143)<div  />
+		[51] (138,143)<div  />
+			[52] (95,143)<span  />
+				[53] (95,143)<div  />
+					[54] (95,143)<img  />
+			[55] (145,143)<div  />
+				[56] (145,136)<div  />
+					[57] (145,136)<span >Mã Số Thuế />
+				[58] (145,151)<div  />
+					[59] (145,151)<cite class='qLRx3b tjvcx GvPZzd cHaqb' role='text'>https://masothue.com />
+						[60] (168,151)<span class='ylgVCe ob9lvb' role='text'>› Tỉnh thành phố />
+[61] (193,150)<div aria-label='Thông tin về kết quả này' class='MJ8UF iTPLzd rNSxBe eY4mx lUn2nc' role='button' />
+	[62] (193,150)<span  />
+		[63] (193,151)<span  />
+Tra cứu mã số thuế và danh sách công ty tại
+bình dương
+; CÔNG TY TNHH TREASURE LIGHTING VIỆT NAM. Mã số thuế: 0022168045. Người đại diện: CHEN, I – FU ; CHI NHÁNH ...
+[64] (195,267)<a class='zReHs' href='https://masothue.com/3703301567-so-nong-nghiep-va-moi-truong-tinh-binh-duong' />
+	[65] (195,282)<h3 >SỞ NÔNG NGHIỆP VÀ MÔI TRƯỜNG TỈNH BÌNH DƯƠNG />
+	[66] (133,255)<div  />
+		[67] (133,255)<div  />
+			[68] (95,255)<span  />
+				[69] (95,255)<div  />
+					[70] (95,255)<img  />
+			[71] (140,255)<div  />
+				[72] (140,248)<div  />
+					[73] (140,248)<span >Mã Số Thuế />
+				[74] (140,263)<div  />
+					[75] (140,263)<cite class='qLRx3b tjvcx GvPZzd cHaqb' role='text'>https://masothue.com />
+						[76] (163,263)<span class='ylgVCe ob9lvb' role='text'>› Nhà nước />
+[77] (183,262)<div aria-label='Thông tin về kết quả này' class='MJ8UF iTPLzd rNSxBe eY4mx lUn2nc' role='button' />
+	[78] (183,262)<span  />
+		[79] (183,263)<span  />
+3703301567 - SỞ NÔNG NGHIỆP VÀ MÔI TRƯỜNG
+TỈNH BÌNH DƯƠNG
+; Mã số thuế, 3703301567 ; Địa chỉ Thuế, Tầng 3, tháp A, Tòa nhà trung tâm hành chính
+tỉnh Bình Dương
+, ...
+[80] (172,379)<a class='zReHs' href='https://masothue.com/3702360256-trung-tam-hanh-chinh-cong-tinh-binh-duong' />
+	[81] (172,393)<h3 >Trung Tâm Hành Chính Công Tỉnh Bình Dương />
+	[82] (156,367)<div  />
+		[83] (156,367)<div  />
+			[84] (95,367)<span  />
+				[85] (95,367)<div  />
+					[86] (95,367)<img  />
+			[87] (163,367)<div  />
+				[88] (163,360)<div  />
+					[89] (163,360)<span >Mã Số Thuế />
+				[90] (163,375)<div  />
+					[91] (163,375)<cite class='qLRx3b tjvcx GvPZzd cHaqb' role='text'>https://masothue.com />
+						[92] (186,374)<span class='ylgVCe ob9lvb' role='text'>› 3702360256-trung-tam-hanh-c... />
+[93] (230,374)<div aria-label='Thông tin về kết quả này' class='MJ8UF iTPLzd rNSxBe eY4mx lUn2nc' role='button' />
+	[94] (230,374)<span  />
+		[95] (230,375)<span  />
+Trung Tâm Hành Chính Công
+Tỉnh Bình Dương
+⭐ tra cứu mã số thuế 3702360256 - tầng 1 tháp B TT hành chính
+tỉnh
+BD, Phường
+Bình Dương
+, TP Hồ Chí Minh.
+[96] (178,491)<a class='zReHs' href='https://masothue.com/3701307820-van-phong-ubnd-tinh-binh-duong' />
+	[97] (178,505)<h3 >3701307820 - Văn Phòng UBND Tỉnh Bình Dương />
+	[98] (148,479)<div  />
+		[99] (148,479)<div  />
+			[100] (95,479)<span  />
+				[101] (95,479)<div  />
+					[102] (95,479)<img  />
+			[103] (155,479)<div  />
+				[104] (155,472)<div  />
+					[105] (155,472)<span >Mã Số Thuế />
+				[106] (155,487)<div  />
+					[107] (155,487)<cite class='qLRx3b tjvcx GvPZzd cHaqb' role='text'>https://masothue.com />
+						[108] (178,486)<span class='ylgVCe ob9lvb' role='text'>› Các tổ chức kinh tế khác />
+[109] (214,486)<div aria-label='Thông tin về kết quả này' class='MJ8UF iTPLzd rNSxBe eY4mx lUn2nc' role='button' />
+	[110] (214,486)<span  />
+		[111] (214,487)<span  />
+Văn Phòng UBND
+Tỉnh Bình Dương
+. Mã số thuế, 3701307820. Địa chỉ Thuế, Tầng 16, Tòa nhà TTHT
+tỉnh
+, Phường
+Bình Dương
+, TP Hồ Chí Minh, Việt Nam.
+[112] (174,603)<a class='zReHs' href='https://masothue.com/3700829581-cong-ty-co-phan-ky-thuat-binh-duong' />
+	[113] (174,617)<h3 >CÔNG TY CỔ PHẦN KỸ THUẬT BÌNH DƯƠNG />
+	[114] (139,591)<div  />
+		[115] (139,591)<div  />
+			[116] (95,591)<span  />
+				[117] (95,591)<div  />
+					[118] (95,591)<img  />
+			[119] (147,591)<div  />
+				[120] (147,584)<div  />
+					[121] (147,584)<span >Mã Số Thuế />
+				[122] (147,598)<div  />
+					[123] (147,598)<cite class='qLRx3b tjvcx GvPZzd cHaqb' role='text'>https://masothue.com />
+						[124] (169,598)<span class='ylgVCe ob9lvb' role='text'>› Công ty cổ phần />
+[125] (196,598)<div aria-label='Thông tin về kết quả này' class='MJ8UF iTPLzd rNSxBe eY4mx lUn2nc' role='button' />
+	[126] (196,598)<span  />
+		[127] (196,598)<span  />
+CÔNG TY CỔ PHẦN KỸ THUẬT
+BÌNH DƯƠNG
+⭐ tra cứu mã số thuế 3700829581 - 820/8 đường Phạm Ngũ Lão, khu 6, Phường Phú Lợi,
+Thành
+phố Thủ Dầu Một,
+Tỉnh
+Bình ...
+[128] (189,715)<a class='zReHs' href='https://masothue.com/3700578345-trung-tam-luu-tru-lich-su-tinh-binh-duong' />
+	[129] (189,729)<h3 >3700578345 - Trung tâm Lưu trữ lịch sử tỉnh Bình Dương />
+	[130] (148,703)<div  />
+		[131] (148,703)<div  />
+			[132] (95,703)<span  />
+				[133] (95,703)<div  />
+					[134] (95,703)<img  />
+			[135] (155,703)<div  />
+				[136] (155,696)<div  />
+					[137] (155,696)<span >Mã Số Thuế />
+				[138] (155,710)<div  />
+					[139] (155,710)<cite class='qLRx3b tjvcx GvPZzd cHaqb' role='text'>https://masothue.com />
+						[140] (178,710)<span class='ylgVCe ob9lvb' role='text'>› Các tổ chức kinh tế khác />
+[141] (214,710)<div aria-label='Thông tin về kết quả này' class='MJ8UF iTPLzd rNSxBe eY4mx lUn2nc' role='button' />
+	[142] (214,710)<span  />
+		[143] (214,710)<span  />
+3700578345 -
+Trung tâm Lưu trữ lịch sử tỉnh Bình Dương
+; Mã số thuế, 3700578345 ; Địa chỉ Thuế, Số 679 đường Võ Văn Kiệt, Khu 3, Phường Bình Dương, TP Hồ Chí Minh ...
+[144] (185,827)<a class='zReHs' href='https://masothue.com/3700318266-cong-ty-tnhh-an-co-binh-duong' />
+	[145] (185,841)<h3 >3700318266 - CÔNG TY TNHH AN CƠ BÌNH DƯƠNG />
+	[146] (156,815)<div  />
+		[147] (156,815)<div  />
+			[148] (95,815)<span  />
+				[149] (95,815)<div  />
+					[150] (95,815)<img  />
+			[151] (164,815)<div  />
+				[152] (164,808)<div  />
+					[153] (164,808)<span >Mã Số Thuế />
+				[154] (164,822)<div  />
+					[155] (164,822)<cite class='qLRx3b tjvcx GvPZzd cHaqb' role='text'>https://masothue.com />
+						[156] (186,822)<span class='ylgVCe ob9lvb' role='text'>› 3700318266-cong-ty-tnhh-an-c... />
+[157] (231,821)<div aria-label='Thông tin về kết quả này' class='MJ8UF iTPLzd rNSxBe eY4mx lUn2nc' role='button' />
+	[158] (231,821)<span  />
+		[159] (231,822)<span  />
+3700318266 - CÔNG TY TNHH AN CƠ BÌNH DƯƠNG
+; Mã số thuế, 3700318266 ; Địa chỉ Thuế, Số 3B/2, Khu phố 1B, Phường An Phú, TP Hồ Chí Minh, Việt Nam ; Địa chỉ, Đường ...
+[160] (189,938)<a class='zReHs' href='https://masothue.com/3701308415-trung-tam-chuyen-doi-so-tinh-binh-duong' />
+	[161] (189,953)<h3 >3701308415 - Trung tâm Chuyển đổi số tỉnh Bình Dương />
+	[162] (148,926)<div  />
+		[163] (148,926)<div  />
+			[164] (95,926)<span  />
+				[165] (95,926)<div  />
+					[166] (95,926)<img  />
+			[167] (155,926)<div  />
+				[168] (155,920)<div  />
+					[169] (155,920)<span >Mã Số Thuế />
+				[170] (155,934)<div  />
+					[171] (155,934)<cite class='qLRx3b tjvcx GvPZzd cHaqb' role='text'>https://masothue.com />
+						[172] (178,934)<span class='ylgVCe ob9lvb' role='text'>› Các tổ chức kinh tế khác />
+[173] (214,933)<div aria-label='Thông tin về kết quả này' class='MJ8UF iTPLzd rNSxBe eY4mx lUn2nc' role='button' />
+	[174] (214,933)<span  />
+		[175] (214,934)<span  />
+3701308415 -
+Trung tâm Chuyển đổi số tỉnh Bình Dương
+; Mã số thuế, 3701308415 ; Địa chỉ Thuế, 36 Trịnh Hoài Đức, phường Phú Lợi, Phường Phú Lợi, TP Hồ Chí Minh, ...
+
+</current_dom>
