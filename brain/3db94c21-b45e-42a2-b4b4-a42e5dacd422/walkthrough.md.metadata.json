@@ -1,5 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Cung cấp hướng dẫn sử dụng các script tìm email bằng web scraping và SalesQL",
-  "updatedAt": "2026-04-18T14:39:42.471052600Z"
+  "summary": "Complete documentation of the TD Games B2B Lead Discovery Pipeline. Covers: 4-script architecture (clean → discover → enrich → export), 3-tier contact prioritization system (Art Director/Outsource Manager → Producer/Lead Artist → CEO/Marketing), SalesQL + Google CSE + SMTP verification integration, separated Work/Personal email output format, batch processing with resume capability, Excel report with 4 sheets, and web app integration guidance with suggested API endpoints.",
+  "updatedAt": "2026-04-18T17:48:14.600184300Z",
+  "version": "2"
 }

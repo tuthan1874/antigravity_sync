@@ -1,0 +1,14 @@
+{
+  "title": "TD Games B2B Lead Discovery Pipeline",
+  "summary": "Automated B2B pipeline for 278+ Game Studios. 4 scripts: data_cleaning → email_discovery_bot (web scraping + Google CSE + SalesQL enrichment + SMTP verify) → export_excel. Features: 3-tier contact prioritization (Art Director > Producer > CEO), separated Work/Personal email columns, batch processing (20/batch) with resume, real-time CSV persistence. Codebase at e:\\TDC_App\\TDGAMES_App\\Client_Data\\. APIs: SalesQL (enrichment), Google Custom Search (LinkedIn discovery). Dependencies: pandas, requests, beautifulsoup4, openpyxl, dnspython, python-dotenv.",
+  "created_at": "2026-04-19T00:48:00+07:00",
+  "last_accessed": "2026-04-19T00:48:00+07:00",
+  "references": [
+    {
+      "type": "conversation",
+      "id": "3db94c21-b45e-42a2-b4b4-a42e5dacd422",
+      "title": "B2B Lead Pipeline Development"
+    }
+  ],
+  "tags": ["b2b", "lead-generation", "salesql", "google-cse", "web-scraping", "smtp-verify", "email-enrichment", "td-games"]
+}
