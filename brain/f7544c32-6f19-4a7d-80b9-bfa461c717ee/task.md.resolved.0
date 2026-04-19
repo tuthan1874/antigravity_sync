@@ -1,0 +1,14 @@
+# Email Outreach → CRM Module — Task Tracker
+
+## Phase 1: UI + DB Tracking
+
+- [ ] Supabase migration: 4 tables (campaigns, templates, leads, logs)
+- [ ] TypeScript types in types.ts
+- [ ] outreachService.ts (CRUD for all 4 tables)
+- [ ] EmailOutreach.tsx component
+  - [ ] Campaign list view
+  - [ ] Campaign detail view (stats, leads table, sequence)
+  - [ ] Template editor with HTML preview
+  - [ ] Import leads (CSV + CRM clients)
+- [ ] Update CrmApp.tsx — add tab "Email Outreach"
+- [ ] Verify build + UI

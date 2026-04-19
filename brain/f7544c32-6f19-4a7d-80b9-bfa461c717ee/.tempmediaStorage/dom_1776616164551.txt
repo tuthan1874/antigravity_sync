@@ -1,0 +1,90 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	CRM
+	[2] (623,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap bg-primary text-black shadow-btn-glow'>Khách hàng />
+	[3] (672,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Dự án />
+	[4] (714,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Tài liệu />
+	[5] (766,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Thanh toán />
+	[6] (823,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Hoạt động />
+	[7] (881,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>📧 Outreach />
+	Dang The Toan
+	admin
+	[8] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	Khách hàng
+	Quản lý thông tin khách hàng tập trung
+	[9] (669,163)<button class='inline-flex items-center justify-center font-bold uppercase tracking-wider rounded-xl transition-all duration-300 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-primary text-white shadow-btn-glow hover:shadow-btn-glow-hover hover:-translate-y-0.5 active:bg-gradient-to-br active:from-primary-deep active:to-primary-dark px-4 py-2 text-xs '>＋ Thêm khách hàng />
+	[10] (732,163)<button class='inline-flex items-center justify-center font-bold uppercase tracking-wider rounded-xl transition-all duration-300 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20 px-4 py-2 text-xs '>🔄 Refresh />
+	Tổng khách hàng
+	3
+	[11] (500,232)<div  />
+		[12] (500,216)<p >⭐
+Tiềm năng />
+		[13] (500,240)<p >2 />
+	[14] (671,232)<div  />
+		[15] (671,216)<p >💬
+Đang trao đổi />
+		[16] (671,240)<p >1 />
+	[17] (425,303)<input placeholder='🔍 Tìm theo tên, email, liên hệ, SĐT...' />
+	[18] (644,303)<select  />
+	[19] (719,303)<select  />
+	[20] (500,375)<div  />
+		[21] (472,375)<div  />
+			[22] (472,365)<div  />
+				[23] (273,365)<span >Dace Marsh />
+				[24] (315,365)<span >Tiềm năng />
+				[25] (350,365)<span >👤 Cá nhân />
+			[26] (472,387)<div  />
+				[27] (268,387)<span >🌍
+Thái Lan />
+				[28] (321,387)<span >🏭
+Game Development />
+		[29] (722,375)<div  />
+			[30] (711,375)<button >✏️ Sửa />
+			[31] (738,375)<button >🗑️ />
+	[32] (500,454)<div  />
+		[33] (472,454)<div  />
+			[34] (472,444)<div  />
+				[35] (287,444)<span >KABAM GAMES, INC />
+				[36] (342,444)<span >Tiềm năng />
+				[37] (377,444)<span >👥
+2
+liên hệ />
+			[38] (472,466)<div  />
+				[39] (354,466)<span  />
+					[40] (257,466)<span >👤 />
+					[41] (291,466)<span >Zachary Hetherington />
+					[42] (345,466)<span >(
+Product Manager
+) />
+					[43] (413,466)<span >·
+zhetherington@kabaminc.com />
+				[44] (557,466)<span  />
+					[45] (464,466)<span >👤 />
+					[46] (491,466)<span >Acounts Payable />
+					[47] (539,466)<span >(
+Account Manager
+) />
+					[48] (610,466)<span >·
+accountspayable@kabaminc.com />
+		[49] (722,454)<div  />
+			[50] (711,454)<button >✏️ Sửa />
+			[51] (738,454)<button >🗑️ />
+	[52] (500,533)<div  />
+		[53] (472,533)<div  />
+			[54] (472,523)<div  />
+				[55] (280,523)<span >TD CONSULTING />
+				[56] (336,523)<span >Đang trao đổi />
+			[57] (472,544)<div  />
+				[58] (271,544)<span >🏭
+Consulting />
+		[59] (722,533)<div  />
+			[60] (711,533)<button >✏️ Sửa />
+			[61] (738,533)<button >🗑️ />
+	TD Consulting • Enterprise Billing Engine • v2.1
+
+</current_dom>

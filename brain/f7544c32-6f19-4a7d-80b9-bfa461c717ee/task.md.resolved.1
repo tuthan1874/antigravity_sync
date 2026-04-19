@@ -1,0 +1,20 @@
+# Email Outreach → CRM Module — Task Tracker
+
+## Phase 1: UI + DB Tracking
+
+- [x] Supabase migration: 4 tables (campaigns, templates, leads, logs)
+- [x] TypeScript types in types.ts
+- [x] outreachService.ts (CRUD for all 4 tables + CSV parser + stats recalc)
+- [x] EmailOutreach.tsx component
+  - [x] Campaign list view (stats cards, progress bars, status badges)
+  - [x] Campaign detail view (5 metric cards, leads table, template sequence)
+  - [x] Template editor with HTML preview + subject A/B test
+  - [x] Import leads (CSV upload + CRM clients)
+- [x] Update CrmApp.tsx — add tab "📧 Outreach" (6th tab)
+- [x] Verify build + UI ✅
+
+## Phase 2: SMTP Integration (TODO)
+- [ ] Supabase Edge Function for email sending
+- [ ] SMTP config (toan.dang@tdgamestudio.com)
+- [ ] Email tracking pixel (Edge Function to serve pixel)
+- [ ] Automated sequence scheduling

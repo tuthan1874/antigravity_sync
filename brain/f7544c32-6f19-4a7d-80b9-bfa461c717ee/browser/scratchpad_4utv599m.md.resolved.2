@@ -1,0 +1,17 @@
+# Task: Test Email Template Preview in CRM Outreach
+
+## Progress
+- [x] Navigate to CRM Outreach tab <!-- id: 0 -->
+- [x] Verify 3 templates exist in "Templates" sub-tab <!-- id: 1 -->
+- [p] Preview "initial_outreach" (Step 1) and take screenshot <!-- id: 2 -->
+- [ ] Verify "initial_outreach" content (header, logo, signature) <!-- id: 3 -->
+- [ ] Preview "followup_2" (Step 3) and take screenshot <!-- id: 4 -->
+- [ ] Verify "followup_2" content (Free Art Trial) <!-- id: 5 -->
+
+## Findings
+- Templates found: initial_outreach (Step 1), followup_1 (Step 2), followup_2 (Step 3).
+- **Preview ISSUE (Step 1):** The preview modal opens but only displays "Template loaded" text on a white background. No iframe or HTML content is visible.
+- **Missing Buttons:** Step 2 and Step 3 do NOT have an "👁️ Preview" button. Only Step 1 has it.
+- **Close Button:** The "✕ Đóng" button is hard to find and doesn't appear in the interactive DOM tree, making it difficult to close the modal without switching tabs.
+- **Data verification:** Seeds theoretically successful, but frontend might not be fetching or rendering them correctly.
+

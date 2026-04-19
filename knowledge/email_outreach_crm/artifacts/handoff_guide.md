@@ -17,6 +17,13 @@ e:\TDC_App\TDGAMES_App\Client_Data\
 │   └── sequence_config.json         # Subject lines + sequence config
 ├── output/
 │   └── SalesQL_Enriched_Leads.csv   # 553 contacts (131 unique studios)
+├── B2B_Lead_Pipeline/
+│   ├── README.md                    # Full integration guide
+│   ├── email_discovery_bot.py       # Lead discovery pipeline (26KB)
+│   ├── data_cleaning_script.py      # Studio list cleaner
+│   ├── export_excel.py              # Excel report generator
+│   ├── Cleaned_Target_Studios.csv   # 278 studios input
+│   └── .env                        # API keys
 └── .env                             # API keys (SalesQL, Google CSE)
 ```
 
@@ -27,12 +34,66 @@ e:\TDC_App\TDGAMES_App\td-games-invoice-app\   # Local clone of tdgames_billing
 
 ---
 
-## What to Copy to Billing Project
+## Full CRM Outreach Flow
 
-### 1. Email Templates → Keep in Client_Data (FastAPI reads from here)
-No need to copy. The FastAPI service on VPS will have its own copy.
+```
+┌──────────────────────────────────────────────────────────────┐
+│                    CRM Outreach Module                        │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│  [1] LEAD DISCOVERY (from company name)                      │
+│      Input: Company Name + Domain                            │
+│      ├── Web Scraping → contact@, info@ emails              │
+│      ├── Google CSE → LinkedIn profiles (Tier 1 priority)   │
+│      └── SalesQL API → Enrich → Work Email + Personal Email │
+│      Output: Enriched contacts with Tier ranking             │
+│                                                              │
+│  [2] LEAD MANAGEMENT                                         │
+│      ├── Import from CSV / manual add / discovery results    │
+│      ├── Table view with filter (Tier/Status)               │
+│      ├── Dedup per studio (best contact only)               │
+│      └── Convert Lead → CRM Client                          │
+│                                                              │
+│  [3] EMAIL OUTREACH                                          │
+│      ├── Template preview with personalization               │
+│      ├── Send single / batch (with rate limiting)           │
+│      ├── 3-email sequence: initial → followup1 → followup2  │
+│      └── Auto follow-up (cron: 3 days / 7 days)            │
+│                                                              │
+│  [4] TRACKING & ANALYTICS                                    │
+│      ├── Sent log (timestamp, status, message ID)           │
+│      ├── Reply detection (Gmail inbox scan)                 │
+│      ├── Bounce detection                                    │
+│      └── Pipeline funnel: Pending→Sent→Follow-up→Replied    │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+```
 
-### 2. TypeScript Types → Add to `types.ts`
+---
+
+## Architecture: Hybrid (SPA + VPS API)
+
+```
+app.tdgamestudio.com (React SPA)
+  │
+  ├── /api/email/*    → FastAPI localhost:8401  (email sending)
+  ├── /api/leads/*    → FastAPI localhost:8401  (lead discovery)
+  └── Supabase        → Direct client SDK      (CRUD data)
+
+VPS FastAPI (/opt/td-mailer-api/) handles:
+  ├── Gmail API sending (OAuth token)
+  ├── Lead discovery (web scraping, Google CSE, SalesQL)
+  └── Inbox scanning (reply/bounce detection)
+
+Supabase stores:
+  ├── crm_outreach_leads  (lead data)
+  ├── crm_email_log       (sent history)
+  └── crm_email_templates (HTML templates)
+```
+
+---
+
+## TypeScript Types to Add
 
 ```typescript
 // ── CRM Outreach ─────────────────────────────────────────
@@ -81,7 +142,9 @@ export interface CrmEmailTemplate {
 }
 ```
 
-### 3. Supabase Migration SQL
+---
+
+## Supabase Migration SQL
 
 ```sql
 -- crm_outreach_leads
@@ -131,77 +194,62 @@ CREATE TABLE crm_email_templates (
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- RLS Policies
+-- RLS
 ALTER TABLE crm_outreach_leads ENABLE ROW LEVEL SECURITY;
 ALTER TABLE crm_email_log ENABLE ROW LEVEL SECURITY;
 ALTER TABLE crm_email_templates ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY "Authenticated users can manage outreach leads"
-    ON crm_outreach_leads FOR ALL USING (auth.role() = 'authenticated');
-CREATE POLICY "Authenticated users can manage email log"
-    ON crm_email_log FOR ALL USING (auth.role() = 'authenticated');
-CREATE POLICY "Authenticated users can manage email templates"
-    ON crm_email_templates FOR ALL USING (auth.role() = 'authenticated');
+CREATE POLICY "auth_manage_outreach" ON crm_outreach_leads FOR ALL USING (auth.role() = 'authenticated');
+CREATE POLICY "auth_manage_email_log" ON crm_email_log FOR ALL USING (auth.role() = 'authenticated');
+CREATE POLICY "auth_manage_templates" ON crm_email_templates FOR ALL USING (auth.role() = 'authenticated');
 
 -- Indexes
 CREATE INDEX idx_outreach_status ON crm_outreach_leads(outreach_status);
 CREATE INDEX idx_outreach_tier ON crm_outreach_leads(tier);
 CREATE INDEX idx_email_log_lead ON crm_email_log(lead_id);
-CREATE INDEX idx_email_log_sent ON crm_email_log(sent_at);
-```
-
-### 4. New CRM Components to Create
-
-```
-apps/crm/components/
-├── CrmApp.tsx                 # MODIFY: add "Outreach" tab
-├── OutreachDashboard.tsx      # NEW: stats cards + pipeline funnel
-├── LeadPipeline.tsx           # NEW: leads table with filters
-├── EmailComposer.tsx          # NEW: preview + send email
-├── CampaignLog.tsx            # NEW: sent email history
-└── LeadImporter.tsx           # NEW: CSV import dialog
-
-apps/crm/services/
-└── crmService.ts              # MODIFY: add outreach CRUD functions
-
-apps/crm/hooks/
-└── useCrmState.ts             # MODIFY: add outreach state
-```
-
-### 5. Service Functions to Add (crmService.ts)
-
-```typescript
-// ── Outreach Leads ────────────────────────────────────────
-export async function fetchOutreachLeads(filters?: {
-    status?: string; tier?: number;
-}): Promise<CrmOutreachLead[]> { ... }
-
-export async function createOutreachLead(lead: Omit<CrmOutreachLead, 'id' | 'created_at' | 'updated_at'>): Promise<CrmOutreachLead> { ... }
-
-export async function updateOutreachLead(id: string, updates: Partial<CrmOutreachLead>): Promise<void> { ... }
-
-export async function importOutreachLeads(leads: Partial<CrmOutreachLead>[]): Promise<number> { ... }
-
-export async function convertLeadToClient(leadId: string): Promise<CrmClient> { ... }
-
-// ── Email Log ─────────────────────────────────────────────
-export async function fetchEmailLog(leadId?: string): Promise<CrmEmailLog[]> { ... }
-
-// ── Email API (calls FastAPI on VPS) ──────────────────────
-const EMAIL_API = '/api/email';
-
-export async function sendOutreachEmail(leadId: string, template: string): Promise<{ messageId: string }> { ... }
-
-export async function sendBatchEmails(leadIds: string[], template: string): Promise<{ sent: number; failed: number }> { ... }
-
-export async function previewEmail(lead: CrmOutreachLead, template: string): Promise<{ html: string; subject: string }> { ... }
-
-export async function getEmailQuota(): Promise<{ sent_today: number; limit: number }> { ... }
 ```
 
 ---
 
-## Gmail API Config
+## FastAPI Endpoints (VPS)
+
+### Email Sending
+| Method | Endpoint | Mô tả |
+|--------|----------|--------|
+| POST | `/api/email/send` | Gửi email cho 1 lead |
+| POST | `/api/email/batch` | Gửi batch (rate limiting) |
+| POST | `/api/email/test` | Gửi test email |
+| GET | `/api/email/status` | Today's quota |
+| POST | `/api/email/preview` | Render template preview |
+| POST | `/api/inbox/scan` | Check replies/bounces |
+
+### Lead Discovery
+| Method | Endpoint | Mô tả |
+|--------|----------|--------|
+| POST | `/api/leads/discover` | Input: company+domain → enriched contacts |
+| POST | `/api/leads/enrich` | Enrich single LinkedIn URL |
+| POST | `/api/leads/batch` | Batch discover (with progress) |
+| GET | `/api/leads/export` | Download Excel report |
+
+---
+
+## Key Python Functions to Reuse
+
+From `email_discovery_bot.py`:
+- `scrape_general_emails(domain)` → public emails
+- `find_and_verify_domain_emails(domain)` → SMTP-verified
+- `search_linkedin_targets(studio_name)` → LinkedIn URLs
+- `salesql_enrich(linkedin_url)` → full contact info
+- `get_title_tier(job_title)` → tier classification
+
+From `cold_email_sender.py`:
+- `get_gmail_service()` → Gmail API client
+- `personalize(template, contact)` → template rendering
+- `send_email(service, to, subject, html)` → send via Gmail
+- `create_email(to, subject, html)` → MIME message
+
+---
+
+## Config & Credentials
 
 | Key | Value |
 |-----|-------|
@@ -209,36 +257,26 @@ export async function getEmailQuota(): Promise<{ sent_today: number; limit: numb
 | Sender Name | `Tony Dang` |
 | Google Cloud Project | `email-mkt-493813` |
 | OAuth Client ID | `71850303483-9jhtla0ngbdkr9p87esfreohq6incs9b` |
-| Token Path | `credentials/gmail_token.json` |
-| Scopes | `gmail.send`, `gmail.readonly` |
-| Rate Limit | 30 emails/day, 2-5min delay between |
+| Token Path | VPS: `/opt/td-mailer-api/credentials/gmail_token.json` |
+| Rate Limit | 30 emails/day, 2-5min delay |
+| SalesQL API Key | In `.env` |
+| Google CSE Key | In `.env` |
+| Google CX ID | In `.env` |
 
 ## Logo URLs (R2 CDN)
-
 | Logo | URL |
 |------|-----|
 | White (dark bg) | `https://pub-dad8a9bea8cb47c7ac0a03614d43b5b1.r2.dev/logo/logo_td_white.png` |
 | Black (light bg) | `https://pub-dad8a9bea8cb47c7ac0a03614d43b5b1.r2.dev/logo/logo_td_black.png` |
 | No text (icon) | `https://pub-dad8a9bea8cb47c7ac0a03614d43b5b1.r2.dev/logo/logo_td_notext.png` |
 
-## Lead Data Summary
+## Lead Data
+- **553 contacts** / **131 unique studios**
+- Tier 1 (Art Director): 110, Tier 2 (Producer): 7, Tier 3 (CEO): 5
+- CSV: `e:\TDC_App\TDGAMES_App\Client_Data\output\SalesQL_Enriched_Leads.csv`
 
-- **Total enriched contacts**: 553
-- **Unique studios (deduped)**: 131
-- **Tier 1** (Art Director): 110
-- **Tier 2** (Producer): 7
-- **Tier 3** (CEO/Other): 5
-- **Unranked**: 9
-- **Data file**: `e:\TDC_App\TDGAMES_App\Client_Data\output\SalesQL_Enriched_Leads.csv`
-
-## FastAPI Email Service (VPS)
-
-Deploy at `/opt/td-mailer-api/` on Megahost_02 (180.93.144.98), port 8401.
-Nginx proxy: `app.tdgamestudio.com/api/email/ → localhost:8401`
-
-Key endpoints:
-- `POST /api/email/send` — Send single email
-- `POST /api/email/batch` — Batch send with rate limiting  
-- `POST /api/email/preview` — Render template preview
-- `GET /api/email/status` — Today's quota
-- `POST /api/inbox/scan` — Check replies/bounces
+## VPS Deploy
+- Server: Megahost_02 (180.93.144.98)  
+- Path: `/opt/td-mailer-api/`
+- Port: 8401
+- Nginx: `app.tdgamestudio.com/api/email/` + `/api/leads/`

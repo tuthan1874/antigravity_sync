@@ -1,0 +1,109 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	TD Games
+	CRM
+	Khách hàng
+	Dự án
+	Tài liệu
+	Thanh toán
+	Hoạt động
+	📧 Outreach
+	Dang The Toan
+	admin
+	📧 Email Outreach
+	Lead Discovery + Cold Email Pipeline — TD Games Outsourcing
+	📊
+	Dashboard
+	👥
+	Leads (2)
+	🔍
+	Discovery
+	📧
+	Templates (3)
+	Email sequence 3 bước. Mỗi step có delay tính từ step trước. Dùng biến:
+	{contact_name}
+	,
+	{studio_name}
+	,
+	{company}
+	.
+	📤
+	1
+	Step
+	1
+	:
+	initial outreach
+	Active
+	First Contact — Giới thiệu TD Games + Free Trial
+	📧
+	Art & Animation Outsourcing for {studio_name}
+	📧
+	{contact_name} — Spine Animation & 2D Art for {studio_name}
+	📧
+	Game Art Partnership — TD Games x {studio_name}
+	👁️ Preview
+	✏️ Sửa
+	📨
+	2
+	Step
+	2
+	:
+	followup 1
+	⏰ +
+	3
+	ngày
+	Active
+	Follow-up — Portfolio highlights + Case study
+	📧
+	Re: Art & Animation Outsourcing for {studio_name}
+	📧
+	Quick follow-up — portfolio samples for {studio_name}
+	👁️ Preview
+	✏️ Sửa
+	📩
+	3
+	Step
+	3
+	:
+	followup 2
+	⏰ +
+	7
+	ngày
+	Active
+	Breakup — Standing offer + Wish well
+	📧
+	Re: Art & Animation Outsourcing for {studio_name}
+	📧
+	Last note — free art sample for {studio_name}
+	👁️ Preview
+	✏️ Sửa
+	[1] (500,500)<div  />
+		[2] (500,19)<div >📧 Email Preview />
+			📧 Email Preview
+			[3] (977,19)<button >✕ Đóng />
+		[4] (500,519)<div  />
+			[5] (500,156)<a href='https://tdgamestudio.com' />
+				[6] (500,156)<img  />
+			Hi {contact_name},
+			I'll keep this brief — I know your time is valuable.
+			I reached out recently about
+			TD Games Studio
+			potentially supporting {studio_name} with art, animation, or VFX outsourcing.
+			If the timing isn't right, I completely understand. But if you ever need to scale your art pipeline quickly — whether it's a batch of character designs, Spine animations, or VFX polish — we're here and ready.
+			🎁
+			Standing Offer: Free Art Trial
+			Send us a single asset brief, and we'll produce it for free —
+			no strings attached
+			. It's the fastest way to evaluate if we're the right fit for your team.
+			Either way, I wish {studio_name} all the best with your current projects.
+			Cheers,
+			Tony Dang
+			Founder & CEO
+			TD Games Studio • Hanoi, Vietnam
+			TD Games Studio • Premium Game Art & Animation
+	TD Consulting • Enterprise Billing Engine • v2.1
+
+</current_dom>

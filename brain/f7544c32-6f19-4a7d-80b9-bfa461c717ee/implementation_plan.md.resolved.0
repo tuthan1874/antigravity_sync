@@ -1,0 +1,150 @@
+# Email Outreach Integration vào CRM Module
+
+Tích hợp hệ thống Email Outreach (cold email campaigns) trực tiếp vào CRM module của td-games-invoice-app, cho phép quản lý campaigns, theo dõi gửi email, và tự động hóa follow-up sequence từ giao diện web.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Scope quyết định:** Feature này sẽ quản lý campaigns & tracking trên UI. Việc **thực sự gửi email** (SMTP) sẽ thông qua Supabase Edge Function gọi đến SMTP server (toan.dang@tdgamestudio.com). Cần confirm:
+> 1. **SMTP credentials** cho `toan.dang@tdgamestudio.com` — cần hostname, port, password
+> 2. **Gửi email thật hay chỉ UI tracking trước?** — Khuyến nghị build UI + DB trước, gửi email thật ở phase 2
+
+> [!WARNING]
+> **Email templates** hiện tại ở `Client_Data/email_templates/` (3 HTML files + sequence_config.json). Sẽ migrate template content vào DB để quản lý qua UI.
+
+## Proposed Changes
+
+### Database Schema (Supabase Migration)
+
+Tạo 4 tables mới cho Email Outreach:
+
+#### [NEW] `crm_email_campaigns` — Quản lý chiến dịch
+| Column | Type | Description |
+|--------|------|-------------|
+| id | uuid PK | |
+| name | text | Tên campaign (e.g. "Q2 2026 — Game Studios Outreach") |
+| description | text | Mô tả |
+| status | text | `draft` / `active` / `paused` / `completed` |
+| from_email | text | Email gửi đi (toan.dang@tdgamestudio.com) |
+| from_name | text | Tên hiển thị (Tony Dang) |
+| total_leads | int | Tổng lead |
+| sent_count | int | Đã gửi |
+| opened_count | int | Đã mở |
+| replied_count | int | Đã phản hồi |
+| bounced_count | int | Bị bounce |
+| created_at | timestamptz | |
+
+#### [NEW] `crm_email_templates` — Template email
+| Column | Type | Description |
+|--------|------|-------------|
+| id | uuid PK | |
+| campaign_id | uuid FK → campaigns | |
+| name | text | e.g. "Initial Outreach", "Follow-up 1" |
+| step_order | int | Thứ tự trong sequence (1, 2, 3) |
+| subjects | text[] | Array subject lines (A/B test) |
+| html_body | text | HTML content với placeholders {contact_name}, {studio_name} |
+| delay_days | int | Số ngày chờ trước khi gửi (0 = immediate) |
+| created_at | timestamptz | |
+
+#### [NEW] `crm_email_leads` — Leads trong campaign
+| Column | Type | Description |
+|--------|------|-------------|
+| id | uuid PK | |
+| campaign_id | uuid FK → campaigns | |
+| client_id | uuid FK → crm_clients (nullable) | Link tới CRM client nếu có |
+| contact_name | text | Tên liên hệ |
+| email | text | Email nhận |
+| company_name | text | Tên studio |
+| tier | text | `tier_1` / `tier_2` / `tier_3` |
+| job_title | text | |
+| status | text | `pending` / `sent` / `opened` / `replied` / `bounced` / `unsubscribed` |
+| current_step | int | Step hiện tại trong sequence |
+| next_send_at | timestamptz | Thời gian gửi next step |
+| last_sent_at | timestamptz | |
+| last_opened_at | timestamptz | |
+| notes | text | |
+| created_at | timestamptz | |
+
+#### [NEW] `crm_email_logs` — Log từng email đã gửi
+| Column | Type | Description |
+|--------|------|-------------|
+| id | uuid PK | |
+| lead_id | uuid FK → leads | |
+| template_id | uuid FK → templates | |
+| subject_used | text | Subject đã gửi |
+| sent_at | timestamptz | |
+| opened_at | timestamptz | |
+| clicked_at | timestamptz | |
+| bounced_at | timestamptz | |
+| replied_at | timestamptz | |
+| status | text | `sent` / `delivered` / `opened` / `bounced` / `failed` |
+
+---
+
+### Frontend — CRM Module
+
+#### [NEW] `apps/crm/components/EmailOutreach.tsx`
+Component chính cho tab Email Outreach, bao gồm:
+- **Campaign List** — Danh sách campaigns với stats (sent, opened, replied rates)
+- **Campaign Detail** — View chi tiết 1 campaign gồm:
+  - Stats cards (total, sent, opened, replied, bounced)
+  - Leads table với status badges + filter
+  - Template sequence editor (preview HTML)
+  - Actions: Start/Pause/Resume campaign, Import leads, Send test email
+
+#### [NEW] `apps/crm/services/outreachService.ts`
+CRUD service cho 4 tables mới:
+- `fetchCampaigns()`, `createCampaign()`, `updateCampaign()`, `deleteCampaign()`
+- `fetchTemplates(campaignId)`, `createTemplate()`, `updateTemplate()`
+- `fetchLeads(campaignId, filters)`, `importLeads()`, `updateLeadStatus()`
+- `fetchEmailLogs(leadId)`
+
+#### [MODIFY] [CrmApp.tsx](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/components/CrmApp.tsx)
+- Thêm tab **"Email Outreach"** (tab thứ 6) vào navigation
+- Import và render `EmailOutreach` component
+
+#### [MODIFY] [types.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts)
+- Thêm interfaces: `CrmEmailCampaign`, `CrmEmailTemplate`, `CrmEmailLead`, `CrmEmailLog`
+
+---
+
+### UI Design cho EmailOutreach Component
+
+**Campaign List View:**
+- Grid cards giống ClientList style (dark theme, orange accents)
+- Mỗi campaign card hiện: Name, Status badge, progress bar (sent/total), open rate %, reply rate %
+- Quick filter: Active / Draft / Completed
+
+**Campaign Detail View:**
+- Top: Stats bar (4 metric cards)
+- Middle: Leads table (searchable, filterable by status)
+- Right panel hoặc bottom: Sequence timeline (Step 1 → Step 2 → Step 3) với template preview
+- Import leads: Upload CSV hoặc chọn từ CRM clients
+
+**Email Template Editor:**
+- HTML preview với variable highlighting ({contact_name}, {studio_name})
+- Subject line A/B variants
+- Delay setting per step
+
+---
+
+## Open Questions
+
+> [!IMPORTANT]
+> 1. **SMTP gửi email thật:** Có muốn tích hợp gửi email thật ngay phase 1 không? Hay chỉ build UI + database tracking trước?
+> 2. **Import leads:** Chỉ import từ CSV hay cũng muốn import từ `SalesQL_Enriched_Leads.csv` (output B2B pipeline)?
+> 3. **Email tracking (open/click):** Có cần tracking pixel cho email opens không? (cần Supabase Edge Function để serve pixel)
+
+## Verification Plan
+
+### Automated Tests
+- Verify migration applies successfully via `mcp_supabase-mcp-server_apply_migration`
+- Verify tables created with correct schema via `mcp_supabase-mcp-server_list_tables`
+- Run `npm run dev` and verify no build errors
+
+### Manual Verification
+- Navigate to CRM → Email Outreach tab
+- Create a new campaign
+- Add templates (import from existing HTML templates)
+- Import leads and verify display
+- Test send (if SMTP enabled)

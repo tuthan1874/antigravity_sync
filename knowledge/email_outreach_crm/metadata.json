@@ -1,10 +1,12 @@
 {
   "title": "Email Outreach CRM Integration",
-  "summary": "Complete handoff package for integrating cold email outreach into tdgames_billing CRM module. Includes: Supabase migration SQL, FastAPI email microservice spec, TypeScript types, 3 HTML email templates, Gmail API credentials path, enriched leads CSV (553 contacts/131 studios), and implementation plan. Tech: Vite+React SPA + Supabase + FastAPI on VPS. Sender: Tony Dang (toan.dang@tdgamestudio.com). Logo URLs on R2 CDN.",
+  "summary": "Complete handoff for integrating B2B Lead Discovery + Cold Email Outreach into tdgames_billing CRM module. Two main flows: (1) Lead Discovery — input company name + domain → web scraping + Google CSE + SalesQL enrichment → enriched contacts with 3-tier ranking. Key Python functions: scrape_general_emails(), search_linkedin_targets(), salesql_enrich(), get_title_tier() from email_discovery_bot.py. (2) Email Outreach — 3-email sequence via Gmail API (initial → followup1 Day3 → followup2 Day7), rate limiting 30/day, sender Tony Dang (toan.dang@tdgamestudio.com). Architecture: React SPA (frontend) + FastAPI on VPS port 8401 (email sending + lead discovery) + Supabase (data storage). 553 contacts / 131 studios enriched. Supabase tables: crm_outreach_leads, crm_email_log, crm_email_templates. Source code at e:/TDC_App/TDGAMES_App/Client_Data/. API Keys in .env (SalesQL, Google CSE). Gmail OAuth token at credentials/gmail_token.json.",
   "created_at": "2026-04-19T22:13:00+07:00",
-  "updated_at": "2026-04-19T22:13:00+07:00",
+  "updated_at": "2026-04-19T23:00:00+07:00",
   "references": [
     "e:/TDC_App/TDGAMES_App/Client_Data/cold_email_sender.py",
+    "e:/TDC_App/TDGAMES_App/Client_Data/B2B_Lead_Pipeline/email_discovery_bot.py",
+    "e:/TDC_App/TDGAMES_App/Client_Data/B2B_Lead_Pipeline/README.md",
     "e:/TDC_App/TDGAMES_App/Client_Data/email_templates/",
     "e:/TDC_App/TDGAMES_App/Client_Data/output/SalesQL_Enriched_Leads.csv",
     "e:/TDC_App/TDGAMES_App/Client_Data/credentials/gmail_token.json",

@@ -1,0 +1,52 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	CRM
+	[2] (623,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Khách hàng />
+	[3] (672,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Dự án />
+	[4] (714,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Tài liệu />
+	[5] (766,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Thanh toán />
+	[6] (823,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Hoạt động />
+	[7] (881,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap bg-primary text-black shadow-btn-glow'>📧 Outreach />
+	Dang The Toan
+	admin
+	[8] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	[9] (264,110)<button >← Quay lại />
+	Test Campaign Q2
+	📝
+	Nháp
+	Testing outreach
+	📧
+	Tony DangTest Admin
+	<
+	toan.dang@tdgamestudio.comtest@example.com
+	>
+	[10] (730,111)<select  />
+	Tổng leads
+	0
+	Đã gửi
+	0
+	0.0%
+	Đã mở
+	0
+	0.0% open rate
+	Phản hồi
+	0
+	0.0% reply rate
+	Bounce
+	0
+	0.0%
+	[11] (269,337)<button >👥 Leads (0) />
+	[12] (325,337)<button >📝 Templates (0) />
+	Chuỗi email sẽ gửi theo thứ tự Step. Mỗi step có delay riêng.
+	[13] (725,386)<button >＋ Thêm Template />
+	📝
+	Chưa có template nào
+	Thêm template để tạo chuỗi email outreach
+	TD Consulting • Enterprise Billing Engine • v2.1
+
+</current_dom>

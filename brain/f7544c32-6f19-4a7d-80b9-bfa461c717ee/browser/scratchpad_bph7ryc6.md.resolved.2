@@ -1,0 +1,24 @@
+# Task: Verify Email Outreach Preview Modal Fix
+
+## Plan
+- [x] Navigate to http://localhost:3000/#crm
+- [x] Click "📧 OUTREACH" tab
+- [x] Click "📧 Templates (3)" sub-tab
+- [x] Preview Step 1 (initial_outreach)
+    - [x] Verify horizontal centering
+    - [x] Verify overlay coverage
+    - [x] Take screenshot
+- [x] Close preview
+- [x] Preview Step 3 (followup_2)
+    - [x] Verify horizontal centering
+    - [x] Take screenshot
+- [x] Close preview
+- [x] Return to Dashboard tab
+- [x] Final report
+
+## Observations
+- The email preview modal for Step 1 (initial_outreach) is perfectly centered horizontally.
+- The dark overlay covers the entire viewport as expected.
+- The same behavior is observed for Step 3 (followup_2).
+- The transition from Templates tab to modal is smooth.
+- Returning to the Dashboard tab works as expected.

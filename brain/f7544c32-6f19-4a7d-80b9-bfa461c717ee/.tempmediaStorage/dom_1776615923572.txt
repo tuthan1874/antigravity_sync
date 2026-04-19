@@ -1,0 +1,84 @@
+[0] (500,500)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	CRM
+	[2] (623,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Khách hàng />
+	[3] (672,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Dự án />
+	[4] (714,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Tài liệu />
+	[5] (766,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Thanh toán />
+	[6] (823,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Hoạt động />
+	[7] (881,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap bg-primary text-black shadow-btn-glow'>📧 Outreach />
+	Dang The Toan
+	admin
+	[8] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	📧 Email Outreach
+	Lead Discovery + Cold Email Pipeline — TD Games Outsourcing
+	📊
+	Dashboard
+	👥
+	Leads (2)
+	🔍
+	Discovery
+	📧
+	Templates (3)
+	Email sequence 3 bước. Mỗi step có delay tính từ step trước. Dùng biến:
+	{contact_name}
+	,
+	{studio_name}
+	,
+	{company}
+	.
+	📤
+	1
+	Step
+	1
+	:
+	initial outreach
+	Active
+	First Contact — Giới thiệu TD Games + Free Trial
+	📧
+	Art & Animation Outsourcing for {studio_name}
+	📧
+	{contact_name} — Spine Animation & 2D Art for {studio_name}
+	📧
+	Game Art Partnership — TD Games x {studio_name}
+	👁️ Preview
+	✏️ Sửa
+	📨
+	2
+	Step
+	2
+	:
+	followup 1
+	⏰ +
+	3
+	ngày
+	Active
+	Follow-up — Portfolio highlights + Case study
+	📧
+	Re: Art & Animation Outsourcing for {studio_name}
+	📧
+	Quick follow-up — portfolio samples for {studio_name}
+	✏️ Sửa
+	📩
+	3
+	Step
+	3
+	:
+	followup 2
+	⏰ +
+	7
+	ngày
+	Active
+	Breakup — Standing offer + Wish well
+	📧
+	Re: Art & Animation Outsourcing for {studio_name}
+	📧
+	Last note — free art sample for {studio_name}
+	✏️ Sửa
+	[9] (745,598)<div  />
+		[10] (745,117)<div >📧 Email Preview />
+			📧 Email Preview
+		[11] (745,617)<div  />
+			Template loaded
+	TD Consulting • Enterprise Billing Engine • v2.1

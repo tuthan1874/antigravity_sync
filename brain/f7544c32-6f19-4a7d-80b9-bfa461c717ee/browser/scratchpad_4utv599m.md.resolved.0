@@ -1,0 +1,13 @@
+# Task: Test Email Template Preview in CRM Outreach
+
+## Progress
+- [ ] Navigate to CRM Outreach tab <!-- id: 0 -->
+- [ ] Verify 3 templates exist in "Templates" sub-tab <!-- id: 1 -->
+- [ ] Preview "initial_outreach" (Step 1) and take screenshot <!-- id: 2 -->
+- [ ] Verify "initial_outreach" content (header, logo, signature) <!-- id: 3 -->
+- [ ] Preview "followup_2" (Step 3) and take screenshot <!-- id: 4 -->
+- [ ] Verify "followup_2" content (Free Art Trial) <!-- id: 5 -->
+
+## Findings
+- Templates found:
+- Preview Issues:

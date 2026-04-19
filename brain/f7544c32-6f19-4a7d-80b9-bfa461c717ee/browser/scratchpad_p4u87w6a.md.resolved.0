@@ -1,0 +1,9 @@
+# Email Outreach UI Testing Checklist
+
+- [ ] Navigate to CRM Outreach tab
+- [ ] Verify Dashboard sub-tab (funnel, stats)
+- [ ] Verify Leads sub-tab (empty table, import/add lead)
+- [ ] Add a test lead (Supercell)
+- [ ] Verify Templates sub-tab (3 steps)
+- [ ] Verify Discovery sub-tab (form, expected error)
+- [ ] Verify Dashboard stats update

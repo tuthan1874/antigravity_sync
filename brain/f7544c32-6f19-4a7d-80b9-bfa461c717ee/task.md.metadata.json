@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_TASK",
+  "summary": "Task tracker for CRM Outreach module. Phase 1 (DB + Frontend) is now complete. Phase 2 (FastAPI VPS) still pending.",
+  "updatedAt": "2026-04-19T16:31:45.986680500Z",
+  "version": "3"
+}

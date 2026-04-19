@@ -1,0 +1,7 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Revised implementation plan for CRM Outreach module based on KI handoff guide. Replaces campaign-centric approach with lead-centric architecture. Phase 1: New Supabase schema (crm_outreach_leads, crm_email_log, crm_email_templates), rebuilt Outreach UI with 3 sub-tabs (Leads, Discovery, Emails), seed templates from existing HTML files. Phase 2: Deploy FastAPI on VPS Megahost_02 for Gmail API sending and lead discovery. Includes migration strategy to drop old Phase 1 tables.",
+  "updatedAt": "2026-04-19T16:03:36.452574700Z",
+  "version": "1",
+  "requestFeedback": true
+}

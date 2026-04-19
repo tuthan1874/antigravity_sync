@@ -1,0 +1,20 @@
+# CRM Outreach Module — Task Tracker (Revised)
+
+## Phase 1: Lead-centric DB + Frontend
+
+- [/] Drop old 4 tables + create 3 new tables (Supabase migration)
+- [ ] Seed 3 email templates from HTML files
+- [ ] Update TypeScript types (replace 4 → 3 interfaces)
+- [ ] Rewrite outreachService.ts (lead-centric CRUD)
+- [ ] Rewrite EmailOutreach.tsx
+  - [ ] Dashboard sub-tab (pipeline funnel + stats)
+  - [ ] Leads sub-tab (table, import, manage)
+  - [ ] Discovery sub-tab (placeholder for FastAPI)
+  - [ ] Emails sub-tab (templates, logs)
+- [ ] Build test (vite build)
+- [ ] UI verification
+
+## Phase 2: FastAPI on Megahost_02
+- [ ] Deploy FastAPI at /opt/td-mailer-api/
+- [ ] Gmail API + SalesQL integration
+- [ ] Connect frontend to API

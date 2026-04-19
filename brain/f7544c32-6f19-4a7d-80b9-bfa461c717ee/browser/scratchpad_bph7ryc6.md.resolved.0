@@ -1,0 +1,20 @@
+# Task: Verify Email Outreach Preview Modal Fix
+
+## Plan
+- [ ] Navigate to http://localhost:3000/#crm
+- [ ] Click "📧 OUTREACH" tab
+- [ ] Click "📧 Templates (3)" sub-tab
+- [ ] Preview Step 1 (initial_outreach)
+    - [ ] Verify horizontal centering
+    - [ ] Verify overlay coverage
+    - [ ] Take screenshot
+- [ ] Close preview
+- [ ] Preview Step 3 (followup_2)
+    - [ ] Verify horizontal centering
+    - [ ] Take screenshot
+- [ ] Close preview
+- [ ] Return to Dashboard tab
+- [ ] Final report
+
+## Observations
+- 
