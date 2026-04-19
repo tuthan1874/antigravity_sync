@@ -1,0 +1,13 @@
+{
+  "title": "Email Outreach CRM Integration",
+  "summary": "Complete handoff package for integrating cold email outreach into tdgames_billing CRM module. Includes: Supabase migration SQL, FastAPI email microservice spec, TypeScript types, 3 HTML email templates, Gmail API credentials path, enriched leads CSV (553 contacts/131 studios), and implementation plan. Tech: Vite+React SPA + Supabase + FastAPI on VPS. Sender: Tony Dang (toan.dang@tdgamestudio.com). Logo URLs on R2 CDN.",
+  "created_at": "2026-04-19T22:13:00+07:00",
+  "updated_at": "2026-04-19T22:13:00+07:00",
+  "references": [
+    "e:/TDC_App/TDGAMES_App/Client_Data/cold_email_sender.py",
+    "e:/TDC_App/TDGAMES_App/Client_Data/email_templates/",
+    "e:/TDC_App/TDGAMES_App/Client_Data/output/SalesQL_Enriched_Leads.csv",
+    "e:/TDC_App/TDGAMES_App/Client_Data/credentials/gmail_token.json",
+    "https://github.com/tdgamesvn/tdgames_billing"
+  ]
+}
