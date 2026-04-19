@@ -1,0 +1,77 @@
+# DNS Setup cho `tdgamestudio.com` — Cold Email Readiness
+
+## Tình trạng hiện tại
+
+| Record | Status | Giá trị |
+|--------|--------|---------|
+| **MX** | ✅ OK | `smtp.google.com` |
+| **DKIM** | ✅ OK | RSA key tại `google._domainkey.tdgamestudio.com` |
+| **DMARC** | ⚠️ Weak | `v=DMARC1; p=none; rua=mailto:rua@dmarc.brevo.com` |
+| **SPF** | ❌ **THIẾU** | Chưa có — **cần thêm ngay** |
+
+**DNS Provider**: VietNIX (`ns1.vietnix.net`, `ns2.vietnix.net`)
+
+---
+
+## Bước 1: Thêm SPF Record ⚡ (BẮT BUỘC)
+
+Đăng nhập VietNIX panel → DNS Zone Editor cho `tdgamestudio.com`
+
+```
+Type:  TXT
+Host:  @  (hoặc để trống)
+Value: v=spf1 include:_spf.google.com ~all
+TTL:   3600
+```
+
+> [!CAUTION]
+> **Không có SPF = email sẽ vào spam.** Đây là bước quan trọng nhất.
+
+**Giải thích:**
+- `include:_spf.google.com` — cho phép Google Workspace gửi email thay mặt domain
+- `~all` — softfail cho tất cả source khác (không reject hẳn, tránh mất email hợp lệ)
+
+---
+
+## Bước 2: Nâng cấp DMARC (SAU 2 tuần warm-up)
+
+DMARC hiện tại đang ở `p=none` (chỉ monitor). Sau khi gửi email ổn định 2 tuần, upgrade:
+
+```
+Type:  TXT
+Host:  _dmarc
+Value: v=DMARC1; p=quarantine; rua=mailto:toan.dang@tdgamestudio.com; pct=100
+TTL:   3600
+```
+
+> [!WARNING]
+> **Chưa nên làm ngay!** Upgrade DMARC lên `quarantine` trước khi warm-up xong có thể khiến email bị reject. Làm bước này sau 2 tuần gửi email thành công.
+
+---
+
+## Bước 3: Verify sau khi thêm SPF
+
+Sau khi thêm SPF record (đợi ~15-30 phút propagation), chạy lệnh verify:
+
+```bash
+nslookup -type=TXT tdgamestudio.com 8.8.8.8
+```
+
+Kết quả phải có dòng:
+```
+"v=spf1 include:_spf.google.com ~all"
+```
+
+Hoặc dùng tool online: https://mxtoolbox.com/spf.aspx → nhập `tdgamestudio.com`
+
+---
+
+## Checklist tổng hợp
+
+- [ ] **Thêm SPF record** trên VietNIX DNS panel
+- [ ] **Verify SPF** sau 15-30 phút
+- [ ] **Tạo Google Cloud Project mới** cho Gmail API
+- [ ] **Soạn email template** (bạn sẽ làm)
+- [ ] Build `cold_email_sender.py`
+- [ ] Test gửi email cho chính mình
+- [ ] Bắt đầu warm-up (10 email/ngày tuần đầu)

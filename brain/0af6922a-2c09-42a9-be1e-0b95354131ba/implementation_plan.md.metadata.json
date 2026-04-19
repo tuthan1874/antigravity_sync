@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Plan to build a cold email outreach system for sending personalized B2B emails from toan.dang@tdgamestudio.com via Gmail API. Covers domain health audit results, email template design with Tier-based personalization, rate-limited sending with follow-up sequences, and tracking capabilities.",
+  "updatedAt": "2026-04-19T10:31:38.054198100Z",
+  "requestFeedback": true
+}

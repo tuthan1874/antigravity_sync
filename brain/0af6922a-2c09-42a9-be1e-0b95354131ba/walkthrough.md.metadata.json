@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Complete DNS authentication setup guide for tdgamestudio.com to maximize cold email deliverability. Covers 5 layers: SPF (missing - critical), DMARC upgrade from p=none to p=quarantine, TLS-RPT for monitoring, MTA-STS for TLS enforcement, and BIMI for logo display in inbox. Includes exact copy-paste values for VietNIX DNS panel and verification steps.",
+  "updatedAt": "2026-04-19T10:43:44.211957100Z",
+  "version": "1"
+}
