@@ -1,0 +1,169 @@
+# 📧 Triển khai Cold Email Campaign — TD Games Studio
+
+## Tổng quan
+
+Gửi email chào mời dịch vụ outsource Art/Animation/VFX từ `toan.dang@tdgamestudio.com` đến **131 studios** (553 contacts đã enriched, dedup còn 131 best contacts). Campaign gồm **3-email sequence** với warm-up domain dần dần.
+
+## Hiện trạng hệ thống ✅
+
+| Component | Status |
+|-----------|--------|
+| DNS (SPF/DKIM/DMARC/TLS-RPT) | ✅ Hoàn tất |
+| Gmail API OAuth2 | ✅ Token active |
+| Email templates (3 emails) | ✅ Tested trên Gmail thật |
+| `cold_email_sender.py` | ✅ Rate limiting + tracking |
+| Leads data (553 contacts) | ✅ Deduped → 131 studios |
+
+---
+
+## Phase 1: Domain Warm-up (Tuần 1-2)
+
+> [!IMPORTANT]
+> Domain `tdgamestudio.com` chưa từng gửi bulk email. Cần warm-up để build sender reputation, tránh bị đánh spam.
+
+### Tuần 1: 10 emails/ngày
+
+| Ngày | Lệnh | Số email | Tổng tích luỹ |
+|------|-------|----------|----------------|
+| Ngày 1 (Thứ 2) | `python cold_email_sender.py --send --limit 5` | 5 | 5 |
+| Ngày 2 (Thứ 3) | `python cold_email_sender.py --send --limit 5` | 5 | 10 |
+| Ngày 3 (Thứ 4) | `python cold_email_sender.py --send --limit 8` | 8 | 18 |
+| Ngày 4 (Thứ 5) | `python cold_email_sender.py --send --limit 10` | 10 | 28 |
+| Ngày 5 (Thứ 6) | `python cold_email_sender.py --send --limit 10` | 10 | 38 |
+
+**🔴 Không gửi thứ 7 / Chủ nhật** — email gửi cuối tuần có open rate thấp và dễ bị filter.
+
+### Tuần 2: 15-20 emails/ngày
+
+| Ngày | Lệnh | Số email | Tổng |
+|------|-------|----------|------|
+| Ngày 6-10 | `python cold_email_sender.py --send --limit 15` | 15/ngày | 38+75=113 |
+
+→ **Sau tuần 2**: ~113/131 studios đã nhận initial email.
+
+### Tuần 3: Hoàn tất + Follow-ups
+
+| Ngày | Lệnh | Mô tả |
+|------|-------|-------|
+| Ngày 11-12 | `--send --limit 20` | Hoàn tất 131 studios |
+| Ngày 13+ | Follow-up script (cần build thêm) | Gửi followup_1 cho batch đầu |
+
+---
+
+## Phase 2: Follow-up Sequence
+
+> [!NOTE]
+> Cần bổ sung tính năng follow-up vào `cold_email_sender.py`. Hiện tại script chỉ gửi initial outreach.
+
+### Lịch follow-up
+
+```
+Ngày 0:  Initial outreach (initial_outreach.html)
+Ngày 3:  Follow-up 1 (followup_1.html) — portfolio highlight
+Ngày 7:  Follow-up 2 (followup_2.html) — breakup + free trial
+```
+
+### Cần implement
+
+#### [MODIFY] [cold_email_sender.py](file:///e:/TDC_App/TDGAMES_App/Client_Data/cold_email_sender.py)
+
+Thêm command `--followup`:
+- Quét `sent_emails_log.csv` tìm contacts đã nhận initial ≥ 3 ngày trước
+- Loại trừ contacts đã nhận followup_1 hoặc đã reply
+- Gửi followup_1 với cùng rate limiting
+- Tương tự cho followup_2 (≥ 7 ngày sau initial)
+
+---
+
+## Phase 3: Monitoring & Optimization
+
+### Kiểm tra hàng ngày
+
+```bash
+# Xem thống kê campaign
+python cold_email_sender.py --status
+
+# Kiểm tra bounce/spam trên Gmail
+# Vào Gmail → Search: "in:sent after:YYYY/MM/DD"
+```
+
+### Metrics cần theo dõi
+
+| Metric | Mục tiêu | Cách đo |
+|--------|----------|---------|
+| **Delivery rate** | >95% | Không có bounce email |
+| **Open rate** | >25% | Cần thêm tracking pixel (optional) |
+| **Reply rate** | >3% | Đếm replies trong inbox |
+| **Spam complaints** | 0 | Check DMARC reports |
+| **Unsubscribe** | <1% | Track unsubscribe replies |
+
+### Dấu hiệu cần dừng ngay 🚨
+
+- Nhận **bounce rate > 5%** → dọn dữ liệu email
+- Nhận **spam complaint** → giảm volume, review content
+- Gmail hiện **cảnh báo sending limit** → dừng 24-48h
+- **DMARC report** cho thấy fail rate cao → kiểm tra DNS
+
+---
+
+## Quy tắc Best Practices
+
+### Thời gian gửi tối ưu
+- **Thứ 2-5**, từ **9:00-11:00 AM** (theo timezone khách hàng)
+- Tránh thứ 6 chiều & cuối tuần
+- Script hiện có random delay 2-5 phút giữa mỗi email ✅
+
+### Nội dung
+- **Không dùng spam trigger words**: "FREE!!!", "BUY NOW", "LIMITED TIME"
+- Subject line ngắn, personalized có tên studio ✅
+- Luôn có plain text fallback ✅
+- Không quá nhiều links (≤5 links) ✅
+
+### Kỹ thuật
+- Rate limiting: 2-5 phút giữa mỗi email ✅
+- Daily cap: 30 emails/ngày ✅ (bắt đầu từ 5)
+- Sent log tracking ✅
+- Dedup per studio ✅
+
+---
+
+## Proposed Changes (Code cần bổ sung)
+
+### [MODIFY] [cold_email_sender.py](file:///e:/TDC_App/TDGAMES_App/Client_Data/cold_email_sender.py)
+
+1. **`--followup` command**: Auto-detect contacts ready for followup_1/2
+2. **Reply detection**: Check inbox cho replies từ leads (skip follow-up nếu đã reply)
+3. **Bounce detection**: Detect bounced emails và mark trong log
+4. **`--report` command**: Dashboard tổng hợp delivery, response
+
+---
+
+## Verification Plan
+
+### Trước khi gửi batch đầu tiên
+- [x] DNS records verified (SPF/DKIM/DMARC/TLS-RPT)
+- [x] OAuth2 token hoạt động
+- [x] 3 templates tested trên Gmail thật
+- [x] Rate limiting hoạt động (2-5 phút delay)
+- [ ] Review 10 contacts đầu tiên qua `--dry-run`
+- [ ] Xác nhận template content OK sau test emails
+
+### Trong quá trình gửi
+- Check `sent_emails_log.csv` sau mỗi batch
+- Monitor inbox cho bounce notifications
+- Chạy `--status` hàng ngày
+
+---
+
+## Quick Start
+
+```bash
+# 1. Review contacts sẽ gửi
+python cold_email_sender.py --dry-run --limit 10
+
+# 2. Gửi batch đầu tiên (5 emails)
+python cold_email_sender.py --send --limit 5
+
+# 3. Kiểm tra kết quả
+python cold_email_sender.py --status
+```

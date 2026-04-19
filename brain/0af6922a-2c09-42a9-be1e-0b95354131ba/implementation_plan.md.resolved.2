@@ -1,0 +1,294 @@
+# 🚀 TD Mailer — Email Campaign Manager Web App
+
+## Mục tiêu
+
+Xây dựng **web app quản lý email campaign** deploy trên VPS Megahost_02, cho phép gửi, theo dõi và tự động hoá cold email outreach từ `toan.dang@tdgamestudio.com`.
+
+**URL**: `https://mail.tdgamestudio.com`
+
+---
+
+## Hiện trạng VPS Megahost_02
+
+| Resource | Status |
+|----------|--------|
+| **RAM** | 9.7GB (7.1GB available) ✅ |
+| **Disk** | 84GB (33GB free) ✅ |
+| **Python** | 3.10.12 ✅ |
+| **Node.js** | v22.22.0 ✅ |
+| **Nginx** | Có sẵn + Certbot SSL ✅ |
+| **Existing apps** | 9 sites đang chạy |
+
+---
+
+## Tech Stack
+
+```
+┌─────────────────────────────────────────────┐
+│             mail.tdgamestudio.com           │
+│                  (Nginx + SSL)              │
+├──────────────────┬──────────────────────────┤
+│   Frontend       │      Backend API         │
+│   Next.js        │      FastAPI (Python)    │
+│   React + Dark   │      Port 8400           │
+│   Theme          │                          │
+│   Port 3400      │   ┌──────────────────┐   │
+│                  │   │ Gmail API        │   │
+│                  │   │ (existing code)  │   │
+│                  │   └──────────────────┘   │
+│                  │   ┌──────────────────┐   │
+│                  │   │ SQLite DB        │   │
+│                  │   │ (leads + logs)   │   │
+│                  │   └──────────────────┘   │
+└──────────────────┴──────────────────────────┘
+```
+
+### Lý do chọn stack này:
+- **FastAPI** — Tận dụng 100% code Python hiện có (`cold_email_sender.py`, Gmail API)
+- **Next.js** — Modern UI, SSR, API routes, dark theme dễ build
+- **SQLite** — Đơn giản, không cần setup, đủ cho 131 studios
+- **Nginx** — Đã có sẵn, chỉ cần thêm reverse proxy
+
+---
+
+## Features
+
+### Phase 1: MVP (Core)
+
+#### 📊 Dashboard
+- Tổng leads / studios / emails sent / reply rate
+- Stat cards: Today sent, Total sent, Pending, Replies
+- Recent activity log (last 20 actions)
+
+#### 👥 Lead Management
+- Table view toàn bộ 553 contacts (sort/filter/search)
+- Filter by Tier (1/2/3), Studio, Status (pending/sent/replied/bounced)
+- Import CSV (upload `SalesQL_Enriched_Leads.csv`)
+- Edit contact info inline
+
+#### 📧 Campaign Control
+- **Send** — chọn leads → send ngay hoặc schedule
+- **Dry-run** — preview email trước khi gửi
+- **Batch send** — chọn limit + auto rate-limiting
+- **Template selector** — chọn initial/followup_1/followup_2
+- **Email preview** — render template với data contact thật
+
+#### 📋 Sent Log
+- Table: timestamp, to, studio, template, status, message_id
+- Filter by date/status
+- Export CSV
+
+---
+
+### Phase 2: Automation
+
+#### 🔄 Follow-up Engine
+- Auto-detect contacts cần followup (3 ngày / 7 ngày sau initial)
+- One-click "Send all pending follow-ups"
+- Queue system với rate limiting
+
+#### 📬 Reply Detection
+- Scan inbox qua Gmail API cho replies từ lead emails
+- Auto-mark contact status = "replied"
+- Skip follow-ups cho contacts đã reply
+- Notification khi có reply mới
+
+#### ⚡ Bounce Detection
+- Detect bounce notification emails
+- Auto-mark contact status = "bounced"
+- Alert nếu bounce rate > 5%
+
+---
+
+### Phase 3: Analytics & Polish
+
+#### 📈 Analytics Dashboard
+- Charts: emails/day, reply rate over time, delivery rate
+- Funnel: Sent → Opened → Replied → Meeting booked
+- Tier performance comparison
+- Best day/time analysis
+
+#### 🎨 Template Editor
+- Visual template editor trong browser
+- Preview on desktop / mobile
+- A/B test subject lines
+
+#### 🗄️ Supadase Integration (Optional)
+- Migrate từ SQLite → Supadase cho multi-user
+- Auth cho team members
+
+---
+
+## Proposed File Structure
+
+```
+/opt/td-mailer/
+├── backend/                    # FastAPI Python
+│   ├── main.py                 # FastAPI app entrypoint
+│   ├── requirements.txt
+│   ├── api/
+│   │   ├── leads.py           # CRUD leads endpoints
+│   │   ├── campaigns.py       # Send/schedule/status endpoints
+│   │   ├── templates_api.py   # Template management
+│   │   └── analytics.py       # Stats & reports
+│   ├── services/
+│   │   ├── gmail_service.py   # Gmail API (from existing code)
+│   │   ├── email_sender.py    # Send + rate limiting logic
+│   │   ├── followup_engine.py # Auto follow-up logic
+│   │   └── reply_detector.py  # Inbox scan for replies
+│   ├── models/
+│   │   ├── database.py        # SQLite setup
+│   │   └── schemas.py         # Pydantic models
+│   ├── data/
+│   │   ├── td_mailer.db       # SQLite database
+│   │   └── gmail_token.json   # OAuth token
+│   └── templates/             # Email HTML templates
+│       ├── initial_outreach.html
+│       ├── followup_1.html
+│       └── followup_2.html
+│
+├── frontend/                   # Next.js React
+│   ├── package.json
+│   ├── app/
+│   │   ├── layout.tsx         # Root layout (dark theme)
+│   │   ├── page.tsx           # Dashboard
+│   │   ├── leads/page.tsx     # Lead management
+│   │   ├── campaign/page.tsx  # Send emails
+│   │   ├── log/page.tsx       # Sent log
+│   │   └── settings/page.tsx  # Config
+│   ├── components/
+│   │   ├── Sidebar.tsx
+│   │   ├── StatsCard.tsx
+│   │   ├── LeadTable.tsx
+│   │   ├── EmailPreview.tsx
+│   │   └── SendDialog.tsx
+│   └── lib/
+│       └── api.ts             # API client
+│
+└── deploy/
+    ├── td-mailer-backend.service   # systemd
+    ├── td-mailer-frontend.service  # systemd
+    └── nginx.conf                  # mail.tdgamestudio.com
+```
+
+---
+
+## API Endpoints (Backend)
+
+### Leads
+| Method | Endpoint | Mô tả |
+|--------|----------|--------|
+| GET | `/api/leads` | List all leads (filter/sort/pagination) |
+| GET | `/api/leads/{id}` | Get lead detail |
+| PUT | `/api/leads/{id}` | Update lead |
+| POST | `/api/leads/import` | Import CSV file |
+| GET | `/api/leads/stats` | Lead statistics |
+
+### Campaign
+| Method | Endpoint | Mô tả |
+|--------|----------|--------|
+| POST | `/api/campaign/send` | Send batch emails |
+| POST | `/api/campaign/dry-run` | Preview batch (no send) |
+| POST | `/api/campaign/followup` | Send pending follow-ups |
+| GET | `/api/campaign/status` | Campaign statistics |
+| GET | `/api/campaign/log` | Sent email log |
+| POST | `/api/campaign/test` | Send test to self |
+
+### Templates
+| Method | Endpoint | Mô tả |
+|--------|----------|--------|
+| GET | `/api/templates` | List templates |
+| GET | `/api/templates/{name}/preview` | Render preview with sample data |
+| PUT | `/api/templates/{name}` | Update template content |
+
+### Inbox
+| Method | Endpoint | Mô tả |
+|--------|----------|--------|
+| POST | `/api/inbox/scan` | Scan for replies & bounces |
+| GET | `/api/inbox/replies` | List detected replies |
+
+---
+
+## UI Design Direction
+
+> Dark theme gaming aesthetic matching TD Games brand
+
+- **Background**: `#111125` → `#1a1a2e`
+- **Accent**: `#f7941d` (TD Games orange)
+- **Cards**: `#1e1e32` with subtle orange glow borders
+- **Typography**: Inter or Space Grotesk
+- **Sidebar**: Dark với orange active indicator
+
+---
+
+## Deployment Plan
+
+### DNS
+- Thêm A record: `mail.tdgamestudio.com` → `180.93.144.98` (Megahost_02)
+
+### Nginx Config
+```nginx
+server {
+    server_name mail.tdgamestudio.com;
+
+    location / {
+        proxy_pass http://localhost:3400;  # Next.js frontend
+    }
+
+    location /api/ {
+        proxy_pass http://localhost:8400;  # FastAPI backend
+    }
+
+    # SSL managed by Certbot
+}
+```
+
+### Systemd Services
+- `td-mailer-backend.service` — FastAPI trên port 8400
+- `td-mailer-frontend.service` — Next.js trên port 3400
+
+### Security
+- Basic Auth hoặc JWT login (chỉ bạn access)
+- Gmail token stored server-side
+- HTTPS enforced
+
+---
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Subdomain**: Dùng `mail.tdgamestudio.com` hay tên khác? (ví dụ: `crm.tdgamestudio.com`, `outreach.tdgamestudio.com`)
+
+> [!IMPORTANT]
+> **Auth**: Chỉ cần Basic Auth (username/password đơn giản) hay muốn login page đẹp?
+
+> [!IMPORTANT]
+> **Database**: SQLite (đơn giản, đủ 131 studios) hay Supabase (cloud, scalable)?
+
+> [!IMPORTANT]
+> **Phase nào build trước?** Recommend Phase 1 MVP trước — dashboard + lead table + send emails. Phase 2-3 bổ sung sau.
+
+---
+
+## Effort Estimate
+
+| Phase | Thời gian | Mô tả |
+|-------|-----------|-------|
+| Phase 1 MVP | ~4-6 giờ | Dashboard, leads, send, log |
+| Phase 2 Automation | ~2-3 giờ | Follow-up, reply detection |
+| Phase 3 Analytics | ~2-3 giờ | Charts, template editor |
+| **Tổng** | **~8-12 giờ** | |
+
+---
+
+## Verification Plan
+
+### Automated
+- API endpoint testing via curl/Postman
+- Send test email from web UI → check inbox
+- Follow-up engine dry-run verification
+
+### Manual
+- UI review trên browser (desktop + mobile)
+- End-to-end: import CSV → select leads → dry-run → send → check log
+- Verify nginx + SSL hoạt động trên `mail.tdgamestudio.com`

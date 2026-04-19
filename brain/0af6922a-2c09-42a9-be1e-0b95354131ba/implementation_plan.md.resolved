@@ -1,165 +1,343 @@
-# B2B Cold Email Outreach System — `toan.dang@tdgamestudio.com`
+# 🚀 Email Outreach → CRM Module Integration
 
-Xây dựng hệ thống gửi cold email tự động từ Google Workspace, tích hợp trực tiếp vào pipeline B2B Lead Discovery hiện có.
+## Tổng quan kiến trúc hiện tại
+
+Sau khi phân tích repo [tdgames_billing](https://github.com/tdgamesvn/tdgames_billing):
+
+```
+tdgames_billing/
+├── App.tsx                     # Main router, module switching
+├── config/apps.ts              # App registry (10 modules)
+├── types.ts                    # All TypeScript interfaces
+├── services/supabaseClient.ts  # Supabase connection
+├── apps/
+│   ├── crm/                    # 🎯 TARGET MODULE
+│   │   ├── components/
+│   │   │   ├── CrmApp.tsx      # Main CRM with tab navigation
+│   │   │   ├── ClientList.tsx  # Client table
+│   │   │   ├── ClientForm.tsx  # Client CRUD
+│   │   │   ├── ActivityTimeline.tsx
+│   │   │   ├── DocumentList.tsx
+│   │   │   ├── PaymentTracker.tsx
+│   │   │   └── ProjectList.tsx
+│   │   ├── hooks/useCrmState.ts
+│   │   └── services/crmService.ts  # Supabase CRUD
+│   ├── invoice/                # Has EmailModal.tsx (reference)
+│   ├── hr/, payroll/, expense/, ...
+```
+
+**Key facts:**
+- **Frontend-only SPA** (Vite + React + TypeScript)
+- **No backend server** — trực tiếp gọi Supabase từ client
+- **Supabase** = database + auth
+- **CRM đã có**: `CrmClient` (status: lead→contacted→active), `CrmContact`, `CrmActivity`
+- Deploy: `app.tdgamestudio.com` (static build on VPS nginx)
 
 ---
 
-## Domain Health Audit
-
-| Check | Status | Chi tiết |
-|-------|--------|----------|
-| **MX Record** | ✅ OK | `smtp.google.com` (Google Workspace) |
-| **DKIM** | ✅ OK | RSA key configured at `google._domainkey.tdgamestudio.com` |
-| **DMARC** | ⚠️ Weak | `p=none` — chỉ monitor, chưa enforce. Nên upgrade lên `p=quarantine` sau khi warm-up |
-| **SPF** | ❌ Missing | **Chưa có SPF record!** Cần thêm ngay để tránh bị spam |
-| **Brevo** | ℹ️ Linked | Domain đã verify với Brevo (Sendinblue) — có thể đã dùng trước đó |
-
-> [!CAUTION]
-> **SPF record bị thiếu** — đây là lý do hàng đầu khiến email vào spam. Cần thêm SPF record trước khi gửi bất kỳ email nào.
+## Vấn đề kiến trúc
 
 > [!IMPORTANT]
-> **Action cần làm trước khi gửi email:**
-> 1. Thêm SPF record: `v=spf1 include:_spf.google.com ~all`
-> 2. Nâng DMARC từ `p=none` lên `p=quarantine` (sau 2 tuần warm-up)
+> **Email sending cần server-side** — Gmail API dùng OAuth2 token, không thể chạy từ browser SPA.
+> Cần một **backend microservice** trên VPS để handle email gửi.
 
----
+### Giải pháp: Hybrid Architecture
 
-## Proposed Solution: Gmail API + Python Script
+```
+┌─────────────────────────────────────────────────┐
+│           app.tdgamestudio.com (SPA)            │
+│     CRM Module → Outreach Tab (React UI)        │
+│                    │                             │
+│     ┌──────────────┼──────────────┐             │
+│     ▼              ▼              ▼             │
+│  Supabase       FastAPI Email   Supabase        │
+│  (read/write    Microservice    (read/write     │
+│   leads data)   (send emails)    email logs)    │
+└─────────────────────────────────────────────────┘
 
-### Tại sao Gmail API (không phải SMTP)?
-
-| | Gmail API | SMTP (App Password) | Cold Email SaaS |
-|---|-----------|-------------------|----|
-| **Chi phí** | Miễn phí | Miễn phí | $50-150/tháng |
-| **Rate limit** | 2,000 email/ngày | 500/ngày | Tùy plan |
-| **Tracking** | Tự build (pixel/link) | Không có | Built-in |
-| **Personalization** | Full control | Full control | Template-based |
-| **Warm-up** | Manual | Manual | Tự động |
-| **Deliverability** | Tốt (Google infra) | Tốt | Rất tốt |
-| **Setup** | OAuth2 (1 lần) | Đơn giản nhất | SaaS config |
-
-**→ Chọn Gmail API** vì: zero cost, rate limit cao nhất, full control, tích hợp trực tiếp với pipeline hiện tại.
+VPS Megahost_02:
+  ├── Nginx → app.tdgamestudio.com (static SPA)
+  └── FastAPI → localhost:8401 (email API)
+       └── Gmail OAuth token
+       └── Rate limiting
+       └── Template rendering
+```
 
 ---
 
 ## Proposed Changes
 
-### Cold Email Sender Script
+### Phase 1: Database Schema (Supabase)
 
-#### [NEW] `cold_email_sender.py`
+#### [NEW] Supabase Tables
 
-Script chính để gửi cold email campaign:
+**`crm_outreach_leads`** — Leads từ enriched CSV (link tới `crm_clients`)
 
-**Chức năng:**
-- Đọc leads từ `output/SalesQL_Enriched_Leads.csv` hoặc `TD_Games_B2B_Leads.xlsx`
-- Template engine với personalization (tên, studio, tier, title)
-- Rate limiting: mặc định 30 email/ngày (có thể tăng dần)
-- Tracking sent emails (tránh gửi trùng)
-- Follow-up sequence (Day 3, Day 7)
-- Dry-run mode để preview trước khi gửi thật
-
-**Email Selection Logic:**
+```sql
+CREATE TABLE crm_outreach_leads (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    -- Link to CRM client (optional, for converted leads)
+    client_id UUID REFERENCES crm_clients(id) ON DELETE SET NULL,
+    -- Lead info
+    studio_name TEXT NOT NULL,
+    contact_name TEXT NOT NULL,
+    first_name TEXT,
+    email TEXT NOT NULL,
+    job_title TEXT,
+    linkedin_url TEXT,
+    -- Tier ranking
+    tier INTEGER DEFAULT 3,  -- 1=Art Director, 2=Producer, 3=CEO
+    -- Outreach status
+    outreach_status TEXT DEFAULT 'pending',
+    -- pending | initial_sent | followup1_sent | followup2_sent | replied | bounced | unsubscribed
+    initial_sent_at TIMESTAMPTZ,
+    followup1_sent_at TIMESTAMPTZ,
+    followup2_sent_at TIMESTAMPTZ,
+    replied_at TIMESTAMPTZ,
+    -- Meta
+    source TEXT DEFAULT 'salesql',    -- salesql | manual | website
+    tags TEXT[] DEFAULT '{}',
+    notes TEXT DEFAULT '',
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
 ```
-Priority: Work_Email > Personal_Email
-Tier priority: Tier 1 > Tier 2 > Tier 3 > Unranked
-Max 1 contact per studio (người có Tier cao nhất + Work email)
+
+**`crm_email_log`** — Log mỗi email đã gửi
+
+```sql
+CREATE TABLE crm_email_log (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    lead_id UUID REFERENCES crm_outreach_leads(id) ON DELETE CASCADE,
+    template_name TEXT NOT NULL,       -- initial_outreach | followup_1 | followup_2
+    to_email TEXT NOT NULL,
+    subject TEXT NOT NULL,
+    gmail_message_id TEXT,
+    status TEXT DEFAULT 'sent',        -- sent | bounced | failed
+    error_message TEXT,
+    sent_at TIMESTAMPTZ DEFAULT NOW()
+);
 ```
 
-**Rate Limiting Strategy:**
-```
-Week 1: 10 emails/ngày (warm-up)
-Week 2: 20 emails/ngày
-Week 3+: 30-50 emails/ngày
-Gửi cách nhau 2-5 phút (random delay)
-Chỉ gửi 9AM-5PM EST (giờ làm việc Mỹ/EU)
-```
+**`crm_email_templates`** — Templates (optional, cho template editor)
 
----
-
-#### [NEW] `email_templates/`
-
-Thư mục chứa email templates:
-
-##### `initial_outreach.html`
-Template email đầu tiên — giới thiệu TD Games outsource services.
-
-**Personalization variables:**
-- `{contact_name}` — Tên người nhận
-- `{studio_name}` — Tên studio
-- `{job_title}` — Chức danh
-- `{service_hook}` — Hook dựa trên Tier (Art Director → "art pipeline", Producer → "production capacity")
-
-##### `followup_1.html` (Day 3)
-Follow-up nhẹ nhàng — "just checking in"
-
-##### `followup_2.html` (Day 7)
-Follow-up cuối — case study / portfolio link
-
----
-
-#### [NEW] `output/sent_emails_log.csv`
-
-File log tracking emails đã gửi:
-
-| Column | Description |
-|--------|-------------|
-| `timestamp` | Thời gian gửi |
-| `to_email` | Email người nhận |
-| `contact_name` | Tên contact |
-| `studio` | Tên studio |
-| `template` | initial / followup_1 / followup_2 |
-| `status` | sent / failed / bounced |
-| `message_id` | Gmail Message ID (để tracking) |
-
----
-
-#### [NEW] `setup_gmail_oauth.py`
-
-Script 1 lần để setup OAuth2 cho Gmail API:
-- Tạo credentials từ Google Cloud Console
-- Authorize `toan.dang@tdgamestudio.com`
-- Lưu token vào `credentials/gmail_token.json`
-
----
-
-### DNS Fix (Manual)
-
-#### SPF Record
-Cần thêm TXT record vào DNS của `tdgamestudio.com`:
-```
-Type: TXT
-Host: @
-Value: v=spf1 include:_spf.google.com ~all
+```sql
+CREATE TABLE crm_email_templates (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name TEXT UNIQUE NOT NULL,
+    subject_template TEXT NOT NULL,
+    html_content TEXT NOT NULL,
+    is_active BOOLEAN DEFAULT true,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
 ```
 
 ---
 
-## Open Questions
+### Phase 2: Email Microservice (VPS)
+
+#### [NEW] `/opt/td-mailer-api/` — FastAPI Email Service
+
+Lightweight Python API xử lý email sending, reuse code từ `cold_email_sender.py`.
+
+```
+/opt/td-mailer-api/
+├── main.py              # FastAPI app
+├── requirements.txt     # fastapi, uvicorn, google-api-python-client
+├── services/
+│   ├── gmail_sender.py  # Gmail API logic (from cold_email_sender.py)
+│   └── template_renderer.py  # Load + personalize templates
+├── templates/           # HTML email templates
+│   ├── initial_outreach.html
+│   ├── followup_1.html
+│   └── followup_2.html
+├── credentials/
+│   └── gmail_token.json # OAuth token
+└── td-mailer-api.service  # systemd
+```
+
+**API Endpoints:**
+
+| Method | Endpoint | Mô tả |
+|--------|----------|--------|
+| POST | `/api/email/send` | Gửi email cho 1 lead |
+| POST | `/api/email/batch` | Gửi batch (with rate limiting) |
+| POST | `/api/email/test` | Gửi test email |
+| GET | `/api/email/status` | Sending quota status today |
+| POST | `/api/email/preview` | Render template preview |
+| POST | `/api/inbox/scan` | Check replies & bounces |
+
+**Security:** API key in header (`X-API-Key: <secret>`) — chỉ SPA mới biết key.
+
+**Nginx config** (thêm vào `app.tdgamestudio.com`):
+```nginx
+location /api/email/ {
+    proxy_pass http://localhost:8401/api/email/;
+}
+```
+
+→ Frontend gọi `https://app.tdgamestudio.com/api/email/send` → nginx proxy → FastAPI.
+
+---
+
+### Phase 3: CRM UI Components
+
+#### [MODIFY] `apps/crm/components/CrmApp.tsx`
+- Thêm tab **"Outreach"** vào tab navigation (bên cạnh Clients, Activities, Documents, Projects)
+
+#### [NEW] `apps/crm/components/OutreachDashboard.tsx`
+Dashboard overview cho outreach campaign:
+- Stat cards: Total Leads, Sent Today, Pending, Replied, Bounce Rate
+- Pipeline funnel: Pending → Initial Sent → Followup 1 → Followup 2 → Replied
+- Quick action buttons: Send Batch, Scan Replies, Import Leads
+
+#### [NEW] `apps/crm/components/LeadPipeline.tsx`
+Table view tất cả outreach leads:
+- Columns: Studio, Contact, Email, Tier, Status, Sent Date, Actions
+- Filter by status/tier
+- Inline actions: Send Email, Skip, Convert to CRM Client
+- Bulk actions: Select all → Send batch
+
+#### [NEW] `apps/crm/components/EmailComposer.tsx`
+Preview + send email:
+- Template selector (initial/followup_1/followup_2)
+- Live preview with lead data filled in
+- Subject line customization
+- Send / Send Test buttons
+
+#### [NEW] `apps/crm/components/CampaignLog.tsx`
+Email sent history:
+- Table: Date, To, Template, Status, Gmail ID
+- Filter by date/status/template
+- Stats: total sent, delivery rate, bounce count
+
+#### [NEW] `apps/crm/components/LeadImporter.tsx`
+Import CSV dialog:
+- Upload `SalesQL_Enriched_Leads.csv`
+- Preview parsed data
+- Dedup logic (best contact per studio)
+- Import to Supabase
+
+---
+
+### Phase 4: Follow-up Automation
+
+#### [NEW] VPS Cron Job — Auto follow-ups
+
+```bash
+# /etc/cron.d/td-mailer
+# Run at 10:00 AM VN time (UTC+7 = 3:00 UTC), Mon-Fri
+0 3 * * 1-5 root /opt/td-mailer-api/venv/bin/python /opt/td-mailer-api/followup_worker.py
+```
+
+**Logic:**
+1. Query Supabase: leads where `initial_sent_at < NOW() - 3 days` AND `followup1_sent_at IS NULL` AND `replied_at IS NULL`
+2. Send followup_1 (max 15/day)
+3. Same logic for followup_2 (7 days after initial)
+4. Update `crm_outreach_leads` status + timestamp
+5. Log to `crm_email_log`
+
+---
+
+### Phase 5: Convert Lead → CRM Client
+
+Khi lead reply hoặc thành prospect:
+- Button "Convert to Client" trên LeadPipeline
+- Auto-create `crm_clients` record (status='lead')
+- Link `crm_outreach_leads.client_id` → client
+- Create `crm_activity` (type='email', title='Outreach converted')
+- Seamless transition từ Outreach → CRM Clients workflow
+
+---
+
+## TypeScript Types cần thêm
+
+```typescript
+// types.ts - append
+
+export interface CrmOutreachLead {
+    id: string;
+    client_id: string | null;
+    studio_name: string;
+    contact_name: string;
+    first_name: string;
+    email: string;
+    job_title: string;
+    linkedin_url: string;
+    tier: number;
+    outreach_status: 'pending' | 'initial_sent' | 'followup1_sent' | 'followup2_sent' | 'replied' | 'bounced' | 'unsubscribed';
+    initial_sent_at: string | null;
+    followup1_sent_at: string | null;
+    followup2_sent_at: string | null;
+    replied_at: string | null;
+    source: string;
+    tags: string[];
+    notes: string;
+    created_at: string;
+    updated_at: string;
+}
+
+export interface CrmEmailLog {
+    id: string;
+    lead_id: string;
+    template_name: string;
+    to_email: string;
+    subject: string;
+    gmail_message_id: string;
+    status: 'sent' | 'bounced' | 'failed';
+    error_message: string;
+    sent_at: string;
+}
+```
+
+---
+
+## User Review Required
 
 > [!IMPORTANT]
-> **1. Google Cloud Project**: Bạn muốn dùng Google Cloud Project nào cho Gmail API?
-> - Project hiện có (`open-493116` — đã setup cho GOG)?
-> - Hay tạo project mới riêng cho cold email?
+> **Supabase project**: Email campaign data sẽ lưu vào project Supabase nào? Dùng chung project với billing app hiện tại?
 
-> [!IMPORTANT]  
-> **2. Email content**: Bạn đã có nội dung email template chưa? Hay cần tôi draft nội dung tiếng Anh cho outsource services pitch?
+> [!IMPORTANT]
+> **API Key security**: Sử dụng API key cố định hay Supabase JWT token để authenticate email API?
 
 > [!WARNING]
-> **3. SPF Record**: Bạn có access vào DNS management của `tdgamestudio.com` không? (Cần thêm SPF record trước khi bắt đầu gửi)
+> **Gmail token trên VPS**: Cần upload `gmail_token.json` lên VPS. Token có thể expire sau 7 ngày nếu project ở "testing" mode trên Google Cloud. Cần publish app hoặc setup auto-refresh.
 
 > [!IMPORTANT]
-> **4. Warm-up**: Domain `tdgamestudio.com` đã từng gửi email outreach trước đó chưa? (Ảnh hưởng đến tốc độ warm-up)
+> **Build trước phần nào?** Recommend:
+> 1. ✅ Supabase schema (10 phút)
+> 2. ✅ FastAPI email service trên VPS (1 giờ)
+> 3. ✅ CRM Outreach UI (3-4 giờ)
+> 4. Follow-up automation (1 giờ)
+
+---
+
+## Effort Estimate
+
+| Phase | Thời gian | Mô tả |
+|-------|-----------|-------|
+| Phase 1: DB Schema | 15 phút | Supabase migration |
+| Phase 2: Email API | 1-2 giờ | FastAPI + Gmail + deploy |
+| Phase 3: CRM UI | 3-4 giờ | 5 new components |
+| Phase 4: Automation | 1 giờ | Cron + follow-up worker |
+| Phase 5: Convert flow | 30 phút | Lead → Client |
+| **Tổng** | **~6-8 giờ** | |
 
 ---
 
 ## Verification Plan
 
-### Automated Tests
-1. **Dry-run mode**: Chạy script không gửi thật, chỉ print preview
-2. **Test email**: Gửi 1 email test tới `toan.dang@tdgamestudio.com` (tự gửi cho mình)
-3. **SPF/DKIM check**: Verify email headers đầy đủ authentication
+### After Phase 1-2
+- API endpoint: `curl -X POST app.tdgamestudio.com/api/email/test`
+- Verify email arrives in inbox
 
-### Manual Verification
-1. Kiểm tra email không vào Spam folder
-2. Review email rendering trên Gmail, Outlook
-3. Confirm tracking log ghi đúng
+### After Phase 3
+- UI review: Open CRM → Outreach tab
+- Import CSV → see leads in table
+- Dry-run preview → verify personalization
+- Send 1 real email → check inbox
+
+### After Phase 4-5
+- Verify cron executes follow-ups
+- Verify "Convert to Client" creates CRM record

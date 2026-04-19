@@ -1,6 +1,7 @@
 {
   "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Plan to build a cold email outreach system for sending personalized B2B emails from toan.dang@tdgamestudio.com via Gmail API. Covers domain health audit results, email template design with Tier-based personalization, rate-limited sending with follow-up sequences, and tracking capabilities.",
-  "updatedAt": "2026-04-19T10:31:38.054198100Z",
+  "summary": "Plan to integrate Email Outreach tool into the existing tdgames_billing CRM module.\n\nArchitecture analysis: The billing app is a Vite+React SPA using Supabase (no backend server). Email sending requires Gmail API which needs server-side OAuth. Solution: Add Supabase tables for outreach data + deploy a lightweight FastAPI microservice on VPS for email sending.\n\nIntegration approach:\n- Add 'Outreach' tab inside CRM module (apps/crm/)\n- New Supabase tables: crm_outreach_leads, crm_email_log, crm_email_templates\n- Import enriched leads CSV → Supabase, link to CRM clients\n- New components: OutreachDashboard, LeadPipeline, EmailComposer, CampaignLog\n- FastAPI email microservice on VPS port 8401 behind nginx\n- Reuse existing cold_email_sender.py logic\n- Follow-up automation via scheduled cron job\n\nPhased: Phase 1 (Supabase schema + API), Phase 2 (UI components), Phase 3 (automation)",
+  "updatedAt": "2026-04-19T14:59:09.910617700Z",
+  "version": "3",
   "requestFeedback": true
 }

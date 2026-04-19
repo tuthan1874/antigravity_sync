@@ -1,0 +1,109 @@
+Source: https://raw.githubusercontent.com/tdgamesvn/tdgames_billing/main/config/apps.ts
+
+---
+
+// App Registry — add new apps here
+export interface AppConfig {
+  id: string;
+  name: string;
+  icon: string;
+  description: string;
+  color: string;
+  gradient: string;
+  roles?: string[]; // If set, only these roles can see the app. If unset, all roles can see it.
+}
+
+export const APPS: AppConfig[] = [
+  {
+    id: 'dashboard',
+    name: 'Dashboard',
+    icon: '📊',
+    description: 'Tổng quan cho CEO',
+    color: '#8B5CF6',
+    gradient: 'linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%)',
+    roles: ['admin', 'ke_toan'],
+  },
+  {
+    id: 'invoice',
+    name: 'Invoice',
+    icon: '📄',
+    description: 'Quản lý hoá đơn & doanh thu',
+    color: '#FF9500',
+    gradient: 'linear-gradient(135deg, #FF9500 0%, #FF5E3A 100%)',
+    roles: ['admin', 'ke_toan'],
+  },
+  {
+    id: 'expense',
+    name: 'Expense',
+    icon: '💰',
+    description: 'Quản lý chi phí & thanh toán',
+    color: '#34C759',
+    gradient: 'linear-gradient(135deg, #34C759 0%, #30D158 100%)',
+    roles: ['admin', 'ke_toan'],
+  },
+  {
+    id: 'workforce',
+    name: 'Workforce',
+    icon: '👷',
+    description: 'Quản lý Task và nghiệm thu',
+    color: '#5856D6',
+    gradient: 'linear-gradient(135deg, #5856D6 0%, #AF52DE 100%)',
+    roles: ['admin', 'ke_toan'],
+  },
+  {
+    id: 'crm',
+    name: 'CRM',
+    icon: '👥',
+    description: 'Quản lý khách hàng tập trung',
+    color: '#0A84FF',
+    gradient: 'linear-gradient(135deg, #0A84FF 0%, #5E5CE6 100%)',
+    roles: ['admin', 'ke_toan'],
+  },
+  {
+    id: 'hr',
+    name: 'HR',
+    icon: '🧑‍💼',
+    description: 'Quản lý nhân sự toàn diện',
+    color: '#FF375F',
+    gradient: 'linear-gradient(135deg, #FF375F 0%, #FF6B81 100%)',
+    roles: ['admin', 'hr', 'ke_toan'],
+  },
+  {
+    id: 'attendance',
+    name: 'Chấm công',
+    icon: '⏰',
+    description: 'Chấm công & quản lý ca làm việc',
+    color: '#FF6B35',
+    gradient: 'linear-gradient(135deg, #FF6B35 0%, #F7C948 100%)',
+    roles: ['admin', 'hr', 'ke_toan'],
+  },
+  {
+    id: 'payroll',
+    name: 'Tính lương',
+    icon: '💵',
+    description: 'Tính lương & thuế TNCN',
+    color: '#10B981',
+    gradient: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+    roles: ['admin', 'ke_toan', 'hr'],
+  },
+  {
+    id: 'portal',
+    name: 'Employee Portal',
+    icon: '🏠',
+    description: 'Thông tin cá nhân & bảng lương',
+    color: '#06B6D4',
+    gradient: 'linear-gradient(135deg, #06B6D4 0%, #0891B2 100%)',
+    roles: ['member'],
+  },
+  {
+    id: 'freelancer-portal',
+    name: 'Freelancer Portal',
+    icon: '🎨',
+    description: 'Tasks, nghiệm thu & thu nhập',
+    color: '#F59E0B',
+    gradient: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
+    roles: ['freelancer'],
+  },
+];
+
+
