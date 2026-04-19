@@ -7,9 +7,10 @@
         "-y",
         "@supabase/mcp-server-supabase@latest",
         "--access-token",
-        "sbp_6b58dc40c45f011428cec11d374d3cc7710ff977"
+        "sbp_ddc643fdb6bd348a85df2f76b7ca56218643c38d"
       ],
-      "env": {}
+      "env": {},
+      "disabled": false
     },
     "NocoDB_TD_Games": {
       "command": "npx",
