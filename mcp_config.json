@@ -35,7 +35,7 @@
       "env": {
         "PYTHONPATH": "E:\\TDC_App\\TDGAMES_App\\VPS\\vps-mcp\\src"
       },
-      "disabled": true
+      "disabled": false
     },
     "StitchMCP": {
       "$typeName": "exa.cascade_plugins_pb.CascadePluginCommandTemplate",
