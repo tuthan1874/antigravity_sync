@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Complete walkthrough of the CRM Email Outreach deployment. Covers 3 completed tasks: (1) Import of 456 deduplicated leads from CSV into Supabase with tier breakdown, (2) New Send Email UI features in EmailOutreach.tsx including per-lead send buttons, bulk send with progress bar, and real-time quota display, (3) Automated follow-up cron job on VPS running daily at 10 AM ICT with 3-day and 7-day follow-up rules.",
+  "updatedAt": "2026-04-20T11:27:26.060720400Z"
+}

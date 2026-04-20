@@ -1,0 +1,11 @@
+# Task: Verify CRM App Deployment on VPS
+
+## Plan
+- [ ] Open https://app.tdgamestudio.com
+- [ ] Verify landing page loads (Screenshot)
+- [ ] Check for "CRM" or "Outreach" navigation/section
+- [ ] Verify functionality if possible (at least presence of the module)
+- [ ] Record findings
+
+## Findings
+- 
