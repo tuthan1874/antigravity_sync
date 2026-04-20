@@ -1,0 +1,10 @@
+# Deploy FastAPI Backend — Task Tracker
+
+- `[/]` Step 1: Tạo directory structure trên VPS
+- `[ ]` Step 2: Install Python dependencies
+- `[ ]` Step 3: Write app.py + routes + services
+- `[ ]` Step 4: Upload Gmail token + .env
+- `[ ]` Step 5: Tạo + enable systemd service
+- `[ ]` Step 6: Test endpoints
+- `[ ]` Step 7: Update frontend .env.local
+- `[ ]` Step 8: Browser test

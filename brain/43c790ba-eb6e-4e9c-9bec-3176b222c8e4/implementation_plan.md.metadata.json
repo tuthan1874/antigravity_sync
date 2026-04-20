@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Plan to deploy FastAPI email outreach backend at /opt/td-mailer-api/ on Megahost_02 VPS (180.93.144.98) port 8401. Ports logic from existing Python scripts (email_discovery_bot.py + cold_email_sender.py) into FastAPI routes. Creates systemd service for auto-restart. Connects to frontend CRM via VITE_OUTREACH_API_URL. Estimated deployment time: ~22 minutes.",
+  "updatedAt": "2026-04-19T17:01:04.996858200Z",
+  "requestFeedback": true
+}

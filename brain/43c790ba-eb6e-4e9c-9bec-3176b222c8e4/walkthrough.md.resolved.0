@@ -1,0 +1,163 @@
+# 📊 Trạng Thái Triển Khai — TD Games Billing + Outreach
+
+> Cập nhật: 2026-04-19 23:54 (GMT+7)
+
+## Tổng Quan Hệ Thống
+
+| Component | Stack | Status |
+|-----------|-------|--------|
+| Frontend (tdgames_billing) | React + Vite + TypeScript | ✅ Running localhost:3000 |
+| Database | Supabase (`fifuhkupaqcfjwyouwpa`) | ✅ Active Healthy |
+| VPS Backend (FastAPI) | Megahost_02 (180.93.144.98) | ❌ Chưa deploy |
+| B2B Lead Data | Python scripts + CSV | ✅ 553 contacts enriched |
+
+---
+
+## ✅ Frontend — HOÀN THÀNH (11 modules)
+
+App chạy tại `http://localhost:3000` với đầy đủ 11 sub-apps:
+
+| Module | Files | Database Tables | Data |
+|--------|-------|-----------------|------|
+| 📝 Invoice | InvoiceApp + services | `invoice_invoices` (7), `invoice_studios` (2), `invoice_banks` (2), `invoice_accounts` (2) | ✅ |
+| 💰 Expense | ExpenseApp + services | `expense_categories` (7), `expense_expenses` (0) | ✅ |
+| 👷 Workforce | WorkforceApp + ClickUp | `wf_workers` (5), `wf_tasks` (88), `wf_settlements` (3), `wf_clickup_config` (1) | ✅ |
+| 👤 HR | HrApp + contracts | `hr_departments` (9), `hr_employees` (8), `hr_contracts` (5), `hr_documents` (7) | ✅ |
+| 📅 Attendance | AttendanceApp | `att_shifts` (1), `att_monthly_sheets` (1) | ✅ |
+| 💵 Payroll | PayrollApp | `pay_payroll_sheets` (1), `pay_payroll_records` (1) | ✅ |
+| 📊 Dashboard | DashboardApp | — | ✅ |
+| 🏢 CRM | CrmApp (6 tabs) | `crm_clients` (3), `crm_contacts` (2), `crm_projects` (2), `crm_documents` (1) | ✅ |
+| 📧 Email Outreach | EmailOutreach (4 sub-tabs) | `crm_outreach_leads` (2), `crm_email_templates` (3), `crm_email_log` (0) | ⚠️ Frontend only |
+| 🔗 Freelancer Portal | portal | — | ✅ |
+| 👨‍💼 Employee Portal | employee | — | ✅ |
+
+---
+
+## 📧 CRM Email Outreach — Chi Tiết
+
+### Frontend (✅ HOÀN THÀNH)
+
+Component `EmailOutreach.tsx` (777 lines) với 4 sub-tabs:
+
+| Tab | Chức năng | Status |
+|-----|----------|--------|
+| 📊 Dashboard | Pipeline funnel, stats cards, reply/bounce rate | ✅ Hoạt động |
+| 👥 Leads | CRUD leads, CSV import, CRM import, status tracking, tier filtering | ✅ Hoạt động |
+| 🔍 Discovery | Input company + domain → auto-discover contacts | ⚠️ Cần FastAPI backend |
+| 📧 Templates | Email sequence 3 bước, A/B subject, HTML editor, preview | ✅ Hoạt động |
+
+### Service Layer (✅ HOÀN THÀNH)
+
+- [outreachService.ts](file:///e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/services/outreachService.ts) — Supabase CRUD + CSV parser + FastAPI integration stubs
+- `discoverContacts()` và `sendOutreachEmail()` → cần `VITE_OUTREACH_API_URL`
+
+### Database (✅ HOÀN THÀNH)
+
+```
+crm_outreach_leads  → 2 rows  (test data)
+crm_email_templates → 3 rows  (3-step email sequence)
+crm_email_log       → 0 rows  (chưa gửi email)
+```
+
+---
+
+## ❌ Backend FastAPI — CHƯA DEPLOY
+
+> [!CAUTION]
+> Backend FastAPI **chưa được deploy** lên VPS Megahost_02. Đây là blocker chính.
+
+### Trạng thái VPS Megahost_02
+- **OS**: Ubuntu 22.04.5 LTS
+- **CPU**: 6.56% load | **RAM**: 26.63% used | **Disk**: 55.79% used
+- **Đang chạy**: OpenClaw Gateway, CLIProxyAPI, Open WebUI, Qdrant, Docker
+- **Không có**: `/opt/td-mailer-api/` directory, `td-mailer-api` service
+
+### Cần triển khai trên VPS
+
+```
+/opt/td-mailer-api/
+├── app.py              # FastAPI main
+├── routes/
+│   ├── leads.py        # POST /api/leads/discover
+│   └── email.py        # POST /api/email/send
+├── services/
+│   ├── discovery.py    # Web scraping + Google CSE + SalesQL
+│   ├── gmail_sender.py # Gmail API send + rate limit 30/day
+│   └── supabase.py     # Update lead status
+├── .env                # API keys (SalesQL, Google CSE, Supabase)
+├── credentials/
+│   └── gmail_token.json
+└── requirements.txt
+```
+
+### Tính năng cần backend
+1. **Lead Discovery**: Web scraping → Google CSE → SalesQL enrichment → 3-tier ranking
+2. **Email Sending**: Gmail API qua `toan.dang@tdgamestudio.com`, sequence 3 bước
+3. **Auto Follow-up**: Cron job gửi follow-up1 (Day 3) + follow-up2 (Day 7)
+4. **Reply/Bounce Detection**: Webhook hoặc polling Gmail
+
+---
+
+## 📋 B2B Lead Pipeline Data
+
+| Metric | Count |
+|--------|-------|
+| Studios enriched | 131 |
+| Total contacts | 553 |
+| Python scripts | 4 (data_cleaning → email_discovery_bot → export_excel) |
+| Source data | `e:\TDC_App\TDGAMES_App\Client_Data\B2B_Lead_Pipeline\` |
+
+---
+
+## 🔄 Việc Cần Làm Tiếp
+
+### 🔴 Priority 1: Deploy FastAPI Backend
+1. Tạo `/opt/td-mailer-api/` trên VPS
+2. Implement FastAPI endpoints từ Python scripts có sẵn
+3. Cấu hình Gmail OAuth token
+4. Tạo systemd service `td-mailer-api.service`
+5. Thêm `VITE_OUTREACH_API_URL` vào frontend `.env.local`
+
+### 🟡 Priority 2: Import Lead Data
+1. Import 553 contacts từ CSV vào `crm_outreach_leads`
+2. Verify 3-tier classification
+
+### 🟢 Priority 3: Domain Warm-up
+1. Bắt đầu phased warm-up cho `toan.dang@tdgamestudio.com`
+2. Day 1-3: 5 emails/day → Day 4-7: 10/day → Day 8+: 30/day
+
+---
+
+## 🏗️ Kiến Trúc Tổng Thể
+
+```mermaid
+graph TB
+    subgraph Frontend["React SPA (localhost:3000)"]
+        CRM["CRM Module"]
+        OUT["Email Outreach Tab"]
+        INV["Invoice / Expense / HR / Workforce"]
+    end
+
+    subgraph Supabase["Supabase (fifuhkupaqcfjwyouwpa)"]
+        DB_LEADS["crm_outreach_leads"]
+        DB_TPL["crm_email_templates"]
+        DB_LOG["crm_email_log"]
+        DB_CRM["crm_clients / contacts / projects"]
+        DB_OTHER["invoice_* / expense_* / wf_* / hr_*"]
+    end
+
+    subgraph VPS["Megahost_02 (180.93.144.98)"]
+        API["FastAPI :8401 ❌ NOT DEPLOYED"]
+        GMAIL["Gmail API"]
+        SCRAPER["Web Scraper + SalesQL"]
+    end
+
+    CRM --> DB_CRM
+    OUT --> DB_LEADS
+    OUT --> DB_TPL
+    OUT -->|"Discovery & Send"| API
+    API --> GMAIL
+    API --> SCRAPER
+    API --> DB_LEADS
+    INV --> DB_OTHER
+```

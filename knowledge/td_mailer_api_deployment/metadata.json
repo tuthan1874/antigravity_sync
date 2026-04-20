@@ -1,0 +1,22 @@
+{
+  "title": "TD Mailer API Deployment on VPS",
+  "summary": "FastAPI backend deployed at /opt/td-mailer-api/ on Megahost_02 VPS (180.93.144.98:8401). Handles Lead Discovery (web scraping + Google CSE + SalesQL enrichment) and Email Sending (Gmail API via toan.dang@tdgamestudio.com, 30/day limit). Systemd service: td-mailer-api.service (enabled, auto-restart). Firewall: UFW port 8401 open. Frontend connected via VITE_OUTREACH_API_URL in .env.local. Supabase tables: crm_outreach_leads, crm_email_log, crm_email_templates with open RLS. API keys in /opt/td-mailer-api/.env (SalesQL, Google CSE, Supabase anon). Gmail OAuth token at /opt/td-mailer-api/credentials/gmail_token.json (auto-refresh). Verified: discovery found 5 Supercell contacts (Tier 1-3). Next steps: import 553 leads, domain warm-up, cron follow-ups, reply detection.",
+  "created_at": "2026-04-20T00:18:00+07:00",
+  "updated_at": "2026-04-20T00:18:00+07:00",
+  "references": [
+    {
+      "type": "conversation",
+      "id": "43c790ba-eb6e-4e9c-9bec-3176b222c8e4",
+      "title": "Deploy FastAPI Email Outreach Backend"
+    },
+    {
+      "type": "file",
+      "path": "e:\\TDC_App\\TDGAMES_App\\td-games-invoice-app\\apps\\crm\\services\\outreachService.ts"
+    },
+    {
+      "type": "file",
+      "path": "e:\\TDC_App\\TDGAMES_App\\td-games-invoice-app\\apps\\crm\\components\\EmailOutreach.tsx"
+    }
+  ],
+  "tags": ["vps", "fastapi", "email-outreach", "crm", "deployment", "megahost"]
+}

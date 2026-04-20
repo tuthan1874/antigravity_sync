@@ -1,0 +1,80 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	CRM
+	[2] (623,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Khách hàng />
+	[3] (672,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Dự án />
+	[4] (714,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Tài liệu />
+	[5] (766,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Thanh toán />
+	[6] (823,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Hoạt động />
+	[7] (881,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap bg-primary text-black shadow-btn-glow'>📧 Outreach />
+	Dang The Toan
+	admin
+	[8] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	📧 Email Outreach
+	Lead Discovery + Cold Email Pipeline — TD Games Outsourcing
+	[9] (272,188)<button >📊
+Dashboard />
+	[10] (324,188)<button >👥
+Leads (2) />
+	[11] (374,188)<button >🔍
+Discovery />
+	[12] (431,188)<button >📧
+Templates (3) />
+	🔍 Lead Discovery Pipeline
+	Nhập tên công ty + domain → Hệ thống tự động tìm contacts qua Web Scraping, Google CSE, và SalesQL Enrichment. Contacts được phân loại theo 3-tier: ⭐Tier 1 (Art Director), ★Tier 2 (Producer), ☆Tier 3 (CEO/BD).
+	[13] (362,312)<label >Company Name * />
+	[14] (362,338)<input placeholder='Supercell' />
+	[15] (585,312)<label >Domain (optional) />
+	[16] (585,338)<input placeholder='supercell.com' />
+	[17] (723,338)<button >🔍 Discover />
+	Kết quả:
+	5
+	contacts
+	Tier
+	Name
+	Title
+	Email
+	LinkedIn
+	⭐
+	Tier 1
+	John "Cip" Cipriani
+	Clash Royale, Clash of Clans, Clash Quest, Clash Mini, Rush Wars - Art Director & Creative Director
+	john.cipriani@supercell.com
+	[18] (695,465)<a href='https://www.linkedin.com/in/johncipriani'>↗ />
+	[19] (736,465)<button >＋ Add />
+	⭐
+	Tier 1
+	Mario Manzanares
+	Art Director
+	hello@mariomanzanares.com
+	[20] (695,497)<a href='https://es.linkedin.com/in/mariomanzanares'>↗ />
+	[21] (736,497)<button >＋ Add />
+	★
+	Tier 2
+	Kalvin Lyle
+	Art Lead
+	kalvin.lyle@fullmoonmail.com
+	[22] (695,529)<a href='https://fi.linkedin.com/in/kalvinlyle'>↗ />
+	[23] (736,528)<button >＋ Add />
+	☆
+	Tier 3
+	Chris Bancroft
+	Reality Distortion Specialist, Quantum Growth Division
+	christopher.bancroft@supercell.com
+	[24] (695,560)<a href='https://www.linkedin.com/in/cmbancroft'>↗ />
+	[25] (736,560)<button >＋ Add />
+	☆
+	Tier 3
+	Fernanda Oliveira
+	Game artist
+	fernanda.oliveira@supercell.com
+	[26] (695,592)<a href='https://fi.linkedin.com/in/ffernanda-oliver'>↗ />
+	[27] (736,591)<button >＋ Add />
+	TD Consulting • Enterprise Billing Engine • v2.1
+
+</current_dom>
