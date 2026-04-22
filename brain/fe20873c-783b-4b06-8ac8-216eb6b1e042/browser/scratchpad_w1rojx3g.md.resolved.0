@@ -1,0 +1,12 @@
+# Task: Verify Email Outreach Batch Send Functionality
+
+## Checklist
+- [ ] Navigate to http://localhost:3000/#crm
+- [ ] Click "OUTREACH" tab
+- [ ] Navigate to "Leads" sub-tab
+- [ ] Verify "Gửi batch" button visibility and interactivity
+- [ ] Take screenshot and report findings
+
+## Notes
+- Do NOT click "Gửi batch" to send emails.
+- Check quota bar area for the button.
