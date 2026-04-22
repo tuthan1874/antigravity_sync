@@ -1,0 +1,12 @@
+# Task: Debug "Verify Emails" and "Check Bounces" buttons
+
+## Checklist
+- [x] Navigate to CRM Outreach Leads tab
+- [ ] Locate "Verify Emails" and "Check Bounces" buttons
+- [ ] Check console for errors
+- [ ] Test clicking buttons and observe behavior
+- [ ] Identify and fix the issue
+
+## Findings
+- Page loaded at http://localhost:3000/#crm
+- Buttons are visible in the Leads tab.

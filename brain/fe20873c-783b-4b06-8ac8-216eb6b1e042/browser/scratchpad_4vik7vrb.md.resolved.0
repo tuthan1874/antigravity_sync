@@ -1,0 +1,11 @@
+# Task: Verify CRM Outreach Leads Tab
+
+## Checklist
+- [ ] Read scratchpad context (Done)
+- [ ] Navigate to CRM Outreach tab (Assuming already there)
+- [ ] Click on "Leads (456)" sub-tab
+- [ ] Take screenshot of the toolbar (Verify Emails, Check Bounces, quota, filters)
+- [ ] Report findings
+
+## Observations
+- Status: Initializing
