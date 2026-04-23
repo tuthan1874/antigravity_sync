@@ -1,0 +1,12 @@
+# Task: Verify Realtime Sync fix
+
+## Plan
+1. [ ] Navigate to http://localhost:3001/#workforce/config (already there)
+2. [ ] Identify "Realtime Sync" toggle
+3. [ ] Click toggle to enable
+4. [ ] Wait 3 seconds
+5. [ ] Take screenshot and verify status
+6. [ ] Report result
+
+## Observations
+- 

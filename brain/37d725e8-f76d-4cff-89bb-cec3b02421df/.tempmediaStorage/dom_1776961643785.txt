@@ -1,0 +1,251 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,594)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	Workforce
+	USD
+	→
+	VND
+	Mua
+	26.100
+	Bán
+	26.360
+	VCB •
+	23/04, 23:25
+	[2] (667,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Nhân sự />
+	[3] (708,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap bg-primary text-black shadow-btn-glow'>Task />
+	[4] (754,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Nghiệm thu />
+	[5] (807,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>NT Dự Án />
+	[6] (859,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Tổng Quan />
+	[7] (911,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Cấu hình />
+	admin
+	admin
+	[8] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	Task
+	Đồng bộ task từ ClickUp theo email nhân sự
+	🔄 Sync ClickUp
+	Tổng task
+	10
+	Đã đóng
+	10
+	Chưa thanh toán
+	10
+	Tổng giá trị
+	0
+	Đã chọn 2 trạng thái
+	[9] (500,583)<div  />
+	[10] (289,411)<div class='p-2 max-h-64 overflow-y-auto' scrollable='true' />
+		[11] (286,333)<label class='flex items-center gap-2 px-3 py-2 hover:bg-white/5 rounded-lg cursor-pointer transition-colors' />
+			[12] (257,333)<input class='w-4 h-4 rounded border-primary/30 text-primary focus:ring-primary/30 bg-transparent' />
+			[13] (282,333)<span >client review />
+		[14] (286,361)<label class='flex items-center gap-2 px-3 py-2 hover:bg-white/5 rounded-lg cursor-pointer transition-colors' />
+			[15] (257,361)<input class='w-4 h-4 rounded border-primary/30 text-primary focus:ring-primary/30 bg-transparent' />
+			[16] (267,361)<span >fix />
+		[17] (286,389)<label class='flex items-center gap-2 px-3 py-2 hover:bg-white/5 rounded-lg cursor-pointer transition-colors' />
+			[18] (257,389)<input class='w-4 h-4 rounded border-primary/30 text-primary focus:ring-primary/30 bg-transparent' />
+			[19] (279,389)<span >lead check />
+		[20] (286,416)<label class='flex items-center gap-2 px-3 py-2 hover:bg-white/5 rounded-lg cursor-pointer transition-colors' />
+			[21] (257,416)<input class='w-4 h-4 rounded border-primary/30 text-primary focus:ring-primary/30 bg-transparent' />
+			[22] (272,416)<span >closed />
+		[23] (286,444)<label class='flex items-center gap-2 px-3 py-2 hover:bg-white/5 rounded-lg cursor-pointer transition-colors' />
+			[24] (257,444)<input class='w-4 h-4 rounded border-primary/30 text-primary focus:ring-primary/30 bg-transparent' />
+			[25] (277,444)<span >approved />
+		[26] (286,471)<label class='flex items-center gap-2 px-3 py-2 hover:bg-white/5 rounded-lg cursor-pointer transition-colors' />
+			[27] (257,471)<input class='w-4 h-4 rounded border-primary/30 text-primary focus:ring-primary/30 bg-transparent' />
+			[28] (282,471)<span >new request />
+		[29] (286,499)<label class='flex items-center gap-2 px-3 py-2 hover:bg-white/5 rounded-lg cursor-pointer transition-colors' />
+			[30] (257,499)<input class='w-4 h-4 rounded border-primary/30 text-primary focus:ring-primary/30 bg-transparent' />
+			[31] (279,499)<span >in progress />
+		canceled
+	[32] (289,526)<button class='w-full text-center text-xs font-bold text-red-400 hover:text-red-300 py-1'>Bỏ chọn tất cả />
+	10
+	/
+	96
+	tasks
+	Board
+	List
+	[2D Modeling] Android 14
+	Đã duyệt
+	DACE_Client
+	|
+	Mirai Z Reskin
+	|
+	Art
+	👤
+	Nguyễn Ngọc Anh
+	🟢
+	2026-04-21
+	🔴
+	2026-04-21
+	approved
+	⏳ Chưa TT
+	🔄
+	23:12 23-04
+	—
+	VND
+	[2D Modeling] Android 13
+	Đã duyệt
+	DACE_Client
+	|
+	Mirai Z Reskin
+	|
+	Art
+	👤
+	Nguyễn Ngọc Anh
+	🟢
+	2026-04-21
+	🔴
+	2026-04-21
+	approved
+	⏳ Chưa TT
+	🔄
+	23:12 23-04
+	—
+	VND
+	[2D Modeling] Android 21
+	Đã duyệt
+	DACE_Client
+	|
+	Mirai Z Reskin
+	|
+	Art
+	👤
+	Nguyễn Ngọc Anh
+	🟢
+	2026-04-15
+	🔴
+	2026-04-15
+	approved
+	⏳ Chưa TT
+	🔄
+	23:12 23-04
+	—
+	VND
+	architect-dark-wilfred-razorstorm_3
+	Đã duyệt
+	SOCIAL_POINT
+	|
+	Animation
+	👤
+	Đặng Thế Toàn
+	🟢
+	2026-04-10
+	🔴
+	2026-04-10
+	approved
+	⏳ Chưa TT
+	🔄
+	23:12 23-04
+	—
+	VND
+	[2D Modeling] [Character] Doomsday
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	ORCA
+	|
+	Art
+	👤
+	Nguyễn Ngọc Anh
+	🟢
+	2026-04-06
+	🔴
+	2026-04-20
+	approved
+	⏳ Chưa TT
+	🔄
+	23:12 23-04
+	—
+	VND
+	architect-dark-wilfred-razorstorm_1
+	Đã duyệt
+	SOCIAL_POINT
+	|
+	Animation
+	👤
+	Lê Văn Khiêm
+	🟢
+	2026-04-02
+	🔴
+	2026-04-05
+	approved
+	⏳ Chưa TT
+	🔄
+	23:13 23-04
+	—
+	VND
+	[2D Modeling] [Enemies] Suit of Armour
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	ORCA
+	|
+	Art
+	👤
+	Nguyễn Ngọc Anh
+	🟢
+	2026-04-01
+	🔴
+	2026-04-18
+	approved
+	⏳ Chưa TT
+	🔄
+	23:12 23-04
+	—
+	VND
+	[2D Modeling] [Character] Catwoman
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	ORCA
+	|
+	Art
+	👤
+	Nguyễn Ngọc Anh
+	🟢
+	2026-03-30
+	🔴
+	2026-04-21
+	approved
+	⏳ Chưa TT
+	🔄
+	23:12 23-04
+	—
+	VND
+	[2D Modeling] [Character] Dot Warner
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	ORCA
+	|
+	Art
+	👤
+	Nguyễn Ngọc Anh
+	🟢
+	2026-03-30
+	🔴
+	2026-04-14
+	approved
+	⏳ Chưa TT
+	🔄
+	23:12 23-04
+	—
+	VND
+	[2D Modeling] [Enemies] Ruby Foot Soldiers
+	Đã duyệt
+	KABAM_COMPANY
+	|
+	ORCA
+	|
+	Art
+	👤
+	Nguyễn Ngọc Anh
+	🟢
+	2026-03-23
+	🔴
+	2026-04-01
+
+</current_dom>

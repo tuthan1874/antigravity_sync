@@ -1,0 +1,7 @@
+- Verified ClickUp Config page at http://localhost:3001/#workforce/config
+- "Auto Sync Schedule" section is visible below "Realtime Sync".
+- It contains:
+  - Toggle button (Enabled).
+  - Two time inputs: 07:00 AM and 07:00 PM.
+  - "+ Thêm giờ" button.
+  - "💾 Lưu lịch sync" button.

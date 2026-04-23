@@ -1,0 +1,6 @@
+# Task: Verify ClickUp Auto Sync UI
+- [ ] Navigate to http://localhost:3001/#workforce/config
+- [ ] Wait 2 seconds for page to load
+- [ ] Take first screenshot
+- [ ] Scroll down 300 pixels
+- [ ] Take second screenshot

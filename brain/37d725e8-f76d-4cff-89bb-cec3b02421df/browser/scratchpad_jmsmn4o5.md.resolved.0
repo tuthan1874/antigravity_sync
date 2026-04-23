@@ -1,0 +1,13 @@
+# Task: Verify ClickUp Config and Task Page Refactoring
+
+## Plan
+- [ ] Navigate to `http://localhost:3001/#workforce/config`
+- [ ] Verify ClickUp Config UI:
+    - [ ] Simplified config with only Team info
+    - [ ] Blue info box present
+    - [ ] Realtime Sync toggle present
+- [ ] Take screenshot of ClickUp Config page
+- [ ] Navigate to `http://localhost:3001/#workforce/tasks`
+- [ ] Verify Task page works correctly
+- [ ] Take screenshot of Task page
+- [ ] Summary of findings
