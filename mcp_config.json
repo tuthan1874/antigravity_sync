@@ -1,17 +1,5 @@
 {
   "mcpServers": {
-    "supabase-mcp-server": {
-      "$typeName": "exa.cascade_plugins_pb.CascadePluginCommandTemplate",
-      "command": "npx",
-      "args": [
-        "-y",
-        "@supabase/mcp-server-supabase@latest",
-        "--access-token",
-        "sbp_ddc643fdb6bd348a85df2f76b7ca56218643c38d"
-      ],
-      "env": {},
-      "disabled": false
-    },
     "NocoDB_TD_Games": {
       "command": "npx",
       "args": [
@@ -50,6 +38,9 @@
       ],
       "env": {},
       "disabled": true
+    },
+    "supabase": {
+      "serverUrl": "https://mcp.supabase.com/mcp"
     }
   }
 }

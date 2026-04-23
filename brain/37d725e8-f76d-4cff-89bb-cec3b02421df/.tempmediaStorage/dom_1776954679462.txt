@@ -1,0 +1,129 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	←
+	Bảng lương Tháng 3/2026
+	Đã xác nhận
+	1
+	nhân viên
+	📥 Export Excel
+	↩️ Huỷ xác nhận
+	Tổng Gross thực tế
+	7.363.637
+	Tổng BH nhân viên
+	0
+	Tổng thuế TNCN
+	544.500
+	Tổng Net thực lĩnh
+	6.819.137
+	Tổng chi phí công ty
+	7.363.637
+	Nhân viên
+	Ngày công
+	Gross TK
+	TC phát sinh
+	Gross thực
+	BH NV
+	Thuế
+	Net thực lĩnh
+	▶
+	Nguyễn Minh Châu
+	THỬ VIỆC
+	📄 Phiếu lương
+	9
+	/
+	22
+	18.000.000
+	—
+	7.363.637
+	0
+	544.500
+	6.819.137
+	Tổng cộng
+	7.363.637
+	0
+	544.500
+	6.819.137
+	[1] (29,21)<button class='px-3 py-1.5 rounded-lg text-neutral-medium hover:text-white hover:bg-white/10 transition-all text-sm font-bold'>← Quay lại />
+	|
+	Phiếu lương —
+	Nguyễn Minh Châu
+	[2] (922,21)<button class='px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest text-white transition-all hover:opacity-80'>📥 Excel />
+	[3] (968,21)<button class='px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest text-white transition-all hover:opacity-80'>🖨️ In / PDF />
+	TD GAMES COMPANY LIMITED
+	PHIẾU LƯƠNG
+	Tháng
+	3
+	/
+	2026
+	Mã nhân viên
+	FT-002
+	Phòng ban
+	—
+	Họ và tên
+	Nguyễn Minh Châu
+	Chức vụ
+	2D Spine Animator
+	⭐ THỬ VIỆC – Không đóng BH, Thuế 10%
+	LƯƠNG THỰC TẾ
+	Khoản mục
+	Tham chiếu
+	Thực tế
+	Ngày công (tỷ lệ: 40.91%)
+	22
+	9
+	Lương cơ bản
+	5.310.000
+	2.172.273
+	Phụ cấp ăn trưa
+	2.000.000
+	818.182
+	PC xăng xe
+	1.000.000
+	409.091
+	PC điện thoại
+	0
+	0
+	PC trang phục
+	416.000
+	170.182
+	Phụ cấp KPI
+	7.000.000
+	2.863.636
+	Tăng ca mặc định
+	2.274.000
+	930.273
+	Tăng ca phát sinh (0h)
+	—
+	0
+	GROSS THAM CHIẾU
+	18.000.000
+	GROSS THỰC TẾ
+	7.363.637
+	THUẾ TNCN (THỬ VIỆC)
+	Khoản mục
+	Số tiền
+	BH nhân viên
+	0 (không đóng – thử việc)
+	Thu nhập chịu thuế
+	5.445.000
+	Thuế TNCN (10% cố định)
+	-544.500
+	NET THỰC LĨNH
+	6.819.137
+	đ
+	CHI PHÍ CÔNG TY
+	BH công ty
+	0 (không đóng – thử việc)
+	TỔNG CHI PHÍ CÔNG TY
+	7.363.637
+	NGƯỜI NHẬN
+	(Ký, ghi rõ họ tên)
+	KẾ TOÁN
+	(Ký, ghi rõ họ tên)
+	GIÁM ĐỐC
+	(Ký, ghi rõ họ tên)
+
+</current_dom>

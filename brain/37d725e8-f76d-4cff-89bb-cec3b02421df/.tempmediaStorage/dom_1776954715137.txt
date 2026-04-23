@@ -1,0 +1,54 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,850)<div  />
+	🪪 CMND / CCCD & Ảnh nhân sự
+	[1] (336,81)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Số CMND/CCCD
+* />
+	[2] (336,110)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[3] (500,81)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ngày cấp
+* />
+	[4] (500,111)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[5] (664,81)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Nơi cấp
+* />
+	[6] (664,110)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[7] (336,153)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ảnh nhân sự />
+	[8] (336,317)<div  />
+		[9] (336,308)<span >👤 />
+		[10] (336,334)<span >Upload ảnh nhân sự />
+	[11] (500,153)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>CCCD Mặt trước />
+	[12] (500,260)<div  />
+		[13] (500,251)<span >📷 />
+		[14] (500,277)<span >Upload mặt trước />
+	[15] (664,153)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>CCCD Mặt sau />
+	[16] (664,260)<div  />
+		[17] (664,251)<span >📷 />
+		[18] (664,277)<span >Upload mặt sau />
+	🏢 Thông tin Fulltime
+	[19] (336,589)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Mã số thuế cá nhân />
+	[20] (336,618)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[21] (500,589)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Số sổ bảo hiểm />
+	[22] (500,618)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[23] (664,589)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Phòng ban
+* />
+	[24] (664,618)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[25] (336,660)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Chức danh
+* />
+	[26] (336,689)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' placeholder='Senior Artist' />
+	[27] (500,660)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Cấp bậc />
+	[28] (500,688)<select class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[29] (664,660)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ngày bắt đầu
+* />
+	[30] (664,690)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	[31] (336,732)<label class='text-[10px] font-black uppercase tracking-widest text-neutral-medium mb-2 block'>Ngày hết thử việc />
+	[32] (336,762)<input class='w-full bg-transparent border border-primary/10 rounded-xl px-4 py-3 text-white placeholder-neutral-medium/40 focus:outline-none focus:border-primary/40 transition-all text-sm' />
+	💰 Cấu trúc lương
+	Lương cơ bản
+	[33] (690,919)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+	Phụ cấp ăn trưa
+	[34] (690,976)<input class='w-40 px-3 py-2 rounded-lg bg-black/30 border border-primary/10 text-white text-sm text-right outline-none focus:border-emerald-500/40 transition-colors' placeholder='0' />
+	VNĐ
+
+</current_dom>
