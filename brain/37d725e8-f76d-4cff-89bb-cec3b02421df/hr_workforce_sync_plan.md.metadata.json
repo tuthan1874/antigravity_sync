@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Detailed implementation plan for syncing HR employees to Workforce module. Covers: auto-sync on employee creation, task tracking for freelancers (acceptance/payment), KPI tracking for fulltime (profitability analysis), and a comprehensive financial dashboard showing monthly payments, revenue, costs, and profit. Organized into 5 phases with database changes, service updates, and UI components.",
+  "updatedAt":  "2026-04-23T14:43:45.604835Z",
+  "requestFeedback":  true
+}

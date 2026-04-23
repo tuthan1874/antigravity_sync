@@ -1,0 +1,9 @@
+# Task: Verify Task List Payment Filter
+
+## Checklist
+- [ ] Navigate to http://localhost:3001/#workforce/tasks
+- [ ] Capture initial screenshot and DOM
+- [ ] Verify "Chưa thanh toán" filter and task count consistency
+- [ ] Change filter to "Tất cả thanh toán"
+- [ ] Capture final screenshot and verify results
+- [ ] Summary of findings

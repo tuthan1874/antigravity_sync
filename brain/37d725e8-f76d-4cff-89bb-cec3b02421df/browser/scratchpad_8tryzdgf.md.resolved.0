@@ -1,0 +1,11 @@
+# Task: Verify Multi-select Status Filter in Workforce Tasks
+
+## Checklist:
+- [ ] Navigate to http://localhost:3001/#workforce/tasks
+- [ ] Take initial screenshot
+- [ ] Open "Tất cả trạng thái" dropdown
+- [ ] Check multiple checkboxes (e.g., 'in progress', 'approved')
+- [ ] Take screenshot of open dropdown with selections
+- [ ] Close dropdown
+- [ ] Take final screenshot of filtered results and button text
+- [ ] Verify functionality and summarize

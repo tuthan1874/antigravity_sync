@@ -1,0 +1,11 @@
+# Sprint 2: Workforce Financial Dashboard Testing Checklist
+
+- [ ] Navigate to http://localhost:3001/
+- [ ] Access Workforce module
+- [ ] Navigate to "Tổng Quan" / "Financials" tab
+- [ ] Verify KPI cards (Revenue, Cost, Profit, ROI)
+- [ ] Verify Cost Breakdown (Fulltime vs Freelancer)
+- [ ] Verify Fulltime Performance Table (KPI A-F)
+- [ ] Verify Freelancer Payments Table
+- [ ] Capture screenshot of the dashboard
+- [ ] Report findings and any issues

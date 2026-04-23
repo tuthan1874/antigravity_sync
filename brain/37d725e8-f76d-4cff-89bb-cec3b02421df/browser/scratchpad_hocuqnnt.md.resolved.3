@@ -1,0 +1,17 @@
+# Testing HR-Workforce Sync Functionality
+
+## Checklist
+- [x] Open `http://localhost:3001/` (Failed, used port 3000 instead)
+- [x] Log in (if necessary) - (Already logged in on port 3000)
+- [x] Navigate to the HR module
+- [x] Verify "Sync WF" button exists
+- [x] Verify "WF ✓" badges on employee cards
+- [ ] Click "Sync WF" and observe results
+- [ ] Verify toast messages/UI updates
+
+## Observations
+- Port 3001 login failed with `admin/admin`.
+- Switched to `http://localhost:3000/#hr`, which was already authenticated.
+- Successfully navigated to the HR module.
+- "Sync WF" button is present in the header.
+- All 9 employees (4 fulltime, 5 freelancer) have the "WF ✓" purple badge.

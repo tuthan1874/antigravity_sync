@@ -1,0 +1,16 @@
+# Testing HR-Workforce Sync Functionality
+
+## Checklist
+- [x] Open `http://localhost:3001/`
+- [/] Log in (if necessary)
+- [ ] Navigate to the HR module
+- [ ] Verify "Sync WF" button exists
+- [ ] Verify "WF ✓" badges on employee cards
+- [ ] Click "Sync WF" and observe results
+- [ ] Verify toast messages/UI updates
+
+## Observations
+- Opened `http://localhost:3001/`, encountered login screen.
+- Login with `admin/admin` failed repeatedly (incorrect credentials).
+- Console logs show 400 errors from Supabase auth.
+- Noticed port 3000 is also active in metadata, trying `http://localhost:3000/#hr` as it might be already authenticated.

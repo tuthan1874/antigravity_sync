@@ -1,0 +1,171 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	Workforce
+	USD
+	→
+	VND
+	Mua
+	26.100
+	Bán
+	26.360
+	VCB •
+	23/04, 22:09
+	[2] (667,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap bg-primary text-black shadow-btn-glow'>Nhân sự />
+	[3] (708,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Task />
+	[4] (754,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Nghiệm thu />
+	[5] (807,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>NT Dự Án />
+	[6] (859,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Tổng Quan />
+	[7] (911,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Cấu hình />
+	admin
+	admin
+	[8] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	Nhân Sự
+	Quản lý freelancer & inhouse
+	[9] (645,151)<button class='flex items-center gap-2 px-5 py-3 rounded-2xl bg-primary text-black font-black text-xs uppercase tracking-widest hover:bg-primary/90 transition-all hover:scale-105'>Thêm nhân sự />
+	[10] (708,151)<button class='flex items-center gap-2 px-4 py-3 rounded-2xl border border-cyan-500/20 text-cyan-400 font-black text-xs uppercase tracking-widest hover:bg-cyan-500/10 transition-all hover:scale-105 disabled:opacity-50' title='Đồng bộ dữ liệu từ HR (phone, bank, ...)'>Sync HR />
+	[11] (746,151)<button class='p-3 rounded-2xl border border-primary/10 text-neutral-medium hover:text-primary hover:border-primary/30 transition-all hover:scale-105' />
+	Tổng nhân sự
+	9
+	Freelancer
+	5
+	Inhouse
+	4
+	[12] (270,311)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	9
+	kết quả
+	Đặng Thế Toàn
+	freelancer
+	Active
+	📧
+	tdgames.vn@gmail.com
+	📱
+	4532563453
+	🏦
+	sdfsdf
+	—
+	124123543425
+	[13] (371,374)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-yellow-400' title='Deactivate' />
+	[14] (385,374)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+	[15] (399,374)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	Đinh Trí Bảo Anh
+	inhouse
+	Active
+	📧
+	anhdtb.tdgames@gmail.com
+	📱
+	0915228258
+	🏦
+	ACB
+	—
+	42163967
+	Auto-synced from HR - FT-005
+	[16] (543,374)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-yellow-400' title='Deactivate' />
+	[17] (557,374)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+	[18] (571,374)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	Lê Văn Khiêm
+	freelancer
+	Active
+	📧
+	khiemlv.tdconsulting@gmail.com
+	🏦
+	MB Bank
+	—
+	999988887777
+	[19] (715,374)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-yellow-400' title='Deactivate' />
+	[20] (729,374)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+	[21] (743,374)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	Nguyễn Đức Hiếu
+	inhouse
+	Active
+	📧
+	hieund.tdgames@gmail.com
+	📱
+	0364381080
+	🏦
+	Techcombank
+	—
+	19036591816018
+	Auto-synced from HR - FT-003
+	[22] (371,533)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-yellow-400' title='Deactivate' />
+	[23] (385,533)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+	[24] (399,533)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	Nguyễn Minh Châu
+	inhouse
+	Active
+	📧
+	dangthetoan1874@gmail.com
+	📱
+	05156454
+	🏦
+	MB
+	—
+	123123
+	Auto-synced from HR - FT-002
+	[25] (543,533)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-yellow-400' title='Deactivate' />
+	[26] (557,533)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+	[27] (571,533)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	Nguyễn Ngọc Anh
+	freelancer
+	Active
+	📧
+	93ngocnguyen@gmail.com
+	📱
+	0963058293
+	🏦
+	MSB
+	—
+	03501014702630
+	[28] (715,533)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-yellow-400' title='Deactivate' />
+	[29] (729,533)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+	[30] (743,533)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	Nguyễn Quang Huy
+	freelancer
+	Active
+	📧
+	nqhuy17@gmail.com
+	📱
+	0977246477
+	🏦
+	ACB
+	—
+	8666 866 86
+	[31] (371,692)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-yellow-400' title='Deactivate' />
+	[32] (385,692)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+	[33] (399,692)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	Nguyễn Văn Tú
+	inhouse
+	Active
+	📧
+	tunv.tdgame@gmail.com
+	📱
+	0943986069
+	🏦
+	TPBank
+	—
+	02718180401
+	Auto-synced from HR - FT-004
+	[34] (543,692)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-yellow-400' title='Deactivate' />
+	[35] (557,692)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+	[36] (571,692)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	Phạm Minh Giang
+	freelancer
+	Active
+	📧
+	giangph94@gmail.com
+	📱
+	0911069585
+	🏦
+	Techcombank
+	—
+	19038574761016
+	[37] (715,692)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-yellow-400' title='Deactivate' />
+	[38] (729,692)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+	[39] (743,692)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	TD Consulting • Enterprise Billing Engine • v2.1
+
+</current_dom>

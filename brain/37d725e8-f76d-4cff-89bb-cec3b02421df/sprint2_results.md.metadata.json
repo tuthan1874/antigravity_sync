@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary":  "Sprint 2 completion report for the Financial Dashboard. Details the implementation of the dashboardService.ts and FinancialDashboard.tsx to aggregate data from HR (payroll), Workforce (freelancer settlements and task revenue), and Expenses. Includes a screenshot of the populated dashboard for March 2026.",
+  "updatedAt":  "2026-04-23T15:04:20.108966100Z",
+  "requestFeedback":  true
+}

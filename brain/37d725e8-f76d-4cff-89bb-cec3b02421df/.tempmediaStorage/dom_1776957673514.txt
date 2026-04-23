@@ -1,0 +1,45 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	HR
+	[2] (805,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Nhân sự />
+	[3] (856,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Phòng ban />
+	[4] (910,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Nhắc việc />
+	admin
+	admin
+	[5] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	[6] (274,184)<div >N />
+		N
+		[7] (274,184)<div  />
+			[8] (274,184)<span  />
+	Nguyễn Quang Huy
+	FL-002
+	freelancer
+	active
+	•
+	Animator Spine
+	[9] (551,164)<button class='px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest text-white transition-all hover:opacity-80'>📝 Xuất hợp đồng />
+	[10] (605,164)<button class='px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest text-white transition-all hover:opacity-80'>✏️ Sửa />
+	[11] (658,164)<button class='px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest text-red-400 border border-red-500/20 hover:bg-red-500/10 transition-all'>🗑️ Xóa vĩnh viễn />
+	[12] (718,164)<button class='px-4 py-2 rounded-xl border border-primary/10 text-neutral-medium text-xs font-black uppercase tracking-widest hover:text-white hover:border-primary/30 transition-all'>← Quay lại />
+	[13] (272,278)<button class='px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all bg-white/10 text-white'>📋 Thông tin />
+	[14] (337,278)<button class='px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white hover:bg-white/5'>🎯 Lịch sử Task (
+0
+) />
+	[15] (407,278)<button class='px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white hover:bg-white/5'>📄 Hợp đồng (
+0
+) />
+	[16] (472,278)<button class='px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white hover:bg-white/5'>⭐ Đánh giá (
+0
+) />
+	[17] (530,278)<button class='px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white hover:bg-white/5'>📁 Dự án (
+0
+) />
+	[18] (578,278)<button class='px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all text-neutral-medium hover:text-white hover:bg-white/5'>🗂️ Hồ sơ />
+	TD Consulting • Enterprise Billing Engine • v2.1
+
+</current_dom>

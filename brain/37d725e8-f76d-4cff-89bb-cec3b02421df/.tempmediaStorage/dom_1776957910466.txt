@@ -1,0 +1,289 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	HR
+	[2] (805,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap bg-primary text-black shadow-btn-glow'>Nhân sự />
+	[3] (856,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Phòng ban />
+	[4] (910,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Nhắc việc />
+	admin
+	admin
+	[5] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	Nhân sự
+	Quản lý hồ sơ nhân sự toàn diện
+	[6] (565,151)<button class='flex items-center gap-2 px-4 py-3 rounded-2xl text-white font-black text-xs uppercase tracking-widest hover:opacity-90 transition-all hover:scale-105' title='Đồng bộ tất cả nhân sự sang Workforce'>Sync WF />
+	[7] (626,151)<button class='flex items-center gap-2 px-5 py-3 rounded-2xl text-white font-black text-xs uppercase tracking-widest hover:opacity-90 transition-all hover:scale-105'>Thêm nhanh />
+	[8] (698,151)<button class='flex items-center gap-2 px-5 py-3 rounded-2xl text-white font-black text-xs uppercase tracking-widest hover:opacity-90 transition-all hover:scale-105'>Thêm nhân sự />
+	[9] (746,151)<button class='p-3 rounded-2xl border border-primary/10 text-neutral-medium hover:text-primary hover:border-primary/30 transition-all hover:scale-105' />
+	Tổng NV
+	9
+	Fulltime
+	4
+	Freelancer
+	5
+	Đang làm việc
+	9
+	[10] (387,311)<input class='w-full bg-surface border border-primary/10 text-neutral-light rounded-xl pl-10 pr-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' placeholder='Tìm theo tên, email, mã NV...' />
+	[11] (559,311)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[12] (621,311)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	[13] (694,311)<select class='bg-surface border border-primary/10 text-neutral-light rounded-xl px-4 h-[44px] text-sm focus:outline-none focus:border-primary/40 transition-all' />
+	9
+	kết quả
+	[14] (328,435)<div  />
+		[15] (328,354)<div  />
+		[16] (328,434)<div  />
+			[17] (328,396)<div  />
+				[18] (262,388)<div  />
+					[19] (262,388)<div >Đ />
+				[20] (339,396)<div  />
+					[21] (329,380)<h3 >Đặng Thế Toàn />
+					[22] (329,396)<p >FL-004 />
+					[23] (329,413)<div  />
+						[24] (293,413)<span >freelancer />
+						[25] (324,413)<span >active />
+						[26] (347,413)<span >WF ✓ />
+			[27] (328,463)<div  />
+				[28] (328,435)<p >📧
+tdgames.vn@gmail.com />
+				[29] (328,451)<p >📱
+4532563453 />
+				[30] (328,478)<p >🎨
+2D, VFX, Concept Art, Animation, Storyboard, Rigging, Modeling, Motion Graphics, 3D, Compositing, Texturing, Lighting />
+		[31] (392,374)<div  />
+			[32] (385,374)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[33] (399,374)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	[34] (500,435)<div  />
+		[35] (500,354)<div  />
+		[36] (500,437)<div  />
+			[37] (500,396)<div  />
+				[38] (434,388)<div  />
+					[39] (434,388)<img  />
+				[40] (511,396)<div  />
+					[41] (502,380)<h3 >Đinh Trí Bảo Anh />
+					[42] (502,396)<p >FT-005 />
+					[43] (502,413)<div  />
+						[44] (461,413)<span >fulltime />
+						[45] (489,413)<span >active />
+						[46] (512,413)<span >WF ✓ />
+			[47] (500,466)<div  />
+				[48] (500,435)<p >💼
+2D Animation
+• Junior />
+				[49] (500,451)<p >🏢
+Animation />
+				[50] (500,466)<p >💼
+anhdtb.tdgames@gmail.com />
+				[51] (500,481)<p >📧
+anhdtb.tdgames@gmail.com />
+				[52] (500,497)<p >📱
+0915228258 />
+		[53] (550,374)<div  />
+			[54] (529,374)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-emerald-400' title='Gửi lại Invite' />
+			[55] (543,374)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-amber-400' title='Reset mật khẩu' />
+			[56] (557,374)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[57] (571,374)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	[58] (672,435)<div  />
+		[59] (672,354)<div  />
+		[60] (672,406)<div  />
+			[61] (672,396)<div  />
+				[62] (607,388)<div  />
+					[63] (607,388)<div >L />
+				[64] (683,396)<div  />
+					[65] (674,380)<h3 >Lê Văn Khiêm />
+					[66] (674,396)<p >FL-003 />
+					[67] (674,413)<div  />
+						[68] (637,413)<span >freelancer />
+						[69] (669,413)<span >active />
+						[70] (692,413)<span >WF ✓ />
+			[71] (672,435)<div  />
+				[72] (672,435)<p >📧
+khiemlv.tdconsulting@gmail.com />
+		[73] (736,374)<div  />
+			[74] (729,374)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[75] (743,374)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	[76] (328,617)<div  />
+		[77] (328,536)<div  />
+		[78] (328,619)<div  />
+			[79] (328,577)<div  />
+				[80] (262,570)<div  />
+					[81] (262,570)<img  />
+				[82] (339,577)<div  />
+					[83] (329,562)<h3 >Nguyễn Đức Hiếu />
+					[84] (329,578)<p >FT-003 />
+					[85] (329,595)<div  />
+						[86] (289,595)<span >fulltime />
+						[87] (317,595)<span >active />
+						[88] (340,595)<span >WF ✓ />
+			[89] (328,648)<div  />
+				[90] (328,617)<p >💼
+2D Spine Animator
+• Junior />
+				[91] (328,633)<p >🏢
+Animation />
+				[92] (328,648)<p >💼
+hieund.tdgames@gmail.com />
+				[93] (328,663)<p >📧
+duchieu000@gmail.com />
+				[94] (328,679)<p >📱
+0364381080 />
+		[95] (378,556)<div  />
+			[96] (357,556)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-emerald-400' title='Gửi lại Invite' />
+			[97] (371,556)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-amber-400' title='Reset mật khẩu' />
+			[98] (385,556)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[99] (399,556)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	[100] (500,617)<div  />
+		[101] (500,536)<div  />
+		[102] (500,619)<div  />
+			[103] (500,577)<div  />
+				[104] (434,570)<div  />
+					[105] (434,570)<div >N />
+				[106] (511,577)<div  />
+					[107] (502,562)<h3 >Nguyễn Minh Châu />
+					[108] (502,578)<p >FT-002 />
+					[109] (502,595)<div  />
+						[110] (461,595)<span >fulltime />
+						[111] (489,595)<span >active />
+						[112] (512,595)<span >WF ✓ />
+			[113] (500,648)<div  />
+				[114] (500,617)<p >💼
+2D Spine Animator
+• Mid />
+				[115] (500,633)<p >🏢
+Animation />
+				[116] (500,648)<p >💼
+dangthetoan1874@gmail.com />
+				[117] (500,663)<p >📧
+dangthetoan1874@gmail.com />
+				[118] (500,679)<p >📱
+05156454 />
+		[119] (550,556)<div  />
+			[120] (529,556)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-emerald-400' title='Gửi lại Invite' />
+			[121] (543,556)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-amber-400' title='Reset mật khẩu' />
+			[122] (557,556)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[123] (571,556)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	[124] (672,617)<div  />
+		[125] (672,536)<div  />
+		[126] (672,619)<div  />
+			[127] (672,577)<div  />
+				[128] (607,570)<div  />
+					[129] (607,570)<img  />
+				[130] (683,577)<div  />
+					[131] (674,562)<h3 >Nguyễn Ngọc Anh />
+					[132] (674,578)<p >FL-001 />
+					[133] (674,595)<div  />
+						[134] (637,595)<span >freelancer />
+						[135] (669,595)<span >active />
+						[136] (692,595)<span >WF ✓ />
+			[137] (672,648)<div  />
+				[138] (672,617)<p >💼
+Concept Artist />
+				[139] (672,633)<p >📧
+93ngocnguyen@gmail.com />
+				[140] (672,648)<p >📱
+0963058293 />
+				[141] (672,663)<p >🎨
+Concept Art, Storyboard, 2D />
+				[142] (672,679)<p >💵
+100
+USD
+/
+per_task />
+		[143] (736,556)<div  />
+			[144] (729,556)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[145] (743,556)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	[146] (328,799)<div  />
+		[147] (328,718)<div  />
+		[148] (328,801)<div  />
+			[149] (328,759)<div  />
+				[150] (262,752)<div  />
+					[151] (262,752)<div >N />
+				[152] (339,759)<div  />
+					[153] (329,744)<h3 >Nguyễn Quang Huy />
+					[154] (329,760)<p >FL-002 />
+					[155] (329,777)<div  />
+						[156] (293,777)<span >freelancer />
+						[157] (324,777)<span >active />
+						[158] (347,777)<span >WF ✓ />
+			[159] (328,830)<div  />
+				[160] (328,799)<p >💼
+Animator Spine />
+				[161] (328,814)<p >📧
+nqhuy17@gmail.com />
+				[162] (328,830)<p >📱
+0977246477 />
+				[163] (328,845)<p >🎨
+2D, 3D, Animation, Rigging />
+				[164] (328,860)<p >💵
+1,000,000
+VND
+/
+per_shot />
+		[165] (392,738)<div  />
+			[166] (385,738)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[167] (399,738)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	[168] (500,799)<div  />
+		[169] (500,718)<div  />
+		[170] (500,801)<div  />
+			[171] (500,759)<div  />
+				[172] (434,752)<div  />
+					[173] (434,752)<img  />
+				[174] (511,759)<div  />
+					[175] (502,744)<h3 >Nguyễn Văn Tú />
+					[176] (502,760)<p >FT-004 />
+					[177] (502,777)<div  />
+						[178] (461,777)<span >fulltime />
+						[179] (489,777)<span >active />
+						[180] (512,777)<span >WF ✓ />
+			[181] (500,830)<div  />
+				[182] (500,799)<p >💼
+2D Spine Animator
+• Junior />
+				[183] (500,814)<p >🏢
+Animation />
+				[184] (500,830)<p >💼
+tunv.tdgame@gmail.com />
+				[185] (500,845)<p >📧
+nguyentu.3111@gmail.com />
+				[186] (500,860)<p >📱
+0943986069 />
+		[187] (550,738)<div  />
+			[188] (529,738)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-emerald-400' title='Gửi lại Invite' />
+			[189] (543,738)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-amber-400' title='Reset mật khẩu' />
+			[190] (557,738)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[191] (571,738)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	[192] (672,799)<div  />
+		[193] (672,718)<div  />
+		[194] (672,801)<div  />
+			[195] (672,759)<div  />
+				[196] (607,752)<div  />
+					[197] (607,752)<div >P />
+				[198] (683,759)<div  />
+					[199] (674,744)<h3 >Phạm Minh Giang />
+					[200] (674,760)<p >FL-006 />
+					[201] (674,777)<div  />
+						[202] (637,777)<span >freelancer />
+						[203] (669,777)<span >active />
+						[204] (692,777)<span >WF ✓ />
+			[205] (672,830)<div  />
+				[206] (672,799)<p >💼
+2D Animator />
+				[207] (672,814)<p >📧
+giangph94@gmail.com />
+				[208] (672,830)<p >📱
+0911069585 />
+				[209] (672,845)<p >🎨
+Animation, 2D />
+				[210] (672,860)<p >💵
+1,000,000
+VND
+/
+per_task />
+		[211] (736,738)<div  />
+			[212] (729,738)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-primary' title='Sửa' />
+			[213] (743,738)<button class='p-2 rounded-lg hover:bg-white/10 transition-all text-neutral-medium hover:text-red-400' title='Xóa' />
+	TD Consulting • Enterprise Billing Engine • v2.1
+
+</current_dom>

@@ -1,0 +1,254 @@
+[0] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+TD Games
+Workforce
+USD
+→
+VND
+Mua
+26.100
+Bán
+26.360
+VCB •
+23/04, 22:23
+[1] (667,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Nhân sự />
+[2] (708,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap bg-primary text-black shadow-btn-glow'>Task />
+[3] (754,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Nghiệm thu />
+[4] (807,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>NT Dự Án />
+[5] (859,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Tổng Quan />
+[6] (911,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Cấu hình />
+admin
+admin
+[7] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+Task
+Đồng bộ task từ ClickUp theo email nhân sự
+🔄 Sync ClickUp
+Tổng task
+64
+Đã đóng
+24
+Chưa thanh toán
+24
+Tổng giá trị
+7,999,999
+Tất cả trạng thái
+[8] (289,411)<div class='p-2 max-h-64 overflow-y-auto' scrollable='true' />
+	[9] (286,333)<label class='flex items-center gap-2 px-3 py-2 hover:bg-white/5 rounded-lg cursor-pointer transition-colors' />
+		[10] (257,333)<input class='w-4 h-4 rounded border-primary/30 text-primary focus:ring-primary/30 bg-transparent' />
+		[11] (282,333)<span >client review />
+	[12] (286,361)<label class='flex items-center gap-2 px-3 py-2 hover:bg-white/5 rounded-lg cursor-pointer transition-colors' />
+		[13] (257,361)<input class='w-4 h-4 rounded border-primary/30 text-primary focus:ring-primary/30 bg-transparent' />
+		[14] (267,361)<span >fix />
+	[15] (286,389)<label class='flex items-center gap-2 px-3 py-2 hover:bg-white/5 rounded-lg cursor-pointer transition-colors' />
+		[16] (257,389)<input class='w-4 h-4 rounded border-primary/30 text-primary focus:ring-primary/30 bg-transparent' />
+		[17] (279,389)<span >lead check />
+	[18] (286,416)<label class='flex items-center gap-2 px-3 py-2 hover:bg-white/5 rounded-lg cursor-pointer transition-colors' />
+		[19] (257,416)<input class='w-4 h-4 rounded border-primary/30 text-primary focus:ring-primary/30 bg-transparent' />
+		[20] (272,416)<span >closed />
+	[21] (286,444)<label class='flex items-center gap-2 px-3 py-2 hover:bg-white/5 rounded-lg cursor-pointer transition-colors' />
+		[22] (257,444)<input class='w-4 h-4 rounded border-primary/30 text-primary focus:ring-primary/30 bg-transparent' />
+		[23] (277,444)<span >approved />
+	[24] (286,471)<label class='flex items-center gap-2 px-3 py-2 hover:bg-white/5 rounded-lg cursor-pointer transition-colors' />
+		[25] (257,471)<input class='w-4 h-4 rounded border-primary/30 text-primary focus:ring-primary/30 bg-transparent' />
+		[26] (282,471)<span >new request />
+	[27] (286,499)<label class='flex items-center gap-2 px-3 py-2 hover:bg-white/5 rounded-lg cursor-pointer transition-colors' />
+		[28] (257,499)<input class='w-4 h-4 rounded border-primary/30 text-primary focus:ring-primary/30 bg-transparent' />
+		[29] (279,499)<span >in progress />
+	canceled
+64
+/
+94
+tasks
+Board
+List
+[2D Modeling] Android 14
+Đã duyệt
+DACE_Client
+|
+Dragon Ball
+|
+Art
+👤
+Nguyễn Ngọc Anh
+🟢
+2026-04-21
+🔴
+2026-04-21
+approved
+⏳ Chưa TT
+🔄
+15:40 23-04
+—
+VND
+[2D Modeling] Android 13
+Đã duyệt
+DACE_Client
+|
+Dragon Ball
+|
+Art
+👤
+Nguyễn Ngọc Anh
+🟢
+2026-04-21
+🔴
+2026-04-21
+approved
+⏳ Chưa TT
+🔄
+15:39 23-04
+—
+VND
+[2D Modeling] [Character] Cake the Cat
+Đang làm
+KABAM_COMPANY
+|
+Orca_Project
+|
+Art
+👤
+Nguyễn Ngọc Anh
+🟢
+2026-04-20
+new request
+⏳ Chưa TT
+🔄
+22:46 20-04
+—
+VND
+[2D Animation] [Character] Aquaman
+Đang làm
+KABAM_COMPANY
+|
+Orca_Project
+|
+Animation
+👤
+Đặng Thế Toàn
+🟢
+2026-04-06
+in progess
+⏳ Chưa TT
+🔄
+11:38 20-04
+—
+VND
+[2D Modeling] [Character] Huntress Wizard
+Đang làm
+KABAM_COMPANY
+|
+Orca_Project
+|
+Art
+👤
+Nguyễn Ngọc Anh
+🟢
+2026-04-20
+in progess
+⏳ Chưa TT
+🔄
+15:30 23-04
+—
+VND
+[2D Modeling] [Character] Armored Jack
+Đang làm
+KABAM_COMPANY
+|
+Orca_Project
+|
+Art
+👤
+Nguyễn Ngọc Anh
+🟢
+2026-04-20
+fix
+⏳ Chưa TT
+🔄
+11:44 23-04
+—
+VND
+[2D Modeling] [Character] Yosemite Sam
+Đang làm
+KABAM_COMPANY
+|
+Orca_Project
+|
+Art
+👤
+Nguyễn Ngọc Anh
+🟢
+2026-04-20
+client_review
+⏳ Chưa TT
+🔄
+15:55 23-04
+—
+VND
+[2D Animation] Android 21
+Đang làm
+DACE_Client
+|
+Dragon Ball
+|
+Animation
+👤
+Lê Văn Khiêm
+🟢
+2026-04-19
+new request
+⏳ Chưa TT
+🔄
+20:09 19-04
+—
+VND
+[2D Animation] Imperfect Cell
+Đang làm
+DACE_Client
+|
+Dragon Ball
+|
+Animation
+👤
+Lê Văn Khiêm
+🟢
+2026-04-16
+new request
+⏳ Chưa TT
+🔄
+08:35 17-04
+—
+VND
+[2D Animation] [Character] Wile E Coyote
+Đang làm
+KABAM_COMPANY
+|
+Orca_Project
+|
+Animation
+👤
+Nguyễn Quang Huy
+🟢
+2026-04-15
+[2D Modeling] Android 21
+Đã duyệt
+DACE_Client
+|
+Dragon Ball
+|
+Art
+👤
+Nguyễn Ngọc Anh
+🟢
+2026-04-15
+🔴
+2026-04-15
+[2D Modeling] Raditz
+Đang làm
+DACE_Client
+|
+Dragon Ball
+|
+Art
+👤
+Nguyễn Ngọc Anh
+🟢
+2026-04-14

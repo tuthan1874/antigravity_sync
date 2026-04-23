@@ -1,0 +1,10 @@
+# Sprint 3 Verification Checklist
+
+- [ ] Navigate to `http://localhost:3001/`
+- [ ] Go to HR module ("Nhân sự")
+- [ ] Find an employee (e.g., Nguyễn Quang Huy)
+- [ ] Click "Xem chi tiết"
+- [ ] Click "🎯 Lịch sử Task" tab
+- [ ] Verify Task History list
+- [ ] Verify KPI badge in header
+- [ ] Capture screenshot

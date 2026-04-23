@@ -1,0 +1,16 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	TD Games Billing
+	Internal Dashboard
+	[1] (500,478)<label class='block text-[10px] font-black uppercase tracking-[0.15em] mb-2 font-montserrat'>Tên đăng nhập />
+	[2] (500,509)<input class='w-full rounded-xl pl-11 pr-4 py-3.5 text-sm font-medium font-montserrat outline-none transition-all' placeholder='username' />
+	[3] (500,550)<label class='block text-[10px] font-black uppercase tracking-[0.15em] mb-2 font-montserrat'>Mật khẩu />
+	[4] (500,581)<input class='w-full rounded-xl pl-11 pr-12 py-3.5 text-sm font-medium font-montserrat outline-none transition-all' placeholder='••••••••' />
+	[5] (562,581)<button class='absolute right-4 top-1/2 -translate-y-1/2 transition-opacity hover:opacity-100' />
+	Đang xác thực...
+	Internal use only · TD Games © 2026
+
+</current_dom>

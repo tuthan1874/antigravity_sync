@@ -1,0 +1,10 @@
+# Sprint 4 Verification Plan
+
+- [ ] Navigate to Workforce > Financials (http://localhost:3000/#workforce/financials)
+- [ ] Verify "1 USD =" input field (default 25000)
+- [ ] Take initial screenshot
+- [ ] Change exchange rate to 26000
+- [ ] Wait 2 seconds
+- [ ] Verify updates in Revenue VND and Profit VND
+- [ ] Take final screenshot
+- [ ] Summarize results
