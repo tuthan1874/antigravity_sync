@@ -1,0 +1,10 @@
+{
+  "name": "billing-data-mcp",
+  "version": "1.0.0",
+  "description": "MCP plugin for TD Games Billing Data",
+  "type": "module",
+  "main": "index.mjs",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  }
+}

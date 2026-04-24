@@ -1,0 +1,183 @@
+# Tích hợp OpenClaw Agents với TD Games Billing App
+
+## Mục tiêu
+Cho phép các OpenClaw AI Agent (HR, CTO, PM, CFO, CEO) truy cập dữ liệu từ toàn bộ app billing (Supabase) và báo cáo cho bạn qua Telegram/Discord.
+
+## Bối cảnh
+
+### OpenClaw hiện tại (Megahost_02: 180.93.144.98)
+- **Version:** 2026.4.22
+- **Agents hiện có:** main (Tony), TD_CTO 🧠, TD_PM 📋, Serena Nguyen 🗂️
+- **Channels:** Telegram (4 bots), Discord (3 accounts)
+- **Models:** GPT-5.x series qua 9router proxy (localhost:20128)
+- **Plugins:** Brave Search, Web Search, Web Fetch, GOG (Google)
+- **Memory:** Mem0 + Qdrant
+
+### App Billing Data (Supabase: fifuhkupaqcfjwyouwpa)
+11 modules, ~30+ tables:
+
+| Module | Supabase Tables |
+|---|---|
+| **Invoice** | `invoices`, `invoice_items`, `clients` |
+| **HR** | `hr_employees`, `hr_contracts`, `hr_reminders` |
+| **Payroll** | `pay_payroll_sheets`, `pay_payroll_records` |
+| **Workforce** | `wf_workers`, `wf_contracts`, `wf_tasks`, `wf_settlements`, `wf_settlement_tasks`, `wf_project_acceptances`, `wf_clickup_config` |
+| **Expense** | `expense_expenses`, `expense_categories`, `expense_budgets` |
+| **CRM** | `crm_clients`, `crm_projects`, `crm_documents` |
+| **Outreach** | `crm_outreach_leads`, `crm_email_log`, `crm_email_templates`, `crm_outreach_config`, `crm_outreach_batch_log` |
+| **Attendance** | `attendance_records` |
+| **Portal** | `portal_leave_requests` |
+
+---
+
+## Proposed Architecture
+
+```
+┌──────────────┐     ┌───────────────────────────┐     ┌──────────────────┐
+│  Telegram /  │     │  OpenClaw Gateway          │     │  Supabase        │
+│  Discord     │◄───►│  (Megahost_02)             │     │  (Cloud)         │
+│  Users       │     │                             │     │                  │
+└──────────────┘     │  Agents:                   │     │  30+ tables      │
+                     │  ├─ TD_CEO  👔             │     │  fifuhkupaqcfjwy │
+                     │  ├─ TD_CFO  💰             │     └────────┬─────────┘
+                     │  ├─ TD_CTO  🧠             │              │
+                     │  ├─ TD_PM   📋             │              │
+                     │  ├─ TD_HR   👥             │     ┌────────┴─────────┐
+                     │  └─ Serena  🗂️             │     │  Supabase Edge   │
+                     │                             │     │  Function        │
+                     │  MCP Plugin:               │     │  "billing-report"│
+                     │  "billing-data"            │◄───►│  (Admin API)     │
+                     └───────────────────────────┘     └──────────────────┘
+```
+
+### Approach: Supabase Edge Function + OpenClaw MCP Plugin
+
+**Tại sao approach này?**
+- OpenClaw hỗ trợ **MCP (Model Context Protocol)** plugins — cho phép agent gọi external tools
+- Supabase Edge Function sẽ hoạt động như **Data API** trung gian, dùng service_role key để truy vấn tất cả tables
+- Agents không cần biết Supabase credentials — chỉ gọi Edge Function qua HTTPS
+
+---
+
+## Proposed Changes
+
+### Phase 1: Supabase Edge Function — Data API
+
+#### [NEW] `supabase/functions/billing-report/index.ts`
+
+Edge Function cung cấp các endpoints read-only cho agents:
+
+```
+POST /billing-report
+Body: { "action": "...", "params": {...} }
+```
+
+**Supported actions:**
+
+| Action | Mô tả | Agent sử dụng |
+|---|---|---|
+| `overview` | Tổng quan: revenue, expense, P&L, headcount | CEO, CFO |
+| `revenue_report` | Doanh thu theo tháng/client/project | CFO, CEO |
+| `expense_report` | Chi phí theo category/tháng, budget vs actual | CFO |
+| `hr_summary` | Danh sách nhân viên, contract status, headcount | HR |
+| `payroll_summary` | Tổng lương theo tháng, payroll sheets | HR, CFO |
+| `workforce_status` | Workers, tasks, settlements, project acceptances | PM, CTO |
+| `crm_pipeline` | Clients, projects, pipeline status | CEO, PM |
+| `outreach_stats` | Email outreach performance, lead counts | CEO, PM |
+| `attendance_report` | Attendance records, leave requests | HR |
+| `monthly_kpi` | KPI dashboard (revenue, burn rate, utilization) | CEO |
+
+---
+
+### Phase 2: OpenClaw MCP Plugin
+
+#### [NEW] `/root/.openclaw/plugins/billing-data/`
+
+MCP plugin cho OpenClaw với các tools:
+- `get_billing_overview` — Tổng quan tài chính
+- `get_revenue_report` — Báo cáo doanh thu  
+- `get_expense_report` — Báo cáo chi phí
+- `get_hr_summary` — Tóm tắt nhân sự
+- `get_payroll_summary` — Tóm tắt bảng lương
+- `get_workforce_status` — Trạng thái dự án & nhân lực
+- `get_crm_pipeline` — Pipeline khách hàng
+- `get_outreach_stats` — Thống kê outreach email
+- `get_attendance_report` — Báo cáo chấm công
+- `get_monthly_kpi` — KPI tháng
+
+---
+
+### Phase 3: New Agents + Identity Configuration
+
+#### Agents mới cần tạo:
+
+| Agent | Role | Focus Areas | Channels |
+|---|---|---|---|
+| **TD_CEO** 👔 | Chief Executive | Overview, KPI, Revenue, Strategy | Telegram + Discord |
+| **TD_CFO** 💰 | Chief Financial | Revenue, Expense, P&L, Budget, Payroll | Telegram + Discord |
+| **TD_HR** 👥 | HR Manager | Employees, Contracts, Attendance, Leave | Telegram + Discord |
+
+#### Agents hiện có — cập nhật:
+
+| Agent | Cập nhật |
+|---|---|
+| **TD_CTO** 🧠 | Thêm billing-data tools (workforce, tech team metrics) |
+| **TD_PM** 📋 | Thêm billing-data tools (projects, tasks, settlements) |
+
+#### Mỗi agent sẽ có:
+- `SOUL.md` — Persona, phong cách giao tiếp, expertise domain
+- `IDENTITY.md` — Tên, vai trò, quyền truy cập data
+- `MEMORY.md` — Quy tắc lưu memory cho từng domain
+- Binding to billing-data MCP plugin với filtered tools (mỗi agent chỉ thấy tools phù hợp role)
+
+---
+
+### Phase 4: Cron Reports (Auto Daily/Weekly Briefings)
+
+Cấu hình cron jobs cho agents:
+
+| Schedule | Agent | Report |
+|---|---|---|
+| Mỗi sáng 8:00 AM | TD_CEO | Daily KPI briefing |
+| Mỗi thứ 2, 9:00 AM | TD_CFO | Weekly financial summary |
+| Mỗi thứ 6, 5:00 PM | TD_HR | Weekly HR status update |
+| Mỗi ngày 9:00 AM | TD_PM | Daily project status |
+
+---
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Agents nào bạn thực sự cần?** Tôi đề xuất 5 agents (CEO, CFO, HR, CTO, PM). Bạn muốn tất cả hay chỉ một số? Mỗi agent sẽ cần 1 Telegram bot mới.
+
+> [!IMPORTANT]
+> **Telegram bots:** Mỗi agent mới (CEO, CFO, HR) cần tạo Telegram bot riêng qua @BotFather. Bạn có muốn tôi tạo hay bạn tự tạo?
+
+> [!IMPORTANT]
+> **Discord:** Bạn muốn các agent mới có mặt trên Discord guilds nào? Hay chỉ Telegram là đủ?
+
+## Open Questions
+
+> [!WARNING]
+> **Supabase Service Role Key:** Edge Function cần `SUPABASE_SERVICE_ROLE_KEY` (đã có sẵn trong Supabase environment). Tôi sẽ sử dụng nó qua `Deno.env.get()` trong Edge Function — không expose ra ngoài.
+
+> [!NOTE]
+> **Edge Function authentication:** Edge Function billing-report sẽ yêu cầu API key riêng (`X-Billing-API-Key`) để agents mới có thể truy cập. Bạn có muốn dùng key đơn giản hay OAuth?
+
+> [!NOTE]
+> **Language:** Agents nên trả lời bằng tiếng Việt hay tiếng Anh? (Mặc định tôi sẽ set tiếng Việt)
+
+---
+
+## Verification Plan
+
+### Automated Tests
+1. Deploy Edge Function `billing-report` → test từng action bằng curl
+2. Cài MCP plugin → verify OpenClaw load được plugin
+3. Tạo agents → gửi test message qua Telegram, yêu cầu báo cáo
+
+### Manual Verification
+1. Nhắn TD_CEO trên Telegram: "Báo cáo KPI tháng này"
+2. Nhắn TD_CFO: "Tổng doanh thu và chi phí tháng 4?"
+3. Nhắn TD_HR: "Có bao nhiêu nhân viên đang active?"
+4. Nhắn TD_PM: "Tiến độ các dự án hiện tại?"

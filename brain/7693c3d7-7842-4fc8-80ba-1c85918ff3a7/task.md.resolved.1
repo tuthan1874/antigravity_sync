@@ -1,0 +1,25 @@
+# OpenClaw ↔ Billing App Integration Tasks
+
+## Phase 1: Supabase Edge Function — Data API
+- [x] Create `billing-report` Edge Function with 10 report actions
+- [x] Deploy Edge Function to Supabase
+- [x] Test all actions via curl ✅ Overview returns live data
+
+## Phase 2: OpenClaw MCP Plugin
+- [x] Create `billing-data` MCP plugin with tools
+- [x] Install plugin on Megahost_02
+- [x] Configure MCP server in OpenClaw
+- [x] Verify OpenClaw loads plugin ✅ Gateway healthy
+
+## Phase 3: Agent Configuration
+- [x] Create TD_CEO agent + SOUL/IDENTITY/MEMORY ✅ Tested & working!
+- [x] Create TD_CFO agent + SOUL/IDENTITY/MEMORY
+- [x] Create TD_HR agent + SOUL/IDENTITY/MEMORY
+- [x] Update TD_CTO with billing-data tools (automatic via MCP)
+- [x] Update TD_PM with billing-data tools (automatic via MCP)
+- [ ] Configure Telegram bots (⏳ waiting for user tokens)
+- [ ] Bind agents to Telegram channels
+
+## Phase 4: Cron Reports
+- [ ] Configure daily/weekly auto-report cron jobs
+- [ ] Test automated reports
