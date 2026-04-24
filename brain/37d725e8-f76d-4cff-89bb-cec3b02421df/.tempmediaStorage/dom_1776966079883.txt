@@ -1,0 +1,73 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+	TD Games
+	Expense
+	USD
+	→
+	VND
+	Mua
+	26.100
+	Bán
+	26.360
+	VCB •
+	24/04, 00:35
+	[2] (708,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Dashboard />
+	[3] (764,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Danh sách />
+	[4] (814,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Định kỳ />
+	[5] (863,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Danh mục />
+	[6] (912,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap bg-primary text-black shadow-btn-glow'>Báo cáo />
+	admin
+	admin
+	[7] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+	Reports
+	Budget • Forecast • Export
+	[8] (672,135)<select class='bg-surface border border-primary/10 rounded-xl px-4 py-2.5 text-sm text-white outline-none focus:border-primary/30' />
+	[9] (724,135)<button class='px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/25 transition-all'>📥 Export CSV />
+	💰 Budget vs Thực tế —
+	2026
+	[10] (718,206)<button class='px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-all'>＋ Thêm Budget />
+	Tháng
+	Budget VND
+	Thực tế VND
+	Chênh lệch
+	Tiến độ
+	T03
+	/
+	2026
+	—
+	38.863.637 ₫
+	—
+	📈 Dự báo doanh thu 3 tháng tới (USD)
+	Dựa trên trung bình
+	1
+	tháng có dữ liệu
+	T11/2025
+	T12/2025
+	T01/2026
+	T02/2026
+	T03/2026
+	$14,204.50
+	T04/2026
+	📥 Xuất báo cáo
+	[11] (335,646)<button class='p-5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-primary/30 transition-all text-left group' />
+		[12] (335,639)<p >📊 Báo cáo tổng hợp />
+		[13] (335,656)<p >Toàn bộ giao dịch (
+9
+records) />
+	[14] (500,646)<button class='p-5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-emerald-500/30 transition-all text-left group' />
+		[15] (500,639)<p >💰 Báo cáo doanh thu />
+		[16] (500,656)<p >Chỉ doanh thu (
+5
+records) />
+	[17] (665,646)<button class='p-5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-red-500/30 transition-all text-left group' />
+		[18] (665,639)<p >📤 Báo cáo chi phí />
+		[19] (665,656)<p >Chỉ chi phí (
+4
+records) />
+	TD Consulting • Enterprise Billing Engine • v2.1
+
+</current_dom>

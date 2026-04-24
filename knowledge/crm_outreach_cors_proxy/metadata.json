@@ -1,0 +1,9 @@
+{
+  "title": "CRM Email Outreach - CORS Proxy & Auto Batch",
+  "summary": "CRM Email Outreach module fix: All API calls (Verify, Bounce, Batch Send, Discovery) route through Supabase Edge Function 'outreach-proxy' to bypass CORS when calling VPS FastAPI at 180.93.144.98:8401. Helper function getOutreachAPI() in EmailOutreach.tsx returns proxy URL. Auto Daily Batch: Edge Function 'outreach-auto-batch' + pg_cron scheduled at 7:00 AM & 2:00 PM Vietnam time. Config stored in crm_outreach_config table (key='auto_batch', value JSONB with enabled, batch_size, daily_limit, min_delay_hours). Batch logs in crm_outreach_batch_log table. Dashboard shows Auto Batch config panel with toggle, manual trigger, and execution history. Supabase project: fifuhkupaqcfjwyouwpa. VPS API: http://180.93.144.98:8401. Sender: toan.dang@tdgamestudio.com.",
+  "created": "2026-04-24T01:05:00+07:00",
+  "references": [
+    "e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/components/EmailOutreach.tsx",
+    "e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/crm/services/outreachService.ts"
+  ]
+}

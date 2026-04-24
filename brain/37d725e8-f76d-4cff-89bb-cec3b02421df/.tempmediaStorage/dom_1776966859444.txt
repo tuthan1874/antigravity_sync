@@ -1,0 +1,178 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (23,30)<button class='p-2 -ml-2 mr-1 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-primary hover:bg-primary/10' title='Back to Home' />
+TD Games
+CRM
+[1] (647,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Khách hàng />
+[2] (696,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Dự án />
+[3] (738,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Tài liệu />
+[4] (790,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Thanh toán />
+[5] (847,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap text-neutral-medium hover:text-white'>Hoạt động />
+[6] (905,30)<button class='flex-shrink-0 px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap bg-primary text-black shadow-btn-glow'>📧 Outreach />
+admin
+admin
+[7] (974,30)<button class='p-2 rounded-xl transition-all hover:scale-110 text-neutral-medium hover:text-status-error hover:bg-status-error/10' title='Logout' />
+📧 Email Outreach
+Lead Discovery + Cold Email Pipeline — TD Games Outsourcing
+[8] (272,188)<button >📊
+Dashboard />
+[9] (327,188)<button >👥
+Leads (456) />
+[10] (381,188)<button >🔍
+Discovery />
+[11] (437,188)<button >📧
+Templates (3) />
+📊 Quota hôm nay
+0
+/
+30
+(
+30
+còn lại)
+[12] (721,245)<button >🚀 Gửi batch (30) />
+[13] (337,295)<input placeholder='🔍 Tìm tên, email, studio...' />
+[14] (464,295)<select  />
+[15] (522,295)<select  />
+[16] (568,295)<button >📥 Import />
+[17] (614,295)<button >＋ Thêm Lead />
+[18] (666,295)<button >✅ Verify Emails />
+[19] (726,295)<button >📬 Check Bounces />
+Import Leads
+📄
+Upload CSV
+Hỗ trợ SalesQL format: Studio, Contact_Name, Work_Email, Job_Title, Tier
+[20] (375,485)<label >Chọn file CSV />
+👥
+Từ CRM Clients
+Import
+3
+khách hàng + contacts (bỏ qua trùng email)
+[21] (625,485)<button >Import từ CRM />
+[22] (269,553)<button >⏳
+Chờ gửi
+(
+367
+) />
+[23] (315,553)<button >📤
+Đã gửi
+(
+18
+) />
+[24] (361,553)<button >⚠️
+Bị bounce
+(
+15
+) />
+[25] (411,553)<button >❌
+Email lỗi
+(
+56
+) />
+Tier
+Contact
+Email
+Studio
+Chức vụ
+Trạng thái
+Nguồn
+Actions
+⭐
+Tier 1
+Adam Hartel
+[26] (283,633)<a href='https://www.linkedin.com/in/adam-hartel-276583213'>LinkedIn ↗ />
+adam.hartel@skydance.com
+Skydance
+Associate Art Director
+[27] (647,625)<select  />
+csv_import
+[28] (720,625)<button >📧 Gửi FU1 />
+[29] (741,625)<button >✕ />
+⭐
+Tier 1
+Alex Laurant
+[30] (283,679)<a href='https://www.linkedin.com/in/alexlaurant'>LinkedIn ↗ />
+alex.laurant@skydance.com
+Skydance
+Sr. Art Director - Publishing - VR Games
+[31] (647,671)<select  />
+csv_import
+[32] (720,671)<button >📧 Gửi FU1 />
+[33] (741,671)<button >✕ />
+⭐
+Tier 1
+Isaiah Sherman
+[34] (283,725)<a href='https://www.linkedin.com/in/shermancg'>LinkedIn ↗ />
+isherman@ravensoftware.com
+Raven Software
+Art Director
+[35] (647,717)<select  />
+csv_import
+[36] (720,717)<button >📧 Gửi FU1 />
+[37] (741,717)<button >✕ />
+⭐
+Tier 1
+Brian Thompson
+[38] (283,770)<a href='https://www.linkedin.com/in/brian-thompson-a0782b'>LinkedIn ↗ />
+findbrian@yahoo.com
+Amazon Games
+Art Director
+[39] (647,762)<select  />
+csv_import
+[40] (720,762)<button >📧 Gửi FU1 />
+[41] (741,762)<button >✕ />
+⭐
+Tier 1
+Tommy Kim
+[42] (283,816)<a href='https://www.linkedin.com/in/tommy-kim-85376050'>LinkedIn ↗ />
+tommykimart@gmail.com
+Voldex
+Art Director, Pleinair Painter, Making everyday life into work of art
+[43] (647,808)<select  />
+csv_import
+[44] (720,808)<button >📧 Gửi FU1 />
+[45] (741,808)<button >✕ />
+⭐
+Tier 1
+Amelia Garvin
+[46] (283,862)<a href='https://ca.linkedin.com/in/amelia-garvin-b0313286'>LinkedIn ↗ />
+amelia@juicegroup.ca
+SkyBox Labs
+Senior Art Director | Project Manager
+[47] (647,854)<select  />
+csv_import
+[48] (720,854)<button >📧 Gửi FU1 />
+[49] (741,854)<button >✕ />
+⭐
+Tier 1
+Alexandre Brakha
+[50] (283,908)<a href='https://jp.linkedin.com/in/alexandreosmozebrakha'>LinkedIn ↗ />
+osmoze@pinkrabbitcorp.com
+KOJIMA PRODUCTIONS
+Art Director / Concept Writer
+[51] (647,900)<select  />
+csv_import
+[52] (710,900)<button >✕ />
+⭐
+Tier 1
+Steve Suhy
+[53] (283,953)<a href='https://www.linkedin.com/in/stevesuhy'>LinkedIn ↗ />
+ssuhy@ea.com
+IllFonic
+Art Director
+[54] (647,945)<select  />
+csv_import
+[55] (710,945)<button >✕ />
+⭐
+Tier 1
+Iain Harrison
+[56] (283,999)<a href='https://uk.linkedin.com/in/iainharrison1'>LinkedIn ↗ />
+iain.harrison@bcu.ac.uk
+IllFonic
+Art Director
+[57] (647,991)<select  />
+csv_import
+[58] (710,991)<button >✕ />
+
+</current_dom>

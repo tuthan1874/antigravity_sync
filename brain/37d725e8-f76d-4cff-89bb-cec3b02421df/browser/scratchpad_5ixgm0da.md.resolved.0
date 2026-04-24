@@ -1,0 +1,13 @@
+# CRM Module Verification Task
+
+## Checklist
+- [ ] Navigate to http://localhost:3001/#crm
+- [ ] Verify Dashboard tab has "Auto Daily Batch" config section
+- [ ] Take screenshot of Dashboard
+- [ ] Navigate to Leads tab
+- [ ] Verify "Import" button functionality (panel opens)
+- [ ] Take screenshot of Import panel
+- [ ] Verify "Add Lead" button functionality (form opens)
+- [ ] Take screenshot of Add Lead form
+- [ ] Verify "Verify Emails" button functionality (confirm dialog/alert)
+- [ ] Take screenshot of Verify Emails interaction

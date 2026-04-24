@@ -1,0 +1,11 @@
+# Task: Verify Phase 2 Financial Hub and Dashboard
+
+## Plan
+- [ ] Navigate to `http://localhost:3001/#expense/list` and capture screenshot of Financial Ledger.
+- [ ] Navigate to `http://localhost:3001/#expense/overview` and capture screenshot of Dashboard KPI cards and charts.
+- [ ] Scroll down on `http://localhost:3001/#expense/overview` and capture screenshot of P&L monthly table and Revenue USD breakdown.
+
+## Findings
+- Financial Ledger: 
+- Dashboard: 
+- P&L Monthly Table: 

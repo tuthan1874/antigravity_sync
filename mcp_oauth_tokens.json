@@ -1,13 +1,1 @@
-{
-  "https://mcp.supabase.com/mcp": {
-    "client_id": "1acee18a-09bd-436f-b9d0-0814ef47e548",
-    "client_secret": "sba_274b039c5366135c69073aef98afd1e23fcdaa79",
-    "token": {
-      "access_token": "sbp_oauth_38aa645d316e449b4450f2687021ceafcc3a0ef3",
-      "token_type": "Bearer",
-      "refresh_token": "PKAzNXTRVDgjguzXRs",
-      "expiry": "2026-04-24T21:20:52.9433863+07:00"
-    },
-    "token_url": "https://api.supabase.com/v1/oauth/token"
-  }
-}
+{}

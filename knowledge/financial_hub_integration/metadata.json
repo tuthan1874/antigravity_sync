@@ -1,0 +1,14 @@
+{
+  "title": "Financial Hub Integration - Expense Module",
+  "summary": "Complete 3-phase financial integration connecting Invoice, Payroll, Workforce Settlement modules to the Expense module via DB triggers. Phase 1: Auto-sync triggers (settlement->expense on status='paid', payroll->expense on status='confirmed', invoice->revenue on status='paid') with backfill. Schema additions: type (expense/revenue), source_type (payroll/settlement/invoice/manual), source_id on expense_expenses. Phase 2: Financial Hub dashboard with Revenue vs Expense P&L chart, monthly P&L table, source breakdown, type/source filters on list view, auto-synced entry protection. Phase 3: expense_budgets table for budget planning, 3-month revenue forecast, CSV export (full/revenue/expense). Supabase project: fifuhkupaqcfjwyouwpa. Key files: ExpenseDashboard.tsx, ExpenseList.tsx, ExpenseReports.tsx, useExpenseState.ts, expenseService.ts. Invoice items use 'unitPrice' (not 'amount') for calculating totals.",
+  "created": "2026-04-24T00:46:00+07:00",
+  "updated": "2026-04-24T01:05:00+07:00",
+  "references": [
+    "e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseDashboard.tsx",
+    "e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseList.tsx",
+    "e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/components/ExpenseReports.tsx",
+    "e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/hooks/useExpenseState.ts",
+    "e:/TDC_App/TDGAMES_App/td-games-invoice-app/apps/expense/services/expenseService.ts",
+    "e:/TDC_App/TDGAMES_App/td-games-invoice-app/types.ts"
+  ]
+}

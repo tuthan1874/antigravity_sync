@@ -1,0 +1,108 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,301)<div  />
+	T02/2026
+	—
+	T03/2026
+	-38.863.637
+	T04/2026
+	—
+	📋 Báo cáo P&L theo tháng
+	Kỳ
+	Doanh thu
+	Lương
+	Freelancer
+	Khác
+	Lợi nhuận
+	T11/2025
+	—
+	—
+	—
+	—
+	—
+	T12/2025
+	—
+	—
+	—
+	—
+	—
+	T01/2026
+	—
+	—
+	—
+	—
+	—
+	T02/2026
+	—
+	—
+	—
+	—
+	—
+	T03/2026
+	$14,204.50
+	7.363.637 ₫
+	$1,732.00
+	31.500.000
+	₫
+	—
+	+
+	$12,472.50
+	-38.863.637
+	₫
+	T04/2026
+	—
+	—
+	—
+	—
+	—
+	Tổng cộng
+	$14,204.50
+	7.363.637
+	₫
+	$1,732.00
+	31.500.000
+	₫
+	0
+	₫
+	+
+	$12,472.50
+	-38.863.637
+	₫
+	💵 Revenue Breakdown (USD)
+	KABAM GAMES, INC
+	$12,320.00
+	Dace Marsh
+	$1,884.50
+	Top 5 chi phí lớn nhất
+	1
+	Freelancer — Nguyễn Quang Huy — Kỳ 2026-03
+	2026-03-27
+	🎨
+	Freelancer
+	31.500.000 ₫
+	Nguyễn Quang Huy
+	2
+	Bảng lương T03/2026
+	2026-03-01
+	💼
+	Lương nhân viên
+	7.363.637 ₫
+	TD Games Studio
+	3
+	Freelancer — Nguyễn Ngọc Anh — Kỳ 2026-03
+	2026-03-31
+	🎨
+	Freelancer
+	$1,642.00
+	Nguyễn Ngọc Anh
+	4
+	Freelancer — Nguyễn Ngọc Anh — Kỳ 2026-03
+	2026-03-31
+	🎨
+	Freelancer
+	$90.00
+	Nguyễn Ngọc Anh
+
+</current_dom>
